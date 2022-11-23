@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "paralleldb", "ParallelDB\paralleldb.esproj", "{BD588EE3-1317-42FE-816B-31520CF874A3}"
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "paralleldb", "frontend\Frontend.esproj", "{BD588EE3-1317-42FE-816B-31520CF874A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api", "api\api.csproj", "{5DDE1A7C-2F15-4FA7-93BE-8F1E0604B3D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api", "api\Api.csproj", "{5DDE1A7C-2F15-4FA7-93BE-8F1E0604B3D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testing", "testing\testing.csproj", "{67EDEDDF-7D49-4250-8F7A-79C200DA97C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "testing\Test.csproj", "{67EDEDDF-7D49-4250-8F7A-79C200DA97C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "console-test", "console-test\console-test.csproj", "{7BA99F95-71A7-4405-B84C-A593095F4402}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "console-test", "console-debug\ConsoleDebug.csproj", "{7BA99F95-71A7-4405-B84C-A593095F4402}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "library", "library\library.csproj", "{F141C916-7CFC-40FA-824D-696F7A3C6B13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "library", "paralleldb\ParallelDB.csproj", "{F141C916-7CFC-40FA-824D-696F7A3C6B13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

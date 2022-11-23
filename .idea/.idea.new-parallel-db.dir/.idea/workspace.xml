@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="12bfb970-d75a-42be-be1c-a83f8d129f5d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.new-parallel-db.dir/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB.sln" beforeDir="false" afterPath="$PROJECT_DIR$/ParallelDB.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/aspnetcore-https.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/aspnetcore-https.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/babel.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/jsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/jsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/nuget.config" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/nuget.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/paralleldb.esproj" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Frontend.esproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/src/assets/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/src/components/HelloWorld.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/HelloWorld.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/src/shims-vue.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shims-vue.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParallelDB/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vue.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Controllers/WeatherForecastController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Controllers/WeatherForecastController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/WeatherForecast.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/WeatherForecast.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/api/Api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/console-test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/console-debug/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/console-test/console-test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/console-debug/ConsoleDebug.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/Class1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/paralleldb/ParallelDB.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/library.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/paralleldb/ParallelDB.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/testing/UnitTest1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/testing.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/testing/Test.csproj" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/api/Controllers/WeatherForecastController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/WeatherForecast.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/console-debug/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/paralleldb/ParallelDB.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/testing/UnitTest1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/testing/Usings.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HxTP5HwQYEsEFSKucHmLzEQlo4" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "ts.external.directory.path": "C:\\Users\\PotatoHD\\Documents\\GitHub\\new-parallel-db\\frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="12bfb970-d75a-42be-be1c-a83f8d129f5d" name="Changes" comment="" />
+      <created>1669225709085</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669225709085</updated>
+      <workItem from="1669225713854" duration="533000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

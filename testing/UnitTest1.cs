@@ -1,4 +1,4 @@
-namespace testing
+namespace Testing
 {
     [TestClass]
     public class UnitTest1

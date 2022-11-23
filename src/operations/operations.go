@@ -1,5 +1,0 @@
-package operations
-
-func main() {
-
-}

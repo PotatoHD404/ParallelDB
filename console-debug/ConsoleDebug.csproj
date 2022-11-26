@@ -8,4 +8,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\paralleldb\ParallelDB.csproj" />
+    <ProjectReference Include="..\Parser\Parser.csproj" />
+  </ItemGroup>
+
 </Project>

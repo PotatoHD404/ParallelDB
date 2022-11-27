@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:/Users/PotatoHD/Documents/GitHub/parallelDB/parser\Speak.g4 by ANTLR 4.11.1
+// Generated from C:/Users/PotatoHD/Documents/GitHub/parallelDB/SqlParser\Speak.g4 by ANTLR 4.11.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -19,6 +19,7 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
+namespace SqlParser {
 
 using Antlr4.Runtime.Misc;
 using IErrorNode = Antlr4.Runtime.Tree.IErrorNode;
@@ -97,3 +98,4 @@ public partial class SpeakBaseListener : ISpeakListener {
 	/// <remarks>The default implementation does nothing.</remarks>
 	public virtual void VisitErrorNode([NotNull] IErrorNode node) { }
 }
+} // namespace SqlParser

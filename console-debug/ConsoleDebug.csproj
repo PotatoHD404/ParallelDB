@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\paralleldb\ParallelDB.csproj" />
-    <ProjectReference Include="..\Parser\Parser.csproj" />
+    <ProjectReference Include="..\SqlParser\SqlParser.csproj" />
   </ItemGroup>
 
 </Project>

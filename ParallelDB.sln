@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "api\Api.csproj", "{1
 		{F141C916-7CFC-40FA-824D-696F7A3C6B13} = {F141C916-7CFC-40FA-824D-696F7A3C6B13}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parser", "parser\Parser.csproj", "{315BE37E-F024-47FD-A711-EFF202E5C0C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlParser", "parser\SqlParser.csproj", "{315BE37E-F024-47FD-A711-EFF202E5C0C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

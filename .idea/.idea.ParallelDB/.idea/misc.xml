@@ -6,10 +6,20 @@
         <PerGrammarGenerationSettings>
           <option name="fileName" value="$PROJECT_DIR$/parser/Speak.g4" />
           <option name="autoGen" value="true" />
-          <option name="outputDir" value="parser/gen" />
+          <option name="outputDir" value="parser" />
           <option name="libDir" value="" />
           <option name="encoding" value="utf-8" />
           <option name="pkg" value="" />
+          <option name="language" value="CSharp" />
+          <option name="generateVisitor" value="true" />
+        </PerGrammarGenerationSettings>
+        <PerGrammarGenerationSettings>
+          <option name="fileName" value="$PROJECT_DIR$/SqlParser/Speak.g4" />
+          <option name="autoGen" value="true" />
+          <option name="outputDir" value="./" />
+          <option name="libDir" value="" />
+          <option name="encoding" value="utf-8" />
+          <option name="pkg" value="SqlParser" />
           <option name="language" value="CSharp" />
           <option name="generateVisitor" value="true" />
         </PerGrammarGenerationSettings>

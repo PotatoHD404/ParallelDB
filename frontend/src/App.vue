@@ -1,19 +1,47 @@
 <template>
-  <div class="app">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div :style="image" class="image">
+    <img alt="PD logo" class="logo" src="~@/assets/db.svg">
+    <my-input
+        v-model="query.text"
+        type="text"
+        placeholder="Запрос"/>
+    <input-list :queryList="queryList"/>
+
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { Query} from "@/types/query";
+import InputList from "@/components/InputList.vue";
+// import InputForm from "@/components/InputForm.vue";
+import MyInput from "@/components/UI/MyInput.vue";
 
-export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
+export default {
+  components: {MyInput, InputList},
+  data() {
+    return {
+      image: {
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '100vh',
+        width: '100vw',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      },
+      query: {
+        text: '',
+      } as Query,
+      queryList: [{text: 'SELECT * FROM users'},
+        {text: 'SELECT * FROM users WHERE id = 1'}] as Query[],
+    }
+  },
+  methods: {
+    // createQuery(query: Query) {
+    //   this.queryList.push(query)
+    // }
   }
-});
+};
 </script>
 
 <style>
@@ -22,9 +50,17 @@ export default defineComponent({
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  background-image: url('~@/assets/bg.svg');
-  background-size: cover;
-  margin-top: 60px;
+  background-repeat: no-repeat;
+}
+
+.image {
+  background-repeat: no-repeat;
+  background-image: url("~@/assets/gradient.svg");
+}
+
+.logo {
+  position: absolute;
+  top: 30px;
+  left: 30px;
 }
 </style>

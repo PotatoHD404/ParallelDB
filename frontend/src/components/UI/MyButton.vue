@@ -14,11 +14,23 @@ export default defineComponent({
 
 <style scoped>
 .btn {
-  margin-top: 15px;
-  padding: 10px;
-  color: white;
-  border: 1px solid #ccc;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 2rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  backface-visibility: hidden;
+  background: transparent;
+  border: 1px solid white;
   border-radius: 5px;
-  background: none;
+  transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
+}
+
+.btn:hover {
+  transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
 }
 </style>

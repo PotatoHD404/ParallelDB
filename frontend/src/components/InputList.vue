@@ -1,6 +1,6 @@
 <template>
   <div v-if="queryList.length > 0">
-    <div class="list" v-for="query in queryList" :key="query.id">
+    <div class="list" v-for="(query, index) in queryList" :key="index">
       <div> {{ query.text }} </div>
     </div>
   </div>

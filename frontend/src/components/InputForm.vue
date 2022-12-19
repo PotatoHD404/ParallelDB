@@ -1,10 +1,9 @@
 <template>
   <form @submit.prevent>
-    <h4> Создание запроса </h4>
-    <my-input
+    <my-textarea
         v-model="query.text"
         type="text"
-        placeholder="Запрос"
+        placeholder="|"
     />
       <my-button @click="createQuery"> Создать </my-button>
   </form>
@@ -12,12 +11,13 @@
 
 <script lang="ts">
 import type { Query } from '@/types/query';
-import MyInput from "@/components/UI/MyInput.vue";
+import MyTextarea from "@/components/UI/MyTextarea.vue";
 import MyButton from "@/components/UI/MyButton.vue";
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   name: "input-form",
-  components: {MyInput, MyButton},
+  components: {MyTextarea, MyButton},
   data() {
     return {
       query: {
@@ -26,15 +26,14 @@ export default {
     }
   },
   methods: {
-    // createQuery() {
-    //   this.query.id = Date.now();
-    //   this.$emit('create', this.query)
-    //   this.query = {
-    //     text: '',
-    //   }
-    // }
+    createQuery: function () {
+      this.$emit('create', this.query)
+      this.query = {
+        text: '',
+      }
+    }
   }
-}
+})
 </script>
 
 <style scoped>

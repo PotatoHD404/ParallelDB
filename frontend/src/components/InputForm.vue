@@ -3,9 +3,9 @@
     <my-textarea
         v-model="query.text"
         type="text"
-        placeholder="|"
+        placeholder="SELECT * FROM users"
     />
-      <my-button @click="createQuery"> Создать </my-button>
+      <my-button @click="createQuery" style="margin-top: 15px"> Создать </my-button>
   </form>
 </template>
 

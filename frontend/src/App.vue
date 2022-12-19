@@ -1,9 +1,10 @@
 <template>
   <div :style="image" class="image">
     <img alt="PD logo" class="logo" src="~@/assets/db.svg">
-    <h4 class="sign">by Kornachyk M.V & Lukichev A.N</h4>>
-    <input-form @create="createQuery"/>
-    <input-list :queryList="queryList"/>
+    <h4 class="sign">by Kornachyk M.V & Lukichev A.N</h4>
+    <input-form style="position: absolute; left: 40px; top: 20vh" @create="createQuery"/>
+    <my-box style="position: absolute; right: 40px; top: 20vh"/>
+    <input-list style="position: absolute; left: 40px; top: 46vh" :queryList="queryList"/>
   </div>
 </template>
 
@@ -11,10 +12,11 @@
 import { Query} from "@/types/query";
 import InputList from "@/components/InputList.vue";
 import InputForm from "@/components/InputForm.vue";
+import MyBox from "@/components/MyBox.vue";
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  components: {InputList, InputForm},
+  components: {MyBox, InputList, InputForm},
   data() {
     return {
       image: {
@@ -35,7 +37,11 @@ export default defineComponent({
   },
   methods: {
     createQuery(query: Query) {
-      this.queryList.push(query)
+      if (query.text.trim()) {
+        this.queryList.push(query)
+      } else {
+        alert('Запрос не может быть пустым')
+      }
     }
   }
 });
@@ -53,19 +59,33 @@ export default defineComponent({
   font-family: Montserrat, sans-serif;
   background-repeat: no-repeat;
   background-image: url("~@/assets/gradient.svg");
+  display: flex;
+
+  flex-direction: column;
 }
 
 .logo {
   position: absolute;
-  top: 30px;
+  top: 20px;
+  /*width: 15vw;*/
+  /*height: 10vh;*/
   left: 30px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .sign {
   position: absolute;
   bottom: 5px;
-  right: 30px;
+  right: 40px;
   color: white;
   font-size: 20px;
 }
+.greenBox {
+  background-color: rgba(0, 255, 0, 0.2) !important;
+}
+
 </style>

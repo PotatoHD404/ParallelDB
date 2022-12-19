@@ -22,11 +22,14 @@ export default defineComponent({
 
 <style scoped>
 .textarea {
-  margin-top: 15px;
+  width: 35vw;
+  height: 20vh;
   padding: 10px;
+  resize: none;
   color: white;
-  border: 1px solid white;
+  outline: none;
+  border: 2px solid white;
   border-radius: 5px;
-  background: none;
+  background: rgba(0, 0, 0, 0.2);
 }
 </style>

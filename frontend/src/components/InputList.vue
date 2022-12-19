@@ -1,19 +1,22 @@
 <template>
-  <div v-if="queryList.length > 0">
+  <div class="plist" v-if="queryList.length > 0">
     <div class="list" v-for="(query, index) in queryList" :key="index">
-      <div> {{ query.text }} </div>
+      <div> {{ query.text }}</div>
     </div>
   </div>
-  <h2 v-else>
+  <h4 v-else style="color: white">
     Очередь запросов пуста
-  </h2>
+  </h4>
+<!--  <my-box style="position: absolute; right: 40px; top: 20vh"/>-->
 </template>
 
 <script lang="ts">
+// import MyBox from "@/components/MyBox.vue";
 import {Query} from "@/types/query";
 
 export default {
   name: "input-list",
+  // components: {MyBox},
   props: {
     queryList: {
       type: Array as () => Query[],
@@ -24,13 +27,19 @@ export default {
 </script>
 
 <style scoped>
+.plist {
+  overflow-y: auto;
+  max-height: 45vh;
+  max-width: 50vw;
+}
+
 .list {
   margin-top: 15px;
   padding: 10px;
   color: white;
-  display: flex;
-  border: 1px solid #ccc;
+  border: 2px solid white;
   border-radius: 5px;
-  background: none;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.2);
 }
 </style>

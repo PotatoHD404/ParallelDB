@@ -14,7 +14,7 @@ export default defineComponent({
 
 <style scoped>
 .btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.7rem 2rem;
@@ -24,8 +24,9 @@ export default defineComponent({
   text-decoration: none;
   color: #fff;
   backface-visibility: hidden;
-  background: transparent;
-  border: 1px solid white;
+  background: rgba(0, 0, 0, 0.2);
+  flex-direction: column;
+  border: 2px solid white;
   border-radius: 5px;
   transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
 }

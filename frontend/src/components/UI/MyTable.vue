@@ -81,7 +81,7 @@ td{
 .my-table {
   overflow-y: auto;
   height: 45vh;
-  width: 45vw;
+  width: 40vw;
 }
 
 ::-webkit-scrollbar {

@@ -1,5 +1,6 @@
 <template>
   <div :style="image" class="image">
+    <my-checkbox/>
     <img alt="PD logo" class="logo" src="~@/assets/db.svg">
     <h4 class="sign">by Kornachyk M.V & Lukichev A.N</h4>
     <input-form style="position: absolute; left: 40px; top: 20vh" @create="createQuery"/>
@@ -16,9 +17,10 @@ import InputForm from "@/components/InputForm.vue";
 import MyBox from "@/components/MyBox.vue";
 import { defineComponent } from 'vue';
 import MyTable from "@/components/UI/MyTable.vue";
+import MyCheckbox from "@/components/UI/MyCheckbox.vue";
 
 export default defineComponent({
-  components: {MyTable, MyBox, InputList, InputForm},
+  components: {MyCheckbox, MyTable, MyBox, InputList, InputForm},
   data() {
     return {
       image: {
@@ -56,6 +58,10 @@ export default defineComponent({
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+}
+
+.theme {
+
 }
 
 .image {

@@ -1,5 +1,5 @@
 <template>
-  <input :value="modelValue" @input="updateInput" class="input" type="text">
+  <input :value="modelValue" @input="updateInput" class="input blackBox" type="text">
 </template>
 
 <script lang="ts">
@@ -25,8 +25,5 @@ export default defineComponent({
   margin-top: 15px;
   padding: 10px;
   color: white;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background: none;
 }
 </style>

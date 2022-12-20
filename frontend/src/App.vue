@@ -3,8 +3,9 @@
     <img alt="PD logo" class="logo" src="~@/assets/db.svg">
     <h4 class="sign">by Kornachyk M.V & Lukichev A.N</h4>
     <input-form style="position: absolute; left: 40px; top: 20vh" @create="createQuery"/>
+    <input-list style="position: absolute; z-index:500; right: 75px; top: 22vh" :queryList="queryList"/>
     <my-box style="position: absolute; right: 40px; top: 20vh"/>
-    <input-list style="position: absolute; left: 40px; top: 46vh" :queryList="queryList"/>
+    <my-table style="position: absolute; left: 40px; top: 48vh"/>
   </div>
 </template>
 
@@ -14,9 +15,10 @@ import InputList from "@/components/InputList.vue";
 import InputForm from "@/components/InputForm.vue";
 import MyBox from "@/components/MyBox.vue";
 import { defineComponent } from 'vue';
+import MyTable from "@/components/UI/MyTable.vue";
 
 export default defineComponent({
-  components: {MyBox, InputList, InputForm},
+  components: {MyTable, MyBox, InputList, InputForm},
   data() {
     return {
       image: {
@@ -33,6 +35,7 @@ export default defineComponent({
       } as Query,
       queryList: [{text: 'SELECT * FROM users'},
         {text: 'SELECT * FROM users WHERE id = 1'}] as Query[],
+
     }
   },
   methods: {
@@ -79,13 +82,19 @@ export default defineComponent({
 
 .sign {
   position: absolute;
-  bottom: 5px;
+  bottom: 20px;
   right: 40px;
   color: white;
   font-size: 20px;
 }
 .greenBox {
   background-color: rgba(0, 255, 0, 0.2) !important;
+}
+
+.blackBox {
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid white;
 }
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <textarea :value="modelValue" @input="updateArea" class="textarea"></textarea>
+  <textarea :value="modelValue" @input="updateArea" class="textarea blackBox"></textarea>
 </template>
 
 <script lang="ts">
@@ -22,14 +22,11 @@ export default defineComponent({
 
 <style scoped>
 .textarea {
-  width: 35vw;
+  width: 45vw;
   height: 20vh;
   padding: 10px;
   resize: none;
   color: white;
   outline: none;
-  border: 2px solid white;
-  border-radius: 5px;
-  background: rgba(0, 0, 0, 0.2);
 }
 </style>

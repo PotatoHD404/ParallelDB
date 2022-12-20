@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="box">
+    <div class="box  blackBox">
     </div>
   </div>
 </template>
@@ -13,11 +13,8 @@ export default {
 
 <style scoped>
 .box {
-  width: 55vw;
-  height: 70vh;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  border: 2px solid white;
+  width: 45vw;
+  height: 73vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;

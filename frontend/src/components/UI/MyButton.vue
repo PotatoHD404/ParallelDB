@@ -1,5 +1,5 @@
 <template>
-  <button class="btn">
+  <button class="btn  blackBox">
     <slot></slot>
   </button>
 </template>
@@ -24,10 +24,7 @@ export default defineComponent({
   text-decoration: none;
   color: #fff;
   backface-visibility: hidden;
-  background: rgba(0, 0, 0, 0.2);
   flex-direction: column;
-  border: 2px solid white;
-  border-radius: 5px;
   transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
 }
 

@@ -1,6 +1,6 @@
 <template>
-  <div :style="image" class="image">
-    <my-checkbox/>
+  <div :style="image" class="image" v-bind:class="{theme : isDark}">
+    <my-checkbox v-model="isDark" @click="changeTheme"/>
     <img alt="PD logo" class="logo" src="~@/assets/db.svg">
     <h4 class="sign">by Kornachyk M.V & Lukichev A.N</h4>
     <input-form style="position: absolute; left: 40px; top: 20vh" @create="createQuery"/>
@@ -37,7 +37,7 @@ export default defineComponent({
       } as Query,
       queryList: [{text: 'SELECT * FROM users'},
         {text: 'SELECT * FROM users WHERE id = 1'}] as Query[],
-
+      isDark: localStorage.getItem("theme") === "true",
     }
   },
   methods: {
@@ -47,21 +47,25 @@ export default defineComponent({
       } else {
         alert('Запрос не может быть пустым')
       }
+    },
+    changeTheme() {
+      this.isDark = !this.isDark
+      localStorage.setItem("theme", this.isDark.toString());
+      console.log(this.isDark)
     }
   }
 });
 </script>
 
 <style>
-.app {
-  font-family: Montserrat, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .theme {
-
+  filter: invert(100%);
 }
 
 .image {
@@ -69,21 +73,13 @@ export default defineComponent({
   background-repeat: no-repeat;
   background-image: url("~@/assets/gradient.svg");
   display: flex;
-
   flex-direction: column;
 }
 
 .logo {
   position: absolute;
   top: 20px;
-  /*width: 15vw;*/
-  /*height: 10vh;*/
   left: 30px;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
 .sign {

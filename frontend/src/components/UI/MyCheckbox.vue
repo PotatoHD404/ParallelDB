@@ -31,8 +31,6 @@ input[type="checkbox"] {
   z-index: 2;
 }
 
-/* First toggle btn */
-
 #_1st-toggle-btn span {
   position: absolute;
   top: 0;

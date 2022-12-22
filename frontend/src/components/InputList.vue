@@ -7,16 +7,13 @@
   <h4 v-else style="color: white">
     Очередь запросов пуста
   </h4>
-<!--  <my-box style="position: absolute; right: 40px; top: 20vh"/>-->
 </template>
 
 <script lang="ts">
-// import MyBox from "@/components/MyBox.vue";
 import {Query} from "@/types/query";
 
 export default {
   name: "input-list",
-  // components: {MyBox},
   props: {
     queryList: {
       type: Array as () => Query[],

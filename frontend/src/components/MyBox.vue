@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="box  blackBox">
-      <p class="greenBox" v-html="graph"/>
+      <p class="graphs greenBox" v-html="graph" v-bind:class="{negative : isDark}"/>
     </div>
   </div>
 </template>
@@ -15,9 +15,12 @@ export default defineComponent({
     graph: {
       type: String,
       required: true,
+    },
+    isDark: {
+      type: Boolean,
+      required: true,
     }
   }
-
 })
 </script>
 
@@ -31,12 +34,18 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
 }
-/*.test {*/
-/*  !*put it in left upper corner*!*/
-/*  position: absolute;*/
-/*  top: 0;*/
-/*  left: 0;*/
-/*  overflow: hidden;*/
-/*  table-layout: fixed;*/
-/*}*/
+.graphs {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  top: 10px;
+  left: 10px;
+  margin-bottom: 20px;
+  overflow: auto;
+  table-layout: fixed;
+}
+.negative {
+  filter: invert(100%);
+}
 </style>

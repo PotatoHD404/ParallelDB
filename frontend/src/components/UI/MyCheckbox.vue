@@ -10,7 +10,6 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: "my-checkbox",
-  // isDark: localStorage.getItem("theme") === "true",
   data() {
     return {
       isDark: localStorage.getItem("theme") === "true",
@@ -20,18 +19,8 @@ export default defineComponent({
   methods: {
     changeTheme() {
       this.$emit('change', this.isDark)
-      // console.log(this.isDark)
     }
   },
-  // methods: {
-  //   changeTheme: function (){
-  //     this.$emit('change', this.theme)
-  //     localStorage.setItem("theme", this.isDark.toString());
-  //     console.log(this.isDark)
-  //   }
-  // }
-
-
 })
 </script>
 

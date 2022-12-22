@@ -6,14 +6,9 @@
         <th>
           База данных
         </th>
-
         <th>
           Таблица
         </th>
-
-        <!--      <th v-for="column in columns" :key="column">-->
-        <!--        {{ column }}-->
-        <!--      </th>-->
       </tr>
       </thead>
       <tbody>
@@ -24,15 +19,6 @@
         <td>
           дата 2
         </td>
-        <!--      <td>-->
-        <!--        {{ row.database }}-->
-        <!--      </td>-->
-        <!--      <td>-->
-        <!--        {{ row.table }}-->
-        <!--      </td>-->
-        <!--      <td v-for="column in columns" :key="column">-->
-        <!--        {{ row[column] }}-->
-        <!--      </td>-->
       </tr>
       <tr>
         <td>

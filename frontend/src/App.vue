@@ -1,30 +1,30 @@
 <template>
   <div :style="image" class="image" v-bind:class="{theme : isDark}">
-<!--    <div class="toggle-btn" id="_1st-toggle-btn">-->
-<!--      <input type="checkbox"  v-model="isDark" @click="changeTheme">-->
-<!--      <span></span>-->
-<!--    </div>-->
     <my-checkbox @change="changeTheme"/>
     <img alt="PD logo" class="logo" src="~@/assets/db.svg">
     <h4 class="sign">by Kornachyk M.V & Lukichev A.N</h4>
-    <input-form style="position: absolute; left: 40px; top: 20vh" @create="createQuery"/>
+    <input-form style="position: absolute; left: 40px; top: 20vh" @create="renderGraph"/>
     <input-list style="position: absolute; z-index:500; right: 75px; top: 22vh" :queryList="queryList"/>
     <my-box style="position: absolute; right: 40px; top: 20vh"/>
     <my-table style="position: absolute; left: 40px; top: 48vh"/>
+    <p v-html="graph"/>
   </div>
 </template>
 
 <script lang="ts">
-import { Query} from "@/types/query";
+import {defineComponent} from 'vue';
+import {Query} from "@/types/query";
+import Viz from 'viz.js';
+import { Module, render } from 'viz.js/full.render.js';
 import InputList from "@/components/InputList.vue";
 import InputForm from "@/components/InputForm.vue";
 import MyBox from "@/components/MyBox.vue";
-import { defineComponent } from 'vue';
 import MyTable from "@/components/UI/MyTable.vue";
 import MyCheckbox from "@/components/UI/MyCheckbox.vue";
 
 export default defineComponent({
   components: {MyTable, MyBox, MyCheckbox, InputList, InputForm},
+
   data() {
     return {
       image: {
@@ -42,6 +42,7 @@ export default defineComponent({
       queryList: [{text: 'SELECT * FROM users'},
         {text: 'SELECT * FROM users WHERE id = 1'}] as Query[],
       isDark: localStorage.getItem("theme") === "false",
+      graph: '',
     }
   },
   methods: {
@@ -55,6 +56,20 @@ export default defineComponent({
     changeTheme() {
       localStorage.setItem("theme", this.isDark.toString());
       this.isDark = !this.isDark
+    },
+    renderGraph() {
+      let viz = new Viz({ Module, render });
+      let dot = 'digraph { a -> b -> c -> d -> e; }';
+      viz.renderString(dot)
+          .then(result => {
+            this.graph = result;
+          })
+          .catch(error => {
+            // Create a new Viz instance (@see Caveats page for more info)
+            viz = new Viz({ Module, render });
+            // Possibly display the error
+            console.error(error);
+          });
     }
   }
 });
@@ -92,6 +107,7 @@ export default defineComponent({
   color: white;
   font-size: 20px;
 }
+
 .greenBox {
   background-color: rgba(0, 255, 0, 0.2) !important;
 }

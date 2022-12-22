@@ -18,6 +18,15 @@ const baseFolder =
 // const keyFilePath = path.join(baseFolder, `${certificateName}.key`);
 
 module.exports = {
+    configureWebpack: {
+        resolve: {
+            alias: {
+                "path": path.resolve(__dirname, 'null-alias.js'),
+                "fs": path.resolve(__dirname, 'null-alias.js'),
+                "process": path.resolve(__dirname, 'null-alias.js'),
+            }
+        }
+    },
     devServer: {
         // https: {
         //     key: fs.readFileSync(keyFilePath),

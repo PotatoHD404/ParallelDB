@@ -463,8 +463,8 @@ simple_function_invocation
 aggregate_function_invocation
 window_function_invocation
 common_table_stmt
-order_by_stmt
-limit_stmt
+order_by_clause
+limit_clause
 ordering_term
 asc_desc
 frame_left

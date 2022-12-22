@@ -237,7 +237,7 @@ delete_stmt:
 
 delete_stmt_limited:
     with_clause? DELETE FROM qualified_table_name (WHERE expr)? returning_clause? (
-        order_by_stmt? limit_stmt
+        order_by_clause? limit_clause
     )?
 ;
 
@@ -387,7 +387,7 @@ reindex_stmt:
 ;
 
 select_stmt:
-    common_table_stmt? select_core (compound_operator select_core)* order_by_stmt? limit_stmt?
+    common_table_stmt? select_core (compound_operator select_core)* order_by_clause? limit_clause?
 ;
 
 join_clause:
@@ -437,13 +437,13 @@ factored_select_stmt:
 ;
 
 simple_select_stmt:
-    common_table_stmt? select_core order_by_stmt? limit_stmt?
+    common_table_stmt? select_core order_by_clause? limit_clause?
 ;
 
 compound_select_stmt:
     common_table_stmt? select_core (
         (UNION ALL? | INTERSECT | EXCEPT) select_core
-    )+ order_by_stmt? limit_stmt?
+    )+ order_by_clause? limit_clause?
 ;
 
 table_or_subquery: (
@@ -500,7 +500,7 @@ update_stmt_limited:
         OR (ROLLBACK | ABORT | REPLACE | FAIL | IGNORE)
     )? qualified_table_name SET (column_name | column_name_list) ASSIGN expr (
         COMMA (column_name | column_name_list) ASSIGN expr
-    )* (WHERE expr)? returning_clause? (order_by_stmt? limit_stmt)?
+    )* (WHERE expr)? returning_clause? (order_by_clause? limit_clause)?
 ;
 
 qualified_table_name: (schema_name DOT)? table_name (AS alias)? (
@@ -566,11 +566,11 @@ common_table_stmt: //additional structures
     WITH RECURSIVE? common_table_expression (COMMA common_table_expression)*
 ;
 
-order_by_stmt:
+order_by_clause:
     ORDER BY ordering_term (COMMA ordering_term)*
 ;
 
-limit_stmt:
+limit_clause:
     LIMIT expr ((OFFSET | COMMA) expr)?
 ;
 

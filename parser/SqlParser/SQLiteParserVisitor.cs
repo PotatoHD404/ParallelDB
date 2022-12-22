@@ -465,17 +465,17 @@ public interface ISQLiteParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitCommon_table_stmt([NotNull] SQLiteParser.Common_table_stmtContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="SQLiteParser.order_by_stmt"/>.
+	/// Visit a parse tree produced by <see cref="SQLiteParser.order_by_clause"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitOrder_by_stmt([NotNull] SQLiteParser.Order_by_stmtContext context);
+	Result VisitOrder_by_clause([NotNull] SQLiteParser.Order_by_clauseContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="SQLiteParser.limit_stmt"/>.
+	/// Visit a parse tree produced by <see cref="SQLiteParser.limit_clause"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitLimit_stmt([NotNull] SQLiteParser.Limit_stmtContext context);
+	Result VisitLimit_clause([NotNull] SQLiteParser.Limit_clauseContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SQLiteParser.ordering_term"/>.
 	/// </summary>

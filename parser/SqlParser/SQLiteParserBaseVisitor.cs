@@ -756,7 +756,7 @@ public partial class SQLiteParserBaseVisitor<Result> : AbstractParseTreeVisitor<
 	/// <return>The visitor result.</return>
 	public virtual Result VisitCommon_table_stmt([NotNull] SQLiteParser.Common_table_stmtContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="SQLiteParser.order_by_stmt"/>.
+	/// Visit a parse tree produced by <see cref="SQLiteParser.order_by_clause"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -764,9 +764,9 @@ public partial class SQLiteParserBaseVisitor<Result> : AbstractParseTreeVisitor<
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitOrder_by_stmt([NotNull] SQLiteParser.Order_by_stmtContext context) { return VisitChildren(context); }
+	public virtual Result VisitOrder_by_clause([NotNull] SQLiteParser.Order_by_clauseContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="SQLiteParser.limit_stmt"/>.
+	/// Visit a parse tree produced by <see cref="SQLiteParser.limit_clause"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -774,7 +774,7 @@ public partial class SQLiteParserBaseVisitor<Result> : AbstractParseTreeVisitor<
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitLimit_stmt([NotNull] SQLiteParser.Limit_stmtContext context) { return VisitChildren(context); }
+	public virtual Result VisitLimit_clause([NotNull] SQLiteParser.Limit_clauseContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SQLiteParser.ordering_term"/>.
 	/// <para>

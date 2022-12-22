@@ -2,12 +2,12 @@
   <div :style="image" class="image" v-bind:class="{theme : isDark}">
     <my-checkbox @change="changeTheme"/>
     <img alt="PD logo" class="logo" src="~@/assets/db.svg">
-    <h4 class="sign">by Kornachyk M.V & Lukichev A.N</h4>
-    <input-form style="position: absolute; left: 40px; top: 20vh" @create="renderGraph"/>
+    <input-form style="position: absolute; left: 40px; top: 20vh" @create="createQuery"/>
     <input-list style="position: absolute; z-index:500; right: 75px; top: 22vh" :queryList="queryList"/>
-    <my-box style="position: absolute; right: 40px; top: 20vh"/>
+    <my-box style="position: absolute; right: 40px; top: 20vh" :graph="graph" :isDark="isDark"/>
     <my-table style="position: absolute; left: 40px; top: 48vh"/>
-    <p v-html="graph"/>
+    <h4 class="sign">by Kornachyk M.V & Lukichev A.N</h4>
+<!--    <p v-html="graph"/>-->
   </div>
 </template>
 
@@ -51,26 +51,57 @@ export default defineComponent({
         this.queryList.push(query)
       } else {
         alert('Запрос не может быть пустым')
+        let viz = new Viz({ Module, render });
+        let dot = 'graph { a -- { b c d };\n' +
+            '    b -- { c e };\n' +
+            '    c -- { e f };\n' +
+            '    d -- { f g };\n' +
+            '    e -- h;\n' +
+            '    f -- { h i j g };\n' +
+            '    g -- k;\n' +
+            '    h -- { o l };\n' +
+            '    i -- { l m j };\n' +
+            '    j -- { m n k };\n' +
+            '    k -- { n r };\n' +
+            '    l -- { o m };\n' +
+            '    m -- { o p n };\n' +
+            '    n -- { q r };\n' +
+            '    o -- { s p };\n' +
+            '    p -- { s t q };\n' +
+            '    q -- { t r };\n' +
+            '    r -- t;\n' +
+            '    s -- z;\n' +
+            '    t -- z;}';
+        viz.renderString(dot)
+            .then(result => {
+              this.graph = result;
+            })
+            .catch(error => {
+              // Create a new Viz instance (@see Caveats page for more info)
+              viz = new Viz({ Module, render });
+              // Possibly display the error
+              console.error(error);
+            });
       }
     },
     changeTheme() {
       localStorage.setItem("theme", this.isDark.toString());
       this.isDark = !this.isDark
     },
-    renderGraph() {
-      let viz = new Viz({ Module, render });
-      let dot = 'digraph { a -> b -> c -> d -> e; }';
-      viz.renderString(dot)
-          .then(result => {
-            this.graph = result;
-          })
-          .catch(error => {
-            // Create a new Viz instance (@see Caveats page for more info)
-            viz = new Viz({ Module, render });
-            // Possibly display the error
-            console.error(error);
-          });
-    }
+    // renderGraph() {
+    //   let viz = new Viz({ Module, render });
+    //   let dot = 'digraph { a -> b -> c -> d -> e; }';
+    //   viz.renderString(dot)
+    //       .then(result => {
+    //         this.graph = result;
+    //       })
+    //       .catch(error => {
+    //         // Create a new Viz instance (@see Caveats page for more info)
+    //         viz = new Viz({ Module, render });
+    //         // Possibly display the error
+    //         console.error(error);
+    //       });
+    // }
   }
 });
 </script>
@@ -118,4 +149,7 @@ export default defineComponent({
   border: 2px solid white;
 }
 
+::placeholder {
+  color:    #D3D3D3;
+}
 </style>

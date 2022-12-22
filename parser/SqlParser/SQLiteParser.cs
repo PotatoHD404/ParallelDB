@@ -91,7 +91,7 @@ public partial class SQLiteParser : Parser {
 		RULE_filter_clause = 63, RULE_window_defn = 64, RULE_over_clause = 65, 
 		RULE_frame_spec = 66, RULE_frame_clause = 67, RULE_simple_function_invocation = 68, 
 		RULE_aggregate_function_invocation = 69, RULE_window_function_invocation = 70, 
-		RULE_common_table_stmt = 71, RULE_order_by_stmt = 72, RULE_limit_stmt = 73, 
+		RULE_common_table_stmt = 71, RULE_order_by_clause = 72, RULE_limit_clause = 73, 
 		RULE_ordering_term = 74, RULE_asc_desc = 75, RULE_frame_left = 76, RULE_frame_right = 77, 
 		RULE_frame_single = 78, RULE_window_function = 79, RULE_offset = 80, RULE_default_value = 81, 
 		RULE_partition_by = 82, RULE_order_by_expr = 83, RULE_order_by_expr_asc_desc = 84, 
@@ -122,9 +122,9 @@ public partial class SQLiteParser : Parser {
 		"column_name_list", "update_stmt_limited", "qualified_table_name", "vacuum_stmt", 
 		"filter_clause", "window_defn", "over_clause", "frame_spec", "frame_clause", 
 		"simple_function_invocation", "aggregate_function_invocation", "window_function_invocation", 
-		"common_table_stmt", "order_by_stmt", "limit_stmt", "ordering_term", "asc_desc", 
-		"frame_left", "frame_right", "frame_single", "window_function", "offset", 
-		"default_value", "partition_by", "order_by_expr", "order_by_expr_asc_desc", 
+		"common_table_stmt", "order_by_clause", "limit_clause", "ordering_term", 
+		"asc_desc", "frame_left", "frame_right", "frame_single", "window_function", 
+		"offset", "default_value", "partition_by", "order_by_expr", "order_by_expr_asc_desc", 
 		"expr_asc_desc", "initial_select", "recursive_select", "unary_operator", 
 		"error_message", "module_argument", "column_alias", "keyword", "name", 
 		"function_name", "schema_name", "table_name", "table_or_index_name", "column_name", 
@@ -4071,11 +4071,11 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Returning_clauseContext returning_clause() {
 			return GetRuleContext<Returning_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Limit_stmtContext limit_stmt() {
-			return GetRuleContext<Limit_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Limit_clauseContext limit_clause() {
+			return GetRuleContext<Limit_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Order_by_stmtContext order_by_stmt() {
-			return GetRuleContext<Order_by_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Order_by_clauseContext order_by_clause() {
+			return GetRuleContext<Order_by_clauseContext>(0);
 		}
 		public Delete_stmt_limitedContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -4157,12 +4157,12 @@ public partial class SQLiteParser : Parser {
 				if (_la==ORDER) {
 					{
 					State = 859;
-					order_by_stmt();
+					order_by_clause();
 					}
 				}
 
 				State = 862;
-				limit_stmt();
+				limit_clause();
 				}
 			}
 
@@ -6491,11 +6491,11 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Compound_operatorContext compound_operator(int i) {
 			return GetRuleContext<Compound_operatorContext>(i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Order_by_stmtContext order_by_stmt() {
-			return GetRuleContext<Order_by_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Order_by_clauseContext order_by_clause() {
+			return GetRuleContext<Order_by_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Limit_stmtContext limit_stmt() {
-			return GetRuleContext<Limit_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Limit_clauseContext limit_clause() {
+			return GetRuleContext<Limit_clauseContext>(0);
 		}
 		public Select_stmtContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -6565,7 +6565,7 @@ public partial class SQLiteParser : Parser {
 			if (_la==ORDER) {
 				{
 				State = 1284;
-				order_by_stmt();
+				order_by_clause();
 				}
 			}
 
@@ -6575,7 +6575,7 @@ public partial class SQLiteParser : Parser {
 			if (_la==LIMIT) {
 				{
 				State = 1287;
-				limit_stmt();
+				limit_clause();
 				}
 			}
 
@@ -7441,11 +7441,11 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Common_table_stmtContext common_table_stmt() {
 			return GetRuleContext<Common_table_stmtContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Order_by_stmtContext order_by_stmt() {
-			return GetRuleContext<Order_by_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Order_by_clauseContext order_by_clause() {
+			return GetRuleContext<Order_by_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Limit_stmtContext limit_stmt() {
-			return GetRuleContext<Limit_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Limit_clauseContext limit_clause() {
+			return GetRuleContext<Limit_clauseContext>(0);
 		}
 		public Simple_select_stmtContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -7496,7 +7496,7 @@ public partial class SQLiteParser : Parser {
 			if (_la==ORDER) {
 				{
 				State = 1415;
-				order_by_stmt();
+				order_by_clause();
 				}
 			}
 
@@ -7506,7 +7506,7 @@ public partial class SQLiteParser : Parser {
 			if (_la==LIMIT) {
 				{
 				State = 1418;
-				limit_stmt();
+				limit_clause();
 				}
 			}
 
@@ -7533,11 +7533,11 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Common_table_stmtContext common_table_stmt() {
 			return GetRuleContext<Common_table_stmtContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Order_by_stmtContext order_by_stmt() {
-			return GetRuleContext<Order_by_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Order_by_clauseContext order_by_clause() {
+			return GetRuleContext<Order_by_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Limit_stmtContext limit_stmt() {
-			return GetRuleContext<Limit_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Limit_clauseContext limit_clause() {
+			return GetRuleContext<Limit_clauseContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] UNION() { return GetTokens(SQLiteParser.UNION); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNION(int i) {
@@ -7652,7 +7652,7 @@ public partial class SQLiteParser : Parser {
 			if (_la==ORDER) {
 				{
 				State = 1438;
-				order_by_stmt();
+				order_by_clause();
 				}
 			}
 
@@ -7662,7 +7662,7 @@ public partial class SQLiteParser : Parser {
 			if (_la==LIMIT) {
 				{
 				State = 1441;
-				limit_stmt();
+				limit_clause();
 				}
 			}
 
@@ -8791,16 +8791,16 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Returning_clauseContext returning_clause() {
 			return GetRuleContext<Returning_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Limit_stmtContext limit_stmt() {
-			return GetRuleContext<Limit_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Limit_clauseContext limit_clause() {
+			return GetRuleContext<Limit_clauseContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROLLBACK() { return GetToken(SQLiteParser.ROLLBACK, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ABORT() { return GetToken(SQLiteParser.ABORT, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REPLACE() { return GetToken(SQLiteParser.REPLACE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FAIL() { return GetToken(SQLiteParser.FAIL, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IGNORE() { return GetToken(SQLiteParser.IGNORE, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public Order_by_stmtContext order_by_stmt() {
-			return GetRuleContext<Order_by_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Order_by_clauseContext order_by_clause() {
+			return GetRuleContext<Order_by_clauseContext>(0);
 		}
 		public Update_stmt_limitedContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -8955,12 +8955,12 @@ public partial class SQLiteParser : Parser {
 				if (_la==ORDER) {
 					{
 					State = 1660;
-					order_by_stmt();
+					order_by_clause();
 					}
 				}
 
 				State = 1663;
-				limit_stmt();
+				limit_clause();
 				}
 			}
 
@@ -10721,7 +10721,7 @@ public partial class SQLiteParser : Parser {
 		return _localctx;
 	}
 
-	public partial class Order_by_stmtContext : ParserRuleContext {
+	public partial class Order_by_clauseContext : ParserRuleContext {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ORDER() { return GetToken(SQLiteParser.ORDER, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY() { return GetToken(SQLiteParser.BY, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Ordering_termContext[] ordering_term() {
@@ -10734,33 +10734,33 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
 			return GetToken(SQLiteParser.COMMA, i);
 		}
-		public Order_by_stmtContext(ParserRuleContext parent, int invokingState)
+		public Order_by_clauseContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_order_by_stmt; } }
+		public override int RuleIndex { get { return RULE_order_by_clause; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
 			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
-			if (typedListener != null) typedListener.EnterOrder_by_stmt(this);
+			if (typedListener != null) typedListener.EnterOrder_by_clause(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
 			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
-			if (typedListener != null) typedListener.ExitOrder_by_stmt(this);
+			if (typedListener != null) typedListener.ExitOrder_by_clause(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ISQLiteParserVisitor<TResult> typedVisitor = visitor as ISQLiteParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitOrder_by_stmt(this);
+			if (typedVisitor != null) return typedVisitor.VisitOrder_by_clause(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public Order_by_stmtContext order_by_stmt() {
-		Order_by_stmtContext _localctx = new Order_by_stmtContext(Context, State);
-		EnterRule(_localctx, 144, RULE_order_by_stmt);
+	public Order_by_clauseContext order_by_clause() {
+		Order_by_clauseContext _localctx = new Order_by_clauseContext(Context, State);
+		EnterRule(_localctx, 144, RULE_order_by_clause);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
@@ -10800,7 +10800,7 @@ public partial class SQLiteParser : Parser {
 		return _localctx;
 	}
 
-	public partial class Limit_stmtContext : ParserRuleContext {
+	public partial class Limit_clauseContext : ParserRuleContext {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LIMIT() { return GetToken(SQLiteParser.LIMIT, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext[] expr() {
 			return GetRuleContexts<ExprContext>();
@@ -10810,33 +10810,33 @@ public partial class SQLiteParser : Parser {
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OFFSET() { return GetToken(SQLiteParser.OFFSET, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA() { return GetToken(SQLiteParser.COMMA, 0); }
-		public Limit_stmtContext(ParserRuleContext parent, int invokingState)
+		public Limit_clauseContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_limit_stmt; } }
+		public override int RuleIndex { get { return RULE_limit_clause; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
 			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
-			if (typedListener != null) typedListener.EnterLimit_stmt(this);
+			if (typedListener != null) typedListener.EnterLimit_clause(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
 			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
-			if (typedListener != null) typedListener.ExitLimit_stmt(this);
+			if (typedListener != null) typedListener.ExitLimit_clause(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ISQLiteParserVisitor<TResult> typedVisitor = visitor as ISQLiteParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitLimit_stmt(this);
+			if (typedVisitor != null) return typedVisitor.VisitLimit_clause(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public Limit_stmtContext limit_stmt() {
-		Limit_stmtContext _localctx = new Limit_stmtContext(Context, State);
-		EnterRule(_localctx, 146, RULE_limit_stmt);
+	public Limit_clauseContext limit_clause() {
+		Limit_clauseContext _localctx = new Limit_clauseContext(Context, State);
+		EnterRule(_localctx, 146, RULE_limit_clause);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);

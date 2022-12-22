@@ -752,25 +752,25 @@ public interface ISQLiteParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitCommon_table_stmt([NotNull] SQLiteParser.Common_table_stmtContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SQLiteParser.order_by_stmt"/>.
+	/// Enter a parse tree produced by <see cref="SQLiteParser.order_by_clause"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterOrder_by_stmt([NotNull] SQLiteParser.Order_by_stmtContext context);
+	void EnterOrder_by_clause([NotNull] SQLiteParser.Order_by_clauseContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="SQLiteParser.order_by_stmt"/>.
+	/// Exit a parse tree produced by <see cref="SQLiteParser.order_by_clause"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitOrder_by_stmt([NotNull] SQLiteParser.Order_by_stmtContext context);
+	void ExitOrder_by_clause([NotNull] SQLiteParser.Order_by_clauseContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SQLiteParser.limit_stmt"/>.
+	/// Enter a parse tree produced by <see cref="SQLiteParser.limit_clause"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLimit_stmt([NotNull] SQLiteParser.Limit_stmtContext context);
+	void EnterLimit_clause([NotNull] SQLiteParser.Limit_clauseContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="SQLiteParser.limit_stmt"/>.
+	/// Exit a parse tree produced by <see cref="SQLiteParser.limit_clause"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLimit_stmt([NotNull] SQLiteParser.Limit_stmtContext context);
+	void ExitLimit_clause([NotNull] SQLiteParser.Limit_clauseContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SQLiteParser.ordering_term"/>.
 	/// </summary>

@@ -12,18 +12,29 @@ using Parser;
 // GROUP BY doctor.doctor_id, doctor.doctor_name
 // ORDER BY AVG(questionnaire.service_assessment) ASC
 // LIMIT 2) as a";
-var a = @"SELECT a.doc as 'Врач' FROM doctors as a";
+var a = @"SELECT a.doc as 'Врач' FROM doctors as a ORDER BY a.name LIMIT 10 OFFSET 10';";
+
+
 
 // Stopwatch sw = new Stopwatch();
 // sw.Start();
 ICharStream stream = CharStreams.fromString(a);
 var lexer = new SQLiteLexer(stream);
+lexer.RemoveErrorListeners();
+lexer.AddErrorListener(new LexerErrorListener());
 var tokens = new CommonTokenStream(lexer);
 var parser = new SQLiteParser(tokens);
+parser.RemoveErrorListeners();
+parser.AddErrorListener(new ParserErrorListener());
 var tree = parser.parse();
-ParallelDbVisitor visitor = new ParallelDbVisitor();
+GraphvizVisitor visitor = new();
+// foreach tree.children
+// foreach(var child in tree.children)
+// {
+//     visitor.Visit(child);
+// }
 visitor.Visit(tree);
+Console.WriteLine(visitor.GetGraph());
 // sw.Stop();
 
 // Console.WriteLine(sw.ElapsedMilliseconds);
-

@@ -291,6 +291,42 @@ public interface ISQLiteParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitJoin_clause([NotNull] SQLiteParser.Join_clauseContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="SQLiteParser.where_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitWhere_clause([NotNull] SQLiteParser.Where_clauseContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SQLiteParser.group_by_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitGroup_by_clause([NotNull] SQLiteParser.Group_by_clauseContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SQLiteParser.having_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitHaving_clause([NotNull] SQLiteParser.Having_clauseContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SQLiteParser.values_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitValues_clause([NotNull] SQLiteParser.Values_clauseContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SQLiteParser.from_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFrom_clause([NotNull] SQLiteParser.From_clauseContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SQLiteParser.window_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitWindow_clause([NotNull] SQLiteParser.Window_clauseContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="SQLiteParser.select_core"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -429,17 +465,17 @@ public interface ISQLiteParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitCommon_table_stmt([NotNull] SQLiteParser.Common_table_stmtContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="SQLiteParser.order_by_stmt"/>.
+	/// Visit a parse tree produced by <see cref="SQLiteParser.order_by_clause"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitOrder_by_stmt([NotNull] SQLiteParser.Order_by_stmtContext context);
+	Result VisitOrder_by_clause([NotNull] SQLiteParser.Order_by_clauseContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="SQLiteParser.limit_stmt"/>.
+	/// Visit a parse tree produced by <see cref="SQLiteParser.limit_clause"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitLimit_stmt([NotNull] SQLiteParser.Limit_stmtContext context);
+	Result VisitLimit_clause([NotNull] SQLiteParser.Limit_clauseContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SQLiteParser.ordering_term"/>.
 	/// </summary>

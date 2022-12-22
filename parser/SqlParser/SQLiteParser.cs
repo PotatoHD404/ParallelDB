@@ -39,36 +39,34 @@ public partial class SQLiteParser : Parser {
 	public const int
 		SCOL=1, DOT=2, OPEN_PAR=3, CLOSE_PAR=4, COMMA=5, ASSIGN=6, STAR=7, PLUS=8, 
 		MINUS=9, TILDE=10, PIPE2=11, DIV=12, MOD=13, LT2=14, GT2=15, AMP=16, PIPE=17, 
-		LT=18, LT_EQ=19, GT=20, GT_EQ=21, EQ=22, NOT_EQ1=23, NOT_EQ2=24, ABORT_=25, 
-		ACTION_=26, ADD_=27, AFTER_=28, ALL_=29, ALTER_=30, ANALYZE_=31, AND_=32, 
-		AS_=33, ASC_=34, ATTACH_=35, AUTOINCREMENT_=36, BEFORE_=37, BEGIN_=38, 
-		BETWEEN_=39, BY_=40, CASCADE_=41, CASE_=42, CAST_=43, CHECK_=44, COLLATE_=45, 
-		COLUMN_=46, COMMIT_=47, CONFLICT_=48, CONSTRAINT_=49, CREATE_=50, CROSS_=51, 
-		CURRENT_DATE_=52, CURRENT_TIME_=53, CURRENT_TIMESTAMP_=54, DATABASE_=55, 
-		DEFAULT_=56, DEFERRABLE_=57, DEFERRED_=58, DELETE_=59, DESC_=60, DETACH_=61, 
-		DISTINCT_=62, DROP_=63, EACH_=64, ELSE_=65, END_=66, ESCAPE_=67, EXCEPT_=68, 
-		EXCLUSIVE_=69, EXISTS_=70, EXPLAIN_=71, FAIL_=72, FOR_=73, FOREIGN_=74, 
-		FROM_=75, FULL_=76, GLOB_=77, GROUP_=78, HAVING_=79, IF_=80, IGNORE_=81, 
-		IMMEDIATE_=82, IN_=83, INDEX_=84, INDEXED_=85, INITIALLY_=86, INNER_=87, 
-		INSERT_=88, INSTEAD_=89, INTERSECT_=90, INTO_=91, IS_=92, ISNULL_=93, 
-		JOIN_=94, KEY_=95, LEFT_=96, LIKE_=97, LIMIT_=98, MATCH_=99, NATURAL_=100, 
-		NO_=101, NOT_=102, NOTNULL_=103, NULL_=104, OF_=105, OFFSET_=106, ON_=107, 
-		OR_=108, ORDER_=109, OUTER_=110, PLAN_=111, PRAGMA_=112, PRIMARY_=113, 
-		QUERY_=114, RAISE_=115, RECURSIVE_=116, REFERENCES_=117, REGEXP_=118, 
-		REINDEX_=119, RELEASE_=120, RENAME_=121, REPLACE_=122, RESTRICT_=123, 
-		RETURNING_=124, RIGHT_=125, ROLLBACK_=126, ROW_=127, ROWS_=128, SAVEPOINT_=129, 
-		SELECT_=130, SET_=131, TABLE_=132, TEMP_=133, TEMPORARY_=134, THEN_=135, 
-		TO_=136, TRANSACTION_=137, TRIGGER_=138, UNION_=139, UNIQUE_=140, UPDATE_=141, 
-		USING_=142, VACUUM_=143, VALUES_=144, VIEW_=145, VIRTUAL_=146, WHEN_=147, 
-		WHERE_=148, WITH_=149, WITHOUT_=150, FIRST_VALUE_=151, OVER_=152, PARTITION_=153, 
-		RANGE_=154, PRECEDING_=155, UNBOUNDED_=156, CURRENT_=157, FOLLOWING_=158, 
-		CUME_DIST_=159, DENSE_RANK_=160, LAG_=161, LAST_VALUE_=162, LEAD_=163, 
-		NTH_VALUE_=164, NTILE_=165, PERCENT_RANK_=166, RANK_=167, ROW_NUMBER_=168, 
-		GENERATED_=169, ALWAYS_=170, STORED_=171, TRUE_=172, FALSE_=173, WINDOW_=174, 
-		NULLS_=175, FIRST_=176, LAST_=177, FILTER_=178, GROUPS_=179, EXCLUDE_=180, 
-		TIES_=181, OTHERS_=182, DO_=183, NOTHING_=184, IDENTIFIER=185, NUMERIC_LITERAL=186, 
-		BIND_PARAMETER=187, STRING_LITERAL=188, BLOB_LITERAL=189, SINGLE_LINE_COMMENT=190, 
-		MULTILINE_COMMENT=191, SPACES=192, UNEXPECTED_CHAR=193;
+		LT=18, LT_EQ=19, GT=20, GT_EQ=21, EQ=22, NOT_EQ1=23, NOT_EQ2=24, ABORT=25, 
+		ACTION=26, ADD=27, AFTER=28, ALL=29, ALTER=30, ANALYZE=31, AND=32, AS=33, 
+		ASC=34, ATTACH=35, AUTOINCREMENT=36, BEFORE=37, BEGIN=38, BETWEEN=39, 
+		BY=40, CASCADE=41, CASE=42, CAST=43, CHECK=44, COLLATE=45, COLUMN=46, 
+		COMMIT=47, CONFLICT=48, CONSTRAINT=49, CREATE=50, CROSS=51, CURRENT_DATE=52, 
+		CURRENT_TIME=53, CURRENT_TIMESTAMP=54, DATABASE=55, DEFAULT=56, DEFERRABLE=57, 
+		DEFERRED=58, DELETE=59, DESC=60, DETACH=61, DISTINCT=62, DROP=63, EACH=64, 
+		ELSE=65, END=66, ESCAPE=67, EXCEPT=68, EXCLUSIVE=69, EXISTS=70, EXPLAIN=71, 
+		FAIL=72, FOR=73, FOREIGN=74, FROM=75, FULL=76, GLOB=77, GROUP=78, HAVING=79, 
+		IF=80, IGNORE=81, IMMEDIATE=82, IN=83, INDEX=84, INDEXED=85, INITIALLY=86, 
+		INNER=87, INSERT=88, INSTEAD=89, INTERSECT=90, INTO=91, IS=92, ISNULL=93, 
+		JOIN=94, KEY=95, LEFT=96, LIKE=97, LIMIT=98, MATCH=99, NATURAL=100, NO=101, 
+		NOT=102, NOTNULL=103, NULL=104, OF=105, OFFSET=106, ON=107, OR=108, ORDER=109, 
+		OUTER=110, PLAN=111, PRAGMA=112, PRIMARY=113, QUERY=114, RAISE=115, RECURSIVE=116, 
+		REFERENCES=117, REGEXP=118, REINDEX=119, RELEASE=120, RENAME=121, REPLACE=122, 
+		RESTRICT=123, RETURNING=124, RIGHT=125, ROLLBACK=126, ROW=127, ROWS=128, 
+		SAVEPOINT=129, SELECT=130, SET=131, TABLE=132, TEMP=133, TEMPORARY=134, 
+		THEN=135, TO=136, TRANSACTION=137, TRIGGER=138, UNION=139, UNIQUE=140, 
+		UPDATE=141, USING=142, VACUUM=143, VALUES=144, VIEW=145, VIRTUAL=146, 
+		WHEN=147, WHERE=148, WITH=149, WITHOUT=150, FIRST_VALUE=151, OVER=152, 
+		PARTITION=153, RANGE=154, PRECEDING=155, UNBOUNDED=156, CURRENT=157, FOLLOWING=158, 
+		CUME_DIST=159, DENSE_RANK=160, LAG=161, LAST_VALUE=162, LEAD=163, NTH_VALUE=164, 
+		NTILE=165, PERCENT_RANK=166, RANK=167, ROW_NUMBER=168, GENERATED=169, 
+		ALWAYS=170, STORED=171, TRUE=172, FALSE=173, WINDOW=174, NULLS=175, FIRST=176, 
+		LAST=177, FILTER=178, GROUPS=179, EXCLUDE=180, TIES=181, OTHERS=182, DO=183, 
+		NOTHING=184, IDENTIFIER=185, NUMERIC_LITERAL=186, BIND_PARAMETER=187, 
+		STRING_LITERAL=188, BLOB_LITERAL=189, SINGLE_LINE_COMMENT=190, MULTILINE_COMMENT=191, 
+		SPACES=192, UNEXPECTED_CHAR=193;
 	public const int
 		RULE_parse = 0, RULE_sql_stmt_list = 1, RULE_sql_stmt = 2, RULE_alter_table_stmt = 3, 
 		RULE_analyze_stmt = 4, RULE_attach_stmt = 5, RULE_begin_stmt = 6, RULE_commit_stmt = 7, 
@@ -83,28 +81,30 @@ public partial class SQLiteParser : Parser {
 		RULE_expr = 32, RULE_raise_function = 33, RULE_literal_value = 34, RULE_insert_stmt = 35, 
 		RULE_returning_clause = 36, RULE_upsert_clause = 37, RULE_pragma_stmt = 38, 
 		RULE_pragma_value = 39, RULE_reindex_stmt = 40, RULE_select_stmt = 41, 
-		RULE_join_clause = 42, RULE_select_core = 43, RULE_factored_select_stmt = 44, 
-		RULE_simple_select_stmt = 45, RULE_compound_select_stmt = 46, RULE_table_or_subquery = 47, 
-		RULE_result_column = 48, RULE_join_operator = 49, RULE_join_constraint = 50, 
-		RULE_compound_operator = 51, RULE_update_stmt = 52, RULE_column_name_list = 53, 
-		RULE_update_stmt_limited = 54, RULE_qualified_table_name = 55, RULE_vacuum_stmt = 56, 
-		RULE_filter_clause = 57, RULE_window_defn = 58, RULE_over_clause = 59, 
-		RULE_frame_spec = 60, RULE_frame_clause = 61, RULE_simple_function_invocation = 62, 
-		RULE_aggregate_function_invocation = 63, RULE_window_function_invocation = 64, 
-		RULE_common_table_stmt = 65, RULE_order_by_stmt = 66, RULE_limit_stmt = 67, 
-		RULE_ordering_term = 68, RULE_asc_desc = 69, RULE_frame_left = 70, RULE_frame_right = 71, 
-		RULE_frame_single = 72, RULE_window_function = 73, RULE_offset = 74, RULE_default_value = 75, 
-		RULE_partition_by = 76, RULE_order_by_expr = 77, RULE_order_by_expr_asc_desc = 78, 
-		RULE_expr_asc_desc = 79, RULE_initial_select = 80, RULE_recursive_select = 81, 
-		RULE_unary_operator = 82, RULE_error_message = 83, RULE_module_argument = 84, 
-		RULE_column_alias = 85, RULE_keyword = 86, RULE_name = 87, RULE_function_name = 88, 
-		RULE_schema_name = 89, RULE_table_name = 90, RULE_table_or_index_name = 91, 
-		RULE_column_name = 92, RULE_collation_name = 93, RULE_foreign_table = 94, 
-		RULE_index_name = 95, RULE_trigger_name = 96, RULE_view_name = 97, RULE_module_name = 98, 
-		RULE_pragma_name = 99, RULE_savepoint_name = 100, RULE_table_alias = 101, 
-		RULE_transaction_name = 102, RULE_window_name = 103, RULE_alias = 104, 
-		RULE_filename = 105, RULE_base_window_name = 106, RULE_simple_func = 107, 
-		RULE_aggregate_func = 108, RULE_table_function_name = 109, RULE_any_name = 110;
+		RULE_join_clause = 42, RULE_where_clause = 43, RULE_group_by_clause = 44, 
+		RULE_having_clause = 45, RULE_values_clause = 46, RULE_from_clause = 47, 
+		RULE_window_clause = 48, RULE_select_core = 49, RULE_factored_select_stmt = 50, 
+		RULE_simple_select_stmt = 51, RULE_compound_select_stmt = 52, RULE_table_or_subquery = 53, 
+		RULE_result_column = 54, RULE_join_operator = 55, RULE_join_constraint = 56, 
+		RULE_compound_operator = 57, RULE_update_stmt = 58, RULE_column_name_list = 59, 
+		RULE_update_stmt_limited = 60, RULE_qualified_table_name = 61, RULE_vacuum_stmt = 62, 
+		RULE_filter_clause = 63, RULE_window_defn = 64, RULE_over_clause = 65, 
+		RULE_frame_spec = 66, RULE_frame_clause = 67, RULE_simple_function_invocation = 68, 
+		RULE_aggregate_function_invocation = 69, RULE_window_function_invocation = 70, 
+		RULE_common_table_stmt = 71, RULE_order_by_clause = 72, RULE_limit_clause = 73, 
+		RULE_ordering_term = 74, RULE_asc_desc = 75, RULE_frame_left = 76, RULE_frame_right = 77, 
+		RULE_frame_single = 78, RULE_window_function = 79, RULE_offset = 80, RULE_default_value = 81, 
+		RULE_partition_by = 82, RULE_order_by_expr = 83, RULE_order_by_expr_asc_desc = 84, 
+		RULE_expr_asc_desc = 85, RULE_initial_select = 86, RULE_recursive_select = 87, 
+		RULE_unary_operator = 88, RULE_error_message = 89, RULE_module_argument = 90, 
+		RULE_column_alias = 91, RULE_keyword = 92, RULE_name = 93, RULE_function_name = 94, 
+		RULE_schema_name = 95, RULE_table_name = 96, RULE_table_or_index_name = 97, 
+		RULE_column_name = 98, RULE_collation_name = 99, RULE_foreign_table = 100, 
+		RULE_index_name = 101, RULE_trigger_name = 102, RULE_view_name = 103, 
+		RULE_module_name = 104, RULE_pragma_name = 105, RULE_savepoint_name = 106, 
+		RULE_table_alias = 107, RULE_transaction_name = 108, RULE_window_name = 109, 
+		RULE_alias = 110, RULE_filename = 111, RULE_base_window_name = 112, RULE_simple_func = 113, 
+		RULE_aggregate_func = 114, RULE_table_function_name = 115, RULE_any_name = 116;
 	public static readonly string[] ruleNames = {
 		"parse", "sql_stmt_list", "sql_stmt", "alter_table_stmt", "analyze_stmt", 
 		"attach_stmt", "begin_stmt", "commit_stmt", "rollback_stmt", "savepoint_stmt", 
@@ -115,22 +115,23 @@ public partial class SQLiteParser : Parser {
 		"common_table_expression", "delete_stmt", "delete_stmt_limited", "detach_stmt", 
 		"drop_stmt", "expr", "raise_function", "literal_value", "insert_stmt", 
 		"returning_clause", "upsert_clause", "pragma_stmt", "pragma_value", "reindex_stmt", 
-		"select_stmt", "join_clause", "select_core", "factored_select_stmt", "simple_select_stmt", 
-		"compound_select_stmt", "table_or_subquery", "result_column", "join_operator", 
-		"join_constraint", "compound_operator", "update_stmt", "column_name_list", 
-		"update_stmt_limited", "qualified_table_name", "vacuum_stmt", "filter_clause", 
-		"window_defn", "over_clause", "frame_spec", "frame_clause", "simple_function_invocation", 
-		"aggregate_function_invocation", "window_function_invocation", "common_table_stmt", 
-		"order_by_stmt", "limit_stmt", "ordering_term", "asc_desc", "frame_left", 
-		"frame_right", "frame_single", "window_function", "offset", "default_value", 
-		"partition_by", "order_by_expr", "order_by_expr_asc_desc", "expr_asc_desc", 
-		"initial_select", "recursive_select", "unary_operator", "error_message", 
-		"module_argument", "column_alias", "keyword", "name", "function_name", 
-		"schema_name", "table_name", "table_or_index_name", "column_name", "collation_name", 
-		"foreign_table", "index_name", "trigger_name", "view_name", "module_name", 
-		"pragma_name", "savepoint_name", "table_alias", "transaction_name", "window_name", 
-		"alias", "filename", "base_window_name", "simple_func", "aggregate_func", 
-		"table_function_name", "any_name"
+		"select_stmt", "join_clause", "where_clause", "group_by_clause", "having_clause", 
+		"values_clause", "from_clause", "window_clause", "select_core", "factored_select_stmt", 
+		"simple_select_stmt", "compound_select_stmt", "table_or_subquery", "result_column", 
+		"join_operator", "join_constraint", "compound_operator", "update_stmt", 
+		"column_name_list", "update_stmt_limited", "qualified_table_name", "vacuum_stmt", 
+		"filter_clause", "window_defn", "over_clause", "frame_spec", "frame_clause", 
+		"simple_function_invocation", "aggregate_function_invocation", "window_function_invocation", 
+		"common_table_stmt", "order_by_clause", "limit_clause", "ordering_term", 
+		"asc_desc", "frame_left", "frame_right", "frame_single", "window_function", 
+		"offset", "default_value", "partition_by", "order_by_expr", "order_by_expr_asc_desc", 
+		"expr_asc_desc", "initial_select", "recursive_select", "unary_operator", 
+		"error_message", "module_argument", "column_alias", "keyword", "name", 
+		"function_name", "schema_name", "table_name", "table_or_index_name", "column_name", 
+		"collation_name", "foreign_table", "index_name", "trigger_name", "view_name", 
+		"module_name", "pragma_name", "savepoint_name", "table_alias", "transaction_name", 
+		"window_name", "alias", "filename", "base_window_name", "simple_func", 
+		"aggregate_func", "table_function_name", "any_name"
 	};
 
 	private static readonly string[] _LiteralNames = {
@@ -166,31 +167,29 @@ public partial class SQLiteParser : Parser {
 	private static readonly string[] _SymbolicNames = {
 		null, "SCOL", "DOT", "OPEN_PAR", "CLOSE_PAR", "COMMA", "ASSIGN", "STAR", 
 		"PLUS", "MINUS", "TILDE", "PIPE2", "DIV", "MOD", "LT2", "GT2", "AMP", 
-		"PIPE", "LT", "LT_EQ", "GT", "GT_EQ", "EQ", "NOT_EQ1", "NOT_EQ2", "ABORT_", 
-		"ACTION_", "ADD_", "AFTER_", "ALL_", "ALTER_", "ANALYZE_", "AND_", "AS_", 
-		"ASC_", "ATTACH_", "AUTOINCREMENT_", "BEFORE_", "BEGIN_", "BETWEEN_", 
-		"BY_", "CASCADE_", "CASE_", "CAST_", "CHECK_", "COLLATE_", "COLUMN_", 
-		"COMMIT_", "CONFLICT_", "CONSTRAINT_", "CREATE_", "CROSS_", "CURRENT_DATE_", 
-		"CURRENT_TIME_", "CURRENT_TIMESTAMP_", "DATABASE_", "DEFAULT_", "DEFERRABLE_", 
-		"DEFERRED_", "DELETE_", "DESC_", "DETACH_", "DISTINCT_", "DROP_", "EACH_", 
-		"ELSE_", "END_", "ESCAPE_", "EXCEPT_", "EXCLUSIVE_", "EXISTS_", "EXPLAIN_", 
-		"FAIL_", "FOR_", "FOREIGN_", "FROM_", "FULL_", "GLOB_", "GROUP_", "HAVING_", 
-		"IF_", "IGNORE_", "IMMEDIATE_", "IN_", "INDEX_", "INDEXED_", "INITIALLY_", 
-		"INNER_", "INSERT_", "INSTEAD_", "INTERSECT_", "INTO_", "IS_", "ISNULL_", 
-		"JOIN_", "KEY_", "LEFT_", "LIKE_", "LIMIT_", "MATCH_", "NATURAL_", "NO_", 
-		"NOT_", "NOTNULL_", "NULL_", "OF_", "OFFSET_", "ON_", "OR_", "ORDER_", 
-		"OUTER_", "PLAN_", "PRAGMA_", "PRIMARY_", "QUERY_", "RAISE_", "RECURSIVE_", 
-		"REFERENCES_", "REGEXP_", "REINDEX_", "RELEASE_", "RENAME_", "REPLACE_", 
-		"RESTRICT_", "RETURNING_", "RIGHT_", "ROLLBACK_", "ROW_", "ROWS_", "SAVEPOINT_", 
-		"SELECT_", "SET_", "TABLE_", "TEMP_", "TEMPORARY_", "THEN_", "TO_", "TRANSACTION_", 
-		"TRIGGER_", "UNION_", "UNIQUE_", "UPDATE_", "USING_", "VACUUM_", "VALUES_", 
-		"VIEW_", "VIRTUAL_", "WHEN_", "WHERE_", "WITH_", "WITHOUT_", "FIRST_VALUE_", 
-		"OVER_", "PARTITION_", "RANGE_", "PRECEDING_", "UNBOUNDED_", "CURRENT_", 
-		"FOLLOWING_", "CUME_DIST_", "DENSE_RANK_", "LAG_", "LAST_VALUE_", "LEAD_", 
-		"NTH_VALUE_", "NTILE_", "PERCENT_RANK_", "RANK_", "ROW_NUMBER_", "GENERATED_", 
-		"ALWAYS_", "STORED_", "TRUE_", "FALSE_", "WINDOW_", "NULLS_", "FIRST_", 
-		"LAST_", "FILTER_", "GROUPS_", "EXCLUDE_", "TIES_", "OTHERS_", "DO_", 
-		"NOTHING_", "IDENTIFIER", "NUMERIC_LITERAL", "BIND_PARAMETER", "STRING_LITERAL", 
+		"PIPE", "LT", "LT_EQ", "GT", "GT_EQ", "EQ", "NOT_EQ1", "NOT_EQ2", "ABORT", 
+		"ACTION", "ADD", "AFTER", "ALL", "ALTER", "ANALYZE", "AND", "AS", "ASC", 
+		"ATTACH", "AUTOINCREMENT", "BEFORE", "BEGIN", "BETWEEN", "BY", "CASCADE", 
+		"CASE", "CAST", "CHECK", "COLLATE", "COLUMN", "COMMIT", "CONFLICT", "CONSTRAINT", 
+		"CREATE", "CROSS", "CURRENT_DATE", "CURRENT_TIME", "CURRENT_TIMESTAMP", 
+		"DATABASE", "DEFAULT", "DEFERRABLE", "DEFERRED", "DELETE", "DESC", "DETACH", 
+		"DISTINCT", "DROP", "EACH", "ELSE", "END", "ESCAPE", "EXCEPT", "EXCLUSIVE", 
+		"EXISTS", "EXPLAIN", "FAIL", "FOR", "FOREIGN", "FROM", "FULL", "GLOB", 
+		"GROUP", "HAVING", "IF", "IGNORE", "IMMEDIATE", "IN", "INDEX", "INDEXED", 
+		"INITIALLY", "INNER", "INSERT", "INSTEAD", "INTERSECT", "INTO", "IS", 
+		"ISNULL", "JOIN", "KEY", "LEFT", "LIKE", "LIMIT", "MATCH", "NATURAL", 
+		"NO", "NOT", "NOTNULL", "NULL", "OF", "OFFSET", "ON", "OR", "ORDER", "OUTER", 
+		"PLAN", "PRAGMA", "PRIMARY", "QUERY", "RAISE", "RECURSIVE", "REFERENCES", 
+		"REGEXP", "REINDEX", "RELEASE", "RENAME", "REPLACE", "RESTRICT", "RETURNING", 
+		"RIGHT", "ROLLBACK", "ROW", "ROWS", "SAVEPOINT", "SELECT", "SET", "TABLE", 
+		"TEMP", "TEMPORARY", "THEN", "TO", "TRANSACTION", "TRIGGER", "UNION", 
+		"UNIQUE", "UPDATE", "USING", "VACUUM", "VALUES", "VIEW", "VIRTUAL", "WHEN", 
+		"WHERE", "WITH", "WITHOUT", "FIRST_VALUE", "OVER", "PARTITION", "RANGE", 
+		"PRECEDING", "UNBOUNDED", "CURRENT", "FOLLOWING", "CUME_DIST", "DENSE_RANK", 
+		"LAG", "LAST_VALUE", "LEAD", "NTH_VALUE", "NTILE", "PERCENT_RANK", "RANK", 
+		"ROW_NUMBER", "GENERATED", "ALWAYS", "STORED", "TRUE", "FALSE", "WINDOW", 
+		"NULLS", "FIRST", "LAST", "FILTER", "GROUPS", "EXCLUDE", "TIES", "OTHERS", 
+		"DO", "NOTHING", "IDENTIFIER", "NUMERIC_LITERAL", "BIND_PARAMETER", "STRING_LITERAL", 
 		"BLOB_LITERAL", "SINGLE_LINE_COMMENT", "MULTILINE_COMMENT", "SPACES", 
 		"UNEXPECTED_CHAR"
 	};
@@ -265,21 +264,21 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 225;
+			State = 237;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (((_la) & ~0x3f) == 0 && ((1L << _la) & -6339801325483589630L) != 0 || (((_la - 66)) & ~0x3f) == 0 && ((1L << (_la - 66)) & -7971300971697405919L) != 0 || (((_la - 130)) & ~0x3f) == 0 && ((1L << (_la - 130)) & 550913L) != 0) {
 				{
 				{
-				State = 222;
+				State = 234;
 				sql_stmt_list();
 				}
 				}
-				State = 227;
+				State = 239;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 228;
+			State = 240;
 			Match(Eof);
 			}
 		}
@@ -337,65 +336,65 @@ public partial class SQLiteParser : Parser {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 233;
+			State = 245;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==SCOL) {
 				{
 				{
-				State = 230;
+				State = 242;
 				Match(SCOL);
 				}
 				}
-				State = 235;
+				State = 247;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 236;
+			State = 248;
 			sql_stmt();
-			State = 245;
+			State = 257;
 			ErrorHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(TokenStream,3,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					State = 238;
+					State = 250;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 					do {
 						{
 						{
-						State = 237;
+						State = 249;
 						Match(SCOL);
 						}
 						}
-						State = 240;
+						State = 252;
 						ErrorHandler.Sync(this);
 						_la = TokenStream.LA(1);
 					} while ( _la==SCOL );
-					State = 242;
+					State = 254;
 					sql_stmt();
 					}
 					} 
 				}
-				State = 247;
+				State = 259;
 				ErrorHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(TokenStream,3,Context);
 			}
-			State = 251;
+			State = 263;
 			ErrorHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(TokenStream,4,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					State = 248;
+					State = 260;
 					Match(SCOL);
 					}
 					} 
 				}
-				State = 253;
+				State = 265;
 				ErrorHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(TokenStream,4,Context);
 			}
@@ -485,9 +484,9 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Vacuum_stmtContext vacuum_stmt() {
 			return GetRuleContext<Vacuum_stmtContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXPLAIN_() { return GetToken(SQLiteParser.EXPLAIN_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode QUERY_() { return GetToken(SQLiteParser.QUERY_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PLAN_() { return GetToken(SQLiteParser.PLAN_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXPLAIN() { return GetToken(SQLiteParser.EXPLAIN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode QUERY() { return GetToken(SQLiteParser.QUERY, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PLAN() { return GetToken(SQLiteParser.PLAN, 0); }
 		public Sql_stmtContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -519,172 +518,172 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 259;
+			State = 271;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==EXPLAIN_) {
+			if (_la==EXPLAIN) {
 				{
-				State = 254;
-				Match(EXPLAIN_);
-				State = 257;
+				State = 266;
+				Match(EXPLAIN);
+				State = 269;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==QUERY_) {
+				if (_la==QUERY) {
 					{
-					State = 255;
-					Match(QUERY_);
-					State = 256;
-					Match(PLAN_);
+					State = 267;
+					Match(QUERY);
+					State = 268;
+					Match(PLAN);
 					}
 				}
 
 				}
 			}
 
-			State = 285;
+			State = 297;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,7,Context) ) {
 			case 1:
 				{
-				State = 261;
+				State = 273;
 				alter_table_stmt();
 				}
 				break;
 			case 2:
 				{
-				State = 262;
+				State = 274;
 				analyze_stmt();
 				}
 				break;
 			case 3:
 				{
-				State = 263;
+				State = 275;
 				attach_stmt();
 				}
 				break;
 			case 4:
 				{
-				State = 264;
+				State = 276;
 				begin_stmt();
 				}
 				break;
 			case 5:
 				{
-				State = 265;
+				State = 277;
 				commit_stmt();
 				}
 				break;
 			case 6:
 				{
-				State = 266;
+				State = 278;
 				create_index_stmt();
 				}
 				break;
 			case 7:
 				{
-				State = 267;
+				State = 279;
 				create_table_stmt();
 				}
 				break;
 			case 8:
 				{
-				State = 268;
+				State = 280;
 				create_trigger_stmt();
 				}
 				break;
 			case 9:
 				{
-				State = 269;
+				State = 281;
 				create_view_stmt();
 				}
 				break;
 			case 10:
 				{
-				State = 270;
+				State = 282;
 				create_virtual_table_stmt();
 				}
 				break;
 			case 11:
 				{
-				State = 271;
+				State = 283;
 				delete_stmt();
 				}
 				break;
 			case 12:
 				{
-				State = 272;
+				State = 284;
 				delete_stmt_limited();
 				}
 				break;
 			case 13:
 				{
-				State = 273;
+				State = 285;
 				detach_stmt();
 				}
 				break;
 			case 14:
 				{
-				State = 274;
+				State = 286;
 				drop_stmt();
 				}
 				break;
 			case 15:
 				{
-				State = 275;
+				State = 287;
 				insert_stmt();
 				}
 				break;
 			case 16:
 				{
-				State = 276;
+				State = 288;
 				pragma_stmt();
 				}
 				break;
 			case 17:
 				{
-				State = 277;
+				State = 289;
 				reindex_stmt();
 				}
 				break;
 			case 18:
 				{
-				State = 278;
+				State = 290;
 				release_stmt();
 				}
 				break;
 			case 19:
 				{
-				State = 279;
+				State = 291;
 				rollback_stmt();
 				}
 				break;
 			case 20:
 				{
-				State = 280;
+				State = 292;
 				savepoint_stmt();
 				}
 				break;
 			case 21:
 				{
-				State = 281;
+				State = 293;
 				select_stmt();
 				}
 				break;
 			case 22:
 				{
-				State = 282;
+				State = 294;
 				update_stmt();
 				}
 				break;
 			case 23:
 				{
-				State = 283;
+				State = 295;
 				update_stmt_limited();
 				}
 				break;
 			case 24:
 				{
-				State = 284;
+				State = 296;
 				vacuum_stmt();
 				}
 				break;
@@ -706,20 +705,20 @@ public partial class SQLiteParser : Parser {
 		public Table_nameContext new_table_name;
 		public Column_nameContext old_column_name;
 		public Column_nameContext new_column_name;
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALTER_() { return GetToken(SQLiteParser.ALTER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TABLE_() { return GetToken(SQLiteParser.TABLE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALTER() { return GetToken(SQLiteParser.ALTER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TABLE() { return GetToken(SQLiteParser.TABLE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Table_nameContext[] table_name() {
 			return GetRuleContexts<Table_nameContext>();
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public Table_nameContext table_name(int i) {
 			return GetRuleContext<Table_nameContext>(i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RENAME_() { return GetToken(SQLiteParser.RENAME_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ADD_() { return GetToken(SQLiteParser.ADD_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RENAME() { return GetToken(SQLiteParser.RENAME, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ADD() { return GetToken(SQLiteParser.ADD, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Column_defContext column_def() {
 			return GetRuleContext<Column_defContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DROP_() { return GetToken(SQLiteParser.DROP_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DROP() { return GetToken(SQLiteParser.DROP, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Column_nameContext[] column_name() {
 			return GetRuleContexts<Column_nameContext>();
 		}
@@ -730,8 +729,8 @@ public partial class SQLiteParser : Parser {
 			return GetRuleContext<Schema_nameContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DOT() { return GetToken(SQLiteParser.DOT, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TO_() { return GetToken(SQLiteParser.TO_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLUMN_() { return GetToken(SQLiteParser.COLUMN_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TO() { return GetToken(SQLiteParser.TO, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLUMN() { return GetToken(SQLiteParser.COLUMN, 0); }
 		public Alter_table_stmtContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -762,98 +761,98 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 287;
-			Match(ALTER_);
-			State = 288;
-			Match(TABLE_);
-			State = 292;
+			State = 299;
+			Match(ALTER);
+			State = 300;
+			Match(TABLE);
+			State = 304;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,8,Context) ) {
 			case 1:
 				{
-				State = 289;
+				State = 301;
 				schema_name();
-				State = 290;
+				State = 302;
 				Match(DOT);
 				}
 				break;
 			}
-			State = 294;
+			State = 306;
 			table_name();
-			State = 317;
+			State = 329;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case RENAME_:
+			case RENAME:
 				{
-				State = 295;
-				Match(RENAME_);
-				State = 305;
+				State = 307;
+				Match(RENAME);
+				State = 317;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,10,Context) ) {
 				case 1:
 					{
-					State = 296;
-					Match(TO_);
-					State = 297;
+					State = 308;
+					Match(TO);
+					State = 309;
 					_localctx.new_table_name = table_name();
 					}
 					break;
 				case 2:
 					{
-					State = 299;
+					State = 311;
 					ErrorHandler.Sync(this);
 					switch ( Interpreter.AdaptivePredict(TokenStream,9,Context) ) {
 					case 1:
 						{
-						State = 298;
-						Match(COLUMN_);
+						State = 310;
+						Match(COLUMN);
 						}
 						break;
 					}
-					State = 301;
+					State = 313;
 					_localctx.old_column_name = column_name();
-					State = 302;
-					Match(TO_);
-					State = 303;
+					State = 314;
+					Match(TO);
+					State = 315;
 					_localctx.new_column_name = column_name();
 					}
 					break;
 				}
 				}
 				break;
-			case ADD_:
+			case ADD:
 				{
-				State = 307;
-				Match(ADD_);
-				State = 309;
+				State = 319;
+				Match(ADD);
+				State = 321;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,11,Context) ) {
 				case 1:
 					{
-					State = 308;
-					Match(COLUMN_);
+					State = 320;
+					Match(COLUMN);
 					}
 					break;
 				}
-				State = 311;
+				State = 323;
 				column_def();
 				}
 				break;
-			case DROP_:
+			case DROP:
 				{
-				State = 312;
-				Match(DROP_);
-				State = 314;
+				State = 324;
+				Match(DROP);
+				State = 326;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,12,Context) ) {
 				case 1:
 					{
-					State = 313;
-					Match(COLUMN_);
+					State = 325;
+					Match(COLUMN);
 					}
 					break;
 				}
-				State = 316;
+				State = 328;
 				column_name();
 				}
 				break;
@@ -874,7 +873,7 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Analyze_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ANALYZE_() { return GetToken(SQLiteParser.ANALYZE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ANALYZE() { return GetToken(SQLiteParser.ANALYZE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Schema_nameContext schema_name() {
 			return GetRuleContext<Schema_nameContext>(0);
 		}
@@ -912,32 +911,32 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 319;
-			Match(ANALYZE_);
-			State = 327;
+			State = 331;
+			Match(ANALYZE);
+			State = 339;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,15,Context) ) {
 			case 1:
 				{
-				State = 320;
+				State = 332;
 				schema_name();
 				}
 				break;
 			case 2:
 				{
-				State = 324;
+				State = 336;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,14,Context) ) {
 				case 1:
 					{
-					State = 321;
+					State = 333;
 					schema_name();
-					State = 322;
+					State = 334;
 					Match(DOT);
 					}
 					break;
 				}
-				State = 326;
+				State = 338;
 				table_or_index_name();
 				}
 				break;
@@ -956,15 +955,15 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Attach_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ATTACH_() { return GetToken(SQLiteParser.ATTACH_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ATTACH() { return GetToken(SQLiteParser.ATTACH, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr() {
 			return GetRuleContext<ExprContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS_() { return GetToken(SQLiteParser.AS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS() { return GetToken(SQLiteParser.AS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Schema_nameContext schema_name() {
 			return GetRuleContext<Schema_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DATABASE_() { return GetToken(SQLiteParser.DATABASE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DATABASE() { return GetToken(SQLiteParser.DATABASE, 0); }
 		public Attach_stmtContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -995,23 +994,23 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 329;
-			Match(ATTACH_);
-			State = 331;
+			State = 341;
+			Match(ATTACH);
+			State = 343;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,16,Context) ) {
 			case 1:
 				{
-				State = 330;
-				Match(DATABASE_);
+				State = 342;
+				Match(DATABASE);
 				}
 				break;
 			}
-			State = 333;
+			State = 345;
 			expr(0);
-			State = 334;
-			Match(AS_);
-			State = 335;
+			State = 346;
+			Match(AS);
+			State = 347;
 			schema_name();
 			}
 		}
@@ -1027,11 +1026,11 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Begin_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BEGIN_() { return GetToken(SQLiteParser.BEGIN_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRANSACTION_() { return GetToken(SQLiteParser.TRANSACTION_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFERRED_() { return GetToken(SQLiteParser.DEFERRED_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IMMEDIATE_() { return GetToken(SQLiteParser.IMMEDIATE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXCLUSIVE_() { return GetToken(SQLiteParser.EXCLUSIVE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BEGIN() { return GetToken(SQLiteParser.BEGIN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRANSACTION() { return GetToken(SQLiteParser.TRANSACTION, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFERRED() { return GetToken(SQLiteParser.DEFERRED, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IMMEDIATE() { return GetToken(SQLiteParser.IMMEDIATE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXCLUSIVE() { return GetToken(SQLiteParser.EXCLUSIVE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Transaction_nameContext transaction_name() {
 			return GetRuleContext<Transaction_nameContext>(0);
 		}
@@ -1066,14 +1065,14 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 337;
-			Match(BEGIN_);
-			State = 339;
+			State = 349;
+			Match(BEGIN);
+			State = 351;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if ((((_la - 58)) & ~0x3f) == 0 && ((1L << (_la - 58)) & 16779265L) != 0) {
 				{
-				State = 338;
+				State = 350;
 				_la = TokenStream.LA(1);
 				if ( !((((_la - 58)) & ~0x3f) == 0 && ((1L << (_la - 58)) & 16779265L) != 0) ) {
 				ErrorHandler.RecoverInline(this);
@@ -1085,19 +1084,19 @@ public partial class SQLiteParser : Parser {
 				}
 			}
 
-			State = 345;
+			State = 357;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==TRANSACTION_) {
+			if (_la==TRANSACTION) {
 				{
-				State = 341;
-				Match(TRANSACTION_);
-				State = 343;
+				State = 353;
+				Match(TRANSACTION);
+				State = 355;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,18,Context) ) {
 				case 1:
 					{
-					State = 342;
+					State = 354;
 					transaction_name();
 					}
 					break;
@@ -1119,9 +1118,9 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Commit_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMIT_() { return GetToken(SQLiteParser.COMMIT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode END_() { return GetToken(SQLiteParser.END_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRANSACTION_() { return GetToken(SQLiteParser.TRANSACTION_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMIT() { return GetToken(SQLiteParser.COMMIT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode END() { return GetToken(SQLiteParser.END, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRANSACTION() { return GetToken(SQLiteParser.TRANSACTION, 0); }
 		public Commit_stmtContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -1153,22 +1152,22 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 347;
+			State = 359;
 			_la = TokenStream.LA(1);
-			if ( !(_la==COMMIT_ || _la==END_) ) {
+			if ( !(_la==COMMIT || _la==END) ) {
 			ErrorHandler.RecoverInline(this);
 			}
 			else {
 				ErrorHandler.ReportMatch(this);
 			    Consume();
 			}
-			State = 349;
+			State = 361;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==TRANSACTION_) {
+			if (_la==TRANSACTION) {
 				{
-				State = 348;
-				Match(TRANSACTION_);
+				State = 360;
+				Match(TRANSACTION);
 				}
 			}
 
@@ -1186,13 +1185,13 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Rollback_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROLLBACK_() { return GetToken(SQLiteParser.ROLLBACK_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRANSACTION_() { return GetToken(SQLiteParser.TRANSACTION_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TO_() { return GetToken(SQLiteParser.TO_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROLLBACK() { return GetToken(SQLiteParser.ROLLBACK, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRANSACTION() { return GetToken(SQLiteParser.TRANSACTION, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TO() { return GetToken(SQLiteParser.TO, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Savepoint_nameContext savepoint_name() {
 			return GetRuleContext<Savepoint_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SAVEPOINT_() { return GetToken(SQLiteParser.SAVEPOINT_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SAVEPOINT() { return GetToken(SQLiteParser.SAVEPOINT, 0); }
 		public Rollback_stmtContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -1224,36 +1223,36 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 351;
-			Match(ROLLBACK_);
-			State = 353;
+			State = 363;
+			Match(ROLLBACK);
+			State = 365;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==TRANSACTION_) {
+			if (_la==TRANSACTION) {
 				{
-				State = 352;
-				Match(TRANSACTION_);
+				State = 364;
+				Match(TRANSACTION);
 				}
 			}
 
-			State = 360;
+			State = 372;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==TO_) {
+			if (_la==TO) {
 				{
-				State = 355;
-				Match(TO_);
-				State = 357;
+				State = 367;
+				Match(TO);
+				State = 369;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,22,Context) ) {
 				case 1:
 					{
-					State = 356;
-					Match(SAVEPOINT_);
+					State = 368;
+					Match(SAVEPOINT);
 					}
 					break;
 				}
-				State = 359;
+				State = 371;
 				savepoint_name();
 				}
 			}
@@ -1272,7 +1271,7 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Savepoint_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SAVEPOINT_() { return GetToken(SQLiteParser.SAVEPOINT_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SAVEPOINT() { return GetToken(SQLiteParser.SAVEPOINT, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Savepoint_nameContext savepoint_name() {
 			return GetRuleContext<Savepoint_nameContext>(0);
 		}
@@ -1306,9 +1305,9 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 362;
-			Match(SAVEPOINT_);
-			State = 363;
+			State = 374;
+			Match(SAVEPOINT);
+			State = 375;
 			savepoint_name();
 			}
 		}
@@ -1324,11 +1323,11 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Release_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RELEASE_() { return GetToken(SQLiteParser.RELEASE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RELEASE() { return GetToken(SQLiteParser.RELEASE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Savepoint_nameContext savepoint_name() {
 			return GetRuleContext<Savepoint_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SAVEPOINT_() { return GetToken(SQLiteParser.SAVEPOINT_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SAVEPOINT() { return GetToken(SQLiteParser.SAVEPOINT, 0); }
 		public Release_stmtContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -1359,19 +1358,19 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 365;
-			Match(RELEASE_);
-			State = 367;
+			State = 377;
+			Match(RELEASE);
+			State = 379;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,24,Context) ) {
 			case 1:
 				{
-				State = 366;
-				Match(SAVEPOINT_);
+				State = 378;
+				Match(SAVEPOINT);
 				}
 				break;
 			}
-			State = 369;
+			State = 381;
 			savepoint_name();
 			}
 		}
@@ -1387,12 +1386,12 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Create_index_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CREATE_() { return GetToken(SQLiteParser.CREATE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INDEX_() { return GetToken(SQLiteParser.INDEX_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CREATE() { return GetToken(SQLiteParser.CREATE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INDEX() { return GetToken(SQLiteParser.INDEX, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Index_nameContext index_name() {
 			return GetRuleContext<Index_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ON_() { return GetToken(SQLiteParser.ON_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ON() { return GetToken(SQLiteParser.ON, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Table_nameContext table_name() {
 			return GetRuleContext<Table_nameContext>(0);
 		}
@@ -1404,10 +1403,10 @@ public partial class SQLiteParser : Parser {
 			return GetRuleContext<Indexed_columnContext>(i);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLOSE_PAR() { return GetToken(SQLiteParser.CLOSE_PAR, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNIQUE_() { return GetToken(SQLiteParser.UNIQUE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF_() { return GetToken(SQLiteParser.IF_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT_() { return GetToken(SQLiteParser.NOT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXISTS_() { return GetToken(SQLiteParser.EXISTS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNIQUE() { return GetToken(SQLiteParser.UNIQUE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF() { return GetToken(SQLiteParser.IF, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT() { return GetToken(SQLiteParser.NOT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXISTS() { return GetToken(SQLiteParser.EXISTS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Schema_nameContext schema_name() {
 			return GetRuleContext<Schema_nameContext>(0);
 		}
@@ -1416,7 +1415,7 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
 			return GetToken(SQLiteParser.COMMA, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE_() { return GetToken(SQLiteParser.WHERE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE() { return GetToken(SQLiteParser.WHERE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr() {
 			return GetRuleContext<ExprContext>(0);
 		}
@@ -1451,82 +1450,82 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 371;
-			Match(CREATE_);
-			State = 373;
+			State = 383;
+			Match(CREATE);
+			State = 385;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==UNIQUE_) {
+			if (_la==UNIQUE) {
 				{
-				State = 372;
-				Match(UNIQUE_);
+				State = 384;
+				Match(UNIQUE);
 				}
 			}
 
-			State = 375;
-			Match(INDEX_);
-			State = 379;
+			State = 387;
+			Match(INDEX);
+			State = 391;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,26,Context) ) {
 			case 1:
 				{
-				State = 376;
-				Match(IF_);
-				State = 377;
-				Match(NOT_);
-				State = 378;
-				Match(EXISTS_);
+				State = 388;
+				Match(IF);
+				State = 389;
+				Match(NOT);
+				State = 390;
+				Match(EXISTS);
 				}
 				break;
 			}
-			State = 384;
+			State = 396;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,27,Context) ) {
 			case 1:
 				{
-				State = 381;
+				State = 393;
 				schema_name();
-				State = 382;
+				State = 394;
 				Match(DOT);
 				}
 				break;
 			}
-			State = 386;
+			State = 398;
 			index_name();
-			State = 387;
-			Match(ON_);
-			State = 388;
+			State = 399;
+			Match(ON);
+			State = 400;
 			table_name();
-			State = 389;
+			State = 401;
 			Match(OPEN_PAR);
-			State = 390;
+			State = 402;
 			indexed_column();
-			State = 395;
+			State = 407;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				State = 391;
+				State = 403;
 				Match(COMMA);
-				State = 392;
+				State = 404;
 				indexed_column();
 				}
 				}
-				State = 397;
+				State = 409;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 398;
+			State = 410;
 			Match(CLOSE_PAR);
-			State = 401;
+			State = 413;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==WHERE_) {
+			if (_la==WHERE) {
 				{
-				State = 399;
-				Match(WHERE_);
-				State = 400;
+				State = 411;
+				Match(WHERE);
+				State = 412;
 				expr(0);
 				}
 			}
@@ -1551,7 +1550,7 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr() {
 			return GetRuleContext<ExprContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLLATE_() { return GetToken(SQLiteParser.COLLATE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLLATE() { return GetToken(SQLiteParser.COLLATE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Collation_nameContext collation_name() {
 			return GetRuleContext<Collation_nameContext>(0);
 		}
@@ -1589,40 +1588,40 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 405;
+			State = 417;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,30,Context) ) {
 			case 1:
 				{
-				State = 403;
+				State = 415;
 				column_name();
 				}
 				break;
 			case 2:
 				{
-				State = 404;
+				State = 416;
 				expr(0);
 				}
 				break;
 			}
-			State = 409;
+			State = 421;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==COLLATE_) {
+			if (_la==COLLATE) {
 				{
-				State = 407;
-				Match(COLLATE_);
-				State = 408;
+				State = 419;
+				Match(COLLATE);
+				State = 420;
 				collation_name();
 				}
 			}
 
-			State = 412;
+			State = 424;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==ASC_ || _la==DESC_) {
+			if (_la==ASC || _la==DESC) {
 				{
-				State = 411;
+				State = 423;
 				asc_desc();
 				}
 			}
@@ -1642,8 +1641,8 @@ public partial class SQLiteParser : Parser {
 
 	public partial class Create_table_stmtContext : ParserRuleContext {
 		public IToken row_ROW_ID;
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CREATE_() { return GetToken(SQLiteParser.CREATE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TABLE_() { return GetToken(SQLiteParser.TABLE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CREATE() { return GetToken(SQLiteParser.CREATE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TABLE() { return GetToken(SQLiteParser.TABLE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Table_nameContext table_name() {
 			return GetRuleContext<Table_nameContext>(0);
 		}
@@ -1655,19 +1654,19 @@ public partial class SQLiteParser : Parser {
 			return GetRuleContext<Column_defContext>(i);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLOSE_PAR() { return GetToken(SQLiteParser.CLOSE_PAR, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS_() { return GetToken(SQLiteParser.AS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS() { return GetToken(SQLiteParser.AS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Select_stmtContext select_stmt() {
 			return GetRuleContext<Select_stmtContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF_() { return GetToken(SQLiteParser.IF_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT_() { return GetToken(SQLiteParser.NOT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXISTS_() { return GetToken(SQLiteParser.EXISTS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF() { return GetToken(SQLiteParser.IF, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT() { return GetToken(SQLiteParser.NOT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXISTS() { return GetToken(SQLiteParser.EXISTS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Schema_nameContext schema_name() {
 			return GetRuleContext<Schema_nameContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DOT() { return GetToken(SQLiteParser.DOT, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TEMP_() { return GetToken(SQLiteParser.TEMP_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TEMPORARY_() { return GetToken(SQLiteParser.TEMPORARY_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TEMP() { return GetToken(SQLiteParser.TEMP, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TEMPORARY() { return GetToken(SQLiteParser.TEMPORARY, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(SQLiteParser.COMMA); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
 			return GetToken(SQLiteParser.COMMA, i);
@@ -1678,7 +1677,7 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Table_constraintContext table_constraint(int i) {
 			return GetRuleContext<Table_constraintContext>(i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WITHOUT_() { return GetToken(SQLiteParser.WITHOUT_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WITHOUT() { return GetToken(SQLiteParser.WITHOUT, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IDENTIFIER() { return GetToken(SQLiteParser.IDENTIFIER, 0); }
 		public Create_table_stmtContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -1712,16 +1711,16 @@ public partial class SQLiteParser : Parser {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 414;
-			Match(CREATE_);
-			State = 416;
+			State = 426;
+			Match(CREATE);
+			State = 428;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==TEMP_ || _la==TEMPORARY_) {
+			if (_la==TEMP || _la==TEMPORARY) {
 				{
-				State = 415;
+				State = 427;
 				_la = TokenStream.LA(1);
-				if ( !(_la==TEMP_ || _la==TEMPORARY_) ) {
+				if ( !(_la==TEMP || _la==TEMPORARY) ) {
 				ErrorHandler.RecoverInline(this);
 				}
 				else {
@@ -1731,100 +1730,100 @@ public partial class SQLiteParser : Parser {
 				}
 			}
 
-			State = 418;
-			Match(TABLE_);
-			State = 422;
+			State = 430;
+			Match(TABLE);
+			State = 434;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,34,Context) ) {
 			case 1:
 				{
-				State = 419;
-				Match(IF_);
-				State = 420;
-				Match(NOT_);
-				State = 421;
-				Match(EXISTS_);
+				State = 431;
+				Match(IF);
+				State = 432;
+				Match(NOT);
+				State = 433;
+				Match(EXISTS);
 				}
 				break;
 			}
-			State = 427;
+			State = 439;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,35,Context) ) {
 			case 1:
 				{
-				State = 424;
+				State = 436;
 				schema_name();
-				State = 425;
+				State = 437;
 				Match(DOT);
 				}
 				break;
 			}
-			State = 429;
+			State = 441;
 			table_name();
-			State = 453;
+			State = 465;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case OPEN_PAR:
 				{
-				State = 430;
+				State = 442;
 				Match(OPEN_PAR);
-				State = 431;
+				State = 443;
 				column_def();
-				State = 436;
+				State = 448;
 				ErrorHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(TokenStream,36,Context);
 				while ( _alt!=1 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1+1 ) {
 						{
 						{
-						State = 432;
+						State = 444;
 						Match(COMMA);
-						State = 433;
+						State = 445;
 						column_def();
 						}
 						} 
 					}
-					State = 438;
+					State = 450;
 					ErrorHandler.Sync(this);
 					_alt = Interpreter.AdaptivePredict(TokenStream,36,Context);
 				}
-				State = 443;
+				State = 455;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 439;
+					State = 451;
 					Match(COMMA);
-					State = 440;
+					State = 452;
 					table_constraint();
 					}
 					}
-					State = 445;
+					State = 457;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 446;
+				State = 458;
 				Match(CLOSE_PAR);
-				State = 449;
+				State = 461;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==WITHOUT_) {
+				if (_la==WITHOUT) {
 					{
-					State = 447;
-					Match(WITHOUT_);
-					State = 448;
+					State = 459;
+					Match(WITHOUT);
+					State = 460;
 					_localctx.row_ROW_ID = Match(IDENTIFIER);
 					}
 				}
 
 				}
 				break;
-			case AS_:
+			case AS:
 				{
-				State = 451;
-				Match(AS_);
-				State = 452;
+				State = 463;
+				Match(AS);
+				State = 464;
 				select_stmt();
 				}
 				break;
@@ -1888,29 +1887,29 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 455;
+			State = 467;
 			column_name();
-			State = 457;
+			State = 469;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,40,Context) ) {
 			case 1:
 				{
-				State = 456;
+				State = 468;
 				type_name();
 				}
 				break;
 			}
-			State = 462;
+			State = 474;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 72673329139417088L) != 0 || (((_la - 102)) & ~0x3f) == 0 && ((1L << (_la - 102)) & 274877941765L) != 0 || _la==GENERATED_) {
+			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 72673329139417088L) != 0 || (((_la - 102)) & ~0x3f) == 0 && ((1L << (_la - 102)) & 274877941765L) != 0 || _la==GENERATED) {
 				{
 				{
-				State = 459;
+				State = 471;
 				column_constraint();
 				}
 				}
-				State = 464;
+				State = 476;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -1974,7 +1973,7 @@ public partial class SQLiteParser : Parser {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 466;
+			State = 478;
 			ErrorHandler.Sync(this);
 			_alt = 1+1;
 			do {
@@ -1982,7 +1981,7 @@ public partial class SQLiteParser : Parser {
 				case 1+1:
 					{
 					{
-					State = 465;
+					State = 477;
 					name();
 					}
 					}
@@ -1990,34 +1989,34 @@ public partial class SQLiteParser : Parser {
 				default:
 					throw new NoViableAltException(this);
 				}
-				State = 468;
+				State = 480;
 				ErrorHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(TokenStream,42,Context);
 			} while ( _alt!=1 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER );
-			State = 480;
+			State = 492;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,43,Context) ) {
 			case 1:
 				{
-				State = 470;
+				State = 482;
 				Match(OPEN_PAR);
-				State = 471;
+				State = 483;
 				signed_number();
-				State = 472;
+				State = 484;
 				Match(CLOSE_PAR);
 				}
 				break;
 			case 2:
 				{
-				State = 474;
+				State = 486;
 				Match(OPEN_PAR);
-				State = 475;
+				State = 487;
 				signed_number();
-				State = 476;
+				State = 488;
 				Match(COMMA);
-				State = 477;
+				State = 489;
 				signed_number();
-				State = 478;
+				State = 490;
 				Match(CLOSE_PAR);
 				}
 				break;
@@ -2036,29 +2035,29 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Column_constraintContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CHECK_() { return GetToken(SQLiteParser.CHECK_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CHECK() { return GetToken(SQLiteParser.CHECK, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OPEN_PAR() { return GetToken(SQLiteParser.OPEN_PAR, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr() {
 			return GetRuleContext<ExprContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLOSE_PAR() { return GetToken(SQLiteParser.CLOSE_PAR, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFAULT_() { return GetToken(SQLiteParser.DEFAULT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLLATE_() { return GetToken(SQLiteParser.COLLATE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFAULT() { return GetToken(SQLiteParser.DEFAULT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLLATE() { return GetToken(SQLiteParser.COLLATE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Collation_nameContext collation_name() {
 			return GetRuleContext<Collation_nameContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public Foreign_key_clauseContext foreign_key_clause() {
 			return GetRuleContext<Foreign_key_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS_() { return GetToken(SQLiteParser.AS_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CONSTRAINT_() { return GetToken(SQLiteParser.CONSTRAINT_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS() { return GetToken(SQLiteParser.AS, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CONSTRAINT() { return GetToken(SQLiteParser.CONSTRAINT, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public NameContext name() {
 			return GetRuleContext<NameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRIMARY_() { return GetToken(SQLiteParser.PRIMARY_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode KEY_() { return GetToken(SQLiteParser.KEY_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NULL_() { return GetToken(SQLiteParser.NULL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNIQUE_() { return GetToken(SQLiteParser.UNIQUE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRIMARY() { return GetToken(SQLiteParser.PRIMARY, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode KEY() { return GetToken(SQLiteParser.KEY, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NULL() { return GetToken(SQLiteParser.NULL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNIQUE() { return GetToken(SQLiteParser.UNIQUE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Signed_numberContext signed_number() {
 			return GetRuleContext<Signed_numberContext>(0);
 		}
@@ -2068,15 +2067,15 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Conflict_clauseContext conflict_clause() {
 			return GetRuleContext<Conflict_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GENERATED_() { return GetToken(SQLiteParser.GENERATED_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALWAYS_() { return GetToken(SQLiteParser.ALWAYS_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode STORED_() { return GetToken(SQLiteParser.STORED_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VIRTUAL_() { return GetToken(SQLiteParser.VIRTUAL_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GENERATED() { return GetToken(SQLiteParser.GENERATED, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALWAYS() { return GetToken(SQLiteParser.ALWAYS, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode STORED() { return GetToken(SQLiteParser.STORED, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VIRTUAL() { return GetToken(SQLiteParser.VIRTUAL, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Asc_descContext asc_desc() {
 			return GetRuleContext<Asc_descContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AUTOINCREMENT_() { return GetToken(SQLiteParser.AUTOINCREMENT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT_() { return GetToken(SQLiteParser.NOT_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AUTOINCREMENT() { return GetToken(SQLiteParser.AUTOINCREMENT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT() { return GetToken(SQLiteParser.NOT, 0); }
 		public Column_constraintContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -2108,195 +2107,195 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 484;
+			State = 496;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==CONSTRAINT_) {
+			if (_la==CONSTRAINT) {
 				{
-				State = 482;
-				Match(CONSTRAINT_);
-				State = 483;
+				State = 494;
+				Match(CONSTRAINT);
+				State = 495;
 				name();
 				}
 			}
 
-			State = 535;
+			State = 547;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case PRIMARY_:
+			case PRIMARY:
 				{
 				{
-				State = 486;
-				Match(PRIMARY_);
-				State = 487;
-				Match(KEY_);
-				State = 489;
+				State = 498;
+				Match(PRIMARY);
+				State = 499;
+				Match(KEY);
+				State = 501;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==ASC_ || _la==DESC_) {
+				if (_la==ASC || _la==DESC) {
 					{
-					State = 488;
+					State = 500;
 					asc_desc();
 					}
 				}
 
-				State = 492;
+				State = 504;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==ON_) {
+				if (_la==ON) {
 					{
-					State = 491;
+					State = 503;
 					conflict_clause();
 					}
 				}
 
-				State = 495;
+				State = 507;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==AUTOINCREMENT_) {
+				if (_la==AUTOINCREMENT) {
 					{
-					State = 494;
-					Match(AUTOINCREMENT_);
+					State = 506;
+					Match(AUTOINCREMENT);
 					}
 				}
 
 				}
 				}
 				break;
-			case NOT_:
-			case NULL_:
-			case UNIQUE_:
+			case NOT:
+			case NULL:
+			case UNIQUE:
 				{
-				State = 502;
+				State = 514;
 				ErrorHandler.Sync(this);
 				switch (TokenStream.LA(1)) {
-				case NOT_:
-				case NULL_:
+				case NOT:
+				case NULL:
 					{
-					State = 498;
+					State = 510;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
-					if (_la==NOT_) {
+					if (_la==NOT) {
 						{
-						State = 497;
-						Match(NOT_);
+						State = 509;
+						Match(NOT);
 						}
 					}
 
-					State = 500;
-					Match(NULL_);
+					State = 512;
+					Match(NULL);
 					}
 					break;
-				case UNIQUE_:
+				case UNIQUE:
 					{
-					State = 501;
-					Match(UNIQUE_);
+					State = 513;
+					Match(UNIQUE);
 					}
 					break;
 				default:
 					throw new NoViableAltException(this);
 				}
-				State = 505;
+				State = 517;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==ON_) {
+				if (_la==ON) {
 					{
-					State = 504;
+					State = 516;
 					conflict_clause();
 					}
 				}
 
 				}
 				break;
-			case CHECK_:
+			case CHECK:
 				{
-				State = 507;
-				Match(CHECK_);
-				State = 508;
+				State = 519;
+				Match(CHECK);
+				State = 520;
 				Match(OPEN_PAR);
-				State = 509;
+				State = 521;
 				expr(0);
-				State = 510;
+				State = 522;
 				Match(CLOSE_PAR);
 				}
 				break;
-			case DEFAULT_:
+			case DEFAULT:
 				{
-				State = 512;
-				Match(DEFAULT_);
-				State = 519;
+				State = 524;
+				Match(DEFAULT);
+				State = 531;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,51,Context) ) {
 				case 1:
 					{
-					State = 513;
+					State = 525;
 					signed_number();
 					}
 					break;
 				case 2:
 					{
-					State = 514;
+					State = 526;
 					literal_value();
 					}
 					break;
 				case 3:
 					{
-					State = 515;
+					State = 527;
 					Match(OPEN_PAR);
-					State = 516;
+					State = 528;
 					expr(0);
-					State = 517;
+					State = 529;
 					Match(CLOSE_PAR);
 					}
 					break;
 				}
 				}
 				break;
-			case COLLATE_:
+			case COLLATE:
 				{
-				State = 521;
-				Match(COLLATE_);
-				State = 522;
+				State = 533;
+				Match(COLLATE);
+				State = 534;
 				collation_name();
 				}
 				break;
-			case REFERENCES_:
+			case REFERENCES:
 				{
-				State = 523;
+				State = 535;
 				foreign_key_clause();
 				}
 				break;
-			case AS_:
-			case GENERATED_:
+			case AS:
+			case GENERATED:
 				{
-				State = 526;
+				State = 538;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==GENERATED_) {
+				if (_la==GENERATED) {
 					{
-					State = 524;
-					Match(GENERATED_);
-					State = 525;
-					Match(ALWAYS_);
+					State = 536;
+					Match(GENERATED);
+					State = 537;
+					Match(ALWAYS);
 					}
 				}
 
-				State = 528;
-				Match(AS_);
-				State = 529;
+				State = 540;
+				Match(AS);
+				State = 541;
 				Match(OPEN_PAR);
-				State = 530;
+				State = 542;
 				expr(0);
-				State = 531;
+				State = 543;
 				Match(CLOSE_PAR);
-				State = 533;
+				State = 545;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==VIRTUAL_ || _la==STORED_) {
+				if (_la==VIRTUAL || _la==STORED) {
 					{
-					State = 532;
+					State = 544;
 					_la = TokenStream.LA(1);
-					if ( !(_la==VIRTUAL_ || _la==STORED_) ) {
+					if ( !(_la==VIRTUAL || _la==STORED) ) {
 					ErrorHandler.RecoverInline(this);
 					}
 					else {
@@ -2359,12 +2358,12 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 538;
+			State = 550;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==PLUS || _la==MINUS) {
 				{
-				State = 537;
+				State = 549;
 				_la = TokenStream.LA(1);
 				if ( !(_la==PLUS || _la==MINUS) ) {
 				ErrorHandler.RecoverInline(this);
@@ -2376,7 +2375,7 @@ public partial class SQLiteParser : Parser {
 				}
 			}
 
-			State = 540;
+			State = 552;
 			Match(NUMERIC_LITERAL);
 			}
 		}
@@ -2400,12 +2399,12 @@ public partial class SQLiteParser : Parser {
 			return GetRuleContext<Indexed_columnContext>(i);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLOSE_PAR() { return GetToken(SQLiteParser.CLOSE_PAR, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CHECK_() { return GetToken(SQLiteParser.CHECK_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CHECK() { return GetToken(SQLiteParser.CHECK, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr() {
 			return GetRuleContext<ExprContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FOREIGN_() { return GetToken(SQLiteParser.FOREIGN_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode KEY_() { return GetToken(SQLiteParser.KEY_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FOREIGN() { return GetToken(SQLiteParser.FOREIGN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode KEY() { return GetToken(SQLiteParser.KEY, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Column_nameContext[] column_name() {
 			return GetRuleContexts<Column_nameContext>();
 		}
@@ -2415,12 +2414,12 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Foreign_key_clauseContext foreign_key_clause() {
 			return GetRuleContext<Foreign_key_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CONSTRAINT_() { return GetToken(SQLiteParser.CONSTRAINT_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CONSTRAINT() { return GetToken(SQLiteParser.CONSTRAINT, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public NameContext name() {
 			return GetRuleContext<NameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRIMARY_() { return GetToken(SQLiteParser.PRIMARY_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNIQUE_() { return GetToken(SQLiteParser.UNIQUE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRIMARY() { return GetToken(SQLiteParser.PRIMARY, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNIQUE() { return GetToken(SQLiteParser.UNIQUE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(SQLiteParser.COMMA); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
 			return GetToken(SQLiteParser.COMMA, i);
@@ -2459,119 +2458,119 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 544;
+			State = 556;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==CONSTRAINT_) {
+			if (_la==CONSTRAINT) {
 				{
-				State = 542;
-				Match(CONSTRAINT_);
-				State = 543;
+				State = 554;
+				Match(CONSTRAINT);
+				State = 555;
 				name();
 				}
 			}
 
-			State = 583;
+			State = 595;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case PRIMARY_:
-			case UNIQUE_:
+			case PRIMARY:
+			case UNIQUE:
 				{
-				State = 549;
+				State = 561;
 				ErrorHandler.Sync(this);
 				switch (TokenStream.LA(1)) {
-				case PRIMARY_:
+				case PRIMARY:
 					{
-					State = 546;
-					Match(PRIMARY_);
-					State = 547;
-					Match(KEY_);
+					State = 558;
+					Match(PRIMARY);
+					State = 559;
+					Match(KEY);
 					}
 					break;
-				case UNIQUE_:
+				case UNIQUE:
 					{
-					State = 548;
-					Match(UNIQUE_);
+					State = 560;
+					Match(UNIQUE);
 					}
 					break;
 				default:
 					throw new NoViableAltException(this);
 				}
-				State = 551;
+				State = 563;
 				Match(OPEN_PAR);
-				State = 552;
+				State = 564;
 				indexed_column();
-				State = 557;
+				State = 569;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 553;
+					State = 565;
 					Match(COMMA);
-					State = 554;
+					State = 566;
 					indexed_column();
 					}
 					}
-					State = 559;
+					State = 571;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 560;
+				State = 572;
 				Match(CLOSE_PAR);
-				State = 562;
+				State = 574;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==ON_) {
+				if (_la==ON) {
 					{
-					State = 561;
+					State = 573;
 					conflict_clause();
 					}
 				}
 
 				}
 				break;
-			case CHECK_:
+			case CHECK:
 				{
-				State = 564;
-				Match(CHECK_);
-				State = 565;
+				State = 576;
+				Match(CHECK);
+				State = 577;
 				Match(OPEN_PAR);
-				State = 566;
+				State = 578;
 				expr(0);
-				State = 567;
+				State = 579;
 				Match(CLOSE_PAR);
 				}
 				break;
-			case FOREIGN_:
+			case FOREIGN:
 				{
-				State = 569;
-				Match(FOREIGN_);
-				State = 570;
-				Match(KEY_);
-				State = 571;
+				State = 581;
+				Match(FOREIGN);
+				State = 582;
+				Match(KEY);
+				State = 583;
 				Match(OPEN_PAR);
-				State = 572;
+				State = 584;
 				column_name();
-				State = 577;
+				State = 589;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 573;
+					State = 585;
 					Match(COMMA);
-					State = 574;
+					State = 586;
 					column_name();
 					}
 					}
-					State = 579;
+					State = 591;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 580;
+				State = 592;
 				Match(CLOSE_PAR);
-				State = 581;
+				State = 593;
 				foreign_key_clause();
 				}
 				break;
@@ -2592,7 +2591,7 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Foreign_key_clauseContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REFERENCES_() { return GetToken(SQLiteParser.REFERENCES_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REFERENCES() { return GetToken(SQLiteParser.REFERENCES, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Foreign_tableContext foreign_table() {
 			return GetRuleContext<Foreign_tableContext>(0);
 		}
@@ -2604,13 +2603,13 @@ public partial class SQLiteParser : Parser {
 			return GetRuleContext<Column_nameContext>(i);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLOSE_PAR() { return GetToken(SQLiteParser.CLOSE_PAR, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] ON_() { return GetTokens(SQLiteParser.ON_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ON_(int i) {
-			return GetToken(SQLiteParser.ON_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] ON() { return GetTokens(SQLiteParser.ON); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ON(int i) {
+			return GetToken(SQLiteParser.ON, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] MATCH_() { return GetTokens(SQLiteParser.MATCH_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MATCH_(int i) {
-			return GetToken(SQLiteParser.MATCH_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] MATCH() { return GetTokens(SQLiteParser.MATCH); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MATCH(int i) {
+			return GetToken(SQLiteParser.MATCH, i);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public NameContext[] name() {
 			return GetRuleContexts<NameContext>();
@@ -2618,51 +2617,51 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public NameContext name(int i) {
 			return GetRuleContext<NameContext>(i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFERRABLE_() { return GetToken(SQLiteParser.DEFERRABLE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] DELETE_() { return GetTokens(SQLiteParser.DELETE_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DELETE_(int i) {
-			return GetToken(SQLiteParser.DELETE_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFERRABLE() { return GetToken(SQLiteParser.DEFERRABLE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] DELETE() { return GetTokens(SQLiteParser.DELETE); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DELETE(int i) {
+			return GetToken(SQLiteParser.DELETE, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] UPDATE_() { return GetTokens(SQLiteParser.UPDATE_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UPDATE_(int i) {
-			return GetToken(SQLiteParser.UPDATE_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] UPDATE() { return GetTokens(SQLiteParser.UPDATE); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UPDATE(int i) {
+			return GetToken(SQLiteParser.UPDATE, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] SET_() { return GetTokens(SQLiteParser.SET_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SET_(int i) {
-			return GetToken(SQLiteParser.SET_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] SET() { return GetTokens(SQLiteParser.SET); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SET(int i) {
+			return GetToken(SQLiteParser.SET, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] CASCADE_() { return GetTokens(SQLiteParser.CASCADE_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CASCADE_(int i) {
-			return GetToken(SQLiteParser.CASCADE_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] CASCADE() { return GetTokens(SQLiteParser.CASCADE); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CASCADE(int i) {
+			return GetToken(SQLiteParser.CASCADE, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] RESTRICT_() { return GetTokens(SQLiteParser.RESTRICT_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RESTRICT_(int i) {
-			return GetToken(SQLiteParser.RESTRICT_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] RESTRICT() { return GetTokens(SQLiteParser.RESTRICT); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RESTRICT(int i) {
+			return GetToken(SQLiteParser.RESTRICT, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] NO_() { return GetTokens(SQLiteParser.NO_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NO_(int i) {
-			return GetToken(SQLiteParser.NO_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] NO() { return GetTokens(SQLiteParser.NO); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NO(int i) {
+			return GetToken(SQLiteParser.NO, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] ACTION_() { return GetTokens(SQLiteParser.ACTION_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ACTION_(int i) {
-			return GetToken(SQLiteParser.ACTION_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] ACTION() { return GetTokens(SQLiteParser.ACTION); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ACTION(int i) {
+			return GetToken(SQLiteParser.ACTION, i);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(SQLiteParser.COMMA); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
 			return GetToken(SQLiteParser.COMMA, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] NULL_() { return GetTokens(SQLiteParser.NULL_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NULL_(int i) {
-			return GetToken(SQLiteParser.NULL_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] NULL() { return GetTokens(SQLiteParser.NULL); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NULL(int i) {
+			return GetToken(SQLiteParser.NULL, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] DEFAULT_() { return GetTokens(SQLiteParser.DEFAULT_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFAULT_(int i) {
-			return GetToken(SQLiteParser.DEFAULT_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] DEFAULT() { return GetTokens(SQLiteParser.DEFAULT); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFAULT(int i) {
+			return GetToken(SQLiteParser.DEFAULT, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT_() { return GetToken(SQLiteParser.NOT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INITIALLY_() { return GetToken(SQLiteParser.INITIALLY_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFERRED_() { return GetToken(SQLiteParser.DEFERRED_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IMMEDIATE_() { return GetToken(SQLiteParser.IMMEDIATE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT() { return GetToken(SQLiteParser.NOT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INITIALLY() { return GetToken(SQLiteParser.INITIALLY, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFERRED() { return GetToken(SQLiteParser.DEFERRED, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IMMEDIATE() { return GetToken(SQLiteParser.IMMEDIATE, 0); }
 		public Foreign_key_clauseContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -2694,71 +2693,71 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 585;
-			Match(REFERENCES_);
-			State = 586;
-			foreign_table();
+			State = 597;
+			Match(REFERENCES);
 			State = 598;
+			foreign_table();
+			State = 610;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==OPEN_PAR) {
 				{
-				State = 587;
+				State = 599;
 				Match(OPEN_PAR);
-				State = 588;
+				State = 600;
 				column_name();
-				State = 593;
+				State = 605;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 589;
+					State = 601;
 					Match(COMMA);
-					State = 590;
+					State = 602;
 					column_name();
 					}
 					}
-					State = 595;
+					State = 607;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 596;
+				State = 608;
 				Match(CLOSE_PAR);
 				}
 			}
 
-			State = 614;
+			State = 626;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while (_la==MATCH_ || _la==ON_) {
+			while (_la==MATCH || _la==ON) {
 				{
-				State = 612;
+				State = 624;
 				ErrorHandler.Sync(this);
 				switch (TokenStream.LA(1)) {
-				case ON_:
+				case ON:
 					{
-					State = 600;
-					Match(ON_);
-					State = 601;
+					State = 612;
+					Match(ON);
+					State = 613;
 					_la = TokenStream.LA(1);
-					if ( !(_la==DELETE_ || _la==UPDATE_) ) {
+					if ( !(_la==DELETE || _la==UPDATE) ) {
 					ErrorHandler.RecoverInline(this);
 					}
 					else {
 						ErrorHandler.ReportMatch(this);
 					    Consume();
 					}
-					State = 608;
+					State = 620;
 					ErrorHandler.Sync(this);
 					switch (TokenStream.LA(1)) {
-					case SET_:
+					case SET:
 						{
-						State = 602;
-						Match(SET_);
-						State = 603;
+						State = 614;
+						Match(SET);
+						State = 615;
 						_la = TokenStream.LA(1);
-						if ( !(_la==DEFAULT_ || _la==NULL_) ) {
+						if ( !(_la==DEFAULT || _la==NULL) ) {
 						ErrorHandler.RecoverInline(this);
 						}
 						else {
@@ -2767,24 +2766,24 @@ public partial class SQLiteParser : Parser {
 						}
 						}
 						break;
-					case CASCADE_:
+					case CASCADE:
 						{
-						State = 604;
-						Match(CASCADE_);
+						State = 616;
+						Match(CASCADE);
 						}
 						break;
-					case RESTRICT_:
+					case RESTRICT:
 						{
-						State = 605;
-						Match(RESTRICT_);
+						State = 617;
+						Match(RESTRICT);
 						}
 						break;
-					case NO_:
+					case NO:
 						{
-						State = 606;
-						Match(NO_);
-						State = 607;
-						Match(ACTION_);
+						State = 618;
+						Match(NO);
+						State = 619;
+						Match(ACTION);
 						}
 						break;
 					default:
@@ -2792,11 +2791,11 @@ public partial class SQLiteParser : Parser {
 					}
 					}
 					break;
-				case MATCH_:
+				case MATCH:
 					{
-					State = 610;
-					Match(MATCH_);
-					State = 611;
+					State = 622;
+					Match(MATCH);
+					State = 623;
 					name();
 					}
 					break;
@@ -2804,37 +2803,37 @@ public partial class SQLiteParser : Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				State = 616;
+				State = 628;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 625;
+			State = 637;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,69,Context) ) {
 			case 1:
 				{
-				State = 618;
+				State = 630;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==NOT_) {
+				if (_la==NOT) {
 					{
-					State = 617;
-					Match(NOT_);
+					State = 629;
+					Match(NOT);
 					}
 				}
 
-				State = 620;
-				Match(DEFERRABLE_);
-				State = 623;
+				State = 632;
+				Match(DEFERRABLE);
+				State = 635;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==INITIALLY_) {
+				if (_la==INITIALLY) {
 					{
-					State = 621;
-					Match(INITIALLY_);
-					State = 622;
+					State = 633;
+					Match(INITIALLY);
+					State = 634;
 					_la = TokenStream.LA(1);
-					if ( !(_la==DEFERRED_ || _la==IMMEDIATE_) ) {
+					if ( !(_la==DEFERRED || _la==IMMEDIATE) ) {
 					ErrorHandler.RecoverInline(this);
 					}
 					else {
@@ -2861,13 +2860,13 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Conflict_clauseContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ON_() { return GetToken(SQLiteParser.ON_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CONFLICT_() { return GetToken(SQLiteParser.CONFLICT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROLLBACK_() { return GetToken(SQLiteParser.ROLLBACK_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ABORT_() { return GetToken(SQLiteParser.ABORT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FAIL_() { return GetToken(SQLiteParser.FAIL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IGNORE_() { return GetToken(SQLiteParser.IGNORE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REPLACE_() { return GetToken(SQLiteParser.REPLACE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ON() { return GetToken(SQLiteParser.ON, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CONFLICT() { return GetToken(SQLiteParser.CONFLICT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROLLBACK() { return GetToken(SQLiteParser.ROLLBACK, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ABORT() { return GetToken(SQLiteParser.ABORT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FAIL() { return GetToken(SQLiteParser.FAIL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IGNORE() { return GetToken(SQLiteParser.IGNORE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REPLACE() { return GetToken(SQLiteParser.REPLACE, 0); }
 		public Conflict_clauseContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -2899,13 +2898,13 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 627;
-			Match(ON_);
-			State = 628;
-			Match(CONFLICT_);
-			State = 629;
+			State = 639;
+			Match(ON);
+			State = 640;
+			Match(CONFLICT);
+			State = 641;
 			_la = TokenStream.LA(1);
-			if ( !(_la==ABORT_ || (((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 19140298416325121L) != 0) ) {
+			if ( !(_la==ABORT || (((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 19140298416325121L) != 0) ) {
 			ErrorHandler.RecoverInline(this);
 			}
 			else {
@@ -2926,38 +2925,38 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Create_trigger_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CREATE_() { return GetToken(SQLiteParser.CREATE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRIGGER_() { return GetToken(SQLiteParser.TRIGGER_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CREATE() { return GetToken(SQLiteParser.CREATE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRIGGER() { return GetToken(SQLiteParser.TRIGGER, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Trigger_nameContext trigger_name() {
 			return GetRuleContext<Trigger_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ON_() { return GetToken(SQLiteParser.ON_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ON() { return GetToken(SQLiteParser.ON, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Table_nameContext table_name() {
 			return GetRuleContext<Table_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BEGIN_() { return GetToken(SQLiteParser.BEGIN_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode END_() { return GetToken(SQLiteParser.END_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DELETE_() { return GetToken(SQLiteParser.DELETE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INSERT_() { return GetToken(SQLiteParser.INSERT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UPDATE_() { return GetToken(SQLiteParser.UPDATE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF_() { return GetToken(SQLiteParser.IF_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT_() { return GetToken(SQLiteParser.NOT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXISTS_() { return GetToken(SQLiteParser.EXISTS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BEGIN() { return GetToken(SQLiteParser.BEGIN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode END() { return GetToken(SQLiteParser.END, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DELETE() { return GetToken(SQLiteParser.DELETE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INSERT() { return GetToken(SQLiteParser.INSERT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UPDATE() { return GetToken(SQLiteParser.UPDATE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF() { return GetToken(SQLiteParser.IF, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT() { return GetToken(SQLiteParser.NOT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXISTS() { return GetToken(SQLiteParser.EXISTS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Schema_nameContext schema_name() {
 			return GetRuleContext<Schema_nameContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DOT() { return GetToken(SQLiteParser.DOT, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BEFORE_() { return GetToken(SQLiteParser.BEFORE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AFTER_() { return GetToken(SQLiteParser.AFTER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INSTEAD_() { return GetToken(SQLiteParser.INSTEAD_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] OF_() { return GetTokens(SQLiteParser.OF_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OF_(int i) {
-			return GetToken(SQLiteParser.OF_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BEFORE() { return GetToken(SQLiteParser.BEFORE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AFTER() { return GetToken(SQLiteParser.AFTER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INSTEAD() { return GetToken(SQLiteParser.INSTEAD, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] OF() { return GetTokens(SQLiteParser.OF); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OF(int i) {
+			return GetToken(SQLiteParser.OF, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FOR_() { return GetToken(SQLiteParser.FOR_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EACH_() { return GetToken(SQLiteParser.EACH_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROW_() { return GetToken(SQLiteParser.ROW_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHEN_() { return GetToken(SQLiteParser.WHEN_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FOR() { return GetToken(SQLiteParser.FOR, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EACH() { return GetToken(SQLiteParser.EACH, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROW() { return GetToken(SQLiteParser.ROW, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHEN() { return GetToken(SQLiteParser.WHEN, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr() {
 			return GetRuleContext<ExprContext>(0);
 		}
@@ -2965,8 +2964,8 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SCOL(int i) {
 			return GetToken(SQLiteParser.SCOL, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TEMP_() { return GetToken(SQLiteParser.TEMP_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TEMPORARY_() { return GetToken(SQLiteParser.TEMPORARY_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TEMP() { return GetToken(SQLiteParser.TEMP, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TEMPORARY() { return GetToken(SQLiteParser.TEMPORARY, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Column_nameContext[] column_name() {
 			return GetRuleContexts<Column_nameContext>();
 		}
@@ -3032,16 +3031,16 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 631;
-			Match(CREATE_);
-			State = 633;
+			State = 643;
+			Match(CREATE);
+			State = 645;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==TEMP_ || _la==TEMPORARY_) {
+			if (_la==TEMP || _la==TEMPORARY) {
 				{
-				State = 632;
+				State = 644;
 				_la = TokenStream.LA(1);
-				if ( !(_la==TEMP_ || _la==TEMPORARY_) ) {
+				if ( !(_la==TEMP || _la==TEMPORARY) ) {
 				ErrorHandler.RecoverInline(this);
 				}
 				else {
@@ -3051,107 +3050,107 @@ public partial class SQLiteParser : Parser {
 				}
 			}
 
-			State = 635;
-			Match(TRIGGER_);
-			State = 639;
+			State = 647;
+			Match(TRIGGER);
+			State = 651;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,71,Context) ) {
 			case 1:
 				{
-				State = 636;
-				Match(IF_);
-				State = 637;
-				Match(NOT_);
-				State = 638;
-				Match(EXISTS_);
+				State = 648;
+				Match(IF);
+				State = 649;
+				Match(NOT);
+				State = 650;
+				Match(EXISTS);
 				}
 				break;
 			}
-			State = 644;
+			State = 656;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,72,Context) ) {
 			case 1:
 				{
-				State = 641;
+				State = 653;
 				schema_name();
-				State = 642;
+				State = 654;
 				Match(DOT);
 				}
 				break;
 			}
-			State = 646;
+			State = 658;
 			trigger_name();
-			State = 651;
+			State = 663;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case BEFORE_:
+			case BEFORE:
 				{
-				State = 647;
-				Match(BEFORE_);
+				State = 659;
+				Match(BEFORE);
 				}
 				break;
-			case AFTER_:
+			case AFTER:
 				{
-				State = 648;
-				Match(AFTER_);
+				State = 660;
+				Match(AFTER);
 				}
 				break;
-			case INSTEAD_:
+			case INSTEAD:
 				{
-				State = 649;
-				Match(INSTEAD_);
-				State = 650;
-				Match(OF_);
+				State = 661;
+				Match(INSTEAD);
+				State = 662;
+				Match(OF);
 				}
 				break;
-			case DELETE_:
-			case INSERT_:
-			case UPDATE_:
+			case DELETE:
+			case INSERT:
+			case UPDATE:
 				break;
 			default:
 				break;
 			}
-			State = 667;
+			State = 679;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case DELETE_:
+			case DELETE:
 				{
-				State = 653;
-				Match(DELETE_);
-				}
-				break;
-			case INSERT_:
-				{
-				State = 654;
-				Match(INSERT_);
-				}
-				break;
-			case UPDATE_:
-				{
-				State = 655;
-				Match(UPDATE_);
 				State = 665;
+				Match(DELETE);
+				}
+				break;
+			case INSERT:
+				{
+				State = 666;
+				Match(INSERT);
+				}
+				break;
+			case UPDATE:
+				{
+				State = 667;
+				Match(UPDATE);
+				State = 677;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==OF_) {
+				if (_la==OF) {
 					{
-					State = 656;
-					Match(OF_);
-					State = 657;
+					State = 668;
+					Match(OF);
+					State = 669;
 					column_name();
-					State = 662;
+					State = 674;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 					while (_la==COMMA) {
 						{
 						{
-						State = 658;
+						State = 670;
 						Match(COMMA);
-						State = 659;
+						State = 671;
 						column_name();
 						}
 						}
-						State = 664;
+						State = 676;
 						ErrorHandler.Sync(this);
 						_la = TokenStream.LA(1);
 					}
@@ -3163,82 +3162,82 @@ public partial class SQLiteParser : Parser {
 			default:
 				throw new NoViableAltException(this);
 			}
-			State = 669;
-			Match(ON_);
-			State = 670;
+			State = 681;
+			Match(ON);
+			State = 682;
 			table_name();
-			State = 674;
+			State = 686;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==FOR_) {
+			if (_la==FOR) {
 				{
-				State = 671;
-				Match(FOR_);
-				State = 672;
-				Match(EACH_);
-				State = 673;
-				Match(ROW_);
+				State = 683;
+				Match(FOR);
+				State = 684;
+				Match(EACH);
+				State = 685;
+				Match(ROW);
 				}
 			}
 
-			State = 678;
+			State = 690;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==WHEN_) {
+			if (_la==WHEN) {
 				{
-				State = 676;
-				Match(WHEN_);
-				State = 677;
+				State = 688;
+				Match(WHEN);
+				State = 689;
 				expr(0);
 				}
 			}
 
-			State = 680;
-			Match(BEGIN_);
-			State = 689;
+			State = 692;
+			Match(BEGIN);
+			State = 701;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			do {
 				{
 				{
-				State = 685;
+				State = 697;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,79,Context) ) {
 				case 1:
 					{
-					State = 681;
+					State = 693;
 					update_stmt();
 					}
 					break;
 				case 2:
 					{
-					State = 682;
+					State = 694;
 					insert_stmt();
 					}
 					break;
 				case 3:
 					{
-					State = 683;
+					State = 695;
 					delete_stmt();
 					}
 					break;
 				case 4:
 					{
-					State = 684;
+					State = 696;
 					select_stmt();
 					}
 					break;
 				}
-				State = 687;
+				State = 699;
 				Match(SCOL);
 				}
 				}
-				State = 691;
+				State = 703;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-			} while ( _la==DELETE_ || (((_la - 88)) & ~0x3f) == 0 && ((1L << (_la - 88)) & 2386912217732743169L) != 0 );
-			State = 693;
-			Match(END_);
+			} while ( _la==DELETE || (((_la - 88)) & ~0x3f) == 0 && ((1L << (_la - 88)) & 2386912217732743169L) != 0 );
+			State = 705;
+			Match(END);
 			}
 		}
 		catch (RecognitionException re) {
@@ -3253,18 +3252,18 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Create_view_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CREATE_() { return GetToken(SQLiteParser.CREATE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VIEW_() { return GetToken(SQLiteParser.VIEW_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CREATE() { return GetToken(SQLiteParser.CREATE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VIEW() { return GetToken(SQLiteParser.VIEW, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public View_nameContext view_name() {
 			return GetRuleContext<View_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS_() { return GetToken(SQLiteParser.AS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS() { return GetToken(SQLiteParser.AS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Select_stmtContext select_stmt() {
 			return GetRuleContext<Select_stmtContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF_() { return GetToken(SQLiteParser.IF_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT_() { return GetToken(SQLiteParser.NOT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXISTS_() { return GetToken(SQLiteParser.EXISTS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF() { return GetToken(SQLiteParser.IF, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT() { return GetToken(SQLiteParser.NOT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXISTS() { return GetToken(SQLiteParser.EXISTS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Schema_nameContext schema_name() {
 			return GetRuleContext<Schema_nameContext>(0);
 		}
@@ -3277,8 +3276,8 @@ public partial class SQLiteParser : Parser {
 			return GetRuleContext<Column_nameContext>(i);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLOSE_PAR() { return GetToken(SQLiteParser.CLOSE_PAR, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TEMP_() { return GetToken(SQLiteParser.TEMP_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TEMPORARY_() { return GetToken(SQLiteParser.TEMPORARY_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TEMP() { return GetToken(SQLiteParser.TEMP, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TEMPORARY() { return GetToken(SQLiteParser.TEMPORARY, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(SQLiteParser.COMMA); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
 			return GetToken(SQLiteParser.COMMA, i);
@@ -3314,16 +3313,16 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 695;
-			Match(CREATE_);
-			State = 697;
+			State = 707;
+			Match(CREATE);
+			State = 709;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==TEMP_ || _la==TEMPORARY_) {
+			if (_la==TEMP || _la==TEMPORARY) {
 				{
-				State = 696;
+				State = 708;
 				_la = TokenStream.LA(1);
-				if ( !(_la==TEMP_ || _la==TEMPORARY_) ) {
+				if ( !(_la==TEMP || _la==TEMPORARY) ) {
 				ErrorHandler.RecoverInline(this);
 				}
 				else {
@@ -3333,69 +3332,69 @@ public partial class SQLiteParser : Parser {
 				}
 			}
 
-			State = 699;
-			Match(VIEW_);
-			State = 703;
+			State = 711;
+			Match(VIEW);
+			State = 715;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,82,Context) ) {
 			case 1:
 				{
-				State = 700;
-				Match(IF_);
-				State = 701;
-				Match(NOT_);
-				State = 702;
-				Match(EXISTS_);
+				State = 712;
+				Match(IF);
+				State = 713;
+				Match(NOT);
+				State = 714;
+				Match(EXISTS);
 				}
 				break;
 			}
-			State = 708;
+			State = 720;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,83,Context) ) {
 			case 1:
 				{
-				State = 705;
+				State = 717;
 				schema_name();
-				State = 706;
+				State = 718;
 				Match(DOT);
 				}
 				break;
 			}
-			State = 710;
-			view_name();
 			State = 722;
+			view_name();
+			State = 734;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==OPEN_PAR) {
 				{
-				State = 711;
+				State = 723;
 				Match(OPEN_PAR);
-				State = 712;
+				State = 724;
 				column_name();
-				State = 717;
+				State = 729;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 713;
+					State = 725;
 					Match(COMMA);
-					State = 714;
+					State = 726;
 					column_name();
 					}
 					}
-					State = 719;
+					State = 731;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 720;
+				State = 732;
 				Match(CLOSE_PAR);
 				}
 			}
 
-			State = 724;
-			Match(AS_);
-			State = 725;
+			State = 736;
+			Match(AS);
+			State = 737;
 			select_stmt();
 			}
 		}
@@ -3411,19 +3410,19 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Create_virtual_table_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CREATE_() { return GetToken(SQLiteParser.CREATE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VIRTUAL_() { return GetToken(SQLiteParser.VIRTUAL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TABLE_() { return GetToken(SQLiteParser.TABLE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CREATE() { return GetToken(SQLiteParser.CREATE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VIRTUAL() { return GetToken(SQLiteParser.VIRTUAL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TABLE() { return GetToken(SQLiteParser.TABLE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Table_nameContext table_name() {
 			return GetRuleContext<Table_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode USING_() { return GetToken(SQLiteParser.USING_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode USING() { return GetToken(SQLiteParser.USING, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Module_nameContext module_name() {
 			return GetRuleContext<Module_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF_() { return GetToken(SQLiteParser.IF_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT_() { return GetToken(SQLiteParser.NOT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXISTS_() { return GetToken(SQLiteParser.EXISTS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF() { return GetToken(SQLiteParser.IF, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT() { return GetToken(SQLiteParser.NOT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXISTS() { return GetToken(SQLiteParser.EXISTS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Schema_nameContext schema_name() {
 			return GetRuleContext<Schema_nameContext>(0);
 		}
@@ -3471,70 +3470,70 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 727;
-			Match(CREATE_);
-			State = 728;
-			Match(VIRTUAL_);
-			State = 729;
-			Match(TABLE_);
-			State = 733;
+			State = 739;
+			Match(CREATE);
+			State = 740;
+			Match(VIRTUAL);
+			State = 741;
+			Match(TABLE);
+			State = 745;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,86,Context) ) {
 			case 1:
 				{
-				State = 730;
-				Match(IF_);
-				State = 731;
-				Match(NOT_);
-				State = 732;
-				Match(EXISTS_);
+				State = 742;
+				Match(IF);
+				State = 743;
+				Match(NOT);
+				State = 744;
+				Match(EXISTS);
 				}
 				break;
 			}
-			State = 738;
+			State = 750;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,87,Context) ) {
 			case 1:
 				{
-				State = 735;
+				State = 747;
 				schema_name();
-				State = 736;
+				State = 748;
 				Match(DOT);
 				}
 				break;
 			}
-			State = 740;
+			State = 752;
 			table_name();
-			State = 741;
-			Match(USING_);
-			State = 742;
-			module_name();
+			State = 753;
+			Match(USING);
 			State = 754;
+			module_name();
+			State = 766;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==OPEN_PAR) {
 				{
-				State = 743;
+				State = 755;
 				Match(OPEN_PAR);
-				State = 744;
+				State = 756;
 				module_argument();
-				State = 749;
+				State = 761;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 745;
+					State = 757;
 					Match(COMMA);
-					State = 746;
+					State = 758;
 					module_argument();
 					}
 					}
-					State = 751;
+					State = 763;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 752;
+				State = 764;
 				Match(CLOSE_PAR);
 				}
 			}
@@ -3553,16 +3552,16 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class With_clauseContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WITH_() { return GetToken(SQLiteParser.WITH_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WITH() { return GetToken(SQLiteParser.WITH, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Cte_table_nameContext[] cte_table_name() {
 			return GetRuleContexts<Cte_table_nameContext>();
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public Cte_table_nameContext cte_table_name(int i) {
 			return GetRuleContext<Cte_table_nameContext>(i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] AS_() { return GetTokens(SQLiteParser.AS_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS_(int i) {
-			return GetToken(SQLiteParser.AS_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] AS() { return GetTokens(SQLiteParser.AS); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS(int i) {
+			return GetToken(SQLiteParser.AS, i);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] OPEN_PAR() { return GetTokens(SQLiteParser.OPEN_PAR); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OPEN_PAR(int i) {
@@ -3578,7 +3577,7 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLOSE_PAR(int i) {
 			return GetToken(SQLiteParser.CLOSE_PAR, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RECURSIVE_() { return GetToken(SQLiteParser.RECURSIVE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RECURSIVE() { return GetToken(SQLiteParser.RECURSIVE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(SQLiteParser.COMMA); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
 			return GetToken(SQLiteParser.COMMA, i);
@@ -3614,49 +3613,49 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 756;
-			Match(WITH_);
-			State = 758;
+			State = 768;
+			Match(WITH);
+			State = 770;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,90,Context) ) {
 			case 1:
 				{
-				State = 757;
-				Match(RECURSIVE_);
+				State = 769;
+				Match(RECURSIVE);
 				}
 				break;
 			}
-			State = 760;
+			State = 772;
 			cte_table_name();
-			State = 761;
-			Match(AS_);
-			State = 762;
-			Match(OPEN_PAR);
-			State = 763;
-			select_stmt();
-			State = 764;
-			Match(CLOSE_PAR);
+			State = 773;
+			Match(AS);
 			State = 774;
+			Match(OPEN_PAR);
+			State = 775;
+			select_stmt();
+			State = 776;
+			Match(CLOSE_PAR);
+			State = 786;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				State = 765;
+				State = 777;
 				Match(COMMA);
-				State = 766;
+				State = 778;
 				cte_table_name();
-				State = 767;
-				Match(AS_);
-				State = 768;
+				State = 779;
+				Match(AS);
+				State = 780;
 				Match(OPEN_PAR);
-				State = 769;
+				State = 781;
 				select_stmt();
-				State = 770;
+				State = 782;
 				Match(CLOSE_PAR);
 				}
 				}
-				State = 776;
+				State = 788;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -3720,34 +3719,34 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 777;
-			table_name();
 			State = 789;
+			table_name();
+			State = 801;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==OPEN_PAR) {
 				{
-				State = 778;
+				State = 790;
 				Match(OPEN_PAR);
-				State = 779;
+				State = 791;
 				column_name();
-				State = 784;
+				State = 796;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 780;
+					State = 792;
 					Match(COMMA);
-					State = 781;
+					State = 793;
 					column_name();
 					}
 					}
-					State = 786;
+					State = 798;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 787;
+				State = 799;
 				Match(CLOSE_PAR);
 				}
 			}
@@ -3769,17 +3768,17 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Cte_table_nameContext cte_table_name() {
 			return GetRuleContext<Cte_table_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS_() { return GetToken(SQLiteParser.AS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS() { return GetToken(SQLiteParser.AS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OPEN_PAR() { return GetToken(SQLiteParser.OPEN_PAR, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Initial_selectContext initial_select() {
 			return GetRuleContext<Initial_selectContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNION_() { return GetToken(SQLiteParser.UNION_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNION() { return GetToken(SQLiteParser.UNION, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Recursive_selectContext recursive_select() {
 			return GetRuleContext<Recursive_selectContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLOSE_PAR() { return GetToken(SQLiteParser.CLOSE_PAR, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALL_() { return GetToken(SQLiteParser.ALL_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALL() { return GetToken(SQLiteParser.ALL, 0); }
 		public Recursive_cteContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -3811,29 +3810,29 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 791;
+			State = 803;
 			cte_table_name();
-			State = 792;
-			Match(AS_);
-			State = 793;
+			State = 804;
+			Match(AS);
+			State = 805;
 			Match(OPEN_PAR);
-			State = 794;
+			State = 806;
 			initial_select();
-			State = 795;
-			Match(UNION_);
-			State = 797;
+			State = 807;
+			Match(UNION);
+			State = 809;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==ALL_) {
+			if (_la==ALL) {
 				{
-				State = 796;
-				Match(ALL_);
+				State = 808;
+				Match(ALL);
 				}
 			}
 
-			State = 799;
+			State = 811;
 			recursive_select();
-			State = 800;
+			State = 812;
 			Match(CLOSE_PAR);
 			}
 		}
@@ -3852,7 +3851,7 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Table_nameContext table_name() {
 			return GetRuleContext<Table_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS_() { return GetToken(SQLiteParser.AS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS() { return GetToken(SQLiteParser.AS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] OPEN_PAR() { return GetTokens(SQLiteParser.OPEN_PAR); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OPEN_PAR(int i) {
 			return GetToken(SQLiteParser.OPEN_PAR, i);
@@ -3905,45 +3904,45 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 802;
-			table_name();
 			State = 814;
+			table_name();
+			State = 826;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==OPEN_PAR) {
 				{
-				State = 803;
+				State = 815;
 				Match(OPEN_PAR);
-				State = 804;
+				State = 816;
 				column_name();
-				State = 809;
+				State = 821;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 805;
+					State = 817;
 					Match(COMMA);
-					State = 806;
+					State = 818;
 					column_name();
 					}
 					}
-					State = 811;
+					State = 823;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 812;
+				State = 824;
 				Match(CLOSE_PAR);
 				}
 			}
 
-			State = 816;
-			Match(AS_);
-			State = 817;
+			State = 828;
+			Match(AS);
+			State = 829;
 			Match(OPEN_PAR);
-			State = 818;
+			State = 830;
 			select_stmt();
-			State = 819;
+			State = 831;
 			Match(CLOSE_PAR);
 			}
 		}
@@ -3959,15 +3958,15 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Delete_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DELETE_() { return GetToken(SQLiteParser.DELETE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FROM_() { return GetToken(SQLiteParser.FROM_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DELETE() { return GetToken(SQLiteParser.DELETE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FROM() { return GetToken(SQLiteParser.FROM, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Qualified_table_nameContext qualified_table_name() {
 			return GetRuleContext<Qualified_table_nameContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public With_clauseContext with_clause() {
 			return GetRuleContext<With_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE_() { return GetToken(SQLiteParser.WHERE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE() { return GetToken(SQLiteParser.WHERE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr() {
 			return GetRuleContext<ExprContext>(0);
 		}
@@ -4005,40 +4004,40 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 822;
+			State = 834;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==WITH_) {
+			if (_la==WITH) {
 				{
-				State = 821;
+				State = 833;
 				with_clause();
 				}
 			}
 
-			State = 824;
-			Match(DELETE_);
-			State = 825;
-			Match(FROM_);
-			State = 826;
+			State = 836;
+			Match(DELETE);
+			State = 837;
+			Match(FROM);
+			State = 838;
 			qualified_table_name();
-			State = 829;
+			State = 841;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==WHERE_) {
+			if (_la==WHERE) {
 				{
-				State = 827;
-				Match(WHERE_);
-				State = 828;
+				State = 839;
+				Match(WHERE);
+				State = 840;
 				expr(0);
 				}
 			}
 
-			State = 832;
+			State = 844;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==RETURNING_) {
+			if (_la==RETURNING) {
 				{
-				State = 831;
+				State = 843;
 				returning_clause();
 				}
 			}
@@ -4057,26 +4056,26 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Delete_stmt_limitedContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DELETE_() { return GetToken(SQLiteParser.DELETE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FROM_() { return GetToken(SQLiteParser.FROM_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DELETE() { return GetToken(SQLiteParser.DELETE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FROM() { return GetToken(SQLiteParser.FROM, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Qualified_table_nameContext qualified_table_name() {
 			return GetRuleContext<Qualified_table_nameContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public With_clauseContext with_clause() {
 			return GetRuleContext<With_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE_() { return GetToken(SQLiteParser.WHERE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE() { return GetToken(SQLiteParser.WHERE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr() {
 			return GetRuleContext<ExprContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public Returning_clauseContext returning_clause() {
 			return GetRuleContext<Returning_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Limit_stmtContext limit_stmt() {
-			return GetRuleContext<Limit_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Limit_clauseContext limit_clause() {
+			return GetRuleContext<Limit_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Order_by_stmtContext order_by_stmt() {
-			return GetRuleContext<Order_by_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Order_by_clauseContext order_by_clause() {
+			return GetRuleContext<Order_by_clauseContext>(0);
 		}
 		public Delete_stmt_limitedContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -4109,61 +4108,61 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 835;
+			State = 847;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==WITH_) {
+			if (_la==WITH) {
 				{
-				State = 834;
+				State = 846;
 				with_clause();
 				}
 			}
 
-			State = 837;
-			Match(DELETE_);
-			State = 838;
-			Match(FROM_);
-			State = 839;
+			State = 849;
+			Match(DELETE);
+			State = 850;
+			Match(FROM);
+			State = 851;
 			qualified_table_name();
-			State = 842;
+			State = 854;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==WHERE_) {
+			if (_la==WHERE) {
 				{
-				State = 840;
-				Match(WHERE_);
-				State = 841;
+				State = 852;
+				Match(WHERE);
+				State = 853;
 				expr(0);
 				}
 			}
 
-			State = 845;
+			State = 857;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==RETURNING_) {
+			if (_la==RETURNING) {
 				{
-				State = 844;
+				State = 856;
 				returning_clause();
 				}
 			}
 
-			State = 851;
+			State = 863;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==LIMIT_ || _la==ORDER_) {
+			if (_la==LIMIT || _la==ORDER) {
 				{
-				State = 848;
+				State = 860;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==ORDER_) {
+				if (_la==ORDER) {
 					{
-					State = 847;
-					order_by_stmt();
+					State = 859;
+					order_by_clause();
 					}
 				}
 
-				State = 850;
-				limit_stmt();
+				State = 862;
+				limit_clause();
 				}
 			}
 
@@ -4181,11 +4180,11 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Detach_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DETACH_() { return GetToken(SQLiteParser.DETACH_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DETACH() { return GetToken(SQLiteParser.DETACH, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Schema_nameContext schema_name() {
 			return GetRuleContext<Schema_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DATABASE_() { return GetToken(SQLiteParser.DATABASE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DATABASE() { return GetToken(SQLiteParser.DATABASE, 0); }
 		public Detach_stmtContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -4216,19 +4215,19 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 853;
-			Match(DETACH_);
-			State = 855;
+			State = 865;
+			Match(DETACH);
+			State = 867;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,105,Context) ) {
 			case 1:
 				{
-				State = 854;
-				Match(DATABASE_);
+				State = 866;
+				Match(DATABASE);
 				}
 				break;
 			}
-			State = 857;
+			State = 869;
 			schema_name();
 			}
 		}
@@ -4245,16 +4244,16 @@ public partial class SQLiteParser : Parser {
 
 	public partial class Drop_stmtContext : ParserRuleContext {
 		public IToken @object;
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DROP_() { return GetToken(SQLiteParser.DROP_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DROP() { return GetToken(SQLiteParser.DROP, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Any_nameContext any_name() {
 			return GetRuleContext<Any_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INDEX_() { return GetToken(SQLiteParser.INDEX_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TABLE_() { return GetToken(SQLiteParser.TABLE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRIGGER_() { return GetToken(SQLiteParser.TRIGGER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VIEW_() { return GetToken(SQLiteParser.VIEW_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF_() { return GetToken(SQLiteParser.IF_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXISTS_() { return GetToken(SQLiteParser.EXISTS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INDEX() { return GetToken(SQLiteParser.INDEX, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TABLE() { return GetToken(SQLiteParser.TABLE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRIGGER() { return GetToken(SQLiteParser.TRIGGER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VIEW() { return GetToken(SQLiteParser.VIEW, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF() { return GetToken(SQLiteParser.IF, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXISTS() { return GetToken(SQLiteParser.EXISTS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Schema_nameContext schema_name() {
 			return GetRuleContext<Schema_nameContext>(0);
 		}
@@ -4290,9 +4289,9 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 859;
-			Match(DROP_);
-			State = 860;
+			State = 871;
+			Match(DROP);
+			State = 872;
 			_localctx.@object = TokenStream.LT(1);
 			_la = TokenStream.LA(1);
 			if ( !((((_la - 84)) & ~0x3f) == 0 && ((1L << (_la - 84)) & 2324138882699886593L) != 0) ) {
@@ -4302,31 +4301,31 @@ public partial class SQLiteParser : Parser {
 				ErrorHandler.ReportMatch(this);
 			    Consume();
 			}
-			State = 863;
+			State = 875;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,106,Context) ) {
 			case 1:
 				{
-				State = 861;
-				Match(IF_);
-				State = 862;
-				Match(EXISTS_);
+				State = 873;
+				Match(IF);
+				State = 874;
+				Match(EXISTS);
 				}
 				break;
 			}
-			State = 868;
+			State = 880;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,107,Context) ) {
 			case 1:
 				{
-				State = 865;
+				State = 877;
 				schema_name();
-				State = 866;
+				State = 878;
 				Match(DOT);
 				}
 				break;
 			}
-			State = 870;
+			State = 882;
 			any_name();
 			}
 		}
@@ -4380,32 +4379,32 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Over_clauseContext over_clause() {
 			return GetRuleContext<Over_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DISTINCT_() { return GetToken(SQLiteParser.DISTINCT_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DISTINCT() { return GetToken(SQLiteParser.DISTINCT, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(SQLiteParser.COMMA); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
 			return GetToken(SQLiteParser.COMMA, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CAST_() { return GetToken(SQLiteParser.CAST_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS_() { return GetToken(SQLiteParser.AS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CAST() { return GetToken(SQLiteParser.CAST, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS() { return GetToken(SQLiteParser.AS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Type_nameContext type_name() {
 			return GetRuleContext<Type_nameContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public Select_stmtContext select_stmt() {
 			return GetRuleContext<Select_stmtContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXISTS_() { return GetToken(SQLiteParser.EXISTS_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT_() { return GetToken(SQLiteParser.NOT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CASE_() { return GetToken(SQLiteParser.CASE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode END_() { return GetToken(SQLiteParser.END_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] WHEN_() { return GetTokens(SQLiteParser.WHEN_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHEN_(int i) {
-			return GetToken(SQLiteParser.WHEN_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXISTS() { return GetToken(SQLiteParser.EXISTS, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT() { return GetToken(SQLiteParser.NOT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CASE() { return GetToken(SQLiteParser.CASE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode END() { return GetToken(SQLiteParser.END, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] WHEN() { return GetTokens(SQLiteParser.WHEN); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHEN(int i) {
+			return GetToken(SQLiteParser.WHEN, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] THEN_() { return GetTokens(SQLiteParser.THEN_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode THEN_(int i) {
-			return GetToken(SQLiteParser.THEN_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] THEN() { return GetTokens(SQLiteParser.THEN); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode THEN(int i) {
+			return GetToken(SQLiteParser.THEN, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ELSE_() { return GetToken(SQLiteParser.ELSE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ELSE() { return GetToken(SQLiteParser.ELSE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Raise_functionContext raise_function() {
 			return GetRuleContext<Raise_functionContext>(0);
 		}
@@ -4426,23 +4425,23 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EQ() { return GetToken(SQLiteParser.EQ, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT_EQ1() { return GetToken(SQLiteParser.NOT_EQ1, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT_EQ2() { return GetToken(SQLiteParser.NOT_EQ2, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IS_() { return GetToken(SQLiteParser.IS_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IN_() { return GetToken(SQLiteParser.IN_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LIKE_() { return GetToken(SQLiteParser.LIKE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GLOB_() { return GetToken(SQLiteParser.GLOB_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MATCH_() { return GetToken(SQLiteParser.MATCH_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REGEXP_() { return GetToken(SQLiteParser.REGEXP_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AND_() { return GetToken(SQLiteParser.AND_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OR_() { return GetToken(SQLiteParser.OR_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BETWEEN_() { return GetToken(SQLiteParser.BETWEEN_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLLATE_() { return GetToken(SQLiteParser.COLLATE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IS() { return GetToken(SQLiteParser.IS, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IN() { return GetToken(SQLiteParser.IN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LIKE() { return GetToken(SQLiteParser.LIKE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GLOB() { return GetToken(SQLiteParser.GLOB, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MATCH() { return GetToken(SQLiteParser.MATCH, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REGEXP() { return GetToken(SQLiteParser.REGEXP, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AND() { return GetToken(SQLiteParser.AND, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OR() { return GetToken(SQLiteParser.OR, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BETWEEN() { return GetToken(SQLiteParser.BETWEEN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLLATE() { return GetToken(SQLiteParser.COLLATE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Collation_nameContext collation_name() {
 			return GetRuleContext<Collation_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ESCAPE_() { return GetToken(SQLiteParser.ESCAPE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ISNULL_() { return GetToken(SQLiteParser.ISNULL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOTNULL_() { return GetToken(SQLiteParser.NOTNULL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NULL_() { return GetToken(SQLiteParser.NULL_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ESCAPE() { return GetToken(SQLiteParser.ESCAPE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ISNULL() { return GetToken(SQLiteParser.ISNULL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOTNULL() { return GetToken(SQLiteParser.NOTNULL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NULL() { return GetToken(SQLiteParser.NULL, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Table_function_nameContext table_function_name() {
 			return GetRuleContext<Table_function_nameContext>(0);
 		}
@@ -4486,227 +4485,227 @@ public partial class SQLiteParser : Parser {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 960;
+			State = 972;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,121,Context) ) {
 			case 1:
 				{
-				State = 873;
+				State = 885;
 				literal_value();
 				}
 				break;
 			case 2:
 				{
-				State = 874;
+				State = 886;
 				Match(BIND_PARAMETER);
 				}
 				break;
 			case 3:
 				{
-				State = 883;
+				State = 895;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,109,Context) ) {
 				case 1:
 					{
-					State = 878;
+					State = 890;
 					ErrorHandler.Sync(this);
 					switch ( Interpreter.AdaptivePredict(TokenStream,108,Context) ) {
 					case 1:
 						{
-						State = 875;
+						State = 887;
 						schema_name();
-						State = 876;
+						State = 888;
 						Match(DOT);
 						}
 						break;
 					}
-					State = 880;
+					State = 892;
 					table_name();
-					State = 881;
+					State = 893;
 					Match(DOT);
 					}
 					break;
 				}
-				State = 885;
+				State = 897;
 				column_name();
 				}
 				break;
 			case 4:
 				{
-				State = 886;
+				State = 898;
 				unary_operator();
-				State = 887;
+				State = 899;
 				expr(21);
 				}
 				break;
 			case 5:
 				{
-				State = 889;
+				State = 901;
 				function_name();
-				State = 890;
+				State = 902;
 				Match(OPEN_PAR);
-				State = 903;
+				State = 915;
 				ErrorHandler.Sync(this);
 				switch (TokenStream.LA(1)) {
 				case OPEN_PAR:
 				case PLUS:
 				case MINUS:
 				case TILDE:
-				case ABORT_:
-				case ACTION_:
-				case ADD_:
-				case AFTER_:
-				case ALL_:
-				case ALTER_:
-				case ANALYZE_:
-				case AND_:
-				case AS_:
-				case ASC_:
-				case ATTACH_:
-				case AUTOINCREMENT_:
-				case BEFORE_:
-				case BEGIN_:
-				case BETWEEN_:
-				case BY_:
-				case CASCADE_:
-				case CASE_:
-				case CAST_:
-				case CHECK_:
-				case COLLATE_:
-				case COLUMN_:
-				case COMMIT_:
-				case CONFLICT_:
-				case CONSTRAINT_:
-				case CREATE_:
-				case CROSS_:
-				case CURRENT_DATE_:
-				case CURRENT_TIME_:
-				case CURRENT_TIMESTAMP_:
-				case DATABASE_:
-				case DEFAULT_:
-				case DEFERRABLE_:
-				case DEFERRED_:
-				case DELETE_:
-				case DESC_:
-				case DETACH_:
-				case DISTINCT_:
-				case DROP_:
-				case EACH_:
-				case ELSE_:
-				case END_:
-				case ESCAPE_:
-				case EXCEPT_:
-				case EXCLUSIVE_:
-				case EXISTS_:
-				case EXPLAIN_:
-				case FAIL_:
-				case FOR_:
-				case FOREIGN_:
-				case FROM_:
-				case FULL_:
-				case GLOB_:
-				case GROUP_:
-				case HAVING_:
-				case IF_:
-				case IGNORE_:
-				case IMMEDIATE_:
-				case IN_:
-				case INDEX_:
-				case INDEXED_:
-				case INITIALLY_:
-				case INNER_:
-				case INSERT_:
-				case INSTEAD_:
-				case INTERSECT_:
-				case INTO_:
-				case IS_:
-				case ISNULL_:
-				case JOIN_:
-				case KEY_:
-				case LEFT_:
-				case LIKE_:
-				case LIMIT_:
-				case MATCH_:
-				case NATURAL_:
-				case NO_:
-				case NOT_:
-				case NOTNULL_:
-				case NULL_:
-				case OF_:
-				case OFFSET_:
-				case ON_:
-				case OR_:
-				case ORDER_:
-				case OUTER_:
-				case PLAN_:
-				case PRAGMA_:
-				case PRIMARY_:
-				case QUERY_:
-				case RAISE_:
-				case RECURSIVE_:
-				case REFERENCES_:
-				case REGEXP_:
-				case REINDEX_:
-				case RELEASE_:
-				case RENAME_:
-				case REPLACE_:
-				case RESTRICT_:
-				case RIGHT_:
-				case ROLLBACK_:
-				case ROW_:
-				case ROWS_:
-				case SAVEPOINT_:
-				case SELECT_:
-				case SET_:
-				case TABLE_:
-				case TEMP_:
-				case TEMPORARY_:
-				case THEN_:
-				case TO_:
-				case TRANSACTION_:
-				case TRIGGER_:
-				case UNION_:
-				case UNIQUE_:
-				case UPDATE_:
-				case USING_:
-				case VACUUM_:
-				case VALUES_:
-				case VIEW_:
-				case VIRTUAL_:
-				case WHEN_:
-				case WHERE_:
-				case WITH_:
-				case WITHOUT_:
-				case FIRST_VALUE_:
-				case OVER_:
-				case PARTITION_:
-				case RANGE_:
-				case PRECEDING_:
-				case UNBOUNDED_:
-				case CURRENT_:
-				case FOLLOWING_:
-				case CUME_DIST_:
-				case DENSE_RANK_:
-				case LAG_:
-				case LAST_VALUE_:
-				case LEAD_:
-				case NTH_VALUE_:
-				case NTILE_:
-				case PERCENT_RANK_:
-				case RANK_:
-				case ROW_NUMBER_:
-				case GENERATED_:
-				case ALWAYS_:
-				case STORED_:
-				case TRUE_:
-				case FALSE_:
-				case WINDOW_:
-				case NULLS_:
-				case FIRST_:
-				case LAST_:
-				case FILTER_:
-				case GROUPS_:
-				case EXCLUDE_:
+				case ABORT:
+				case ACTION:
+				case ADD:
+				case AFTER:
+				case ALL:
+				case ALTER:
+				case ANALYZE:
+				case AND:
+				case AS:
+				case ASC:
+				case ATTACH:
+				case AUTOINCREMENT:
+				case BEFORE:
+				case BEGIN:
+				case BETWEEN:
+				case BY:
+				case CASCADE:
+				case CASE:
+				case CAST:
+				case CHECK:
+				case COLLATE:
+				case COLUMN:
+				case COMMIT:
+				case CONFLICT:
+				case CONSTRAINT:
+				case CREATE:
+				case CROSS:
+				case CURRENT_DATE:
+				case CURRENT_TIME:
+				case CURRENT_TIMESTAMP:
+				case DATABASE:
+				case DEFAULT:
+				case DEFERRABLE:
+				case DEFERRED:
+				case DELETE:
+				case DESC:
+				case DETACH:
+				case DISTINCT:
+				case DROP:
+				case EACH:
+				case ELSE:
+				case END:
+				case ESCAPE:
+				case EXCEPT:
+				case EXCLUSIVE:
+				case EXISTS:
+				case EXPLAIN:
+				case FAIL:
+				case FOR:
+				case FOREIGN:
+				case FROM:
+				case FULL:
+				case GLOB:
+				case GROUP:
+				case HAVING:
+				case IF:
+				case IGNORE:
+				case IMMEDIATE:
+				case IN:
+				case INDEX:
+				case INDEXED:
+				case INITIALLY:
+				case INNER:
+				case INSERT:
+				case INSTEAD:
+				case INTERSECT:
+				case INTO:
+				case IS:
+				case ISNULL:
+				case JOIN:
+				case KEY:
+				case LEFT:
+				case LIKE:
+				case LIMIT:
+				case MATCH:
+				case NATURAL:
+				case NO:
+				case NOT:
+				case NOTNULL:
+				case NULL:
+				case OF:
+				case OFFSET:
+				case ON:
+				case OR:
+				case ORDER:
+				case OUTER:
+				case PLAN:
+				case PRAGMA:
+				case PRIMARY:
+				case QUERY:
+				case RAISE:
+				case RECURSIVE:
+				case REFERENCES:
+				case REGEXP:
+				case REINDEX:
+				case RELEASE:
+				case RENAME:
+				case REPLACE:
+				case RESTRICT:
+				case RIGHT:
+				case ROLLBACK:
+				case ROW:
+				case ROWS:
+				case SAVEPOINT:
+				case SELECT:
+				case SET:
+				case TABLE:
+				case TEMP:
+				case TEMPORARY:
+				case THEN:
+				case TO:
+				case TRANSACTION:
+				case TRIGGER:
+				case UNION:
+				case UNIQUE:
+				case UPDATE:
+				case USING:
+				case VACUUM:
+				case VALUES:
+				case VIEW:
+				case VIRTUAL:
+				case WHEN:
+				case WHERE:
+				case WITH:
+				case WITHOUT:
+				case FIRST_VALUE:
+				case OVER:
+				case PARTITION:
+				case RANGE:
+				case PRECEDING:
+				case UNBOUNDED:
+				case CURRENT:
+				case FOLLOWING:
+				case CUME_DIST:
+				case DENSE_RANK:
+				case LAG:
+				case LAST_VALUE:
+				case LEAD:
+				case NTH_VALUE:
+				case NTILE:
+				case PERCENT_RANK:
+				case RANK:
+				case ROW_NUMBER:
+				case GENERATED:
+				case ALWAYS:
+				case STORED:
+				case TRUE:
+				case FALSE:
+				case WINDOW:
+				case NULLS:
+				case FIRST:
+				case LAST:
+				case FILTER:
+				case GROUPS:
+				case EXCLUDE:
 				case IDENTIFIER:
 				case NUMERIC_LITERAL:
 				case BIND_PARAMETER:
@@ -4714,31 +4713,31 @@ public partial class SQLiteParser : Parser {
 				case BLOB_LITERAL:
 					{
 					{
-					State = 892;
+					State = 904;
 					ErrorHandler.Sync(this);
 					switch ( Interpreter.AdaptivePredict(TokenStream,110,Context) ) {
 					case 1:
 						{
-						State = 891;
-						Match(DISTINCT_);
+						State = 903;
+						Match(DISTINCT);
 						}
 						break;
 					}
-					State = 894;
+					State = 906;
 					expr(0);
-					State = 899;
+					State = 911;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 					while (_la==COMMA) {
 						{
 						{
-						State = 895;
+						State = 907;
 						Match(COMMA);
-						State = 896;
+						State = 908;
 						expr(0);
 						}
 						}
-						State = 901;
+						State = 913;
 						ErrorHandler.Sync(this);
 						_la = TokenStream.LA(1);
 					}
@@ -4747,7 +4746,7 @@ public partial class SQLiteParser : Parser {
 					break;
 				case STAR:
 					{
-					State = 902;
+					State = 914;
 					Match(STAR);
 					}
 					break;
@@ -4756,24 +4755,24 @@ public partial class SQLiteParser : Parser {
 				default:
 					break;
 				}
-				State = 905;
+				State = 917;
 				Match(CLOSE_PAR);
-				State = 907;
+				State = 919;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,113,Context) ) {
 				case 1:
 					{
-					State = 906;
+					State = 918;
 					filter_clause();
 					}
 					break;
 				}
-				State = 910;
+				State = 922;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,114,Context) ) {
 				case 1:
 					{
-					State = 909;
+					State = 921;
 					over_clause();
 					}
 					break;
@@ -4782,135 +4781,135 @@ public partial class SQLiteParser : Parser {
 				break;
 			case 6:
 				{
-				State = 912;
+				State = 924;
 				Match(OPEN_PAR);
-				State = 913;
+				State = 925;
 				expr(0);
-				State = 918;
+				State = 930;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 914;
+					State = 926;
 					Match(COMMA);
-					State = 915;
+					State = 927;
 					expr(0);
 					}
 					}
-					State = 920;
+					State = 932;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 921;
+				State = 933;
 				Match(CLOSE_PAR);
 				}
 				break;
 			case 7:
 				{
-				State = 923;
-				Match(CAST_);
-				State = 924;
+				State = 935;
+				Match(CAST);
+				State = 936;
 				Match(OPEN_PAR);
-				State = 925;
+				State = 937;
 				expr(0);
-				State = 926;
-				Match(AS_);
-				State = 927;
+				State = 938;
+				Match(AS);
+				State = 939;
 				type_name();
-				State = 928;
+				State = 940;
 				Match(CLOSE_PAR);
 				}
 				break;
 			case 8:
 				{
-				State = 934;
+				State = 946;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==EXISTS_ || _la==NOT_) {
+				if (_la==EXISTS || _la==NOT) {
 					{
-					State = 931;
+					State = 943;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
-					if (_la==NOT_) {
+					if (_la==NOT) {
 						{
-						State = 930;
-						Match(NOT_);
+						State = 942;
+						Match(NOT);
 						}
 					}
 
-					State = 933;
-					Match(EXISTS_);
+					State = 945;
+					Match(EXISTS);
 					}
 				}
 
-				State = 936;
+				State = 948;
 				Match(OPEN_PAR);
-				State = 937;
+				State = 949;
 				select_stmt();
-				State = 938;
+				State = 950;
 				Match(CLOSE_PAR);
 				}
 				break;
 			case 9:
 				{
-				State = 940;
-				Match(CASE_);
-				State = 942;
+				State = 952;
+				Match(CASE);
+				State = 954;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,118,Context) ) {
 				case 1:
 					{
-					State = 941;
+					State = 953;
 					expr(0);
 					}
 					break;
 				}
-				State = 949;
+				State = 961;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				do {
 					{
 					{
-					State = 944;
-					Match(WHEN_);
-					State = 945;
+					State = 956;
+					Match(WHEN);
+					State = 957;
 					expr(0);
-					State = 946;
-					Match(THEN_);
-					State = 947;
+					State = 958;
+					Match(THEN);
+					State = 959;
 					expr(0);
 					}
 					}
-					State = 951;
+					State = 963;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
-				} while ( _la==WHEN_ );
-				State = 955;
+				} while ( _la==WHEN );
+				State = 967;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==ELSE_) {
+				if (_la==ELSE) {
 					{
-					State = 953;
-					Match(ELSE_);
-					State = 954;
+					State = 965;
+					Match(ELSE);
+					State = 966;
 					expr(0);
 					}
 				}
 
-				State = 957;
-				Match(END_);
+				State = 969;
+				Match(END);
 				}
 				break;
 			case 10:
 				{
-				State = 959;
+				State = 971;
 				raise_function();
 				}
 				break;
 			}
 			Context.Stop = TokenStream.LT(-1);
-			State = 1081;
+			State = 1093;
 			ErrorHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(TokenStream,137,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
@@ -4919,18 +4918,18 @@ public partial class SQLiteParser : Parser {
 						TriggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					State = 1079;
+					State = 1091;
 					ErrorHandler.Sync(this);
 					switch ( Interpreter.AdaptivePredict(TokenStream,136,Context) ) {
 					case 1:
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 962;
+						State = 974;
 						if (!(Precpred(Context, 20))) throw new FailedPredicateException(this, "Precpred(Context, 20)");
-						State = 963;
+						State = 975;
 						Match(PIPE2);
-						State = 964;
+						State = 976;
 						expr(21);
 						}
 						break;
@@ -4938,9 +4937,9 @@ public partial class SQLiteParser : Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 965;
+						State = 977;
 						if (!(Precpred(Context, 19))) throw new FailedPredicateException(this, "Precpred(Context, 19)");
-						State = 966;
+						State = 978;
 						_la = TokenStream.LA(1);
 						if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 12416L) != 0) ) {
 						ErrorHandler.RecoverInline(this);
@@ -4949,7 +4948,7 @@ public partial class SQLiteParser : Parser {
 							ErrorHandler.ReportMatch(this);
 						    Consume();
 						}
-						State = 967;
+						State = 979;
 						expr(20);
 						}
 						break;
@@ -4957,9 +4956,9 @@ public partial class SQLiteParser : Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 968;
+						State = 980;
 						if (!(Precpred(Context, 18))) throw new FailedPredicateException(this, "Precpred(Context, 18)");
-						State = 969;
+						State = 981;
 						_la = TokenStream.LA(1);
 						if ( !(_la==PLUS || _la==MINUS) ) {
 						ErrorHandler.RecoverInline(this);
@@ -4968,7 +4967,7 @@ public partial class SQLiteParser : Parser {
 							ErrorHandler.ReportMatch(this);
 						    Consume();
 						}
-						State = 970;
+						State = 982;
 						expr(19);
 						}
 						break;
@@ -4976,9 +4975,9 @@ public partial class SQLiteParser : Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 971;
+						State = 983;
 						if (!(Precpred(Context, 17))) throw new FailedPredicateException(this, "Precpred(Context, 17)");
-						State = 972;
+						State = 984;
 						_la = TokenStream.LA(1);
 						if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 245760L) != 0) ) {
 						ErrorHandler.RecoverInline(this);
@@ -4987,7 +4986,7 @@ public partial class SQLiteParser : Parser {
 							ErrorHandler.ReportMatch(this);
 						    Consume();
 						}
-						State = 973;
+						State = 985;
 						expr(18);
 						}
 						break;
@@ -4995,9 +4994,9 @@ public partial class SQLiteParser : Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 974;
+						State = 986;
 						if (!(Precpred(Context, 16))) throw new FailedPredicateException(this, "Precpred(Context, 16)");
-						State = 975;
+						State = 987;
 						_la = TokenStream.LA(1);
 						if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 3932160L) != 0) ) {
 						ErrorHandler.RecoverInline(this);
@@ -5006,7 +5005,7 @@ public partial class SQLiteParser : Parser {
 							ErrorHandler.ReportMatch(this);
 						    Consume();
 						}
-						State = 976;
+						State = 988;
 						expr(17);
 						}
 						break;
@@ -5014,81 +5013,81 @@ public partial class SQLiteParser : Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 977;
+						State = 989;
 						if (!(Precpred(Context, 15))) throw new FailedPredicateException(this, "Precpred(Context, 15)");
-						State = 990;
+						State = 1002;
 						ErrorHandler.Sync(this);
 						switch ( Interpreter.AdaptivePredict(TokenStream,122,Context) ) {
 						case 1:
 							{
-							State = 978;
+							State = 990;
 							Match(ASSIGN);
 							}
 							break;
 						case 2:
 							{
-							State = 979;
+							State = 991;
 							Match(EQ);
 							}
 							break;
 						case 3:
 							{
-							State = 980;
+							State = 992;
 							Match(NOT_EQ1);
 							}
 							break;
 						case 4:
 							{
-							State = 981;
+							State = 993;
 							Match(NOT_EQ2);
 							}
 							break;
 						case 5:
 							{
-							State = 982;
-							Match(IS_);
+							State = 994;
+							Match(IS);
 							}
 							break;
 						case 6:
 							{
-							State = 983;
-							Match(IS_);
-							State = 984;
-							Match(NOT_);
+							State = 995;
+							Match(IS);
+							State = 996;
+							Match(NOT);
 							}
 							break;
 						case 7:
 							{
-							State = 985;
-							Match(IN_);
+							State = 997;
+							Match(IN);
 							}
 							break;
 						case 8:
 							{
-							State = 986;
-							Match(LIKE_);
+							State = 998;
+							Match(LIKE);
 							}
 							break;
 						case 9:
 							{
-							State = 987;
-							Match(GLOB_);
+							State = 999;
+							Match(GLOB);
 							}
 							break;
 						case 10:
 							{
-							State = 988;
-							Match(MATCH_);
+							State = 1000;
+							Match(MATCH);
 							}
 							break;
 						case 11:
 							{
-							State = 989;
-							Match(REGEXP_);
+							State = 1001;
+							Match(REGEXP);
 							}
 							break;
 						}
-						State = 992;
+						State = 1004;
 						expr(16);
 						}
 						break;
@@ -5096,11 +5095,11 @@ public partial class SQLiteParser : Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 993;
+						State = 1005;
 						if (!(Precpred(Context, 14))) throw new FailedPredicateException(this, "Precpred(Context, 14)");
-						State = 994;
-						Match(AND_);
-						State = 995;
+						State = 1006;
+						Match(AND);
+						State = 1007;
 						expr(15);
 						}
 						break;
@@ -5108,11 +5107,11 @@ public partial class SQLiteParser : Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 996;
+						State = 1008;
 						if (!(Precpred(Context, 13))) throw new FailedPredicateException(this, "Precpred(Context, 13)");
-						State = 997;
-						Match(OR_);
-						State = 998;
+						State = 1009;
+						Match(OR);
+						State = 1010;
 						expr(14);
 						}
 						break;
@@ -5120,21 +5119,21 @@ public partial class SQLiteParser : Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 999;
+						State = 1011;
 						if (!(Precpred(Context, 6))) throw new FailedPredicateException(this, "Precpred(Context, 6)");
-						State = 1000;
-						Match(IS_);
-						State = 1002;
+						State = 1012;
+						Match(IS);
+						State = 1014;
 						ErrorHandler.Sync(this);
 						switch ( Interpreter.AdaptivePredict(TokenStream,123,Context) ) {
 						case 1:
 							{
-							State = 1001;
-							Match(NOT_);
+							State = 1013;
+							Match(NOT);
 							}
 							break;
 						}
-						State = 1004;
+						State = 1016;
 						expr(7);
 						}
 						break;
@@ -5142,25 +5141,25 @@ public partial class SQLiteParser : Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 1005;
+						State = 1017;
 						if (!(Precpred(Context, 5))) throw new FailedPredicateException(this, "Precpred(Context, 5)");
-						State = 1007;
+						State = 1019;
 						ErrorHandler.Sync(this);
 						_la = TokenStream.LA(1);
-						if (_la==NOT_) {
+						if (_la==NOT) {
 							{
-							State = 1006;
-							Match(NOT_);
+							State = 1018;
+							Match(NOT);
 							}
 						}
 
-						State = 1009;
-						Match(BETWEEN_);
-						State = 1010;
+						State = 1021;
+						Match(BETWEEN);
+						State = 1022;
 						expr(0);
-						State = 1011;
-						Match(AND_);
-						State = 1012;
+						State = 1023;
+						Match(AND);
+						State = 1024;
 						expr(6);
 						}
 						break;
@@ -5168,11 +5167,11 @@ public partial class SQLiteParser : Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 1014;
+						State = 1026;
 						if (!(Precpred(Context, 9))) throw new FailedPredicateException(this, "Precpred(Context, 9)");
-						State = 1015;
-						Match(COLLATE_);
-						State = 1016;
+						State = 1027;
+						Match(COLLATE);
+						State = 1028;
 						collation_name();
 						}
 						break;
@@ -5180,19 +5179,19 @@ public partial class SQLiteParser : Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 1017;
+						State = 1029;
 						if (!(Precpred(Context, 8))) throw new FailedPredicateException(this, "Precpred(Context, 8)");
-						State = 1019;
+						State = 1031;
 						ErrorHandler.Sync(this);
 						_la = TokenStream.LA(1);
-						if (_la==NOT_) {
+						if (_la==NOT) {
 							{
-							State = 1018;
-							Match(NOT_);
+							State = 1030;
+							Match(NOT);
 							}
 						}
 
-						State = 1021;
+						State = 1033;
 						_la = TokenStream.LA(1);
 						if ( !((((_la - 77)) & ~0x3f) == 0 && ((1L << (_la - 77)) & 2199028498433L) != 0) ) {
 						ErrorHandler.RecoverInline(this);
@@ -5201,16 +5200,16 @@ public partial class SQLiteParser : Parser {
 							ErrorHandler.ReportMatch(this);
 						    Consume();
 						}
-						State = 1022;
+						State = 1034;
 						expr(0);
-						State = 1025;
+						State = 1037;
 						ErrorHandler.Sync(this);
 						switch ( Interpreter.AdaptivePredict(TokenStream,126,Context) ) {
 						case 1:
 							{
-							State = 1023;
-							Match(ESCAPE_);
-							State = 1024;
+							State = 1035;
+							Match(ESCAPE);
+							State = 1036;
 							expr(0);
 							}
 							break;
@@ -5221,29 +5220,29 @@ public partial class SQLiteParser : Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 1027;
+						State = 1039;
 						if (!(Precpred(Context, 7))) throw new FailedPredicateException(this, "Precpred(Context, 7)");
-						State = 1032;
+						State = 1044;
 						ErrorHandler.Sync(this);
 						switch (TokenStream.LA(1)) {
-						case ISNULL_:
+						case ISNULL:
 							{
-							State = 1028;
-							Match(ISNULL_);
+							State = 1040;
+							Match(ISNULL);
 							}
 							break;
-						case NOTNULL_:
+						case NOTNULL:
 							{
-							State = 1029;
-							Match(NOTNULL_);
+							State = 1041;
+							Match(NOTNULL);
 							}
 							break;
-						case NOT_:
+						case NOT:
 							{
-							State = 1030;
-							Match(NOT_);
-							State = 1031;
-							Match(NULL_);
+							State = 1042;
+							Match(NOT);
+							State = 1043;
+							Match(NULL);
 							}
 							break;
 						default:
@@ -5255,126 +5254,126 @@ public partial class SQLiteParser : Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 1034;
+						State = 1046;
 						if (!(Precpred(Context, 4))) throw new FailedPredicateException(this, "Precpred(Context, 4)");
-						State = 1036;
+						State = 1048;
 						ErrorHandler.Sync(this);
 						_la = TokenStream.LA(1);
-						if (_la==NOT_) {
+						if (_la==NOT) {
 							{
-							State = 1035;
-							Match(NOT_);
+							State = 1047;
+							Match(NOT);
 							}
 						}
 
-						State = 1038;
-						Match(IN_);
-						State = 1077;
+						State = 1050;
+						Match(IN);
+						State = 1089;
 						ErrorHandler.Sync(this);
 						switch ( Interpreter.AdaptivePredict(TokenStream,135,Context) ) {
 						case 1:
 							{
-							State = 1039;
+							State = 1051;
 							Match(OPEN_PAR);
-							State = 1049;
+							State = 1061;
 							ErrorHandler.Sync(this);
 							switch ( Interpreter.AdaptivePredict(TokenStream,130,Context) ) {
 							case 1:
 								{
-								State = 1040;
+								State = 1052;
 								select_stmt();
 								}
 								break;
 							case 2:
 								{
-								State = 1041;
+								State = 1053;
 								expr(0);
-								State = 1046;
+								State = 1058;
 								ErrorHandler.Sync(this);
 								_la = TokenStream.LA(1);
 								while (_la==COMMA) {
 									{
 									{
-									State = 1042;
+									State = 1054;
 									Match(COMMA);
-									State = 1043;
+									State = 1055;
 									expr(0);
 									}
 									}
-									State = 1048;
+									State = 1060;
 									ErrorHandler.Sync(this);
 									_la = TokenStream.LA(1);
 								}
 								}
 								break;
 							}
-							State = 1051;
+							State = 1063;
 							Match(CLOSE_PAR);
 							}
 							break;
 						case 2:
 							{
-							State = 1055;
+							State = 1067;
 							ErrorHandler.Sync(this);
 							switch ( Interpreter.AdaptivePredict(TokenStream,131,Context) ) {
 							case 1:
 								{
-								State = 1052;
+								State = 1064;
 								schema_name();
-								State = 1053;
+								State = 1065;
 								Match(DOT);
 								}
 								break;
 							}
-							State = 1057;
+							State = 1069;
 							table_name();
 							}
 							break;
 						case 3:
 							{
-							State = 1061;
+							State = 1073;
 							ErrorHandler.Sync(this);
 							switch ( Interpreter.AdaptivePredict(TokenStream,132,Context) ) {
 							case 1:
 								{
-								State = 1058;
+								State = 1070;
 								schema_name();
-								State = 1059;
+								State = 1071;
 								Match(DOT);
 								}
 								break;
 							}
-							State = 1063;
+							State = 1075;
 							table_function_name();
-							State = 1064;
+							State = 1076;
 							Match(OPEN_PAR);
-							State = 1073;
+							State = 1085;
 							ErrorHandler.Sync(this);
 							_la = TokenStream.LA(1);
 							if (((_la) & ~0x3f) == 0 && ((1L << _la) & -33552632L) != 0 || (((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & -1152921504606846977L) != 0 || (((_la - 128)) & ~0x3f) == 0 && ((1L << (_la - 128)) & 4476578029606273023L) != 0) {
 								{
-								State = 1065;
+								State = 1077;
 								expr(0);
-								State = 1070;
+								State = 1082;
 								ErrorHandler.Sync(this);
 								_la = TokenStream.LA(1);
 								while (_la==COMMA) {
 									{
 									{
-									State = 1066;
+									State = 1078;
 									Match(COMMA);
-									State = 1067;
+									State = 1079;
 									expr(0);
 									}
 									}
-									State = 1072;
+									State = 1084;
 									ErrorHandler.Sync(this);
 									_la = TokenStream.LA(1);
 								}
 								}
 							}
 
-							State = 1075;
+							State = 1087;
 							Match(CLOSE_PAR);
 							}
 							break;
@@ -5384,7 +5383,7 @@ public partial class SQLiteParser : Parser {
 					}
 					} 
 				}
-				State = 1083;
+				State = 1095;
 				ErrorHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(TokenStream,137,Context);
 			}
@@ -5402,17 +5401,17 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Raise_functionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RAISE_() { return GetToken(SQLiteParser.RAISE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RAISE() { return GetToken(SQLiteParser.RAISE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OPEN_PAR() { return GetToken(SQLiteParser.OPEN_PAR, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLOSE_PAR() { return GetToken(SQLiteParser.CLOSE_PAR, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IGNORE_() { return GetToken(SQLiteParser.IGNORE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IGNORE() { return GetToken(SQLiteParser.IGNORE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA() { return GetToken(SQLiteParser.COMMA, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Error_messageContext error_message() {
 			return GetRuleContext<Error_messageContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROLLBACK_() { return GetToken(SQLiteParser.ROLLBACK_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ABORT_() { return GetToken(SQLiteParser.ABORT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FAIL_() { return GetToken(SQLiteParser.FAIL_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROLLBACK() { return GetToken(SQLiteParser.ROLLBACK, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ABORT() { return GetToken(SQLiteParser.ABORT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FAIL() { return GetToken(SQLiteParser.FAIL, 0); }
 		public Raise_functionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -5444,42 +5443,42 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1084;
-			Match(RAISE_);
-			State = 1085;
+			State = 1096;
+			Match(RAISE);
+			State = 1097;
 			Match(OPEN_PAR);
-			State = 1090;
+			State = 1102;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case IGNORE_:
+			case IGNORE:
 				{
-				State = 1086;
-				Match(IGNORE_);
+				State = 1098;
+				Match(IGNORE);
 				}
 				break;
-			case ABORT_:
-			case FAIL_:
-			case ROLLBACK_:
+			case ABORT:
+			case FAIL:
+			case ROLLBACK:
 				{
-				State = 1087;
+				State = 1099;
 				_la = TokenStream.LA(1);
-				if ( !(_la==ABORT_ || _la==FAIL_ || _la==ROLLBACK_) ) {
+				if ( !(_la==ABORT || _la==FAIL || _la==ROLLBACK) ) {
 				ErrorHandler.RecoverInline(this);
 				}
 				else {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 1088;
+				State = 1100;
 				Match(COMMA);
-				State = 1089;
+				State = 1101;
 				error_message();
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
-			State = 1092;
+			State = 1104;
 			Match(CLOSE_PAR);
 			}
 		}
@@ -5498,12 +5497,12 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NUMERIC_LITERAL() { return GetToken(SQLiteParser.NUMERIC_LITERAL, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode STRING_LITERAL() { return GetToken(SQLiteParser.STRING_LITERAL, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BLOB_LITERAL() { return GetToken(SQLiteParser.BLOB_LITERAL, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NULL_() { return GetToken(SQLiteParser.NULL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRUE_() { return GetToken(SQLiteParser.TRUE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FALSE_() { return GetToken(SQLiteParser.FALSE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT_TIME_() { return GetToken(SQLiteParser.CURRENT_TIME_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT_DATE_() { return GetToken(SQLiteParser.CURRENT_DATE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT_TIMESTAMP_() { return GetToken(SQLiteParser.CURRENT_TIMESTAMP_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NULL() { return GetToken(SQLiteParser.NULL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRUE() { return GetToken(SQLiteParser.TRUE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FALSE() { return GetToken(SQLiteParser.FALSE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT_TIME() { return GetToken(SQLiteParser.CURRENT_TIME, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT_DATE() { return GetToken(SQLiteParser.CURRENT_DATE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT_TIMESTAMP() { return GetToken(SQLiteParser.CURRENT_TIMESTAMP, 0); }
 		public Literal_valueContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -5535,7 +5534,7 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1094;
+			State = 1106;
 			_la = TokenStream.LA(1);
 			if ( !((((_la - 52)) & ~0x3f) == 0 && ((1L << (_la - 52)) & 4503599627370503L) != 0 || (((_la - 172)) & ~0x3f) == 0 && ((1L << (_la - 172)) & 212995L) != 0) ) {
 			ErrorHandler.RecoverInline(this);
@@ -5558,27 +5557,27 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Insert_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INTO_() { return GetToken(SQLiteParser.INTO_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INTO() { return GetToken(SQLiteParser.INTO, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Table_nameContext table_name() {
 			return GetRuleContext<Table_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INSERT_() { return GetToken(SQLiteParser.INSERT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REPLACE_() { return GetToken(SQLiteParser.REPLACE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OR_() { return GetToken(SQLiteParser.OR_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFAULT_() { return GetToken(SQLiteParser.DEFAULT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VALUES_() { return GetToken(SQLiteParser.VALUES_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INSERT() { return GetToken(SQLiteParser.INSERT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REPLACE() { return GetToken(SQLiteParser.REPLACE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OR() { return GetToken(SQLiteParser.OR, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFAULT() { return GetToken(SQLiteParser.DEFAULT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VALUES() { return GetToken(SQLiteParser.VALUES, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public With_clauseContext with_clause() {
 			return GetRuleContext<With_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROLLBACK_() { return GetToken(SQLiteParser.ROLLBACK_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ABORT_() { return GetToken(SQLiteParser.ABORT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FAIL_() { return GetToken(SQLiteParser.FAIL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IGNORE_() { return GetToken(SQLiteParser.IGNORE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROLLBACK() { return GetToken(SQLiteParser.ROLLBACK, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ABORT() { return GetToken(SQLiteParser.ABORT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FAIL() { return GetToken(SQLiteParser.FAIL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IGNORE() { return GetToken(SQLiteParser.IGNORE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Schema_nameContext schema_name() {
 			return GetRuleContext<Schema_nameContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DOT() { return GetToken(SQLiteParser.DOT, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS_() { return GetToken(SQLiteParser.AS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS() { return GetToken(SQLiteParser.AS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Table_aliasContext table_alias() {
 			return GetRuleContext<Table_aliasContext>(0);
 		}
@@ -5646,40 +5645,40 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1097;
+			State = 1109;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==WITH_) {
+			if (_la==WITH) {
 				{
-				State = 1096;
+				State = 1108;
 				with_clause();
 				}
 			}
 
-			State = 1104;
+			State = 1116;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,140,Context) ) {
 			case 1:
 				{
-				State = 1099;
-				Match(INSERT_);
+				State = 1111;
+				Match(INSERT);
 				}
 				break;
 			case 2:
 				{
-				State = 1100;
-				Match(REPLACE_);
+				State = 1112;
+				Match(REPLACE);
 				}
 				break;
 			case 3:
 				{
-				State = 1101;
-				Match(INSERT_);
-				State = 1102;
-				Match(OR_);
-				State = 1103;
+				State = 1113;
+				Match(INSERT);
+				State = 1114;
+				Match(OR);
+				State = 1115;
 				_la = TokenStream.LA(1);
-				if ( !(_la==ABORT_ || (((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 19140298416325121L) != 0) ) {
+				if ( !(_la==ABORT || (((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 19140298416325121L) != 0) ) {
 				ErrorHandler.RecoverInline(this);
 				}
 				else {
@@ -5689,134 +5688,134 @@ public partial class SQLiteParser : Parser {
 				}
 				break;
 			}
-			State = 1106;
-			Match(INTO_);
-			State = 1110;
+			State = 1118;
+			Match(INTO);
+			State = 1122;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,141,Context) ) {
 			case 1:
 				{
-				State = 1107;
+				State = 1119;
 				schema_name();
-				State = 1108;
+				State = 1120;
 				Match(DOT);
 				}
 				break;
 			}
-			State = 1112;
+			State = 1124;
 			table_name();
-			State = 1115;
+			State = 1127;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==AS_) {
+			if (_la==AS) {
 				{
-				State = 1113;
-				Match(AS_);
-				State = 1114;
+				State = 1125;
+				Match(AS);
+				State = 1126;
 				table_alias();
 				}
 			}
 
-			State = 1128;
+			State = 1140;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==OPEN_PAR) {
 				{
-				State = 1117;
+				State = 1129;
 				Match(OPEN_PAR);
-				State = 1118;
+				State = 1130;
 				column_name();
-				State = 1123;
+				State = 1135;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 1119;
+					State = 1131;
 					Match(COMMA);
-					State = 1120;
+					State = 1132;
 					column_name();
 					}
 					}
-					State = 1125;
+					State = 1137;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 1126;
+				State = 1138;
 				Match(CLOSE_PAR);
 				}
 			}
 
-			State = 1166;
+			State = 1178;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case SELECT_:
-			case VALUES_:
-			case WITH_:
+			case SELECT:
+			case VALUES:
+			case WITH:
 				{
 				{
-				State = 1159;
+				State = 1171;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,148,Context) ) {
 				case 1:
 					{
-					State = 1130;
-					Match(VALUES_);
-					State = 1131;
+					State = 1142;
+					Match(VALUES);
+					State = 1143;
 					Match(OPEN_PAR);
-					State = 1132;
+					State = 1144;
 					expr(0);
-					State = 1137;
+					State = 1149;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 					while (_la==COMMA) {
 						{
 						{
-						State = 1133;
+						State = 1145;
 						Match(COMMA);
-						State = 1134;
+						State = 1146;
 						expr(0);
 						}
 						}
-						State = 1139;
+						State = 1151;
 						ErrorHandler.Sync(this);
 						_la = TokenStream.LA(1);
 					}
-					State = 1140;
+					State = 1152;
 					Match(CLOSE_PAR);
-					State = 1155;
+					State = 1167;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 					while (_la==COMMA) {
 						{
 						{
-						State = 1141;
+						State = 1153;
 						Match(COMMA);
-						State = 1142;
+						State = 1154;
 						Match(OPEN_PAR);
-						State = 1143;
+						State = 1155;
 						expr(0);
-						State = 1148;
+						State = 1160;
 						ErrorHandler.Sync(this);
 						_la = TokenStream.LA(1);
 						while (_la==COMMA) {
 							{
 							{
-							State = 1144;
+							State = 1156;
 							Match(COMMA);
-							State = 1145;
+							State = 1157;
 							expr(0);
 							}
 							}
-							State = 1150;
+							State = 1162;
 							ErrorHandler.Sync(this);
 							_la = TokenStream.LA(1);
 						}
-						State = 1151;
+						State = 1163;
 						Match(CLOSE_PAR);
 						}
 						}
-						State = 1157;
+						State = 1169;
 						ErrorHandler.Sync(this);
 						_la = TokenStream.LA(1);
 					}
@@ -5824,17 +5823,17 @@ public partial class SQLiteParser : Parser {
 					break;
 				case 2:
 					{
-					State = 1158;
+					State = 1170;
 					select_stmt();
 					}
 					break;
 				}
-				State = 1162;
+				State = 1174;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==ON_) {
+				if (_la==ON) {
 					{
-					State = 1161;
+					State = 1173;
 					upsert_clause();
 					}
 				}
@@ -5842,23 +5841,23 @@ public partial class SQLiteParser : Parser {
 				}
 				}
 				break;
-			case DEFAULT_:
+			case DEFAULT:
 				{
-				State = 1164;
-				Match(DEFAULT_);
-				State = 1165;
-				Match(VALUES_);
+				State = 1176;
+				Match(DEFAULT);
+				State = 1177;
+				Match(VALUES);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
-			State = 1169;
+			State = 1181;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==RETURNING_) {
+			if (_la==RETURNING) {
 				{
-				State = 1168;
+				State = 1180;
 				returning_clause();
 				}
 			}
@@ -5877,7 +5876,7 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Returning_clauseContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RETURNING_() { return GetToken(SQLiteParser.RETURNING_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RETURNING() { return GetToken(SQLiteParser.RETURNING, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Result_columnContext[] result_column() {
 			return GetRuleContexts<Result_columnContext>();
 		}
@@ -5919,23 +5918,23 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1171;
-			Match(RETURNING_);
-			State = 1172;
+			State = 1183;
+			Match(RETURNING);
+			State = 1184;
 			result_column();
-			State = 1177;
+			State = 1189;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				State = 1173;
+				State = 1185;
 				Match(COMMA);
-				State = 1174;
+				State = 1186;
 				result_column();
 				}
 				}
-				State = 1179;
+				State = 1191;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -5953,12 +5952,12 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Upsert_clauseContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ON_() { return GetToken(SQLiteParser.ON_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CONFLICT_() { return GetToken(SQLiteParser.CONFLICT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DO_() { return GetToken(SQLiteParser.DO_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOTHING_() { return GetToken(SQLiteParser.NOTHING_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UPDATE_() { return GetToken(SQLiteParser.UPDATE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SET_() { return GetToken(SQLiteParser.SET_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ON() { return GetToken(SQLiteParser.ON, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CONFLICT() { return GetToken(SQLiteParser.CONFLICT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DO() { return GetToken(SQLiteParser.DO, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOTHING() { return GetToken(SQLiteParser.NOTHING, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UPDATE() { return GetToken(SQLiteParser.UPDATE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SET() { return GetToken(SQLiteParser.SET, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OPEN_PAR() { return GetToken(SQLiteParser.OPEN_PAR, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Indexed_columnContext[] indexed_column() {
 			return GetRuleContexts<Indexed_columnContext>();
@@ -5981,9 +5980,9 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
 			return GetToken(SQLiteParser.COMMA, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] WHERE_() { return GetTokens(SQLiteParser.WHERE_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE_(int i) {
-			return GetToken(SQLiteParser.WHERE_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] WHERE() { return GetTokens(SQLiteParser.WHERE); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE(int i) {
+			return GetToken(SQLiteParser.WHERE, i);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public Column_nameContext[] column_name() {
 			return GetRuleContexts<Column_nameContext>();
@@ -6028,45 +6027,45 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1180;
-			Match(ON_);
-			State = 1181;
-			Match(CONFLICT_);
-			State = 1196;
+			State = 1192;
+			Match(ON);
+			State = 1193;
+			Match(CONFLICT);
+			State = 1208;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==OPEN_PAR) {
 				{
-				State = 1182;
+				State = 1194;
 				Match(OPEN_PAR);
-				State = 1183;
+				State = 1195;
 				indexed_column();
-				State = 1188;
+				State = 1200;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 1184;
+					State = 1196;
 					Match(COMMA);
-					State = 1185;
+					State = 1197;
 					indexed_column();
 					}
 					}
-					State = 1190;
+					State = 1202;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 1191;
+				State = 1203;
 				Match(CLOSE_PAR);
-				State = 1194;
+				State = 1206;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==WHERE_) {
+				if (_la==WHERE) {
 					{
-					State = 1192;
-					Match(WHERE_);
-					State = 1193;
+					State = 1204;
+					Match(WHERE);
+					State = 1205;
 					expr(0);
 					}
 				}
@@ -6074,86 +6073,86 @@ public partial class SQLiteParser : Parser {
 				}
 			}
 
-			State = 1198;
-			Match(DO_);
-			State = 1225;
+			State = 1210;
+			Match(DO);
+			State = 1237;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case NOTHING_:
+			case NOTHING:
 				{
-				State = 1199;
-				Match(NOTHING_);
+				State = 1211;
+				Match(NOTHING);
 				}
 				break;
-			case UPDATE_:
+			case UPDATE:
 				{
-				State = 1200;
-				Match(UPDATE_);
-				State = 1201;
-				Match(SET_);
+				State = 1212;
+				Match(UPDATE);
+				State = 1213;
+				Match(SET);
 				{
-				State = 1204;
+				State = 1216;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,156,Context) ) {
 				case 1:
 					{
-					State = 1202;
+					State = 1214;
 					column_name();
 					}
 					break;
 				case 2:
 					{
-					State = 1203;
+					State = 1215;
 					column_name_list();
 					}
 					break;
 				}
-				State = 1206;
-				Match(ASSIGN);
-				State = 1207;
-				expr(0);
 				State = 1218;
+				Match(ASSIGN);
+				State = 1219;
+				expr(0);
+				State = 1230;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 1208;
+					State = 1220;
 					Match(COMMA);
-					State = 1211;
+					State = 1223;
 					ErrorHandler.Sync(this);
 					switch ( Interpreter.AdaptivePredict(TokenStream,157,Context) ) {
 					case 1:
 						{
-						State = 1209;
+						State = 1221;
 						column_name();
 						}
 						break;
 					case 2:
 						{
-						State = 1210;
+						State = 1222;
 						column_name_list();
 						}
 						break;
 					}
-					State = 1213;
+					State = 1225;
 					Match(ASSIGN);
-					State = 1214;
+					State = 1226;
 					expr(0);
 					}
 					}
-					State = 1220;
+					State = 1232;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 1223;
+				State = 1235;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==WHERE_) {
+				if (_la==WHERE) {
 					{
-					State = 1221;
-					Match(WHERE_);
-					State = 1222;
+					State = 1233;
+					Match(WHERE);
+					State = 1234;
 					expr(0);
 					}
 				}
@@ -6178,7 +6177,7 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Pragma_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRAGMA_() { return GetToken(SQLiteParser.PRAGMA_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRAGMA() { return GetToken(SQLiteParser.PRAGMA, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Pragma_nameContext pragma_name() {
 			return GetRuleContext<Pragma_nameContext>(0);
 		}
@@ -6222,68 +6221,68 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1227;
-			Match(PRAGMA_);
-			State = 1231;
+			State = 1239;
+			Match(PRAGMA);
+			State = 1243;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,161,Context) ) {
 			case 1:
 				{
-				State = 1228;
+				State = 1240;
 				schema_name();
-				State = 1229;
+				State = 1241;
 				Match(DOT);
 				}
 				break;
 			}
-			State = 1233;
+			State = 1245;
 			pragma_name();
-			State = 1240;
+			State = 1252;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case ASSIGN:
 				{
-				State = 1234;
+				State = 1246;
 				Match(ASSIGN);
-				State = 1235;
+				State = 1247;
 				pragma_value();
 				}
 				break;
 			case OPEN_PAR:
 				{
-				State = 1236;
+				State = 1248;
 				Match(OPEN_PAR);
-				State = 1237;
+				State = 1249;
 				pragma_value();
-				State = 1238;
+				State = 1250;
 				Match(CLOSE_PAR);
 				}
 				break;
 			case Eof:
 			case SCOL:
-			case ALTER_:
-			case ANALYZE_:
-			case ATTACH_:
-			case BEGIN_:
-			case COMMIT_:
-			case CREATE_:
-			case DELETE_:
-			case DETACH_:
-			case DROP_:
-			case END_:
-			case EXPLAIN_:
-			case INSERT_:
-			case PRAGMA_:
-			case REINDEX_:
-			case RELEASE_:
-			case REPLACE_:
-			case ROLLBACK_:
-			case SAVEPOINT_:
-			case SELECT_:
-			case UPDATE_:
-			case VACUUM_:
-			case VALUES_:
-			case WITH_:
+			case ALTER:
+			case ANALYZE:
+			case ATTACH:
+			case BEGIN:
+			case COMMIT:
+			case CREATE:
+			case DELETE:
+			case DETACH:
+			case DROP:
+			case END:
+			case EXPLAIN:
+			case INSERT:
+			case PRAGMA:
+			case REINDEX:
+			case RELEASE:
+			case REPLACE:
+			case ROLLBACK:
+			case SAVEPOINT:
+			case SELECT:
+			case UPDATE:
+			case VACUUM:
+			case VALUES:
+			case WITH:
 				break;
 			default:
 				break;
@@ -6337,27 +6336,27 @@ public partial class SQLiteParser : Parser {
 		Pragma_valueContext _localctx = new Pragma_valueContext(Context, State);
 		EnterRule(_localctx, 78, RULE_pragma_value);
 		try {
-			State = 1245;
+			State = 1257;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,163,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 1242;
+				State = 1254;
 				signed_number();
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 1243;
+				State = 1255;
 				name();
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 1244;
+				State = 1256;
 				Match(STRING_LITERAL);
 				}
 				break;
@@ -6375,7 +6374,7 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Reindex_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REINDEX_() { return GetToken(SQLiteParser.REINDEX_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REINDEX() { return GetToken(SQLiteParser.REINDEX, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Collation_nameContext collation_name() {
 			return GetRuleContext<Collation_nameContext>(0);
 		}
@@ -6419,43 +6418,43 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1247;
-			Match(REINDEX_);
-			State = 1258;
+			State = 1259;
+			Match(REINDEX);
+			State = 1270;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,166,Context) ) {
 			case 1:
 				{
-				State = 1248;
+				State = 1260;
 				collation_name();
 				}
 				break;
 			case 2:
 				{
-				State = 1252;
+				State = 1264;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,164,Context) ) {
 				case 1:
 					{
-					State = 1249;
+					State = 1261;
 					schema_name();
-					State = 1250;
+					State = 1262;
 					Match(DOT);
 					}
 					break;
 				}
-				State = 1256;
+				State = 1268;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,165,Context) ) {
 				case 1:
 					{
-					State = 1254;
+					State = 1266;
 					table_name();
 					}
 					break;
 				case 2:
 					{
-					State = 1255;
+					State = 1267;
 					index_name();
 					}
 					break;
@@ -6492,11 +6491,11 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Compound_operatorContext compound_operator(int i) {
 			return GetRuleContext<Compound_operatorContext>(i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Order_by_stmtContext order_by_stmt() {
-			return GetRuleContext<Order_by_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Order_by_clauseContext order_by_clause() {
+			return GetRuleContext<Order_by_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Limit_stmtContext limit_stmt() {
-			return GetRuleContext<Limit_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Limit_clauseContext limit_clause() {
+			return GetRuleContext<Limit_clauseContext>(0);
 		}
 		public Select_stmtContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -6530,53 +6529,53 @@ public partial class SQLiteParser : Parser {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1261;
+			State = 1273;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==WITH_) {
+			if (_la==WITH) {
 				{
-				State = 1260;
+				State = 1272;
 				common_table_stmt();
 				}
 			}
 
-			State = 1263;
+			State = 1275;
 			select_core();
-			State = 1269;
+			State = 1281;
 			ErrorHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(TokenStream,168,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					State = 1264;
+					State = 1276;
 					compound_operator();
-					State = 1265;
+					State = 1277;
 					select_core();
 					}
 					} 
 				}
-				State = 1271;
+				State = 1283;
 				ErrorHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(TokenStream,168,Context);
 			}
-			State = 1273;
+			State = 1285;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==ORDER_) {
+			if (_la==ORDER) {
 				{
-				State = 1272;
-				order_by_stmt();
+				State = 1284;
+				order_by_clause();
 				}
 			}
 
-			State = 1276;
+			State = 1288;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==LIMIT_) {
+			if (_la==LIMIT) {
 				{
-				State = 1275;
-				limit_stmt();
+				State = 1287;
+				limit_clause();
 				}
 			}
 
@@ -6594,17 +6593,17 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Join_clauseContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public Table_or_subqueryContext[] table_or_subquery() {
-			return GetRuleContexts<Table_or_subqueryContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public Table_or_subqueryContext table_or_subquery(int i) {
-			return GetRuleContext<Table_or_subqueryContext>(i);
-		}
 		[System.Diagnostics.DebuggerNonUserCode] public Join_operatorContext[] join_operator() {
 			return GetRuleContexts<Join_operatorContext>();
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public Join_operatorContext join_operator(int i) {
 			return GetRuleContext<Join_operatorContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public Table_or_subqueryContext[] table_or_subquery() {
+			return GetRuleContexts<Table_or_subqueryContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public Table_or_subqueryContext table_or_subquery(int i) {
+			return GetRuleContext<Table_or_subqueryContext>(i);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public Join_constraintContext[] join_constraint() {
 			return GetRuleContexts<Join_constraintContext>();
@@ -6643,31 +6642,349 @@ public partial class SQLiteParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1278;
-			table_or_subquery();
-			State = 1286;
+			State = 1295;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while (_la==COMMA || _la==CROSS_ || (((_la - 87)) & ~0x3f) == 0 && ((1L << (_la - 87)) & 8833L) != 0) {
+			do {
 				{
 				{
-				State = 1279;
+				State = 1290;
 				join_operator();
-				State = 1280;
+				State = 1291;
 				table_or_subquery();
-				State = 1282;
+				State = 1293;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,171,Context) ) {
 				case 1:
 					{
-					State = 1281;
+					State = 1292;
 					join_constraint();
 					}
 					break;
 				}
 				}
 				}
-				State = 1288;
+				State = 1297;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			} while ( _la==COMMA || _la==CROSS || (((_la - 87)) & ~0x3f) == 0 && ((1L << (_la - 87)) & 8833L) != 0 );
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Where_clauseContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE() { return GetToken(SQLiteParser.WHERE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr() {
+			return GetRuleContext<ExprContext>(0);
+		}
+		public Where_clauseContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_where_clause; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
+			if (typedListener != null) typedListener.EnterWhere_clause(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
+			if (typedListener != null) typedListener.ExitWhere_clause(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISQLiteParserVisitor<TResult> typedVisitor = visitor as ISQLiteParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitWhere_clause(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Where_clauseContext where_clause() {
+		Where_clauseContext _localctx = new Where_clauseContext(Context, State);
+		EnterRule(_localctx, 86, RULE_where_clause);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 1299;
+			Match(WHERE);
+			State = 1300;
+			expr(0);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Group_by_clauseContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GROUP() { return GetToken(SQLiteParser.GROUP, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY() { return GetToken(SQLiteParser.BY, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ExprContext[] expr() {
+			return GetRuleContexts<ExprContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr(int i) {
+			return GetRuleContext<ExprContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(SQLiteParser.COMMA); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
+			return GetToken(SQLiteParser.COMMA, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public Having_clauseContext having_clause() {
+			return GetRuleContext<Having_clauseContext>(0);
+		}
+		public Group_by_clauseContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_group_by_clause; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
+			if (typedListener != null) typedListener.EnterGroup_by_clause(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
+			if (typedListener != null) typedListener.ExitGroup_by_clause(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISQLiteParserVisitor<TResult> typedVisitor = visitor as ISQLiteParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitGroup_by_clause(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Group_by_clauseContext group_by_clause() {
+		Group_by_clauseContext _localctx = new Group_by_clauseContext(Context, State);
+		EnterRule(_localctx, 88, RULE_group_by_clause);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 1302;
+			Match(GROUP);
+			State = 1303;
+			Match(BY);
+			State = 1304;
+			expr(0);
+			State = 1309;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (_la==COMMA) {
+				{
+				{
+				State = 1305;
+				Match(COMMA);
+				State = 1306;
+				expr(0);
+				}
+				}
+				State = 1311;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			State = 1313;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if (_la==HAVING) {
+				{
+				State = 1312;
+				having_clause();
+				}
+			}
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Having_clauseContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode HAVING() { return GetToken(SQLiteParser.HAVING, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr() {
+			return GetRuleContext<ExprContext>(0);
+		}
+		public Having_clauseContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_having_clause; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
+			if (typedListener != null) typedListener.EnterHaving_clause(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
+			if (typedListener != null) typedListener.ExitHaving_clause(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISQLiteParserVisitor<TResult> typedVisitor = visitor as ISQLiteParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitHaving_clause(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Having_clauseContext having_clause() {
+		Having_clauseContext _localctx = new Having_clauseContext(Context, State);
+		EnterRule(_localctx, 90, RULE_having_clause);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 1315;
+			Match(HAVING);
+			State = 1316;
+			expr(0);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Values_clauseContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VALUES() { return GetToken(SQLiteParser.VALUES, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] OPEN_PAR() { return GetTokens(SQLiteParser.OPEN_PAR); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OPEN_PAR(int i) {
+			return GetToken(SQLiteParser.OPEN_PAR, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ExprContext[] expr() {
+			return GetRuleContexts<ExprContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr(int i) {
+			return GetRuleContext<ExprContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] CLOSE_PAR() { return GetTokens(SQLiteParser.CLOSE_PAR); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLOSE_PAR(int i) {
+			return GetToken(SQLiteParser.CLOSE_PAR, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(SQLiteParser.COMMA); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
+			return GetToken(SQLiteParser.COMMA, i);
+		}
+		public Values_clauseContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_values_clause; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
+			if (typedListener != null) typedListener.EnterValues_clause(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
+			if (typedListener != null) typedListener.ExitValues_clause(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISQLiteParserVisitor<TResult> typedVisitor = visitor as ISQLiteParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitValues_clause(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Values_clauseContext values_clause() {
+		Values_clauseContext _localctx = new Values_clauseContext(Context, State);
+		EnterRule(_localctx, 92, RULE_values_clause);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 1318;
+			Match(VALUES);
+			State = 1319;
+			Match(OPEN_PAR);
+			State = 1320;
+			expr(0);
+			State = 1325;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (_la==COMMA) {
+				{
+				{
+				State = 1321;
+				Match(COMMA);
+				State = 1322;
+				expr(0);
+				}
+				}
+				State = 1327;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			State = 1328;
+			Match(CLOSE_PAR);
+			State = 1343;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (_la==COMMA) {
+				{
+				{
+				State = 1329;
+				Match(COMMA);
+				State = 1330;
+				Match(OPEN_PAR);
+				State = 1331;
+				expr(0);
+				State = 1336;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while (_la==COMMA) {
+					{
+					{
+					State = 1332;
+					Match(COMMA);
+					State = 1333;
+					expr(0);
+					}
+					}
+					State = 1338;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				State = 1339;
+				Match(CLOSE_PAR);
+				}
+				}
+				State = 1345;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -6684,8 +7001,225 @@ public partial class SQLiteParser : Parser {
 		return _localctx;
 	}
 
+	public partial class From_clauseContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FROM() { return GetToken(SQLiteParser.FROM, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public Table_or_subqueryContext[] table_or_subquery() {
+			return GetRuleContexts<Table_or_subqueryContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public Table_or_subqueryContext table_or_subquery(int i) {
+			return GetRuleContext<Table_or_subqueryContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(SQLiteParser.COMMA); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
+			return GetToken(SQLiteParser.COMMA, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public Join_clauseContext join_clause() {
+			return GetRuleContext<Join_clauseContext>(0);
+		}
+		public From_clauseContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_from_clause; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
+			if (typedListener != null) typedListener.EnterFrom_clause(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
+			if (typedListener != null) typedListener.ExitFrom_clause(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISQLiteParserVisitor<TResult> typedVisitor = visitor as ISQLiteParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitFrom_clause(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public From_clauseContext from_clause() {
+		From_clauseContext _localctx = new From_clauseContext(Context, State);
+		EnterRule(_localctx, 94, RULE_from_clause);
+		int _la;
+		try {
+			int _alt;
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 1346;
+			Match(FROM);
+			State = 1347;
+			table_or_subquery();
+			State = 1352;
+			ErrorHandler.Sync(this);
+			_alt = Interpreter.AdaptivePredict(TokenStream,178,Context);
+			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
+				if ( _alt==1 ) {
+					{
+					{
+					State = 1348;
+					Match(COMMA);
+					State = 1349;
+					table_or_subquery();
+					}
+					} 
+				}
+				State = 1354;
+				ErrorHandler.Sync(this);
+				_alt = Interpreter.AdaptivePredict(TokenStream,178,Context);
+			}
+			State = 1356;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if (_la==COMMA || _la==CROSS || (((_la - 87)) & ~0x3f) == 0 && ((1L << (_la - 87)) & 8833L) != 0) {
+				{
+				State = 1355;
+				join_clause();
+				}
+			}
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Window_clauseContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WINDOW() { return GetToken(SQLiteParser.WINDOW, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public Window_nameContext[] window_name() {
+			return GetRuleContexts<Window_nameContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public Window_nameContext window_name(int i) {
+			return GetRuleContext<Window_nameContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] AS() { return GetTokens(SQLiteParser.AS); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS(int i) {
+			return GetToken(SQLiteParser.AS, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public Window_defnContext[] window_defn() {
+			return GetRuleContexts<Window_defnContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public Window_defnContext window_defn(int i) {
+			return GetRuleContext<Window_defnContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(SQLiteParser.COMMA); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
+			return GetToken(SQLiteParser.COMMA, i);
+		}
+		public Window_clauseContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_window_clause; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
+			if (typedListener != null) typedListener.EnterWindow_clause(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
+			if (typedListener != null) typedListener.ExitWindow_clause(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISQLiteParserVisitor<TResult> typedVisitor = visitor as ISQLiteParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitWindow_clause(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Window_clauseContext window_clause() {
+		Window_clauseContext _localctx = new Window_clauseContext(Context, State);
+		EnterRule(_localctx, 96, RULE_window_clause);
+		int _la;
+		try {
+			State = 1380;
+			ErrorHandler.Sync(this);
+			switch (TokenStream.LA(1)) {
+			case WINDOW:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 1358;
+				Match(WINDOW);
+				State = 1359;
+				window_name();
+				State = 1360;
+				Match(AS);
+				State = 1361;
+				window_defn();
+				State = 1369;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while (_la==COMMA) {
+					{
+					{
+					State = 1362;
+					Match(COMMA);
+					State = 1363;
+					window_name();
+					State = 1364;
+					Match(AS);
+					State = 1365;
+					window_defn();
+					}
+					}
+					State = 1371;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				}
+				break;
+			case OPEN_PAR:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 1372;
+				window_defn();
+				State = 1377;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while (_la==COMMA) {
+					{
+					{
+					State = 1373;
+					Match(COMMA);
+					State = 1374;
+					window_defn();
+					}
+					}
+					State = 1379;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
 	public partial class Select_coreContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SELECT_() { return GetToken(SQLiteParser.SELECT_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SELECT() { return GetToken(SQLiteParser.SELECT, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Result_columnContext[] result_column() {
 			return GetRuleContexts<Result_columnContext>();
 		}
@@ -6696,53 +7230,22 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
 			return GetToken(SQLiteParser.COMMA, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FROM_() { return GetToken(SQLiteParser.FROM_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE_() { return GetToken(SQLiteParser.WHERE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ExprContext[] expr() {
-			return GetRuleContexts<ExprContext>();
+		[System.Diagnostics.DebuggerNonUserCode] public From_clauseContext from_clause() {
+			return GetRuleContext<From_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr(int i) {
-			return GetRuleContext<ExprContext>(i);
+		[System.Diagnostics.DebuggerNonUserCode] public Where_clauseContext where_clause() {
+			return GetRuleContext<Where_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GROUP_() { return GetToken(SQLiteParser.GROUP_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY_() { return GetToken(SQLiteParser.BY_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WINDOW_() { return GetToken(SQLiteParser.WINDOW_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public Window_nameContext[] window_name() {
-			return GetRuleContexts<Window_nameContext>();
+		[System.Diagnostics.DebuggerNonUserCode] public Group_by_clauseContext group_by_clause() {
+			return GetRuleContext<Group_by_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Window_nameContext window_name(int i) {
-			return GetRuleContext<Window_nameContext>(i);
+		[System.Diagnostics.DebuggerNonUserCode] public Window_clauseContext window_clause() {
+			return GetRuleContext<Window_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] AS_() { return GetTokens(SQLiteParser.AS_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS_(int i) {
-			return GetToken(SQLiteParser.AS_, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public Window_defnContext[] window_defn() {
-			return GetRuleContexts<Window_defnContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public Window_defnContext window_defn(int i) {
-			return GetRuleContext<Window_defnContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DISTINCT_() { return GetToken(SQLiteParser.DISTINCT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALL_() { return GetToken(SQLiteParser.ALL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public Table_or_subqueryContext[] table_or_subquery() {
-			return GetRuleContexts<Table_or_subqueryContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public Table_or_subqueryContext table_or_subquery(int i) {
-			return GetRuleContext<Table_or_subqueryContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public Join_clauseContext join_clause() {
-			return GetRuleContext<Join_clauseContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode HAVING_() { return GetToken(SQLiteParser.HAVING_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VALUES_() { return GetToken(SQLiteParser.VALUES_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] OPEN_PAR() { return GetTokens(SQLiteParser.OPEN_PAR); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OPEN_PAR(int i) {
-			return GetToken(SQLiteParser.OPEN_PAR, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] CLOSE_PAR() { return GetTokens(SQLiteParser.CLOSE_PAR); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLOSE_PAR(int i) {
-			return GetToken(SQLiteParser.CLOSE_PAR, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DISTINCT() { return GetToken(SQLiteParser.DISTINCT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALL() { return GetToken(SQLiteParser.ALL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public Values_clauseContext values_clause() {
+			return GetRuleContext<Values_clauseContext>(0);
 		}
 		public Select_coreContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -6770,26 +7273,26 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Select_coreContext select_core() {
 		Select_coreContext _localctx = new Select_coreContext(Context, State);
-		EnterRule(_localctx, 86, RULE_select_core);
+		EnterRule(_localctx, 98, RULE_select_core);
 		int _la;
 		try {
-			State = 1379;
+			State = 1407;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case SELECT_:
+			case SELECT:
 				EnterOuterAlt(_localctx, 1);
 				{
 				{
-				State = 1289;
-				Match(SELECT_);
-				State = 1291;
+				State = 1382;
+				Match(SELECT);
+				State = 1384;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,173,Context) ) {
+				switch ( Interpreter.AdaptivePredict(TokenStream,183,Context) ) {
 				case 1:
 					{
-					State = 1290;
+					State = 1383;
 					_la = TokenStream.LA(1);
-					if ( !(_la==ALL_ || _la==DISTINCT_) ) {
+					if ( !(_la==ALL || _la==DISTINCT) ) {
 					ErrorHandler.RecoverInline(this);
 					}
 					else {
@@ -6799,222 +7302,72 @@ public partial class SQLiteParser : Parser {
 					}
 					break;
 				}
-				State = 1293;
+				State = 1386;
 				result_column();
-				State = 1298;
+				State = 1391;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 1294;
+					State = 1387;
 					Match(COMMA);
-					State = 1295;
+					State = 1388;
 					result_column();
 					}
 					}
-					State = 1300;
+					State = 1393;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 1313;
+				State = 1395;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==FROM_) {
+				if (_la==FROM) {
 					{
-					State = 1301;
-					Match(FROM_);
-					State = 1311;
-					ErrorHandler.Sync(this);
-					switch ( Interpreter.AdaptivePredict(TokenStream,176,Context) ) {
-					case 1:
-						{
-						State = 1302;
-						table_or_subquery();
-						State = 1307;
-						ErrorHandler.Sync(this);
-						_la = TokenStream.LA(1);
-						while (_la==COMMA) {
-							{
-							{
-							State = 1303;
-							Match(COMMA);
-							State = 1304;
-							table_or_subquery();
-							}
-							}
-							State = 1309;
-							ErrorHandler.Sync(this);
-							_la = TokenStream.LA(1);
-						}
-						}
-						break;
-					case 2:
-						{
-						State = 1310;
-						join_clause();
-						}
-						break;
-					}
+					State = 1394;
+					from_clause();
 					}
 				}
 
-				State = 1317;
+				State = 1398;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==WHERE_) {
+				if (_la==WHERE) {
 					{
-					State = 1315;
-					Match(WHERE_);
-					State = 1316;
-					expr(0);
+					State = 1397;
+					where_clause();
 					}
 				}
 
-				State = 1333;
+				State = 1401;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==GROUP_) {
+				if (_la==GROUP) {
 					{
-					State = 1319;
-					Match(GROUP_);
-					State = 1320;
-					Match(BY_);
-					State = 1321;
-					expr(0);
-					State = 1326;
-					ErrorHandler.Sync(this);
-					_la = TokenStream.LA(1);
-					while (_la==COMMA) {
-						{
-						{
-						State = 1322;
-						Match(COMMA);
-						State = 1323;
-						expr(0);
-						}
-						}
-						State = 1328;
-						ErrorHandler.Sync(this);
-						_la = TokenStream.LA(1);
-					}
-					State = 1331;
-					ErrorHandler.Sync(this);
-					_la = TokenStream.LA(1);
-					if (_la==HAVING_) {
-						{
-						State = 1329;
-						Match(HAVING_);
-						State = 1330;
-						expr(0);
-						}
-					}
-
+					State = 1400;
+					group_by_clause();
 					}
 				}
 
-				State = 1349;
+				State = 1404;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==WINDOW_) {
+				if (_la==OPEN_PAR || _la==WINDOW) {
 					{
-					State = 1335;
-					Match(WINDOW_);
-					State = 1336;
-					window_name();
-					State = 1337;
-					Match(AS_);
-					State = 1338;
-					window_defn();
-					State = 1346;
-					ErrorHandler.Sync(this);
-					_la = TokenStream.LA(1);
-					while (_la==COMMA) {
-						{
-						{
-						State = 1339;
-						Match(COMMA);
-						State = 1340;
-						window_name();
-						State = 1341;
-						Match(AS_);
-						State = 1342;
-						window_defn();
-						}
-						}
-						State = 1348;
-						ErrorHandler.Sync(this);
-						_la = TokenStream.LA(1);
-					}
+					State = 1403;
+					window_clause();
 					}
 				}
 
 				}
 				}
 				break;
-			case VALUES_:
+			case VALUES:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 1351;
-				Match(VALUES_);
-				State = 1352;
-				Match(OPEN_PAR);
-				State = 1353;
-				expr(0);
-				State = 1358;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-				while (_la==COMMA) {
-					{
-					{
-					State = 1354;
-					Match(COMMA);
-					State = 1355;
-					expr(0);
-					}
-					}
-					State = 1360;
-					ErrorHandler.Sync(this);
-					_la = TokenStream.LA(1);
-				}
-				State = 1361;
-				Match(CLOSE_PAR);
-				State = 1376;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-				while (_la==COMMA) {
-					{
-					{
-					State = 1362;
-					Match(COMMA);
-					State = 1363;
-					Match(OPEN_PAR);
-					State = 1364;
-					expr(0);
-					State = 1369;
-					ErrorHandler.Sync(this);
-					_la = TokenStream.LA(1);
-					while (_la==COMMA) {
-						{
-						{
-						State = 1365;
-						Match(COMMA);
-						State = 1366;
-						expr(0);
-						}
-						}
-						State = 1371;
-						ErrorHandler.Sync(this);
-						_la = TokenStream.LA(1);
-					}
-					State = 1372;
-					Match(CLOSE_PAR);
-					}
-					}
-					State = 1378;
-					ErrorHandler.Sync(this);
-					_la = TokenStream.LA(1);
-				}
+				State = 1406;
+				values_clause();
 				}
 				break;
 			default:
@@ -7062,11 +7415,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Factored_select_stmtContext factored_select_stmt() {
 		Factored_select_stmtContext _localctx = new Factored_select_stmtContext(Context, State);
-		EnterRule(_localctx, 88, RULE_factored_select_stmt);
+		EnterRule(_localctx, 100, RULE_factored_select_stmt);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1381;
+			State = 1409;
 			select_stmt();
 			}
 		}
@@ -7088,11 +7441,11 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Common_table_stmtContext common_table_stmt() {
 			return GetRuleContext<Common_table_stmtContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Order_by_stmtContext order_by_stmt() {
-			return GetRuleContext<Order_by_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Order_by_clauseContext order_by_clause() {
+			return GetRuleContext<Order_by_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Limit_stmtContext limit_stmt() {
-			return GetRuleContext<Limit_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Limit_clauseContext limit_clause() {
+			return GetRuleContext<Limit_clauseContext>(0);
 		}
 		public Simple_select_stmtContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -7120,40 +7473,40 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Simple_select_stmtContext simple_select_stmt() {
 		Simple_select_stmtContext _localctx = new Simple_select_stmtContext(Context, State);
-		EnterRule(_localctx, 90, RULE_simple_select_stmt);
+		EnterRule(_localctx, 102, RULE_simple_select_stmt);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1384;
+			State = 1412;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==WITH_) {
+			if (_la==WITH) {
 				{
-				State = 1383;
+				State = 1411;
 				common_table_stmt();
 				}
 			}
 
-			State = 1386;
+			State = 1414;
 			select_core();
-			State = 1388;
+			State = 1416;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==ORDER_) {
+			if (_la==ORDER) {
 				{
-				State = 1387;
-				order_by_stmt();
+				State = 1415;
+				order_by_clause();
 				}
 			}
 
-			State = 1391;
+			State = 1419;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==LIMIT_) {
+			if (_la==LIMIT) {
 				{
-				State = 1390;
-				limit_stmt();
+				State = 1418;
+				limit_clause();
 				}
 			}
 
@@ -7180,27 +7533,27 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Common_table_stmtContext common_table_stmt() {
 			return GetRuleContext<Common_table_stmtContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Order_by_stmtContext order_by_stmt() {
-			return GetRuleContext<Order_by_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Order_by_clauseContext order_by_clause() {
+			return GetRuleContext<Order_by_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Limit_stmtContext limit_stmt() {
-			return GetRuleContext<Limit_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Limit_clauseContext limit_clause() {
+			return GetRuleContext<Limit_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] UNION_() { return GetTokens(SQLiteParser.UNION_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNION_(int i) {
-			return GetToken(SQLiteParser.UNION_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] UNION() { return GetTokens(SQLiteParser.UNION); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNION(int i) {
+			return GetToken(SQLiteParser.UNION, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] INTERSECT_() { return GetTokens(SQLiteParser.INTERSECT_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INTERSECT_(int i) {
-			return GetToken(SQLiteParser.INTERSECT_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] INTERSECT() { return GetTokens(SQLiteParser.INTERSECT); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INTERSECT(int i) {
+			return GetToken(SQLiteParser.INTERSECT, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] EXCEPT_() { return GetTokens(SQLiteParser.EXCEPT_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXCEPT_(int i) {
-			return GetToken(SQLiteParser.EXCEPT_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] EXCEPT() { return GetTokens(SQLiteParser.EXCEPT); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXCEPT(int i) {
+			return GetToken(SQLiteParser.EXCEPT, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] ALL_() { return GetTokens(SQLiteParser.ALL_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALL_(int i) {
-			return GetToken(SQLiteParser.ALL_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] ALL() { return GetTokens(SQLiteParser.ALL); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALL(int i) {
+			return GetToken(SQLiteParser.ALL, i);
 		}
 		public Compound_select_stmtContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -7228,88 +7581,88 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Compound_select_stmtContext compound_select_stmt() {
 		Compound_select_stmtContext _localctx = new Compound_select_stmtContext(Context, State);
-		EnterRule(_localctx, 92, RULE_compound_select_stmt);
+		EnterRule(_localctx, 104, RULE_compound_select_stmt);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1394;
+			State = 1422;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==WITH_) {
+			if (_la==WITH) {
 				{
-				State = 1393;
+				State = 1421;
 				common_table_stmt();
 				}
 			}
 
-			State = 1396;
+			State = 1424;
 			select_core();
-			State = 1406;
+			State = 1434;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			do {
 				{
 				{
-				State = 1403;
+				State = 1431;
 				ErrorHandler.Sync(this);
 				switch (TokenStream.LA(1)) {
-				case UNION_:
+				case UNION:
 					{
-					State = 1397;
-					Match(UNION_);
-					State = 1399;
+					State = 1425;
+					Match(UNION);
+					State = 1427;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
-					if (_la==ALL_) {
+					if (_la==ALL) {
 						{
-						State = 1398;
-						Match(ALL_);
+						State = 1426;
+						Match(ALL);
 						}
 					}
 
 					}
 					break;
-				case INTERSECT_:
+				case INTERSECT:
 					{
-					State = 1401;
-					Match(INTERSECT_);
+					State = 1429;
+					Match(INTERSECT);
 					}
 					break;
-				case EXCEPT_:
+				case EXCEPT:
 					{
-					State = 1402;
-					Match(EXCEPT_);
+					State = 1430;
+					Match(EXCEPT);
 					}
 					break;
 				default:
 					throw new NoViableAltException(this);
 				}
-				State = 1405;
+				State = 1433;
 				select_core();
 				}
 				}
-				State = 1408;
+				State = 1436;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-			} while ( _la==EXCEPT_ || _la==INTERSECT_ || _la==UNION_ );
-			State = 1411;
+			} while ( _la==EXCEPT || _la==INTERSECT || _la==UNION );
+			State = 1439;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==ORDER_) {
+			if (_la==ORDER) {
 				{
-				State = 1410;
-				order_by_stmt();
+				State = 1438;
+				order_by_clause();
 				}
 			}
 
-			State = 1414;
+			State = 1442;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==LIMIT_) {
+			if (_la==LIMIT) {
 				{
-				State = 1413;
-				limit_stmt();
+				State = 1441;
+				limit_clause();
 				}
 			}
 
@@ -7337,13 +7690,13 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Table_aliasContext table_alias() {
 			return GetRuleContext<Table_aliasContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INDEXED_() { return GetToken(SQLiteParser.INDEXED_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY_() { return GetToken(SQLiteParser.BY_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INDEXED() { return GetToken(SQLiteParser.INDEXED, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY() { return GetToken(SQLiteParser.BY, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Index_nameContext index_name() {
 			return GetRuleContext<Index_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT_() { return GetToken(SQLiteParser.NOT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS_() { return GetToken(SQLiteParser.AS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT() { return GetToken(SQLiteParser.NOT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS() { return GetToken(SQLiteParser.AS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Table_function_nameContext table_function_name() {
 			return GetRuleContext<Table_function_nameContext>(0);
 		}
@@ -7397,114 +7750,115 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Table_or_subqueryContext table_or_subquery() {
 		Table_or_subqueryContext _localctx = new Table_or_subqueryContext(Context, State);
-		EnterRule(_localctx, 94, RULE_table_or_subquery);
+		EnterRule(_localctx, 106, RULE_table_or_subquery);
 		int _la;
 		try {
-			State = 1480;
+			State = 1508;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,209,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,211,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
 				{
-				State = 1419;
-				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,197,Context) ) {
-				case 1:
-					{
-					State = 1416;
-					schema_name();
-					State = 1417;
-					Match(DOT);
-					}
-					break;
-				}
-				State = 1421;
-				table_name();
-				State = 1426;
+				State = 1447;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,199,Context) ) {
 				case 1:
 					{
-					State = 1423;
+					State = 1444;
+					schema_name();
+					State = 1445;
+					Match(DOT);
+					}
+					break;
+				}
+				State = 1449;
+				table_name();
+				State = 1454;
+				ErrorHandler.Sync(this);
+				switch ( Interpreter.AdaptivePredict(TokenStream,201,Context) ) {
+				case 1:
+					{
+					State = 1451;
 					ErrorHandler.Sync(this);
-					switch ( Interpreter.AdaptivePredict(TokenStream,198,Context) ) {
+					switch ( Interpreter.AdaptivePredict(TokenStream,200,Context) ) {
 					case 1:
 						{
-						State = 1422;
-						Match(AS_);
+						State = 1450;
+						Match(AS);
 						}
 						break;
 					}
-					State = 1425;
+					State = 1453;
 					table_alias();
 					}
 					break;
 				}
-				State = 1433;
+				State = 1461;
 				ErrorHandler.Sync(this);
 				switch (TokenStream.LA(1)) {
-				case INDEXED_:
+				case INDEXED:
 					{
-					State = 1428;
-					Match(INDEXED_);
-					State = 1429;
-					Match(BY_);
-					State = 1430;
+					State = 1456;
+					Match(INDEXED);
+					State = 1457;
+					Match(BY);
+					State = 1458;
 					index_name();
 					}
 					break;
-				case NOT_:
+				case NOT:
 					{
-					State = 1431;
-					Match(NOT_);
-					State = 1432;
-					Match(INDEXED_);
+					State = 1459;
+					Match(NOT);
+					State = 1460;
+					Match(INDEXED);
 					}
 					break;
 				case Eof:
 				case SCOL:
+				case OPEN_PAR:
 				case CLOSE_PAR:
 				case COMMA:
-				case ALTER_:
-				case ANALYZE_:
-				case ATTACH_:
-				case BEGIN_:
-				case COMMIT_:
-				case CREATE_:
-				case CROSS_:
-				case DELETE_:
-				case DETACH_:
-				case DROP_:
-				case END_:
-				case EXCEPT_:
-				case EXPLAIN_:
-				case GROUP_:
-				case INNER_:
-				case INSERT_:
-				case INTERSECT_:
-				case JOIN_:
-				case LEFT_:
-				case LIMIT_:
-				case NATURAL_:
-				case ON_:
-				case ORDER_:
-				case PRAGMA_:
-				case REINDEX_:
-				case RELEASE_:
-				case REPLACE_:
-				case RETURNING_:
-				case ROLLBACK_:
-				case SAVEPOINT_:
-				case SELECT_:
-				case UNION_:
-				case UPDATE_:
-				case USING_:
-				case VACUUM_:
-				case VALUES_:
-				case WHERE_:
-				case WITH_:
-				case WINDOW_:
+				case ALTER:
+				case ANALYZE:
+				case ATTACH:
+				case BEGIN:
+				case COMMIT:
+				case CREATE:
+				case CROSS:
+				case DELETE:
+				case DETACH:
+				case DROP:
+				case END:
+				case EXCEPT:
+				case EXPLAIN:
+				case GROUP:
+				case INNER:
+				case INSERT:
+				case INTERSECT:
+				case JOIN:
+				case LEFT:
+				case LIMIT:
+				case NATURAL:
+				case ON:
+				case ORDER:
+				case PRAGMA:
+				case REINDEX:
+				case RELEASE:
+				case REPLACE:
+				case RETURNING:
+				case ROLLBACK:
+				case SAVEPOINT:
+				case SELECT:
+				case UNION:
+				case UPDATE:
+				case USING:
+				case VACUUM:
+				case VALUES:
+				case WHERE:
+				case WITH:
+				case WINDOW:
 					break;
 				default:
 					break;
@@ -7515,58 +7869,58 @@ public partial class SQLiteParser : Parser {
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 1438;
+				State = 1466;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,201,Context) ) {
+				switch ( Interpreter.AdaptivePredict(TokenStream,203,Context) ) {
 				case 1:
 					{
-					State = 1435;
+					State = 1463;
 					schema_name();
-					State = 1436;
+					State = 1464;
 					Match(DOT);
 					}
 					break;
 				}
-				State = 1440;
+				State = 1468;
 				table_function_name();
-				State = 1441;
+				State = 1469;
 				Match(OPEN_PAR);
-				State = 1442;
+				State = 1470;
 				expr(0);
-				State = 1447;
+				State = 1475;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 1443;
+					State = 1471;
 					Match(COMMA);
-					State = 1444;
+					State = 1472;
 					expr(0);
 					}
 					}
-					State = 1449;
+					State = 1477;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 1450;
+				State = 1478;
 				Match(CLOSE_PAR);
-				State = 1455;
+				State = 1483;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,204,Context) ) {
+				switch ( Interpreter.AdaptivePredict(TokenStream,206,Context) ) {
 				case 1:
 					{
-					State = 1452;
+					State = 1480;
 					ErrorHandler.Sync(this);
-					switch ( Interpreter.AdaptivePredict(TokenStream,203,Context) ) {
+					switch ( Interpreter.AdaptivePredict(TokenStream,205,Context) ) {
 					case 1:
 						{
-						State = 1451;
-						Match(AS_);
+						State = 1479;
+						Match(AS);
 						}
 						break;
 					}
-					State = 1454;
+					State = 1482;
 					table_alias();
 					}
 					break;
@@ -7576,28 +7930,28 @@ public partial class SQLiteParser : Parser {
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 1457;
+				State = 1485;
 				Match(OPEN_PAR);
-				State = 1467;
+				State = 1495;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,206,Context) ) {
+				switch ( Interpreter.AdaptivePredict(TokenStream,208,Context) ) {
 				case 1:
 					{
-					State = 1458;
+					State = 1486;
 					table_or_subquery();
-					State = 1463;
+					State = 1491;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 					while (_la==COMMA) {
 						{
 						{
-						State = 1459;
+						State = 1487;
 						Match(COMMA);
-						State = 1460;
+						State = 1488;
 						table_or_subquery();
 						}
 						}
-						State = 1465;
+						State = 1493;
 						ErrorHandler.Sync(this);
 						_la = TokenStream.LA(1);
 					}
@@ -7605,40 +7959,40 @@ public partial class SQLiteParser : Parser {
 					break;
 				case 2:
 					{
-					State = 1466;
+					State = 1494;
 					join_clause();
 					}
 					break;
 				}
-				State = 1469;
+				State = 1497;
 				Match(CLOSE_PAR);
 				}
 				break;
 			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 1471;
+				State = 1499;
 				Match(OPEN_PAR);
-				State = 1472;
+				State = 1500;
 				select_stmt();
-				State = 1473;
+				State = 1501;
 				Match(CLOSE_PAR);
-				State = 1478;
+				State = 1506;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,208,Context) ) {
+				switch ( Interpreter.AdaptivePredict(TokenStream,210,Context) ) {
 				case 1:
 					{
-					State = 1475;
+					State = 1503;
 					ErrorHandler.Sync(this);
-					switch ( Interpreter.AdaptivePredict(TokenStream,207,Context) ) {
+					switch ( Interpreter.AdaptivePredict(TokenStream,209,Context) ) {
 					case 1:
 						{
-						State = 1474;
-						Match(AS_);
+						State = 1502;
+						Match(AS);
 						}
 						break;
 					}
-					State = 1477;
+					State = 1505;
 					table_alias();
 					}
 					break;
@@ -7670,7 +8024,7 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Column_aliasContext column_alias() {
 			return GetRuleContext<Column_aliasContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS_() { return GetToken(SQLiteParser.AS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS() { return GetToken(SQLiteParser.AS, 0); }
 		public Result_columnContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -7697,51 +8051,51 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Result_columnContext result_column() {
 		Result_columnContext _localctx = new Result_columnContext(Context, State);
-		EnterRule(_localctx, 96, RULE_result_column);
+		EnterRule(_localctx, 108, RULE_result_column);
 		int _la;
 		try {
-			State = 1494;
+			State = 1522;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,212,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,214,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 1482;
+				State = 1510;
 				Match(STAR);
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 1483;
+				State = 1511;
 				table_name();
-				State = 1484;
+				State = 1512;
 				Match(DOT);
-				State = 1485;
+				State = 1513;
 				Match(STAR);
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 1487;
+				State = 1515;
 				expr(0);
-				State = 1492;
+				State = 1520;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==AS_ || _la==IDENTIFIER || _la==STRING_LITERAL) {
+				if (_la==AS || _la==IDENTIFIER || _la==STRING_LITERAL) {
 					{
-					State = 1489;
+					State = 1517;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
-					if (_la==AS_) {
+					if (_la==AS) {
 						{
-						State = 1488;
-						Match(AS_);
+						State = 1516;
+						Match(AS);
 						}
 					}
 
-					State = 1491;
+					State = 1519;
 					column_alias();
 					}
 				}
@@ -7763,12 +8117,12 @@ public partial class SQLiteParser : Parser {
 
 	public partial class Join_operatorContext : ParserRuleContext {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA() { return GetToken(SQLiteParser.COMMA, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode JOIN_() { return GetToken(SQLiteParser.JOIN_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NATURAL_() { return GetToken(SQLiteParser.NATURAL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LEFT_() { return GetToken(SQLiteParser.LEFT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INNER_() { return GetToken(SQLiteParser.INNER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CROSS_() { return GetToken(SQLiteParser.CROSS_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OUTER_() { return GetToken(SQLiteParser.OUTER_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode JOIN() { return GetToken(SQLiteParser.JOIN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NATURAL() { return GetToken(SQLiteParser.NATURAL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LEFT() { return GetToken(SQLiteParser.LEFT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INNER() { return GetToken(SQLiteParser.INNER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CROSS() { return GetToken(SQLiteParser.CROSS, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OUTER() { return GetToken(SQLiteParser.OUTER, 0); }
 		public Join_operatorContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -7795,74 +8149,74 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Join_operatorContext join_operator() {
 		Join_operatorContext _localctx = new Join_operatorContext(Context, State);
-		EnterRule(_localctx, 98, RULE_join_operator);
+		EnterRule(_localctx, 110, RULE_join_operator);
 		int _la;
 		try {
-			State = 1509;
+			State = 1537;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case COMMA:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 1496;
+				State = 1524;
 				Match(COMMA);
 				}
 				break;
-			case CROSS_:
-			case INNER_:
-			case JOIN_:
-			case LEFT_:
-			case NATURAL_:
+			case CROSS:
+			case INNER:
+			case JOIN:
+			case LEFT:
+			case NATURAL:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 1498;
+				State = 1526;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==NATURAL_) {
+				if (_la==NATURAL) {
 					{
-					State = 1497;
-					Match(NATURAL_);
+					State = 1525;
+					Match(NATURAL);
 					}
 				}
 
-				State = 1506;
+				State = 1534;
 				ErrorHandler.Sync(this);
 				switch (TokenStream.LA(1)) {
-				case LEFT_:
+				case LEFT:
 					{
-					State = 1500;
-					Match(LEFT_);
-					State = 1502;
+					State = 1528;
+					Match(LEFT);
+					State = 1530;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
-					if (_la==OUTER_) {
+					if (_la==OUTER) {
 						{
-						State = 1501;
-						Match(OUTER_);
+						State = 1529;
+						Match(OUTER);
 						}
 					}
 
 					}
 					break;
-				case INNER_:
+				case INNER:
 					{
-					State = 1504;
-					Match(INNER_);
+					State = 1532;
+					Match(INNER);
 					}
 					break;
-				case CROSS_:
+				case CROSS:
 					{
-					State = 1505;
-					Match(CROSS_);
+					State = 1533;
+					Match(CROSS);
 					}
 					break;
-				case JOIN_:
+				case JOIN:
 					break;
 				default:
 					break;
 				}
-				State = 1508;
-				Match(JOIN_);
+				State = 1536;
+				Match(JOIN);
 				}
 				break;
 			default:
@@ -7881,11 +8235,11 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Join_constraintContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ON_() { return GetToken(SQLiteParser.ON_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ON() { return GetToken(SQLiteParser.ON, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr() {
 			return GetRuleContext<ExprContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode USING_() { return GetToken(SQLiteParser.USING_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode USING() { return GetToken(SQLiteParser.USING, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OPEN_PAR() { return GetToken(SQLiteParser.OPEN_PAR, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Column_nameContext[] column_name() {
 			return GetRuleContexts<Column_nameContext>();
@@ -7924,47 +8278,47 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Join_constraintContext join_constraint() {
 		Join_constraintContext _localctx = new Join_constraintContext(Context, State);
-		EnterRule(_localctx, 100, RULE_join_constraint);
+		EnterRule(_localctx, 112, RULE_join_constraint);
 		int _la;
 		try {
-			State = 1525;
+			State = 1553;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case ON_:
+			case ON:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 1511;
-				Match(ON_);
-				State = 1512;
+				State = 1539;
+				Match(ON);
+				State = 1540;
 				expr(0);
 				}
 				break;
-			case USING_:
+			case USING:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 1513;
-				Match(USING_);
-				State = 1514;
+				State = 1541;
+				Match(USING);
+				State = 1542;
 				Match(OPEN_PAR);
-				State = 1515;
+				State = 1543;
 				column_name();
-				State = 1520;
+				State = 1548;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 1516;
+					State = 1544;
 					Match(COMMA);
-					State = 1517;
+					State = 1545;
 					column_name();
 					}
 					}
-					State = 1522;
+					State = 1550;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 1523;
+				State = 1551;
 				Match(CLOSE_PAR);
 				}
 				break;
@@ -7984,10 +8338,10 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Compound_operatorContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNION_() { return GetToken(SQLiteParser.UNION_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALL_() { return GetToken(SQLiteParser.ALL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INTERSECT_() { return GetToken(SQLiteParser.INTERSECT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXCEPT_() { return GetToken(SQLiteParser.EXCEPT_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNION() { return GetToken(SQLiteParser.UNION, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALL() { return GetToken(SQLiteParser.ALL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INTERSECT() { return GetToken(SQLiteParser.INTERSECT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXCEPT() { return GetToken(SQLiteParser.EXCEPT, 0); }
 		public Compound_operatorContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -8014,41 +8368,41 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Compound_operatorContext compound_operator() {
 		Compound_operatorContext _localctx = new Compound_operatorContext(Context, State);
-		EnterRule(_localctx, 102, RULE_compound_operator);
+		EnterRule(_localctx, 114, RULE_compound_operator);
 		int _la;
 		try {
-			State = 1533;
+			State = 1561;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case UNION_:
+			case UNION:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 1527;
-				Match(UNION_);
-				State = 1529;
+				State = 1555;
+				Match(UNION);
+				State = 1557;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==ALL_) {
+				if (_la==ALL) {
 					{
-					State = 1528;
-					Match(ALL_);
+					State = 1556;
+					Match(ALL);
 					}
 				}
 
 				}
 				break;
-			case INTERSECT_:
+			case INTERSECT:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 1531;
-				Match(INTERSECT_);
+				State = 1559;
+				Match(INTERSECT);
 				}
 				break;
-			case EXCEPT_:
+			case EXCEPT:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 1532;
-				Match(EXCEPT_);
+				State = 1560;
+				Match(EXCEPT);
 				}
 				break;
 			default:
@@ -8067,11 +8421,11 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Update_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UPDATE_() { return GetToken(SQLiteParser.UPDATE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UPDATE() { return GetToken(SQLiteParser.UPDATE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Qualified_table_nameContext qualified_table_name() {
 			return GetRuleContext<Qualified_table_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SET_() { return GetToken(SQLiteParser.SET_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SET() { return GetToken(SQLiteParser.SET, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] ASSIGN() { return GetTokens(SQLiteParser.ASSIGN); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ASSIGN(int i) {
 			return GetToken(SQLiteParser.ASSIGN, i);
@@ -8097,21 +8451,21 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public With_clauseContext with_clause() {
 			return GetRuleContext<With_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OR_() { return GetToken(SQLiteParser.OR_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OR() { return GetToken(SQLiteParser.OR, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(SQLiteParser.COMMA); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
 			return GetToken(SQLiteParser.COMMA, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FROM_() { return GetToken(SQLiteParser.FROM_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE_() { return GetToken(SQLiteParser.WHERE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FROM() { return GetToken(SQLiteParser.FROM, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE() { return GetToken(SQLiteParser.WHERE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Returning_clauseContext returning_clause() {
 			return GetRuleContext<Returning_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROLLBACK_() { return GetToken(SQLiteParser.ROLLBACK_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ABORT_() { return GetToken(SQLiteParser.ABORT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REPLACE_() { return GetToken(SQLiteParser.REPLACE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FAIL_() { return GetToken(SQLiteParser.FAIL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IGNORE_() { return GetToken(SQLiteParser.IGNORE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROLLBACK() { return GetToken(SQLiteParser.ROLLBACK, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ABORT() { return GetToken(SQLiteParser.ABORT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REPLACE() { return GetToken(SQLiteParser.REPLACE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FAIL() { return GetToken(SQLiteParser.FAIL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IGNORE() { return GetToken(SQLiteParser.IGNORE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Table_or_subqueryContext[] table_or_subquery() {
 			return GetRuleContexts<Table_or_subqueryContext>();
 		}
@@ -8147,33 +8501,33 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Update_stmtContext update_stmt() {
 		Update_stmtContext _localctx = new Update_stmtContext(Context, State);
-		EnterRule(_localctx, 104, RULE_update_stmt);
+		EnterRule(_localctx, 116, RULE_update_stmt);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1536;
+			State = 1564;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==WITH_) {
+			if (_la==WITH) {
 				{
-				State = 1535;
+				State = 1563;
 				with_clause();
 				}
 			}
 
-			State = 1538;
-			Match(UPDATE_);
-			State = 1541;
+			State = 1566;
+			Match(UPDATE);
+			State = 1569;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,222,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,224,Context) ) {
 			case 1:
 				{
-				State = 1539;
-				Match(OR_);
-				State = 1540;
+				State = 1567;
+				Match(OR);
+				State = 1568;
 				_la = TokenStream.LA(1);
-				if ( !(_la==ABORT_ || (((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 19140298416325121L) != 0) ) {
+				if ( !(_la==ABORT || (((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 19140298416325121L) != 0) ) {
 				ErrorHandler.RecoverInline(this);
 				}
 				else {
@@ -8183,91 +8537,91 @@ public partial class SQLiteParser : Parser {
 				}
 				break;
 			}
-			State = 1543;
+			State = 1571;
 			qualified_table_name();
-			State = 1544;
-			Match(SET_);
-			State = 1547;
+			State = 1572;
+			Match(SET);
+			State = 1575;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,223,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,225,Context) ) {
 			case 1:
 				{
-				State = 1545;
+				State = 1573;
 				column_name();
 				}
 				break;
 			case 2:
 				{
-				State = 1546;
+				State = 1574;
 				column_name_list();
 				}
 				break;
 			}
-			State = 1549;
+			State = 1577;
 			Match(ASSIGN);
-			State = 1550;
+			State = 1578;
 			expr(0);
-			State = 1561;
+			State = 1589;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				State = 1551;
+				State = 1579;
 				Match(COMMA);
-				State = 1554;
+				State = 1582;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,224,Context) ) {
+				switch ( Interpreter.AdaptivePredict(TokenStream,226,Context) ) {
 				case 1:
 					{
-					State = 1552;
+					State = 1580;
 					column_name();
 					}
 					break;
 				case 2:
 					{
-					State = 1553;
+					State = 1581;
 					column_name_list();
 					}
 					break;
 				}
-				State = 1556;
+				State = 1584;
 				Match(ASSIGN);
-				State = 1557;
+				State = 1585;
 				expr(0);
 				}
 				}
-				State = 1563;
+				State = 1591;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 1576;
+			State = 1604;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==FROM_) {
+			if (_la==FROM) {
 				{
-				State = 1564;
-				Match(FROM_);
-				State = 1574;
+				State = 1592;
+				Match(FROM);
+				State = 1602;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,227,Context) ) {
+				switch ( Interpreter.AdaptivePredict(TokenStream,229,Context) ) {
 				case 1:
 					{
-					State = 1565;
+					State = 1593;
 					table_or_subquery();
-					State = 1570;
+					State = 1598;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 					while (_la==COMMA) {
 						{
 						{
-						State = 1566;
+						State = 1594;
 						Match(COMMA);
-						State = 1567;
+						State = 1595;
 						table_or_subquery();
 						}
 						}
-						State = 1572;
+						State = 1600;
 						ErrorHandler.Sync(this);
 						_la = TokenStream.LA(1);
 					}
@@ -8275,7 +8629,7 @@ public partial class SQLiteParser : Parser {
 					break;
 				case 2:
 					{
-					State = 1573;
+					State = 1601;
 					join_clause();
 					}
 					break;
@@ -8283,24 +8637,24 @@ public partial class SQLiteParser : Parser {
 				}
 			}
 
-			State = 1580;
+			State = 1608;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==WHERE_) {
+			if (_la==WHERE) {
 				{
-				State = 1578;
-				Match(WHERE_);
-				State = 1579;
+				State = 1606;
+				Match(WHERE);
+				State = 1607;
 				expr(0);
 				}
 			}
 
-			State = 1583;
+			State = 1611;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==RETURNING_) {
+			if (_la==RETURNING) {
 				{
-				State = 1582;
+				State = 1610;
 				returning_clause();
 				}
 			}
@@ -8357,32 +8711,32 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Column_name_listContext column_name_list() {
 		Column_name_listContext _localctx = new Column_name_listContext(Context, State);
-		EnterRule(_localctx, 106, RULE_column_name_list);
+		EnterRule(_localctx, 118, RULE_column_name_list);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1585;
+			State = 1613;
 			Match(OPEN_PAR);
-			State = 1586;
+			State = 1614;
 			column_name();
-			State = 1591;
+			State = 1619;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				State = 1587;
+				State = 1615;
 				Match(COMMA);
-				State = 1588;
+				State = 1616;
 				column_name();
 				}
 				}
-				State = 1593;
+				State = 1621;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 1594;
+			State = 1622;
 			Match(CLOSE_PAR);
 			}
 		}
@@ -8398,11 +8752,11 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Update_stmt_limitedContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UPDATE_() { return GetToken(SQLiteParser.UPDATE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UPDATE() { return GetToken(SQLiteParser.UPDATE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Qualified_table_nameContext qualified_table_name() {
 			return GetRuleContext<Qualified_table_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SET_() { return GetToken(SQLiteParser.SET_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SET() { return GetToken(SQLiteParser.SET, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] ASSIGN() { return GetTokens(SQLiteParser.ASSIGN); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ASSIGN(int i) {
 			return GetToken(SQLiteParser.ASSIGN, i);
@@ -8428,25 +8782,25 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public With_clauseContext with_clause() {
 			return GetRuleContext<With_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OR_() { return GetToken(SQLiteParser.OR_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OR() { return GetToken(SQLiteParser.OR, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(SQLiteParser.COMMA); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
 			return GetToken(SQLiteParser.COMMA, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE_() { return GetToken(SQLiteParser.WHERE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE() { return GetToken(SQLiteParser.WHERE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Returning_clauseContext returning_clause() {
 			return GetRuleContext<Returning_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public Limit_stmtContext limit_stmt() {
-			return GetRuleContext<Limit_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public Limit_clauseContext limit_clause() {
+			return GetRuleContext<Limit_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROLLBACK_() { return GetToken(SQLiteParser.ROLLBACK_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ABORT_() { return GetToken(SQLiteParser.ABORT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REPLACE_() { return GetToken(SQLiteParser.REPLACE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FAIL_() { return GetToken(SQLiteParser.FAIL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IGNORE_() { return GetToken(SQLiteParser.IGNORE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public Order_by_stmtContext order_by_stmt() {
-			return GetRuleContext<Order_by_stmtContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROLLBACK() { return GetToken(SQLiteParser.ROLLBACK, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ABORT() { return GetToken(SQLiteParser.ABORT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REPLACE() { return GetToken(SQLiteParser.REPLACE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FAIL() { return GetToken(SQLiteParser.FAIL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IGNORE() { return GetToken(SQLiteParser.IGNORE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public Order_by_clauseContext order_by_clause() {
+			return GetRuleContext<Order_by_clauseContext>(0);
 		}
 		public Update_stmt_limitedContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -8474,33 +8828,33 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Update_stmt_limitedContext update_stmt_limited() {
 		Update_stmt_limitedContext _localctx = new Update_stmt_limitedContext(Context, State);
-		EnterRule(_localctx, 108, RULE_update_stmt_limited);
+		EnterRule(_localctx, 120, RULE_update_stmt_limited);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1597;
+			State = 1625;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==WITH_) {
+			if (_la==WITH) {
 				{
-				State = 1596;
+				State = 1624;
 				with_clause();
 				}
 			}
 
-			State = 1599;
-			Match(UPDATE_);
-			State = 1602;
+			State = 1627;
+			Match(UPDATE);
+			State = 1630;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,233,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,235,Context) ) {
 			case 1:
 				{
-				State = 1600;
-				Match(OR_);
-				State = 1601;
+				State = 1628;
+				Match(OR);
+				State = 1629;
 				_la = TokenStream.LA(1);
-				if ( !(_la==ABORT_ || (((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 19140298416325121L) != 0) ) {
+				if ( !(_la==ABORT || (((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 19140298416325121L) != 0) ) {
 				ErrorHandler.RecoverInline(this);
 				}
 				else {
@@ -8510,103 +8864,103 @@ public partial class SQLiteParser : Parser {
 				}
 				break;
 			}
-			State = 1604;
+			State = 1632;
 			qualified_table_name();
-			State = 1605;
-			Match(SET_);
-			State = 1608;
+			State = 1633;
+			Match(SET);
+			State = 1636;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,234,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,236,Context) ) {
 			case 1:
 				{
-				State = 1606;
+				State = 1634;
 				column_name();
 				}
 				break;
 			case 2:
 				{
-				State = 1607;
+				State = 1635;
 				column_name_list();
 				}
 				break;
 			}
-			State = 1610;
+			State = 1638;
 			Match(ASSIGN);
-			State = 1611;
+			State = 1639;
 			expr(0);
-			State = 1622;
+			State = 1650;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				State = 1612;
+				State = 1640;
 				Match(COMMA);
-				State = 1615;
+				State = 1643;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,235,Context) ) {
+				switch ( Interpreter.AdaptivePredict(TokenStream,237,Context) ) {
 				case 1:
 					{
-					State = 1613;
+					State = 1641;
 					column_name();
 					}
 					break;
 				case 2:
 					{
-					State = 1614;
+					State = 1642;
 					column_name_list();
 					}
 					break;
 				}
-				State = 1617;
+				State = 1645;
 				Match(ASSIGN);
-				State = 1618;
+				State = 1646;
 				expr(0);
 				}
 				}
-				State = 1624;
+				State = 1652;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 1627;
+			State = 1655;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==WHERE_) {
+			if (_la==WHERE) {
 				{
-				State = 1625;
-				Match(WHERE_);
-				State = 1626;
+				State = 1653;
+				Match(WHERE);
+				State = 1654;
 				expr(0);
 				}
 			}
 
-			State = 1630;
+			State = 1658;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==RETURNING_) {
+			if (_la==RETURNING) {
 				{
-				State = 1629;
+				State = 1657;
 				returning_clause();
 				}
 			}
 
-			State = 1636;
+			State = 1664;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==LIMIT_ || _la==ORDER_) {
+			if (_la==LIMIT || _la==ORDER) {
 				{
-				State = 1633;
+				State = 1661;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==ORDER_) {
+				if (_la==ORDER) {
 					{
-					State = 1632;
-					order_by_stmt();
+					State = 1660;
+					order_by_clause();
 					}
 				}
 
-				State = 1635;
-				limit_stmt();
+				State = 1663;
+				limit_clause();
 				}
 			}
 
@@ -8631,16 +8985,16 @@ public partial class SQLiteParser : Parser {
 			return GetRuleContext<Schema_nameContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DOT() { return GetToken(SQLiteParser.DOT, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS_() { return GetToken(SQLiteParser.AS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS() { return GetToken(SQLiteParser.AS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public AliasContext alias() {
 			return GetRuleContext<AliasContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INDEXED_() { return GetToken(SQLiteParser.INDEXED_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY_() { return GetToken(SQLiteParser.BY_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INDEXED() { return GetToken(SQLiteParser.INDEXED, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY() { return GetToken(SQLiteParser.BY, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Index_nameContext index_name() {
 			return GetRuleContext<Index_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT_() { return GetToken(SQLiteParser.NOT_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT() { return GetToken(SQLiteParser.NOT, 0); }
 		public Qualified_table_nameContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -8667,88 +9021,88 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Qualified_table_nameContext qualified_table_name() {
 		Qualified_table_nameContext _localctx = new Qualified_table_nameContext(Context, State);
-		EnterRule(_localctx, 110, RULE_qualified_table_name);
+		EnterRule(_localctx, 122, RULE_qualified_table_name);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1641;
+			State = 1669;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,241,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,243,Context) ) {
 			case 1:
 				{
-				State = 1638;
+				State = 1666;
 				schema_name();
-				State = 1639;
+				State = 1667;
 				Match(DOT);
 				}
 				break;
 			}
-			State = 1643;
+			State = 1671;
 			table_name();
-			State = 1646;
+			State = 1674;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==AS_) {
+			if (_la==AS) {
 				{
-				State = 1644;
-				Match(AS_);
-				State = 1645;
+				State = 1672;
+				Match(AS);
+				State = 1673;
 				alias();
 				}
 			}
 
-			State = 1653;
+			State = 1681;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case INDEXED_:
+			case INDEXED:
 				{
-				State = 1648;
-				Match(INDEXED_);
-				State = 1649;
-				Match(BY_);
-				State = 1650;
+				State = 1676;
+				Match(INDEXED);
+				State = 1677;
+				Match(BY);
+				State = 1678;
 				index_name();
 				}
 				break;
-			case NOT_:
+			case NOT:
 				{
-				State = 1651;
-				Match(NOT_);
-				State = 1652;
-				Match(INDEXED_);
+				State = 1679;
+				Match(NOT);
+				State = 1680;
+				Match(INDEXED);
 				}
 				break;
 			case Eof:
 			case SCOL:
-			case ALTER_:
-			case ANALYZE_:
-			case ATTACH_:
-			case BEGIN_:
-			case COMMIT_:
-			case CREATE_:
-			case DELETE_:
-			case DETACH_:
-			case DROP_:
-			case END_:
-			case EXPLAIN_:
-			case INSERT_:
-			case LIMIT_:
-			case ORDER_:
-			case PRAGMA_:
-			case REINDEX_:
-			case RELEASE_:
-			case REPLACE_:
-			case RETURNING_:
-			case ROLLBACK_:
-			case SAVEPOINT_:
-			case SELECT_:
-			case SET_:
-			case UPDATE_:
-			case VACUUM_:
-			case VALUES_:
-			case WHERE_:
-			case WITH_:
+			case ALTER:
+			case ANALYZE:
+			case ATTACH:
+			case BEGIN:
+			case COMMIT:
+			case CREATE:
+			case DELETE:
+			case DETACH:
+			case DROP:
+			case END:
+			case EXPLAIN:
+			case INSERT:
+			case LIMIT:
+			case ORDER:
+			case PRAGMA:
+			case REINDEX:
+			case RELEASE:
+			case REPLACE:
+			case RETURNING:
+			case ROLLBACK:
+			case SAVEPOINT:
+			case SELECT:
+			case SET:
+			case UPDATE:
+			case VACUUM:
+			case VALUES:
+			case WHERE:
+			case WITH:
 				break;
 			default:
 				break;
@@ -8767,11 +9121,11 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Vacuum_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VACUUM_() { return GetToken(SQLiteParser.VACUUM_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VACUUM() { return GetToken(SQLiteParser.VACUUM, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Schema_nameContext schema_name() {
 			return GetRuleContext<Schema_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INTO_() { return GetToken(SQLiteParser.INTO_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INTO() { return GetToken(SQLiteParser.INTO, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public FilenameContext filename() {
 			return GetRuleContext<FilenameContext>(0);
 		}
@@ -8801,31 +9155,31 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Vacuum_stmtContext vacuum_stmt() {
 		Vacuum_stmtContext _localctx = new Vacuum_stmtContext(Context, State);
-		EnterRule(_localctx, 112, RULE_vacuum_stmt);
+		EnterRule(_localctx, 124, RULE_vacuum_stmt);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1655;
-			Match(VACUUM_);
-			State = 1657;
+			State = 1683;
+			Match(VACUUM);
+			State = 1685;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,244,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,246,Context) ) {
 			case 1:
 				{
-				State = 1656;
+				State = 1684;
 				schema_name();
 				}
 				break;
 			}
-			State = 1661;
+			State = 1689;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==INTO_) {
+			if (_la==INTO) {
 				{
-				State = 1659;
-				Match(INTO_);
-				State = 1660;
+				State = 1687;
+				Match(INTO);
+				State = 1688;
 				filename();
 				}
 			}
@@ -8844,9 +9198,9 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Filter_clauseContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FILTER_() { return GetToken(SQLiteParser.FILTER_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FILTER() { return GetToken(SQLiteParser.FILTER, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OPEN_PAR() { return GetToken(SQLiteParser.OPEN_PAR, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE_() { return GetToken(SQLiteParser.WHERE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE() { return GetToken(SQLiteParser.WHERE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr() {
 			return GetRuleContext<ExprContext>(0);
 		}
@@ -8877,19 +9231,19 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Filter_clauseContext filter_clause() {
 		Filter_clauseContext _localctx = new Filter_clauseContext(Context, State);
-		EnterRule(_localctx, 114, RULE_filter_clause);
+		EnterRule(_localctx, 126, RULE_filter_clause);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1663;
-			Match(FILTER_);
-			State = 1664;
+			State = 1691;
+			Match(FILTER);
+			State = 1692;
 			Match(OPEN_PAR);
-			State = 1665;
-			Match(WHERE_);
-			State = 1666;
+			State = 1693;
+			Match(WHERE);
+			State = 1694;
 			expr(0);
-			State = 1667;
+			State = 1695;
 			Match(CLOSE_PAR);
 			}
 		}
@@ -8907,10 +9261,10 @@ public partial class SQLiteParser : Parser {
 	public partial class Window_defnContext : ParserRuleContext {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OPEN_PAR() { return GetToken(SQLiteParser.OPEN_PAR, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLOSE_PAR() { return GetToken(SQLiteParser.CLOSE_PAR, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ORDER_() { return GetToken(SQLiteParser.ORDER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] BY_() { return GetTokens(SQLiteParser.BY_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY_(int i) {
-			return GetToken(SQLiteParser.BY_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ORDER() { return GetToken(SQLiteParser.ORDER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] BY() { return GetTokens(SQLiteParser.BY); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY(int i) {
+			return GetToken(SQLiteParser.BY, i);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public Ordering_termContext[] ordering_term() {
 			return GetRuleContexts<Ordering_termContext>();
@@ -8921,7 +9275,7 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Base_window_nameContext base_window_name() {
 			return GetRuleContext<Base_window_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PARTITION_() { return GetToken(SQLiteParser.PARTITION_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PARTITION() { return GetToken(SQLiteParser.PARTITION, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext[] expr() {
 			return GetRuleContexts<ExprContext>();
 		}
@@ -8961,47 +9315,47 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Window_defnContext window_defn() {
 		Window_defnContext _localctx = new Window_defnContext(Context, State);
-		EnterRule(_localctx, 116, RULE_window_defn);
+		EnterRule(_localctx, 128, RULE_window_defn);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1669;
+			State = 1697;
 			Match(OPEN_PAR);
-			State = 1671;
+			State = 1699;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,246,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,248,Context) ) {
 			case 1:
 				{
-				State = 1670;
+				State = 1698;
 				base_window_name();
 				}
 				break;
 			}
-			State = 1683;
+			State = 1711;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==PARTITION_) {
+			if (_la==PARTITION) {
 				{
-				State = 1673;
-				Match(PARTITION_);
-				State = 1674;
-				Match(BY_);
-				State = 1675;
+				State = 1701;
+				Match(PARTITION);
+				State = 1702;
+				Match(BY);
+				State = 1703;
 				expr(0);
-				State = 1680;
+				State = 1708;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 1676;
+					State = 1704;
 					Match(COMMA);
-					State = 1677;
+					State = 1705;
 					expr(0);
 					}
 					}
-					State = 1682;
+					State = 1710;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
@@ -9009,40 +9363,40 @@ public partial class SQLiteParser : Parser {
 			}
 
 			{
-			State = 1685;
-			Match(ORDER_);
-			State = 1686;
-			Match(BY_);
-			State = 1687;
+			State = 1713;
+			Match(ORDER);
+			State = 1714;
+			Match(BY);
+			State = 1715;
 			ordering_term();
-			State = 1692;
+			State = 1720;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				State = 1688;
+				State = 1716;
 				Match(COMMA);
-				State = 1689;
+				State = 1717;
 				ordering_term();
 				}
 				}
-				State = 1694;
+				State = 1722;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
 			}
-			State = 1696;
+			State = 1724;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if ((((_la - 128)) & ~0x3f) == 0 && ((1L << (_la - 128)) & 2251799880794113L) != 0) {
 				{
-				State = 1695;
+				State = 1723;
 				frame_spec();
 				}
 			}
 
-			State = 1698;
+			State = 1726;
 			Match(CLOSE_PAR);
 			}
 		}
@@ -9058,7 +9412,7 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Over_clauseContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OVER_() { return GetToken(SQLiteParser.OVER_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OVER() { return GetToken(SQLiteParser.OVER, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Window_nameContext window_name() {
 			return GetRuleContext<Window_nameContext>(0);
 		}
@@ -9067,10 +9421,10 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Base_window_nameContext base_window_name() {
 			return GetRuleContext<Base_window_nameContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PARTITION_() { return GetToken(SQLiteParser.PARTITION_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] BY_() { return GetTokens(SQLiteParser.BY_); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY_(int i) {
-			return GetToken(SQLiteParser.BY_, i);
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PARTITION() { return GetToken(SQLiteParser.PARTITION, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] BY() { return GetTokens(SQLiteParser.BY); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY(int i) {
+			return GetToken(SQLiteParser.BY, i);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext[] expr() {
 			return GetRuleContexts<ExprContext>();
@@ -9078,7 +9432,7 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr(int i) {
 			return GetRuleContext<ExprContext>(i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ORDER_() { return GetToken(SQLiteParser.ORDER_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ORDER() { return GetToken(SQLiteParser.ORDER, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Ordering_termContext[] ordering_term() {
 			return GetRuleContexts<Ordering_termContext>();
 		}
@@ -9118,107 +9472,107 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Over_clauseContext over_clause() {
 		Over_clauseContext _localctx = new Over_clauseContext(Context, State);
-		EnterRule(_localctx, 118, RULE_over_clause);
+		EnterRule(_localctx, 130, RULE_over_clause);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1700;
-			Match(OVER_);
-			State = 1734;
+			State = 1728;
+			Match(OVER);
+			State = 1762;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,257,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,259,Context) ) {
 			case 1:
 				{
-				State = 1701;
+				State = 1729;
 				window_name();
 				}
 				break;
 			case 2:
 				{
-				State = 1702;
+				State = 1730;
 				Match(OPEN_PAR);
-				State = 1704;
+				State = 1732;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,251,Context) ) {
+				switch ( Interpreter.AdaptivePredict(TokenStream,253,Context) ) {
 				case 1:
 					{
-					State = 1703;
+					State = 1731;
 					base_window_name();
 					}
 					break;
 				}
-				State = 1716;
+				State = 1744;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==PARTITION_) {
+				if (_la==PARTITION) {
 					{
-					State = 1706;
-					Match(PARTITION_);
-					State = 1707;
-					Match(BY_);
-					State = 1708;
+					State = 1734;
+					Match(PARTITION);
+					State = 1735;
+					Match(BY);
+					State = 1736;
 					expr(0);
-					State = 1713;
+					State = 1741;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 					while (_la==COMMA) {
 						{
 						{
-						State = 1709;
+						State = 1737;
 						Match(COMMA);
-						State = 1710;
+						State = 1738;
 						expr(0);
 						}
 						}
-						State = 1715;
+						State = 1743;
 						ErrorHandler.Sync(this);
 						_la = TokenStream.LA(1);
 					}
 					}
 				}
 
-				State = 1728;
+				State = 1756;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==ORDER_) {
+				if (_la==ORDER) {
 					{
-					State = 1718;
-					Match(ORDER_);
-					State = 1719;
-					Match(BY_);
-					State = 1720;
+					State = 1746;
+					Match(ORDER);
+					State = 1747;
+					Match(BY);
+					State = 1748;
 					ordering_term();
-					State = 1725;
+					State = 1753;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 					while (_la==COMMA) {
 						{
 						{
-						State = 1721;
+						State = 1749;
 						Match(COMMA);
-						State = 1722;
+						State = 1750;
 						ordering_term();
 						}
 						}
-						State = 1727;
+						State = 1755;
 						ErrorHandler.Sync(this);
 						_la = TokenStream.LA(1);
 					}
 					}
 				}
 
-				State = 1731;
+				State = 1759;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if ((((_la - 128)) & ~0x3f) == 0 && ((1L << (_la - 128)) & 2251799880794113L) != 0) {
 					{
-					State = 1730;
+					State = 1758;
 					frame_spec();
 					}
 				}
 
-				State = 1733;
+				State = 1761;
 				Match(CLOSE_PAR);
 				}
 				break;
@@ -9240,13 +9594,13 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Frame_clauseContext frame_clause() {
 			return GetRuleContext<Frame_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXCLUDE_() { return GetToken(SQLiteParser.EXCLUDE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT_() { return GetToken(SQLiteParser.CURRENT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROW_() { return GetToken(SQLiteParser.ROW_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GROUP_() { return GetToken(SQLiteParser.GROUP_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TIES_() { return GetToken(SQLiteParser.TIES_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NO_() { return GetToken(SQLiteParser.NO_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OTHERS_() { return GetToken(SQLiteParser.OTHERS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXCLUDE() { return GetToken(SQLiteParser.EXCLUDE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT() { return GetToken(SQLiteParser.CURRENT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROW() { return GetToken(SQLiteParser.ROW, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GROUP() { return GetToken(SQLiteParser.GROUP, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TIES() { return GetToken(SQLiteParser.TIES, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NO() { return GetToken(SQLiteParser.NO, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OTHERS() { return GetToken(SQLiteParser.OTHERS, 0); }
 		public Frame_specContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -9273,45 +9627,45 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Frame_specContext frame_spec() {
 		Frame_specContext _localctx = new Frame_specContext(Context, State);
-		EnterRule(_localctx, 120, RULE_frame_spec);
+		EnterRule(_localctx, 132, RULE_frame_spec);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1736;
+			State = 1764;
 			frame_clause();
-			State = 1744;
+			State = 1772;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case EXCLUDE_:
+			case EXCLUDE:
 				{
-				State = 1737;
-				Match(EXCLUDE_);
+				State = 1765;
+				Match(EXCLUDE);
 				{
-				State = 1738;
-				Match(NO_);
-				State = 1739;
-				Match(OTHERS_);
+				State = 1766;
+				Match(NO);
+				State = 1767;
+				Match(OTHERS);
 				}
 				}
 				break;
-			case CURRENT_:
+			case CURRENT:
 				{
-				State = 1740;
-				Match(CURRENT_);
-				State = 1741;
-				Match(ROW_);
+				State = 1768;
+				Match(CURRENT);
+				State = 1769;
+				Match(ROW);
 				}
 				break;
-			case GROUP_:
+			case GROUP:
 				{
-				State = 1742;
-				Match(GROUP_);
+				State = 1770;
+				Match(GROUP);
 				}
 				break;
-			case TIES_:
+			case TIES:
 				{
-				State = 1743;
-				Match(TIES_);
+				State = 1771;
+				Match(TIES);
 				}
 				break;
 			case CLOSE_PAR:
@@ -9333,17 +9687,17 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Frame_clauseContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RANGE_() { return GetToken(SQLiteParser.RANGE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROWS_() { return GetToken(SQLiteParser.ROWS_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GROUPS_() { return GetToken(SQLiteParser.GROUPS_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RANGE() { return GetToken(SQLiteParser.RANGE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROWS() { return GetToken(SQLiteParser.ROWS, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GROUPS() { return GetToken(SQLiteParser.GROUPS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Frame_singleContext frame_single() {
 			return GetRuleContext<Frame_singleContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BETWEEN_() { return GetToken(SQLiteParser.BETWEEN_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BETWEEN() { return GetToken(SQLiteParser.BETWEEN, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Frame_leftContext frame_left() {
 			return GetRuleContext<Frame_leftContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AND_() { return GetToken(SQLiteParser.AND_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AND() { return GetToken(SQLiteParser.AND, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Frame_rightContext frame_right() {
 			return GetRuleContext<Frame_rightContext>(0);
 		}
@@ -9373,12 +9727,12 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Frame_clauseContext frame_clause() {
 		Frame_clauseContext _localctx = new Frame_clauseContext(Context, State);
-		EnterRule(_localctx, 122, RULE_frame_clause);
+		EnterRule(_localctx, 134, RULE_frame_clause);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1746;
+			State = 1774;
 			_la = TokenStream.LA(1);
 			if ( !((((_la - 128)) & ~0x3f) == 0 && ((1L << (_la - 128)) & 2251799880794113L) != 0) ) {
 			ErrorHandler.RecoverInline(this);
@@ -9387,24 +9741,24 @@ public partial class SQLiteParser : Parser {
 				ErrorHandler.ReportMatch(this);
 			    Consume();
 			}
-			State = 1753;
+			State = 1781;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,259,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,261,Context) ) {
 			case 1:
 				{
-				State = 1747;
+				State = 1775;
 				frame_single();
 				}
 				break;
 			case 2:
 				{
-				State = 1748;
-				Match(BETWEEN_);
-				State = 1749;
+				State = 1776;
+				Match(BETWEEN);
+				State = 1777;
 				frame_left();
-				State = 1750;
-				Match(AND_);
-				State = 1751;
+				State = 1778;
+				Match(AND);
+				State = 1779;
 				frame_right();
 				}
 				break;
@@ -9465,198 +9819,198 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Simple_function_invocationContext simple_function_invocation() {
 		Simple_function_invocationContext _localctx = new Simple_function_invocationContext(Context, State);
-		EnterRule(_localctx, 124, RULE_simple_function_invocation);
+		EnterRule(_localctx, 136, RULE_simple_function_invocation);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1755;
+			State = 1783;
 			simple_func();
-			State = 1756;
+			State = 1784;
 			Match(OPEN_PAR);
-			State = 1766;
+			State = 1794;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case OPEN_PAR:
 			case PLUS:
 			case MINUS:
 			case TILDE:
-			case ABORT_:
-			case ACTION_:
-			case ADD_:
-			case AFTER_:
-			case ALL_:
-			case ALTER_:
-			case ANALYZE_:
-			case AND_:
-			case AS_:
-			case ASC_:
-			case ATTACH_:
-			case AUTOINCREMENT_:
-			case BEFORE_:
-			case BEGIN_:
-			case BETWEEN_:
-			case BY_:
-			case CASCADE_:
-			case CASE_:
-			case CAST_:
-			case CHECK_:
-			case COLLATE_:
-			case COLUMN_:
-			case COMMIT_:
-			case CONFLICT_:
-			case CONSTRAINT_:
-			case CREATE_:
-			case CROSS_:
-			case CURRENT_DATE_:
-			case CURRENT_TIME_:
-			case CURRENT_TIMESTAMP_:
-			case DATABASE_:
-			case DEFAULT_:
-			case DEFERRABLE_:
-			case DEFERRED_:
-			case DELETE_:
-			case DESC_:
-			case DETACH_:
-			case DISTINCT_:
-			case DROP_:
-			case EACH_:
-			case ELSE_:
-			case END_:
-			case ESCAPE_:
-			case EXCEPT_:
-			case EXCLUSIVE_:
-			case EXISTS_:
-			case EXPLAIN_:
-			case FAIL_:
-			case FOR_:
-			case FOREIGN_:
-			case FROM_:
-			case FULL_:
-			case GLOB_:
-			case GROUP_:
-			case HAVING_:
-			case IF_:
-			case IGNORE_:
-			case IMMEDIATE_:
-			case IN_:
-			case INDEX_:
-			case INDEXED_:
-			case INITIALLY_:
-			case INNER_:
-			case INSERT_:
-			case INSTEAD_:
-			case INTERSECT_:
-			case INTO_:
-			case IS_:
-			case ISNULL_:
-			case JOIN_:
-			case KEY_:
-			case LEFT_:
-			case LIKE_:
-			case LIMIT_:
-			case MATCH_:
-			case NATURAL_:
-			case NO_:
-			case NOT_:
-			case NOTNULL_:
-			case NULL_:
-			case OF_:
-			case OFFSET_:
-			case ON_:
-			case OR_:
-			case ORDER_:
-			case OUTER_:
-			case PLAN_:
-			case PRAGMA_:
-			case PRIMARY_:
-			case QUERY_:
-			case RAISE_:
-			case RECURSIVE_:
-			case REFERENCES_:
-			case REGEXP_:
-			case REINDEX_:
-			case RELEASE_:
-			case RENAME_:
-			case REPLACE_:
-			case RESTRICT_:
-			case RIGHT_:
-			case ROLLBACK_:
-			case ROW_:
-			case ROWS_:
-			case SAVEPOINT_:
-			case SELECT_:
-			case SET_:
-			case TABLE_:
-			case TEMP_:
-			case TEMPORARY_:
-			case THEN_:
-			case TO_:
-			case TRANSACTION_:
-			case TRIGGER_:
-			case UNION_:
-			case UNIQUE_:
-			case UPDATE_:
-			case USING_:
-			case VACUUM_:
-			case VALUES_:
-			case VIEW_:
-			case VIRTUAL_:
-			case WHEN_:
-			case WHERE_:
-			case WITH_:
-			case WITHOUT_:
-			case FIRST_VALUE_:
-			case OVER_:
-			case PARTITION_:
-			case RANGE_:
-			case PRECEDING_:
-			case UNBOUNDED_:
-			case CURRENT_:
-			case FOLLOWING_:
-			case CUME_DIST_:
-			case DENSE_RANK_:
-			case LAG_:
-			case LAST_VALUE_:
-			case LEAD_:
-			case NTH_VALUE_:
-			case NTILE_:
-			case PERCENT_RANK_:
-			case RANK_:
-			case ROW_NUMBER_:
-			case GENERATED_:
-			case ALWAYS_:
-			case STORED_:
-			case TRUE_:
-			case FALSE_:
-			case WINDOW_:
-			case NULLS_:
-			case FIRST_:
-			case LAST_:
-			case FILTER_:
-			case GROUPS_:
-			case EXCLUDE_:
+			case ABORT:
+			case ACTION:
+			case ADD:
+			case AFTER:
+			case ALL:
+			case ALTER:
+			case ANALYZE:
+			case AND:
+			case AS:
+			case ASC:
+			case ATTACH:
+			case AUTOINCREMENT:
+			case BEFORE:
+			case BEGIN:
+			case BETWEEN:
+			case BY:
+			case CASCADE:
+			case CASE:
+			case CAST:
+			case CHECK:
+			case COLLATE:
+			case COLUMN:
+			case COMMIT:
+			case CONFLICT:
+			case CONSTRAINT:
+			case CREATE:
+			case CROSS:
+			case CURRENT_DATE:
+			case CURRENT_TIME:
+			case CURRENT_TIMESTAMP:
+			case DATABASE:
+			case DEFAULT:
+			case DEFERRABLE:
+			case DEFERRED:
+			case DELETE:
+			case DESC:
+			case DETACH:
+			case DISTINCT:
+			case DROP:
+			case EACH:
+			case ELSE:
+			case END:
+			case ESCAPE:
+			case EXCEPT:
+			case EXCLUSIVE:
+			case EXISTS:
+			case EXPLAIN:
+			case FAIL:
+			case FOR:
+			case FOREIGN:
+			case FROM:
+			case FULL:
+			case GLOB:
+			case GROUP:
+			case HAVING:
+			case IF:
+			case IGNORE:
+			case IMMEDIATE:
+			case IN:
+			case INDEX:
+			case INDEXED:
+			case INITIALLY:
+			case INNER:
+			case INSERT:
+			case INSTEAD:
+			case INTERSECT:
+			case INTO:
+			case IS:
+			case ISNULL:
+			case JOIN:
+			case KEY:
+			case LEFT:
+			case LIKE:
+			case LIMIT:
+			case MATCH:
+			case NATURAL:
+			case NO:
+			case NOT:
+			case NOTNULL:
+			case NULL:
+			case OF:
+			case OFFSET:
+			case ON:
+			case OR:
+			case ORDER:
+			case OUTER:
+			case PLAN:
+			case PRAGMA:
+			case PRIMARY:
+			case QUERY:
+			case RAISE:
+			case RECURSIVE:
+			case REFERENCES:
+			case REGEXP:
+			case REINDEX:
+			case RELEASE:
+			case RENAME:
+			case REPLACE:
+			case RESTRICT:
+			case RIGHT:
+			case ROLLBACK:
+			case ROW:
+			case ROWS:
+			case SAVEPOINT:
+			case SELECT:
+			case SET:
+			case TABLE:
+			case TEMP:
+			case TEMPORARY:
+			case THEN:
+			case TO:
+			case TRANSACTION:
+			case TRIGGER:
+			case UNION:
+			case UNIQUE:
+			case UPDATE:
+			case USING:
+			case VACUUM:
+			case VALUES:
+			case VIEW:
+			case VIRTUAL:
+			case WHEN:
+			case WHERE:
+			case WITH:
+			case WITHOUT:
+			case FIRST_VALUE:
+			case OVER:
+			case PARTITION:
+			case RANGE:
+			case PRECEDING:
+			case UNBOUNDED:
+			case CURRENT:
+			case FOLLOWING:
+			case CUME_DIST:
+			case DENSE_RANK:
+			case LAG:
+			case LAST_VALUE:
+			case LEAD:
+			case NTH_VALUE:
+			case NTILE:
+			case PERCENT_RANK:
+			case RANK:
+			case ROW_NUMBER:
+			case GENERATED:
+			case ALWAYS:
+			case STORED:
+			case TRUE:
+			case FALSE:
+			case WINDOW:
+			case NULLS:
+			case FIRST:
+			case LAST:
+			case FILTER:
+			case GROUPS:
+			case EXCLUDE:
 			case IDENTIFIER:
 			case NUMERIC_LITERAL:
 			case BIND_PARAMETER:
 			case STRING_LITERAL:
 			case BLOB_LITERAL:
 				{
-				State = 1757;
+				State = 1785;
 				expr(0);
-				State = 1762;
+				State = 1790;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 1758;
+					State = 1786;
 					Match(COMMA);
-					State = 1759;
+					State = 1787;
 					expr(0);
 					}
 					}
-					State = 1764;
+					State = 1792;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
@@ -9664,14 +10018,14 @@ public partial class SQLiteParser : Parser {
 				break;
 			case STAR:
 				{
-				State = 1765;
+				State = 1793;
 				Match(STAR);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
-			State = 1768;
+			State = 1796;
 			Match(CLOSE_PAR);
 			}
 		}
@@ -9702,7 +10056,7 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public Filter_clauseContext filter_clause() {
 			return GetRuleContext<Filter_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DISTINCT_() { return GetToken(SQLiteParser.DISTINCT_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DISTINCT() { return GetToken(SQLiteParser.DISTINCT, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(SQLiteParser.COMMA); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
 			return GetToken(SQLiteParser.COMMA, i);
@@ -9733,208 +10087,208 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Aggregate_function_invocationContext aggregate_function_invocation() {
 		Aggregate_function_invocationContext _localctx = new Aggregate_function_invocationContext(Context, State);
-		EnterRule(_localctx, 126, RULE_aggregate_function_invocation);
+		EnterRule(_localctx, 138, RULE_aggregate_function_invocation);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1770;
+			State = 1798;
 			aggregate_func();
-			State = 1771;
+			State = 1799;
 			Match(OPEN_PAR);
-			State = 1784;
+			State = 1812;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case OPEN_PAR:
 			case PLUS:
 			case MINUS:
 			case TILDE:
-			case ABORT_:
-			case ACTION_:
-			case ADD_:
-			case AFTER_:
-			case ALL_:
-			case ALTER_:
-			case ANALYZE_:
-			case AND_:
-			case AS_:
-			case ASC_:
-			case ATTACH_:
-			case AUTOINCREMENT_:
-			case BEFORE_:
-			case BEGIN_:
-			case BETWEEN_:
-			case BY_:
-			case CASCADE_:
-			case CASE_:
-			case CAST_:
-			case CHECK_:
-			case COLLATE_:
-			case COLUMN_:
-			case COMMIT_:
-			case CONFLICT_:
-			case CONSTRAINT_:
-			case CREATE_:
-			case CROSS_:
-			case CURRENT_DATE_:
-			case CURRENT_TIME_:
-			case CURRENT_TIMESTAMP_:
-			case DATABASE_:
-			case DEFAULT_:
-			case DEFERRABLE_:
-			case DEFERRED_:
-			case DELETE_:
-			case DESC_:
-			case DETACH_:
-			case DISTINCT_:
-			case DROP_:
-			case EACH_:
-			case ELSE_:
-			case END_:
-			case ESCAPE_:
-			case EXCEPT_:
-			case EXCLUSIVE_:
-			case EXISTS_:
-			case EXPLAIN_:
-			case FAIL_:
-			case FOR_:
-			case FOREIGN_:
-			case FROM_:
-			case FULL_:
-			case GLOB_:
-			case GROUP_:
-			case HAVING_:
-			case IF_:
-			case IGNORE_:
-			case IMMEDIATE_:
-			case IN_:
-			case INDEX_:
-			case INDEXED_:
-			case INITIALLY_:
-			case INNER_:
-			case INSERT_:
-			case INSTEAD_:
-			case INTERSECT_:
-			case INTO_:
-			case IS_:
-			case ISNULL_:
-			case JOIN_:
-			case KEY_:
-			case LEFT_:
-			case LIKE_:
-			case LIMIT_:
-			case MATCH_:
-			case NATURAL_:
-			case NO_:
-			case NOT_:
-			case NOTNULL_:
-			case NULL_:
-			case OF_:
-			case OFFSET_:
-			case ON_:
-			case OR_:
-			case ORDER_:
-			case OUTER_:
-			case PLAN_:
-			case PRAGMA_:
-			case PRIMARY_:
-			case QUERY_:
-			case RAISE_:
-			case RECURSIVE_:
-			case REFERENCES_:
-			case REGEXP_:
-			case REINDEX_:
-			case RELEASE_:
-			case RENAME_:
-			case REPLACE_:
-			case RESTRICT_:
-			case RIGHT_:
-			case ROLLBACK_:
-			case ROW_:
-			case ROWS_:
-			case SAVEPOINT_:
-			case SELECT_:
-			case SET_:
-			case TABLE_:
-			case TEMP_:
-			case TEMPORARY_:
-			case THEN_:
-			case TO_:
-			case TRANSACTION_:
-			case TRIGGER_:
-			case UNION_:
-			case UNIQUE_:
-			case UPDATE_:
-			case USING_:
-			case VACUUM_:
-			case VALUES_:
-			case VIEW_:
-			case VIRTUAL_:
-			case WHEN_:
-			case WHERE_:
-			case WITH_:
-			case WITHOUT_:
-			case FIRST_VALUE_:
-			case OVER_:
-			case PARTITION_:
-			case RANGE_:
-			case PRECEDING_:
-			case UNBOUNDED_:
-			case CURRENT_:
-			case FOLLOWING_:
-			case CUME_DIST_:
-			case DENSE_RANK_:
-			case LAG_:
-			case LAST_VALUE_:
-			case LEAD_:
-			case NTH_VALUE_:
-			case NTILE_:
-			case PERCENT_RANK_:
-			case RANK_:
-			case ROW_NUMBER_:
-			case GENERATED_:
-			case ALWAYS_:
-			case STORED_:
-			case TRUE_:
-			case FALSE_:
-			case WINDOW_:
-			case NULLS_:
-			case FIRST_:
-			case LAST_:
-			case FILTER_:
-			case GROUPS_:
-			case EXCLUDE_:
+			case ABORT:
+			case ACTION:
+			case ADD:
+			case AFTER:
+			case ALL:
+			case ALTER:
+			case ANALYZE:
+			case AND:
+			case AS:
+			case ASC:
+			case ATTACH:
+			case AUTOINCREMENT:
+			case BEFORE:
+			case BEGIN:
+			case BETWEEN:
+			case BY:
+			case CASCADE:
+			case CASE:
+			case CAST:
+			case CHECK:
+			case COLLATE:
+			case COLUMN:
+			case COMMIT:
+			case CONFLICT:
+			case CONSTRAINT:
+			case CREATE:
+			case CROSS:
+			case CURRENT_DATE:
+			case CURRENT_TIME:
+			case CURRENT_TIMESTAMP:
+			case DATABASE:
+			case DEFAULT:
+			case DEFERRABLE:
+			case DEFERRED:
+			case DELETE:
+			case DESC:
+			case DETACH:
+			case DISTINCT:
+			case DROP:
+			case EACH:
+			case ELSE:
+			case END:
+			case ESCAPE:
+			case EXCEPT:
+			case EXCLUSIVE:
+			case EXISTS:
+			case EXPLAIN:
+			case FAIL:
+			case FOR:
+			case FOREIGN:
+			case FROM:
+			case FULL:
+			case GLOB:
+			case GROUP:
+			case HAVING:
+			case IF:
+			case IGNORE:
+			case IMMEDIATE:
+			case IN:
+			case INDEX:
+			case INDEXED:
+			case INITIALLY:
+			case INNER:
+			case INSERT:
+			case INSTEAD:
+			case INTERSECT:
+			case INTO:
+			case IS:
+			case ISNULL:
+			case JOIN:
+			case KEY:
+			case LEFT:
+			case LIKE:
+			case LIMIT:
+			case MATCH:
+			case NATURAL:
+			case NO:
+			case NOT:
+			case NOTNULL:
+			case NULL:
+			case OF:
+			case OFFSET:
+			case ON:
+			case OR:
+			case ORDER:
+			case OUTER:
+			case PLAN:
+			case PRAGMA:
+			case PRIMARY:
+			case QUERY:
+			case RAISE:
+			case RECURSIVE:
+			case REFERENCES:
+			case REGEXP:
+			case REINDEX:
+			case RELEASE:
+			case RENAME:
+			case REPLACE:
+			case RESTRICT:
+			case RIGHT:
+			case ROLLBACK:
+			case ROW:
+			case ROWS:
+			case SAVEPOINT:
+			case SELECT:
+			case SET:
+			case TABLE:
+			case TEMP:
+			case TEMPORARY:
+			case THEN:
+			case TO:
+			case TRANSACTION:
+			case TRIGGER:
+			case UNION:
+			case UNIQUE:
+			case UPDATE:
+			case USING:
+			case VACUUM:
+			case VALUES:
+			case VIEW:
+			case VIRTUAL:
+			case WHEN:
+			case WHERE:
+			case WITH:
+			case WITHOUT:
+			case FIRST_VALUE:
+			case OVER:
+			case PARTITION:
+			case RANGE:
+			case PRECEDING:
+			case UNBOUNDED:
+			case CURRENT:
+			case FOLLOWING:
+			case CUME_DIST:
+			case DENSE_RANK:
+			case LAG:
+			case LAST_VALUE:
+			case LEAD:
+			case NTH_VALUE:
+			case NTILE:
+			case PERCENT_RANK:
+			case RANK:
+			case ROW_NUMBER:
+			case GENERATED:
+			case ALWAYS:
+			case STORED:
+			case TRUE:
+			case FALSE:
+			case WINDOW:
+			case NULLS:
+			case FIRST:
+			case LAST:
+			case FILTER:
+			case GROUPS:
+			case EXCLUDE:
 			case IDENTIFIER:
 			case NUMERIC_LITERAL:
 			case BIND_PARAMETER:
 			case STRING_LITERAL:
 			case BLOB_LITERAL:
 				{
-				State = 1773;
+				State = 1801;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,262,Context) ) {
+				switch ( Interpreter.AdaptivePredict(TokenStream,264,Context) ) {
 				case 1:
 					{
-					State = 1772;
-					Match(DISTINCT_);
+					State = 1800;
+					Match(DISTINCT);
 					}
 					break;
 				}
-				State = 1775;
+				State = 1803;
 				expr(0);
-				State = 1780;
+				State = 1808;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 1776;
+					State = 1804;
 					Match(COMMA);
-					State = 1777;
+					State = 1805;
 					expr(0);
 					}
 					}
-					State = 1782;
+					State = 1810;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
@@ -9942,7 +10296,7 @@ public partial class SQLiteParser : Parser {
 				break;
 			case STAR:
 				{
-				State = 1783;
+				State = 1811;
 				Match(STAR);
 				}
 				break;
@@ -9951,14 +10305,14 @@ public partial class SQLiteParser : Parser {
 			default:
 				break;
 			}
-			State = 1786;
+			State = 1814;
 			Match(CLOSE_PAR);
-			State = 1788;
+			State = 1816;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==FILTER_) {
+			if (_la==FILTER) {
 				{
-				State = 1787;
+				State = 1815;
 				filter_clause();
 				}
 			}
@@ -9982,7 +10336,7 @@ public partial class SQLiteParser : Parser {
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OPEN_PAR() { return GetToken(SQLiteParser.OPEN_PAR, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLOSE_PAR() { return GetToken(SQLiteParser.CLOSE_PAR, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OVER_() { return GetToken(SQLiteParser.OVER_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OVER() { return GetToken(SQLiteParser.OVER, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Window_defnContext window_defn() {
 			return GetRuleContext<Window_defnContext>(0);
 		}
@@ -10029,198 +10383,198 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Window_function_invocationContext window_function_invocation() {
 		Window_function_invocationContext _localctx = new Window_function_invocationContext(Context, State);
-		EnterRule(_localctx, 128, RULE_window_function_invocation);
+		EnterRule(_localctx, 140, RULE_window_function_invocation);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1790;
+			State = 1818;
 			window_function();
-			State = 1791;
+			State = 1819;
 			Match(OPEN_PAR);
-			State = 1801;
+			State = 1829;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case OPEN_PAR:
 			case PLUS:
 			case MINUS:
 			case TILDE:
-			case ABORT_:
-			case ACTION_:
-			case ADD_:
-			case AFTER_:
-			case ALL_:
-			case ALTER_:
-			case ANALYZE_:
-			case AND_:
-			case AS_:
-			case ASC_:
-			case ATTACH_:
-			case AUTOINCREMENT_:
-			case BEFORE_:
-			case BEGIN_:
-			case BETWEEN_:
-			case BY_:
-			case CASCADE_:
-			case CASE_:
-			case CAST_:
-			case CHECK_:
-			case COLLATE_:
-			case COLUMN_:
-			case COMMIT_:
-			case CONFLICT_:
-			case CONSTRAINT_:
-			case CREATE_:
-			case CROSS_:
-			case CURRENT_DATE_:
-			case CURRENT_TIME_:
-			case CURRENT_TIMESTAMP_:
-			case DATABASE_:
-			case DEFAULT_:
-			case DEFERRABLE_:
-			case DEFERRED_:
-			case DELETE_:
-			case DESC_:
-			case DETACH_:
-			case DISTINCT_:
-			case DROP_:
-			case EACH_:
-			case ELSE_:
-			case END_:
-			case ESCAPE_:
-			case EXCEPT_:
-			case EXCLUSIVE_:
-			case EXISTS_:
-			case EXPLAIN_:
-			case FAIL_:
-			case FOR_:
-			case FOREIGN_:
-			case FROM_:
-			case FULL_:
-			case GLOB_:
-			case GROUP_:
-			case HAVING_:
-			case IF_:
-			case IGNORE_:
-			case IMMEDIATE_:
-			case IN_:
-			case INDEX_:
-			case INDEXED_:
-			case INITIALLY_:
-			case INNER_:
-			case INSERT_:
-			case INSTEAD_:
-			case INTERSECT_:
-			case INTO_:
-			case IS_:
-			case ISNULL_:
-			case JOIN_:
-			case KEY_:
-			case LEFT_:
-			case LIKE_:
-			case LIMIT_:
-			case MATCH_:
-			case NATURAL_:
-			case NO_:
-			case NOT_:
-			case NOTNULL_:
-			case NULL_:
-			case OF_:
-			case OFFSET_:
-			case ON_:
-			case OR_:
-			case ORDER_:
-			case OUTER_:
-			case PLAN_:
-			case PRAGMA_:
-			case PRIMARY_:
-			case QUERY_:
-			case RAISE_:
-			case RECURSIVE_:
-			case REFERENCES_:
-			case REGEXP_:
-			case REINDEX_:
-			case RELEASE_:
-			case RENAME_:
-			case REPLACE_:
-			case RESTRICT_:
-			case RIGHT_:
-			case ROLLBACK_:
-			case ROW_:
-			case ROWS_:
-			case SAVEPOINT_:
-			case SELECT_:
-			case SET_:
-			case TABLE_:
-			case TEMP_:
-			case TEMPORARY_:
-			case THEN_:
-			case TO_:
-			case TRANSACTION_:
-			case TRIGGER_:
-			case UNION_:
-			case UNIQUE_:
-			case UPDATE_:
-			case USING_:
-			case VACUUM_:
-			case VALUES_:
-			case VIEW_:
-			case VIRTUAL_:
-			case WHEN_:
-			case WHERE_:
-			case WITH_:
-			case WITHOUT_:
-			case FIRST_VALUE_:
-			case OVER_:
-			case PARTITION_:
-			case RANGE_:
-			case PRECEDING_:
-			case UNBOUNDED_:
-			case CURRENT_:
-			case FOLLOWING_:
-			case CUME_DIST_:
-			case DENSE_RANK_:
-			case LAG_:
-			case LAST_VALUE_:
-			case LEAD_:
-			case NTH_VALUE_:
-			case NTILE_:
-			case PERCENT_RANK_:
-			case RANK_:
-			case ROW_NUMBER_:
-			case GENERATED_:
-			case ALWAYS_:
-			case STORED_:
-			case TRUE_:
-			case FALSE_:
-			case WINDOW_:
-			case NULLS_:
-			case FIRST_:
-			case LAST_:
-			case FILTER_:
-			case GROUPS_:
-			case EXCLUDE_:
+			case ABORT:
+			case ACTION:
+			case ADD:
+			case AFTER:
+			case ALL:
+			case ALTER:
+			case ANALYZE:
+			case AND:
+			case AS:
+			case ASC:
+			case ATTACH:
+			case AUTOINCREMENT:
+			case BEFORE:
+			case BEGIN:
+			case BETWEEN:
+			case BY:
+			case CASCADE:
+			case CASE:
+			case CAST:
+			case CHECK:
+			case COLLATE:
+			case COLUMN:
+			case COMMIT:
+			case CONFLICT:
+			case CONSTRAINT:
+			case CREATE:
+			case CROSS:
+			case CURRENT_DATE:
+			case CURRENT_TIME:
+			case CURRENT_TIMESTAMP:
+			case DATABASE:
+			case DEFAULT:
+			case DEFERRABLE:
+			case DEFERRED:
+			case DELETE:
+			case DESC:
+			case DETACH:
+			case DISTINCT:
+			case DROP:
+			case EACH:
+			case ELSE:
+			case END:
+			case ESCAPE:
+			case EXCEPT:
+			case EXCLUSIVE:
+			case EXISTS:
+			case EXPLAIN:
+			case FAIL:
+			case FOR:
+			case FOREIGN:
+			case FROM:
+			case FULL:
+			case GLOB:
+			case GROUP:
+			case HAVING:
+			case IF:
+			case IGNORE:
+			case IMMEDIATE:
+			case IN:
+			case INDEX:
+			case INDEXED:
+			case INITIALLY:
+			case INNER:
+			case INSERT:
+			case INSTEAD:
+			case INTERSECT:
+			case INTO:
+			case IS:
+			case ISNULL:
+			case JOIN:
+			case KEY:
+			case LEFT:
+			case LIKE:
+			case LIMIT:
+			case MATCH:
+			case NATURAL:
+			case NO:
+			case NOT:
+			case NOTNULL:
+			case NULL:
+			case OF:
+			case OFFSET:
+			case ON:
+			case OR:
+			case ORDER:
+			case OUTER:
+			case PLAN:
+			case PRAGMA:
+			case PRIMARY:
+			case QUERY:
+			case RAISE:
+			case RECURSIVE:
+			case REFERENCES:
+			case REGEXP:
+			case REINDEX:
+			case RELEASE:
+			case RENAME:
+			case REPLACE:
+			case RESTRICT:
+			case RIGHT:
+			case ROLLBACK:
+			case ROW:
+			case ROWS:
+			case SAVEPOINT:
+			case SELECT:
+			case SET:
+			case TABLE:
+			case TEMP:
+			case TEMPORARY:
+			case THEN:
+			case TO:
+			case TRANSACTION:
+			case TRIGGER:
+			case UNION:
+			case UNIQUE:
+			case UPDATE:
+			case USING:
+			case VACUUM:
+			case VALUES:
+			case VIEW:
+			case VIRTUAL:
+			case WHEN:
+			case WHERE:
+			case WITH:
+			case WITHOUT:
+			case FIRST_VALUE:
+			case OVER:
+			case PARTITION:
+			case RANGE:
+			case PRECEDING:
+			case UNBOUNDED:
+			case CURRENT:
+			case FOLLOWING:
+			case CUME_DIST:
+			case DENSE_RANK:
+			case LAG:
+			case LAST_VALUE:
+			case LEAD:
+			case NTH_VALUE:
+			case NTILE:
+			case PERCENT_RANK:
+			case RANK:
+			case ROW_NUMBER:
+			case GENERATED:
+			case ALWAYS:
+			case STORED:
+			case TRUE:
+			case FALSE:
+			case WINDOW:
+			case NULLS:
+			case FIRST:
+			case LAST:
+			case FILTER:
+			case GROUPS:
+			case EXCLUDE:
 			case IDENTIFIER:
 			case NUMERIC_LITERAL:
 			case BIND_PARAMETER:
 			case STRING_LITERAL:
 			case BLOB_LITERAL:
 				{
-				State = 1792;
+				State = 1820;
 				expr(0);
-				State = 1797;
+				State = 1825;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 1793;
+					State = 1821;
 					Match(COMMA);
-					State = 1794;
+					State = 1822;
 					expr(0);
 					}
 					}
-					State = 1799;
+					State = 1827;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
@@ -10228,7 +10582,7 @@ public partial class SQLiteParser : Parser {
 				break;
 			case STAR:
 				{
-				State = 1800;
+				State = 1828;
 				Match(STAR);
 				}
 				break;
@@ -10237,32 +10591,32 @@ public partial class SQLiteParser : Parser {
 			default:
 				break;
 			}
-			State = 1803;
+			State = 1831;
 			Match(CLOSE_PAR);
-			State = 1805;
+			State = 1833;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==FILTER_) {
+			if (_la==FILTER) {
 				{
-				State = 1804;
+				State = 1832;
 				filter_clause();
 				}
 			}
 
-			State = 1807;
-			Match(OVER_);
-			State = 1810;
+			State = 1835;
+			Match(OVER);
+			State = 1838;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,269,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,271,Context) ) {
 			case 1:
 				{
-				State = 1808;
+				State = 1836;
 				window_defn();
 				}
 				break;
 			case 2:
 				{
-				State = 1809;
+				State = 1837;
 				window_name();
 				}
 				break;
@@ -10281,14 +10635,14 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Common_table_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WITH_() { return GetToken(SQLiteParser.WITH_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WITH() { return GetToken(SQLiteParser.WITH, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Common_table_expressionContext[] common_table_expression() {
 			return GetRuleContexts<Common_table_expressionContext>();
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public Common_table_expressionContext common_table_expression(int i) {
 			return GetRuleContext<Common_table_expressionContext>(i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RECURSIVE_() { return GetToken(SQLiteParser.RECURSIVE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RECURSIVE() { return GetToken(SQLiteParser.RECURSIVE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(SQLiteParser.COMMA); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
 			return GetToken(SQLiteParser.COMMA, i);
@@ -10319,38 +10673,38 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Common_table_stmtContext common_table_stmt() {
 		Common_table_stmtContext _localctx = new Common_table_stmtContext(Context, State);
-		EnterRule(_localctx, 130, RULE_common_table_stmt);
+		EnterRule(_localctx, 142, RULE_common_table_stmt);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1812;
-			Match(WITH_);
-			State = 1814;
+			State = 1840;
+			Match(WITH);
+			State = 1842;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,270,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,272,Context) ) {
 			case 1:
 				{
-				State = 1813;
-				Match(RECURSIVE_);
+				State = 1841;
+				Match(RECURSIVE);
 				}
 				break;
 			}
-			State = 1816;
+			State = 1844;
 			common_table_expression();
-			State = 1821;
+			State = 1849;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				State = 1817;
+				State = 1845;
 				Match(COMMA);
-				State = 1818;
+				State = 1846;
 				common_table_expression();
 				}
 				}
-				State = 1823;
+				State = 1851;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -10367,9 +10721,9 @@ public partial class SQLiteParser : Parser {
 		return _localctx;
 	}
 
-	public partial class Order_by_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ORDER_() { return GetToken(SQLiteParser.ORDER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY_() { return GetToken(SQLiteParser.BY_, 0); }
+	public partial class Order_by_clauseContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ORDER() { return GetToken(SQLiteParser.ORDER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY() { return GetToken(SQLiteParser.BY, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Ordering_termContext[] ordering_term() {
 			return GetRuleContexts<Ordering_termContext>();
 		}
@@ -10380,56 +10734,56 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
 			return GetToken(SQLiteParser.COMMA, i);
 		}
-		public Order_by_stmtContext(ParserRuleContext parent, int invokingState)
+		public Order_by_clauseContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_order_by_stmt; } }
+		public override int RuleIndex { get { return RULE_order_by_clause; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
 			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
-			if (typedListener != null) typedListener.EnterOrder_by_stmt(this);
+			if (typedListener != null) typedListener.EnterOrder_by_clause(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
 			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
-			if (typedListener != null) typedListener.ExitOrder_by_stmt(this);
+			if (typedListener != null) typedListener.ExitOrder_by_clause(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ISQLiteParserVisitor<TResult> typedVisitor = visitor as ISQLiteParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitOrder_by_stmt(this);
+			if (typedVisitor != null) return typedVisitor.VisitOrder_by_clause(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public Order_by_stmtContext order_by_stmt() {
-		Order_by_stmtContext _localctx = new Order_by_stmtContext(Context, State);
-		EnterRule(_localctx, 132, RULE_order_by_stmt);
+	public Order_by_clauseContext order_by_clause() {
+		Order_by_clauseContext _localctx = new Order_by_clauseContext(Context, State);
+		EnterRule(_localctx, 144, RULE_order_by_clause);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1824;
-			Match(ORDER_);
-			State = 1825;
-			Match(BY_);
-			State = 1826;
+			State = 1852;
+			Match(ORDER);
+			State = 1853;
+			Match(BY);
+			State = 1854;
 			ordering_term();
-			State = 1831;
+			State = 1859;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				State = 1827;
+				State = 1855;
 				Match(COMMA);
-				State = 1828;
+				State = 1856;
 				ordering_term();
 				}
 				}
-				State = 1833;
+				State = 1861;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -10446,66 +10800,66 @@ public partial class SQLiteParser : Parser {
 		return _localctx;
 	}
 
-	public partial class Limit_stmtContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LIMIT_() { return GetToken(SQLiteParser.LIMIT_, 0); }
+	public partial class Limit_clauseContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LIMIT() { return GetToken(SQLiteParser.LIMIT, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext[] expr() {
 			return GetRuleContexts<ExprContext>();
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr(int i) {
 			return GetRuleContext<ExprContext>(i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OFFSET_() { return GetToken(SQLiteParser.OFFSET_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OFFSET() { return GetToken(SQLiteParser.OFFSET, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA() { return GetToken(SQLiteParser.COMMA, 0); }
-		public Limit_stmtContext(ParserRuleContext parent, int invokingState)
+		public Limit_clauseContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_limit_stmt; } }
+		public override int RuleIndex { get { return RULE_limit_clause; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
 			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
-			if (typedListener != null) typedListener.EnterLimit_stmt(this);
+			if (typedListener != null) typedListener.EnterLimit_clause(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
 			ISQLiteParserListener typedListener = listener as ISQLiteParserListener;
-			if (typedListener != null) typedListener.ExitLimit_stmt(this);
+			if (typedListener != null) typedListener.ExitLimit_clause(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ISQLiteParserVisitor<TResult> typedVisitor = visitor as ISQLiteParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitLimit_stmt(this);
+			if (typedVisitor != null) return typedVisitor.VisitLimit_clause(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public Limit_stmtContext limit_stmt() {
-		Limit_stmtContext _localctx = new Limit_stmtContext(Context, State);
-		EnterRule(_localctx, 134, RULE_limit_stmt);
+	public Limit_clauseContext limit_clause() {
+		Limit_clauseContext _localctx = new Limit_clauseContext(Context, State);
+		EnterRule(_localctx, 146, RULE_limit_clause);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1834;
-			Match(LIMIT_);
-			State = 1835;
+			State = 1862;
+			Match(LIMIT);
+			State = 1863;
 			expr(0);
-			State = 1838;
+			State = 1866;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==COMMA || _la==OFFSET_) {
+			if (_la==COMMA || _la==OFFSET) {
 				{
-				State = 1836;
+				State = 1864;
 				_la = TokenStream.LA(1);
-				if ( !(_la==COMMA || _la==OFFSET_) ) {
+				if ( !(_la==COMMA || _la==OFFSET) ) {
 				ErrorHandler.RecoverInline(this);
 				}
 				else {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 1837;
+				State = 1865;
 				expr(0);
 				}
 			}
@@ -10527,16 +10881,16 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr() {
 			return GetRuleContext<ExprContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLLATE_() { return GetToken(SQLiteParser.COLLATE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLLATE() { return GetToken(SQLiteParser.COLLATE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Collation_nameContext collation_name() {
 			return GetRuleContext<Collation_nameContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public Asc_descContext asc_desc() {
 			return GetRuleContext<Asc_descContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NULLS_() { return GetToken(SQLiteParser.NULLS_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FIRST_() { return GetToken(SQLiteParser.FIRST_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LAST_() { return GetToken(SQLiteParser.LAST_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NULLS() { return GetToken(SQLiteParser.NULLS, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FIRST() { return GetToken(SQLiteParser.FIRST, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LAST() { return GetToken(SQLiteParser.LAST, 0); }
 		public Ordering_termContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -10563,45 +10917,45 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Ordering_termContext ordering_term() {
 		Ordering_termContext _localctx = new Ordering_termContext(Context, State);
-		EnterRule(_localctx, 136, RULE_ordering_term);
+		EnterRule(_localctx, 148, RULE_ordering_term);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1840;
+			State = 1868;
 			expr(0);
-			State = 1843;
+			State = 1871;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==COLLATE_) {
+			if (_la==COLLATE) {
 				{
-				State = 1841;
-				Match(COLLATE_);
-				State = 1842;
+				State = 1869;
+				Match(COLLATE);
+				State = 1870;
 				collation_name();
 				}
 			}
 
-			State = 1846;
+			State = 1874;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==ASC_ || _la==DESC_) {
+			if (_la==ASC || _la==DESC) {
 				{
-				State = 1845;
+				State = 1873;
 				asc_desc();
 				}
 			}
 
-			State = 1850;
+			State = 1878;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==NULLS_) {
+			if (_la==NULLS) {
 				{
-				State = 1848;
-				Match(NULLS_);
-				State = 1849;
+				State = 1876;
+				Match(NULLS);
+				State = 1877;
 				_la = TokenStream.LA(1);
-				if ( !(_la==FIRST_ || _la==LAST_) ) {
+				if ( !(_la==FIRST || _la==LAST) ) {
 				ErrorHandler.RecoverInline(this);
 				}
 				else {
@@ -10625,8 +10979,8 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Asc_descContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ASC_() { return GetToken(SQLiteParser.ASC_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DESC_() { return GetToken(SQLiteParser.DESC_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ASC() { return GetToken(SQLiteParser.ASC, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DESC() { return GetToken(SQLiteParser.DESC, 0); }
 		public Asc_descContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -10653,14 +11007,14 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Asc_descContext asc_desc() {
 		Asc_descContext _localctx = new Asc_descContext(Context, State);
-		EnterRule(_localctx, 138, RULE_asc_desc);
+		EnterRule(_localctx, 150, RULE_asc_desc);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1852;
+			State = 1880;
 			_la = TokenStream.LA(1);
-			if ( !(_la==ASC_ || _la==DESC_) ) {
+			if ( !(_la==ASC || _la==DESC) ) {
 			ErrorHandler.RecoverInline(this);
 			}
 			else {
@@ -10684,11 +11038,11 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr() {
 			return GetRuleContext<ExprContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRECEDING_() { return GetToken(SQLiteParser.PRECEDING_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FOLLOWING_() { return GetToken(SQLiteParser.FOLLOWING_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT_() { return GetToken(SQLiteParser.CURRENT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROW_() { return GetToken(SQLiteParser.ROW_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNBOUNDED_() { return GetToken(SQLiteParser.UNBOUNDED_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRECEDING() { return GetToken(SQLiteParser.PRECEDING, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FOLLOWING() { return GetToken(SQLiteParser.FOLLOWING, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT() { return GetToken(SQLiteParser.CURRENT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROW() { return GetToken(SQLiteParser.ROW, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNBOUNDED() { return GetToken(SQLiteParser.UNBOUNDED, 0); }
 		public Frame_leftContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -10715,45 +11069,45 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Frame_leftContext frame_left() {
 		Frame_leftContext _localctx = new Frame_leftContext(Context, State);
-		EnterRule(_localctx, 140, RULE_frame_left);
+		EnterRule(_localctx, 152, RULE_frame_left);
 		try {
-			State = 1864;
+			State = 1892;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,277,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,279,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 1854;
+				State = 1882;
 				expr(0);
-				State = 1855;
-				Match(PRECEDING_);
+				State = 1883;
+				Match(PRECEDING);
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 1857;
+				State = 1885;
 				expr(0);
-				State = 1858;
-				Match(FOLLOWING_);
+				State = 1886;
+				Match(FOLLOWING);
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 1860;
-				Match(CURRENT_);
-				State = 1861;
-				Match(ROW_);
+				State = 1888;
+				Match(CURRENT);
+				State = 1889;
+				Match(ROW);
 				}
 				break;
 			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 1862;
-				Match(UNBOUNDED_);
-				State = 1863;
-				Match(PRECEDING_);
+				State = 1890;
+				Match(UNBOUNDED);
+				State = 1891;
+				Match(PRECEDING);
 				}
 				break;
 			}
@@ -10773,11 +11127,11 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr() {
 			return GetRuleContext<ExprContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRECEDING_() { return GetToken(SQLiteParser.PRECEDING_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FOLLOWING_() { return GetToken(SQLiteParser.FOLLOWING_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT_() { return GetToken(SQLiteParser.CURRENT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROW_() { return GetToken(SQLiteParser.ROW_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNBOUNDED_() { return GetToken(SQLiteParser.UNBOUNDED_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRECEDING() { return GetToken(SQLiteParser.PRECEDING, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FOLLOWING() { return GetToken(SQLiteParser.FOLLOWING, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT() { return GetToken(SQLiteParser.CURRENT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROW() { return GetToken(SQLiteParser.ROW, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNBOUNDED() { return GetToken(SQLiteParser.UNBOUNDED, 0); }
 		public Frame_rightContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -10804,45 +11158,45 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Frame_rightContext frame_right() {
 		Frame_rightContext _localctx = new Frame_rightContext(Context, State);
-		EnterRule(_localctx, 142, RULE_frame_right);
+		EnterRule(_localctx, 154, RULE_frame_right);
 		try {
-			State = 1876;
+			State = 1904;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,278,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,280,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 1866;
+				State = 1894;
 				expr(0);
-				State = 1867;
-				Match(PRECEDING_);
+				State = 1895;
+				Match(PRECEDING);
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 1869;
+				State = 1897;
 				expr(0);
-				State = 1870;
-				Match(FOLLOWING_);
+				State = 1898;
+				Match(FOLLOWING);
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 1872;
-				Match(CURRENT_);
-				State = 1873;
-				Match(ROW_);
+				State = 1900;
+				Match(CURRENT);
+				State = 1901;
+				Match(ROW);
 				}
 				break;
 			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 1874;
-				Match(UNBOUNDED_);
-				State = 1875;
-				Match(FOLLOWING_);
+				State = 1902;
+				Match(UNBOUNDED);
+				State = 1903;
+				Match(FOLLOWING);
 				}
 				break;
 			}
@@ -10862,10 +11216,10 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr() {
 			return GetRuleContext<ExprContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRECEDING_() { return GetToken(SQLiteParser.PRECEDING_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNBOUNDED_() { return GetToken(SQLiteParser.UNBOUNDED_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT_() { return GetToken(SQLiteParser.CURRENT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROW_() { return GetToken(SQLiteParser.ROW_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRECEDING() { return GetToken(SQLiteParser.PRECEDING, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNBOUNDED() { return GetToken(SQLiteParser.UNBOUNDED, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT() { return GetToken(SQLiteParser.CURRENT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROW() { return GetToken(SQLiteParser.ROW, 0); }
 		public Frame_singleContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -10892,36 +11246,36 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Frame_singleContext frame_single() {
 		Frame_singleContext _localctx = new Frame_singleContext(Context, State);
-		EnterRule(_localctx, 144, RULE_frame_single);
+		EnterRule(_localctx, 156, RULE_frame_single);
 		try {
-			State = 1885;
+			State = 1913;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,279,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,281,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 1878;
+				State = 1906;
 				expr(0);
-				State = 1879;
-				Match(PRECEDING_);
+				State = 1907;
+				Match(PRECEDING);
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 1881;
-				Match(UNBOUNDED_);
-				State = 1882;
-				Match(PRECEDING_);
+				State = 1909;
+				Match(UNBOUNDED);
+				State = 1910;
+				Match(PRECEDING);
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 1883;
-				Match(CURRENT_);
-				State = 1884;
-				Match(ROW_);
+				State = 1911;
+				Match(CURRENT);
+				State = 1912;
+				Match(ROW);
 				}
 				break;
 			}
@@ -10949,40 +11303,40 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLOSE_PAR(int i) {
 			return GetToken(SQLiteParser.CLOSE_PAR, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OVER_() { return GetToken(SQLiteParser.OVER_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OVER() { return GetToken(SQLiteParser.OVER, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Order_by_expr_asc_descContext order_by_expr_asc_desc() {
 			return GetRuleContext<Order_by_expr_asc_descContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FIRST_VALUE_() { return GetToken(SQLiteParser.FIRST_VALUE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LAST_VALUE_() { return GetToken(SQLiteParser.LAST_VALUE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FIRST_VALUE() { return GetToken(SQLiteParser.FIRST_VALUE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LAST_VALUE() { return GetToken(SQLiteParser.LAST_VALUE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Partition_byContext partition_by() {
 			return GetRuleContext<Partition_byContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public Frame_clauseContext frame_clause() {
 			return GetRuleContext<Frame_clauseContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CUME_DIST_() { return GetToken(SQLiteParser.CUME_DIST_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PERCENT_RANK_() { return GetToken(SQLiteParser.PERCENT_RANK_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CUME_DIST() { return GetToken(SQLiteParser.CUME_DIST, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PERCENT_RANK() { return GetToken(SQLiteParser.PERCENT_RANK, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Order_by_exprContext order_by_expr() {
 			return GetRuleContext<Order_by_exprContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DENSE_RANK_() { return GetToken(SQLiteParser.DENSE_RANK_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RANK_() { return GetToken(SQLiteParser.RANK_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROW_NUMBER_() { return GetToken(SQLiteParser.ROW_NUMBER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LAG_() { return GetToken(SQLiteParser.LAG_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LEAD_() { return GetToken(SQLiteParser.LEAD_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DENSE_RANK() { return GetToken(SQLiteParser.DENSE_RANK, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RANK() { return GetToken(SQLiteParser.RANK, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROW_NUMBER() { return GetToken(SQLiteParser.ROW_NUMBER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LAG() { return GetToken(SQLiteParser.LAG, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LEAD() { return GetToken(SQLiteParser.LEAD, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public OffsetContext offset() {
 			return GetRuleContext<OffsetContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public Default_valueContext default_value() {
 			return GetRuleContext<Default_valueContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NTH_VALUE_() { return GetToken(SQLiteParser.NTH_VALUE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NTH_VALUE() { return GetToken(SQLiteParser.NTH_VALUE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA() { return GetToken(SQLiteParser.COMMA, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Signed_numberContext signed_number() {
 			return GetRuleContext<Signed_numberContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NTILE_() { return GetToken(SQLiteParser.NTILE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NTILE() { return GetToken(SQLiteParser.NTILE, 0); }
 		public Window_functionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -11009,112 +11363,112 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Window_functionContext window_function() {
 		Window_functionContext _localctx = new Window_functionContext(Context, State);
-		EnterRule(_localctx, 146, RULE_window_function);
+		EnterRule(_localctx, 158, RULE_window_function);
 		int _la;
 		try {
-			State = 1972;
+			State = 2000;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case FIRST_VALUE_:
-			case LAST_VALUE_:
+			case FIRST_VALUE:
+			case LAST_VALUE:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 1887;
+				State = 1915;
 				_la = TokenStream.LA(1);
-				if ( !(_la==FIRST_VALUE_ || _la==LAST_VALUE_) ) {
+				if ( !(_la==FIRST_VALUE || _la==LAST_VALUE) ) {
 				ErrorHandler.RecoverInline(this);
 				}
 				else {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 1888;
+				State = 1916;
 				Match(OPEN_PAR);
-				State = 1889;
+				State = 1917;
 				expr(0);
-				State = 1890;
+				State = 1918;
 				Match(CLOSE_PAR);
-				State = 1891;
-				Match(OVER_);
-				State = 1892;
+				State = 1919;
+				Match(OVER);
+				State = 1920;
 				Match(OPEN_PAR);
-				State = 1894;
+				State = 1922;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==PARTITION_) {
+				if (_la==PARTITION) {
 					{
-					State = 1893;
+					State = 1921;
 					partition_by();
 					}
 				}
 
-				State = 1896;
+				State = 1924;
 				order_by_expr_asc_desc();
-				State = 1898;
+				State = 1926;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if ((((_la - 128)) & ~0x3f) == 0 && ((1L << (_la - 128)) & 2251799880794113L) != 0) {
 					{
-					State = 1897;
+					State = 1925;
 					frame_clause();
 					}
 				}
 
-				State = 1900;
+				State = 1928;
 				Match(CLOSE_PAR);
 				}
 				break;
-			case CUME_DIST_:
-			case PERCENT_RANK_:
+			case CUME_DIST:
+			case PERCENT_RANK:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 1902;
+				State = 1930;
 				_la = TokenStream.LA(1);
-				if ( !(_la==CUME_DIST_ || _la==PERCENT_RANK_) ) {
+				if ( !(_la==CUME_DIST || _la==PERCENT_RANK) ) {
 				ErrorHandler.RecoverInline(this);
 				}
 				else {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 1903;
+				State = 1931;
 				Match(OPEN_PAR);
-				State = 1904;
+				State = 1932;
 				Match(CLOSE_PAR);
-				State = 1905;
-				Match(OVER_);
-				State = 1906;
+				State = 1933;
+				Match(OVER);
+				State = 1934;
 				Match(OPEN_PAR);
-				State = 1908;
+				State = 1936;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==PARTITION_) {
+				if (_la==PARTITION) {
 					{
-					State = 1907;
+					State = 1935;
 					partition_by();
 					}
 				}
 
-				State = 1911;
+				State = 1939;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==ORDER_) {
+				if (_la==ORDER) {
 					{
-					State = 1910;
+					State = 1938;
 					order_by_expr();
 					}
 				}
 
-				State = 1913;
+				State = 1941;
 				Match(CLOSE_PAR);
 				}
 				break;
-			case DENSE_RANK_:
-			case RANK_:
-			case ROW_NUMBER_:
+			case DENSE_RANK:
+			case RANK:
+			case ROW_NUMBER:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 1914;
+				State = 1942;
 				_la = TokenStream.LA(1);
 				if ( !((((_la - 160)) & ~0x3f) == 0 && ((1L << (_la - 160)) & 385L) != 0) ) {
 				ErrorHandler.RecoverInline(this);
@@ -11123,162 +11477,162 @@ public partial class SQLiteParser : Parser {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 1915;
+				State = 1943;
 				Match(OPEN_PAR);
-				State = 1916;
+				State = 1944;
 				Match(CLOSE_PAR);
-				State = 1917;
-				Match(OVER_);
-				State = 1918;
+				State = 1945;
+				Match(OVER);
+				State = 1946;
 				Match(OPEN_PAR);
-				State = 1920;
+				State = 1948;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==PARTITION_) {
+				if (_la==PARTITION) {
 					{
-					State = 1919;
+					State = 1947;
 					partition_by();
 					}
 				}
 
-				State = 1922;
+				State = 1950;
 				order_by_expr_asc_desc();
-				State = 1923;
+				State = 1951;
 				Match(CLOSE_PAR);
 				}
 				break;
-			case LAG_:
-			case LEAD_:
+			case LAG:
+			case LEAD:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 1925;
+				State = 1953;
 				_la = TokenStream.LA(1);
-				if ( !(_la==LAG_ || _la==LEAD_) ) {
+				if ( !(_la==LAG || _la==LEAD) ) {
 				ErrorHandler.RecoverInline(this);
 				}
 				else {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 1926;
+				State = 1954;
 				Match(OPEN_PAR);
-				State = 1927;
+				State = 1955;
 				expr(0);
-				State = 1929;
+				State = 1957;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,285,Context) ) {
+				switch ( Interpreter.AdaptivePredict(TokenStream,287,Context) ) {
 				case 1:
 					{
-					State = 1928;
+					State = 1956;
 					offset();
 					}
 					break;
 				}
-				State = 1932;
+				State = 1960;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if (_la==COMMA) {
 					{
-					State = 1931;
+					State = 1959;
 					default_value();
 					}
 				}
 
-				State = 1934;
+				State = 1962;
 				Match(CLOSE_PAR);
-				State = 1935;
-				Match(OVER_);
-				State = 1936;
+				State = 1963;
+				Match(OVER);
+				State = 1964;
 				Match(OPEN_PAR);
-				State = 1938;
+				State = 1966;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==PARTITION_) {
+				if (_la==PARTITION) {
 					{
-					State = 1937;
+					State = 1965;
 					partition_by();
 					}
 				}
 
-				State = 1940;
+				State = 1968;
 				order_by_expr_asc_desc();
-				State = 1941;
+				State = 1969;
 				Match(CLOSE_PAR);
 				}
 				break;
-			case NTH_VALUE_:
+			case NTH_VALUE:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 1943;
-				Match(NTH_VALUE_);
-				State = 1944;
+				State = 1971;
+				Match(NTH_VALUE);
+				State = 1972;
 				Match(OPEN_PAR);
-				State = 1945;
+				State = 1973;
 				expr(0);
-				State = 1946;
+				State = 1974;
 				Match(COMMA);
-				State = 1947;
+				State = 1975;
 				signed_number();
-				State = 1948;
+				State = 1976;
 				Match(CLOSE_PAR);
-				State = 1949;
-				Match(OVER_);
-				State = 1950;
+				State = 1977;
+				Match(OVER);
+				State = 1978;
 				Match(OPEN_PAR);
-				State = 1952;
+				State = 1980;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==PARTITION_) {
+				if (_la==PARTITION) {
 					{
-					State = 1951;
+					State = 1979;
 					partition_by();
 					}
 				}
 
-				State = 1954;
+				State = 1982;
 				order_by_expr_asc_desc();
-				State = 1956;
+				State = 1984;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if ((((_la - 128)) & ~0x3f) == 0 && ((1L << (_la - 128)) & 2251799880794113L) != 0) {
 					{
-					State = 1955;
+					State = 1983;
 					frame_clause();
 					}
 				}
 
-				State = 1958;
+				State = 1986;
 				Match(CLOSE_PAR);
 				}
 				break;
-			case NTILE_:
+			case NTILE:
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 1960;
-				Match(NTILE_);
-				State = 1961;
+				State = 1988;
+				Match(NTILE);
+				State = 1989;
 				Match(OPEN_PAR);
-				State = 1962;
+				State = 1990;
 				expr(0);
-				State = 1963;
+				State = 1991;
 				Match(CLOSE_PAR);
-				State = 1964;
-				Match(OVER_);
-				State = 1965;
+				State = 1992;
+				Match(OVER);
+				State = 1993;
 				Match(OPEN_PAR);
-				State = 1967;
+				State = 1995;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==PARTITION_) {
+				if (_la==PARTITION) {
 					{
-					State = 1966;
+					State = 1994;
 					partition_by();
 					}
 				}
 
-				State = 1969;
+				State = 1997;
 				order_by_expr_asc_desc();
-				State = 1970;
+				State = 1998;
 				Match(CLOSE_PAR);
 				}
 				break;
@@ -11328,13 +11682,13 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public OffsetContext offset() {
 		OffsetContext _localctx = new OffsetContext(Context, State);
-		EnterRule(_localctx, 148, RULE_offset);
+		EnterRule(_localctx, 160, RULE_offset);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1974;
+			State = 2002;
 			Match(COMMA);
-			State = 1975;
+			State = 2003;
 			signed_number();
 			}
 		}
@@ -11380,13 +11734,13 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Default_valueContext default_value() {
 		Default_valueContext _localctx = new Default_valueContext(Context, State);
-		EnterRule(_localctx, 150, RULE_default_value);
+		EnterRule(_localctx, 162, RULE_default_value);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1977;
+			State = 2005;
 			Match(COMMA);
-			State = 1978;
+			State = 2006;
 			signed_number();
 			}
 		}
@@ -11402,8 +11756,8 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Partition_byContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PARTITION_() { return GetToken(SQLiteParser.PARTITION_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY_() { return GetToken(SQLiteParser.BY_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PARTITION() { return GetToken(SQLiteParser.PARTITION, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY() { return GetToken(SQLiteParser.BY, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext[] expr() {
 			return GetRuleContexts<ExprContext>();
 		}
@@ -11436,16 +11790,16 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Partition_byContext partition_by() {
 		Partition_byContext _localctx = new Partition_byContext(Context, State);
-		EnterRule(_localctx, 152, RULE_partition_by);
+		EnterRule(_localctx, 164, RULE_partition_by);
 		try {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1980;
-			Match(PARTITION_);
-			State = 1981;
-			Match(BY_);
-			State = 1983;
+			State = 2008;
+			Match(PARTITION);
+			State = 2009;
+			Match(BY);
+			State = 2011;
 			ErrorHandler.Sync(this);
 			_alt = 1;
 			do {
@@ -11453,7 +11807,7 @@ public partial class SQLiteParser : Parser {
 				case 1:
 					{
 					{
-					State = 1982;
+					State = 2010;
 					expr(0);
 					}
 					}
@@ -11461,9 +11815,9 @@ public partial class SQLiteParser : Parser {
 				default:
 					throw new NoViableAltException(this);
 				}
-				State = 1985;
+				State = 2013;
 				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,292,Context);
+				_alt = Interpreter.AdaptivePredict(TokenStream,294,Context);
 			} while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER );
 			}
 		}
@@ -11479,8 +11833,8 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Order_by_exprContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ORDER_() { return GetToken(SQLiteParser.ORDER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY_() { return GetToken(SQLiteParser.BY_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ORDER() { return GetToken(SQLiteParser.ORDER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY() { return GetToken(SQLiteParser.BY, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExprContext[] expr() {
 			return GetRuleContexts<ExprContext>();
 		}
@@ -11513,26 +11867,26 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Order_by_exprContext order_by_expr() {
 		Order_by_exprContext _localctx = new Order_by_exprContext(Context, State);
-		EnterRule(_localctx, 154, RULE_order_by_expr);
+		EnterRule(_localctx, 166, RULE_order_by_expr);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1987;
-			Match(ORDER_);
-			State = 1988;
-			Match(BY_);
-			State = 1990;
+			State = 2015;
+			Match(ORDER);
+			State = 2016;
+			Match(BY);
+			State = 2018;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			do {
 				{
 				{
-				State = 1989;
+				State = 2017;
 				expr(0);
 				}
 				}
-				State = 1992;
+				State = 2020;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			} while ( ((_la) & ~0x3f) == 0 && ((1L << _la) & -33552632L) != 0 || (((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & -1152921504606846977L) != 0 || (((_la - 128)) & ~0x3f) == 0 && ((1L << (_la - 128)) & 4476578029606273023L) != 0 );
@@ -11550,8 +11904,8 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Order_by_expr_asc_descContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ORDER_() { return GetToken(SQLiteParser.ORDER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY_() { return GetToken(SQLiteParser.BY_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ORDER() { return GetToken(SQLiteParser.ORDER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY() { return GetToken(SQLiteParser.BY, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Expr_asc_descContext expr_asc_desc() {
 			return GetRuleContext<Expr_asc_descContext>(0);
 		}
@@ -11581,15 +11935,15 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Order_by_expr_asc_descContext order_by_expr_asc_desc() {
 		Order_by_expr_asc_descContext _localctx = new Order_by_expr_asc_descContext(Context, State);
-		EnterRule(_localctx, 156, RULE_order_by_expr_asc_desc);
+		EnterRule(_localctx, 168, RULE_order_by_expr_asc_desc);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1994;
-			Match(ORDER_);
-			State = 1995;
-			Match(BY_);
-			State = 1996;
+			State = 2022;
+			Match(ORDER);
+			State = 2023;
+			Match(BY);
+			State = 2024;
 			expr_asc_desc();
 			}
 		}
@@ -11647,46 +12001,46 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Expr_asc_descContext expr_asc_desc() {
 		Expr_asc_descContext _localctx = new Expr_asc_descContext(Context, State);
-		EnterRule(_localctx, 158, RULE_expr_asc_desc);
+		EnterRule(_localctx, 170, RULE_expr_asc_desc);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 1998;
+			State = 2026;
 			expr(0);
-			State = 2000;
+			State = 2028;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==ASC_ || _la==DESC_) {
+			if (_la==ASC || _la==DESC) {
 				{
-				State = 1999;
+				State = 2027;
 				asc_desc();
 				}
 			}
 
-			State = 2009;
+			State = 2037;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				State = 2002;
+				State = 2030;
 				Match(COMMA);
-				State = 2003;
+				State = 2031;
 				expr(0);
-				State = 2005;
+				State = 2033;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==ASC_ || _la==DESC_) {
+				if (_la==ASC || _la==DESC) {
 					{
-					State = 2004;
+					State = 2032;
 					asc_desc();
 					}
 				}
 
 				}
 				}
-				State = 2011;
+				State = 2039;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -11733,11 +12087,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Initial_selectContext initial_select() {
 		Initial_selectContext _localctx = new Initial_selectContext(Context, State);
-		EnterRule(_localctx, 160, RULE_initial_select);
+		EnterRule(_localctx, 172, RULE_initial_select);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2012;
+			State = 2040;
 			select_stmt();
 			}
 		}
@@ -11782,11 +12136,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Recursive_selectContext recursive_select() {
 		Recursive_selectContext _localctx = new Recursive_selectContext(Context, State);
-		EnterRule(_localctx, 162, RULE_recursive_select);
+		EnterRule(_localctx, 174, RULE_recursive_select);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2014;
+			State = 2042;
 			select_stmt();
 			}
 		}
@@ -11805,7 +12159,7 @@ public partial class SQLiteParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MINUS() { return GetToken(SQLiteParser.MINUS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PLUS() { return GetToken(SQLiteParser.PLUS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TILDE() { return GetToken(SQLiteParser.TILDE, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT_() { return GetToken(SQLiteParser.NOT_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT() { return GetToken(SQLiteParser.NOT, 0); }
 		public Unary_operatorContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -11832,14 +12186,14 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Unary_operatorContext unary_operator() {
 		Unary_operatorContext _localctx = new Unary_operatorContext(Context, State);
-		EnterRule(_localctx, 164, RULE_unary_operator);
+		EnterRule(_localctx, 176, RULE_unary_operator);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2016;
+			State = 2044;
 			_la = TokenStream.LA(1);
-			if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 1792L) != 0 || _la==NOT_) ) {
+			if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 1792L) != 0 || _la==NOT) ) {
 			ErrorHandler.RecoverInline(this);
 			}
 			else {
@@ -11887,11 +12241,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Error_messageContext error_message() {
 		Error_messageContext _localctx = new Error_messageContext(Context, State);
-		EnterRule(_localctx, 166, RULE_error_message);
+		EnterRule(_localctx, 178, RULE_error_message);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2018;
+			State = 2046;
 			Match(STRING_LITERAL);
 			}
 		}
@@ -11939,22 +12293,22 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Module_argumentContext module_argument() {
 		Module_argumentContext _localctx = new Module_argumentContext(Context, State);
-		EnterRule(_localctx, 168, RULE_module_argument);
+		EnterRule(_localctx, 180, RULE_module_argument);
 		try {
-			State = 2022;
+			State = 2050;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,297,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,299,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 2020;
+				State = 2048;
 				expr(0);
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 2021;
+				State = 2049;
 				column_def();
 				}
 				break;
@@ -12000,12 +12354,12 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Column_aliasContext column_alias() {
 		Column_aliasContext _localctx = new Column_aliasContext(Context, State);
-		EnterRule(_localctx, 170, RULE_column_alias);
+		EnterRule(_localctx, 182, RULE_column_alias);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2024;
+			State = 2052;
 			_la = TokenStream.LA(1);
 			if ( !(_la==IDENTIFIER || _la==STRING_LITERAL) ) {
 			ErrorHandler.RecoverInline(this);
@@ -12028,161 +12382,161 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class KeywordContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ABORT_() { return GetToken(SQLiteParser.ABORT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ACTION_() { return GetToken(SQLiteParser.ACTION_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ADD_() { return GetToken(SQLiteParser.ADD_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AFTER_() { return GetToken(SQLiteParser.AFTER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALL_() { return GetToken(SQLiteParser.ALL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALTER_() { return GetToken(SQLiteParser.ALTER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ANALYZE_() { return GetToken(SQLiteParser.ANALYZE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AND_() { return GetToken(SQLiteParser.AND_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS_() { return GetToken(SQLiteParser.AS_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ASC_() { return GetToken(SQLiteParser.ASC_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ATTACH_() { return GetToken(SQLiteParser.ATTACH_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AUTOINCREMENT_() { return GetToken(SQLiteParser.AUTOINCREMENT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BEFORE_() { return GetToken(SQLiteParser.BEFORE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BEGIN_() { return GetToken(SQLiteParser.BEGIN_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BETWEEN_() { return GetToken(SQLiteParser.BETWEEN_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY_() { return GetToken(SQLiteParser.BY_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CASCADE_() { return GetToken(SQLiteParser.CASCADE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CASE_() { return GetToken(SQLiteParser.CASE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CAST_() { return GetToken(SQLiteParser.CAST_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CHECK_() { return GetToken(SQLiteParser.CHECK_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLLATE_() { return GetToken(SQLiteParser.COLLATE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLUMN_() { return GetToken(SQLiteParser.COLUMN_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMIT_() { return GetToken(SQLiteParser.COMMIT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CONFLICT_() { return GetToken(SQLiteParser.CONFLICT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CONSTRAINT_() { return GetToken(SQLiteParser.CONSTRAINT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CREATE_() { return GetToken(SQLiteParser.CREATE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CROSS_() { return GetToken(SQLiteParser.CROSS_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT_DATE_() { return GetToken(SQLiteParser.CURRENT_DATE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT_TIME_() { return GetToken(SQLiteParser.CURRENT_TIME_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT_TIMESTAMP_() { return GetToken(SQLiteParser.CURRENT_TIMESTAMP_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DATABASE_() { return GetToken(SQLiteParser.DATABASE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFAULT_() { return GetToken(SQLiteParser.DEFAULT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFERRABLE_() { return GetToken(SQLiteParser.DEFERRABLE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFERRED_() { return GetToken(SQLiteParser.DEFERRED_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DELETE_() { return GetToken(SQLiteParser.DELETE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DESC_() { return GetToken(SQLiteParser.DESC_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DETACH_() { return GetToken(SQLiteParser.DETACH_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DISTINCT_() { return GetToken(SQLiteParser.DISTINCT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DROP_() { return GetToken(SQLiteParser.DROP_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EACH_() { return GetToken(SQLiteParser.EACH_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ELSE_() { return GetToken(SQLiteParser.ELSE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode END_() { return GetToken(SQLiteParser.END_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ESCAPE_() { return GetToken(SQLiteParser.ESCAPE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXCEPT_() { return GetToken(SQLiteParser.EXCEPT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXCLUSIVE_() { return GetToken(SQLiteParser.EXCLUSIVE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXISTS_() { return GetToken(SQLiteParser.EXISTS_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXPLAIN_() { return GetToken(SQLiteParser.EXPLAIN_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FAIL_() { return GetToken(SQLiteParser.FAIL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FOR_() { return GetToken(SQLiteParser.FOR_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FOREIGN_() { return GetToken(SQLiteParser.FOREIGN_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FROM_() { return GetToken(SQLiteParser.FROM_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FULL_() { return GetToken(SQLiteParser.FULL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GLOB_() { return GetToken(SQLiteParser.GLOB_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GROUP_() { return GetToken(SQLiteParser.GROUP_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode HAVING_() { return GetToken(SQLiteParser.HAVING_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF_() { return GetToken(SQLiteParser.IF_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IGNORE_() { return GetToken(SQLiteParser.IGNORE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IMMEDIATE_() { return GetToken(SQLiteParser.IMMEDIATE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IN_() { return GetToken(SQLiteParser.IN_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INDEX_() { return GetToken(SQLiteParser.INDEX_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INDEXED_() { return GetToken(SQLiteParser.INDEXED_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INITIALLY_() { return GetToken(SQLiteParser.INITIALLY_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INNER_() { return GetToken(SQLiteParser.INNER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INSERT_() { return GetToken(SQLiteParser.INSERT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INSTEAD_() { return GetToken(SQLiteParser.INSTEAD_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INTERSECT_() { return GetToken(SQLiteParser.INTERSECT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INTO_() { return GetToken(SQLiteParser.INTO_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IS_() { return GetToken(SQLiteParser.IS_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ISNULL_() { return GetToken(SQLiteParser.ISNULL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode JOIN_() { return GetToken(SQLiteParser.JOIN_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode KEY_() { return GetToken(SQLiteParser.KEY_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LEFT_() { return GetToken(SQLiteParser.LEFT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LIKE_() { return GetToken(SQLiteParser.LIKE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LIMIT_() { return GetToken(SQLiteParser.LIMIT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MATCH_() { return GetToken(SQLiteParser.MATCH_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NATURAL_() { return GetToken(SQLiteParser.NATURAL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NO_() { return GetToken(SQLiteParser.NO_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT_() { return GetToken(SQLiteParser.NOT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOTNULL_() { return GetToken(SQLiteParser.NOTNULL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NULL_() { return GetToken(SQLiteParser.NULL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OF_() { return GetToken(SQLiteParser.OF_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OFFSET_() { return GetToken(SQLiteParser.OFFSET_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ON_() { return GetToken(SQLiteParser.ON_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OR_() { return GetToken(SQLiteParser.OR_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ORDER_() { return GetToken(SQLiteParser.ORDER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OUTER_() { return GetToken(SQLiteParser.OUTER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PLAN_() { return GetToken(SQLiteParser.PLAN_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRAGMA_() { return GetToken(SQLiteParser.PRAGMA_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRIMARY_() { return GetToken(SQLiteParser.PRIMARY_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode QUERY_() { return GetToken(SQLiteParser.QUERY_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RAISE_() { return GetToken(SQLiteParser.RAISE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RECURSIVE_() { return GetToken(SQLiteParser.RECURSIVE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REFERENCES_() { return GetToken(SQLiteParser.REFERENCES_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REGEXP_() { return GetToken(SQLiteParser.REGEXP_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REINDEX_() { return GetToken(SQLiteParser.REINDEX_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RELEASE_() { return GetToken(SQLiteParser.RELEASE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RENAME_() { return GetToken(SQLiteParser.RENAME_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REPLACE_() { return GetToken(SQLiteParser.REPLACE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RESTRICT_() { return GetToken(SQLiteParser.RESTRICT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RIGHT_() { return GetToken(SQLiteParser.RIGHT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROLLBACK_() { return GetToken(SQLiteParser.ROLLBACK_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROW_() { return GetToken(SQLiteParser.ROW_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROWS_() { return GetToken(SQLiteParser.ROWS_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SAVEPOINT_() { return GetToken(SQLiteParser.SAVEPOINT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SELECT_() { return GetToken(SQLiteParser.SELECT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SET_() { return GetToken(SQLiteParser.SET_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TABLE_() { return GetToken(SQLiteParser.TABLE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TEMP_() { return GetToken(SQLiteParser.TEMP_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TEMPORARY_() { return GetToken(SQLiteParser.TEMPORARY_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode THEN_() { return GetToken(SQLiteParser.THEN_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TO_() { return GetToken(SQLiteParser.TO_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRANSACTION_() { return GetToken(SQLiteParser.TRANSACTION_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRIGGER_() { return GetToken(SQLiteParser.TRIGGER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNION_() { return GetToken(SQLiteParser.UNION_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNIQUE_() { return GetToken(SQLiteParser.UNIQUE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UPDATE_() { return GetToken(SQLiteParser.UPDATE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode USING_() { return GetToken(SQLiteParser.USING_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VACUUM_() { return GetToken(SQLiteParser.VACUUM_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VALUES_() { return GetToken(SQLiteParser.VALUES_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VIEW_() { return GetToken(SQLiteParser.VIEW_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VIRTUAL_() { return GetToken(SQLiteParser.VIRTUAL_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHEN_() { return GetToken(SQLiteParser.WHEN_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE_() { return GetToken(SQLiteParser.WHERE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WITH_() { return GetToken(SQLiteParser.WITH_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WITHOUT_() { return GetToken(SQLiteParser.WITHOUT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FIRST_VALUE_() { return GetToken(SQLiteParser.FIRST_VALUE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OVER_() { return GetToken(SQLiteParser.OVER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PARTITION_() { return GetToken(SQLiteParser.PARTITION_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RANGE_() { return GetToken(SQLiteParser.RANGE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRECEDING_() { return GetToken(SQLiteParser.PRECEDING_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNBOUNDED_() { return GetToken(SQLiteParser.UNBOUNDED_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT_() { return GetToken(SQLiteParser.CURRENT_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FOLLOWING_() { return GetToken(SQLiteParser.FOLLOWING_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CUME_DIST_() { return GetToken(SQLiteParser.CUME_DIST_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DENSE_RANK_() { return GetToken(SQLiteParser.DENSE_RANK_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LAG_() { return GetToken(SQLiteParser.LAG_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LAST_VALUE_() { return GetToken(SQLiteParser.LAST_VALUE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LEAD_() { return GetToken(SQLiteParser.LEAD_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NTH_VALUE_() { return GetToken(SQLiteParser.NTH_VALUE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NTILE_() { return GetToken(SQLiteParser.NTILE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PERCENT_RANK_() { return GetToken(SQLiteParser.PERCENT_RANK_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RANK_() { return GetToken(SQLiteParser.RANK_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROW_NUMBER_() { return GetToken(SQLiteParser.ROW_NUMBER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GENERATED_() { return GetToken(SQLiteParser.GENERATED_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALWAYS_() { return GetToken(SQLiteParser.ALWAYS_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode STORED_() { return GetToken(SQLiteParser.STORED_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRUE_() { return GetToken(SQLiteParser.TRUE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FALSE_() { return GetToken(SQLiteParser.FALSE_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WINDOW_() { return GetToken(SQLiteParser.WINDOW_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NULLS_() { return GetToken(SQLiteParser.NULLS_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FIRST_() { return GetToken(SQLiteParser.FIRST_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LAST_() { return GetToken(SQLiteParser.LAST_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FILTER_() { return GetToken(SQLiteParser.FILTER_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GROUPS_() { return GetToken(SQLiteParser.GROUPS_, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXCLUDE_() { return GetToken(SQLiteParser.EXCLUDE_, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ABORT() { return GetToken(SQLiteParser.ABORT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ACTION() { return GetToken(SQLiteParser.ACTION, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ADD() { return GetToken(SQLiteParser.ADD, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AFTER() { return GetToken(SQLiteParser.AFTER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALL() { return GetToken(SQLiteParser.ALL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALTER() { return GetToken(SQLiteParser.ALTER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ANALYZE() { return GetToken(SQLiteParser.ANALYZE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AND() { return GetToken(SQLiteParser.AND, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AS() { return GetToken(SQLiteParser.AS, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ASC() { return GetToken(SQLiteParser.ASC, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ATTACH() { return GetToken(SQLiteParser.ATTACH, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AUTOINCREMENT() { return GetToken(SQLiteParser.AUTOINCREMENT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BEFORE() { return GetToken(SQLiteParser.BEFORE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BEGIN() { return GetToken(SQLiteParser.BEGIN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BETWEEN() { return GetToken(SQLiteParser.BETWEEN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BY() { return GetToken(SQLiteParser.BY, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CASCADE() { return GetToken(SQLiteParser.CASCADE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CASE() { return GetToken(SQLiteParser.CASE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CAST() { return GetToken(SQLiteParser.CAST, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CHECK() { return GetToken(SQLiteParser.CHECK, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLLATE() { return GetToken(SQLiteParser.COLLATE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLUMN() { return GetToken(SQLiteParser.COLUMN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMIT() { return GetToken(SQLiteParser.COMMIT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CONFLICT() { return GetToken(SQLiteParser.CONFLICT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CONSTRAINT() { return GetToken(SQLiteParser.CONSTRAINT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CREATE() { return GetToken(SQLiteParser.CREATE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CROSS() { return GetToken(SQLiteParser.CROSS, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT_DATE() { return GetToken(SQLiteParser.CURRENT_DATE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT_TIME() { return GetToken(SQLiteParser.CURRENT_TIME, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT_TIMESTAMP() { return GetToken(SQLiteParser.CURRENT_TIMESTAMP, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DATABASE() { return GetToken(SQLiteParser.DATABASE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFAULT() { return GetToken(SQLiteParser.DEFAULT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFERRABLE() { return GetToken(SQLiteParser.DEFERRABLE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFERRED() { return GetToken(SQLiteParser.DEFERRED, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DELETE() { return GetToken(SQLiteParser.DELETE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DESC() { return GetToken(SQLiteParser.DESC, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DETACH() { return GetToken(SQLiteParser.DETACH, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DISTINCT() { return GetToken(SQLiteParser.DISTINCT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DROP() { return GetToken(SQLiteParser.DROP, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EACH() { return GetToken(SQLiteParser.EACH, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ELSE() { return GetToken(SQLiteParser.ELSE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode END() { return GetToken(SQLiteParser.END, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ESCAPE() { return GetToken(SQLiteParser.ESCAPE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXCEPT() { return GetToken(SQLiteParser.EXCEPT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXCLUSIVE() { return GetToken(SQLiteParser.EXCLUSIVE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXISTS() { return GetToken(SQLiteParser.EXISTS, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXPLAIN() { return GetToken(SQLiteParser.EXPLAIN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FAIL() { return GetToken(SQLiteParser.FAIL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FOR() { return GetToken(SQLiteParser.FOR, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FOREIGN() { return GetToken(SQLiteParser.FOREIGN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FROM() { return GetToken(SQLiteParser.FROM, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FULL() { return GetToken(SQLiteParser.FULL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GLOB() { return GetToken(SQLiteParser.GLOB, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GROUP() { return GetToken(SQLiteParser.GROUP, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode HAVING() { return GetToken(SQLiteParser.HAVING, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF() { return GetToken(SQLiteParser.IF, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IGNORE() { return GetToken(SQLiteParser.IGNORE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IMMEDIATE() { return GetToken(SQLiteParser.IMMEDIATE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IN() { return GetToken(SQLiteParser.IN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INDEX() { return GetToken(SQLiteParser.INDEX, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INDEXED() { return GetToken(SQLiteParser.INDEXED, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INITIALLY() { return GetToken(SQLiteParser.INITIALLY, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INNER() { return GetToken(SQLiteParser.INNER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INSERT() { return GetToken(SQLiteParser.INSERT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INSTEAD() { return GetToken(SQLiteParser.INSTEAD, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INTERSECT() { return GetToken(SQLiteParser.INTERSECT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INTO() { return GetToken(SQLiteParser.INTO, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IS() { return GetToken(SQLiteParser.IS, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ISNULL() { return GetToken(SQLiteParser.ISNULL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode JOIN() { return GetToken(SQLiteParser.JOIN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode KEY() { return GetToken(SQLiteParser.KEY, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LEFT() { return GetToken(SQLiteParser.LEFT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LIKE() { return GetToken(SQLiteParser.LIKE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LIMIT() { return GetToken(SQLiteParser.LIMIT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MATCH() { return GetToken(SQLiteParser.MATCH, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NATURAL() { return GetToken(SQLiteParser.NATURAL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NO() { return GetToken(SQLiteParser.NO, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT() { return GetToken(SQLiteParser.NOT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOTNULL() { return GetToken(SQLiteParser.NOTNULL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NULL() { return GetToken(SQLiteParser.NULL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OF() { return GetToken(SQLiteParser.OF, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OFFSET() { return GetToken(SQLiteParser.OFFSET, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ON() { return GetToken(SQLiteParser.ON, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OR() { return GetToken(SQLiteParser.OR, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ORDER() { return GetToken(SQLiteParser.ORDER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OUTER() { return GetToken(SQLiteParser.OUTER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PLAN() { return GetToken(SQLiteParser.PLAN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRAGMA() { return GetToken(SQLiteParser.PRAGMA, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRIMARY() { return GetToken(SQLiteParser.PRIMARY, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode QUERY() { return GetToken(SQLiteParser.QUERY, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RAISE() { return GetToken(SQLiteParser.RAISE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RECURSIVE() { return GetToken(SQLiteParser.RECURSIVE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REFERENCES() { return GetToken(SQLiteParser.REFERENCES, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REGEXP() { return GetToken(SQLiteParser.REGEXP, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REINDEX() { return GetToken(SQLiteParser.REINDEX, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RELEASE() { return GetToken(SQLiteParser.RELEASE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RENAME() { return GetToken(SQLiteParser.RENAME, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode REPLACE() { return GetToken(SQLiteParser.REPLACE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RESTRICT() { return GetToken(SQLiteParser.RESTRICT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RIGHT() { return GetToken(SQLiteParser.RIGHT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROLLBACK() { return GetToken(SQLiteParser.ROLLBACK, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROW() { return GetToken(SQLiteParser.ROW, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROWS() { return GetToken(SQLiteParser.ROWS, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SAVEPOINT() { return GetToken(SQLiteParser.SAVEPOINT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SELECT() { return GetToken(SQLiteParser.SELECT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SET() { return GetToken(SQLiteParser.SET, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TABLE() { return GetToken(SQLiteParser.TABLE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TEMP() { return GetToken(SQLiteParser.TEMP, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TEMPORARY() { return GetToken(SQLiteParser.TEMPORARY, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode THEN() { return GetToken(SQLiteParser.THEN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TO() { return GetToken(SQLiteParser.TO, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRANSACTION() { return GetToken(SQLiteParser.TRANSACTION, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRIGGER() { return GetToken(SQLiteParser.TRIGGER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNION() { return GetToken(SQLiteParser.UNION, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNIQUE() { return GetToken(SQLiteParser.UNIQUE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UPDATE() { return GetToken(SQLiteParser.UPDATE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode USING() { return GetToken(SQLiteParser.USING, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VACUUM() { return GetToken(SQLiteParser.VACUUM, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VALUES() { return GetToken(SQLiteParser.VALUES, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VIEW() { return GetToken(SQLiteParser.VIEW, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VIRTUAL() { return GetToken(SQLiteParser.VIRTUAL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHEN() { return GetToken(SQLiteParser.WHEN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHERE() { return GetToken(SQLiteParser.WHERE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WITH() { return GetToken(SQLiteParser.WITH, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WITHOUT() { return GetToken(SQLiteParser.WITHOUT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FIRST_VALUE() { return GetToken(SQLiteParser.FIRST_VALUE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OVER() { return GetToken(SQLiteParser.OVER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PARTITION() { return GetToken(SQLiteParser.PARTITION, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RANGE() { return GetToken(SQLiteParser.RANGE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRECEDING() { return GetToken(SQLiteParser.PRECEDING, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode UNBOUNDED() { return GetToken(SQLiteParser.UNBOUNDED, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CURRENT() { return GetToken(SQLiteParser.CURRENT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FOLLOWING() { return GetToken(SQLiteParser.FOLLOWING, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CUME_DIST() { return GetToken(SQLiteParser.CUME_DIST, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DENSE_RANK() { return GetToken(SQLiteParser.DENSE_RANK, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LAG() { return GetToken(SQLiteParser.LAG, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LAST_VALUE() { return GetToken(SQLiteParser.LAST_VALUE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LEAD() { return GetToken(SQLiteParser.LEAD, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NTH_VALUE() { return GetToken(SQLiteParser.NTH_VALUE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NTILE() { return GetToken(SQLiteParser.NTILE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PERCENT_RANK() { return GetToken(SQLiteParser.PERCENT_RANK, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RANK() { return GetToken(SQLiteParser.RANK, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ROW_NUMBER() { return GetToken(SQLiteParser.ROW_NUMBER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GENERATED() { return GetToken(SQLiteParser.GENERATED, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ALWAYS() { return GetToken(SQLiteParser.ALWAYS, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode STORED() { return GetToken(SQLiteParser.STORED, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRUE() { return GetToken(SQLiteParser.TRUE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FALSE() { return GetToken(SQLiteParser.FALSE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WINDOW() { return GetToken(SQLiteParser.WINDOW, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NULLS() { return GetToken(SQLiteParser.NULLS, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FIRST() { return GetToken(SQLiteParser.FIRST, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LAST() { return GetToken(SQLiteParser.LAST, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FILTER() { return GetToken(SQLiteParser.FILTER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GROUPS() { return GetToken(SQLiteParser.GROUPS, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXCLUDE() { return GetToken(SQLiteParser.EXCLUDE, 0); }
 		public KeywordContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -12209,12 +12563,12 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public KeywordContext keyword() {
 		KeywordContext _localctx = new KeywordContext(Context, State);
-		EnterRule(_localctx, 172, RULE_keyword);
+		EnterRule(_localctx, 184, RULE_keyword);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2026;
+			State = 2054;
 			_la = TokenStream.LA(1);
 			if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & -33554432L) != 0 || (((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & -1152921504606846977L) != 0 || (((_la - 128)) & ~0x3f) == 0 && ((1L << (_la - 128)) & 9007199254740991L) != 0) ) {
 			ErrorHandler.RecoverInline(this);
@@ -12266,11 +12620,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public NameContext name() {
 		NameContext _localctx = new NameContext(Context, State);
-		EnterRule(_localctx, 174, RULE_name);
+		EnterRule(_localctx, 186, RULE_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2028;
+			State = 2056;
 			any_name();
 			}
 		}
@@ -12315,11 +12669,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Function_nameContext function_name() {
 		Function_nameContext _localctx = new Function_nameContext(Context, State);
-		EnterRule(_localctx, 176, RULE_function_name);
+		EnterRule(_localctx, 188, RULE_function_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2030;
+			State = 2058;
 			any_name();
 			}
 		}
@@ -12364,11 +12718,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Schema_nameContext schema_name() {
 		Schema_nameContext _localctx = new Schema_nameContext(Context, State);
-		EnterRule(_localctx, 178, RULE_schema_name);
+		EnterRule(_localctx, 190, RULE_schema_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2032;
+			State = 2060;
 			any_name();
 			}
 		}
@@ -12413,11 +12767,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Table_nameContext table_name() {
 		Table_nameContext _localctx = new Table_nameContext(Context, State);
-		EnterRule(_localctx, 180, RULE_table_name);
+		EnterRule(_localctx, 192, RULE_table_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2034;
+			State = 2062;
 			any_name();
 			}
 		}
@@ -12462,11 +12816,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Table_or_index_nameContext table_or_index_name() {
 		Table_or_index_nameContext _localctx = new Table_or_index_nameContext(Context, State);
-		EnterRule(_localctx, 182, RULE_table_or_index_name);
+		EnterRule(_localctx, 194, RULE_table_or_index_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2036;
+			State = 2064;
 			any_name();
 			}
 		}
@@ -12511,11 +12865,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Column_nameContext column_name() {
 		Column_nameContext _localctx = new Column_nameContext(Context, State);
-		EnterRule(_localctx, 184, RULE_column_name);
+		EnterRule(_localctx, 196, RULE_column_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2038;
+			State = 2066;
 			any_name();
 			}
 		}
@@ -12560,11 +12914,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Collation_nameContext collation_name() {
 		Collation_nameContext _localctx = new Collation_nameContext(Context, State);
-		EnterRule(_localctx, 186, RULE_collation_name);
+		EnterRule(_localctx, 198, RULE_collation_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2040;
+			State = 2068;
 			any_name();
 			}
 		}
@@ -12609,11 +12963,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Foreign_tableContext foreign_table() {
 		Foreign_tableContext _localctx = new Foreign_tableContext(Context, State);
-		EnterRule(_localctx, 188, RULE_foreign_table);
+		EnterRule(_localctx, 200, RULE_foreign_table);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2042;
+			State = 2070;
 			any_name();
 			}
 		}
@@ -12658,11 +13012,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Index_nameContext index_name() {
 		Index_nameContext _localctx = new Index_nameContext(Context, State);
-		EnterRule(_localctx, 190, RULE_index_name);
+		EnterRule(_localctx, 202, RULE_index_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2044;
+			State = 2072;
 			any_name();
 			}
 		}
@@ -12707,11 +13061,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Trigger_nameContext trigger_name() {
 		Trigger_nameContext _localctx = new Trigger_nameContext(Context, State);
-		EnterRule(_localctx, 192, RULE_trigger_name);
+		EnterRule(_localctx, 204, RULE_trigger_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2046;
+			State = 2074;
 			any_name();
 			}
 		}
@@ -12756,11 +13110,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public View_nameContext view_name() {
 		View_nameContext _localctx = new View_nameContext(Context, State);
-		EnterRule(_localctx, 194, RULE_view_name);
+		EnterRule(_localctx, 206, RULE_view_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2048;
+			State = 2076;
 			any_name();
 			}
 		}
@@ -12805,11 +13159,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Module_nameContext module_name() {
 		Module_nameContext _localctx = new Module_nameContext(Context, State);
-		EnterRule(_localctx, 196, RULE_module_name);
+		EnterRule(_localctx, 208, RULE_module_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2050;
+			State = 2078;
 			any_name();
 			}
 		}
@@ -12854,11 +13208,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Pragma_nameContext pragma_name() {
 		Pragma_nameContext _localctx = new Pragma_nameContext(Context, State);
-		EnterRule(_localctx, 198, RULE_pragma_name);
+		EnterRule(_localctx, 210, RULE_pragma_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2052;
+			State = 2080;
 			any_name();
 			}
 		}
@@ -12903,11 +13257,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Savepoint_nameContext savepoint_name() {
 		Savepoint_nameContext _localctx = new Savepoint_nameContext(Context, State);
-		EnterRule(_localctx, 200, RULE_savepoint_name);
+		EnterRule(_localctx, 212, RULE_savepoint_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2054;
+			State = 2082;
 			any_name();
 			}
 		}
@@ -12952,11 +13306,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Table_aliasContext table_alias() {
 		Table_aliasContext _localctx = new Table_aliasContext(Context, State);
-		EnterRule(_localctx, 202, RULE_table_alias);
+		EnterRule(_localctx, 214, RULE_table_alias);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2056;
+			State = 2084;
 			any_name();
 			}
 		}
@@ -13001,11 +13355,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Transaction_nameContext transaction_name() {
 		Transaction_nameContext _localctx = new Transaction_nameContext(Context, State);
-		EnterRule(_localctx, 204, RULE_transaction_name);
+		EnterRule(_localctx, 216, RULE_transaction_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2058;
+			State = 2086;
 			any_name();
 			}
 		}
@@ -13050,11 +13404,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Window_nameContext window_name() {
 		Window_nameContext _localctx = new Window_nameContext(Context, State);
-		EnterRule(_localctx, 206, RULE_window_name);
+		EnterRule(_localctx, 218, RULE_window_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2060;
+			State = 2088;
 			any_name();
 			}
 		}
@@ -13099,11 +13453,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public AliasContext alias() {
 		AliasContext _localctx = new AliasContext(Context, State);
-		EnterRule(_localctx, 208, RULE_alias);
+		EnterRule(_localctx, 220, RULE_alias);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2062;
+			State = 2090;
 			any_name();
 			}
 		}
@@ -13148,11 +13502,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public FilenameContext filename() {
 		FilenameContext _localctx = new FilenameContext(Context, State);
-		EnterRule(_localctx, 210, RULE_filename);
+		EnterRule(_localctx, 222, RULE_filename);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2064;
+			State = 2092;
 			any_name();
 			}
 		}
@@ -13197,11 +13551,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Base_window_nameContext base_window_name() {
 		Base_window_nameContext _localctx = new Base_window_nameContext(Context, State);
-		EnterRule(_localctx, 212, RULE_base_window_name);
+		EnterRule(_localctx, 224, RULE_base_window_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2066;
+			State = 2094;
 			any_name();
 			}
 		}
@@ -13246,11 +13600,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Simple_funcContext simple_func() {
 		Simple_funcContext _localctx = new Simple_funcContext(Context, State);
-		EnterRule(_localctx, 214, RULE_simple_func);
+		EnterRule(_localctx, 226, RULE_simple_func);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2068;
+			State = 2096;
 			any_name();
 			}
 		}
@@ -13295,11 +13649,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Aggregate_funcContext aggregate_func() {
 		Aggregate_funcContext _localctx = new Aggregate_funcContext(Context, State);
-		EnterRule(_localctx, 216, RULE_aggregate_func);
+		EnterRule(_localctx, 228, RULE_aggregate_func);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2070;
+			State = 2098;
 			any_name();
 			}
 		}
@@ -13344,11 +13698,11 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Table_function_nameContext table_function_name() {
 		Table_function_nameContext _localctx = new Table_function_nameContext(Context, State);
-		EnterRule(_localctx, 218, RULE_table_function_name);
+		EnterRule(_localctx, 230, RULE_table_function_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2072;
+			State = 2100;
 			any_name();
 			}
 		}
@@ -13400,194 +13754,194 @@ public partial class SQLiteParser : Parser {
 	[RuleVersion(0)]
 	public Any_nameContext any_name() {
 		Any_nameContext _localctx = new Any_nameContext(Context, State);
-		EnterRule(_localctx, 220, RULE_any_name);
+		EnterRule(_localctx, 232, RULE_any_name);
 		try {
-			State = 2081;
+			State = 2109;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case IDENTIFIER:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 2074;
+				State = 2102;
 				Match(IDENTIFIER);
 				}
 				break;
-			case ABORT_:
-			case ACTION_:
-			case ADD_:
-			case AFTER_:
-			case ALL_:
-			case ALTER_:
-			case ANALYZE_:
-			case AND_:
-			case AS_:
-			case ASC_:
-			case ATTACH_:
-			case AUTOINCREMENT_:
-			case BEFORE_:
-			case BEGIN_:
-			case BETWEEN_:
-			case BY_:
-			case CASCADE_:
-			case CASE_:
-			case CAST_:
-			case CHECK_:
-			case COLLATE_:
-			case COLUMN_:
-			case COMMIT_:
-			case CONFLICT_:
-			case CONSTRAINT_:
-			case CREATE_:
-			case CROSS_:
-			case CURRENT_DATE_:
-			case CURRENT_TIME_:
-			case CURRENT_TIMESTAMP_:
-			case DATABASE_:
-			case DEFAULT_:
-			case DEFERRABLE_:
-			case DEFERRED_:
-			case DELETE_:
-			case DESC_:
-			case DETACH_:
-			case DISTINCT_:
-			case DROP_:
-			case EACH_:
-			case ELSE_:
-			case END_:
-			case ESCAPE_:
-			case EXCEPT_:
-			case EXCLUSIVE_:
-			case EXISTS_:
-			case EXPLAIN_:
-			case FAIL_:
-			case FOR_:
-			case FOREIGN_:
-			case FROM_:
-			case FULL_:
-			case GLOB_:
-			case GROUP_:
-			case HAVING_:
-			case IF_:
-			case IGNORE_:
-			case IMMEDIATE_:
-			case IN_:
-			case INDEX_:
-			case INDEXED_:
-			case INITIALLY_:
-			case INNER_:
-			case INSERT_:
-			case INSTEAD_:
-			case INTERSECT_:
-			case INTO_:
-			case IS_:
-			case ISNULL_:
-			case JOIN_:
-			case KEY_:
-			case LEFT_:
-			case LIKE_:
-			case LIMIT_:
-			case MATCH_:
-			case NATURAL_:
-			case NO_:
-			case NOT_:
-			case NOTNULL_:
-			case NULL_:
-			case OF_:
-			case OFFSET_:
-			case ON_:
-			case OR_:
-			case ORDER_:
-			case OUTER_:
-			case PLAN_:
-			case PRAGMA_:
-			case PRIMARY_:
-			case QUERY_:
-			case RAISE_:
-			case RECURSIVE_:
-			case REFERENCES_:
-			case REGEXP_:
-			case REINDEX_:
-			case RELEASE_:
-			case RENAME_:
-			case REPLACE_:
-			case RESTRICT_:
-			case RIGHT_:
-			case ROLLBACK_:
-			case ROW_:
-			case ROWS_:
-			case SAVEPOINT_:
-			case SELECT_:
-			case SET_:
-			case TABLE_:
-			case TEMP_:
-			case TEMPORARY_:
-			case THEN_:
-			case TO_:
-			case TRANSACTION_:
-			case TRIGGER_:
-			case UNION_:
-			case UNIQUE_:
-			case UPDATE_:
-			case USING_:
-			case VACUUM_:
-			case VALUES_:
-			case VIEW_:
-			case VIRTUAL_:
-			case WHEN_:
-			case WHERE_:
-			case WITH_:
-			case WITHOUT_:
-			case FIRST_VALUE_:
-			case OVER_:
-			case PARTITION_:
-			case RANGE_:
-			case PRECEDING_:
-			case UNBOUNDED_:
-			case CURRENT_:
-			case FOLLOWING_:
-			case CUME_DIST_:
-			case DENSE_RANK_:
-			case LAG_:
-			case LAST_VALUE_:
-			case LEAD_:
-			case NTH_VALUE_:
-			case NTILE_:
-			case PERCENT_RANK_:
-			case RANK_:
-			case ROW_NUMBER_:
-			case GENERATED_:
-			case ALWAYS_:
-			case STORED_:
-			case TRUE_:
-			case FALSE_:
-			case WINDOW_:
-			case NULLS_:
-			case FIRST_:
-			case LAST_:
-			case FILTER_:
-			case GROUPS_:
-			case EXCLUDE_:
+			case ABORT:
+			case ACTION:
+			case ADD:
+			case AFTER:
+			case ALL:
+			case ALTER:
+			case ANALYZE:
+			case AND:
+			case AS:
+			case ASC:
+			case ATTACH:
+			case AUTOINCREMENT:
+			case BEFORE:
+			case BEGIN:
+			case BETWEEN:
+			case BY:
+			case CASCADE:
+			case CASE:
+			case CAST:
+			case CHECK:
+			case COLLATE:
+			case COLUMN:
+			case COMMIT:
+			case CONFLICT:
+			case CONSTRAINT:
+			case CREATE:
+			case CROSS:
+			case CURRENT_DATE:
+			case CURRENT_TIME:
+			case CURRENT_TIMESTAMP:
+			case DATABASE:
+			case DEFAULT:
+			case DEFERRABLE:
+			case DEFERRED:
+			case DELETE:
+			case DESC:
+			case DETACH:
+			case DISTINCT:
+			case DROP:
+			case EACH:
+			case ELSE:
+			case END:
+			case ESCAPE:
+			case EXCEPT:
+			case EXCLUSIVE:
+			case EXISTS:
+			case EXPLAIN:
+			case FAIL:
+			case FOR:
+			case FOREIGN:
+			case FROM:
+			case FULL:
+			case GLOB:
+			case GROUP:
+			case HAVING:
+			case IF:
+			case IGNORE:
+			case IMMEDIATE:
+			case IN:
+			case INDEX:
+			case INDEXED:
+			case INITIALLY:
+			case INNER:
+			case INSERT:
+			case INSTEAD:
+			case INTERSECT:
+			case INTO:
+			case IS:
+			case ISNULL:
+			case JOIN:
+			case KEY:
+			case LEFT:
+			case LIKE:
+			case LIMIT:
+			case MATCH:
+			case NATURAL:
+			case NO:
+			case NOT:
+			case NOTNULL:
+			case NULL:
+			case OF:
+			case OFFSET:
+			case ON:
+			case OR:
+			case ORDER:
+			case OUTER:
+			case PLAN:
+			case PRAGMA:
+			case PRIMARY:
+			case QUERY:
+			case RAISE:
+			case RECURSIVE:
+			case REFERENCES:
+			case REGEXP:
+			case REINDEX:
+			case RELEASE:
+			case RENAME:
+			case REPLACE:
+			case RESTRICT:
+			case RIGHT:
+			case ROLLBACK:
+			case ROW:
+			case ROWS:
+			case SAVEPOINT:
+			case SELECT:
+			case SET:
+			case TABLE:
+			case TEMP:
+			case TEMPORARY:
+			case THEN:
+			case TO:
+			case TRANSACTION:
+			case TRIGGER:
+			case UNION:
+			case UNIQUE:
+			case UPDATE:
+			case USING:
+			case VACUUM:
+			case VALUES:
+			case VIEW:
+			case VIRTUAL:
+			case WHEN:
+			case WHERE:
+			case WITH:
+			case WITHOUT:
+			case FIRST_VALUE:
+			case OVER:
+			case PARTITION:
+			case RANGE:
+			case PRECEDING:
+			case UNBOUNDED:
+			case CURRENT:
+			case FOLLOWING:
+			case CUME_DIST:
+			case DENSE_RANK:
+			case LAG:
+			case LAST_VALUE:
+			case LEAD:
+			case NTH_VALUE:
+			case NTILE:
+			case PERCENT_RANK:
+			case RANK:
+			case ROW_NUMBER:
+			case GENERATED:
+			case ALWAYS:
+			case STORED:
+			case TRUE:
+			case FALSE:
+			case WINDOW:
+			case NULLS:
+			case FIRST:
+			case LAST:
+			case FILTER:
+			case GROUPS:
+			case EXCLUDE:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 2075;
+				State = 2103;
 				keyword();
 				}
 				break;
 			case STRING_LITERAL:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 2076;
+				State = 2104;
 				Match(STRING_LITERAL);
 				}
 				break;
 			case OPEN_PAR:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 2077;
+				State = 2105;
 				Match(OPEN_PAR);
-				State = 2078;
+				State = 2106;
 				any_name();
-				State = 2079;
+				State = 2107;
 				Match(CLOSE_PAR);
 				}
 				break;
@@ -13633,7 +13987,7 @@ public partial class SQLiteParser : Parser {
 	}
 
 	private static int[] _serializedATN = {
-		4,1,193,2084,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,
+		4,1,193,2112,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,
 		7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,2,14,7,14,
 		2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,7,20,2,21,7,21,
 		2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,7,27,2,28,7,28,
@@ -13649,784 +14003,795 @@ public partial class SQLiteParser : Parser {
 		2,92,7,92,2,93,7,93,2,94,7,94,2,95,7,95,2,96,7,96,2,97,7,97,2,98,7,98,
 		2,99,7,99,2,100,7,100,2,101,7,101,2,102,7,102,2,103,7,103,2,104,7,104,
 		2,105,7,105,2,106,7,106,2,107,7,107,2,108,7,108,2,109,7,109,2,110,7,110,
-		1,0,5,0,224,8,0,10,0,12,0,227,9,0,1,0,1,0,1,1,5,1,232,8,1,10,1,12,1,235,
-		9,1,1,1,1,1,4,1,239,8,1,11,1,12,1,240,1,1,5,1,244,8,1,10,1,12,1,247,9,
-		1,1,1,5,1,250,8,1,10,1,12,1,253,9,1,1,2,1,2,1,2,3,2,258,8,2,3,2,260,8,
+		2,111,7,111,2,112,7,112,2,113,7,113,2,114,7,114,2,115,7,115,2,116,7,116,
+		1,0,5,0,236,8,0,10,0,12,0,239,9,0,1,0,1,0,1,1,5,1,244,8,1,10,1,12,1,247,
+		9,1,1,1,1,1,4,1,251,8,1,11,1,12,1,252,1,1,5,1,256,8,1,10,1,12,1,259,9,
+		1,1,1,5,1,262,8,1,10,1,12,1,265,9,1,1,2,1,2,1,2,3,2,270,8,2,3,2,272,8,
 		2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,
-		1,2,1,2,1,2,1,2,1,2,1,2,1,2,3,2,286,8,2,1,3,1,3,1,3,1,3,1,3,3,3,293,8,
-		3,1,3,1,3,1,3,1,3,1,3,3,3,300,8,3,1,3,1,3,1,3,1,3,3,3,306,8,3,1,3,1,3,
-		3,3,310,8,3,1,3,1,3,1,3,3,3,315,8,3,1,3,3,3,318,8,3,1,4,1,4,1,4,1,4,1,
-		4,3,4,325,8,4,1,4,3,4,328,8,4,1,5,1,5,3,5,332,8,5,1,5,1,5,1,5,1,5,1,6,
-		1,6,3,6,340,8,6,1,6,1,6,3,6,344,8,6,3,6,346,8,6,1,7,1,7,3,7,350,8,7,1,
-		8,1,8,3,8,354,8,8,1,8,1,8,3,8,358,8,8,1,8,3,8,361,8,8,1,9,1,9,1,9,1,10,
-		1,10,3,10,368,8,10,1,10,1,10,1,11,1,11,3,11,374,8,11,1,11,1,11,1,11,1,
-		11,3,11,380,8,11,1,11,1,11,1,11,3,11,385,8,11,1,11,1,11,1,11,1,11,1,11,
-		1,11,1,11,5,11,394,8,11,10,11,12,11,397,9,11,1,11,1,11,1,11,3,11,402,8,
-		11,1,12,1,12,3,12,406,8,12,1,12,1,12,3,12,410,8,12,1,12,3,12,413,8,12,
-		1,13,1,13,3,13,417,8,13,1,13,1,13,1,13,1,13,3,13,423,8,13,1,13,1,13,1,
-		13,3,13,428,8,13,1,13,1,13,1,13,1,13,1,13,5,13,435,8,13,10,13,12,13,438,
-		9,13,1,13,1,13,5,13,442,8,13,10,13,12,13,445,9,13,1,13,1,13,1,13,3,13,
-		450,8,13,1,13,1,13,3,13,454,8,13,1,14,1,14,3,14,458,8,14,1,14,5,14,461,
-		8,14,10,14,12,14,464,9,14,1,15,4,15,467,8,15,11,15,12,15,468,1,15,1,15,
-		1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,3,15,481,8,15,1,16,1,16,3,16,485,
-		8,16,1,16,1,16,1,16,3,16,490,8,16,1,16,3,16,493,8,16,1,16,3,16,496,8,16,
-		1,16,3,16,499,8,16,1,16,1,16,3,16,503,8,16,1,16,3,16,506,8,16,1,16,1,16,
-		1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,3,16,520,8,16,1,16,1,
-		16,1,16,1,16,1,16,3,16,527,8,16,1,16,1,16,1,16,1,16,1,16,3,16,534,8,16,
-		3,16,536,8,16,1,17,3,17,539,8,17,1,17,1,17,1,18,1,18,3,18,545,8,18,1,18,
-		1,18,1,18,3,18,550,8,18,1,18,1,18,1,18,1,18,5,18,556,8,18,10,18,12,18,
-		559,9,18,1,18,1,18,3,18,563,8,18,1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,
-		18,1,18,1,18,1,18,5,18,576,8,18,10,18,12,18,579,9,18,1,18,1,18,1,18,3,
-		18,584,8,18,1,19,1,19,1,19,1,19,1,19,1,19,5,19,592,8,19,10,19,12,19,595,
-		9,19,1,19,1,19,3,19,599,8,19,1,19,1,19,1,19,1,19,1,19,1,19,1,19,1,19,3,
-		19,609,8,19,1,19,1,19,5,19,613,8,19,10,19,12,19,616,9,19,1,19,3,19,619,
-		8,19,1,19,1,19,1,19,3,19,624,8,19,3,19,626,8,19,1,20,1,20,1,20,1,20,1,
-		21,1,21,3,21,634,8,21,1,21,1,21,1,21,1,21,3,21,640,8,21,1,21,1,21,1,21,
-		3,21,645,8,21,1,21,1,21,1,21,1,21,1,21,3,21,652,8,21,1,21,1,21,1,21,1,
-		21,1,21,1,21,1,21,5,21,661,8,21,10,21,12,21,664,9,21,3,21,666,8,21,3,21,
-		668,8,21,1,21,1,21,1,21,1,21,1,21,3,21,675,8,21,1,21,1,21,3,21,679,8,21,
-		1,21,1,21,1,21,1,21,1,21,3,21,686,8,21,1,21,1,21,4,21,690,8,21,11,21,12,
-		21,691,1,21,1,21,1,22,1,22,3,22,698,8,22,1,22,1,22,1,22,1,22,3,22,704,
-		8,22,1,22,1,22,1,22,3,22,709,8,22,1,22,1,22,1,22,1,22,1,22,5,22,716,8,
-		22,10,22,12,22,719,9,22,1,22,1,22,3,22,723,8,22,1,22,1,22,1,22,1,23,1,
-		23,1,23,1,23,1,23,1,23,3,23,734,8,23,1,23,1,23,1,23,3,23,739,8,23,1,23,
-		1,23,1,23,1,23,1,23,1,23,1,23,5,23,748,8,23,10,23,12,23,751,9,23,1,23,
-		1,23,3,23,755,8,23,1,24,1,24,3,24,759,8,24,1,24,1,24,1,24,1,24,1,24,1,
-		24,1,24,1,24,1,24,1,24,1,24,1,24,5,24,773,8,24,10,24,12,24,776,9,24,1,
-		25,1,25,1,25,1,25,1,25,5,25,783,8,25,10,25,12,25,786,9,25,1,25,1,25,3,
-		25,790,8,25,1,26,1,26,1,26,1,26,1,26,1,26,3,26,798,8,26,1,26,1,26,1,26,
-		1,27,1,27,1,27,1,27,1,27,5,27,808,8,27,10,27,12,27,811,9,27,1,27,1,27,
-		3,27,815,8,27,1,27,1,27,1,27,1,27,1,27,1,28,3,28,823,8,28,1,28,1,28,1,
-		28,1,28,1,28,3,28,830,8,28,1,28,3,28,833,8,28,1,29,3,29,836,8,29,1,29,
-		1,29,1,29,1,29,1,29,3,29,843,8,29,1,29,3,29,846,8,29,1,29,3,29,849,8,29,
-		1,29,3,29,852,8,29,1,30,1,30,3,30,856,8,30,1,30,1,30,1,31,1,31,1,31,1,
-		31,3,31,864,8,31,1,31,1,31,1,31,3,31,869,8,31,1,31,1,31,1,32,1,32,1,32,
-		1,32,1,32,1,32,3,32,879,8,32,1,32,1,32,1,32,3,32,884,8,32,1,32,1,32,1,
-		32,1,32,1,32,1,32,1,32,3,32,893,8,32,1,32,1,32,1,32,5,32,898,8,32,10,32,
-		12,32,901,9,32,1,32,3,32,904,8,32,1,32,1,32,3,32,908,8,32,1,32,3,32,911,
-		8,32,1,32,1,32,1,32,1,32,5,32,917,8,32,10,32,12,32,920,9,32,1,32,1,32,
-		1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,3,32,932,8,32,1,32,3,32,935,8,
-		32,1,32,1,32,1,32,1,32,1,32,1,32,3,32,943,8,32,1,32,1,32,1,32,1,32,1,32,
-		4,32,950,8,32,11,32,12,32,951,1,32,1,32,3,32,956,8,32,1,32,1,32,1,32,3,
-		32,961,8,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,
+		1,2,1,2,1,2,1,2,1,2,1,2,1,2,3,2,298,8,2,1,3,1,3,1,3,1,3,1,3,3,3,305,8,
+		3,1,3,1,3,1,3,1,3,1,3,3,3,312,8,3,1,3,1,3,1,3,1,3,3,3,318,8,3,1,3,1,3,
+		3,3,322,8,3,1,3,1,3,1,3,3,3,327,8,3,1,3,3,3,330,8,3,1,4,1,4,1,4,1,4,1,
+		4,3,4,337,8,4,1,4,3,4,340,8,4,1,5,1,5,3,5,344,8,5,1,5,1,5,1,5,1,5,1,6,
+		1,6,3,6,352,8,6,1,6,1,6,3,6,356,8,6,3,6,358,8,6,1,7,1,7,3,7,362,8,7,1,
+		8,1,8,3,8,366,8,8,1,8,1,8,3,8,370,8,8,1,8,3,8,373,8,8,1,9,1,9,1,9,1,10,
+		1,10,3,10,380,8,10,1,10,1,10,1,11,1,11,3,11,386,8,11,1,11,1,11,1,11,1,
+		11,3,11,392,8,11,1,11,1,11,1,11,3,11,397,8,11,1,11,1,11,1,11,1,11,1,11,
+		1,11,1,11,5,11,406,8,11,10,11,12,11,409,9,11,1,11,1,11,1,11,3,11,414,8,
+		11,1,12,1,12,3,12,418,8,12,1,12,1,12,3,12,422,8,12,1,12,3,12,425,8,12,
+		1,13,1,13,3,13,429,8,13,1,13,1,13,1,13,1,13,3,13,435,8,13,1,13,1,13,1,
+		13,3,13,440,8,13,1,13,1,13,1,13,1,13,1,13,5,13,447,8,13,10,13,12,13,450,
+		9,13,1,13,1,13,5,13,454,8,13,10,13,12,13,457,9,13,1,13,1,13,1,13,3,13,
+		462,8,13,1,13,1,13,3,13,466,8,13,1,14,1,14,3,14,470,8,14,1,14,5,14,473,
+		8,14,10,14,12,14,476,9,14,1,15,4,15,479,8,15,11,15,12,15,480,1,15,1,15,
+		1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,3,15,493,8,15,1,16,1,16,3,16,497,
+		8,16,1,16,1,16,1,16,3,16,502,8,16,1,16,3,16,505,8,16,1,16,3,16,508,8,16,
+		1,16,3,16,511,8,16,1,16,1,16,3,16,515,8,16,1,16,3,16,518,8,16,1,16,1,16,
+		1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,3,16,532,8,16,1,16,1,
+		16,1,16,1,16,1,16,3,16,539,8,16,1,16,1,16,1,16,1,16,1,16,3,16,546,8,16,
+		3,16,548,8,16,1,17,3,17,551,8,17,1,17,1,17,1,18,1,18,3,18,557,8,18,1,18,
+		1,18,1,18,3,18,562,8,18,1,18,1,18,1,18,1,18,5,18,568,8,18,10,18,12,18,
+		571,9,18,1,18,1,18,3,18,575,8,18,1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,
+		18,1,18,1,18,1,18,5,18,588,8,18,10,18,12,18,591,9,18,1,18,1,18,1,18,3,
+		18,596,8,18,1,19,1,19,1,19,1,19,1,19,1,19,5,19,604,8,19,10,19,12,19,607,
+		9,19,1,19,1,19,3,19,611,8,19,1,19,1,19,1,19,1,19,1,19,1,19,1,19,1,19,3,
+		19,621,8,19,1,19,1,19,5,19,625,8,19,10,19,12,19,628,9,19,1,19,3,19,631,
+		8,19,1,19,1,19,1,19,3,19,636,8,19,3,19,638,8,19,1,20,1,20,1,20,1,20,1,
+		21,1,21,3,21,646,8,21,1,21,1,21,1,21,1,21,3,21,652,8,21,1,21,1,21,1,21,
+		3,21,657,8,21,1,21,1,21,1,21,1,21,1,21,3,21,664,8,21,1,21,1,21,1,21,1,
+		21,1,21,1,21,1,21,5,21,673,8,21,10,21,12,21,676,9,21,3,21,678,8,21,3,21,
+		680,8,21,1,21,1,21,1,21,1,21,1,21,3,21,687,8,21,1,21,1,21,3,21,691,8,21,
+		1,21,1,21,1,21,1,21,1,21,3,21,698,8,21,1,21,1,21,4,21,702,8,21,11,21,12,
+		21,703,1,21,1,21,1,22,1,22,3,22,710,8,22,1,22,1,22,1,22,1,22,3,22,716,
+		8,22,1,22,1,22,1,22,3,22,721,8,22,1,22,1,22,1,22,1,22,1,22,5,22,728,8,
+		22,10,22,12,22,731,9,22,1,22,1,22,3,22,735,8,22,1,22,1,22,1,22,1,23,1,
+		23,1,23,1,23,1,23,1,23,3,23,746,8,23,1,23,1,23,1,23,3,23,751,8,23,1,23,
+		1,23,1,23,1,23,1,23,1,23,1,23,5,23,760,8,23,10,23,12,23,763,9,23,1,23,
+		1,23,3,23,767,8,23,1,24,1,24,3,24,771,8,24,1,24,1,24,1,24,1,24,1,24,1,
+		24,1,24,1,24,1,24,1,24,1,24,1,24,5,24,785,8,24,10,24,12,24,788,9,24,1,
+		25,1,25,1,25,1,25,1,25,5,25,795,8,25,10,25,12,25,798,9,25,1,25,1,25,3,
+		25,802,8,25,1,26,1,26,1,26,1,26,1,26,1,26,3,26,810,8,26,1,26,1,26,1,26,
+		1,27,1,27,1,27,1,27,1,27,5,27,820,8,27,10,27,12,27,823,9,27,1,27,1,27,
+		3,27,827,8,27,1,27,1,27,1,27,1,27,1,27,1,28,3,28,835,8,28,1,28,1,28,1,
+		28,1,28,1,28,3,28,842,8,28,1,28,3,28,845,8,28,1,29,3,29,848,8,29,1,29,
+		1,29,1,29,1,29,1,29,3,29,855,8,29,1,29,3,29,858,8,29,1,29,3,29,861,8,29,
+		1,29,3,29,864,8,29,1,30,1,30,3,30,868,8,30,1,30,1,30,1,31,1,31,1,31,1,
+		31,3,31,876,8,31,1,31,1,31,1,31,3,31,881,8,31,1,31,1,31,1,32,1,32,1,32,
+		1,32,1,32,1,32,3,32,891,8,32,1,32,1,32,1,32,3,32,896,8,32,1,32,1,32,1,
+		32,1,32,1,32,1,32,1,32,3,32,905,8,32,1,32,1,32,1,32,5,32,910,8,32,10,32,
+		12,32,913,9,32,1,32,3,32,916,8,32,1,32,1,32,3,32,920,8,32,1,32,3,32,923,
+		8,32,1,32,1,32,1,32,1,32,5,32,929,8,32,10,32,12,32,932,9,32,1,32,1,32,
+		1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,3,32,944,8,32,1,32,3,32,947,8,
+		32,1,32,1,32,1,32,1,32,1,32,1,32,3,32,955,8,32,1,32,1,32,1,32,1,32,1,32,
+		4,32,962,8,32,11,32,12,32,963,1,32,1,32,3,32,968,8,32,1,32,1,32,1,32,3,
+		32,973,8,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,
 		1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,
-		1,32,1,32,3,32,991,8,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,
-		32,3,32,1003,8,32,1,32,1,32,1,32,3,32,1008,8,32,1,32,1,32,1,32,1,32,1,
-		32,1,32,1,32,1,32,1,32,1,32,3,32,1020,8,32,1,32,1,32,1,32,1,32,3,32,1026,
-		8,32,1,32,1,32,1,32,1,32,1,32,3,32,1033,8,32,1,32,1,32,3,32,1037,8,32,
-		1,32,1,32,1,32,1,32,1,32,1,32,5,32,1045,8,32,10,32,12,32,1048,9,32,3,32,
-		1050,8,32,1,32,1,32,1,32,1,32,3,32,1056,8,32,1,32,1,32,1,32,1,32,3,32,
-		1062,8,32,1,32,1,32,1,32,1,32,1,32,5,32,1069,8,32,10,32,12,32,1072,9,32,
-		3,32,1074,8,32,1,32,1,32,3,32,1078,8,32,5,32,1080,8,32,10,32,12,32,1083,
-		9,32,1,33,1,33,1,33,1,33,1,33,1,33,3,33,1091,8,33,1,33,1,33,1,34,1,34,
-		1,35,3,35,1098,8,35,1,35,1,35,1,35,1,35,1,35,3,35,1105,8,35,1,35,1,35,
-		1,35,1,35,3,35,1111,8,35,1,35,1,35,1,35,3,35,1116,8,35,1,35,1,35,1,35,
-		1,35,5,35,1122,8,35,10,35,12,35,1125,9,35,1,35,1,35,3,35,1129,8,35,1,35,
-		1,35,1,35,1,35,1,35,5,35,1136,8,35,10,35,12,35,1139,9,35,1,35,1,35,1,35,
-		1,35,1,35,1,35,5,35,1147,8,35,10,35,12,35,1150,9,35,1,35,1,35,5,35,1154,
-		8,35,10,35,12,35,1157,9,35,1,35,3,35,1160,8,35,1,35,3,35,1163,8,35,1,35,
-		1,35,3,35,1167,8,35,1,35,3,35,1170,8,35,1,36,1,36,1,36,1,36,5,36,1176,
-		8,36,10,36,12,36,1179,9,36,1,37,1,37,1,37,1,37,1,37,1,37,5,37,1187,8,37,
-		10,37,12,37,1190,9,37,1,37,1,37,1,37,3,37,1195,8,37,3,37,1197,8,37,1,37,
-		1,37,1,37,1,37,1,37,1,37,3,37,1205,8,37,1,37,1,37,1,37,1,37,1,37,3,37,
-		1212,8,37,1,37,1,37,1,37,5,37,1217,8,37,10,37,12,37,1220,9,37,1,37,1,37,
-		3,37,1224,8,37,3,37,1226,8,37,1,38,1,38,1,38,1,38,3,38,1232,8,38,1,38,
-		1,38,1,38,1,38,1,38,1,38,1,38,3,38,1241,8,38,1,39,1,39,1,39,3,39,1246,
-		8,39,1,40,1,40,1,40,1,40,1,40,3,40,1253,8,40,1,40,1,40,3,40,1257,8,40,
-		3,40,1259,8,40,1,41,3,41,1262,8,41,1,41,1,41,1,41,1,41,5,41,1268,8,41,
-		10,41,12,41,1271,9,41,1,41,3,41,1274,8,41,1,41,3,41,1277,8,41,1,42,1,42,
-		1,42,1,42,3,42,1283,8,42,5,42,1285,8,42,10,42,12,42,1288,9,42,1,43,1,43,
-		3,43,1292,8,43,1,43,1,43,1,43,5,43,1297,8,43,10,43,12,43,1300,9,43,1,43,
-		1,43,1,43,1,43,5,43,1306,8,43,10,43,12,43,1309,9,43,1,43,3,43,1312,8,43,
-		3,43,1314,8,43,1,43,1,43,3,43,1318,8,43,1,43,1,43,1,43,1,43,1,43,5,43,
-		1325,8,43,10,43,12,43,1328,9,43,1,43,1,43,3,43,1332,8,43,3,43,1334,8,43,
-		1,43,1,43,1,43,1,43,1,43,1,43,1,43,1,43,1,43,5,43,1345,8,43,10,43,12,43,
-		1348,9,43,3,43,1350,8,43,1,43,1,43,1,43,1,43,1,43,5,43,1357,8,43,10,43,
-		12,43,1360,9,43,1,43,1,43,1,43,1,43,1,43,1,43,5,43,1368,8,43,10,43,12,
-		43,1371,9,43,1,43,1,43,5,43,1375,8,43,10,43,12,43,1378,9,43,3,43,1380,
-		8,43,1,44,1,44,1,45,3,45,1385,8,45,1,45,1,45,3,45,1389,8,45,1,45,3,45,
-		1392,8,45,1,46,3,46,1395,8,46,1,46,1,46,1,46,3,46,1400,8,46,1,46,1,46,
-		3,46,1404,8,46,1,46,4,46,1407,8,46,11,46,12,46,1408,1,46,3,46,1412,8,46,
-		1,46,3,46,1415,8,46,1,47,1,47,1,47,3,47,1420,8,47,1,47,1,47,3,47,1424,
-		8,47,1,47,3,47,1427,8,47,1,47,1,47,1,47,1,47,1,47,3,47,1434,8,47,1,47,
-		1,47,1,47,3,47,1439,8,47,1,47,1,47,1,47,1,47,1,47,5,47,1446,8,47,10,47,
-		12,47,1449,9,47,1,47,1,47,3,47,1453,8,47,1,47,3,47,1456,8,47,1,47,1,47,
-		1,47,1,47,5,47,1462,8,47,10,47,12,47,1465,9,47,1,47,3,47,1468,8,47,1,47,
-		1,47,1,47,1,47,1,47,1,47,3,47,1476,8,47,1,47,3,47,1479,8,47,3,47,1481,
-		8,47,1,48,1,48,1,48,1,48,1,48,1,48,1,48,3,48,1490,8,48,1,48,3,48,1493,
-		8,48,3,48,1495,8,48,1,49,1,49,3,49,1499,8,49,1,49,1,49,3,49,1503,8,49,
-		1,49,1,49,3,49,1507,8,49,1,49,3,49,1510,8,49,1,50,1,50,1,50,1,50,1,50,
-		1,50,1,50,5,50,1519,8,50,10,50,12,50,1522,9,50,1,50,1,50,3,50,1526,8,50,
-		1,51,1,51,3,51,1530,8,51,1,51,1,51,3,51,1534,8,51,1,52,3,52,1537,8,52,
-		1,52,1,52,1,52,3,52,1542,8,52,1,52,1,52,1,52,1,52,3,52,1548,8,52,1,52,
-		1,52,1,52,1,52,1,52,3,52,1555,8,52,1,52,1,52,1,52,5,52,1560,8,52,10,52,
-		12,52,1563,9,52,1,52,1,52,1,52,1,52,5,52,1569,8,52,10,52,12,52,1572,9,
-		52,1,52,3,52,1575,8,52,3,52,1577,8,52,1,52,1,52,3,52,1581,8,52,1,52,3,
-		52,1584,8,52,1,53,1,53,1,53,1,53,5,53,1590,8,53,10,53,12,53,1593,9,53,
-		1,53,1,53,1,54,3,54,1598,8,54,1,54,1,54,1,54,3,54,1603,8,54,1,54,1,54,
-		1,54,1,54,3,54,1609,8,54,1,54,1,54,1,54,1,54,1,54,3,54,1616,8,54,1,54,
-		1,54,1,54,5,54,1621,8,54,10,54,12,54,1624,9,54,1,54,1,54,3,54,1628,8,54,
-		1,54,3,54,1631,8,54,1,54,3,54,1634,8,54,1,54,3,54,1637,8,54,1,55,1,55,
-		1,55,3,55,1642,8,55,1,55,1,55,1,55,3,55,1647,8,55,1,55,1,55,1,55,1,55,
-		1,55,3,55,1654,8,55,1,56,1,56,3,56,1658,8,56,1,56,1,56,3,56,1662,8,56,
-		1,57,1,57,1,57,1,57,1,57,1,57,1,58,1,58,3,58,1672,8,58,1,58,1,58,1,58,
-		1,58,1,58,5,58,1679,8,58,10,58,12,58,1682,9,58,3,58,1684,8,58,1,58,1,58,
-		1,58,1,58,1,58,5,58,1691,8,58,10,58,12,58,1694,9,58,1,58,3,58,1697,8,58,
-		1,58,1,58,1,59,1,59,1,59,1,59,3,59,1705,8,59,1,59,1,59,1,59,1,59,1,59,
-		5,59,1712,8,59,10,59,12,59,1715,9,59,3,59,1717,8,59,1,59,1,59,1,59,1,59,
-		1,59,5,59,1724,8,59,10,59,12,59,1727,9,59,3,59,1729,8,59,1,59,3,59,1732,
-		8,59,1,59,3,59,1735,8,59,1,60,1,60,1,60,1,60,1,60,1,60,1,60,1,60,3,60,
-		1745,8,60,1,61,1,61,1,61,1,61,1,61,1,61,1,61,3,61,1754,8,61,1,62,1,62,
-		1,62,1,62,1,62,5,62,1761,8,62,10,62,12,62,1764,9,62,1,62,3,62,1767,8,62,
-		1,62,1,62,1,63,1,63,1,63,3,63,1774,8,63,1,63,1,63,1,63,5,63,1779,8,63,
-		10,63,12,63,1782,9,63,1,63,3,63,1785,8,63,1,63,1,63,3,63,1789,8,63,1,64,
-		1,64,1,64,1,64,1,64,5,64,1796,8,64,10,64,12,64,1799,9,64,1,64,3,64,1802,
-		8,64,1,64,1,64,3,64,1806,8,64,1,64,1,64,1,64,3,64,1811,8,64,1,65,1,65,
-		3,65,1815,8,65,1,65,1,65,1,65,5,65,1820,8,65,10,65,12,65,1823,9,65,1,66,
-		1,66,1,66,1,66,1,66,5,66,1830,8,66,10,66,12,66,1833,9,66,1,67,1,67,1,67,
-		1,67,3,67,1839,8,67,1,68,1,68,1,68,3,68,1844,8,68,1,68,3,68,1847,8,68,
-		1,68,1,68,3,68,1851,8,68,1,69,1,69,1,70,1,70,1,70,1,70,1,70,1,70,1,70,
-		1,70,1,70,1,70,3,70,1865,8,70,1,71,1,71,1,71,1,71,1,71,1,71,1,71,1,71,
-		1,71,1,71,3,71,1877,8,71,1,72,1,72,1,72,1,72,1,72,1,72,1,72,3,72,1886,
-		8,72,1,73,1,73,1,73,1,73,1,73,1,73,1,73,3,73,1895,8,73,1,73,1,73,3,73,
-		1899,8,73,1,73,1,73,1,73,1,73,1,73,1,73,1,73,1,73,3,73,1909,8,73,1,73,
-		3,73,1912,8,73,1,73,1,73,1,73,1,73,1,73,1,73,1,73,3,73,1921,8,73,1,73,
-		1,73,1,73,1,73,1,73,1,73,1,73,3,73,1930,8,73,1,73,3,73,1933,8,73,1,73,
-		1,73,1,73,1,73,3,73,1939,8,73,1,73,1,73,1,73,1,73,1,73,1,73,1,73,1,73,
-		1,73,1,73,1,73,1,73,3,73,1953,8,73,1,73,1,73,3,73,1957,8,73,1,73,1,73,
-		1,73,1,73,1,73,1,73,1,73,1,73,1,73,3,73,1968,8,73,1,73,1,73,1,73,3,73,
-		1973,8,73,1,74,1,74,1,74,1,75,1,75,1,75,1,76,1,76,1,76,4,76,1984,8,76,
-		11,76,12,76,1985,1,77,1,77,1,77,4,77,1991,8,77,11,77,12,77,1992,1,78,1,
-		78,1,78,1,78,1,79,1,79,3,79,2001,8,79,1,79,1,79,1,79,3,79,2006,8,79,5,
-		79,2008,8,79,10,79,12,79,2011,9,79,1,80,1,80,1,81,1,81,1,82,1,82,1,83,
-		1,83,1,84,1,84,3,84,2023,8,84,1,85,1,85,1,86,1,86,1,87,1,87,1,88,1,88,
-		1,89,1,89,1,90,1,90,1,91,1,91,1,92,1,92,1,93,1,93,1,94,1,94,1,95,1,95,
-		1,96,1,96,1,97,1,97,1,98,1,98,1,99,1,99,1,100,1,100,1,101,1,101,1,102,
-		1,102,1,103,1,103,1,104,1,104,1,105,1,105,1,106,1,106,1,107,1,107,1,108,
-		1,108,1,109,1,109,1,110,1,110,1,110,1,110,1,110,1,110,1,110,3,110,2082,
-		8,110,1,110,2,436,468,1,64,111,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,
-		30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,
-		78,80,82,84,86,88,90,92,94,96,98,100,102,104,106,108,110,112,114,116,118,
-		120,122,124,126,128,130,132,134,136,138,140,142,144,146,148,150,152,154,
-		156,158,160,162,164,166,168,170,172,174,176,178,180,182,184,186,188,190,
-		192,194,196,198,200,202,204,206,208,210,212,214,216,218,220,0,28,3,0,58,
-		58,69,69,82,82,2,0,47,47,66,66,1,0,133,134,2,0,146,146,171,171,1,0,8,9,
-		2,0,59,59,141,141,2,0,56,56,104,104,2,0,58,58,82,82,5,0,25,25,72,72,81,
-		81,122,122,126,126,4,0,84,84,132,132,138,138,145,145,2,0,7,7,12,13,1,0,
-		14,17,1,0,18,21,4,0,77,77,97,97,99,99,118,118,3,0,25,25,72,72,126,126,
-		5,0,52,54,104,104,172,173,186,186,188,189,2,0,29,29,62,62,3,0,128,128,
-		154,154,179,179,2,0,5,5,106,106,1,0,176,177,2,0,34,34,60,60,2,0,151,151,
-		162,162,2,0,159,159,166,166,2,0,160,160,167,168,2,0,161,161,163,163,2,
-		0,8,10,102,102,2,0,185,185,188,188,2,0,25,123,125,180,2372,0,225,1,0,0,
-		0,2,233,1,0,0,0,4,259,1,0,0,0,6,287,1,0,0,0,8,319,1,0,0,0,10,329,1,0,0,
-		0,12,337,1,0,0,0,14,347,1,0,0,0,16,351,1,0,0,0,18,362,1,0,0,0,20,365,1,
-		0,0,0,22,371,1,0,0,0,24,405,1,0,0,0,26,414,1,0,0,0,28,455,1,0,0,0,30,466,
-		1,0,0,0,32,484,1,0,0,0,34,538,1,0,0,0,36,544,1,0,0,0,38,585,1,0,0,0,40,
-		627,1,0,0,0,42,631,1,0,0,0,44,695,1,0,0,0,46,727,1,0,0,0,48,756,1,0,0,
-		0,50,777,1,0,0,0,52,791,1,0,0,0,54,802,1,0,0,0,56,822,1,0,0,0,58,835,1,
-		0,0,0,60,853,1,0,0,0,62,859,1,0,0,0,64,960,1,0,0,0,66,1084,1,0,0,0,68,
-		1094,1,0,0,0,70,1097,1,0,0,0,72,1171,1,0,0,0,74,1180,1,0,0,0,76,1227,1,
-		0,0,0,78,1245,1,0,0,0,80,1247,1,0,0,0,82,1261,1,0,0,0,84,1278,1,0,0,0,
-		86,1379,1,0,0,0,88,1381,1,0,0,0,90,1384,1,0,0,0,92,1394,1,0,0,0,94,1480,
-		1,0,0,0,96,1494,1,0,0,0,98,1509,1,0,0,0,100,1525,1,0,0,0,102,1533,1,0,
-		0,0,104,1536,1,0,0,0,106,1585,1,0,0,0,108,1597,1,0,0,0,110,1641,1,0,0,
-		0,112,1655,1,0,0,0,114,1663,1,0,0,0,116,1669,1,0,0,0,118,1700,1,0,0,0,
-		120,1736,1,0,0,0,122,1746,1,0,0,0,124,1755,1,0,0,0,126,1770,1,0,0,0,128,
-		1790,1,0,0,0,130,1812,1,0,0,0,132,1824,1,0,0,0,134,1834,1,0,0,0,136,1840,
-		1,0,0,0,138,1852,1,0,0,0,140,1864,1,0,0,0,142,1876,1,0,0,0,144,1885,1,
-		0,0,0,146,1972,1,0,0,0,148,1974,1,0,0,0,150,1977,1,0,0,0,152,1980,1,0,
-		0,0,154,1987,1,0,0,0,156,1994,1,0,0,0,158,1998,1,0,0,0,160,2012,1,0,0,
-		0,162,2014,1,0,0,0,164,2016,1,0,0,0,166,2018,1,0,0,0,168,2022,1,0,0,0,
-		170,2024,1,0,0,0,172,2026,1,0,0,0,174,2028,1,0,0,0,176,2030,1,0,0,0,178,
-		2032,1,0,0,0,180,2034,1,0,0,0,182,2036,1,0,0,0,184,2038,1,0,0,0,186,2040,
-		1,0,0,0,188,2042,1,0,0,0,190,2044,1,0,0,0,192,2046,1,0,0,0,194,2048,1,
-		0,0,0,196,2050,1,0,0,0,198,2052,1,0,0,0,200,2054,1,0,0,0,202,2056,1,0,
-		0,0,204,2058,1,0,0,0,206,2060,1,0,0,0,208,2062,1,0,0,0,210,2064,1,0,0,
-		0,212,2066,1,0,0,0,214,2068,1,0,0,0,216,2070,1,0,0,0,218,2072,1,0,0,0,
-		220,2081,1,0,0,0,222,224,3,2,1,0,223,222,1,0,0,0,224,227,1,0,0,0,225,223,
-		1,0,0,0,225,226,1,0,0,0,226,228,1,0,0,0,227,225,1,0,0,0,228,229,5,0,0,
-		1,229,1,1,0,0,0,230,232,5,1,0,0,231,230,1,0,0,0,232,235,1,0,0,0,233,231,
-		1,0,0,0,233,234,1,0,0,0,234,236,1,0,0,0,235,233,1,0,0,0,236,245,3,4,2,
-		0,237,239,5,1,0,0,238,237,1,0,0,0,239,240,1,0,0,0,240,238,1,0,0,0,240,
-		241,1,0,0,0,241,242,1,0,0,0,242,244,3,4,2,0,243,238,1,0,0,0,244,247,1,
-		0,0,0,245,243,1,0,0,0,245,246,1,0,0,0,246,251,1,0,0,0,247,245,1,0,0,0,
-		248,250,5,1,0,0,249,248,1,0,0,0,250,253,1,0,0,0,251,249,1,0,0,0,251,252,
-		1,0,0,0,252,3,1,0,0,0,253,251,1,0,0,0,254,257,5,71,0,0,255,256,5,114,0,
-		0,256,258,5,111,0,0,257,255,1,0,0,0,257,258,1,0,0,0,258,260,1,0,0,0,259,
-		254,1,0,0,0,259,260,1,0,0,0,260,285,1,0,0,0,261,286,3,6,3,0,262,286,3,
-		8,4,0,263,286,3,10,5,0,264,286,3,12,6,0,265,286,3,14,7,0,266,286,3,22,
-		11,0,267,286,3,26,13,0,268,286,3,42,21,0,269,286,3,44,22,0,270,286,3,46,
-		23,0,271,286,3,56,28,0,272,286,3,58,29,0,273,286,3,60,30,0,274,286,3,62,
-		31,0,275,286,3,70,35,0,276,286,3,76,38,0,277,286,3,80,40,0,278,286,3,20,
-		10,0,279,286,3,16,8,0,280,286,3,18,9,0,281,286,3,82,41,0,282,286,3,104,
-		52,0,283,286,3,108,54,0,284,286,3,112,56,0,285,261,1,0,0,0,285,262,1,0,
-		0,0,285,263,1,0,0,0,285,264,1,0,0,0,285,265,1,0,0,0,285,266,1,0,0,0,285,
-		267,1,0,0,0,285,268,1,0,0,0,285,269,1,0,0,0,285,270,1,0,0,0,285,271,1,
-		0,0,0,285,272,1,0,0,0,285,273,1,0,0,0,285,274,1,0,0,0,285,275,1,0,0,0,
-		285,276,1,0,0,0,285,277,1,0,0,0,285,278,1,0,0,0,285,279,1,0,0,0,285,280,
-		1,0,0,0,285,281,1,0,0,0,285,282,1,0,0,0,285,283,1,0,0,0,285,284,1,0,0,
-		0,286,5,1,0,0,0,287,288,5,30,0,0,288,292,5,132,0,0,289,290,3,178,89,0,
-		290,291,5,2,0,0,291,293,1,0,0,0,292,289,1,0,0,0,292,293,1,0,0,0,293,294,
-		1,0,0,0,294,317,3,180,90,0,295,305,5,121,0,0,296,297,5,136,0,0,297,306,
-		3,180,90,0,298,300,5,46,0,0,299,298,1,0,0,0,299,300,1,0,0,0,300,301,1,
-		0,0,0,301,302,3,184,92,0,302,303,5,136,0,0,303,304,3,184,92,0,304,306,
-		1,0,0,0,305,296,1,0,0,0,305,299,1,0,0,0,306,318,1,0,0,0,307,309,5,27,0,
-		0,308,310,5,46,0,0,309,308,1,0,0,0,309,310,1,0,0,0,310,311,1,0,0,0,311,
-		318,3,28,14,0,312,314,5,63,0,0,313,315,5,46,0,0,314,313,1,0,0,0,314,315,
-		1,0,0,0,315,316,1,0,0,0,316,318,3,184,92,0,317,295,1,0,0,0,317,307,1,0,
-		0,0,317,312,1,0,0,0,318,7,1,0,0,0,319,327,5,31,0,0,320,328,3,178,89,0,
-		321,322,3,178,89,0,322,323,5,2,0,0,323,325,1,0,0,0,324,321,1,0,0,0,324,
-		325,1,0,0,0,325,326,1,0,0,0,326,328,3,182,91,0,327,320,1,0,0,0,327,324,
-		1,0,0,0,327,328,1,0,0,0,328,9,1,0,0,0,329,331,5,35,0,0,330,332,5,55,0,
-		0,331,330,1,0,0,0,331,332,1,0,0,0,332,333,1,0,0,0,333,334,3,64,32,0,334,
-		335,5,33,0,0,335,336,3,178,89,0,336,11,1,0,0,0,337,339,5,38,0,0,338,340,
-		7,0,0,0,339,338,1,0,0,0,339,340,1,0,0,0,340,345,1,0,0,0,341,343,5,137,
-		0,0,342,344,3,204,102,0,343,342,1,0,0,0,343,344,1,0,0,0,344,346,1,0,0,
-		0,345,341,1,0,0,0,345,346,1,0,0,0,346,13,1,0,0,0,347,349,7,1,0,0,348,350,
-		5,137,0,0,349,348,1,0,0,0,349,350,1,0,0,0,350,15,1,0,0,0,351,353,5,126,
-		0,0,352,354,5,137,0,0,353,352,1,0,0,0,353,354,1,0,0,0,354,360,1,0,0,0,
-		355,357,5,136,0,0,356,358,5,129,0,0,357,356,1,0,0,0,357,358,1,0,0,0,358,
-		359,1,0,0,0,359,361,3,200,100,0,360,355,1,0,0,0,360,361,1,0,0,0,361,17,
-		1,0,0,0,362,363,5,129,0,0,363,364,3,200,100,0,364,19,1,0,0,0,365,367,5,
-		120,0,0,366,368,5,129,0,0,367,366,1,0,0,0,367,368,1,0,0,0,368,369,1,0,
-		0,0,369,370,3,200,100,0,370,21,1,0,0,0,371,373,5,50,0,0,372,374,5,140,
-		0,0,373,372,1,0,0,0,373,374,1,0,0,0,374,375,1,0,0,0,375,379,5,84,0,0,376,
-		377,5,80,0,0,377,378,5,102,0,0,378,380,5,70,0,0,379,376,1,0,0,0,379,380,
-		1,0,0,0,380,384,1,0,0,0,381,382,3,178,89,0,382,383,5,2,0,0,383,385,1,0,
-		0,0,384,381,1,0,0,0,384,385,1,0,0,0,385,386,1,0,0,0,386,387,3,190,95,0,
-		387,388,5,107,0,0,388,389,3,180,90,0,389,390,5,3,0,0,390,395,3,24,12,0,
-		391,392,5,5,0,0,392,394,3,24,12,0,393,391,1,0,0,0,394,397,1,0,0,0,395,
-		393,1,0,0,0,395,396,1,0,0,0,396,398,1,0,0,0,397,395,1,0,0,0,398,401,5,
-		4,0,0,399,400,5,148,0,0,400,402,3,64,32,0,401,399,1,0,0,0,401,402,1,0,
-		0,0,402,23,1,0,0,0,403,406,3,184,92,0,404,406,3,64,32,0,405,403,1,0,0,
-		0,405,404,1,0,0,0,406,409,1,0,0,0,407,408,5,45,0,0,408,410,3,186,93,0,
-		409,407,1,0,0,0,409,410,1,0,0,0,410,412,1,0,0,0,411,413,3,138,69,0,412,
-		411,1,0,0,0,412,413,1,0,0,0,413,25,1,0,0,0,414,416,5,50,0,0,415,417,7,
-		2,0,0,416,415,1,0,0,0,416,417,1,0,0,0,417,418,1,0,0,0,418,422,5,132,0,
-		0,419,420,5,80,0,0,420,421,5,102,0,0,421,423,5,70,0,0,422,419,1,0,0,0,
-		422,423,1,0,0,0,423,427,1,0,0,0,424,425,3,178,89,0,425,426,5,2,0,0,426,
-		428,1,0,0,0,427,424,1,0,0,0,427,428,1,0,0,0,428,429,1,0,0,0,429,453,3,
-		180,90,0,430,431,5,3,0,0,431,436,3,28,14,0,432,433,5,5,0,0,433,435,3,28,
-		14,0,434,432,1,0,0,0,435,438,1,0,0,0,436,437,1,0,0,0,436,434,1,0,0,0,437,
-		443,1,0,0,0,438,436,1,0,0,0,439,440,5,5,0,0,440,442,3,36,18,0,441,439,
-		1,0,0,0,442,445,1,0,0,0,443,441,1,0,0,0,443,444,1,0,0,0,444,446,1,0,0,
-		0,445,443,1,0,0,0,446,449,5,4,0,0,447,448,5,150,0,0,448,450,5,185,0,0,
-		449,447,1,0,0,0,449,450,1,0,0,0,450,454,1,0,0,0,451,452,5,33,0,0,452,454,
-		3,82,41,0,453,430,1,0,0,0,453,451,1,0,0,0,454,27,1,0,0,0,455,457,3,184,
-		92,0,456,458,3,30,15,0,457,456,1,0,0,0,457,458,1,0,0,0,458,462,1,0,0,0,
-		459,461,3,32,16,0,460,459,1,0,0,0,461,464,1,0,0,0,462,460,1,0,0,0,462,
-		463,1,0,0,0,463,29,1,0,0,0,464,462,1,0,0,0,465,467,3,174,87,0,466,465,
-		1,0,0,0,467,468,1,0,0,0,468,469,1,0,0,0,468,466,1,0,0,0,469,480,1,0,0,
-		0,470,471,5,3,0,0,471,472,3,34,17,0,472,473,5,4,0,0,473,481,1,0,0,0,474,
-		475,5,3,0,0,475,476,3,34,17,0,476,477,5,5,0,0,477,478,3,34,17,0,478,479,
-		5,4,0,0,479,481,1,0,0,0,480,470,1,0,0,0,480,474,1,0,0,0,480,481,1,0,0,
-		0,481,31,1,0,0,0,482,483,5,49,0,0,483,485,3,174,87,0,484,482,1,0,0,0,484,
-		485,1,0,0,0,485,535,1,0,0,0,486,487,5,113,0,0,487,489,5,95,0,0,488,490,
-		3,138,69,0,489,488,1,0,0,0,489,490,1,0,0,0,490,492,1,0,0,0,491,493,3,40,
-		20,0,492,491,1,0,0,0,492,493,1,0,0,0,493,495,1,0,0,0,494,496,5,36,0,0,
-		495,494,1,0,0,0,495,496,1,0,0,0,496,536,1,0,0,0,497,499,5,102,0,0,498,
-		497,1,0,0,0,498,499,1,0,0,0,499,500,1,0,0,0,500,503,5,104,0,0,501,503,
-		5,140,0,0,502,498,1,0,0,0,502,501,1,0,0,0,503,505,1,0,0,0,504,506,3,40,
-		20,0,505,504,1,0,0,0,505,506,1,0,0,0,506,536,1,0,0,0,507,508,5,44,0,0,
-		508,509,5,3,0,0,509,510,3,64,32,0,510,511,5,4,0,0,511,536,1,0,0,0,512,
-		519,5,56,0,0,513,520,3,34,17,0,514,520,3,68,34,0,515,516,5,3,0,0,516,517,
-		3,64,32,0,517,518,5,4,0,0,518,520,1,0,0,0,519,513,1,0,0,0,519,514,1,0,
-		0,0,519,515,1,0,0,0,520,536,1,0,0,0,521,522,5,45,0,0,522,536,3,186,93,
-		0,523,536,3,38,19,0,524,525,5,169,0,0,525,527,5,170,0,0,526,524,1,0,0,
-		0,526,527,1,0,0,0,527,528,1,0,0,0,528,529,5,33,0,0,529,530,5,3,0,0,530,
-		531,3,64,32,0,531,533,5,4,0,0,532,534,7,3,0,0,533,532,1,0,0,0,533,534,
-		1,0,0,0,534,536,1,0,0,0,535,486,1,0,0,0,535,502,1,0,0,0,535,507,1,0,0,
-		0,535,512,1,0,0,0,535,521,1,0,0,0,535,523,1,0,0,0,535,526,1,0,0,0,536,
-		33,1,0,0,0,537,539,7,4,0,0,538,537,1,0,0,0,538,539,1,0,0,0,539,540,1,0,
-		0,0,540,541,5,186,0,0,541,35,1,0,0,0,542,543,5,49,0,0,543,545,3,174,87,
-		0,544,542,1,0,0,0,544,545,1,0,0,0,545,583,1,0,0,0,546,547,5,113,0,0,547,
-		550,5,95,0,0,548,550,5,140,0,0,549,546,1,0,0,0,549,548,1,0,0,0,550,551,
-		1,0,0,0,551,552,5,3,0,0,552,557,3,24,12,0,553,554,5,5,0,0,554,556,3,24,
-		12,0,555,553,1,0,0,0,556,559,1,0,0,0,557,555,1,0,0,0,557,558,1,0,0,0,558,
-		560,1,0,0,0,559,557,1,0,0,0,560,562,5,4,0,0,561,563,3,40,20,0,562,561,
-		1,0,0,0,562,563,1,0,0,0,563,584,1,0,0,0,564,565,5,44,0,0,565,566,5,3,0,
-		0,566,567,3,64,32,0,567,568,5,4,0,0,568,584,1,0,0,0,569,570,5,74,0,0,570,
-		571,5,95,0,0,571,572,5,3,0,0,572,577,3,184,92,0,573,574,5,5,0,0,574,576,
-		3,184,92,0,575,573,1,0,0,0,576,579,1,0,0,0,577,575,1,0,0,0,577,578,1,0,
-		0,0,578,580,1,0,0,0,579,577,1,0,0,0,580,581,5,4,0,0,581,582,3,38,19,0,
-		582,584,1,0,0,0,583,549,1,0,0,0,583,564,1,0,0,0,583,569,1,0,0,0,584,37,
-		1,0,0,0,585,586,5,117,0,0,586,598,3,188,94,0,587,588,5,3,0,0,588,593,3,
-		184,92,0,589,590,5,5,0,0,590,592,3,184,92,0,591,589,1,0,0,0,592,595,1,
-		0,0,0,593,591,1,0,0,0,593,594,1,0,0,0,594,596,1,0,0,0,595,593,1,0,0,0,
-		596,597,5,4,0,0,597,599,1,0,0,0,598,587,1,0,0,0,598,599,1,0,0,0,599,614,
-		1,0,0,0,600,601,5,107,0,0,601,608,7,5,0,0,602,603,5,131,0,0,603,609,7,
-		6,0,0,604,609,5,41,0,0,605,609,5,123,0,0,606,607,5,101,0,0,607,609,5,26,
-		0,0,608,602,1,0,0,0,608,604,1,0,0,0,608,605,1,0,0,0,608,606,1,0,0,0,609,
-		613,1,0,0,0,610,611,5,99,0,0,611,613,3,174,87,0,612,600,1,0,0,0,612,610,
-		1,0,0,0,613,616,1,0,0,0,614,612,1,0,0,0,614,615,1,0,0,0,615,625,1,0,0,
-		0,616,614,1,0,0,0,617,619,5,102,0,0,618,617,1,0,0,0,618,619,1,0,0,0,619,
-		620,1,0,0,0,620,623,5,57,0,0,621,622,5,86,0,0,622,624,7,7,0,0,623,621,
-		1,0,0,0,623,624,1,0,0,0,624,626,1,0,0,0,625,618,1,0,0,0,625,626,1,0,0,
-		0,626,39,1,0,0,0,627,628,5,107,0,0,628,629,5,48,0,0,629,630,7,8,0,0,630,
-		41,1,0,0,0,631,633,5,50,0,0,632,634,7,2,0,0,633,632,1,0,0,0,633,634,1,
-		0,0,0,634,635,1,0,0,0,635,639,5,138,0,0,636,637,5,80,0,0,637,638,5,102,
-		0,0,638,640,5,70,0,0,639,636,1,0,0,0,639,640,1,0,0,0,640,644,1,0,0,0,641,
-		642,3,178,89,0,642,643,5,2,0,0,643,645,1,0,0,0,644,641,1,0,0,0,644,645,
-		1,0,0,0,645,646,1,0,0,0,646,651,3,192,96,0,647,652,5,37,0,0,648,652,5,
-		28,0,0,649,650,5,89,0,0,650,652,5,105,0,0,651,647,1,0,0,0,651,648,1,0,
-		0,0,651,649,1,0,0,0,651,652,1,0,0,0,652,667,1,0,0,0,653,668,5,59,0,0,654,
-		668,5,88,0,0,655,665,5,141,0,0,656,657,5,105,0,0,657,662,3,184,92,0,658,
-		659,5,5,0,0,659,661,3,184,92,0,660,658,1,0,0,0,661,664,1,0,0,0,662,660,
-		1,0,0,0,662,663,1,0,0,0,663,666,1,0,0,0,664,662,1,0,0,0,665,656,1,0,0,
-		0,665,666,1,0,0,0,666,668,1,0,0,0,667,653,1,0,0,0,667,654,1,0,0,0,667,
-		655,1,0,0,0,668,669,1,0,0,0,669,670,5,107,0,0,670,674,3,180,90,0,671,672,
-		5,73,0,0,672,673,5,64,0,0,673,675,5,127,0,0,674,671,1,0,0,0,674,675,1,
-		0,0,0,675,678,1,0,0,0,676,677,5,147,0,0,677,679,3,64,32,0,678,676,1,0,
-		0,0,678,679,1,0,0,0,679,680,1,0,0,0,680,689,5,38,0,0,681,686,3,104,52,
-		0,682,686,3,70,35,0,683,686,3,56,28,0,684,686,3,82,41,0,685,681,1,0,0,
-		0,685,682,1,0,0,0,685,683,1,0,0,0,685,684,1,0,0,0,686,687,1,0,0,0,687,
-		688,5,1,0,0,688,690,1,0,0,0,689,685,1,0,0,0,690,691,1,0,0,0,691,689,1,
-		0,0,0,691,692,1,0,0,0,692,693,1,0,0,0,693,694,5,66,0,0,694,43,1,0,0,0,
-		695,697,5,50,0,0,696,698,7,2,0,0,697,696,1,0,0,0,697,698,1,0,0,0,698,699,
-		1,0,0,0,699,703,5,145,0,0,700,701,5,80,0,0,701,702,5,102,0,0,702,704,5,
-		70,0,0,703,700,1,0,0,0,703,704,1,0,0,0,704,708,1,0,0,0,705,706,3,178,89,
-		0,706,707,5,2,0,0,707,709,1,0,0,0,708,705,1,0,0,0,708,709,1,0,0,0,709,
-		710,1,0,0,0,710,722,3,194,97,0,711,712,5,3,0,0,712,717,3,184,92,0,713,
-		714,5,5,0,0,714,716,3,184,92,0,715,713,1,0,0,0,716,719,1,0,0,0,717,715,
-		1,0,0,0,717,718,1,0,0,0,718,720,1,0,0,0,719,717,1,0,0,0,720,721,5,4,0,
-		0,721,723,1,0,0,0,722,711,1,0,0,0,722,723,1,0,0,0,723,724,1,0,0,0,724,
-		725,5,33,0,0,725,726,3,82,41,0,726,45,1,0,0,0,727,728,5,50,0,0,728,729,
-		5,146,0,0,729,733,5,132,0,0,730,731,5,80,0,0,731,732,5,102,0,0,732,734,
-		5,70,0,0,733,730,1,0,0,0,733,734,1,0,0,0,734,738,1,0,0,0,735,736,3,178,
-		89,0,736,737,5,2,0,0,737,739,1,0,0,0,738,735,1,0,0,0,738,739,1,0,0,0,739,
-		740,1,0,0,0,740,741,3,180,90,0,741,742,5,142,0,0,742,754,3,196,98,0,743,
-		744,5,3,0,0,744,749,3,168,84,0,745,746,5,5,0,0,746,748,3,168,84,0,747,
-		745,1,0,0,0,748,751,1,0,0,0,749,747,1,0,0,0,749,750,1,0,0,0,750,752,1,
-		0,0,0,751,749,1,0,0,0,752,753,5,4,0,0,753,755,1,0,0,0,754,743,1,0,0,0,
-		754,755,1,0,0,0,755,47,1,0,0,0,756,758,5,149,0,0,757,759,5,116,0,0,758,
-		757,1,0,0,0,758,759,1,0,0,0,759,760,1,0,0,0,760,761,3,50,25,0,761,762,
-		5,33,0,0,762,763,5,3,0,0,763,764,3,82,41,0,764,774,5,4,0,0,765,766,5,5,
-		0,0,766,767,3,50,25,0,767,768,5,33,0,0,768,769,5,3,0,0,769,770,3,82,41,
-		0,770,771,5,4,0,0,771,773,1,0,0,0,772,765,1,0,0,0,773,776,1,0,0,0,774,
-		772,1,0,0,0,774,775,1,0,0,0,775,49,1,0,0,0,776,774,1,0,0,0,777,789,3,180,
-		90,0,778,779,5,3,0,0,779,784,3,184,92,0,780,781,5,5,0,0,781,783,3,184,
-		92,0,782,780,1,0,0,0,783,786,1,0,0,0,784,782,1,0,0,0,784,785,1,0,0,0,785,
-		787,1,0,0,0,786,784,1,0,0,0,787,788,5,4,0,0,788,790,1,0,0,0,789,778,1,
-		0,0,0,789,790,1,0,0,0,790,51,1,0,0,0,791,792,3,50,25,0,792,793,5,33,0,
-		0,793,794,5,3,0,0,794,795,3,160,80,0,795,797,5,139,0,0,796,798,5,29,0,
-		0,797,796,1,0,0,0,797,798,1,0,0,0,798,799,1,0,0,0,799,800,3,162,81,0,800,
-		801,5,4,0,0,801,53,1,0,0,0,802,814,3,180,90,0,803,804,5,3,0,0,804,809,
-		3,184,92,0,805,806,5,5,0,0,806,808,3,184,92,0,807,805,1,0,0,0,808,811,
-		1,0,0,0,809,807,1,0,0,0,809,810,1,0,0,0,810,812,1,0,0,0,811,809,1,0,0,
-		0,812,813,5,4,0,0,813,815,1,0,0,0,814,803,1,0,0,0,814,815,1,0,0,0,815,
-		816,1,0,0,0,816,817,5,33,0,0,817,818,5,3,0,0,818,819,3,82,41,0,819,820,
-		5,4,0,0,820,55,1,0,0,0,821,823,3,48,24,0,822,821,1,0,0,0,822,823,1,0,0,
-		0,823,824,1,0,0,0,824,825,5,59,0,0,825,826,5,75,0,0,826,829,3,110,55,0,
-		827,828,5,148,0,0,828,830,3,64,32,0,829,827,1,0,0,0,829,830,1,0,0,0,830,
-		832,1,0,0,0,831,833,3,72,36,0,832,831,1,0,0,0,832,833,1,0,0,0,833,57,1,
-		0,0,0,834,836,3,48,24,0,835,834,1,0,0,0,835,836,1,0,0,0,836,837,1,0,0,
-		0,837,838,5,59,0,0,838,839,5,75,0,0,839,842,3,110,55,0,840,841,5,148,0,
-		0,841,843,3,64,32,0,842,840,1,0,0,0,842,843,1,0,0,0,843,845,1,0,0,0,844,
-		846,3,72,36,0,845,844,1,0,0,0,845,846,1,0,0,0,846,851,1,0,0,0,847,849,
-		3,132,66,0,848,847,1,0,0,0,848,849,1,0,0,0,849,850,1,0,0,0,850,852,3,134,
-		67,0,851,848,1,0,0,0,851,852,1,0,0,0,852,59,1,0,0,0,853,855,5,61,0,0,854,
-		856,5,55,0,0,855,854,1,0,0,0,855,856,1,0,0,0,856,857,1,0,0,0,857,858,3,
-		178,89,0,858,61,1,0,0,0,859,860,5,63,0,0,860,863,7,9,0,0,861,862,5,80,
-		0,0,862,864,5,70,0,0,863,861,1,0,0,0,863,864,1,0,0,0,864,868,1,0,0,0,865,
-		866,3,178,89,0,866,867,5,2,0,0,867,869,1,0,0,0,868,865,1,0,0,0,868,869,
-		1,0,0,0,869,870,1,0,0,0,870,871,3,220,110,0,871,63,1,0,0,0,872,873,6,32,
-		-1,0,873,961,3,68,34,0,874,961,5,187,0,0,875,876,3,178,89,0,876,877,5,
-		2,0,0,877,879,1,0,0,0,878,875,1,0,0,0,878,879,1,0,0,0,879,880,1,0,0,0,
-		880,881,3,180,90,0,881,882,5,2,0,0,882,884,1,0,0,0,883,878,1,0,0,0,883,
-		884,1,0,0,0,884,885,1,0,0,0,885,961,3,184,92,0,886,887,3,164,82,0,887,
-		888,3,64,32,21,888,961,1,0,0,0,889,890,3,176,88,0,890,903,5,3,0,0,891,
-		893,5,62,0,0,892,891,1,0,0,0,892,893,1,0,0,0,893,894,1,0,0,0,894,899,3,
-		64,32,0,895,896,5,5,0,0,896,898,3,64,32,0,897,895,1,0,0,0,898,901,1,0,
-		0,0,899,897,1,0,0,0,899,900,1,0,0,0,900,904,1,0,0,0,901,899,1,0,0,0,902,
-		904,5,7,0,0,903,892,1,0,0,0,903,902,1,0,0,0,903,904,1,0,0,0,904,905,1,
-		0,0,0,905,907,5,4,0,0,906,908,3,114,57,0,907,906,1,0,0,0,907,908,1,0,0,
-		0,908,910,1,0,0,0,909,911,3,118,59,0,910,909,1,0,0,0,910,911,1,0,0,0,911,
-		961,1,0,0,0,912,913,5,3,0,0,913,918,3,64,32,0,914,915,5,5,0,0,915,917,
-		3,64,32,0,916,914,1,0,0,0,917,920,1,0,0,0,918,916,1,0,0,0,918,919,1,0,
-		0,0,919,921,1,0,0,0,920,918,1,0,0,0,921,922,5,4,0,0,922,961,1,0,0,0,923,
-		924,5,43,0,0,924,925,5,3,0,0,925,926,3,64,32,0,926,927,5,33,0,0,927,928,
-		3,30,15,0,928,929,5,4,0,0,929,961,1,0,0,0,930,932,5,102,0,0,931,930,1,
-		0,0,0,931,932,1,0,0,0,932,933,1,0,0,0,933,935,5,70,0,0,934,931,1,0,0,0,
-		934,935,1,0,0,0,935,936,1,0,0,0,936,937,5,3,0,0,937,938,3,82,41,0,938,
-		939,5,4,0,0,939,961,1,0,0,0,940,942,5,42,0,0,941,943,3,64,32,0,942,941,
-		1,0,0,0,942,943,1,0,0,0,943,949,1,0,0,0,944,945,5,147,0,0,945,946,3,64,
-		32,0,946,947,5,135,0,0,947,948,3,64,32,0,948,950,1,0,0,0,949,944,1,0,0,
-		0,950,951,1,0,0,0,951,949,1,0,0,0,951,952,1,0,0,0,952,955,1,0,0,0,953,
-		954,5,65,0,0,954,956,3,64,32,0,955,953,1,0,0,0,955,956,1,0,0,0,956,957,
-		1,0,0,0,957,958,5,66,0,0,958,961,1,0,0,0,959,961,3,66,33,0,960,872,1,0,
-		0,0,960,874,1,0,0,0,960,883,1,0,0,0,960,886,1,0,0,0,960,889,1,0,0,0,960,
-		912,1,0,0,0,960,923,1,0,0,0,960,934,1,0,0,0,960,940,1,0,0,0,960,959,1,
-		0,0,0,961,1081,1,0,0,0,962,963,10,20,0,0,963,964,5,11,0,0,964,1080,3,64,
-		32,21,965,966,10,19,0,0,966,967,7,10,0,0,967,1080,3,64,32,20,968,969,10,
-		18,0,0,969,970,7,4,0,0,970,1080,3,64,32,19,971,972,10,17,0,0,972,973,7,
-		11,0,0,973,1080,3,64,32,18,974,975,10,16,0,0,975,976,7,12,0,0,976,1080,
-		3,64,32,17,977,990,10,15,0,0,978,991,5,6,0,0,979,991,5,22,0,0,980,991,
-		5,23,0,0,981,991,5,24,0,0,982,991,5,92,0,0,983,984,5,92,0,0,984,991,5,
-		102,0,0,985,991,5,83,0,0,986,991,5,97,0,0,987,991,5,77,0,0,988,991,5,99,
-		0,0,989,991,5,118,0,0,990,978,1,0,0,0,990,979,1,0,0,0,990,980,1,0,0,0,
-		990,981,1,0,0,0,990,982,1,0,0,0,990,983,1,0,0,0,990,985,1,0,0,0,990,986,
-		1,0,0,0,990,987,1,0,0,0,990,988,1,0,0,0,990,989,1,0,0,0,991,992,1,0,0,
-		0,992,1080,3,64,32,16,993,994,10,14,0,0,994,995,5,32,0,0,995,1080,3,64,
-		32,15,996,997,10,13,0,0,997,998,5,108,0,0,998,1080,3,64,32,14,999,1000,
-		10,6,0,0,1000,1002,5,92,0,0,1001,1003,5,102,0,0,1002,1001,1,0,0,0,1002,
-		1003,1,0,0,0,1003,1004,1,0,0,0,1004,1080,3,64,32,7,1005,1007,10,5,0,0,
-		1006,1008,5,102,0,0,1007,1006,1,0,0,0,1007,1008,1,0,0,0,1008,1009,1,0,
-		0,0,1009,1010,5,39,0,0,1010,1011,3,64,32,0,1011,1012,5,32,0,0,1012,1013,
-		3,64,32,6,1013,1080,1,0,0,0,1014,1015,10,9,0,0,1015,1016,5,45,0,0,1016,
-		1080,3,186,93,0,1017,1019,10,8,0,0,1018,1020,5,102,0,0,1019,1018,1,0,0,
-		0,1019,1020,1,0,0,0,1020,1021,1,0,0,0,1021,1022,7,13,0,0,1022,1025,3,64,
-		32,0,1023,1024,5,67,0,0,1024,1026,3,64,32,0,1025,1023,1,0,0,0,1025,1026,
-		1,0,0,0,1026,1080,1,0,0,0,1027,1032,10,7,0,0,1028,1033,5,93,0,0,1029,1033,
-		5,103,0,0,1030,1031,5,102,0,0,1031,1033,5,104,0,0,1032,1028,1,0,0,0,1032,
-		1029,1,0,0,0,1032,1030,1,0,0,0,1033,1080,1,0,0,0,1034,1036,10,4,0,0,1035,
-		1037,5,102,0,0,1036,1035,1,0,0,0,1036,1037,1,0,0,0,1037,1038,1,0,0,0,1038,
-		1077,5,83,0,0,1039,1049,5,3,0,0,1040,1050,3,82,41,0,1041,1046,3,64,32,
-		0,1042,1043,5,5,0,0,1043,1045,3,64,32,0,1044,1042,1,0,0,0,1045,1048,1,
-		0,0,0,1046,1044,1,0,0,0,1046,1047,1,0,0,0,1047,1050,1,0,0,0,1048,1046,
-		1,0,0,0,1049,1040,1,0,0,0,1049,1041,1,0,0,0,1049,1050,1,0,0,0,1050,1051,
-		1,0,0,0,1051,1078,5,4,0,0,1052,1053,3,178,89,0,1053,1054,5,2,0,0,1054,
-		1056,1,0,0,0,1055,1052,1,0,0,0,1055,1056,1,0,0,0,1056,1057,1,0,0,0,1057,
-		1078,3,180,90,0,1058,1059,3,178,89,0,1059,1060,5,2,0,0,1060,1062,1,0,0,
-		0,1061,1058,1,0,0,0,1061,1062,1,0,0,0,1062,1063,1,0,0,0,1063,1064,3,218,
-		109,0,1064,1073,5,3,0,0,1065,1070,3,64,32,0,1066,1067,5,5,0,0,1067,1069,
-		3,64,32,0,1068,1066,1,0,0,0,1069,1072,1,0,0,0,1070,1068,1,0,0,0,1070,1071,
-		1,0,0,0,1071,1074,1,0,0,0,1072,1070,1,0,0,0,1073,1065,1,0,0,0,1073,1074,
-		1,0,0,0,1074,1075,1,0,0,0,1075,1076,5,4,0,0,1076,1078,1,0,0,0,1077,1039,
-		1,0,0,0,1077,1055,1,0,0,0,1077,1061,1,0,0,0,1078,1080,1,0,0,0,1079,962,
-		1,0,0,0,1079,965,1,0,0,0,1079,968,1,0,0,0,1079,971,1,0,0,0,1079,974,1,
-		0,0,0,1079,977,1,0,0,0,1079,993,1,0,0,0,1079,996,1,0,0,0,1079,999,1,0,
-		0,0,1079,1005,1,0,0,0,1079,1014,1,0,0,0,1079,1017,1,0,0,0,1079,1027,1,
-		0,0,0,1079,1034,1,0,0,0,1080,1083,1,0,0,0,1081,1079,1,0,0,0,1081,1082,
-		1,0,0,0,1082,65,1,0,0,0,1083,1081,1,0,0,0,1084,1085,5,115,0,0,1085,1090,
-		5,3,0,0,1086,1091,5,81,0,0,1087,1088,7,14,0,0,1088,1089,5,5,0,0,1089,1091,
-		3,166,83,0,1090,1086,1,0,0,0,1090,1087,1,0,0,0,1091,1092,1,0,0,0,1092,
-		1093,5,4,0,0,1093,67,1,0,0,0,1094,1095,7,15,0,0,1095,69,1,0,0,0,1096,1098,
-		3,48,24,0,1097,1096,1,0,0,0,1097,1098,1,0,0,0,1098,1104,1,0,0,0,1099,1105,
-		5,88,0,0,1100,1105,5,122,0,0,1101,1102,5,88,0,0,1102,1103,5,108,0,0,1103,
-		1105,7,8,0,0,1104,1099,1,0,0,0,1104,1100,1,0,0,0,1104,1101,1,0,0,0,1105,
-		1106,1,0,0,0,1106,1110,5,91,0,0,1107,1108,3,178,89,0,1108,1109,5,2,0,0,
-		1109,1111,1,0,0,0,1110,1107,1,0,0,0,1110,1111,1,0,0,0,1111,1112,1,0,0,
-		0,1112,1115,3,180,90,0,1113,1114,5,33,0,0,1114,1116,3,202,101,0,1115,1113,
-		1,0,0,0,1115,1116,1,0,0,0,1116,1128,1,0,0,0,1117,1118,5,3,0,0,1118,1123,
-		3,184,92,0,1119,1120,5,5,0,0,1120,1122,3,184,92,0,1121,1119,1,0,0,0,1122,
-		1125,1,0,0,0,1123,1121,1,0,0,0,1123,1124,1,0,0,0,1124,1126,1,0,0,0,1125,
-		1123,1,0,0,0,1126,1127,5,4,0,0,1127,1129,1,0,0,0,1128,1117,1,0,0,0,1128,
-		1129,1,0,0,0,1129,1166,1,0,0,0,1130,1131,5,144,0,0,1131,1132,5,3,0,0,1132,
-		1137,3,64,32,0,1133,1134,5,5,0,0,1134,1136,3,64,32,0,1135,1133,1,0,0,0,
-		1136,1139,1,0,0,0,1137,1135,1,0,0,0,1137,1138,1,0,0,0,1138,1140,1,0,0,
-		0,1139,1137,1,0,0,0,1140,1155,5,4,0,0,1141,1142,5,5,0,0,1142,1143,5,3,
-		0,0,1143,1148,3,64,32,0,1144,1145,5,5,0,0,1145,1147,3,64,32,0,1146,1144,
-		1,0,0,0,1147,1150,1,0,0,0,1148,1146,1,0,0,0,1148,1149,1,0,0,0,1149,1151,
-		1,0,0,0,1150,1148,1,0,0,0,1151,1152,5,4,0,0,1152,1154,1,0,0,0,1153,1141,
-		1,0,0,0,1154,1157,1,0,0,0,1155,1153,1,0,0,0,1155,1156,1,0,0,0,1156,1160,
-		1,0,0,0,1157,1155,1,0,0,0,1158,1160,3,82,41,0,1159,1130,1,0,0,0,1159,1158,
-		1,0,0,0,1160,1162,1,0,0,0,1161,1163,3,74,37,0,1162,1161,1,0,0,0,1162,1163,
-		1,0,0,0,1163,1167,1,0,0,0,1164,1165,5,56,0,0,1165,1167,5,144,0,0,1166,
-		1159,1,0,0,0,1166,1164,1,0,0,0,1167,1169,1,0,0,0,1168,1170,3,72,36,0,1169,
-		1168,1,0,0,0,1169,1170,1,0,0,0,1170,71,1,0,0,0,1171,1172,5,124,0,0,1172,
-		1177,3,96,48,0,1173,1174,5,5,0,0,1174,1176,3,96,48,0,1175,1173,1,0,0,0,
-		1176,1179,1,0,0,0,1177,1175,1,0,0,0,1177,1178,1,0,0,0,1178,73,1,0,0,0,
-		1179,1177,1,0,0,0,1180,1181,5,107,0,0,1181,1196,5,48,0,0,1182,1183,5,3,
-		0,0,1183,1188,3,24,12,0,1184,1185,5,5,0,0,1185,1187,3,24,12,0,1186,1184,
-		1,0,0,0,1187,1190,1,0,0,0,1188,1186,1,0,0,0,1188,1189,1,0,0,0,1189,1191,
-		1,0,0,0,1190,1188,1,0,0,0,1191,1194,5,4,0,0,1192,1193,5,148,0,0,1193,1195,
-		3,64,32,0,1194,1192,1,0,0,0,1194,1195,1,0,0,0,1195,1197,1,0,0,0,1196,1182,
-		1,0,0,0,1196,1197,1,0,0,0,1197,1198,1,0,0,0,1198,1225,5,183,0,0,1199,1226,
-		5,184,0,0,1200,1201,5,141,0,0,1201,1204,5,131,0,0,1202,1205,3,184,92,0,
-		1203,1205,3,106,53,0,1204,1202,1,0,0,0,1204,1203,1,0,0,0,1205,1206,1,0,
-		0,0,1206,1207,5,6,0,0,1207,1218,3,64,32,0,1208,1211,5,5,0,0,1209,1212,
-		3,184,92,0,1210,1212,3,106,53,0,1211,1209,1,0,0,0,1211,1210,1,0,0,0,1212,
-		1213,1,0,0,0,1213,1214,5,6,0,0,1214,1215,3,64,32,0,1215,1217,1,0,0,0,1216,
-		1208,1,0,0,0,1217,1220,1,0,0,0,1218,1216,1,0,0,0,1218,1219,1,0,0,0,1219,
-		1223,1,0,0,0,1220,1218,1,0,0,0,1221,1222,5,148,0,0,1222,1224,3,64,32,0,
-		1223,1221,1,0,0,0,1223,1224,1,0,0,0,1224,1226,1,0,0,0,1225,1199,1,0,0,
-		0,1225,1200,1,0,0,0,1226,75,1,0,0,0,1227,1231,5,112,0,0,1228,1229,3,178,
-		89,0,1229,1230,5,2,0,0,1230,1232,1,0,0,0,1231,1228,1,0,0,0,1231,1232,1,
-		0,0,0,1232,1233,1,0,0,0,1233,1240,3,198,99,0,1234,1235,5,6,0,0,1235,1241,
-		3,78,39,0,1236,1237,5,3,0,0,1237,1238,3,78,39,0,1238,1239,5,4,0,0,1239,
-		1241,1,0,0,0,1240,1234,1,0,0,0,1240,1236,1,0,0,0,1240,1241,1,0,0,0,1241,
-		77,1,0,0,0,1242,1246,3,34,17,0,1243,1246,3,174,87,0,1244,1246,5,188,0,
-		0,1245,1242,1,0,0,0,1245,1243,1,0,0,0,1245,1244,1,0,0,0,1246,79,1,0,0,
-		0,1247,1258,5,119,0,0,1248,1259,3,186,93,0,1249,1250,3,178,89,0,1250,1251,
-		5,2,0,0,1251,1253,1,0,0,0,1252,1249,1,0,0,0,1252,1253,1,0,0,0,1253,1256,
-		1,0,0,0,1254,1257,3,180,90,0,1255,1257,3,190,95,0,1256,1254,1,0,0,0,1256,
-		1255,1,0,0,0,1257,1259,1,0,0,0,1258,1248,1,0,0,0,1258,1252,1,0,0,0,1258,
-		1259,1,0,0,0,1259,81,1,0,0,0,1260,1262,3,130,65,0,1261,1260,1,0,0,0,1261,
-		1262,1,0,0,0,1262,1263,1,0,0,0,1263,1269,3,86,43,0,1264,1265,3,102,51,
-		0,1265,1266,3,86,43,0,1266,1268,1,0,0,0,1267,1264,1,0,0,0,1268,1271,1,
-		0,0,0,1269,1267,1,0,0,0,1269,1270,1,0,0,0,1270,1273,1,0,0,0,1271,1269,
-		1,0,0,0,1272,1274,3,132,66,0,1273,1272,1,0,0,0,1273,1274,1,0,0,0,1274,
-		1276,1,0,0,0,1275,1277,3,134,67,0,1276,1275,1,0,0,0,1276,1277,1,0,0,0,
-		1277,83,1,0,0,0,1278,1286,3,94,47,0,1279,1280,3,98,49,0,1280,1282,3,94,
-		47,0,1281,1283,3,100,50,0,1282,1281,1,0,0,0,1282,1283,1,0,0,0,1283,1285,
-		1,0,0,0,1284,1279,1,0,0,0,1285,1288,1,0,0,0,1286,1284,1,0,0,0,1286,1287,
-		1,0,0,0,1287,85,1,0,0,0,1288,1286,1,0,0,0,1289,1291,5,130,0,0,1290,1292,
-		7,16,0,0,1291,1290,1,0,0,0,1291,1292,1,0,0,0,1292,1293,1,0,0,0,1293,1298,
-		3,96,48,0,1294,1295,5,5,0,0,1295,1297,3,96,48,0,1296,1294,1,0,0,0,1297,
-		1300,1,0,0,0,1298,1296,1,0,0,0,1298,1299,1,0,0,0,1299,1313,1,0,0,0,1300,
-		1298,1,0,0,0,1301,1311,5,75,0,0,1302,1307,3,94,47,0,1303,1304,5,5,0,0,
-		1304,1306,3,94,47,0,1305,1303,1,0,0,0,1306,1309,1,0,0,0,1307,1305,1,0,
-		0,0,1307,1308,1,0,0,0,1308,1312,1,0,0,0,1309,1307,1,0,0,0,1310,1312,3,
-		84,42,0,1311,1302,1,0,0,0,1311,1310,1,0,0,0,1312,1314,1,0,0,0,1313,1301,
-		1,0,0,0,1313,1314,1,0,0,0,1314,1317,1,0,0,0,1315,1316,5,148,0,0,1316,1318,
-		3,64,32,0,1317,1315,1,0,0,0,1317,1318,1,0,0,0,1318,1333,1,0,0,0,1319,1320,
-		5,78,0,0,1320,1321,5,40,0,0,1321,1326,3,64,32,0,1322,1323,5,5,0,0,1323,
-		1325,3,64,32,0,1324,1322,1,0,0,0,1325,1328,1,0,0,0,1326,1324,1,0,0,0,1326,
-		1327,1,0,0,0,1327,1331,1,0,0,0,1328,1326,1,0,0,0,1329,1330,5,79,0,0,1330,
-		1332,3,64,32,0,1331,1329,1,0,0,0,1331,1332,1,0,0,0,1332,1334,1,0,0,0,1333,
-		1319,1,0,0,0,1333,1334,1,0,0,0,1334,1349,1,0,0,0,1335,1336,5,174,0,0,1336,
-		1337,3,206,103,0,1337,1338,5,33,0,0,1338,1346,3,116,58,0,1339,1340,5,5,
-		0,0,1340,1341,3,206,103,0,1341,1342,5,33,0,0,1342,1343,3,116,58,0,1343,
-		1345,1,0,0,0,1344,1339,1,0,0,0,1345,1348,1,0,0,0,1346,1344,1,0,0,0,1346,
-		1347,1,0,0,0,1347,1350,1,0,0,0,1348,1346,1,0,0,0,1349,1335,1,0,0,0,1349,
-		1350,1,0,0,0,1350,1380,1,0,0,0,1351,1352,5,144,0,0,1352,1353,5,3,0,0,1353,
-		1358,3,64,32,0,1354,1355,5,5,0,0,1355,1357,3,64,32,0,1356,1354,1,0,0,0,
-		1357,1360,1,0,0,0,1358,1356,1,0,0,0,1358,1359,1,0,0,0,1359,1361,1,0,0,
-		0,1360,1358,1,0,0,0,1361,1376,5,4,0,0,1362,1363,5,5,0,0,1363,1364,5,3,
-		0,0,1364,1369,3,64,32,0,1365,1366,5,5,0,0,1366,1368,3,64,32,0,1367,1365,
-		1,0,0,0,1368,1371,1,0,0,0,1369,1367,1,0,0,0,1369,1370,1,0,0,0,1370,1372,
-		1,0,0,0,1371,1369,1,0,0,0,1372,1373,5,4,0,0,1373,1375,1,0,0,0,1374,1362,
-		1,0,0,0,1375,1378,1,0,0,0,1376,1374,1,0,0,0,1376,1377,1,0,0,0,1377,1380,
-		1,0,0,0,1378,1376,1,0,0,0,1379,1289,1,0,0,0,1379,1351,1,0,0,0,1380,87,
-		1,0,0,0,1381,1382,3,82,41,0,1382,89,1,0,0,0,1383,1385,3,130,65,0,1384,
-		1383,1,0,0,0,1384,1385,1,0,0,0,1385,1386,1,0,0,0,1386,1388,3,86,43,0,1387,
-		1389,3,132,66,0,1388,1387,1,0,0,0,1388,1389,1,0,0,0,1389,1391,1,0,0,0,
-		1390,1392,3,134,67,0,1391,1390,1,0,0,0,1391,1392,1,0,0,0,1392,91,1,0,0,
-		0,1393,1395,3,130,65,0,1394,1393,1,0,0,0,1394,1395,1,0,0,0,1395,1396,1,
-		0,0,0,1396,1406,3,86,43,0,1397,1399,5,139,0,0,1398,1400,5,29,0,0,1399,
-		1398,1,0,0,0,1399,1400,1,0,0,0,1400,1404,1,0,0,0,1401,1404,5,90,0,0,1402,
-		1404,5,68,0,0,1403,1397,1,0,0,0,1403,1401,1,0,0,0,1403,1402,1,0,0,0,1404,
-		1405,1,0,0,0,1405,1407,3,86,43,0,1406,1403,1,0,0,0,1407,1408,1,0,0,0,1408,
-		1406,1,0,0,0,1408,1409,1,0,0,0,1409,1411,1,0,0,0,1410,1412,3,132,66,0,
-		1411,1410,1,0,0,0,1411,1412,1,0,0,0,1412,1414,1,0,0,0,1413,1415,3,134,
-		67,0,1414,1413,1,0,0,0,1414,1415,1,0,0,0,1415,93,1,0,0,0,1416,1417,3,178,
-		89,0,1417,1418,5,2,0,0,1418,1420,1,0,0,0,1419,1416,1,0,0,0,1419,1420,1,
-		0,0,0,1420,1421,1,0,0,0,1421,1426,3,180,90,0,1422,1424,5,33,0,0,1423,1422,
-		1,0,0,0,1423,1424,1,0,0,0,1424,1425,1,0,0,0,1425,1427,3,202,101,0,1426,
-		1423,1,0,0,0,1426,1427,1,0,0,0,1427,1433,1,0,0,0,1428,1429,5,85,0,0,1429,
-		1430,5,40,0,0,1430,1434,3,190,95,0,1431,1432,5,102,0,0,1432,1434,5,85,
-		0,0,1433,1428,1,0,0,0,1433,1431,1,0,0,0,1433,1434,1,0,0,0,1434,1481,1,
-		0,0,0,1435,1436,3,178,89,0,1436,1437,5,2,0,0,1437,1439,1,0,0,0,1438,1435,
-		1,0,0,0,1438,1439,1,0,0,0,1439,1440,1,0,0,0,1440,1441,3,218,109,0,1441,
-		1442,5,3,0,0,1442,1447,3,64,32,0,1443,1444,5,5,0,0,1444,1446,3,64,32,0,
-		1445,1443,1,0,0,0,1446,1449,1,0,0,0,1447,1445,1,0,0,0,1447,1448,1,0,0,
-		0,1448,1450,1,0,0,0,1449,1447,1,0,0,0,1450,1455,5,4,0,0,1451,1453,5,33,
-		0,0,1452,1451,1,0,0,0,1452,1453,1,0,0,0,1453,1454,1,0,0,0,1454,1456,3,
-		202,101,0,1455,1452,1,0,0,0,1455,1456,1,0,0,0,1456,1481,1,0,0,0,1457,1467,
-		5,3,0,0,1458,1463,3,94,47,0,1459,1460,5,5,0,0,1460,1462,3,94,47,0,1461,
-		1459,1,0,0,0,1462,1465,1,0,0,0,1463,1461,1,0,0,0,1463,1464,1,0,0,0,1464,
-		1468,1,0,0,0,1465,1463,1,0,0,0,1466,1468,3,84,42,0,1467,1458,1,0,0,0,1467,
-		1466,1,0,0,0,1468,1469,1,0,0,0,1469,1470,5,4,0,0,1470,1481,1,0,0,0,1471,
-		1472,5,3,0,0,1472,1473,3,82,41,0,1473,1478,5,4,0,0,1474,1476,5,33,0,0,
-		1475,1474,1,0,0,0,1475,1476,1,0,0,0,1476,1477,1,0,0,0,1477,1479,3,202,
-		101,0,1478,1475,1,0,0,0,1478,1479,1,0,0,0,1479,1481,1,0,0,0,1480,1419,
-		1,0,0,0,1480,1438,1,0,0,0,1480,1457,1,0,0,0,1480,1471,1,0,0,0,1481,95,
-		1,0,0,0,1482,1495,5,7,0,0,1483,1484,3,180,90,0,1484,1485,5,2,0,0,1485,
-		1486,5,7,0,0,1486,1495,1,0,0,0,1487,1492,3,64,32,0,1488,1490,5,33,0,0,
-		1489,1488,1,0,0,0,1489,1490,1,0,0,0,1490,1491,1,0,0,0,1491,1493,3,170,
-		85,0,1492,1489,1,0,0,0,1492,1493,1,0,0,0,1493,1495,1,0,0,0,1494,1482,1,
-		0,0,0,1494,1483,1,0,0,0,1494,1487,1,0,0,0,1495,97,1,0,0,0,1496,1510,5,
-		5,0,0,1497,1499,5,100,0,0,1498,1497,1,0,0,0,1498,1499,1,0,0,0,1499,1506,
-		1,0,0,0,1500,1502,5,96,0,0,1501,1503,5,110,0,0,1502,1501,1,0,0,0,1502,
-		1503,1,0,0,0,1503,1507,1,0,0,0,1504,1507,5,87,0,0,1505,1507,5,51,0,0,1506,
-		1500,1,0,0,0,1506,1504,1,0,0,0,1506,1505,1,0,0,0,1506,1507,1,0,0,0,1507,
-		1508,1,0,0,0,1508,1510,5,94,0,0,1509,1496,1,0,0,0,1509,1498,1,0,0,0,1510,
-		99,1,0,0,0,1511,1512,5,107,0,0,1512,1526,3,64,32,0,1513,1514,5,142,0,0,
-		1514,1515,5,3,0,0,1515,1520,3,184,92,0,1516,1517,5,5,0,0,1517,1519,3,184,
-		92,0,1518,1516,1,0,0,0,1519,1522,1,0,0,0,1520,1518,1,0,0,0,1520,1521,1,
-		0,0,0,1521,1523,1,0,0,0,1522,1520,1,0,0,0,1523,1524,5,4,0,0,1524,1526,
-		1,0,0,0,1525,1511,1,0,0,0,1525,1513,1,0,0,0,1526,101,1,0,0,0,1527,1529,
-		5,139,0,0,1528,1530,5,29,0,0,1529,1528,1,0,0,0,1529,1530,1,0,0,0,1530,
-		1534,1,0,0,0,1531,1534,5,90,0,0,1532,1534,5,68,0,0,1533,1527,1,0,0,0,1533,
-		1531,1,0,0,0,1533,1532,1,0,0,0,1534,103,1,0,0,0,1535,1537,3,48,24,0,1536,
-		1535,1,0,0,0,1536,1537,1,0,0,0,1537,1538,1,0,0,0,1538,1541,5,141,0,0,1539,
-		1540,5,108,0,0,1540,1542,7,8,0,0,1541,1539,1,0,0,0,1541,1542,1,0,0,0,1542,
-		1543,1,0,0,0,1543,1544,3,110,55,0,1544,1547,5,131,0,0,1545,1548,3,184,
-		92,0,1546,1548,3,106,53,0,1547,1545,1,0,0,0,1547,1546,1,0,0,0,1548,1549,
-		1,0,0,0,1549,1550,5,6,0,0,1550,1561,3,64,32,0,1551,1554,5,5,0,0,1552,1555,
-		3,184,92,0,1553,1555,3,106,53,0,1554,1552,1,0,0,0,1554,1553,1,0,0,0,1555,
-		1556,1,0,0,0,1556,1557,5,6,0,0,1557,1558,3,64,32,0,1558,1560,1,0,0,0,1559,
-		1551,1,0,0,0,1560,1563,1,0,0,0,1561,1559,1,0,0,0,1561,1562,1,0,0,0,1562,
-		1576,1,0,0,0,1563,1561,1,0,0,0,1564,1574,5,75,0,0,1565,1570,3,94,47,0,
-		1566,1567,5,5,0,0,1567,1569,3,94,47,0,1568,1566,1,0,0,0,1569,1572,1,0,
-		0,0,1570,1568,1,0,0,0,1570,1571,1,0,0,0,1571,1575,1,0,0,0,1572,1570,1,
-		0,0,0,1573,1575,3,84,42,0,1574,1565,1,0,0,0,1574,1573,1,0,0,0,1575,1577,
-		1,0,0,0,1576,1564,1,0,0,0,1576,1577,1,0,0,0,1577,1580,1,0,0,0,1578,1579,
-		5,148,0,0,1579,1581,3,64,32,0,1580,1578,1,0,0,0,1580,1581,1,0,0,0,1581,
-		1583,1,0,0,0,1582,1584,3,72,36,0,1583,1582,1,0,0,0,1583,1584,1,0,0,0,1584,
-		105,1,0,0,0,1585,1586,5,3,0,0,1586,1591,3,184,92,0,1587,1588,5,5,0,0,1588,
-		1590,3,184,92,0,1589,1587,1,0,0,0,1590,1593,1,0,0,0,1591,1589,1,0,0,0,
-		1591,1592,1,0,0,0,1592,1594,1,0,0,0,1593,1591,1,0,0,0,1594,1595,5,4,0,
-		0,1595,107,1,0,0,0,1596,1598,3,48,24,0,1597,1596,1,0,0,0,1597,1598,1,0,
-		0,0,1598,1599,1,0,0,0,1599,1602,5,141,0,0,1600,1601,5,108,0,0,1601,1603,
-		7,8,0,0,1602,1600,1,0,0,0,1602,1603,1,0,0,0,1603,1604,1,0,0,0,1604,1605,
-		3,110,55,0,1605,1608,5,131,0,0,1606,1609,3,184,92,0,1607,1609,3,106,53,
-		0,1608,1606,1,0,0,0,1608,1607,1,0,0,0,1609,1610,1,0,0,0,1610,1611,5,6,
-		0,0,1611,1622,3,64,32,0,1612,1615,5,5,0,0,1613,1616,3,184,92,0,1614,1616,
-		3,106,53,0,1615,1613,1,0,0,0,1615,1614,1,0,0,0,1616,1617,1,0,0,0,1617,
-		1618,5,6,0,0,1618,1619,3,64,32,0,1619,1621,1,0,0,0,1620,1612,1,0,0,0,1621,
-		1624,1,0,0,0,1622,1620,1,0,0,0,1622,1623,1,0,0,0,1623,1627,1,0,0,0,1624,
-		1622,1,0,0,0,1625,1626,5,148,0,0,1626,1628,3,64,32,0,1627,1625,1,0,0,0,
-		1627,1628,1,0,0,0,1628,1630,1,0,0,0,1629,1631,3,72,36,0,1630,1629,1,0,
-		0,0,1630,1631,1,0,0,0,1631,1636,1,0,0,0,1632,1634,3,132,66,0,1633,1632,
-		1,0,0,0,1633,1634,1,0,0,0,1634,1635,1,0,0,0,1635,1637,3,134,67,0,1636,
-		1633,1,0,0,0,1636,1637,1,0,0,0,1637,109,1,0,0,0,1638,1639,3,178,89,0,1639,
-		1640,5,2,0,0,1640,1642,1,0,0,0,1641,1638,1,0,0,0,1641,1642,1,0,0,0,1642,
-		1643,1,0,0,0,1643,1646,3,180,90,0,1644,1645,5,33,0,0,1645,1647,3,208,104,
-		0,1646,1644,1,0,0,0,1646,1647,1,0,0,0,1647,1653,1,0,0,0,1648,1649,5,85,
-		0,0,1649,1650,5,40,0,0,1650,1654,3,190,95,0,1651,1652,5,102,0,0,1652,1654,
-		5,85,0,0,1653,1648,1,0,0,0,1653,1651,1,0,0,0,1653,1654,1,0,0,0,1654,111,
-		1,0,0,0,1655,1657,5,143,0,0,1656,1658,3,178,89,0,1657,1656,1,0,0,0,1657,
-		1658,1,0,0,0,1658,1661,1,0,0,0,1659,1660,5,91,0,0,1660,1662,3,210,105,
-		0,1661,1659,1,0,0,0,1661,1662,1,0,0,0,1662,113,1,0,0,0,1663,1664,5,178,
-		0,0,1664,1665,5,3,0,0,1665,1666,5,148,0,0,1666,1667,3,64,32,0,1667,1668,
-		5,4,0,0,1668,115,1,0,0,0,1669,1671,5,3,0,0,1670,1672,3,212,106,0,1671,
-		1670,1,0,0,0,1671,1672,1,0,0,0,1672,1683,1,0,0,0,1673,1674,5,153,0,0,1674,
-		1675,5,40,0,0,1675,1680,3,64,32,0,1676,1677,5,5,0,0,1677,1679,3,64,32,
-		0,1678,1676,1,0,0,0,1679,1682,1,0,0,0,1680,1678,1,0,0,0,1680,1681,1,0,
-		0,0,1681,1684,1,0,0,0,1682,1680,1,0,0,0,1683,1673,1,0,0,0,1683,1684,1,
-		0,0,0,1684,1685,1,0,0,0,1685,1686,5,109,0,0,1686,1687,5,40,0,0,1687,1692,
-		3,136,68,0,1688,1689,5,5,0,0,1689,1691,3,136,68,0,1690,1688,1,0,0,0,1691,
-		1694,1,0,0,0,1692,1690,1,0,0,0,1692,1693,1,0,0,0,1693,1696,1,0,0,0,1694,
-		1692,1,0,0,0,1695,1697,3,120,60,0,1696,1695,1,0,0,0,1696,1697,1,0,0,0,
-		1697,1698,1,0,0,0,1698,1699,5,4,0,0,1699,117,1,0,0,0,1700,1734,5,152,0,
-		0,1701,1735,3,206,103,0,1702,1704,5,3,0,0,1703,1705,3,212,106,0,1704,1703,
-		1,0,0,0,1704,1705,1,0,0,0,1705,1716,1,0,0,0,1706,1707,5,153,0,0,1707,1708,
-		5,40,0,0,1708,1713,3,64,32,0,1709,1710,5,5,0,0,1710,1712,3,64,32,0,1711,
-		1709,1,0,0,0,1712,1715,1,0,0,0,1713,1711,1,0,0,0,1713,1714,1,0,0,0,1714,
-		1717,1,0,0,0,1715,1713,1,0,0,0,1716,1706,1,0,0,0,1716,1717,1,0,0,0,1717,
-		1728,1,0,0,0,1718,1719,5,109,0,0,1719,1720,5,40,0,0,1720,1725,3,136,68,
-		0,1721,1722,5,5,0,0,1722,1724,3,136,68,0,1723,1721,1,0,0,0,1724,1727,1,
-		0,0,0,1725,1723,1,0,0,0,1725,1726,1,0,0,0,1726,1729,1,0,0,0,1727,1725,
-		1,0,0,0,1728,1718,1,0,0,0,1728,1729,1,0,0,0,1729,1731,1,0,0,0,1730,1732,
-		3,120,60,0,1731,1730,1,0,0,0,1731,1732,1,0,0,0,1732,1733,1,0,0,0,1733,
-		1735,5,4,0,0,1734,1701,1,0,0,0,1734,1702,1,0,0,0,1735,119,1,0,0,0,1736,
-		1744,3,122,61,0,1737,1738,5,180,0,0,1738,1739,5,101,0,0,1739,1745,5,182,
-		0,0,1740,1741,5,157,0,0,1741,1745,5,127,0,0,1742,1745,5,78,0,0,1743,1745,
-		5,181,0,0,1744,1737,1,0,0,0,1744,1740,1,0,0,0,1744,1742,1,0,0,0,1744,1743,
-		1,0,0,0,1744,1745,1,0,0,0,1745,121,1,0,0,0,1746,1753,7,17,0,0,1747,1754,
-		3,144,72,0,1748,1749,5,39,0,0,1749,1750,3,140,70,0,1750,1751,5,32,0,0,
-		1751,1752,3,142,71,0,1752,1754,1,0,0,0,1753,1747,1,0,0,0,1753,1748,1,0,
-		0,0,1754,123,1,0,0,0,1755,1756,3,214,107,0,1756,1766,5,3,0,0,1757,1762,
-		3,64,32,0,1758,1759,5,5,0,0,1759,1761,3,64,32,0,1760,1758,1,0,0,0,1761,
-		1764,1,0,0,0,1762,1760,1,0,0,0,1762,1763,1,0,0,0,1763,1767,1,0,0,0,1764,
-		1762,1,0,0,0,1765,1767,5,7,0,0,1766,1757,1,0,0,0,1766,1765,1,0,0,0,1767,
-		1768,1,0,0,0,1768,1769,5,4,0,0,1769,125,1,0,0,0,1770,1771,3,216,108,0,
-		1771,1784,5,3,0,0,1772,1774,5,62,0,0,1773,1772,1,0,0,0,1773,1774,1,0,0,
-		0,1774,1775,1,0,0,0,1775,1780,3,64,32,0,1776,1777,5,5,0,0,1777,1779,3,
-		64,32,0,1778,1776,1,0,0,0,1779,1782,1,0,0,0,1780,1778,1,0,0,0,1780,1781,
-		1,0,0,0,1781,1785,1,0,0,0,1782,1780,1,0,0,0,1783,1785,5,7,0,0,1784,1773,
-		1,0,0,0,1784,1783,1,0,0,0,1784,1785,1,0,0,0,1785,1786,1,0,0,0,1786,1788,
-		5,4,0,0,1787,1789,3,114,57,0,1788,1787,1,0,0,0,1788,1789,1,0,0,0,1789,
-		127,1,0,0,0,1790,1791,3,146,73,0,1791,1801,5,3,0,0,1792,1797,3,64,32,0,
-		1793,1794,5,5,0,0,1794,1796,3,64,32,0,1795,1793,1,0,0,0,1796,1799,1,0,
-		0,0,1797,1795,1,0,0,0,1797,1798,1,0,0,0,1798,1802,1,0,0,0,1799,1797,1,
-		0,0,0,1800,1802,5,7,0,0,1801,1792,1,0,0,0,1801,1800,1,0,0,0,1801,1802,
-		1,0,0,0,1802,1803,1,0,0,0,1803,1805,5,4,0,0,1804,1806,3,114,57,0,1805,
-		1804,1,0,0,0,1805,1806,1,0,0,0,1806,1807,1,0,0,0,1807,1810,5,152,0,0,1808,
-		1811,3,116,58,0,1809,1811,3,206,103,0,1810,1808,1,0,0,0,1810,1809,1,0,
-		0,0,1811,129,1,0,0,0,1812,1814,5,149,0,0,1813,1815,5,116,0,0,1814,1813,
-		1,0,0,0,1814,1815,1,0,0,0,1815,1816,1,0,0,0,1816,1821,3,54,27,0,1817,1818,
-		5,5,0,0,1818,1820,3,54,27,0,1819,1817,1,0,0,0,1820,1823,1,0,0,0,1821,1819,
-		1,0,0,0,1821,1822,1,0,0,0,1822,131,1,0,0,0,1823,1821,1,0,0,0,1824,1825,
-		5,109,0,0,1825,1826,5,40,0,0,1826,1831,3,136,68,0,1827,1828,5,5,0,0,1828,
-		1830,3,136,68,0,1829,1827,1,0,0,0,1830,1833,1,0,0,0,1831,1829,1,0,0,0,
-		1831,1832,1,0,0,0,1832,133,1,0,0,0,1833,1831,1,0,0,0,1834,1835,5,98,0,
-		0,1835,1838,3,64,32,0,1836,1837,7,18,0,0,1837,1839,3,64,32,0,1838,1836,
-		1,0,0,0,1838,1839,1,0,0,0,1839,135,1,0,0,0,1840,1843,3,64,32,0,1841,1842,
-		5,45,0,0,1842,1844,3,186,93,0,1843,1841,1,0,0,0,1843,1844,1,0,0,0,1844,
-		1846,1,0,0,0,1845,1847,3,138,69,0,1846,1845,1,0,0,0,1846,1847,1,0,0,0,
-		1847,1850,1,0,0,0,1848,1849,5,175,0,0,1849,1851,7,19,0,0,1850,1848,1,0,
-		0,0,1850,1851,1,0,0,0,1851,137,1,0,0,0,1852,1853,7,20,0,0,1853,139,1,0,
-		0,0,1854,1855,3,64,32,0,1855,1856,5,155,0,0,1856,1865,1,0,0,0,1857,1858,
-		3,64,32,0,1858,1859,5,158,0,0,1859,1865,1,0,0,0,1860,1861,5,157,0,0,1861,
-		1865,5,127,0,0,1862,1863,5,156,0,0,1863,1865,5,155,0,0,1864,1854,1,0,0,
-		0,1864,1857,1,0,0,0,1864,1860,1,0,0,0,1864,1862,1,0,0,0,1865,141,1,0,0,
-		0,1866,1867,3,64,32,0,1867,1868,5,155,0,0,1868,1877,1,0,0,0,1869,1870,
-		3,64,32,0,1870,1871,5,158,0,0,1871,1877,1,0,0,0,1872,1873,5,157,0,0,1873,
-		1877,5,127,0,0,1874,1875,5,156,0,0,1875,1877,5,158,0,0,1876,1866,1,0,0,
-		0,1876,1869,1,0,0,0,1876,1872,1,0,0,0,1876,1874,1,0,0,0,1877,143,1,0,0,
-		0,1878,1879,3,64,32,0,1879,1880,5,155,0,0,1880,1886,1,0,0,0,1881,1882,
-		5,156,0,0,1882,1886,5,155,0,0,1883,1884,5,157,0,0,1884,1886,5,127,0,0,
-		1885,1878,1,0,0,0,1885,1881,1,0,0,0,1885,1883,1,0,0,0,1886,145,1,0,0,0,
-		1887,1888,7,21,0,0,1888,1889,5,3,0,0,1889,1890,3,64,32,0,1890,1891,5,4,
-		0,0,1891,1892,5,152,0,0,1892,1894,5,3,0,0,1893,1895,3,152,76,0,1894,1893,
-		1,0,0,0,1894,1895,1,0,0,0,1895,1896,1,0,0,0,1896,1898,3,156,78,0,1897,
-		1899,3,122,61,0,1898,1897,1,0,0,0,1898,1899,1,0,0,0,1899,1900,1,0,0,0,
-		1900,1901,5,4,0,0,1901,1973,1,0,0,0,1902,1903,7,22,0,0,1903,1904,5,3,0,
-		0,1904,1905,5,4,0,0,1905,1906,5,152,0,0,1906,1908,5,3,0,0,1907,1909,3,
-		152,76,0,1908,1907,1,0,0,0,1908,1909,1,0,0,0,1909,1911,1,0,0,0,1910,1912,
-		3,154,77,0,1911,1910,1,0,0,0,1911,1912,1,0,0,0,1912,1913,1,0,0,0,1913,
-		1973,5,4,0,0,1914,1915,7,23,0,0,1915,1916,5,3,0,0,1916,1917,5,4,0,0,1917,
-		1918,5,152,0,0,1918,1920,5,3,0,0,1919,1921,3,152,76,0,1920,1919,1,0,0,
-		0,1920,1921,1,0,0,0,1921,1922,1,0,0,0,1922,1923,3,156,78,0,1923,1924,5,
-		4,0,0,1924,1973,1,0,0,0,1925,1926,7,24,0,0,1926,1927,5,3,0,0,1927,1929,
-		3,64,32,0,1928,1930,3,148,74,0,1929,1928,1,0,0,0,1929,1930,1,0,0,0,1930,
-		1932,1,0,0,0,1931,1933,3,150,75,0,1932,1931,1,0,0,0,1932,1933,1,0,0,0,
-		1933,1934,1,0,0,0,1934,1935,5,4,0,0,1935,1936,5,152,0,0,1936,1938,5,3,
-		0,0,1937,1939,3,152,76,0,1938,1937,1,0,0,0,1938,1939,1,0,0,0,1939,1940,
-		1,0,0,0,1940,1941,3,156,78,0,1941,1942,5,4,0,0,1942,1973,1,0,0,0,1943,
-		1944,5,164,0,0,1944,1945,5,3,0,0,1945,1946,3,64,32,0,1946,1947,5,5,0,0,
-		1947,1948,3,34,17,0,1948,1949,5,4,0,0,1949,1950,5,152,0,0,1950,1952,5,
-		3,0,0,1951,1953,3,152,76,0,1952,1951,1,0,0,0,1952,1953,1,0,0,0,1953,1954,
-		1,0,0,0,1954,1956,3,156,78,0,1955,1957,3,122,61,0,1956,1955,1,0,0,0,1956,
-		1957,1,0,0,0,1957,1958,1,0,0,0,1958,1959,5,4,0,0,1959,1973,1,0,0,0,1960,
-		1961,5,165,0,0,1961,1962,5,3,0,0,1962,1963,3,64,32,0,1963,1964,5,4,0,0,
-		1964,1965,5,152,0,0,1965,1967,5,3,0,0,1966,1968,3,152,76,0,1967,1966,1,
-		0,0,0,1967,1968,1,0,0,0,1968,1969,1,0,0,0,1969,1970,3,156,78,0,1970,1971,
-		5,4,0,0,1971,1973,1,0,0,0,1972,1887,1,0,0,0,1972,1902,1,0,0,0,1972,1914,
-		1,0,0,0,1972,1925,1,0,0,0,1972,1943,1,0,0,0,1972,1960,1,0,0,0,1973,147,
-		1,0,0,0,1974,1975,5,5,0,0,1975,1976,3,34,17,0,1976,149,1,0,0,0,1977,1978,
-		5,5,0,0,1978,1979,3,34,17,0,1979,151,1,0,0,0,1980,1981,5,153,0,0,1981,
-		1983,5,40,0,0,1982,1984,3,64,32,0,1983,1982,1,0,0,0,1984,1985,1,0,0,0,
-		1985,1983,1,0,0,0,1985,1986,1,0,0,0,1986,153,1,0,0,0,1987,1988,5,109,0,
-		0,1988,1990,5,40,0,0,1989,1991,3,64,32,0,1990,1989,1,0,0,0,1991,1992,1,
-		0,0,0,1992,1990,1,0,0,0,1992,1993,1,0,0,0,1993,155,1,0,0,0,1994,1995,5,
-		109,0,0,1995,1996,5,40,0,0,1996,1997,3,158,79,0,1997,157,1,0,0,0,1998,
-		2000,3,64,32,0,1999,2001,3,138,69,0,2000,1999,1,0,0,0,2000,2001,1,0,0,
-		0,2001,2009,1,0,0,0,2002,2003,5,5,0,0,2003,2005,3,64,32,0,2004,2006,3,
-		138,69,0,2005,2004,1,0,0,0,2005,2006,1,0,0,0,2006,2008,1,0,0,0,2007,2002,
-		1,0,0,0,2008,2011,1,0,0,0,2009,2007,1,0,0,0,2009,2010,1,0,0,0,2010,159,
-		1,0,0,0,2011,2009,1,0,0,0,2012,2013,3,82,41,0,2013,161,1,0,0,0,2014,2015,
-		3,82,41,0,2015,163,1,0,0,0,2016,2017,7,25,0,0,2017,165,1,0,0,0,2018,2019,
-		5,188,0,0,2019,167,1,0,0,0,2020,2023,3,64,32,0,2021,2023,3,28,14,0,2022,
-		2020,1,0,0,0,2022,2021,1,0,0,0,2023,169,1,0,0,0,2024,2025,7,26,0,0,2025,
-		171,1,0,0,0,2026,2027,7,27,0,0,2027,173,1,0,0,0,2028,2029,3,220,110,0,
-		2029,175,1,0,0,0,2030,2031,3,220,110,0,2031,177,1,0,0,0,2032,2033,3,220,
-		110,0,2033,179,1,0,0,0,2034,2035,3,220,110,0,2035,181,1,0,0,0,2036,2037,
-		3,220,110,0,2037,183,1,0,0,0,2038,2039,3,220,110,0,2039,185,1,0,0,0,2040,
-		2041,3,220,110,0,2041,187,1,0,0,0,2042,2043,3,220,110,0,2043,189,1,0,0,
-		0,2044,2045,3,220,110,0,2045,191,1,0,0,0,2046,2047,3,220,110,0,2047,193,
-		1,0,0,0,2048,2049,3,220,110,0,2049,195,1,0,0,0,2050,2051,3,220,110,0,2051,
-		197,1,0,0,0,2052,2053,3,220,110,0,2053,199,1,0,0,0,2054,2055,3,220,110,
-		0,2055,201,1,0,0,0,2056,2057,3,220,110,0,2057,203,1,0,0,0,2058,2059,3,
-		220,110,0,2059,205,1,0,0,0,2060,2061,3,220,110,0,2061,207,1,0,0,0,2062,
-		2063,3,220,110,0,2063,209,1,0,0,0,2064,2065,3,220,110,0,2065,211,1,0,0,
-		0,2066,2067,3,220,110,0,2067,213,1,0,0,0,2068,2069,3,220,110,0,2069,215,
-		1,0,0,0,2070,2071,3,220,110,0,2071,217,1,0,0,0,2072,2073,3,220,110,0,2073,
-		219,1,0,0,0,2074,2082,5,185,0,0,2075,2082,3,172,86,0,2076,2082,5,188,0,
-		0,2077,2078,5,3,0,0,2078,2079,3,220,110,0,2079,2080,5,4,0,0,2080,2082,
-		1,0,0,0,2081,2074,1,0,0,0,2081,2075,1,0,0,0,2081,2076,1,0,0,0,2081,2077,
-		1,0,0,0,2082,221,1,0,0,0,299,225,233,240,245,251,257,259,285,292,299,305,
-		309,314,317,324,327,331,339,343,345,349,353,357,360,367,373,379,384,395,
-		401,405,409,412,416,422,427,436,443,449,453,457,462,468,480,484,489,492,
-		495,498,502,505,519,526,533,535,538,544,549,557,562,577,583,593,598,608,
-		612,614,618,623,625,633,639,644,651,662,665,667,674,678,685,691,697,703,
-		708,717,722,733,738,749,754,758,774,784,789,797,809,814,822,829,832,835,
-		842,845,848,851,855,863,868,878,883,892,899,903,907,910,918,931,934,942,
-		951,955,960,990,1002,1007,1019,1025,1032,1036,1046,1049,1055,1061,1070,
-		1073,1077,1079,1081,1090,1097,1104,1110,1115,1123,1128,1137,1148,1155,
-		1159,1162,1166,1169,1177,1188,1194,1196,1204,1211,1218,1223,1225,1231,
-		1240,1245,1252,1256,1258,1261,1269,1273,1276,1282,1286,1291,1298,1307,
-		1311,1313,1317,1326,1331,1333,1346,1349,1358,1369,1376,1379,1384,1388,
-		1391,1394,1399,1403,1408,1411,1414,1419,1423,1426,1433,1438,1447,1452,
-		1455,1463,1467,1475,1478,1480,1489,1492,1494,1498,1502,1506,1509,1520,
-		1525,1529,1533,1536,1541,1547,1554,1561,1570,1574,1576,1580,1583,1591,
-		1597,1602,1608,1615,1622,1627,1630,1633,1636,1641,1646,1653,1657,1661,
-		1671,1680,1683,1692,1696,1704,1713,1716,1725,1728,1731,1734,1744,1753,
-		1762,1766,1773,1780,1784,1788,1797,1801,1805,1810,1814,1821,1831,1838,
-		1843,1846,1850,1864,1876,1885,1894,1898,1908,1911,1920,1929,1932,1938,
-		1952,1956,1967,1972,1985,1992,2000,2005,2009,2022,2081
+		1,32,1,32,3,32,1003,8,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,
+		1,32,3,32,1015,8,32,1,32,1,32,1,32,3,32,1020,8,32,1,32,1,32,1,32,1,32,
+		1,32,1,32,1,32,1,32,1,32,1,32,3,32,1032,8,32,1,32,1,32,1,32,1,32,3,32,
+		1038,8,32,1,32,1,32,1,32,1,32,1,32,3,32,1045,8,32,1,32,1,32,3,32,1049,
+		8,32,1,32,1,32,1,32,1,32,1,32,1,32,5,32,1057,8,32,10,32,12,32,1060,9,32,
+		3,32,1062,8,32,1,32,1,32,1,32,1,32,3,32,1068,8,32,1,32,1,32,1,32,1,32,
+		3,32,1074,8,32,1,32,1,32,1,32,1,32,1,32,5,32,1081,8,32,10,32,12,32,1084,
+		9,32,3,32,1086,8,32,1,32,1,32,3,32,1090,8,32,5,32,1092,8,32,10,32,12,32,
+		1095,9,32,1,33,1,33,1,33,1,33,1,33,1,33,3,33,1103,8,33,1,33,1,33,1,34,
+		1,34,1,35,3,35,1110,8,35,1,35,1,35,1,35,1,35,1,35,3,35,1117,8,35,1,35,
+		1,35,1,35,1,35,3,35,1123,8,35,1,35,1,35,1,35,3,35,1128,8,35,1,35,1,35,
+		1,35,1,35,5,35,1134,8,35,10,35,12,35,1137,9,35,1,35,1,35,3,35,1141,8,35,
+		1,35,1,35,1,35,1,35,1,35,5,35,1148,8,35,10,35,12,35,1151,9,35,1,35,1,35,
+		1,35,1,35,1,35,1,35,5,35,1159,8,35,10,35,12,35,1162,9,35,1,35,1,35,5,35,
+		1166,8,35,10,35,12,35,1169,9,35,1,35,3,35,1172,8,35,1,35,3,35,1175,8,35,
+		1,35,1,35,3,35,1179,8,35,1,35,3,35,1182,8,35,1,36,1,36,1,36,1,36,5,36,
+		1188,8,36,10,36,12,36,1191,9,36,1,37,1,37,1,37,1,37,1,37,1,37,5,37,1199,
+		8,37,10,37,12,37,1202,9,37,1,37,1,37,1,37,3,37,1207,8,37,3,37,1209,8,37,
+		1,37,1,37,1,37,1,37,1,37,1,37,3,37,1217,8,37,1,37,1,37,1,37,1,37,1,37,
+		3,37,1224,8,37,1,37,1,37,1,37,5,37,1229,8,37,10,37,12,37,1232,9,37,1,37,
+		1,37,3,37,1236,8,37,3,37,1238,8,37,1,38,1,38,1,38,1,38,3,38,1244,8,38,
+		1,38,1,38,1,38,1,38,1,38,1,38,1,38,3,38,1253,8,38,1,39,1,39,1,39,3,39,
+		1258,8,39,1,40,1,40,1,40,1,40,1,40,3,40,1265,8,40,1,40,1,40,3,40,1269,
+		8,40,3,40,1271,8,40,1,41,3,41,1274,8,41,1,41,1,41,1,41,1,41,5,41,1280,
+		8,41,10,41,12,41,1283,9,41,1,41,3,41,1286,8,41,1,41,3,41,1289,8,41,1,42,
+		1,42,1,42,3,42,1294,8,42,4,42,1296,8,42,11,42,12,42,1297,1,43,1,43,1,43,
+		1,44,1,44,1,44,1,44,1,44,5,44,1308,8,44,10,44,12,44,1311,9,44,1,44,3,44,
+		1314,8,44,1,45,1,45,1,45,1,46,1,46,1,46,1,46,1,46,5,46,1324,8,46,10,46,
+		12,46,1327,9,46,1,46,1,46,1,46,1,46,1,46,1,46,5,46,1335,8,46,10,46,12,
+		46,1338,9,46,1,46,1,46,5,46,1342,8,46,10,46,12,46,1345,9,46,1,47,1,47,
+		1,47,1,47,5,47,1351,8,47,10,47,12,47,1354,9,47,1,47,3,47,1357,8,47,1,48,
+		1,48,1,48,1,48,1,48,1,48,1,48,1,48,1,48,5,48,1368,8,48,10,48,12,48,1371,
+		9,48,1,48,1,48,1,48,5,48,1376,8,48,10,48,12,48,1379,9,48,3,48,1381,8,48,
+		1,49,1,49,3,49,1385,8,49,1,49,1,49,1,49,5,49,1390,8,49,10,49,12,49,1393,
+		9,49,1,49,3,49,1396,8,49,1,49,3,49,1399,8,49,1,49,3,49,1402,8,49,1,49,
+		3,49,1405,8,49,1,49,3,49,1408,8,49,1,50,1,50,1,51,3,51,1413,8,51,1,51,
+		1,51,3,51,1417,8,51,1,51,3,51,1420,8,51,1,52,3,52,1423,8,52,1,52,1,52,
+		1,52,3,52,1428,8,52,1,52,1,52,3,52,1432,8,52,1,52,4,52,1435,8,52,11,52,
+		12,52,1436,1,52,3,52,1440,8,52,1,52,3,52,1443,8,52,1,53,1,53,1,53,3,53,
+		1448,8,53,1,53,1,53,3,53,1452,8,53,1,53,3,53,1455,8,53,1,53,1,53,1,53,
+		1,53,1,53,3,53,1462,8,53,1,53,1,53,1,53,3,53,1467,8,53,1,53,1,53,1,53,
+		1,53,1,53,5,53,1474,8,53,10,53,12,53,1477,9,53,1,53,1,53,3,53,1481,8,53,
+		1,53,3,53,1484,8,53,1,53,1,53,1,53,1,53,5,53,1490,8,53,10,53,12,53,1493,
+		9,53,1,53,3,53,1496,8,53,1,53,1,53,1,53,1,53,1,53,1,53,3,53,1504,8,53,
+		1,53,3,53,1507,8,53,3,53,1509,8,53,1,54,1,54,1,54,1,54,1,54,1,54,1,54,
+		3,54,1518,8,54,1,54,3,54,1521,8,54,3,54,1523,8,54,1,55,1,55,3,55,1527,
+		8,55,1,55,1,55,3,55,1531,8,55,1,55,1,55,3,55,1535,8,55,1,55,3,55,1538,
+		8,55,1,56,1,56,1,56,1,56,1,56,1,56,1,56,5,56,1547,8,56,10,56,12,56,1550,
+		9,56,1,56,1,56,3,56,1554,8,56,1,57,1,57,3,57,1558,8,57,1,57,1,57,3,57,
+		1562,8,57,1,58,3,58,1565,8,58,1,58,1,58,1,58,3,58,1570,8,58,1,58,1,58,
+		1,58,1,58,3,58,1576,8,58,1,58,1,58,1,58,1,58,1,58,3,58,1583,8,58,1,58,
+		1,58,1,58,5,58,1588,8,58,10,58,12,58,1591,9,58,1,58,1,58,1,58,1,58,5,58,
+		1597,8,58,10,58,12,58,1600,9,58,1,58,3,58,1603,8,58,3,58,1605,8,58,1,58,
+		1,58,3,58,1609,8,58,1,58,3,58,1612,8,58,1,59,1,59,1,59,1,59,5,59,1618,
+		8,59,10,59,12,59,1621,9,59,1,59,1,59,1,60,3,60,1626,8,60,1,60,1,60,1,60,
+		3,60,1631,8,60,1,60,1,60,1,60,1,60,3,60,1637,8,60,1,60,1,60,1,60,1,60,
+		1,60,3,60,1644,8,60,1,60,1,60,1,60,5,60,1649,8,60,10,60,12,60,1652,9,60,
+		1,60,1,60,3,60,1656,8,60,1,60,3,60,1659,8,60,1,60,3,60,1662,8,60,1,60,
+		3,60,1665,8,60,1,61,1,61,1,61,3,61,1670,8,61,1,61,1,61,1,61,3,61,1675,
+		8,61,1,61,1,61,1,61,1,61,1,61,3,61,1682,8,61,1,62,1,62,3,62,1686,8,62,
+		1,62,1,62,3,62,1690,8,62,1,63,1,63,1,63,1,63,1,63,1,63,1,64,1,64,3,64,
+		1700,8,64,1,64,1,64,1,64,1,64,1,64,5,64,1707,8,64,10,64,12,64,1710,9,64,
+		3,64,1712,8,64,1,64,1,64,1,64,1,64,1,64,5,64,1719,8,64,10,64,12,64,1722,
+		9,64,1,64,3,64,1725,8,64,1,64,1,64,1,65,1,65,1,65,1,65,3,65,1733,8,65,
+		1,65,1,65,1,65,1,65,1,65,5,65,1740,8,65,10,65,12,65,1743,9,65,3,65,1745,
+		8,65,1,65,1,65,1,65,1,65,1,65,5,65,1752,8,65,10,65,12,65,1755,9,65,3,65,
+		1757,8,65,1,65,3,65,1760,8,65,1,65,3,65,1763,8,65,1,66,1,66,1,66,1,66,
+		1,66,1,66,1,66,1,66,3,66,1773,8,66,1,67,1,67,1,67,1,67,1,67,1,67,1,67,
+		3,67,1782,8,67,1,68,1,68,1,68,1,68,1,68,5,68,1789,8,68,10,68,12,68,1792,
+		9,68,1,68,3,68,1795,8,68,1,68,1,68,1,69,1,69,1,69,3,69,1802,8,69,1,69,
+		1,69,1,69,5,69,1807,8,69,10,69,12,69,1810,9,69,1,69,3,69,1813,8,69,1,69,
+		1,69,3,69,1817,8,69,1,70,1,70,1,70,1,70,1,70,5,70,1824,8,70,10,70,12,70,
+		1827,9,70,1,70,3,70,1830,8,70,1,70,1,70,3,70,1834,8,70,1,70,1,70,1,70,
+		3,70,1839,8,70,1,71,1,71,3,71,1843,8,71,1,71,1,71,1,71,5,71,1848,8,71,
+		10,71,12,71,1851,9,71,1,72,1,72,1,72,1,72,1,72,5,72,1858,8,72,10,72,12,
+		72,1861,9,72,1,73,1,73,1,73,1,73,3,73,1867,8,73,1,74,1,74,1,74,3,74,1872,
+		8,74,1,74,3,74,1875,8,74,1,74,1,74,3,74,1879,8,74,1,75,1,75,1,76,1,76,
+		1,76,1,76,1,76,1,76,1,76,1,76,1,76,1,76,3,76,1893,8,76,1,77,1,77,1,77,
+		1,77,1,77,1,77,1,77,1,77,1,77,1,77,3,77,1905,8,77,1,78,1,78,1,78,1,78,
+		1,78,1,78,1,78,3,78,1914,8,78,1,79,1,79,1,79,1,79,1,79,1,79,1,79,3,79,
+		1923,8,79,1,79,1,79,3,79,1927,8,79,1,79,1,79,1,79,1,79,1,79,1,79,1,79,
+		1,79,3,79,1937,8,79,1,79,3,79,1940,8,79,1,79,1,79,1,79,1,79,1,79,1,79,
+		1,79,3,79,1949,8,79,1,79,1,79,1,79,1,79,1,79,1,79,1,79,3,79,1958,8,79,
+		1,79,3,79,1961,8,79,1,79,1,79,1,79,1,79,3,79,1967,8,79,1,79,1,79,1,79,
+		1,79,1,79,1,79,1,79,1,79,1,79,1,79,1,79,1,79,3,79,1981,8,79,1,79,1,79,
+		3,79,1985,8,79,1,79,1,79,1,79,1,79,1,79,1,79,1,79,1,79,1,79,3,79,1996,
+		8,79,1,79,1,79,1,79,3,79,2001,8,79,1,80,1,80,1,80,1,81,1,81,1,81,1,82,
+		1,82,1,82,4,82,2012,8,82,11,82,12,82,2013,1,83,1,83,1,83,4,83,2019,8,83,
+		11,83,12,83,2020,1,84,1,84,1,84,1,84,1,85,1,85,3,85,2029,8,85,1,85,1,85,
+		1,85,3,85,2034,8,85,5,85,2036,8,85,10,85,12,85,2039,9,85,1,86,1,86,1,87,
+		1,87,1,88,1,88,1,89,1,89,1,90,1,90,3,90,2051,8,90,1,91,1,91,1,92,1,92,
+		1,93,1,93,1,94,1,94,1,95,1,95,1,96,1,96,1,97,1,97,1,98,1,98,1,99,1,99,
+		1,100,1,100,1,101,1,101,1,102,1,102,1,103,1,103,1,104,1,104,1,105,1,105,
+		1,106,1,106,1,107,1,107,1,108,1,108,1,109,1,109,1,110,1,110,1,111,1,111,
+		1,112,1,112,1,113,1,113,1,114,1,114,1,115,1,115,1,116,1,116,1,116,1,116,
+		1,116,1,116,1,116,3,116,2110,8,116,1,116,2,448,480,1,64,117,0,2,4,6,8,
+		10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,
+		58,60,62,64,66,68,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98,100,102,
+		104,106,108,110,112,114,116,118,120,122,124,126,128,130,132,134,136,138,
+		140,142,144,146,148,150,152,154,156,158,160,162,164,166,168,170,172,174,
+		176,178,180,182,184,186,188,190,192,194,196,198,200,202,204,206,208,210,
+		212,214,216,218,220,222,224,226,228,230,232,0,28,3,0,58,58,69,69,82,82,
+		2,0,47,47,66,66,1,0,133,134,2,0,146,146,171,171,1,0,8,9,2,0,59,59,141,
+		141,2,0,56,56,104,104,2,0,58,58,82,82,5,0,25,25,72,72,81,81,122,122,126,
+		126,4,0,84,84,132,132,138,138,145,145,2,0,7,7,12,13,1,0,14,17,1,0,18,21,
+		4,0,77,77,97,97,99,99,118,118,3,0,25,25,72,72,126,126,5,0,52,54,104,104,
+		172,173,186,186,188,189,2,0,29,29,62,62,3,0,128,128,154,154,179,179,2,
+		0,5,5,106,106,1,0,176,177,2,0,34,34,60,60,2,0,151,151,162,162,2,0,159,
+		159,166,166,2,0,160,160,167,168,2,0,161,161,163,163,2,0,8,10,102,102,2,
+		0,185,185,188,188,2,0,25,123,125,180,2396,0,237,1,0,0,0,2,245,1,0,0,0,
+		4,271,1,0,0,0,6,299,1,0,0,0,8,331,1,0,0,0,10,341,1,0,0,0,12,349,1,0,0,
+		0,14,359,1,0,0,0,16,363,1,0,0,0,18,374,1,0,0,0,20,377,1,0,0,0,22,383,1,
+		0,0,0,24,417,1,0,0,0,26,426,1,0,0,0,28,467,1,0,0,0,30,478,1,0,0,0,32,496,
+		1,0,0,0,34,550,1,0,0,0,36,556,1,0,0,0,38,597,1,0,0,0,40,639,1,0,0,0,42,
+		643,1,0,0,0,44,707,1,0,0,0,46,739,1,0,0,0,48,768,1,0,0,0,50,789,1,0,0,
+		0,52,803,1,0,0,0,54,814,1,0,0,0,56,834,1,0,0,0,58,847,1,0,0,0,60,865,1,
+		0,0,0,62,871,1,0,0,0,64,972,1,0,0,0,66,1096,1,0,0,0,68,1106,1,0,0,0,70,
+		1109,1,0,0,0,72,1183,1,0,0,0,74,1192,1,0,0,0,76,1239,1,0,0,0,78,1257,1,
+		0,0,0,80,1259,1,0,0,0,82,1273,1,0,0,0,84,1295,1,0,0,0,86,1299,1,0,0,0,
+		88,1302,1,0,0,0,90,1315,1,0,0,0,92,1318,1,0,0,0,94,1346,1,0,0,0,96,1380,
+		1,0,0,0,98,1407,1,0,0,0,100,1409,1,0,0,0,102,1412,1,0,0,0,104,1422,1,0,
+		0,0,106,1508,1,0,0,0,108,1522,1,0,0,0,110,1537,1,0,0,0,112,1553,1,0,0,
+		0,114,1561,1,0,0,0,116,1564,1,0,0,0,118,1613,1,0,0,0,120,1625,1,0,0,0,
+		122,1669,1,0,0,0,124,1683,1,0,0,0,126,1691,1,0,0,0,128,1697,1,0,0,0,130,
+		1728,1,0,0,0,132,1764,1,0,0,0,134,1774,1,0,0,0,136,1783,1,0,0,0,138,1798,
+		1,0,0,0,140,1818,1,0,0,0,142,1840,1,0,0,0,144,1852,1,0,0,0,146,1862,1,
+		0,0,0,148,1868,1,0,0,0,150,1880,1,0,0,0,152,1892,1,0,0,0,154,1904,1,0,
+		0,0,156,1913,1,0,0,0,158,2000,1,0,0,0,160,2002,1,0,0,0,162,2005,1,0,0,
+		0,164,2008,1,0,0,0,166,2015,1,0,0,0,168,2022,1,0,0,0,170,2026,1,0,0,0,
+		172,2040,1,0,0,0,174,2042,1,0,0,0,176,2044,1,0,0,0,178,2046,1,0,0,0,180,
+		2050,1,0,0,0,182,2052,1,0,0,0,184,2054,1,0,0,0,186,2056,1,0,0,0,188,2058,
+		1,0,0,0,190,2060,1,0,0,0,192,2062,1,0,0,0,194,2064,1,0,0,0,196,2066,1,
+		0,0,0,198,2068,1,0,0,0,200,2070,1,0,0,0,202,2072,1,0,0,0,204,2074,1,0,
+		0,0,206,2076,1,0,0,0,208,2078,1,0,0,0,210,2080,1,0,0,0,212,2082,1,0,0,
+		0,214,2084,1,0,0,0,216,2086,1,0,0,0,218,2088,1,0,0,0,220,2090,1,0,0,0,
+		222,2092,1,0,0,0,224,2094,1,0,0,0,226,2096,1,0,0,0,228,2098,1,0,0,0,230,
+		2100,1,0,0,0,232,2109,1,0,0,0,234,236,3,2,1,0,235,234,1,0,0,0,236,239,
+		1,0,0,0,237,235,1,0,0,0,237,238,1,0,0,0,238,240,1,0,0,0,239,237,1,0,0,
+		0,240,241,5,0,0,1,241,1,1,0,0,0,242,244,5,1,0,0,243,242,1,0,0,0,244,247,
+		1,0,0,0,245,243,1,0,0,0,245,246,1,0,0,0,246,248,1,0,0,0,247,245,1,0,0,
+		0,248,257,3,4,2,0,249,251,5,1,0,0,250,249,1,0,0,0,251,252,1,0,0,0,252,
+		250,1,0,0,0,252,253,1,0,0,0,253,254,1,0,0,0,254,256,3,4,2,0,255,250,1,
+		0,0,0,256,259,1,0,0,0,257,255,1,0,0,0,257,258,1,0,0,0,258,263,1,0,0,0,
+		259,257,1,0,0,0,260,262,5,1,0,0,261,260,1,0,0,0,262,265,1,0,0,0,263,261,
+		1,0,0,0,263,264,1,0,0,0,264,3,1,0,0,0,265,263,1,0,0,0,266,269,5,71,0,0,
+		267,268,5,114,0,0,268,270,5,111,0,0,269,267,1,0,0,0,269,270,1,0,0,0,270,
+		272,1,0,0,0,271,266,1,0,0,0,271,272,1,0,0,0,272,297,1,0,0,0,273,298,3,
+		6,3,0,274,298,3,8,4,0,275,298,3,10,5,0,276,298,3,12,6,0,277,298,3,14,7,
+		0,278,298,3,22,11,0,279,298,3,26,13,0,280,298,3,42,21,0,281,298,3,44,22,
+		0,282,298,3,46,23,0,283,298,3,56,28,0,284,298,3,58,29,0,285,298,3,60,30,
+		0,286,298,3,62,31,0,287,298,3,70,35,0,288,298,3,76,38,0,289,298,3,80,40,
+		0,290,298,3,20,10,0,291,298,3,16,8,0,292,298,3,18,9,0,293,298,3,82,41,
+		0,294,298,3,116,58,0,295,298,3,120,60,0,296,298,3,124,62,0,297,273,1,0,
+		0,0,297,274,1,0,0,0,297,275,1,0,0,0,297,276,1,0,0,0,297,277,1,0,0,0,297,
+		278,1,0,0,0,297,279,1,0,0,0,297,280,1,0,0,0,297,281,1,0,0,0,297,282,1,
+		0,0,0,297,283,1,0,0,0,297,284,1,0,0,0,297,285,1,0,0,0,297,286,1,0,0,0,
+		297,287,1,0,0,0,297,288,1,0,0,0,297,289,1,0,0,0,297,290,1,0,0,0,297,291,
+		1,0,0,0,297,292,1,0,0,0,297,293,1,0,0,0,297,294,1,0,0,0,297,295,1,0,0,
+		0,297,296,1,0,0,0,298,5,1,0,0,0,299,300,5,30,0,0,300,304,5,132,0,0,301,
+		302,3,190,95,0,302,303,5,2,0,0,303,305,1,0,0,0,304,301,1,0,0,0,304,305,
+		1,0,0,0,305,306,1,0,0,0,306,329,3,192,96,0,307,317,5,121,0,0,308,309,5,
+		136,0,0,309,318,3,192,96,0,310,312,5,46,0,0,311,310,1,0,0,0,311,312,1,
+		0,0,0,312,313,1,0,0,0,313,314,3,196,98,0,314,315,5,136,0,0,315,316,3,196,
+		98,0,316,318,1,0,0,0,317,308,1,0,0,0,317,311,1,0,0,0,318,330,1,0,0,0,319,
+		321,5,27,0,0,320,322,5,46,0,0,321,320,1,0,0,0,321,322,1,0,0,0,322,323,
+		1,0,0,0,323,330,3,28,14,0,324,326,5,63,0,0,325,327,5,46,0,0,326,325,1,
+		0,0,0,326,327,1,0,0,0,327,328,1,0,0,0,328,330,3,196,98,0,329,307,1,0,0,
+		0,329,319,1,0,0,0,329,324,1,0,0,0,330,7,1,0,0,0,331,339,5,31,0,0,332,340,
+		3,190,95,0,333,334,3,190,95,0,334,335,5,2,0,0,335,337,1,0,0,0,336,333,
+		1,0,0,0,336,337,1,0,0,0,337,338,1,0,0,0,338,340,3,194,97,0,339,332,1,0,
+		0,0,339,336,1,0,0,0,339,340,1,0,0,0,340,9,1,0,0,0,341,343,5,35,0,0,342,
+		344,5,55,0,0,343,342,1,0,0,0,343,344,1,0,0,0,344,345,1,0,0,0,345,346,3,
+		64,32,0,346,347,5,33,0,0,347,348,3,190,95,0,348,11,1,0,0,0,349,351,5,38,
+		0,0,350,352,7,0,0,0,351,350,1,0,0,0,351,352,1,0,0,0,352,357,1,0,0,0,353,
+		355,5,137,0,0,354,356,3,216,108,0,355,354,1,0,0,0,355,356,1,0,0,0,356,
+		358,1,0,0,0,357,353,1,0,0,0,357,358,1,0,0,0,358,13,1,0,0,0,359,361,7,1,
+		0,0,360,362,5,137,0,0,361,360,1,0,0,0,361,362,1,0,0,0,362,15,1,0,0,0,363,
+		365,5,126,0,0,364,366,5,137,0,0,365,364,1,0,0,0,365,366,1,0,0,0,366,372,
+		1,0,0,0,367,369,5,136,0,0,368,370,5,129,0,0,369,368,1,0,0,0,369,370,1,
+		0,0,0,370,371,1,0,0,0,371,373,3,212,106,0,372,367,1,0,0,0,372,373,1,0,
+		0,0,373,17,1,0,0,0,374,375,5,129,0,0,375,376,3,212,106,0,376,19,1,0,0,
+		0,377,379,5,120,0,0,378,380,5,129,0,0,379,378,1,0,0,0,379,380,1,0,0,0,
+		380,381,1,0,0,0,381,382,3,212,106,0,382,21,1,0,0,0,383,385,5,50,0,0,384,
+		386,5,140,0,0,385,384,1,0,0,0,385,386,1,0,0,0,386,387,1,0,0,0,387,391,
+		5,84,0,0,388,389,5,80,0,0,389,390,5,102,0,0,390,392,5,70,0,0,391,388,1,
+		0,0,0,391,392,1,0,0,0,392,396,1,0,0,0,393,394,3,190,95,0,394,395,5,2,0,
+		0,395,397,1,0,0,0,396,393,1,0,0,0,396,397,1,0,0,0,397,398,1,0,0,0,398,
+		399,3,202,101,0,399,400,5,107,0,0,400,401,3,192,96,0,401,402,5,3,0,0,402,
+		407,3,24,12,0,403,404,5,5,0,0,404,406,3,24,12,0,405,403,1,0,0,0,406,409,
+		1,0,0,0,407,405,1,0,0,0,407,408,1,0,0,0,408,410,1,0,0,0,409,407,1,0,0,
+		0,410,413,5,4,0,0,411,412,5,148,0,0,412,414,3,64,32,0,413,411,1,0,0,0,
+		413,414,1,0,0,0,414,23,1,0,0,0,415,418,3,196,98,0,416,418,3,64,32,0,417,
+		415,1,0,0,0,417,416,1,0,0,0,418,421,1,0,0,0,419,420,5,45,0,0,420,422,3,
+		198,99,0,421,419,1,0,0,0,421,422,1,0,0,0,422,424,1,0,0,0,423,425,3,150,
+		75,0,424,423,1,0,0,0,424,425,1,0,0,0,425,25,1,0,0,0,426,428,5,50,0,0,427,
+		429,7,2,0,0,428,427,1,0,0,0,428,429,1,0,0,0,429,430,1,0,0,0,430,434,5,
+		132,0,0,431,432,5,80,0,0,432,433,5,102,0,0,433,435,5,70,0,0,434,431,1,
+		0,0,0,434,435,1,0,0,0,435,439,1,0,0,0,436,437,3,190,95,0,437,438,5,2,0,
+		0,438,440,1,0,0,0,439,436,1,0,0,0,439,440,1,0,0,0,440,441,1,0,0,0,441,
+		465,3,192,96,0,442,443,5,3,0,0,443,448,3,28,14,0,444,445,5,5,0,0,445,447,
+		3,28,14,0,446,444,1,0,0,0,447,450,1,0,0,0,448,449,1,0,0,0,448,446,1,0,
+		0,0,449,455,1,0,0,0,450,448,1,0,0,0,451,452,5,5,0,0,452,454,3,36,18,0,
+		453,451,1,0,0,0,454,457,1,0,0,0,455,453,1,0,0,0,455,456,1,0,0,0,456,458,
+		1,0,0,0,457,455,1,0,0,0,458,461,5,4,0,0,459,460,5,150,0,0,460,462,5,185,
+		0,0,461,459,1,0,0,0,461,462,1,0,0,0,462,466,1,0,0,0,463,464,5,33,0,0,464,
+		466,3,82,41,0,465,442,1,0,0,0,465,463,1,0,0,0,466,27,1,0,0,0,467,469,3,
+		196,98,0,468,470,3,30,15,0,469,468,1,0,0,0,469,470,1,0,0,0,470,474,1,0,
+		0,0,471,473,3,32,16,0,472,471,1,0,0,0,473,476,1,0,0,0,474,472,1,0,0,0,
+		474,475,1,0,0,0,475,29,1,0,0,0,476,474,1,0,0,0,477,479,3,186,93,0,478,
+		477,1,0,0,0,479,480,1,0,0,0,480,481,1,0,0,0,480,478,1,0,0,0,481,492,1,
+		0,0,0,482,483,5,3,0,0,483,484,3,34,17,0,484,485,5,4,0,0,485,493,1,0,0,
+		0,486,487,5,3,0,0,487,488,3,34,17,0,488,489,5,5,0,0,489,490,3,34,17,0,
+		490,491,5,4,0,0,491,493,1,0,0,0,492,482,1,0,0,0,492,486,1,0,0,0,492,493,
+		1,0,0,0,493,31,1,0,0,0,494,495,5,49,0,0,495,497,3,186,93,0,496,494,1,0,
+		0,0,496,497,1,0,0,0,497,547,1,0,0,0,498,499,5,113,0,0,499,501,5,95,0,0,
+		500,502,3,150,75,0,501,500,1,0,0,0,501,502,1,0,0,0,502,504,1,0,0,0,503,
+		505,3,40,20,0,504,503,1,0,0,0,504,505,1,0,0,0,505,507,1,0,0,0,506,508,
+		5,36,0,0,507,506,1,0,0,0,507,508,1,0,0,0,508,548,1,0,0,0,509,511,5,102,
+		0,0,510,509,1,0,0,0,510,511,1,0,0,0,511,512,1,0,0,0,512,515,5,104,0,0,
+		513,515,5,140,0,0,514,510,1,0,0,0,514,513,1,0,0,0,515,517,1,0,0,0,516,
+		518,3,40,20,0,517,516,1,0,0,0,517,518,1,0,0,0,518,548,1,0,0,0,519,520,
+		5,44,0,0,520,521,5,3,0,0,521,522,3,64,32,0,522,523,5,4,0,0,523,548,1,0,
+		0,0,524,531,5,56,0,0,525,532,3,34,17,0,526,532,3,68,34,0,527,528,5,3,0,
+		0,528,529,3,64,32,0,529,530,5,4,0,0,530,532,1,0,0,0,531,525,1,0,0,0,531,
+		526,1,0,0,0,531,527,1,0,0,0,532,548,1,0,0,0,533,534,5,45,0,0,534,548,3,
+		198,99,0,535,548,3,38,19,0,536,537,5,169,0,0,537,539,5,170,0,0,538,536,
+		1,0,0,0,538,539,1,0,0,0,539,540,1,0,0,0,540,541,5,33,0,0,541,542,5,3,0,
+		0,542,543,3,64,32,0,543,545,5,4,0,0,544,546,7,3,0,0,545,544,1,0,0,0,545,
+		546,1,0,0,0,546,548,1,0,0,0,547,498,1,0,0,0,547,514,1,0,0,0,547,519,1,
+		0,0,0,547,524,1,0,0,0,547,533,1,0,0,0,547,535,1,0,0,0,547,538,1,0,0,0,
+		548,33,1,0,0,0,549,551,7,4,0,0,550,549,1,0,0,0,550,551,1,0,0,0,551,552,
+		1,0,0,0,552,553,5,186,0,0,553,35,1,0,0,0,554,555,5,49,0,0,555,557,3,186,
+		93,0,556,554,1,0,0,0,556,557,1,0,0,0,557,595,1,0,0,0,558,559,5,113,0,0,
+		559,562,5,95,0,0,560,562,5,140,0,0,561,558,1,0,0,0,561,560,1,0,0,0,562,
+		563,1,0,0,0,563,564,5,3,0,0,564,569,3,24,12,0,565,566,5,5,0,0,566,568,
+		3,24,12,0,567,565,1,0,0,0,568,571,1,0,0,0,569,567,1,0,0,0,569,570,1,0,
+		0,0,570,572,1,0,0,0,571,569,1,0,0,0,572,574,5,4,0,0,573,575,3,40,20,0,
+		574,573,1,0,0,0,574,575,1,0,0,0,575,596,1,0,0,0,576,577,5,44,0,0,577,578,
+		5,3,0,0,578,579,3,64,32,0,579,580,5,4,0,0,580,596,1,0,0,0,581,582,5,74,
+		0,0,582,583,5,95,0,0,583,584,5,3,0,0,584,589,3,196,98,0,585,586,5,5,0,
+		0,586,588,3,196,98,0,587,585,1,0,0,0,588,591,1,0,0,0,589,587,1,0,0,0,589,
+		590,1,0,0,0,590,592,1,0,0,0,591,589,1,0,0,0,592,593,5,4,0,0,593,594,3,
+		38,19,0,594,596,1,0,0,0,595,561,1,0,0,0,595,576,1,0,0,0,595,581,1,0,0,
+		0,596,37,1,0,0,0,597,598,5,117,0,0,598,610,3,200,100,0,599,600,5,3,0,0,
+		600,605,3,196,98,0,601,602,5,5,0,0,602,604,3,196,98,0,603,601,1,0,0,0,
+		604,607,1,0,0,0,605,603,1,0,0,0,605,606,1,0,0,0,606,608,1,0,0,0,607,605,
+		1,0,0,0,608,609,5,4,0,0,609,611,1,0,0,0,610,599,1,0,0,0,610,611,1,0,0,
+		0,611,626,1,0,0,0,612,613,5,107,0,0,613,620,7,5,0,0,614,615,5,131,0,0,
+		615,621,7,6,0,0,616,621,5,41,0,0,617,621,5,123,0,0,618,619,5,101,0,0,619,
+		621,5,26,0,0,620,614,1,0,0,0,620,616,1,0,0,0,620,617,1,0,0,0,620,618,1,
+		0,0,0,621,625,1,0,0,0,622,623,5,99,0,0,623,625,3,186,93,0,624,612,1,0,
+		0,0,624,622,1,0,0,0,625,628,1,0,0,0,626,624,1,0,0,0,626,627,1,0,0,0,627,
+		637,1,0,0,0,628,626,1,0,0,0,629,631,5,102,0,0,630,629,1,0,0,0,630,631,
+		1,0,0,0,631,632,1,0,0,0,632,635,5,57,0,0,633,634,5,86,0,0,634,636,7,7,
+		0,0,635,633,1,0,0,0,635,636,1,0,0,0,636,638,1,0,0,0,637,630,1,0,0,0,637,
+		638,1,0,0,0,638,39,1,0,0,0,639,640,5,107,0,0,640,641,5,48,0,0,641,642,
+		7,8,0,0,642,41,1,0,0,0,643,645,5,50,0,0,644,646,7,2,0,0,645,644,1,0,0,
+		0,645,646,1,0,0,0,646,647,1,0,0,0,647,651,5,138,0,0,648,649,5,80,0,0,649,
+		650,5,102,0,0,650,652,5,70,0,0,651,648,1,0,0,0,651,652,1,0,0,0,652,656,
+		1,0,0,0,653,654,3,190,95,0,654,655,5,2,0,0,655,657,1,0,0,0,656,653,1,0,
+		0,0,656,657,1,0,0,0,657,658,1,0,0,0,658,663,3,204,102,0,659,664,5,37,0,
+		0,660,664,5,28,0,0,661,662,5,89,0,0,662,664,5,105,0,0,663,659,1,0,0,0,
+		663,660,1,0,0,0,663,661,1,0,0,0,663,664,1,0,0,0,664,679,1,0,0,0,665,680,
+		5,59,0,0,666,680,5,88,0,0,667,677,5,141,0,0,668,669,5,105,0,0,669,674,
+		3,196,98,0,670,671,5,5,0,0,671,673,3,196,98,0,672,670,1,0,0,0,673,676,
+		1,0,0,0,674,672,1,0,0,0,674,675,1,0,0,0,675,678,1,0,0,0,676,674,1,0,0,
+		0,677,668,1,0,0,0,677,678,1,0,0,0,678,680,1,0,0,0,679,665,1,0,0,0,679,
+		666,1,0,0,0,679,667,1,0,0,0,680,681,1,0,0,0,681,682,5,107,0,0,682,686,
+		3,192,96,0,683,684,5,73,0,0,684,685,5,64,0,0,685,687,5,127,0,0,686,683,
+		1,0,0,0,686,687,1,0,0,0,687,690,1,0,0,0,688,689,5,147,0,0,689,691,3,64,
+		32,0,690,688,1,0,0,0,690,691,1,0,0,0,691,692,1,0,0,0,692,701,5,38,0,0,
+		693,698,3,116,58,0,694,698,3,70,35,0,695,698,3,56,28,0,696,698,3,82,41,
+		0,697,693,1,0,0,0,697,694,1,0,0,0,697,695,1,0,0,0,697,696,1,0,0,0,698,
+		699,1,0,0,0,699,700,5,1,0,0,700,702,1,0,0,0,701,697,1,0,0,0,702,703,1,
+		0,0,0,703,701,1,0,0,0,703,704,1,0,0,0,704,705,1,0,0,0,705,706,5,66,0,0,
+		706,43,1,0,0,0,707,709,5,50,0,0,708,710,7,2,0,0,709,708,1,0,0,0,709,710,
+		1,0,0,0,710,711,1,0,0,0,711,715,5,145,0,0,712,713,5,80,0,0,713,714,5,102,
+		0,0,714,716,5,70,0,0,715,712,1,0,0,0,715,716,1,0,0,0,716,720,1,0,0,0,717,
+		718,3,190,95,0,718,719,5,2,0,0,719,721,1,0,0,0,720,717,1,0,0,0,720,721,
+		1,0,0,0,721,722,1,0,0,0,722,734,3,206,103,0,723,724,5,3,0,0,724,729,3,
+		196,98,0,725,726,5,5,0,0,726,728,3,196,98,0,727,725,1,0,0,0,728,731,1,
+		0,0,0,729,727,1,0,0,0,729,730,1,0,0,0,730,732,1,0,0,0,731,729,1,0,0,0,
+		732,733,5,4,0,0,733,735,1,0,0,0,734,723,1,0,0,0,734,735,1,0,0,0,735,736,
+		1,0,0,0,736,737,5,33,0,0,737,738,3,82,41,0,738,45,1,0,0,0,739,740,5,50,
+		0,0,740,741,5,146,0,0,741,745,5,132,0,0,742,743,5,80,0,0,743,744,5,102,
+		0,0,744,746,5,70,0,0,745,742,1,0,0,0,745,746,1,0,0,0,746,750,1,0,0,0,747,
+		748,3,190,95,0,748,749,5,2,0,0,749,751,1,0,0,0,750,747,1,0,0,0,750,751,
+		1,0,0,0,751,752,1,0,0,0,752,753,3,192,96,0,753,754,5,142,0,0,754,766,3,
+		208,104,0,755,756,5,3,0,0,756,761,3,180,90,0,757,758,5,5,0,0,758,760,3,
+		180,90,0,759,757,1,0,0,0,760,763,1,0,0,0,761,759,1,0,0,0,761,762,1,0,0,
+		0,762,764,1,0,0,0,763,761,1,0,0,0,764,765,5,4,0,0,765,767,1,0,0,0,766,
+		755,1,0,0,0,766,767,1,0,0,0,767,47,1,0,0,0,768,770,5,149,0,0,769,771,5,
+		116,0,0,770,769,1,0,0,0,770,771,1,0,0,0,771,772,1,0,0,0,772,773,3,50,25,
+		0,773,774,5,33,0,0,774,775,5,3,0,0,775,776,3,82,41,0,776,786,5,4,0,0,777,
+		778,5,5,0,0,778,779,3,50,25,0,779,780,5,33,0,0,780,781,5,3,0,0,781,782,
+		3,82,41,0,782,783,5,4,0,0,783,785,1,0,0,0,784,777,1,0,0,0,785,788,1,0,
+		0,0,786,784,1,0,0,0,786,787,1,0,0,0,787,49,1,0,0,0,788,786,1,0,0,0,789,
+		801,3,192,96,0,790,791,5,3,0,0,791,796,3,196,98,0,792,793,5,5,0,0,793,
+		795,3,196,98,0,794,792,1,0,0,0,795,798,1,0,0,0,796,794,1,0,0,0,796,797,
+		1,0,0,0,797,799,1,0,0,0,798,796,1,0,0,0,799,800,5,4,0,0,800,802,1,0,0,
+		0,801,790,1,0,0,0,801,802,1,0,0,0,802,51,1,0,0,0,803,804,3,50,25,0,804,
+		805,5,33,0,0,805,806,5,3,0,0,806,807,3,172,86,0,807,809,5,139,0,0,808,
+		810,5,29,0,0,809,808,1,0,0,0,809,810,1,0,0,0,810,811,1,0,0,0,811,812,3,
+		174,87,0,812,813,5,4,0,0,813,53,1,0,0,0,814,826,3,192,96,0,815,816,5,3,
+		0,0,816,821,3,196,98,0,817,818,5,5,0,0,818,820,3,196,98,0,819,817,1,0,
+		0,0,820,823,1,0,0,0,821,819,1,0,0,0,821,822,1,0,0,0,822,824,1,0,0,0,823,
+		821,1,0,0,0,824,825,5,4,0,0,825,827,1,0,0,0,826,815,1,0,0,0,826,827,1,
+		0,0,0,827,828,1,0,0,0,828,829,5,33,0,0,829,830,5,3,0,0,830,831,3,82,41,
+		0,831,832,5,4,0,0,832,55,1,0,0,0,833,835,3,48,24,0,834,833,1,0,0,0,834,
+		835,1,0,0,0,835,836,1,0,0,0,836,837,5,59,0,0,837,838,5,75,0,0,838,841,
+		3,122,61,0,839,840,5,148,0,0,840,842,3,64,32,0,841,839,1,0,0,0,841,842,
+		1,0,0,0,842,844,1,0,0,0,843,845,3,72,36,0,844,843,1,0,0,0,844,845,1,0,
+		0,0,845,57,1,0,0,0,846,848,3,48,24,0,847,846,1,0,0,0,847,848,1,0,0,0,848,
+		849,1,0,0,0,849,850,5,59,0,0,850,851,5,75,0,0,851,854,3,122,61,0,852,853,
+		5,148,0,0,853,855,3,64,32,0,854,852,1,0,0,0,854,855,1,0,0,0,855,857,1,
+		0,0,0,856,858,3,72,36,0,857,856,1,0,0,0,857,858,1,0,0,0,858,863,1,0,0,
+		0,859,861,3,144,72,0,860,859,1,0,0,0,860,861,1,0,0,0,861,862,1,0,0,0,862,
+		864,3,146,73,0,863,860,1,0,0,0,863,864,1,0,0,0,864,59,1,0,0,0,865,867,
+		5,61,0,0,866,868,5,55,0,0,867,866,1,0,0,0,867,868,1,0,0,0,868,869,1,0,
+		0,0,869,870,3,190,95,0,870,61,1,0,0,0,871,872,5,63,0,0,872,875,7,9,0,0,
+		873,874,5,80,0,0,874,876,5,70,0,0,875,873,1,0,0,0,875,876,1,0,0,0,876,
+		880,1,0,0,0,877,878,3,190,95,0,878,879,5,2,0,0,879,881,1,0,0,0,880,877,
+		1,0,0,0,880,881,1,0,0,0,881,882,1,0,0,0,882,883,3,232,116,0,883,63,1,0,
+		0,0,884,885,6,32,-1,0,885,973,3,68,34,0,886,973,5,187,0,0,887,888,3,190,
+		95,0,888,889,5,2,0,0,889,891,1,0,0,0,890,887,1,0,0,0,890,891,1,0,0,0,891,
+		892,1,0,0,0,892,893,3,192,96,0,893,894,5,2,0,0,894,896,1,0,0,0,895,890,
+		1,0,0,0,895,896,1,0,0,0,896,897,1,0,0,0,897,973,3,196,98,0,898,899,3,176,
+		88,0,899,900,3,64,32,21,900,973,1,0,0,0,901,902,3,188,94,0,902,915,5,3,
+		0,0,903,905,5,62,0,0,904,903,1,0,0,0,904,905,1,0,0,0,905,906,1,0,0,0,906,
+		911,3,64,32,0,907,908,5,5,0,0,908,910,3,64,32,0,909,907,1,0,0,0,910,913,
+		1,0,0,0,911,909,1,0,0,0,911,912,1,0,0,0,912,916,1,0,0,0,913,911,1,0,0,
+		0,914,916,5,7,0,0,915,904,1,0,0,0,915,914,1,0,0,0,915,916,1,0,0,0,916,
+		917,1,0,0,0,917,919,5,4,0,0,918,920,3,126,63,0,919,918,1,0,0,0,919,920,
+		1,0,0,0,920,922,1,0,0,0,921,923,3,130,65,0,922,921,1,0,0,0,922,923,1,0,
+		0,0,923,973,1,0,0,0,924,925,5,3,0,0,925,930,3,64,32,0,926,927,5,5,0,0,
+		927,929,3,64,32,0,928,926,1,0,0,0,929,932,1,0,0,0,930,928,1,0,0,0,930,
+		931,1,0,0,0,931,933,1,0,0,0,932,930,1,0,0,0,933,934,5,4,0,0,934,973,1,
+		0,0,0,935,936,5,43,0,0,936,937,5,3,0,0,937,938,3,64,32,0,938,939,5,33,
+		0,0,939,940,3,30,15,0,940,941,5,4,0,0,941,973,1,0,0,0,942,944,5,102,0,
+		0,943,942,1,0,0,0,943,944,1,0,0,0,944,945,1,0,0,0,945,947,5,70,0,0,946,
+		943,1,0,0,0,946,947,1,0,0,0,947,948,1,0,0,0,948,949,5,3,0,0,949,950,3,
+		82,41,0,950,951,5,4,0,0,951,973,1,0,0,0,952,954,5,42,0,0,953,955,3,64,
+		32,0,954,953,1,0,0,0,954,955,1,0,0,0,955,961,1,0,0,0,956,957,5,147,0,0,
+		957,958,3,64,32,0,958,959,5,135,0,0,959,960,3,64,32,0,960,962,1,0,0,0,
+		961,956,1,0,0,0,962,963,1,0,0,0,963,961,1,0,0,0,963,964,1,0,0,0,964,967,
+		1,0,0,0,965,966,5,65,0,0,966,968,3,64,32,0,967,965,1,0,0,0,967,968,1,0,
+		0,0,968,969,1,0,0,0,969,970,5,66,0,0,970,973,1,0,0,0,971,973,3,66,33,0,
+		972,884,1,0,0,0,972,886,1,0,0,0,972,895,1,0,0,0,972,898,1,0,0,0,972,901,
+		1,0,0,0,972,924,1,0,0,0,972,935,1,0,0,0,972,946,1,0,0,0,972,952,1,0,0,
+		0,972,971,1,0,0,0,973,1093,1,0,0,0,974,975,10,20,0,0,975,976,5,11,0,0,
+		976,1092,3,64,32,21,977,978,10,19,0,0,978,979,7,10,0,0,979,1092,3,64,32,
+		20,980,981,10,18,0,0,981,982,7,4,0,0,982,1092,3,64,32,19,983,984,10,17,
+		0,0,984,985,7,11,0,0,985,1092,3,64,32,18,986,987,10,16,0,0,987,988,7,12,
+		0,0,988,1092,3,64,32,17,989,1002,10,15,0,0,990,1003,5,6,0,0,991,1003,5,
+		22,0,0,992,1003,5,23,0,0,993,1003,5,24,0,0,994,1003,5,92,0,0,995,996,5,
+		92,0,0,996,1003,5,102,0,0,997,1003,5,83,0,0,998,1003,5,97,0,0,999,1003,
+		5,77,0,0,1000,1003,5,99,0,0,1001,1003,5,118,0,0,1002,990,1,0,0,0,1002,
+		991,1,0,0,0,1002,992,1,0,0,0,1002,993,1,0,0,0,1002,994,1,0,0,0,1002,995,
+		1,0,0,0,1002,997,1,0,0,0,1002,998,1,0,0,0,1002,999,1,0,0,0,1002,1000,1,
+		0,0,0,1002,1001,1,0,0,0,1003,1004,1,0,0,0,1004,1092,3,64,32,16,1005,1006,
+		10,14,0,0,1006,1007,5,32,0,0,1007,1092,3,64,32,15,1008,1009,10,13,0,0,
+		1009,1010,5,108,0,0,1010,1092,3,64,32,14,1011,1012,10,6,0,0,1012,1014,
+		5,92,0,0,1013,1015,5,102,0,0,1014,1013,1,0,0,0,1014,1015,1,0,0,0,1015,
+		1016,1,0,0,0,1016,1092,3,64,32,7,1017,1019,10,5,0,0,1018,1020,5,102,0,
+		0,1019,1018,1,0,0,0,1019,1020,1,0,0,0,1020,1021,1,0,0,0,1021,1022,5,39,
+		0,0,1022,1023,3,64,32,0,1023,1024,5,32,0,0,1024,1025,3,64,32,6,1025,1092,
+		1,0,0,0,1026,1027,10,9,0,0,1027,1028,5,45,0,0,1028,1092,3,198,99,0,1029,
+		1031,10,8,0,0,1030,1032,5,102,0,0,1031,1030,1,0,0,0,1031,1032,1,0,0,0,
+		1032,1033,1,0,0,0,1033,1034,7,13,0,0,1034,1037,3,64,32,0,1035,1036,5,67,
+		0,0,1036,1038,3,64,32,0,1037,1035,1,0,0,0,1037,1038,1,0,0,0,1038,1092,
+		1,0,0,0,1039,1044,10,7,0,0,1040,1045,5,93,0,0,1041,1045,5,103,0,0,1042,
+		1043,5,102,0,0,1043,1045,5,104,0,0,1044,1040,1,0,0,0,1044,1041,1,0,0,0,
+		1044,1042,1,0,0,0,1045,1092,1,0,0,0,1046,1048,10,4,0,0,1047,1049,5,102,
+		0,0,1048,1047,1,0,0,0,1048,1049,1,0,0,0,1049,1050,1,0,0,0,1050,1089,5,
+		83,0,0,1051,1061,5,3,0,0,1052,1062,3,82,41,0,1053,1058,3,64,32,0,1054,
+		1055,5,5,0,0,1055,1057,3,64,32,0,1056,1054,1,0,0,0,1057,1060,1,0,0,0,1058,
+		1056,1,0,0,0,1058,1059,1,0,0,0,1059,1062,1,0,0,0,1060,1058,1,0,0,0,1061,
+		1052,1,0,0,0,1061,1053,1,0,0,0,1061,1062,1,0,0,0,1062,1063,1,0,0,0,1063,
+		1090,5,4,0,0,1064,1065,3,190,95,0,1065,1066,5,2,0,0,1066,1068,1,0,0,0,
+		1067,1064,1,0,0,0,1067,1068,1,0,0,0,1068,1069,1,0,0,0,1069,1090,3,192,
+		96,0,1070,1071,3,190,95,0,1071,1072,5,2,0,0,1072,1074,1,0,0,0,1073,1070,
+		1,0,0,0,1073,1074,1,0,0,0,1074,1075,1,0,0,0,1075,1076,3,230,115,0,1076,
+		1085,5,3,0,0,1077,1082,3,64,32,0,1078,1079,5,5,0,0,1079,1081,3,64,32,0,
+		1080,1078,1,0,0,0,1081,1084,1,0,0,0,1082,1080,1,0,0,0,1082,1083,1,0,0,
+		0,1083,1086,1,0,0,0,1084,1082,1,0,0,0,1085,1077,1,0,0,0,1085,1086,1,0,
+		0,0,1086,1087,1,0,0,0,1087,1088,5,4,0,0,1088,1090,1,0,0,0,1089,1051,1,
+		0,0,0,1089,1067,1,0,0,0,1089,1073,1,0,0,0,1090,1092,1,0,0,0,1091,974,1,
+		0,0,0,1091,977,1,0,0,0,1091,980,1,0,0,0,1091,983,1,0,0,0,1091,986,1,0,
+		0,0,1091,989,1,0,0,0,1091,1005,1,0,0,0,1091,1008,1,0,0,0,1091,1011,1,0,
+		0,0,1091,1017,1,0,0,0,1091,1026,1,0,0,0,1091,1029,1,0,0,0,1091,1039,1,
+		0,0,0,1091,1046,1,0,0,0,1092,1095,1,0,0,0,1093,1091,1,0,0,0,1093,1094,
+		1,0,0,0,1094,65,1,0,0,0,1095,1093,1,0,0,0,1096,1097,5,115,0,0,1097,1102,
+		5,3,0,0,1098,1103,5,81,0,0,1099,1100,7,14,0,0,1100,1101,5,5,0,0,1101,1103,
+		3,178,89,0,1102,1098,1,0,0,0,1102,1099,1,0,0,0,1103,1104,1,0,0,0,1104,
+		1105,5,4,0,0,1105,67,1,0,0,0,1106,1107,7,15,0,0,1107,69,1,0,0,0,1108,1110,
+		3,48,24,0,1109,1108,1,0,0,0,1109,1110,1,0,0,0,1110,1116,1,0,0,0,1111,1117,
+		5,88,0,0,1112,1117,5,122,0,0,1113,1114,5,88,0,0,1114,1115,5,108,0,0,1115,
+		1117,7,8,0,0,1116,1111,1,0,0,0,1116,1112,1,0,0,0,1116,1113,1,0,0,0,1117,
+		1118,1,0,0,0,1118,1122,5,91,0,0,1119,1120,3,190,95,0,1120,1121,5,2,0,0,
+		1121,1123,1,0,0,0,1122,1119,1,0,0,0,1122,1123,1,0,0,0,1123,1124,1,0,0,
+		0,1124,1127,3,192,96,0,1125,1126,5,33,0,0,1126,1128,3,214,107,0,1127,1125,
+		1,0,0,0,1127,1128,1,0,0,0,1128,1140,1,0,0,0,1129,1130,5,3,0,0,1130,1135,
+		3,196,98,0,1131,1132,5,5,0,0,1132,1134,3,196,98,0,1133,1131,1,0,0,0,1134,
+		1137,1,0,0,0,1135,1133,1,0,0,0,1135,1136,1,0,0,0,1136,1138,1,0,0,0,1137,
+		1135,1,0,0,0,1138,1139,5,4,0,0,1139,1141,1,0,0,0,1140,1129,1,0,0,0,1140,
+		1141,1,0,0,0,1141,1178,1,0,0,0,1142,1143,5,144,0,0,1143,1144,5,3,0,0,1144,
+		1149,3,64,32,0,1145,1146,5,5,0,0,1146,1148,3,64,32,0,1147,1145,1,0,0,0,
+		1148,1151,1,0,0,0,1149,1147,1,0,0,0,1149,1150,1,0,0,0,1150,1152,1,0,0,
+		0,1151,1149,1,0,0,0,1152,1167,5,4,0,0,1153,1154,5,5,0,0,1154,1155,5,3,
+		0,0,1155,1160,3,64,32,0,1156,1157,5,5,0,0,1157,1159,3,64,32,0,1158,1156,
+		1,0,0,0,1159,1162,1,0,0,0,1160,1158,1,0,0,0,1160,1161,1,0,0,0,1161,1163,
+		1,0,0,0,1162,1160,1,0,0,0,1163,1164,5,4,0,0,1164,1166,1,0,0,0,1165,1153,
+		1,0,0,0,1166,1169,1,0,0,0,1167,1165,1,0,0,0,1167,1168,1,0,0,0,1168,1172,
+		1,0,0,0,1169,1167,1,0,0,0,1170,1172,3,82,41,0,1171,1142,1,0,0,0,1171,1170,
+		1,0,0,0,1172,1174,1,0,0,0,1173,1175,3,74,37,0,1174,1173,1,0,0,0,1174,1175,
+		1,0,0,0,1175,1179,1,0,0,0,1176,1177,5,56,0,0,1177,1179,5,144,0,0,1178,
+		1171,1,0,0,0,1178,1176,1,0,0,0,1179,1181,1,0,0,0,1180,1182,3,72,36,0,1181,
+		1180,1,0,0,0,1181,1182,1,0,0,0,1182,71,1,0,0,0,1183,1184,5,124,0,0,1184,
+		1189,3,108,54,0,1185,1186,5,5,0,0,1186,1188,3,108,54,0,1187,1185,1,0,0,
+		0,1188,1191,1,0,0,0,1189,1187,1,0,0,0,1189,1190,1,0,0,0,1190,73,1,0,0,
+		0,1191,1189,1,0,0,0,1192,1193,5,107,0,0,1193,1208,5,48,0,0,1194,1195,5,
+		3,0,0,1195,1200,3,24,12,0,1196,1197,5,5,0,0,1197,1199,3,24,12,0,1198,1196,
+		1,0,0,0,1199,1202,1,0,0,0,1200,1198,1,0,0,0,1200,1201,1,0,0,0,1201,1203,
+		1,0,0,0,1202,1200,1,0,0,0,1203,1206,5,4,0,0,1204,1205,5,148,0,0,1205,1207,
+		3,64,32,0,1206,1204,1,0,0,0,1206,1207,1,0,0,0,1207,1209,1,0,0,0,1208,1194,
+		1,0,0,0,1208,1209,1,0,0,0,1209,1210,1,0,0,0,1210,1237,5,183,0,0,1211,1238,
+		5,184,0,0,1212,1213,5,141,0,0,1213,1216,5,131,0,0,1214,1217,3,196,98,0,
+		1215,1217,3,118,59,0,1216,1214,1,0,0,0,1216,1215,1,0,0,0,1217,1218,1,0,
+		0,0,1218,1219,5,6,0,0,1219,1230,3,64,32,0,1220,1223,5,5,0,0,1221,1224,
+		3,196,98,0,1222,1224,3,118,59,0,1223,1221,1,0,0,0,1223,1222,1,0,0,0,1224,
+		1225,1,0,0,0,1225,1226,5,6,0,0,1226,1227,3,64,32,0,1227,1229,1,0,0,0,1228,
+		1220,1,0,0,0,1229,1232,1,0,0,0,1230,1228,1,0,0,0,1230,1231,1,0,0,0,1231,
+		1235,1,0,0,0,1232,1230,1,0,0,0,1233,1234,5,148,0,0,1234,1236,3,64,32,0,
+		1235,1233,1,0,0,0,1235,1236,1,0,0,0,1236,1238,1,0,0,0,1237,1211,1,0,0,
+		0,1237,1212,1,0,0,0,1238,75,1,0,0,0,1239,1243,5,112,0,0,1240,1241,3,190,
+		95,0,1241,1242,5,2,0,0,1242,1244,1,0,0,0,1243,1240,1,0,0,0,1243,1244,1,
+		0,0,0,1244,1245,1,0,0,0,1245,1252,3,210,105,0,1246,1247,5,6,0,0,1247,1253,
+		3,78,39,0,1248,1249,5,3,0,0,1249,1250,3,78,39,0,1250,1251,5,4,0,0,1251,
+		1253,1,0,0,0,1252,1246,1,0,0,0,1252,1248,1,0,0,0,1252,1253,1,0,0,0,1253,
+		77,1,0,0,0,1254,1258,3,34,17,0,1255,1258,3,186,93,0,1256,1258,5,188,0,
+		0,1257,1254,1,0,0,0,1257,1255,1,0,0,0,1257,1256,1,0,0,0,1258,79,1,0,0,
+		0,1259,1270,5,119,0,0,1260,1271,3,198,99,0,1261,1262,3,190,95,0,1262,1263,
+		5,2,0,0,1263,1265,1,0,0,0,1264,1261,1,0,0,0,1264,1265,1,0,0,0,1265,1268,
+		1,0,0,0,1266,1269,3,192,96,0,1267,1269,3,202,101,0,1268,1266,1,0,0,0,1268,
+		1267,1,0,0,0,1269,1271,1,0,0,0,1270,1260,1,0,0,0,1270,1264,1,0,0,0,1270,
+		1271,1,0,0,0,1271,81,1,0,0,0,1272,1274,3,142,71,0,1273,1272,1,0,0,0,1273,
+		1274,1,0,0,0,1274,1275,1,0,0,0,1275,1281,3,98,49,0,1276,1277,3,114,57,
+		0,1277,1278,3,98,49,0,1278,1280,1,0,0,0,1279,1276,1,0,0,0,1280,1283,1,
+		0,0,0,1281,1279,1,0,0,0,1281,1282,1,0,0,0,1282,1285,1,0,0,0,1283,1281,
+		1,0,0,0,1284,1286,3,144,72,0,1285,1284,1,0,0,0,1285,1286,1,0,0,0,1286,
+		1288,1,0,0,0,1287,1289,3,146,73,0,1288,1287,1,0,0,0,1288,1289,1,0,0,0,
+		1289,83,1,0,0,0,1290,1291,3,110,55,0,1291,1293,3,106,53,0,1292,1294,3,
+		112,56,0,1293,1292,1,0,0,0,1293,1294,1,0,0,0,1294,1296,1,0,0,0,1295,1290,
+		1,0,0,0,1296,1297,1,0,0,0,1297,1295,1,0,0,0,1297,1298,1,0,0,0,1298,85,
+		1,0,0,0,1299,1300,5,148,0,0,1300,1301,3,64,32,0,1301,87,1,0,0,0,1302,1303,
+		5,78,0,0,1303,1304,5,40,0,0,1304,1309,3,64,32,0,1305,1306,5,5,0,0,1306,
+		1308,3,64,32,0,1307,1305,1,0,0,0,1308,1311,1,0,0,0,1309,1307,1,0,0,0,1309,
+		1310,1,0,0,0,1310,1313,1,0,0,0,1311,1309,1,0,0,0,1312,1314,3,90,45,0,1313,
+		1312,1,0,0,0,1313,1314,1,0,0,0,1314,89,1,0,0,0,1315,1316,5,79,0,0,1316,
+		1317,3,64,32,0,1317,91,1,0,0,0,1318,1319,5,144,0,0,1319,1320,5,3,0,0,1320,
+		1325,3,64,32,0,1321,1322,5,5,0,0,1322,1324,3,64,32,0,1323,1321,1,0,0,0,
+		1324,1327,1,0,0,0,1325,1323,1,0,0,0,1325,1326,1,0,0,0,1326,1328,1,0,0,
+		0,1327,1325,1,0,0,0,1328,1343,5,4,0,0,1329,1330,5,5,0,0,1330,1331,5,3,
+		0,0,1331,1336,3,64,32,0,1332,1333,5,5,0,0,1333,1335,3,64,32,0,1334,1332,
+		1,0,0,0,1335,1338,1,0,0,0,1336,1334,1,0,0,0,1336,1337,1,0,0,0,1337,1339,
+		1,0,0,0,1338,1336,1,0,0,0,1339,1340,5,4,0,0,1340,1342,1,0,0,0,1341,1329,
+		1,0,0,0,1342,1345,1,0,0,0,1343,1341,1,0,0,0,1343,1344,1,0,0,0,1344,93,
+		1,0,0,0,1345,1343,1,0,0,0,1346,1347,5,75,0,0,1347,1352,3,106,53,0,1348,
+		1349,5,5,0,0,1349,1351,3,106,53,0,1350,1348,1,0,0,0,1351,1354,1,0,0,0,
+		1352,1350,1,0,0,0,1352,1353,1,0,0,0,1353,1356,1,0,0,0,1354,1352,1,0,0,
+		0,1355,1357,3,84,42,0,1356,1355,1,0,0,0,1356,1357,1,0,0,0,1357,95,1,0,
+		0,0,1358,1359,5,174,0,0,1359,1360,3,218,109,0,1360,1361,5,33,0,0,1361,
+		1369,3,128,64,0,1362,1363,5,5,0,0,1363,1364,3,218,109,0,1364,1365,5,33,
+		0,0,1365,1366,3,128,64,0,1366,1368,1,0,0,0,1367,1362,1,0,0,0,1368,1371,
+		1,0,0,0,1369,1367,1,0,0,0,1369,1370,1,0,0,0,1370,1381,1,0,0,0,1371,1369,
+		1,0,0,0,1372,1377,3,128,64,0,1373,1374,5,5,0,0,1374,1376,3,128,64,0,1375,
+		1373,1,0,0,0,1376,1379,1,0,0,0,1377,1375,1,0,0,0,1377,1378,1,0,0,0,1378,
+		1381,1,0,0,0,1379,1377,1,0,0,0,1380,1358,1,0,0,0,1380,1372,1,0,0,0,1381,
+		97,1,0,0,0,1382,1384,5,130,0,0,1383,1385,7,16,0,0,1384,1383,1,0,0,0,1384,
+		1385,1,0,0,0,1385,1386,1,0,0,0,1386,1391,3,108,54,0,1387,1388,5,5,0,0,
+		1388,1390,3,108,54,0,1389,1387,1,0,0,0,1390,1393,1,0,0,0,1391,1389,1,0,
+		0,0,1391,1392,1,0,0,0,1392,1395,1,0,0,0,1393,1391,1,0,0,0,1394,1396,3,
+		94,47,0,1395,1394,1,0,0,0,1395,1396,1,0,0,0,1396,1398,1,0,0,0,1397,1399,
+		3,86,43,0,1398,1397,1,0,0,0,1398,1399,1,0,0,0,1399,1401,1,0,0,0,1400,1402,
+		3,88,44,0,1401,1400,1,0,0,0,1401,1402,1,0,0,0,1402,1404,1,0,0,0,1403,1405,
+		3,96,48,0,1404,1403,1,0,0,0,1404,1405,1,0,0,0,1405,1408,1,0,0,0,1406,1408,
+		3,92,46,0,1407,1382,1,0,0,0,1407,1406,1,0,0,0,1408,99,1,0,0,0,1409,1410,
+		3,82,41,0,1410,101,1,0,0,0,1411,1413,3,142,71,0,1412,1411,1,0,0,0,1412,
+		1413,1,0,0,0,1413,1414,1,0,0,0,1414,1416,3,98,49,0,1415,1417,3,144,72,
+		0,1416,1415,1,0,0,0,1416,1417,1,0,0,0,1417,1419,1,0,0,0,1418,1420,3,146,
+		73,0,1419,1418,1,0,0,0,1419,1420,1,0,0,0,1420,103,1,0,0,0,1421,1423,3,
+		142,71,0,1422,1421,1,0,0,0,1422,1423,1,0,0,0,1423,1424,1,0,0,0,1424,1434,
+		3,98,49,0,1425,1427,5,139,0,0,1426,1428,5,29,0,0,1427,1426,1,0,0,0,1427,
+		1428,1,0,0,0,1428,1432,1,0,0,0,1429,1432,5,90,0,0,1430,1432,5,68,0,0,1431,
+		1425,1,0,0,0,1431,1429,1,0,0,0,1431,1430,1,0,0,0,1432,1433,1,0,0,0,1433,
+		1435,3,98,49,0,1434,1431,1,0,0,0,1435,1436,1,0,0,0,1436,1434,1,0,0,0,1436,
+		1437,1,0,0,0,1437,1439,1,0,0,0,1438,1440,3,144,72,0,1439,1438,1,0,0,0,
+		1439,1440,1,0,0,0,1440,1442,1,0,0,0,1441,1443,3,146,73,0,1442,1441,1,0,
+		0,0,1442,1443,1,0,0,0,1443,105,1,0,0,0,1444,1445,3,190,95,0,1445,1446,
+		5,2,0,0,1446,1448,1,0,0,0,1447,1444,1,0,0,0,1447,1448,1,0,0,0,1448,1449,
+		1,0,0,0,1449,1454,3,192,96,0,1450,1452,5,33,0,0,1451,1450,1,0,0,0,1451,
+		1452,1,0,0,0,1452,1453,1,0,0,0,1453,1455,3,214,107,0,1454,1451,1,0,0,0,
+		1454,1455,1,0,0,0,1455,1461,1,0,0,0,1456,1457,5,85,0,0,1457,1458,5,40,
+		0,0,1458,1462,3,202,101,0,1459,1460,5,102,0,0,1460,1462,5,85,0,0,1461,
+		1456,1,0,0,0,1461,1459,1,0,0,0,1461,1462,1,0,0,0,1462,1509,1,0,0,0,1463,
+		1464,3,190,95,0,1464,1465,5,2,0,0,1465,1467,1,0,0,0,1466,1463,1,0,0,0,
+		1466,1467,1,0,0,0,1467,1468,1,0,0,0,1468,1469,3,230,115,0,1469,1470,5,
+		3,0,0,1470,1475,3,64,32,0,1471,1472,5,5,0,0,1472,1474,3,64,32,0,1473,1471,
+		1,0,0,0,1474,1477,1,0,0,0,1475,1473,1,0,0,0,1475,1476,1,0,0,0,1476,1478,
+		1,0,0,0,1477,1475,1,0,0,0,1478,1483,5,4,0,0,1479,1481,5,33,0,0,1480,1479,
+		1,0,0,0,1480,1481,1,0,0,0,1481,1482,1,0,0,0,1482,1484,3,214,107,0,1483,
+		1480,1,0,0,0,1483,1484,1,0,0,0,1484,1509,1,0,0,0,1485,1495,5,3,0,0,1486,
+		1491,3,106,53,0,1487,1488,5,5,0,0,1488,1490,3,106,53,0,1489,1487,1,0,0,
+		0,1490,1493,1,0,0,0,1491,1489,1,0,0,0,1491,1492,1,0,0,0,1492,1496,1,0,
+		0,0,1493,1491,1,0,0,0,1494,1496,3,84,42,0,1495,1486,1,0,0,0,1495,1494,
+		1,0,0,0,1496,1497,1,0,0,0,1497,1498,5,4,0,0,1498,1509,1,0,0,0,1499,1500,
+		5,3,0,0,1500,1501,3,82,41,0,1501,1506,5,4,0,0,1502,1504,5,33,0,0,1503,
+		1502,1,0,0,0,1503,1504,1,0,0,0,1504,1505,1,0,0,0,1505,1507,3,214,107,0,
+		1506,1503,1,0,0,0,1506,1507,1,0,0,0,1507,1509,1,0,0,0,1508,1447,1,0,0,
+		0,1508,1466,1,0,0,0,1508,1485,1,0,0,0,1508,1499,1,0,0,0,1509,107,1,0,0,
+		0,1510,1523,5,7,0,0,1511,1512,3,192,96,0,1512,1513,5,2,0,0,1513,1514,5,
+		7,0,0,1514,1523,1,0,0,0,1515,1520,3,64,32,0,1516,1518,5,33,0,0,1517,1516,
+		1,0,0,0,1517,1518,1,0,0,0,1518,1519,1,0,0,0,1519,1521,3,182,91,0,1520,
+		1517,1,0,0,0,1520,1521,1,0,0,0,1521,1523,1,0,0,0,1522,1510,1,0,0,0,1522,
+		1511,1,0,0,0,1522,1515,1,0,0,0,1523,109,1,0,0,0,1524,1538,5,5,0,0,1525,
+		1527,5,100,0,0,1526,1525,1,0,0,0,1526,1527,1,0,0,0,1527,1534,1,0,0,0,1528,
+		1530,5,96,0,0,1529,1531,5,110,0,0,1530,1529,1,0,0,0,1530,1531,1,0,0,0,
+		1531,1535,1,0,0,0,1532,1535,5,87,0,0,1533,1535,5,51,0,0,1534,1528,1,0,
+		0,0,1534,1532,1,0,0,0,1534,1533,1,0,0,0,1534,1535,1,0,0,0,1535,1536,1,
+		0,0,0,1536,1538,5,94,0,0,1537,1524,1,0,0,0,1537,1526,1,0,0,0,1538,111,
+		1,0,0,0,1539,1540,5,107,0,0,1540,1554,3,64,32,0,1541,1542,5,142,0,0,1542,
+		1543,5,3,0,0,1543,1548,3,196,98,0,1544,1545,5,5,0,0,1545,1547,3,196,98,
+		0,1546,1544,1,0,0,0,1547,1550,1,0,0,0,1548,1546,1,0,0,0,1548,1549,1,0,
+		0,0,1549,1551,1,0,0,0,1550,1548,1,0,0,0,1551,1552,5,4,0,0,1552,1554,1,
+		0,0,0,1553,1539,1,0,0,0,1553,1541,1,0,0,0,1554,113,1,0,0,0,1555,1557,5,
+		139,0,0,1556,1558,5,29,0,0,1557,1556,1,0,0,0,1557,1558,1,0,0,0,1558,1562,
+		1,0,0,0,1559,1562,5,90,0,0,1560,1562,5,68,0,0,1561,1555,1,0,0,0,1561,1559,
+		1,0,0,0,1561,1560,1,0,0,0,1562,115,1,0,0,0,1563,1565,3,48,24,0,1564,1563,
+		1,0,0,0,1564,1565,1,0,0,0,1565,1566,1,0,0,0,1566,1569,5,141,0,0,1567,1568,
+		5,108,0,0,1568,1570,7,8,0,0,1569,1567,1,0,0,0,1569,1570,1,0,0,0,1570,1571,
+		1,0,0,0,1571,1572,3,122,61,0,1572,1575,5,131,0,0,1573,1576,3,196,98,0,
+		1574,1576,3,118,59,0,1575,1573,1,0,0,0,1575,1574,1,0,0,0,1576,1577,1,0,
+		0,0,1577,1578,5,6,0,0,1578,1589,3,64,32,0,1579,1582,5,5,0,0,1580,1583,
+		3,196,98,0,1581,1583,3,118,59,0,1582,1580,1,0,0,0,1582,1581,1,0,0,0,1583,
+		1584,1,0,0,0,1584,1585,5,6,0,0,1585,1586,3,64,32,0,1586,1588,1,0,0,0,1587,
+		1579,1,0,0,0,1588,1591,1,0,0,0,1589,1587,1,0,0,0,1589,1590,1,0,0,0,1590,
+		1604,1,0,0,0,1591,1589,1,0,0,0,1592,1602,5,75,0,0,1593,1598,3,106,53,0,
+		1594,1595,5,5,0,0,1595,1597,3,106,53,0,1596,1594,1,0,0,0,1597,1600,1,0,
+		0,0,1598,1596,1,0,0,0,1598,1599,1,0,0,0,1599,1603,1,0,0,0,1600,1598,1,
+		0,0,0,1601,1603,3,84,42,0,1602,1593,1,0,0,0,1602,1601,1,0,0,0,1603,1605,
+		1,0,0,0,1604,1592,1,0,0,0,1604,1605,1,0,0,0,1605,1608,1,0,0,0,1606,1607,
+		5,148,0,0,1607,1609,3,64,32,0,1608,1606,1,0,0,0,1608,1609,1,0,0,0,1609,
+		1611,1,0,0,0,1610,1612,3,72,36,0,1611,1610,1,0,0,0,1611,1612,1,0,0,0,1612,
+		117,1,0,0,0,1613,1614,5,3,0,0,1614,1619,3,196,98,0,1615,1616,5,5,0,0,1616,
+		1618,3,196,98,0,1617,1615,1,0,0,0,1618,1621,1,0,0,0,1619,1617,1,0,0,0,
+		1619,1620,1,0,0,0,1620,1622,1,0,0,0,1621,1619,1,0,0,0,1622,1623,5,4,0,
+		0,1623,119,1,0,0,0,1624,1626,3,48,24,0,1625,1624,1,0,0,0,1625,1626,1,0,
+		0,0,1626,1627,1,0,0,0,1627,1630,5,141,0,0,1628,1629,5,108,0,0,1629,1631,
+		7,8,0,0,1630,1628,1,0,0,0,1630,1631,1,0,0,0,1631,1632,1,0,0,0,1632,1633,
+		3,122,61,0,1633,1636,5,131,0,0,1634,1637,3,196,98,0,1635,1637,3,118,59,
+		0,1636,1634,1,0,0,0,1636,1635,1,0,0,0,1637,1638,1,0,0,0,1638,1639,5,6,
+		0,0,1639,1650,3,64,32,0,1640,1643,5,5,0,0,1641,1644,3,196,98,0,1642,1644,
+		3,118,59,0,1643,1641,1,0,0,0,1643,1642,1,0,0,0,1644,1645,1,0,0,0,1645,
+		1646,5,6,0,0,1646,1647,3,64,32,0,1647,1649,1,0,0,0,1648,1640,1,0,0,0,1649,
+		1652,1,0,0,0,1650,1648,1,0,0,0,1650,1651,1,0,0,0,1651,1655,1,0,0,0,1652,
+		1650,1,0,0,0,1653,1654,5,148,0,0,1654,1656,3,64,32,0,1655,1653,1,0,0,0,
+		1655,1656,1,0,0,0,1656,1658,1,0,0,0,1657,1659,3,72,36,0,1658,1657,1,0,
+		0,0,1658,1659,1,0,0,0,1659,1664,1,0,0,0,1660,1662,3,144,72,0,1661,1660,
+		1,0,0,0,1661,1662,1,0,0,0,1662,1663,1,0,0,0,1663,1665,3,146,73,0,1664,
+		1661,1,0,0,0,1664,1665,1,0,0,0,1665,121,1,0,0,0,1666,1667,3,190,95,0,1667,
+		1668,5,2,0,0,1668,1670,1,0,0,0,1669,1666,1,0,0,0,1669,1670,1,0,0,0,1670,
+		1671,1,0,0,0,1671,1674,3,192,96,0,1672,1673,5,33,0,0,1673,1675,3,220,110,
+		0,1674,1672,1,0,0,0,1674,1675,1,0,0,0,1675,1681,1,0,0,0,1676,1677,5,85,
+		0,0,1677,1678,5,40,0,0,1678,1682,3,202,101,0,1679,1680,5,102,0,0,1680,
+		1682,5,85,0,0,1681,1676,1,0,0,0,1681,1679,1,0,0,0,1681,1682,1,0,0,0,1682,
+		123,1,0,0,0,1683,1685,5,143,0,0,1684,1686,3,190,95,0,1685,1684,1,0,0,0,
+		1685,1686,1,0,0,0,1686,1689,1,0,0,0,1687,1688,5,91,0,0,1688,1690,3,222,
+		111,0,1689,1687,1,0,0,0,1689,1690,1,0,0,0,1690,125,1,0,0,0,1691,1692,5,
+		178,0,0,1692,1693,5,3,0,0,1693,1694,5,148,0,0,1694,1695,3,64,32,0,1695,
+		1696,5,4,0,0,1696,127,1,0,0,0,1697,1699,5,3,0,0,1698,1700,3,224,112,0,
+		1699,1698,1,0,0,0,1699,1700,1,0,0,0,1700,1711,1,0,0,0,1701,1702,5,153,
+		0,0,1702,1703,5,40,0,0,1703,1708,3,64,32,0,1704,1705,5,5,0,0,1705,1707,
+		3,64,32,0,1706,1704,1,0,0,0,1707,1710,1,0,0,0,1708,1706,1,0,0,0,1708,1709,
+		1,0,0,0,1709,1712,1,0,0,0,1710,1708,1,0,0,0,1711,1701,1,0,0,0,1711,1712,
+		1,0,0,0,1712,1713,1,0,0,0,1713,1714,5,109,0,0,1714,1715,5,40,0,0,1715,
+		1720,3,148,74,0,1716,1717,5,5,0,0,1717,1719,3,148,74,0,1718,1716,1,0,0,
+		0,1719,1722,1,0,0,0,1720,1718,1,0,0,0,1720,1721,1,0,0,0,1721,1724,1,0,
+		0,0,1722,1720,1,0,0,0,1723,1725,3,132,66,0,1724,1723,1,0,0,0,1724,1725,
+		1,0,0,0,1725,1726,1,0,0,0,1726,1727,5,4,0,0,1727,129,1,0,0,0,1728,1762,
+		5,152,0,0,1729,1763,3,218,109,0,1730,1732,5,3,0,0,1731,1733,3,224,112,
+		0,1732,1731,1,0,0,0,1732,1733,1,0,0,0,1733,1744,1,0,0,0,1734,1735,5,153,
+		0,0,1735,1736,5,40,0,0,1736,1741,3,64,32,0,1737,1738,5,5,0,0,1738,1740,
+		3,64,32,0,1739,1737,1,0,0,0,1740,1743,1,0,0,0,1741,1739,1,0,0,0,1741,1742,
+		1,0,0,0,1742,1745,1,0,0,0,1743,1741,1,0,0,0,1744,1734,1,0,0,0,1744,1745,
+		1,0,0,0,1745,1756,1,0,0,0,1746,1747,5,109,0,0,1747,1748,5,40,0,0,1748,
+		1753,3,148,74,0,1749,1750,5,5,0,0,1750,1752,3,148,74,0,1751,1749,1,0,0,
+		0,1752,1755,1,0,0,0,1753,1751,1,0,0,0,1753,1754,1,0,0,0,1754,1757,1,0,
+		0,0,1755,1753,1,0,0,0,1756,1746,1,0,0,0,1756,1757,1,0,0,0,1757,1759,1,
+		0,0,0,1758,1760,3,132,66,0,1759,1758,1,0,0,0,1759,1760,1,0,0,0,1760,1761,
+		1,0,0,0,1761,1763,5,4,0,0,1762,1729,1,0,0,0,1762,1730,1,0,0,0,1763,131,
+		1,0,0,0,1764,1772,3,134,67,0,1765,1766,5,180,0,0,1766,1767,5,101,0,0,1767,
+		1773,5,182,0,0,1768,1769,5,157,0,0,1769,1773,5,127,0,0,1770,1773,5,78,
+		0,0,1771,1773,5,181,0,0,1772,1765,1,0,0,0,1772,1768,1,0,0,0,1772,1770,
+		1,0,0,0,1772,1771,1,0,0,0,1772,1773,1,0,0,0,1773,133,1,0,0,0,1774,1781,
+		7,17,0,0,1775,1782,3,156,78,0,1776,1777,5,39,0,0,1777,1778,3,152,76,0,
+		1778,1779,5,32,0,0,1779,1780,3,154,77,0,1780,1782,1,0,0,0,1781,1775,1,
+		0,0,0,1781,1776,1,0,0,0,1782,135,1,0,0,0,1783,1784,3,226,113,0,1784,1794,
+		5,3,0,0,1785,1790,3,64,32,0,1786,1787,5,5,0,0,1787,1789,3,64,32,0,1788,
+		1786,1,0,0,0,1789,1792,1,0,0,0,1790,1788,1,0,0,0,1790,1791,1,0,0,0,1791,
+		1795,1,0,0,0,1792,1790,1,0,0,0,1793,1795,5,7,0,0,1794,1785,1,0,0,0,1794,
+		1793,1,0,0,0,1795,1796,1,0,0,0,1796,1797,5,4,0,0,1797,137,1,0,0,0,1798,
+		1799,3,228,114,0,1799,1812,5,3,0,0,1800,1802,5,62,0,0,1801,1800,1,0,0,
+		0,1801,1802,1,0,0,0,1802,1803,1,0,0,0,1803,1808,3,64,32,0,1804,1805,5,
+		5,0,0,1805,1807,3,64,32,0,1806,1804,1,0,0,0,1807,1810,1,0,0,0,1808,1806,
+		1,0,0,0,1808,1809,1,0,0,0,1809,1813,1,0,0,0,1810,1808,1,0,0,0,1811,1813,
+		5,7,0,0,1812,1801,1,0,0,0,1812,1811,1,0,0,0,1812,1813,1,0,0,0,1813,1814,
+		1,0,0,0,1814,1816,5,4,0,0,1815,1817,3,126,63,0,1816,1815,1,0,0,0,1816,
+		1817,1,0,0,0,1817,139,1,0,0,0,1818,1819,3,158,79,0,1819,1829,5,3,0,0,1820,
+		1825,3,64,32,0,1821,1822,5,5,0,0,1822,1824,3,64,32,0,1823,1821,1,0,0,0,
+		1824,1827,1,0,0,0,1825,1823,1,0,0,0,1825,1826,1,0,0,0,1826,1830,1,0,0,
+		0,1827,1825,1,0,0,0,1828,1830,5,7,0,0,1829,1820,1,0,0,0,1829,1828,1,0,
+		0,0,1829,1830,1,0,0,0,1830,1831,1,0,0,0,1831,1833,5,4,0,0,1832,1834,3,
+		126,63,0,1833,1832,1,0,0,0,1833,1834,1,0,0,0,1834,1835,1,0,0,0,1835,1838,
+		5,152,0,0,1836,1839,3,128,64,0,1837,1839,3,218,109,0,1838,1836,1,0,0,0,
+		1838,1837,1,0,0,0,1839,141,1,0,0,0,1840,1842,5,149,0,0,1841,1843,5,116,
+		0,0,1842,1841,1,0,0,0,1842,1843,1,0,0,0,1843,1844,1,0,0,0,1844,1849,3,
+		54,27,0,1845,1846,5,5,0,0,1846,1848,3,54,27,0,1847,1845,1,0,0,0,1848,1851,
+		1,0,0,0,1849,1847,1,0,0,0,1849,1850,1,0,0,0,1850,143,1,0,0,0,1851,1849,
+		1,0,0,0,1852,1853,5,109,0,0,1853,1854,5,40,0,0,1854,1859,3,148,74,0,1855,
+		1856,5,5,0,0,1856,1858,3,148,74,0,1857,1855,1,0,0,0,1858,1861,1,0,0,0,
+		1859,1857,1,0,0,0,1859,1860,1,0,0,0,1860,145,1,0,0,0,1861,1859,1,0,0,0,
+		1862,1863,5,98,0,0,1863,1866,3,64,32,0,1864,1865,7,18,0,0,1865,1867,3,
+		64,32,0,1866,1864,1,0,0,0,1866,1867,1,0,0,0,1867,147,1,0,0,0,1868,1871,
+		3,64,32,0,1869,1870,5,45,0,0,1870,1872,3,198,99,0,1871,1869,1,0,0,0,1871,
+		1872,1,0,0,0,1872,1874,1,0,0,0,1873,1875,3,150,75,0,1874,1873,1,0,0,0,
+		1874,1875,1,0,0,0,1875,1878,1,0,0,0,1876,1877,5,175,0,0,1877,1879,7,19,
+		0,0,1878,1876,1,0,0,0,1878,1879,1,0,0,0,1879,149,1,0,0,0,1880,1881,7,20,
+		0,0,1881,151,1,0,0,0,1882,1883,3,64,32,0,1883,1884,5,155,0,0,1884,1893,
+		1,0,0,0,1885,1886,3,64,32,0,1886,1887,5,158,0,0,1887,1893,1,0,0,0,1888,
+		1889,5,157,0,0,1889,1893,5,127,0,0,1890,1891,5,156,0,0,1891,1893,5,155,
+		0,0,1892,1882,1,0,0,0,1892,1885,1,0,0,0,1892,1888,1,0,0,0,1892,1890,1,
+		0,0,0,1893,153,1,0,0,0,1894,1895,3,64,32,0,1895,1896,5,155,0,0,1896,1905,
+		1,0,0,0,1897,1898,3,64,32,0,1898,1899,5,158,0,0,1899,1905,1,0,0,0,1900,
+		1901,5,157,0,0,1901,1905,5,127,0,0,1902,1903,5,156,0,0,1903,1905,5,158,
+		0,0,1904,1894,1,0,0,0,1904,1897,1,0,0,0,1904,1900,1,0,0,0,1904,1902,1,
+		0,0,0,1905,155,1,0,0,0,1906,1907,3,64,32,0,1907,1908,5,155,0,0,1908,1914,
+		1,0,0,0,1909,1910,5,156,0,0,1910,1914,5,155,0,0,1911,1912,5,157,0,0,1912,
+		1914,5,127,0,0,1913,1906,1,0,0,0,1913,1909,1,0,0,0,1913,1911,1,0,0,0,1914,
+		157,1,0,0,0,1915,1916,7,21,0,0,1916,1917,5,3,0,0,1917,1918,3,64,32,0,1918,
+		1919,5,4,0,0,1919,1920,5,152,0,0,1920,1922,5,3,0,0,1921,1923,3,164,82,
+		0,1922,1921,1,0,0,0,1922,1923,1,0,0,0,1923,1924,1,0,0,0,1924,1926,3,168,
+		84,0,1925,1927,3,134,67,0,1926,1925,1,0,0,0,1926,1927,1,0,0,0,1927,1928,
+		1,0,0,0,1928,1929,5,4,0,0,1929,2001,1,0,0,0,1930,1931,7,22,0,0,1931,1932,
+		5,3,0,0,1932,1933,5,4,0,0,1933,1934,5,152,0,0,1934,1936,5,3,0,0,1935,1937,
+		3,164,82,0,1936,1935,1,0,0,0,1936,1937,1,0,0,0,1937,1939,1,0,0,0,1938,
+		1940,3,166,83,0,1939,1938,1,0,0,0,1939,1940,1,0,0,0,1940,1941,1,0,0,0,
+		1941,2001,5,4,0,0,1942,1943,7,23,0,0,1943,1944,5,3,0,0,1944,1945,5,4,0,
+		0,1945,1946,5,152,0,0,1946,1948,5,3,0,0,1947,1949,3,164,82,0,1948,1947,
+		1,0,0,0,1948,1949,1,0,0,0,1949,1950,1,0,0,0,1950,1951,3,168,84,0,1951,
+		1952,5,4,0,0,1952,2001,1,0,0,0,1953,1954,7,24,0,0,1954,1955,5,3,0,0,1955,
+		1957,3,64,32,0,1956,1958,3,160,80,0,1957,1956,1,0,0,0,1957,1958,1,0,0,
+		0,1958,1960,1,0,0,0,1959,1961,3,162,81,0,1960,1959,1,0,0,0,1960,1961,1,
+		0,0,0,1961,1962,1,0,0,0,1962,1963,5,4,0,0,1963,1964,5,152,0,0,1964,1966,
+		5,3,0,0,1965,1967,3,164,82,0,1966,1965,1,0,0,0,1966,1967,1,0,0,0,1967,
+		1968,1,0,0,0,1968,1969,3,168,84,0,1969,1970,5,4,0,0,1970,2001,1,0,0,0,
+		1971,1972,5,164,0,0,1972,1973,5,3,0,0,1973,1974,3,64,32,0,1974,1975,5,
+		5,0,0,1975,1976,3,34,17,0,1976,1977,5,4,0,0,1977,1978,5,152,0,0,1978,1980,
+		5,3,0,0,1979,1981,3,164,82,0,1980,1979,1,0,0,0,1980,1981,1,0,0,0,1981,
+		1982,1,0,0,0,1982,1984,3,168,84,0,1983,1985,3,134,67,0,1984,1983,1,0,0,
+		0,1984,1985,1,0,0,0,1985,1986,1,0,0,0,1986,1987,5,4,0,0,1987,2001,1,0,
+		0,0,1988,1989,5,165,0,0,1989,1990,5,3,0,0,1990,1991,3,64,32,0,1991,1992,
+		5,4,0,0,1992,1993,5,152,0,0,1993,1995,5,3,0,0,1994,1996,3,164,82,0,1995,
+		1994,1,0,0,0,1995,1996,1,0,0,0,1996,1997,1,0,0,0,1997,1998,3,168,84,0,
+		1998,1999,5,4,0,0,1999,2001,1,0,0,0,2000,1915,1,0,0,0,2000,1930,1,0,0,
+		0,2000,1942,1,0,0,0,2000,1953,1,0,0,0,2000,1971,1,0,0,0,2000,1988,1,0,
+		0,0,2001,159,1,0,0,0,2002,2003,5,5,0,0,2003,2004,3,34,17,0,2004,161,1,
+		0,0,0,2005,2006,5,5,0,0,2006,2007,3,34,17,0,2007,163,1,0,0,0,2008,2009,
+		5,153,0,0,2009,2011,5,40,0,0,2010,2012,3,64,32,0,2011,2010,1,0,0,0,2012,
+		2013,1,0,0,0,2013,2011,1,0,0,0,2013,2014,1,0,0,0,2014,165,1,0,0,0,2015,
+		2016,5,109,0,0,2016,2018,5,40,0,0,2017,2019,3,64,32,0,2018,2017,1,0,0,
+		0,2019,2020,1,0,0,0,2020,2018,1,0,0,0,2020,2021,1,0,0,0,2021,167,1,0,0,
+		0,2022,2023,5,109,0,0,2023,2024,5,40,0,0,2024,2025,3,170,85,0,2025,169,
+		1,0,0,0,2026,2028,3,64,32,0,2027,2029,3,150,75,0,2028,2027,1,0,0,0,2028,
+		2029,1,0,0,0,2029,2037,1,0,0,0,2030,2031,5,5,0,0,2031,2033,3,64,32,0,2032,
+		2034,3,150,75,0,2033,2032,1,0,0,0,2033,2034,1,0,0,0,2034,2036,1,0,0,0,
+		2035,2030,1,0,0,0,2036,2039,1,0,0,0,2037,2035,1,0,0,0,2037,2038,1,0,0,
+		0,2038,171,1,0,0,0,2039,2037,1,0,0,0,2040,2041,3,82,41,0,2041,173,1,0,
+		0,0,2042,2043,3,82,41,0,2043,175,1,0,0,0,2044,2045,7,25,0,0,2045,177,1,
+		0,0,0,2046,2047,5,188,0,0,2047,179,1,0,0,0,2048,2051,3,64,32,0,2049,2051,
+		3,28,14,0,2050,2048,1,0,0,0,2050,2049,1,0,0,0,2051,181,1,0,0,0,2052,2053,
+		7,26,0,0,2053,183,1,0,0,0,2054,2055,7,27,0,0,2055,185,1,0,0,0,2056,2057,
+		3,232,116,0,2057,187,1,0,0,0,2058,2059,3,232,116,0,2059,189,1,0,0,0,2060,
+		2061,3,232,116,0,2061,191,1,0,0,0,2062,2063,3,232,116,0,2063,193,1,0,0,
+		0,2064,2065,3,232,116,0,2065,195,1,0,0,0,2066,2067,3,232,116,0,2067,197,
+		1,0,0,0,2068,2069,3,232,116,0,2069,199,1,0,0,0,2070,2071,3,232,116,0,2071,
+		201,1,0,0,0,2072,2073,3,232,116,0,2073,203,1,0,0,0,2074,2075,3,232,116,
+		0,2075,205,1,0,0,0,2076,2077,3,232,116,0,2077,207,1,0,0,0,2078,2079,3,
+		232,116,0,2079,209,1,0,0,0,2080,2081,3,232,116,0,2081,211,1,0,0,0,2082,
+		2083,3,232,116,0,2083,213,1,0,0,0,2084,2085,3,232,116,0,2085,215,1,0,0,
+		0,2086,2087,3,232,116,0,2087,217,1,0,0,0,2088,2089,3,232,116,0,2089,219,
+		1,0,0,0,2090,2091,3,232,116,0,2091,221,1,0,0,0,2092,2093,3,232,116,0,2093,
+		223,1,0,0,0,2094,2095,3,232,116,0,2095,225,1,0,0,0,2096,2097,3,232,116,
+		0,2097,227,1,0,0,0,2098,2099,3,232,116,0,2099,229,1,0,0,0,2100,2101,3,
+		232,116,0,2101,231,1,0,0,0,2102,2110,5,185,0,0,2103,2110,3,184,92,0,2104,
+		2110,5,188,0,0,2105,2106,5,3,0,0,2106,2107,3,232,116,0,2107,2108,5,4,0,
+		0,2108,2110,1,0,0,0,2109,2102,1,0,0,0,2109,2103,1,0,0,0,2109,2104,1,0,
+		0,0,2109,2105,1,0,0,0,2110,233,1,0,0,0,301,237,245,252,257,263,269,271,
+		297,304,311,317,321,326,329,336,339,343,351,355,357,361,365,369,372,379,
+		385,391,396,407,413,417,421,424,428,434,439,448,455,461,465,469,474,480,
+		492,496,501,504,507,510,514,517,531,538,545,547,550,556,561,569,574,589,
+		595,605,610,620,624,626,630,635,637,645,651,656,663,674,677,679,686,690,
+		697,703,709,715,720,729,734,745,750,761,766,770,786,796,801,809,821,826,
+		834,841,844,847,854,857,860,863,867,875,880,890,895,904,911,915,919,922,
+		930,943,946,954,963,967,972,1002,1014,1019,1031,1037,1044,1048,1058,1061,
+		1067,1073,1082,1085,1089,1091,1093,1102,1109,1116,1122,1127,1135,1140,
+		1149,1160,1167,1171,1174,1178,1181,1189,1200,1206,1208,1216,1223,1230,
+		1235,1237,1243,1252,1257,1264,1268,1270,1273,1281,1285,1288,1293,1297,
+		1309,1313,1325,1336,1343,1352,1356,1369,1377,1380,1384,1391,1395,1398,
+		1401,1404,1407,1412,1416,1419,1422,1427,1431,1436,1439,1442,1447,1451,
+		1454,1461,1466,1475,1480,1483,1491,1495,1503,1506,1508,1517,1520,1522,
+		1526,1530,1534,1537,1548,1553,1557,1561,1564,1569,1575,1582,1589,1598,
+		1602,1604,1608,1611,1619,1625,1630,1636,1643,1650,1655,1658,1661,1664,
+		1669,1674,1681,1685,1689,1699,1708,1711,1720,1724,1732,1741,1744,1753,
+		1756,1759,1762,1772,1781,1790,1794,1801,1808,1812,1816,1825,1829,1833,
+		1838,1842,1849,1859,1866,1871,1874,1878,1892,1904,1913,1922,1926,1936,
+		1939,1948,1957,1960,1966,1980,1984,1995,2000,2013,2020,2028,2033,2037,
+		2050,2109
 	};
 
 	public static readonly ATN _ATN =

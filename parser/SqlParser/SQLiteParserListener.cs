@@ -462,6 +462,66 @@ public interface ISQLiteParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitJoin_clause([NotNull] SQLiteParser.Join_clauseContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SQLiteParser.where_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterWhere_clause([NotNull] SQLiteParser.Where_clauseContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SQLiteParser.where_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitWhere_clause([NotNull] SQLiteParser.Where_clauseContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SQLiteParser.group_by_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterGroup_by_clause([NotNull] SQLiteParser.Group_by_clauseContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SQLiteParser.group_by_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitGroup_by_clause([NotNull] SQLiteParser.Group_by_clauseContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SQLiteParser.having_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterHaving_clause([NotNull] SQLiteParser.Having_clauseContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SQLiteParser.having_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitHaving_clause([NotNull] SQLiteParser.Having_clauseContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SQLiteParser.values_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterValues_clause([NotNull] SQLiteParser.Values_clauseContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SQLiteParser.values_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitValues_clause([NotNull] SQLiteParser.Values_clauseContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SQLiteParser.from_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFrom_clause([NotNull] SQLiteParser.From_clauseContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SQLiteParser.from_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFrom_clause([NotNull] SQLiteParser.From_clauseContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SQLiteParser.window_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterWindow_clause([NotNull] SQLiteParser.Window_clauseContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SQLiteParser.window_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitWindow_clause([NotNull] SQLiteParser.Window_clauseContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SQLiteParser.select_core"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -692,25 +752,25 @@ public interface ISQLiteParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitCommon_table_stmt([NotNull] SQLiteParser.Common_table_stmtContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SQLiteParser.order_by_stmt"/>.
+	/// Enter a parse tree produced by <see cref="SQLiteParser.order_by_clause"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterOrder_by_stmt([NotNull] SQLiteParser.Order_by_stmtContext context);
+	void EnterOrder_by_clause([NotNull] SQLiteParser.Order_by_clauseContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="SQLiteParser.order_by_stmt"/>.
+	/// Exit a parse tree produced by <see cref="SQLiteParser.order_by_clause"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitOrder_by_stmt([NotNull] SQLiteParser.Order_by_stmtContext context);
+	void ExitOrder_by_clause([NotNull] SQLiteParser.Order_by_clauseContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SQLiteParser.limit_stmt"/>.
+	/// Enter a parse tree produced by <see cref="SQLiteParser.limit_clause"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLimit_stmt([NotNull] SQLiteParser.Limit_stmtContext context);
+	void EnterLimit_clause([NotNull] SQLiteParser.Limit_clauseContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="SQLiteParser.limit_stmt"/>.
+	/// Exit a parse tree produced by <see cref="SQLiteParser.limit_clause"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLimit_stmt([NotNull] SQLiteParser.Limit_stmtContext context);
+	void ExitLimit_clause([NotNull] SQLiteParser.Limit_clauseContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SQLiteParser.ordering_term"/>.
 	/// </summary>

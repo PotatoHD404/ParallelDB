@@ -6,7 +6,7 @@ using SqlParser;
 
 namespace Parser;
 
-public class GraphvizVisitor : SQLiteParserBaseVisitor<object>
+public class GraphvizVisitor : SQLiteParserBaseVisitor<object?>
 {
     private readonly StringBuilder _sb = new();
     private bool _ended = false;
@@ -18,14 +18,14 @@ public class GraphvizVisitor : SQLiteParserBaseVisitor<object>
         return _sb.ToString();
     }
 
-    public void Clear()
+    private void Clear()
     {
         _ended = false;
         _sb.Clear();
     }
 
     // override Accept method
-    public override object Visit([NotNull] IParseTree tree)
+    public override object? Visit([NotNull] IParseTree tree)
     {
         if (tree.Parent == null)
         {
@@ -49,8 +49,7 @@ public class GraphvizVisitor : SQLiteParserBaseVisitor<object>
         // Console.WriteLine(tree is ParserRuleContext);
         return base.Visit(tree);
     }
-
-    public override object VisitChildren(IRuleNode node)
+    public override object? VisitChildren(IRuleNode node)
     {
         if (node is ParserRuleContext n)
         {
@@ -62,7 +61,6 @@ public class GraphvizVisitor : SQLiteParserBaseVisitor<object>
                 Visit(child);
             }
         }
-
         return null;
     }
 }

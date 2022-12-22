@@ -12,7 +12,7 @@ using Parser;
 // GROUP BY doctor.doctor_id, doctor.doctor_name
 // ORDER BY AVG(questionnaire.service_assessment) ASC
 // LIMIT 2) as a";
-var a = @"SELECT a.doc as 'Врач' FROM doctors as a ORDER BY a.name LIMIT 10 OFFSET 10';";
+var a = @"SELECT a.doc as 'Врач' FROM doctors as a WHERE a = b AND c = d OR c = f GROUP by c, d HAVING f = g ORDER BY a.name LIMIT 10 OFFSET 10;";
 
 
 
@@ -27,14 +27,15 @@ var parser = new SQLiteParser(tokens);
 parser.RemoveErrorListeners();
 parser.AddErrorListener(new ParserErrorListener());
 var tree = parser.parse();
-GraphvizVisitor visitor = new();
+// GraphvizVisitor graphvizVisitor = new();
+SqlNodeVisitor visitor = new();
 // foreach tree.children
 // foreach(var child in tree.children)
 // {
 //     visitor.Visit(child);
 // }
 visitor.Visit(tree);
-Console.WriteLine(visitor.GetGraph());
+// Console.WriteLine(graphvizVisitor.GetGraph());
 // sw.Stop();
 
 // Console.WriteLine(sw.ElapsedMilliseconds);

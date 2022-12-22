@@ -291,6 +291,42 @@ public interface ISQLiteParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitJoin_clause([NotNull] SQLiteParser.Join_clauseContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="SQLiteParser.where_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitWhere_clause([NotNull] SQLiteParser.Where_clauseContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SQLiteParser.group_by_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitGroup_by_clause([NotNull] SQLiteParser.Group_by_clauseContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SQLiteParser.having_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitHaving_clause([NotNull] SQLiteParser.Having_clauseContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SQLiteParser.values_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitValues_clause([NotNull] SQLiteParser.Values_clauseContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SQLiteParser.from_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFrom_clause([NotNull] SQLiteParser.From_clauseContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SQLiteParser.window_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitWindow_clause([NotNull] SQLiteParser.Window_clauseContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="SQLiteParser.select_core"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

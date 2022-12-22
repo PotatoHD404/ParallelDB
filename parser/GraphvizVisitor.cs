@@ -9,7 +9,7 @@ namespace Parser;
 public class GraphvizVisitor : SQLiteParserBaseVisitor<object?>
 {
     private readonly StringBuilder _sb = new();
-    private bool _ended = false;
+    private bool _ended = true;
 
     public string GetGraph()
     {
@@ -32,7 +32,7 @@ public class GraphvizVisitor : SQLiteParserBaseVisitor<object?>
             Clear();
             _sb.AppendLine("digraph G {");
             _sb.AppendLine("   node [fontsize=14 shape=plain ordering=\"in\"];");
-            _sb.AppendLine("   edge [fontsize=14];");
+            // _sb.AppendLine("   edge [fontsize=14];");
         }
 
         if (tree is ParserRuleContext n)
@@ -42,13 +42,20 @@ public class GraphvizVisitor : SQLiteParserBaseVisitor<object?>
         }
         else if (tree is ITerminalNode t)
         {
-            _sb.AppendLine(
-                $"   \"{t.GetHashCode()}\" [label=\"{SQLiteParser.DefaultVocabulary.GetSymbolicName(t.Symbol.Type)}:{t.GetText()}\"];");
+            _sb.Append($"   \"{t.GetHashCode()}\" [label=\"");
+
+            if (SQLiteParser.DefaultVocabulary.GetSymbolicName(t.Symbol.Type) != t.GetText())
+            {
+                _sb.Append($"{SQLiteParser.DefaultVocabulary.GetSymbolicName(t.Symbol.Type)}:");
+            }
+
+            _sb.AppendLine($"{t.GetText()}\"];");
         }
 
         // Console.WriteLine(tree is ParserRuleContext);
         return base.Visit(tree);
     }
+
     public override object? VisitChildren(IRuleNode node)
     {
         if (node is ParserRuleContext n)
@@ -61,6 +68,7 @@ public class GraphvizVisitor : SQLiteParserBaseVisitor<object?>
                 Visit(child);
             }
         }
+
         return null;
     }
 }

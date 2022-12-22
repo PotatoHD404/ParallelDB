@@ -27,15 +27,15 @@ var parser = new SQLiteParser(tokens);
 parser.RemoveErrorListeners();
 parser.AddErrorListener(new ParserErrorListener());
 var tree = parser.parse();
-// GraphvizVisitor graphvizVisitor = new();
-SqlNodeVisitor visitor = new();
+GraphvizVisitor graphvizVisitor = new();
+// SqlNodeVisitor visitor = new();
 // foreach tree.children
 // foreach(var child in tree.children)
 // {
 //     visitor.Visit(child);
 // }
-visitor.Visit(tree);
-// Console.WriteLine(graphvizVisitor.GetGraph());
+graphvizVisitor.Visit(tree);
+Console.WriteLine(graphvizVisitor.GetGraph());
 // sw.Stop();
 
 // Console.WriteLine(sw.ElapsedMilliseconds);

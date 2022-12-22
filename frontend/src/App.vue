@@ -1,6 +1,10 @@
 <template>
   <div :style="image" class="image" v-bind:class="{theme : isDark}">
-    <my-checkbox v-model="isDark" @click="changeTheme"/>
+<!--    <div class="toggle-btn" id="_1st-toggle-btn">-->
+<!--      <input type="checkbox"  v-model="isDark" @click="changeTheme">-->
+<!--      <span></span>-->
+<!--    </div>-->
+    <my-checkbox @change="changeTheme"/>
     <img alt="PD logo" class="logo" src="~@/assets/db.svg">
     <h4 class="sign">by Kornachyk M.V & Lukichev A.N</h4>
     <input-form style="position: absolute; left: 40px; top: 20vh" @create="createQuery"/>
@@ -20,7 +24,7 @@ import MyTable from "@/components/UI/MyTable.vue";
 import MyCheckbox from "@/components/UI/MyCheckbox.vue";
 
 export default defineComponent({
-  components: {MyCheckbox, MyTable, MyBox, InputList, InputForm},
+  components: {MyTable, MyBox, MyCheckbox, InputList, InputForm},
   data() {
     return {
       image: {
@@ -37,7 +41,7 @@ export default defineComponent({
       } as Query,
       queryList: [{text: 'SELECT * FROM users'},
         {text: 'SELECT * FROM users WHERE id = 1'}] as Query[],
-      isDark: localStorage.getItem("theme") === "true",
+      isDark: localStorage.getItem("theme") === "false",
     }
   },
   methods: {
@@ -49,9 +53,8 @@ export default defineComponent({
       }
     },
     changeTheme() {
-      this.isDark = !this.isDark
       localStorage.setItem("theme", this.isDark.toString());
-      console.log(this.isDark)
+      this.isDark = !this.isDark
     }
   }
 });

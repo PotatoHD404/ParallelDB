@@ -1,14 +1,38 @@
 <template>
-  <div class="toggle-btn" id="_1st-toggle-btn">
-    <input type="checkbox">
+  <div class="toggle-btn" id="_1st-toggle-btn" >
+    <input type="checkbox" v-model="isDark">
     <span></span>
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   name: "my-checkbox",
-}
+  // isDark: localStorage.getItem("theme") === "true",
+  data() {
+    return {
+      isDark: localStorage.getItem("theme") === "true",
+    }
+  },
+
+  methods: {
+    changeTheme() {
+      this.$emit('change', this.isDark)
+      // console.log(this.isDark)
+    }
+  },
+  // methods: {
+  //   changeTheme: function (){
+  //     this.$emit('change', this.theme)
+  //     localStorage.setItem("theme", this.isDark.toString());
+  //     console.log(this.isDark)
+  //   }
+  // }
+
+
+})
 </script>
 
 <style scoped>

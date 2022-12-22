@@ -27,7 +27,7 @@ export default defineComponent({
 <style scoped>
 .box {
   width: 45vw;
-  height: 73vh;
+  height: 76vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;

@@ -2,10 +2,10 @@
   <div :style="image" class="image" v-bind:class="{theme : isDark}">
     <my-checkbox @change="changeTheme"/>
     <img alt="PD logo" class="logo" src="~@/assets/db.svg">
-    <input-form style="position: absolute; left: 40px; top: 20vh" @create="createQuery"/>
+    <input-form style="position: absolute; left: 40px; top: 18vh" @create="createQuery"/>
     <input-list style="position: absolute; z-index:500; right: 75px; top: 22vh" :queryList="queryList"/>
-    <my-box style="position: absolute; right: 40px; top: 20vh" :graph="graph" :isDark="isDark"/>
-    <my-table style="position: absolute; left: 40px; top: 48vh"/>
+    <my-box style="position: absolute; right: 40px; top: 18vh" :graph="graph" :isDark="isDark"/>
+    <my-table style="position: absolute; left: 40px; top: 49vh"/>
     <h4 class="sign">by Kornachyk M.V & Lukichev A.N</h4>
 <!--    <p v-html="graph"/>-->
   </div>
@@ -133,7 +133,7 @@ export default defineComponent({
 
 .sign {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   right: 40px;
   color: white;
   font-size: 20px;

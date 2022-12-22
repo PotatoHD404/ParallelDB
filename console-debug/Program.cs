@@ -20,8 +20,12 @@ var a = @"SELECT a.doc as 'Врач' FROM doctors as a ORDER BY a.name LIMIT 10 
 // sw.Start();
 ICharStream stream = CharStreams.fromString(a);
 var lexer = new SQLiteLexer(stream);
+lexer.RemoveErrorListeners();
+lexer.AddErrorListener(new LexerErrorListener());
 var tokens = new CommonTokenStream(lexer);
 var parser = new SQLiteParser(tokens);
+parser.RemoveErrorListeners();
+parser.AddErrorListener(new ParserErrorListener());
 var tree = parser.parse();
 GraphvizVisitor visitor = new();
 // foreach tree.children

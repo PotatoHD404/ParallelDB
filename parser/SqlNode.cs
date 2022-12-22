@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 using SqlParser;
 
@@ -8,18 +9,30 @@ public class SqlNode
 {
 }
 
-public class SqlExpression : SqlNode
+public class ExpressionNode : SQLiteParser.ExprContext
 {
-    public readonly SQLiteParser.ExprContext Expression;
-    public SqlExpression(SQLiteParser.ExprContext expression)
+    public ExpressionNode(ParserRuleContext parent, int invokingState) : base(parent, invokingState)
     {
-        Expression = expression;
+    }
+
+    // Implement computation of the expression
+    public bool IsBinary()
+    {
+        return GetChild(1) != null && GetChild(1) is not SQLiteParser.ExprContext &&
+               GetChild(0) is SQLiteParser.ExprContext &&
+               GetChild(2) is SQLiteParser.ExprContext;
+    }
+
+    public bool IsConstant()
+    {
+        return literal_value() is not null;
     }
 }
 
 public class SourceNode : SqlNode
 {
     public readonly SQLiteParser.Table_or_subqueryContext Source;
+
     public SourceNode(SQLiteParser.Table_or_subqueryContext source)
     {
         Source = source;
@@ -31,14 +44,14 @@ internal class SelectNode : SqlNode
     private readonly List<SqlNode> _columns;
     private readonly SourceNode _from;
     private readonly bool _distinct;
-    private readonly SqlExpression? _where;
+    private readonly ExpressionNode? _where;
     private readonly List<SqlNode> _groupBy;
     private readonly SqlNode? _having;
     private readonly List<SqlNode> _orderBy;
     private readonly SqlNode? _limit;
     private readonly SqlNode? _offset;
 
-    public SelectNode(List<SqlNode> columns, SourceNode from, bool distinct = false, SqlExpression? where = null,
+    public SelectNode(List<SqlNode> columns, SourceNode from, bool distinct = false, ExpressionNode? where = null,
         List<SqlNode>? groupBy = null, SqlNode? having = null, List<SqlNode>? orderBy = null, SqlNode? limit = null,
         SqlNode? offset = null)
     {
@@ -59,7 +72,7 @@ internal class SelectNode : SqlNode
 
     public SqlNode? From => _from;
 
-    public SqlNode? Where => _where;
+    // public SqlNode? Where => _where;
 
     public List<SqlNode> GroupBy => _groupBy;
 
@@ -83,11 +96,11 @@ internal class SelectNode : SqlNode
         sb.Append(string.Join(", ", Columns));
         sb.Append(" FROM ");
         sb.Append(From);
-        if (Where != null)
-        {
-            sb.Append(" WHERE ");
-            sb.Append(Where);
-        }
+        // if (Where != null)
+        // {
+        //     sb.Append(" WHERE ");
+        //     sb.Append(Where);
+        // }
 
         sb.Append(" GROUP BY ");
         sb.Append(string.Join(", ", GroupBy));
@@ -115,11 +128,6 @@ internal class SelectNode : SqlNode
 
         return sb.ToString();
     }
-}
-
-public class ColumnNode : SqlNode
-{
-    public string Name { get; set; }
 }
 
 public class TableNode : SqlNode

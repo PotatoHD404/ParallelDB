@@ -1,15 +1,21 @@
-﻿using Antlr4.Runtime.Misc;
+﻿using System.Linq.Expressions;
+using Antlr4.Runtime.Misc;
 
 namespace Parser;
 
 using SqlParser;
 
-public class SqlNodeVisitor : SQLiteParserBaseVisitor<object>
+public class SqlNodeVisitor : SQLiteParserBaseVisitor<SqlNode?>
 {
-    public override object VisitSelect_stmt([NotNull] SQLiteParser.Select_stmtContext context)
+    public override SqlNode? VisitSelect_stmt([NotNull] SQLiteParser.Select_stmtContext context)
     {
         // SqlNode node = new SelectNode();
-        var coreContext = context.select_core()[0];
+        List<CompoundOperatorNode> operators =
+            context.compound_operator().Select(el => new CompoundOperatorNode(el.GetText())).ToList();
+        List<SelectNode> selects = context.select_core().Select(VisitSelect_core).OfType<SelectNode>().ToList();
+        
+        
+
         Console.WriteLine("VisitSelect_core");
 
         context.select_core()[0].where_clause();
@@ -19,7 +25,40 @@ public class SqlNodeVisitor : SQLiteParserBaseVisitor<object>
         // context.select_core()[0].expr()[0];
         // context.limit_stmt().expr()[0].literal_value().NUMERIC_LITERAL();
         // context.limit_stmt().OFFSET_();
-
-        return VisitChildren(context);
+        return null;
     }
+
+    public override SqlNode? VisitSelect_core([NotNull] SQLiteParser.Select_coreContext context)
+    {
+        Console.WriteLine("VisitSelect_core");
+        return null;
+    }
+
+    public override SqlNode VisitResult_column([NotNull] SQLiteParser.Result_columnContext context)
+    {
+        return new ColumnNode((ExpressionNode)context.expr(), context.column_alias().STRING_LITERAL().GetText());
+    }
+}
+
+public class ColumnNode : SqlNode
+{
+    public ExpressionNode Expression { get; set; }
+
+    public string? Alias { get; }
+
+    public ColumnNode(ExpressionNode expression, string? alias)
+    {
+        Expression = expression;
+        Alias = alias;
+    }
+}
+
+public class CompoundOperatorNode
+{
+    public CompoundOperatorNode(string name)
+    {
+        Name = name;
+    }
+
+    public string Name { get; }
 }

@@ -571,8 +571,13 @@ order_by_clause:
 ;
 
 limit_clause:
-    LIMIT expr ((OFFSET | COMMA) expr)?
+    LIMIT expr offset_clause?
 ;
+
+offset_clause:
+    OFFSET expr
+;
+
 
 ordering_term:
     expr (COLLATE collation_name)? asc_desc? (NULLS (FIRST | LAST))?

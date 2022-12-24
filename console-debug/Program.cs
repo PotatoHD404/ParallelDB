@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.Linq.Expressions;
 using Antlr4.Runtime;
 using SqlParser;
 using Parser;
@@ -37,30 +38,42 @@ using Parser;
 // // Console.WriteLine(graphvizVisitor.GetGraph());
 
 var result = new Table("doc");
-result.AddColumn("Врач", typeof(int));
+result.AddColumn("Врач", typeof(int), 2);
 result.AddColumn("Оценка", typeof(int));
+
 
 // Console.WriteLine(result.Name);
 // Console.WriteLine(result.RowCount);
 //
 // Console.WriteLine(result.ColumnCount);
+// object? o1 = 1;
+
+// object? o2 = 2;
+
+// object? o3 = (dynamic)o1 + (dynamic)o2;
+// Console.WriteLine(o3);
+
 
 var row = result.NewRow();
-
-row["Врач"] = 1;
+Console.WriteLine("check");
+row["Врач"] = 123;
+//
 row["Оценка"] = 2;
+
 row = result.NewRow();
-var list = result.ToList();
-
-// Console.WriteLine(list.Count);
-
-// print the results
-
-foreach (var item in list)
-
-{
-    Console.WriteLine(item);
-}
+Console.WriteLine(result);
+// row = result.NewRow();
+// var list = result.ToList();
+//
+//
+// // Console.WriteLine(list.Count);
+//
+// // print the results
+//
+// foreach (var item in list)
+// {
+//     Console.WriteLine(item);
+// }
 // result.RowCount;
 
 // sw.Stop();

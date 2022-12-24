@@ -750,7 +750,7 @@ public class TableRow
         }
     }
 
-    public object? this[int index]
+    public dynamic? this[int index]
     {
         get
         {
@@ -768,19 +768,23 @@ public class TableRow
             {
                 throw new IndexOutOfRangeException();
             }
-
+            
             // check type
-            if (value != null && value.GetType() != _table.ColumnType(index))
-            {
-                throw new ArgumentException(
-                    $"Column {_table.ColumnName(index)} has type {_table.ColumnType(index)} but value {value} has type {value.GetType()}");
+            var type = _table.ColumnType(index);
+            if(value == null && Nullable.GetUnderlyingType(type) == null) {
+                throw new ArgumentException($"Column {value} has type {type} but default value is null");
+            }
+
+            type = Nullable.GetUnderlyingType(type) ?? type;
+            if(value != null && value.GetType() != type) {
+                throw new ArgumentException($"Column {index} has type {type} but value {PrettyPrint.Print(value)} has type {PrettyPrint.Print(value?.GetType())}");
             }
 
             _values[index] = value;
         }
     }
     
-    public object? this[string columnName]
+    public dynamic? this[string columnName]
     {
         get
         {
@@ -802,11 +806,16 @@ public class TableRow
             }
 
             // check type
-            if (value != null && value.GetType() != _table.ColumnType(index))
-            {
-                throw new ArgumentException(
-                    $"Column {columnName} has type {_table.ColumnType(index)} but value {value} has type {value.GetType()}");
+            var type = _table.ColumnType(index);
+            if(value == null && Nullable.GetUnderlyingType(type) == null) {
+                throw new ArgumentException($"Column {PrettyPrint.Print(columnName)} has type {type} but default value is null");
             }
+
+            type = Nullable.GetUnderlyingType(type) ?? type;
+            if(value != null && value.GetType() != type) {
+                throw new ArgumentException($"Column {PrettyPrint.Print(columnName)} has type {type} but value {PrettyPrint.Print(value)} has type {PrettyPrint.Print(value?.GetType())}");
+            }
+
 
             _values[index] = value;
         }
@@ -844,6 +853,7 @@ public class Table : PartialResult<TableRow>
     private List<TableRow> _rows = new();
     private Dictionary<string, int> _columnIndices = new();
     private List<Type> _columnTypes = new();
+    private List<object?> _columnDefaults = new();
     private string? _name;
 
     public Table(string? name = null) : base(Enumerable.Empty<TableRow>())
@@ -879,8 +889,12 @@ public class Table : PartialResult<TableRow>
 //     {
 //         return base.Select(row => new TableRow(this, columns.Select(column => row[column])));
 //     }
-
     public Table AddColumn(string name, Type type)
+    {
+        return AddColumn(name, type, Activator.CreateInstance(type));
+    }
+
+    public Table AddColumn(string name, Type type, object? @default)
     {
         if (_rows.Count > 0)
         {
@@ -897,10 +911,18 @@ public class Table : PartialResult<TableRow>
         {
             throw new ArgumentException($"Column {name} already exists in table {_name}");
         }
+        if(@default == null && Nullable.GetUnderlyingType(type) == null) {
+            throw new ArgumentException($"Column {name} has type {type} but default value is null");
+        }
+        
+        if(@default != null && @default.GetType() != (Nullable.GetUnderlyingType(type) ?? type)) {
+            throw new ArgumentException($"Column {name} has type {Nullable.GetUnderlyingType(type)} but default value {@default} has type {@default.GetType()}");
+        }
 
         _columnIndices.Add(name, _columnTypes.Count);
         _columnIndices.Add($"{_name}.{name}", _columnTypes.Count);
         _columnTypes.Add(type);
+        _columnDefaults.Add(@default);
         return this;
     }
 
@@ -950,8 +972,44 @@ public class Table : PartialResult<TableRow>
     
     public TableRow NewRow()
     {
-        var row = new TableRow(this, new object?[ColumnCount]);
+        var values = new object?[ColumnCount];
+        for(int i = 0; i < ColumnCount; i++)
+        {
+            values[i] = _columnDefaults[i];
+        }
+        var row = new TableRow(this, values);
         _rows.Add(row);
         return row;
     }
+    
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append($"Table {_name} ({ColumnCount} columns, {RowCount} rows)");
+        if (ColumnCount > 0)
+        {
+            sb.Append(" {");
+            for (int i = 0; i < ColumnCount; i++)
+            {
+                sb.Append($"{ColumnName(i)}: {ColumnType(i)}");
+                if (i < ColumnCount - 1)
+                {
+                    sb.Append(", ");
+                }
+            }
+
+            sb.Append("}");
+        }
+        sb.AppendLine();
+        
+        // print rows
+        
+        foreach (TableRow row in _rows)
+        {
+            sb.AppendLine(row.ToString());
+        }
+        
+        return sb.ToString();
+    }
 }
+

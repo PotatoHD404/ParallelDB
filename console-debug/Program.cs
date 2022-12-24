@@ -11,33 +11,58 @@ using Parser;
 // GROUP BY doctor.doctor_id, doctor.doctor_name
 // ORDER BY AVG(questionnaire.service_assessment) ASC
 // LIMIT 2) as a";
-var a = @"SELECT a.doc as 'Врач' FROM doctors as a WHERE a = b AND c = d OR c = f GROUP by c, d HAVING f = g ORDER BY a.name LIMIT 10 OFFSET 10;";
+// var a = @"SELECT a.doc as 'Врач' FROM doctors as a WHERE a = b AND c = d OR c = f GROUP by c, d HAVING f = g ORDER BY a.name LIMIT 10 OFFSET 10;";
+//
+//
+//
+// // Stopwatch sw = new Stopwatch();
+// // sw.Start();
+// ICharStream stream = CharStreams.fromString(a);
+// var lexer = new SQLiteLexer(stream);
+// lexer.RemoveErrorListeners();
+// lexer.AddErrorListener(new LexerErrorListener());
+// var tokens = new CommonTokenStream(lexer);
+// var parser = new SQLiteParser(tokens);
+// parser.RemoveErrorListeners();
+// parser.AddErrorListener(new ParserErrorListener());
+// var tree = parser.parse();
+// GraphvizVisitor graphvizVisitor = new();
+// // SqlNodeVisitor visitor = new();
+// // foreach tree.children
+// // foreach(var child in tree.children)
+// // {
+// //     visitor.Visit(child);
+// // }
+// graphvizVisitor.Visit(tree);
+// // Console.WriteLine(graphvizVisitor.GetGraph());
 
+var result = new Table("doc");
+result.AddColumn("Врач", typeof(int));
+result.AddColumn("Оценка", typeof(int));
 
+// Console.WriteLine(result.Name);
+// Console.WriteLine(result.RowCount);
+//
+// Console.WriteLine(result.ColumnCount);
 
-// Stopwatch sw = new Stopwatch();
-// sw.Start();
-ICharStream stream = CharStreams.fromString(a);
-var lexer = new SQLiteLexer(stream);
-lexer.RemoveErrorListeners();
-lexer.AddErrorListener(new LexerErrorListener());
-var tokens = new CommonTokenStream(lexer);
-var parser = new SQLiteParser(tokens);
-parser.RemoveErrorListeners();
-parser.AddErrorListener(new ParserErrorListener());
-var tree = parser.parse();
-GraphvizVisitor graphvizVisitor = new();
-// SqlNodeVisitor visitor = new();
-// foreach tree.children
-// foreach(var child in tree.children)
-// {
-//     visitor.Visit(child);
-// }
-graphvizVisitor.Visit(tree);
-// Console.WriteLine(graphvizVisitor.GetGraph());
+var row = result.NewRow();
 
-var result = new SelectResult<int>();
-Console.WriteLine(result.Select(el => el));
+row["Врач"] = 1;
+row["Оценка"] = 2;
+row = result.NewRow();
+var list = result.ToList();
+
+// Console.WriteLine(list.Count);
+
+// print the results
+
+foreach (var item in list)
+
+{
+    Console.WriteLine(item);
+}
+// result.RowCount;
+
 // sw.Stop();
 
 // Console.WriteLine(sw.ElapsedMilliseconds);

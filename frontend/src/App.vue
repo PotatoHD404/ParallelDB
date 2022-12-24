@@ -3,7 +3,6 @@
     <my-checkbox @change="changeTheme"/>
     <img alt="PD logo" class="logo" src="~@/assets/db.svg">
     <input-form style="position: absolute; left: 40px; top: 18vh" @create="createQuery"/>
-    <input-list style="position: absolute; z-index:500; right: 75px; top: 22vh" :queryList="queryList"/>
     <my-box style="position: absolute; right: 40px; top: 18vh" :graph="graph" :isDark="isDark"/>
     <my-table style="position: absolute; left: 40px; top: 49vh"/>
     <h4 class="sign">by Kornachyk M.V & Lukichev A.N</h4>
@@ -16,14 +15,14 @@ import {defineComponent} from 'vue';
 import {Query} from "@/types/query";
 import Viz from 'viz.js';
 import { Module, render } from 'viz.js/full.render.js';
-import InputList from "@/components/InputList.vue";
+// import InputList from "@/components/InputList.vue";
 import InputForm from "@/components/InputForm.vue";
 import MyBox from "@/components/MyBox.vue";
 import MyTable from "@/components/UI/MyTable.vue";
 import MyCheckbox from "@/components/UI/MyCheckbox.vue";
 
 export default defineComponent({
-  components: {MyTable, MyBox, MyCheckbox, InputList, InputForm},
+  components: {MyTable, MyBox, MyCheckbox, InputForm},
 
   data() {
     return {

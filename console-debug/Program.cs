@@ -1,7 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using Antlr4.Runtime;
-using System.Diagnostics;
 using SqlParser;
 using Parser;
 
@@ -35,7 +34,10 @@ GraphvizVisitor graphvizVisitor = new();
 //     visitor.Visit(child);
 // }
 graphvizVisitor.Visit(tree);
-Console.WriteLine(graphvizVisitor.GetGraph());
+// Console.WriteLine(graphvizVisitor.GetGraph());
+
+var result = new SelectResult<int>();
+Console.WriteLine(result.Select(el => el));
 // sw.Stop();
 
 // Console.WriteLine(sw.ElapsedMilliseconds);

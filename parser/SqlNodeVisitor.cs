@@ -10,9 +10,7 @@ public class SqlNodeVisitor : SQLiteParserBaseVisitor<SqlNode?>
     public override SqlNode? VisitSelect_stmt([NotNull] SQLiteParser.Select_stmtContext context)
     {
         // SqlNode node = new SelectNode();
-        List<CompoundOperatorNode> operators =
-            context.compound_operator().Select(el => new CompoundOperatorNode(el.GetText())).ToList();
-        List<SelectNode> selects = context.select_core().Select(VisitSelect_core).OfType<SelectNode>().ToList();
+        List<SelectNode> selects = context.select_core().Select(VisitSelect_core).Where(el => true).OfType<SelectNode>().ToList();
         
         
 
@@ -33,32 +31,4 @@ public class SqlNodeVisitor : SQLiteParserBaseVisitor<SqlNode?>
         Console.WriteLine("VisitSelect_core");
         return null;
     }
-
-    public override SqlNode VisitResult_column([NotNull] SQLiteParser.Result_columnContext context)
-    {
-        return new ColumnNode((ExpressionNode)context.expr(), context.column_alias().STRING_LITERAL().GetText());
-    }
-}
-
-public class ColumnNode : SqlNode
-{
-    public ExpressionNode Expression { get; set; }
-
-    public string? Alias { get; }
-
-    public ColumnNode(ExpressionNode expression, string? alias)
-    {
-        Expression = expression;
-        Alias = alias;
-    }
-}
-
-public class CompoundOperatorNode
-{
-    public CompoundOperatorNode(string name)
-    {
-        Name = name;
-    }
-
-    public string Name { get; }
 }

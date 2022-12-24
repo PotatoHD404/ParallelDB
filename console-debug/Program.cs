@@ -2,6 +2,7 @@
 
 using System.Linq.Expressions;
 using Antlr4.Runtime;
+using ConsoleTables;
 using SqlParser;
 using Parser;
 
@@ -36,7 +37,7 @@ using Parser;
 // // }
 // graphvizVisitor.Visit(tree);
 // // Console.WriteLine(graphvizVisitor.GetGraph());
-
+//
 var result = new Table("doc");
 result.AddColumn("Врач", typeof(int), 2);
 result.AddColumn("Оценка", typeof(int));
@@ -62,6 +63,7 @@ row["Оценка"] = 2;
 
 row = result.NewRow();
 Console.WriteLine(result);
+
 // row = result.NewRow();
 // var list = result.ToList();
 //

@@ -4,6 +4,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
+using ConsoleTables;
 using Parser;
 using SqlParser;
 
@@ -777,7 +778,7 @@ public class TableRow
 
             type = Nullable.GetUnderlyingType(type) ?? type;
             if(value != null && value.GetType() != type) {
-                throw new ArgumentException($"Column {index} has type {type} but value {PrettyPrint.Print(value)} has type {PrettyPrint.Print(value?.GetType())}");
+                throw new ArgumentException($"Column {index} has type {type} but value {PrettyPrint.ToString(value)} has type {PrettyPrint.ToString(value?.GetType())}");
             }
 
             _values[index] = value;
@@ -808,12 +809,12 @@ public class TableRow
             // check type
             var type = _table.ColumnType(index);
             if(value == null && Nullable.GetUnderlyingType(type) == null) {
-                throw new ArgumentException($"Column {PrettyPrint.Print(columnName)} has type {type} but default value is null");
+                throw new ArgumentException($"Column {PrettyPrint.ToString(columnName)} has type {type} but default value is null");
             }
 
             type = Nullable.GetUnderlyingType(type) ?? type;
             if(value != null && value.GetType() != type) {
-                throw new ArgumentException($"Column {PrettyPrint.Print(columnName)} has type {type} but value {PrettyPrint.Print(value)} has type {PrettyPrint.Print(value?.GetType())}");
+                throw new ArgumentException($"Column {PrettyPrint.ToString(columnName)} has type {type} but value {PrettyPrint.ToString(value)} has type {PrettyPrint.ToString(value?.GetType())}");
             }
 
 
@@ -823,13 +824,13 @@ public class TableRow
     
     public override string ToString()
     {
-        return string.Join(", ", _values.Select((value, index) => $"{_table.ColumnName(index)}: {PrettyPrint.Print(value)}"));
+        return string.Join(", ", _values.Select((value, index) => $"{_table.ColumnName(index)}: {PrettyPrint.ToString(value)}"));
     }
 }
 
 public static class PrettyPrint
 {
-    public static string? Print(object? value)
+    public static string? ToString(object? value)
     {
         switch (value)
         {
@@ -840,9 +841,9 @@ public static class PrettyPrint
             case char:
                 return $"'{value}'";
             case IDictionary dictionary:
-                return $"{{{string.Join(", ", dictionary.Keys.Cast<object>().Select(key => $"{Print(key)}: {Print(dictionary[key])}"))}}}";
+                return $"{{{string.Join(", ", dictionary.Keys.Cast<object>().Select(key => $"{ToString(key)}: {ToString(dictionary[key])}"))}}}";
             case IEnumerable enumerable:
-                return $"[{string.Join(", ", enumerable.Cast<object>().Select(Print))}]";
+                return $"[{string.Join(", ", enumerable.Cast<object>().Select(ToString))}]";
             default:
                 return value.ToString();
         }
@@ -985,29 +986,44 @@ public class Table : PartialResult<TableRow>
     public override string ToString()
     {
         var sb = new StringBuilder();
-        sb.Append($"Table {_name} ({ColumnCount} columns, {RowCount} rows)");
-        if (ColumnCount > 0)
-        {
-            sb.Append(" {");
-            for (int i = 0; i < ColumnCount; i++)
-            {
-                sb.Append($"{ColumnName(i)}: {ColumnType(i)}");
-                if (i < ColumnCount - 1)
-                {
-                    sb.Append(", ");
-                }
-            }
 
-            sb.Append("}");
-        }
-        sb.AppendLine();
+        // if (ColumnCount > 0)
+        // {
+        //     sb.Append(" {");
+        //     for (int i = 0; i < ColumnCount; i++)
+        //     {
+        //         sb.Append($"{ColumnName(i)}: {ColumnType(i)}");
+        //         if (i < ColumnCount - 1)
+        //         {
+        //             sb.Append(", ");
+        //         }
+        //     }
+        //
+        //     sb.Append("}");
+        // }
+
+        // sb.AppendLine();
         
-        // print rows
-        
+        var table = new ConsoleTable(Enumerable.Range(0, ColumnCount).Select(ColumnName).ToArray());
         foreach (TableRow row in _rows)
         {
-            sb.AppendLine(row.ToString());
+            // _values are private, so we need to access via [] operator
+            table.AddRow(Enumerable.Range(0, ColumnCount).Select(i => PrettyPrint.ToString(row[i])).ToArray());
         }
+
+        var t = table.ToString();
+        int len = t.Split('\n')[0].Length;
+
+        // append table name
+        if (_name != null)
+        {
+            sb.AppendLine(t.Split('\n')[0]);
+            sb.Append(' ', (len - _name.Length) / 2 - 1);
+            sb.Append(_name);
+            sb.AppendLine();
+        }
+        
+        sb.AppendLine(table.ToString());
         
         return sb.ToString();
     }

@@ -1,6 +1,6 @@
 ﻿namespace Parser;
 
-public class TableRow
+public class TableRow: IRow
 {
     private Table _table;
     private readonly object?[] _values;

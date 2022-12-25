@@ -20,7 +20,7 @@ namespace Api.Controllers
             var response = new SqlResponse();
             response.Columns = new []{"Column1", "Column2"};
             response.Rows = new[] { new dynamic[] { "123", 1 }, new dynamic[] { "123", "2" } };
-            response.SyntaxTree = "dirgraph {a->b}";
+            response.SyntaxTree = "digraph { a -> b;}";
             return response;
         }
     }

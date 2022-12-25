@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="box  blackBox ">
+    <div class="box blackBox ">
       <p class="graphs" v-html="graph"/>
     </div>
   </div>

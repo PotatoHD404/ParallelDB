@@ -1,5 +1,6 @@
 <template>
   <div :style="image" class="image" v-bind:class="{theme : isDark}">
+    <my-warning v-if="error !== ''">{{error}} </my-warning>
     <my-checkbox @change="changeTheme" v-bind:class="{negative : isDark === false}"/>
     <img alt="PD logo" class="logo" src="~@/assets/db.svg">
 <!--    <input-list :queryList="queryList" v-bind:class="{negative : isDark === false}"/>-->
@@ -22,10 +23,11 @@ import InputForm from "@/components/InputForm.vue";
 import MyBox from "@/components/MyBox.vue";
 import MyTable from "@/components/UI/MyTable.vue";
 import MyCheckbox from "@/components/UI/MyCheckbox.vue";
+import MyWarning from "@/components/UI/MyWarning.vue";
 import svgPanZoom from "svg-pan-zoom";
 
 export default defineComponent({
-  components: {MyTable, MyBox, MyCheckbox, InputForm},
+  components: {MyTable, MyBox, MyCheckbox, InputForm, MyWarning},
 
   data() {
     return {
@@ -47,6 +49,7 @@ export default defineComponent({
       graph: '',
       headers: [] as string[],
       rows: [] as any[][],
+      error: '',
     }
   },
   methods: {
@@ -59,7 +62,6 @@ export default defineComponent({
         let raw = JSON.stringify({
           "request": query.text
         });
-        console.log(raw)
 
         let requestOptions = {
           method: 'POST',
@@ -70,19 +72,16 @@ export default defineComponent({
         let result = await fetch("http://localhost:6386/", requestOptions);
 
         if (result.status != 200) {
-          // TODO: обработать ошибку
-          console.log('error')
-          return;
+          this.showError('Something went wrong!')
         }
 
         let data:Response = await result.json();
-        // TODO: обработать результат запроса
         let dot = data.syntaxTree;
         this.headers = data.columns;
         this.rows = data.rows;
         this.renderGraph(dot);
       } else {
-        console.log('empty query')
+        this.showError('Empty query!')
       }
     },
     changeTheme() {
@@ -104,10 +103,17 @@ export default defineComponent({
             })
           })
           .catch(() => {
-            console.log('error')
+            this.showError('Something went wrong!')
             viz = new Viz({Module, render});
           });
+    },
+    showError(error: string) {
+      this.error = error;
+      setTimeout(() => {
+        this.error = '';
+      }, 3000)
     }
+
   },
   setup() {
     if (localStorage.getItem("theme") === "") {
@@ -168,6 +174,7 @@ export default defineComponent({
 .negative {
   filter: invert(100%);
 }
+
 
 ::placeholder {
   color: #D3D3D3;

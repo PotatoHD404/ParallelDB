@@ -3,11 +3,13 @@
 public class Column
 {
     public string Name { get; }
+
     public Type Type { get; }
+
     // public bool IsPrimaryKey { get; set; }
     // public bool IsForeignKey { get; set; }
     public bool IsNullable { get; }
-    
+
     public dynamic? Default { get; }
 
     public bool HasDefault { get; }

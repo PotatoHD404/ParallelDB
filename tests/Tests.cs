@@ -357,7 +357,7 @@ public class TableTest
 
         Assert.IsTrue(table.RowsCount == 1);
     }
-    
+
     [TestMethod]
     [ExpectedException(typeof(InvalidOperationException))]
     public void TableImmutabilityTest1()
@@ -370,7 +370,7 @@ public class TableTest
         table.AddRow(1, "2", true);
         table.AddColumn("d", typeof(bool));
     }
-    
+
     // [TestMethod]
     // [ExpectedException(typeof(ArgumentException))]
     // public void Test24()
@@ -383,7 +383,7 @@ public class TableTest
     //     table.AddRow(1, "2", true);
     //     table.AddColumn("d", typeof(bool));
     // }
-    
+
     [TestMethod]
     public void ColNameTest4()
     {
@@ -397,7 +397,7 @@ public class TableTest
         Assert.IsTrue(table.ColumnName(0) == "a");
         Assert.IsTrue(table.ColumnName(1) == "c");
     }
-    
+
     [TestMethod]
     public void ThreeColTest1()
     {
@@ -407,7 +407,7 @@ public class TableTest
         table.AddColumn("c", typeof(bool));
 
         table = new Table(table);
-        Assert.IsTrue(table.ColumnsCount == 3); 
+        Assert.IsTrue(table.ColumnsCount == 3);
     }
 
     [TestMethod]
@@ -424,7 +424,7 @@ public class TableTest
             .AddRow(4, "5", false)
             .AddRow(5, "6", true)
             .AddRow(6, "7", false);
-        
+
         Assert.IsTrue(table.RowsCount == 6);
         var newTable = table.Project("a", "c").ToTable();
         Assert.IsTrue(newTable.RowsCount == 6);
@@ -432,8 +432,37 @@ public class TableTest
         Assert.IsTrue(newTable.ColumnName(0) == "a");
         Assert.IsTrue(newTable.ColumnName(1) == "c");
     }
-    
-    
+
+    [TestMethod]
+    public void JoinTest1()
+    {
+        var table1 = new Table("table1");
+        table1.AddColumn("a", typeof(int));
+        table1.AddColumn("b", typeof(string));
+        table1.AddColumn("c", typeof(bool));
+
+        table1.AddRow(1, "2", true)
+            .AddRow(2, "3", false)
+            .AddRow(3, "4", true)
+            .AddRow(4, "5", false)
+            .AddRow(5, "6", true)
+            .AddRow(6, "7", false);
+
+        var table2 = new Table("table2");
+        table2.AddColumn("a", typeof(bool));
+        table2.AddColumn("b", typeof(int));
+        table2.AddColumn("c", typeof(string));
+
+        table2.AddRow(true, 1, "2")
+            .AddRow(false, 2, "3")
+            .AddRow(true, 3, "4");
+
+        var table3 = table1.Join(table2, (el1, el2) => el1["a"] == el2["b"]).ToTable();
+        Assert.IsTrue(table3.RowsCount == 3);
+        Assert.IsTrue(table3.ColumnsCount == 6);
+        Assert.IsTrue(table3.ColumnName(0) == "table1.a");
+        Assert.IsTrue(table3.ColumnName(4) == "table2.a");
+    }
 }
 
 [TestClass]

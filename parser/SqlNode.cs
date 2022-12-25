@@ -122,7 +122,6 @@ class CompoundOperatorNode : SqlNode
 
 class CompoundOperator
 {
-    
 }
 
 public class SelectResult : IEnumerable

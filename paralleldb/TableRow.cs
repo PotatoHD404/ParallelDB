@@ -2,7 +2,7 @@
 
 namespace ParallelDB;
 
-public class TableRow: IRow
+public class TableRow : IRow
 {
     private Table _table;
     private readonly object?[] _values;
@@ -11,10 +11,11 @@ public class TableRow: IRow
     internal TableRow(Table table, object?[] values, bool isSet = false)
     {
         _table = table;
-        for(int i = 0; i < values.Length; i++)
+        for (int i = 0; i < values.Length; i++)
         {
             CheckType(i, values[i]);
         }
+
         _values = values;
         _isSet = new bool[values.Length];
         if (isSet)
@@ -53,7 +54,7 @@ public class TableRow: IRow
             _isSet[index] = true;
         }
     }
-    
+
     void CheckType(int i, dynamic? o)
     {
         var type = _table.ColumnType(i);
@@ -62,13 +63,14 @@ public class TableRow: IRow
         {
             throw new ArgumentException($"Column {_table.ColumnName(i)} is not nullable");
         }
-        
+
         if (o is not null && o.GetType() != type)
         {
-            throw new ArgumentException($"Column {_table.ColumnName(i)} is of type {type} but value is of type {o.GetType()}");
+            throw new ArgumentException(
+                $"Column {_table.ColumnName(i)} is of type {type} but value is of type {o.GetType()}");
         }
     }
-    
+
     public void CheckSet(int i)
     {
         if (!_isSet[i] && !_table.ColumnHasDefault(i))
@@ -85,8 +87,8 @@ public class TableRow: IRow
             {
                 throw new IndexOutOfRangeException();
             }
-            
-            if(!_isSet[index] && !_table.ColumnHasDefault(index))
+
+            if (!_isSet[index] && !_table.ColumnHasDefault(index))
             {
                 throw new ArgumentException($"Column {_table.ColumnName(index)} has not been set");
             }
@@ -96,7 +98,6 @@ public class TableRow: IRow
 
         set
         {
-
             if (index < 0 || index >= _values.Length)
             {
                 throw new IndexOutOfRangeException();
@@ -119,12 +120,12 @@ public class TableRow: IRow
             {
                 throw new ArgumentException($"Column {columnName} does not exist in table {_table.Name}");
             }
-            
-            if(!_isSet[index] && !_table.ColumnHasDefault(index))
+
+            if (!_isSet[index] && !_table.ColumnHasDefault(index))
             {
                 throw new ArgumentException($"Column {columnName} has not been set");
             }
-            
+
             return _values[index];
         }
 

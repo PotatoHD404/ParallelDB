@@ -23,7 +23,7 @@ public static class PrettyPrint
                 return value.ToString();
         }
     }
-    
+
     public static void Print(object? value)
     {
         Console.WriteLine(ToString(value));

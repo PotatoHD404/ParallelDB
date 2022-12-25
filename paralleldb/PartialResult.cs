@@ -135,21 +135,20 @@ public class PartialResult
 
     public PartialResult Join(PartialResult other, Func<TableRow, TableRow, int, bool> predicate)
     {
-        return new PartialResult(JoinIterator(other, predicate), _table);
-    }
-
-    private IEnumerable<TableRow> JoinIterator(PartialResult other,
-        Func<TableRow, TableRow, int, bool> predicate)
-    {
-        if (this._table is null || other._table is null)
+        if (_table is null || other._table is null)
         {
             throw new Exception("Cannot join on a result without a table");
         }
 
+        var newTable = new Table(_table, other._table);
+        return new PartialResult(JoinIterator(newTable, other, predicate), newTable);
+    }
+
+    private IEnumerable<TableRow> JoinIterator(Table newTable, PartialResult other,
+        Func<TableRow, TableRow, int, bool> predicate)
+    {
         int index = 0;
 
-        var newTable = new Table(_table, other._table);
-        
         foreach (var row1 in _source)
         {
             foreach (var row2 in other._source)
@@ -157,16 +156,16 @@ public class PartialResult
                 if (predicate(row1, row2, index))
                 {
                     var newRow = newTable.NewRow();
-                    for(int i = 0; i < _table.ColumnsCount; i++)
+                    for (int i = 0; i < _table.ColumnsCount; i++)
                     {
                         newRow[i] = row1[i];
                     }
-                    
-                    for(int i = 0; i < other._table.ColumnsCount; i++)
+
+                    for (int i = 0; i < other._table.ColumnsCount; i++)
                     {
                         newRow[i + _table.ColumnsCount] = row2[i];
                     }
-                    
+
                     yield return newRow;
                 }
 
@@ -176,8 +175,6 @@ public class PartialResult
                 }
             }
         }
-        
-        
     }
 
     public PartialResult Union(PartialResult second)

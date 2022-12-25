@@ -16,7 +16,7 @@ app.UseCors(x => x
     .AllowAnyHeader()
     .AllowCredentials()
     //.WithOrigins("https://localhost:44351")); // Allow only this origin can also have multiple origins seperated with comma
-    .SetIsOriginAllowed(origin => true));// Allow any origin  
+    .SetIsOriginAllowed(origin => true)); // Allow any origin  
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

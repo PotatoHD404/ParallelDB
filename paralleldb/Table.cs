@@ -45,7 +45,6 @@ public class Table : PartialResult
             _columnIndices.Add(column, _columnIndices.Count);
             _columns.Add(table._columns[table._columnIndices[column]]);
         }
-        
     }
 
     public Table(Table table1, Table table2) : this(table1)
@@ -104,7 +103,8 @@ public class Table : PartialResult
     public int ColumnIndex(string column)
     {
         // check if column exists
-        if (!_columnIndices.ContainsKey(column) && (column.Contains(".") || !_columnIndices.ContainsKey($"{_name}.{column}")))
+        if (!_columnIndices.ContainsKey(column) &&
+            (column.Contains(".") || !_columnIndices.ContainsKey($"{_name}.{column}")))
         {
             throw new ArgumentException($"Column {column} does not exist in table {_name}");
         }
@@ -256,10 +256,11 @@ public class Table : PartialResult
 
     public Table AddRow(TableRow row)
     {
-        for(int i = 0; i < ColumnsCount; i++)
+        for (int i = 0; i < ColumnsCount; i++)
         {
             row.CheckSet(i);
         }
+
         _rows.Add(row);
         return this;
     }

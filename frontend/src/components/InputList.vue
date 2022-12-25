@@ -11,8 +11,9 @@
 
 <script lang="ts">
 import {Query} from "@/types/query";
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: "input-list",
   props: {
     queryList: {
@@ -20,7 +21,7 @@ export default {
       required: true,
     }
   }
-}
+});
 </script>
 
 <style scoped>

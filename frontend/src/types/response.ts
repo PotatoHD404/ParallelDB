@@ -1,4 +1,5 @@
-export type Column = {
-    columns_name: string;
-    data: any[];
+export type Response = {
+    columns: string[],
+    rows: any[][],
+    syntaxTree: string
 }

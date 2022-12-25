@@ -2,19 +2,21 @@
   <div :style="image" class="image" v-bind:class="{theme : isDark}">
     <my-checkbox @change="changeTheme" v-bind:class="{negative : isDark === false}"/>
     <img alt="PD logo" class="logo" src="~@/assets/db.svg">
+<!--    <input-list :queryList="queryList" v-bind:class="{negative : isDark === false}"/>-->
     <input-form style="position: absolute; left: 40px; top: 18vh" @create="createQuery"/>
     <my-box style="position: absolute; right: 40px; top: 18vh" :graph="graph" :isDark="isDark"/>
-    <my-table style="position: absolute; left: 40px; top: 49vh"/>
+    <my-table style="position: absolute; left: 40px; top: 49vh" :headers="headers" :rows="rows"/>
     <h4 class="sign">by Kornachyk M.V & Lukichev A.N</h4>
-<!--    <p v-html="graph"/>-->
+    <!--    <p v-html="graph"/>-->
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from 'vue';
 import {Query} from "@/types/query";
+import {Response} from "@/types/response";
 import Viz from 'viz.js';
-import { Module, render } from 'viz.js/full.render.js';
+import {Module, render} from 'viz.js/full.render.js';
 // import InputList from "@/components/InputList.vue";
 import InputForm from "@/components/InputForm.vue";
 import MyBox from "@/components/MyBox.vue";
@@ -43,73 +45,69 @@ export default defineComponent({
         {text: 'SELECT * FROM users WHERE id = 1'}] as Query[],
       isDark: localStorage.getItem("theme") === "false",
       graph: '',
+      headers: [] as string[],
+      rows: [] as any[][],
     }
   },
   methods: {
-    createQuery(query: Query) {
+    async createQuery(query: Query) {
       if (query.text.trim()) {
-        this.queryList.push(query)
+        // this.queryList.push(query) <--- this can be used to store queries
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        let raw = JSON.stringify({
+          "request": query.text
+        });
+        console.log(raw)
+
+        let requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+        };
+
+        let result = await fetch("http://localhost:6386/", requestOptions);
+
+        if (result.status != 200) {
+          // TODO: обработать ошибку
+          console.log('error')
+          return;
+        }
+
+        let data:Response = await result.json();
+        // TODO: обработать результат запроса
+        let dot = data.syntaxTree;
+        this.headers = data.columns;
+        this.rows = data.rows;
+        this.renderGraph(dot);
       } else {
-        alert('Запрос не может быть пустым')
-        let viz = new Viz({ Module, render });
-        let dot = 'graph {' +
-            'bgcolor=transparent\n' +
-            ' a -- { b c d };\n' +
-            '    b -- { c e };\n' +
-            '    c -- { e f };\n' +
-            '    d -- { f g };\n' +
-            '    e -- h;\n' +
-            '    f -- { h i j g };\n' +
-            '    g -- k;\n' +
-            '    h -- { o l };\n' +
-            '    i -- { l m j };\n' +
-            '    j -- { m n k };\n' +
-            '    k -- { n r };\n' +
-            '    l -- { o m };\n' +
-            '    m -- { o p n };\n' +
-            '    n -- { q r };\n' +
-            '    o -- { s p };\n' +
-            '    p -- { s t q };\n' +
-            '    q -- { t r };\n' +
-            '    r -- t;\n' +
-            '    s -- z;\n' +
-            '    t -- z;}';
-        viz.renderString(dot)
-            .then(element => {
-              element = element.replace('<svg ', '<svg id="graph" class="graphs" style="filter: invert(100%);" ');
-              this.graph= element;
-              this.$nextTick(() => {
-                svgPanZoom('#graph', {
-                  maxZoom: 20,
-                  zoomEnabled: true,
-                  controlIconsEnabled: true,
-                });
-              })
-            })
-            .catch(() => {
-              // Create a new Viz instance (@see Caveats page for more info)
-              viz = new Viz({ Module, render });
-            });
+        console.log('empty query')
       }
     },
     changeTheme() {
       localStorage.setItem("theme", this.isDark.toString());
       this.isDark = !this.isDark;
     },
-    // renderGraph() {
-    //   let viz = new Viz({ Module, render });
-    //   let dot = 'digraph { a -> b -> c -> d -> e; }';
-    //   viz.renderString(dot)
-    //       .then(result => {
-    //         this.graph = result;
-    //       })
-    //       .catch(error => {
-    //         // Create a new Viz instance (@see Caveats page for more info)
-    //         viz = new Viz({ Module, render });
-    //         // Possibly display the error
-    //         console.error(error);
-    //       });
-    // }
+    renderGraph(dot: string) {
+      let viz = new Viz({Module, render});
+      viz.renderString(dot)
+          .then(element => {
+            element = element.replace('<svg ', '<svg id="graph" class="graphs" style="filter: invert(100%);" ');
+            this.graph = element;
+            this.$nextTick(() => {
+              svgPanZoom('#graph', {
+                maxZoom: 20,
+                zoomEnabled: true,
+                controlIconsEnabled: true,
+              });
+            })
+          })
+          .catch(() => {
+            console.log('error')
+            viz = new Viz({Module, render});
+          });
+    }
   },
   setup() {
     if (localStorage.getItem("theme") === "") {
@@ -172,6 +170,6 @@ export default defineComponent({
 }
 
 ::placeholder {
-  color:    #D3D3D3;
+  color: #D3D3D3;
 }
 </style>

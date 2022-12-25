@@ -41,9 +41,11 @@ public class Table : PartialResult
 
         foreach (string column in columns)
         {
-            int index = table.ColumnIndex(column);
+            // int index = table.ColumnIndex(column);
             _columnIndices.Add(column, _columnIndices.Count);
+            _columns.Add(table._columns[table._columnIndices[column]]);
         }
+        
     }
 
     public Table(Table table1, Table table2) : this(table1)
@@ -96,23 +98,23 @@ public class Table : PartialResult
 
     public string ColumnName(int index)
     {
-        return _columnIndices.FirstOrDefault(pair => pair.Value == index).Key;
+        return _columns[index].Name;
     }
 
-    public int ColumnIndex(string pairKey)
+    public int ColumnIndex(string column)
     {
         // check if column exists
-        if (!_columnIndices.ContainsKey(pairKey) && !_columnIndices.ContainsKey($"{_name}.{pairKey}"))
+        if (!_columnIndices.ContainsKey(column) && (column.Contains(".") || !_columnIndices.ContainsKey($"{_name}.{column}")))
         {
-            throw new ArgumentException($"Column {pairKey} does not exist in table {_name}");
+            throw new ArgumentException($"Column {column} does not exist in table {_name}");
         }
 
-        int index = _columnIndices.ContainsKey($"{_name}.{pairKey}")
-            ? _columnIndices[$"{_name}.{pairKey}"]
-            : _columnIndices[pairKey];
+        int index = !column.Contains(".") && _columnIndices.ContainsKey($"{_name}.{column}")
+            ? _columnIndices[$"{_name}.{column}"]
+            : _columnIndices[column];
         if (index == -1)
         {
-            throw new ArgumentException($"Column {pairKey} is ambiguous");
+            throw new ArgumentException($"Column {column} is ambiguous");
         }
 
         return index;
@@ -248,7 +250,7 @@ public class Table : PartialResult
             throw new ArgumentException($"Row has {values.Length} values but table has {ColumnsCount} columns");
         }
 
-        _rows.Add(new TableRow(this, values));
+        _rows.Add(new TableRow(this, values, true));
         return this;
     }
 

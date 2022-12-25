@@ -8,7 +8,7 @@ public class TableRow: IRow
     private readonly object?[] _values;
     private bool[] _isSet;
 
-    internal TableRow(Table table, object?[] values)
+    internal TableRow(Table table, object?[] values, bool isSet = false)
     {
         _table = table;
         for(int i = 0; i < values.Length; i++)
@@ -17,6 +17,13 @@ public class TableRow: IRow
         }
         _values = values;
         _isSet = new bool[values.Length];
+        if (isSet)
+        {
+            for (int i = 0; i < _isSet.Length; i++)
+            {
+                _isSet[i] = true;
+            }
+        }
     }
 
     internal TableRow(Table table, Dictionary<string, object?> dictionary)

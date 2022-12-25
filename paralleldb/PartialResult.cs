@@ -18,10 +18,11 @@ public class PartialResult
 
     public PartialResult Project(params string[] columns)
     {
-        return new PartialResult(ProjectIterator(columns), _table);
+        var newTable = new Table(_table, columns);
+        return new PartialResult(ProjectIterator(newTable, columns), newTable);
     }
 
-    private IEnumerable<TableRow> ProjectIterator(params string[] columns)
+    private IEnumerable<TableRow> ProjectIterator(Table newTable, params string[] columns)
     {
         // create new table with only the columns specified
         if (_table is null)
@@ -29,14 +30,13 @@ public class PartialResult
             throw new Exception("Cannot project on a result without a table");
         }
 
-        var newTable = new Table(_table, columns);
-
         foreach (var row in _source)
         {
             var newRow = newTable.NewRow();
             foreach (var column in columns)
             {
-                newRow[column] = row[column];
+                var tmp = row[column];
+                newRow[column] = tmp;
             }
 
             yield return newRow;
@@ -272,10 +272,7 @@ public class PartialResult
 
         var newTable = new Table(_table);
 
-        foreach (var row in _source)
-        {
-            newTable.AddRow(row);
-        }
+        newTable.AddRows(_source);
 
         return newTable;
     }

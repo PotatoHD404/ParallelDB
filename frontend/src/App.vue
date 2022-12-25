@@ -1,6 +1,6 @@
 <template>
   <div :style="image" class="image" v-bind:class="{theme : isDark}">
-    <my-checkbox @change="changeTheme"/>
+    <my-checkbox @change="changeTheme" v-bind:class="{negative : isDark === false}"/>
     <img alt="PD logo" class="logo" src="~@/assets/db.svg">
     <input-form style="position: absolute; left: 40px; top: 18vh" @create="createQuery"/>
     <my-box style="position: absolute; right: 40px; top: 18vh" :graph="graph" :isDark="isDark"/>
@@ -20,6 +20,7 @@ import InputForm from "@/components/InputForm.vue";
 import MyBox from "@/components/MyBox.vue";
 import MyTable from "@/components/UI/MyTable.vue";
 import MyCheckbox from "@/components/UI/MyCheckbox.vue";
+import svgPanZoom from "svg-pan-zoom";
 
 export default defineComponent({
   components: {MyTable, MyBox, MyCheckbox, InputForm},
@@ -51,7 +52,9 @@ export default defineComponent({
       } else {
         alert('Запрос не может быть пустым')
         let viz = new Viz({ Module, render });
-        let dot = 'graph { a -- { b c d };\n' +
+        let dot = 'graph {' +
+            'bgcolor=transparent\n' +
+            ' a -- { b c d };\n' +
             '    b -- { c e };\n' +
             '    c -- { e f };\n' +
             '    d -- { f g };\n' +
@@ -72,20 +75,26 @@ export default defineComponent({
             '    s -- z;\n' +
             '    t -- z;}';
         viz.renderString(dot)
-            .then(result => {
-              this.graph = result;
+            .then(element => {
+              element = element.replace('<svg ', '<svg id="graph" class="graphs" style="filter: invert(100%);" ');
+              this.graph= element;
+              this.$nextTick(() => {
+                svgPanZoom('#graph', {
+                  maxZoom: 20,
+                  zoomEnabled: true,
+                  controlIconsEnabled: true,
+                });
+              })
             })
-            .catch(error => {
+            .catch(() => {
               // Create a new Viz instance (@see Caveats page for more info)
               viz = new Viz({ Module, render });
-              // Possibly display the error
-              console.error(error);
             });
       }
     },
     changeTheme() {
       localStorage.setItem("theme", this.isDark.toString());
-      this.isDark = !this.isDark
+      this.isDark = !this.isDark;
     },
     // renderGraph() {
     //   let viz = new Viz({ Module, render });
@@ -101,7 +110,12 @@ export default defineComponent({
     //         console.error(error);
     //       });
     // }
-  }
+  },
+  setup() {
+    if (localStorage.getItem("theme") === "") {
+      localStorage.setItem("theme", "true");
+    }
+  },
 });
 </script>
 
@@ -146,6 +160,15 @@ export default defineComponent({
   border-radius: 5px;
   background: rgba(0, 0, 0, 0.5);
   border: 2px solid white;
+}
+
+.graphs {
+  width: 100%;
+  height: 100%;
+}
+
+.negative {
+  filter: invert(100%);
 }
 
 ::placeholder {

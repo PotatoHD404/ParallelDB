@@ -1,4 +1,4 @@
-﻿namespace Library
+﻿namespace ParallelDB
 {
     public class ParallelDB
     {

@@ -22,8 +22,4 @@
     <ProjectReference Include="..\parser\SqlParser.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="query_examples" />
-  </ItemGroup>
-
 </Project>

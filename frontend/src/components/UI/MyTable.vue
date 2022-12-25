@@ -2,41 +2,38 @@
   <div class="my-table blackBox">
     <table>
       <thead>
-      <tr>
-        <th>
-          База данных
-        </th>
-        <th>
-          Таблица
-        </th>
-      </tr>
+        <tr>
+          <th v-for="header in headers" :key="header">
+            {{ header }}
+          </th>
+        </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>
-          дата 1
-        </td>
-        <td>
-          дата 2
-        </td>
-      </tr>
-      <tr>
-        <td>
-          дата 1
-        </td>
-        <td>
-          дата 2
-        </td>
-      </tr>
+        <tr v-for="(row, index) in rows" :key="index">
+          <td v-for="(cell, index) in row" :key="index">
+            {{ cell }}
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
 </template>
 
-<script>
-export default {
-  name: "my-table"
-}
+<script lang="ts">
+import { defineComponent } from "vue";
+export default defineComponent({
+  name: "my-table",
+  props: {
+    headers: {
+      type: Array as () => string[],
+      required: true,
+    },
+    rows: {
+      type: Array as () => any[][],
+      required: true,
+    },
+  },
+});
 </script>
 
 <style scoped>

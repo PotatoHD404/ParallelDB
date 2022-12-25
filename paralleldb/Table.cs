@@ -2,14 +2,13 @@
 using System.Text.RegularExpressions;
 using ConsoleTables;
 
-namespace Parser;
+namespace ParallelDB;
 
 public class Table : PartialResult
 {
     private readonly List<TableRow> _rows = new();
     private readonly Dictionary<string, int> _columnIndices = new();
-    private readonly List<Type> _columnTypes = new();
-    private readonly List<dynamic> _columnDefaults = new();
+    private readonly List<Column> _columns = new();
     private string? _name;
 
     public Table(string? name = null) : base(Enumerable.Empty<TableRow>())
@@ -24,8 +23,7 @@ public class Table : PartialResult
     {
         _name = table._name;
         _columnIndices = new Dictionary<string, int>(table._columnIndices);
-        _columnTypes = new List<Type>(table._columnTypes);
-        _columnDefaults = new List<dynamic>(table._columnDefaults);
+        _columns = new List<Column>(table._columns);
         _rows = new List<TableRow>();
         _table = this;
         _source = _rows;
@@ -36,18 +34,15 @@ public class Table : PartialResult
         // implement select
         _name = table._name;
         _columnIndices = new Dictionary<string, int>();
-        _columnTypes = new List<Type>();
-        _columnDefaults = new List<dynamic>();
+        _columns = new List<Column>();
         _rows = new List<TableRow>();
         _table = this;
         _source = _rows;
-        
+
         foreach (string column in columns)
         {
             int index = table.ColumnIndex(column);
             _columnIndices.Add(column, _columnIndices.Count);
-            _columnTypes.Add(table.ColumnType(index));
-            _columnDefaults.Add(table.ColumnDefault(index));
         }
     }
 
@@ -58,14 +53,15 @@ public class Table : PartialResult
         {
             throw new ArgumentException($"Tables {table1._name} and {table2._name} have same names");
         }
+
         // Inner join
         foreach (var pair in table2._columnIndices)
         {
             if (!_columnIndices.ContainsKey(pair.Key))
             {
                 _columnIndices.Add(pair.Key, _columnIndices.Count);
-                _columnTypes.Add(table2._columnTypes[pair.Value]);
-                _columnDefaults.Add(table2._columnDefaults[pair.Value]);
+                // TODO: add column
+                _columns.Add(table2._columns[pair.Value]);
             }
             else
             {
@@ -94,9 +90,9 @@ public class Table : PartialResult
 
     public bool IsComputed => _name == null;
 
-    public int ColumnsCount => _columnTypes.Count;
+    public int ColumnsCount => _columns.Count;
 
-    public int RowCount => _rows.Count;
+    public int RowsCount => _rows.Count;
 
     public string ColumnName(int index)
     {
@@ -106,46 +102,99 @@ public class Table : PartialResult
     public int ColumnIndex(string pairKey)
     {
         // check if column exists
-        if (!_columnIndices.ContainsKey(pairKey))
+        if (!_columnIndices.ContainsKey(pairKey) && !_columnIndices.ContainsKey($"{_name}.{pairKey}"))
         {
             throw new ArgumentException($"Column {pairKey} does not exist in table {_name}");
         }
-        
-        if(_columnIndices[pairKey] == -1)
+
+        int index = _columnIndices.ContainsKey($"{_name}.{pairKey}")
+            ? _columnIndices[$"{_name}.{pairKey}"]
+            : _columnIndices[pairKey];
+        if (index == -1)
         {
             throw new ArgumentException($"Column {pairKey} is ambiguous");
         }
 
-        return _columnIndices[pairKey];
+        return index;
     }
 
 
     public Type ColumnType(int index)
     {
-        if (index < 0 || index >= _columnTypes.Count)
+        if (index < 0 || index >= ColumnsCount)
         {
             throw new IndexOutOfRangeException();
         }
 
-        return _columnTypes[index];
+        return _columns[index].Type;
     }
 
-    public dynamic ColumnDefault(int index)
+    public dynamic? ColumnDefault(int index)
     {
-        if (index < 0 || index >= _columnTypes.Count)
+        if (index < 0 || index >= ColumnsCount)
         {
             throw new IndexOutOfRangeException();
         }
 
-        return _columnDefaults[index];
+        return _columns[index].Default;
     }
 
-    public Table AddColumn(string name, Type type)
+    public bool ColumnHasDefault(int index)
     {
-        return AddColumn(name, type, Activator.CreateInstance(type));
+        if (index < 0 || index >= ColumnsCount)
+        {
+            throw new IndexOutOfRangeException();
+        }
+
+        return _columns[index].HasDefault;
     }
 
-    public Table AddColumn(string name, Type type, object? @default)
+    public Table AddColumn(string name, Type type, bool nullable = false, bool hasDefault = false)
+    {
+        dynamic? @default;
+        // if nullable type set default to null
+
+        if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+        {
+            @default = null;
+        }
+        else if (type == typeof(string))
+        {
+            @default = "";
+        }
+        else if (type == typeof(int))
+        {
+            @default = 0;
+        }
+        else if (type == typeof(double))
+        {
+            @default = 0.0;
+        }
+        else if (type == typeof(bool))
+        {
+            @default = false;
+        }
+        else
+        {
+            try
+            {
+                @default = Activator.CreateInstance(type);
+                if (@default is null)
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException($"Type {type} is not supported");
+            }
+        }
+
+
+        return AddColumn(name, type, nullable, hasDefault, @default);
+    }
+
+    public Table AddColumn(string name, Type type, bool nullable, bool hasDefault, dynamic? @default)
     {
         if (_rows.Count > 0)
         {
@@ -163,24 +212,28 @@ public class Table : PartialResult
             throw new ArgumentException($"Column {name} already exists in table {_name}");
         }
 
-        if (@default == null && Nullable.GetUnderlyingType(type) == null)
+        nullable = Nullable.GetUnderlyingType(type) is not null || nullable;
+
+        type = Nullable.GetUnderlyingType(type) ?? type;
+
+        if (@default is null && !nullable && hasDefault)
         {
             throw new ArgumentException($"Column {name} has type {type} but default value is null");
         }
 
-        if (@default != null && @default.GetType() != (Nullable.GetUnderlyingType(type) ?? type))
+        if (@default is not null && @default.GetType() != type && hasDefault)
         {
             throw new ArgumentException(
-                $"Column {name} has type {Nullable.GetUnderlyingType(type)} but default value {@default} has type {@default.GetType()}");
+                $"Column {name} has type {Nullable.GetUnderlyingType(type)} but default value {@default} has type {@default?.GetType()}");
         }
 
-        _columnIndices.Add(name, _columnTypes.Count);
-        _columnIndices.Add($"{_name}.{name}", _columnTypes.Count);
-        _columnTypes.Add(type);
-        _columnDefaults.Add(@default);
+        _columnIndices.Add(name, ColumnsCount);
+        if (_name is not null)
+            _columnIndices.Add($"{_name}.{name}", ColumnsCount);
+        _columns.Add(new Column(name, type, nullable, hasDefault, @default));
         return this;
     }
-    
+
 
     public Table AddRow(Dictionary<string, object?> dictionary)
     {
@@ -190,12 +243,21 @@ public class Table : PartialResult
 
     public Table AddRow(params object?[] values)
     {
+        if (values.Length != ColumnsCount)
+        {
+            throw new ArgumentException($"Row has {values.Length} values but table has {ColumnsCount} columns");
+        }
+
         _rows.Add(new TableRow(this, values));
         return this;
     }
 
     public Table AddRow(TableRow row)
     {
+        for(int i = 0; i < ColumnsCount; i++)
+        {
+            row.CheckSet(i);
+        }
         _rows.Add(row);
         return this;
     }
@@ -215,7 +277,7 @@ public class Table : PartialResult
         var values = new object?[ColumnsCount];
         for (int i = 0; i < ColumnsCount; i++)
         {
-            values[i] = _columnDefaults[i];
+            values[i] = ColumnDefault(i);
         }
 
         var row = new TableRow(this, values);
@@ -249,5 +311,10 @@ public class Table : PartialResult
         sb.AppendLine(table.ToString());
 
         return sb.ToString();
+    }
+
+    public bool ColumnNullable(int index)
+    {
+        return _columns[index].IsNullable;
     }
 }

@@ -34,16 +34,6 @@ public class ExpressionNode : SQLiteParser.ExprContext
     }
 }
 
-public class SourceNode : SqlNode
-{
-    public readonly SQLiteParser.Table_or_subqueryContext Source;
-
-    public SourceNode(SQLiteParser.Table_or_subqueryContext source)
-    {
-        Source = source;
-    }
-}
-
 internal class SelectNode : SqlNode
 {
     private readonly List<SqlNode> _columns;
@@ -88,6 +78,16 @@ internal class SelectNode : SqlNode
     public SqlNode? Limit => _limit;
 
     public SqlNode? Offset => _offset;
+}
+
+public class SourceNode : SqlNode
+{
+    public readonly SQLiteParser.Table_or_subqueryContext Source;
+
+    public SourceNode(SQLiteParser.Table_or_subqueryContext source)
+    {
+        Source = source;
+    }
 }
 
 class TableNode : SqlNode

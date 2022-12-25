@@ -1,4 +1,4 @@
-﻿namespace Parser;
+﻿namespace ParallelDB;
 
 public class PartialResult
 {

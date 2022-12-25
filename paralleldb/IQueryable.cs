@@ -1,4 +1,4 @@
-﻿namespace Parser;
+﻿namespace ParallelDB;
 
 public interface IQueryable<T>
 {

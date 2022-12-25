@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Parser;
+namespace ParallelDB;
 
 public static class PrettyPrint
 {

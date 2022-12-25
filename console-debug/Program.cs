@@ -3,6 +3,7 @@
 using System.Linq.Expressions;
 using Antlr4.Runtime;
 using ConsoleTables;
+using ParallelDB;
 using SqlParser;
 using Parser;
 
@@ -14,11 +15,9 @@ using Parser;
 // ORDER BY AVG(questionnaire.service_assessment) ASC
 // LIMIT 2) as a";
 // var a = @"SELECT a.doc as 'Врач' FROM doctors as a WHERE a = b AND c = d OR c = f GROUP by c, d HAVING f = g ORDER BY a.name LIMIT 10 OFFSET 10;";
-//
-//
-//
-// // Stopwatch sw = new Stopwatch();
-// // sw.Start();
+
+// Stopwatch sw = new Stopwatch();
+// sw.Start();
 // ICharStream stream = CharStreams.fromString(a);
 // var lexer = new SQLiteLexer(stream);
 // lexer.RemoveErrorListeners();
@@ -36,10 +35,10 @@ using Parser;
 // //     visitor.Visit(child);
 // // }
 // graphvizVisitor.Visit(tree);
-// // Console.WriteLine(graphvizVisitor.GetGraph());
+// Console.WriteLine(graphvizVisitor.GetGraph());
 
 var result = new Table("doc");
-result.AddColumn("Врач", typeof(int), 2);
+result.AddColumn("Врач", typeof(int), false);
 result.AddColumn("Оценка", typeof(int));
 
 
@@ -62,7 +61,7 @@ row["Врач"] = 123;
 row["Оценка"] = 2;
 
 result.NewRow();
-Func<TableRow, dynamic> t = (el) => el["Врач"] + el["Оценка"];
+Func<TableRow, dynamic> t = el => el["Врач"] + el["Оценка"];
 
 
 // Console.WriteLine(PrettyPrint.ToString(result.Select(el =>

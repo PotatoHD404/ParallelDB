@@ -147,8 +147,12 @@ public class PartialResult
     private IEnumerable<TableRow> JoinIterator(Table newTable, PartialResult other,
         Func<TableRow, TableRow, int, bool> predicate)
     {
-        int index = 0;
+        if (_table is null || other._table is null)
+        {
+            throw new Exception("Cannot join on a result without a table");
+        }
 
+        int index = 0;
         foreach (var row1 in _source)
         {
             foreach (var row2 in other._source)
@@ -176,21 +180,14 @@ public class PartialResult
             }
         }
     }
-
     public PartialResult Union(PartialResult second)
     {
-        return Union(second, EqualityComparer<TableRow>.Default);
+        return new PartialResult(UnionIterator(second), _table);
     }
 
-    public PartialResult Union(PartialResult second, IEqualityComparer<TableRow> comparer)
+    private IEnumerable<TableRow> UnionIterator(PartialResult second)
     {
-        return new PartialResult(UnionIterator(second, comparer), _table);
-    }
-
-    private IEnumerable<TableRow> UnionIterator(PartialResult second,
-        IEqualityComparer<TableRow> comparer)
-    {
-        HashSet<TableRow> set = new(comparer);
+        HashSet<TableRow> set = new();
         foreach (TableRow element in _source)
         {
             if (set.Add(element))

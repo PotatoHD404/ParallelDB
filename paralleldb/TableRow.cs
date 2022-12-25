@@ -151,6 +151,24 @@ public class TableRow : IRow
         return _values.GetHashCode();
     }
 
+    public override bool Equals(object? obj)
+    {
+        // if parameter is null return false.
+        if (obj is null)
+        {
+            return false;
+        }
+
+        // if parameter cannot be cast to TableRow return false.
+        if (!(obj is TableRow row))
+        {
+            return false;
+        }
+
+        // return true if the fields match:
+        return _values.SequenceEqual(row._values);
+    }
+
     public override string ToString()
     {
         return string.Join(", ",

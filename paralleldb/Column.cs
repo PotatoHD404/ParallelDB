@@ -2,8 +2,6 @@
 
 public class Column
 {
-    public string Name { get; }
-
     public Type Type { get; }
 
     // public bool IsPrimaryKey { get; set; }
@@ -14,9 +12,8 @@ public class Column
 
     public bool HasDefault { get; }
 
-    public Column(string name, Type type, bool isNullable, bool hasDefault, dynamic? defaultValue)
+    public Column(Type type, bool isNullable, bool hasDefault, dynamic? defaultValue)
     {
-        Name = name;
         Type = type;
         IsNullable = isNullable;
         HasDefault = hasDefault;

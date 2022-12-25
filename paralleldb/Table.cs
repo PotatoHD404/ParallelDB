@@ -97,7 +97,13 @@ public class Table : PartialResult
 
     public string ColumnName(int index)
     {
-        return _columns[index].Name;
+        string name = _columnIndices.FirstOrDefault(pair => pair.Value == index).Key;
+        if (name is null)
+        {
+            throw new ArgumentOutOfRangeException(nameof(index));
+        }
+
+        return name;
     }
 
     public int ColumnIndex(string column)
@@ -232,7 +238,7 @@ public class Table : PartialResult
         _columnIndices.Add(name, ColumnsCount);
         if (_name is not null)
             _columnIndices.Add($"{_name}.{name}", ColumnsCount);
-        _columns.Add(new Column(name, type, nullable, hasDefault, @default));
+        _columns.Add(new Column(type, nullable, hasDefault, @default));
         return this;
     }
 

@@ -135,52 +135,82 @@ public class SelectResult : IEnumerable
     }
 }
 
-public class PartialResult<T>
-{
-    protected IEnumerable<T> _source;
+// public interface IQueryable<T>
+// {
+//     public IQueryable<T> Project(params string[] columns);
+//     public IQueryable<T> Where(Func<T, bool> predicate);
+//     public IQueryable<T> Where(Func<T, int, bool> predicate);
+//     
+//     public IQueryable<T> Skip(int count);
+//     
+//     public IQueryable<T> Take(int count);
+//     
+//     public IQueryable<T> Join(IQueryable<T> other, Func<T, T, bool> predicate);
+// }
 
-    public PartialResult(IEnumerable<T> source)
+public class PartialResult
+{
+
+    protected Table? _table;
+    private IEnumerable<TableRow> _source;
+
+    protected PartialResult(IEnumerable<TableRow> source)
     {
         _source = source;
     }
 
-    public PartialResult<T1> Select<T1>(Func<T, T1> selector)
+    private PartialResult(IEnumerable<TableRow> source, Table? table)
     {
-        return Select((row, _) => selector(row));
+        _source = source;
+        _table = table;
     }
 
-    public PartialResult<T1> Select<T1>(Func<T, int, T1> selector)
+    public PartialResult Project(params string[] columns)
     {
-        return new PartialResult<T1>(SelectIterator(_source, selector));
+        return new PartialResult(ProjectIterator(columns), _table);
     }
-
-    private static IEnumerable<T1> SelectIterator<T1>(IEnumerable<T> source, Func<T, int, T1> selector)
+    
+    private IEnumerable<TableRow> ProjectIterator(params string[] columns)
     {
-        int index = 0;
-        foreach (T item in source)
+        // create new table with only the columns specified
+        if (_table is null)
         {
-            yield return selector(item, index);
-            checked
+            throw new Exception("Cannot project on a result without a table");
+        }
+        var newTable = new Table(_table.Name);
+        foreach (var column in columns)
+        {
+            int index = _table.ColumnIndex(column);
+            
+            newTable.AddColumn(column, _table.ColumnType(index), _table.ColumnDefault(index));
+        }
+        
+        foreach (var row in _source)
+        {
+            var newRow = newTable.NewRow();
+            foreach (var column in columns)
             {
-                ++index;
+                newRow[column] = row[column];
             }
+    
+            yield return newRow;
         }
     }
 
-    public PartialResult<T> Where(Func<T, bool> predicate)
+    public PartialResult Where(Func<TableRow, bool> predicate)
     {
         return Where((row, _) => predicate(row));
     }
 
-    public PartialResult<T> Where(Func<T, int, bool> predicate)
+    public PartialResult Where(Func<TableRow, int, bool> predicate)
     {
-        return new PartialResult<T>(WhereIterator(_source, predicate));
+        return new PartialResult(WhereIterator(_source, predicate), _table);
     }
 
-    private static IEnumerable<T> WhereIterator(IEnumerable<T> source, Func<T, int, bool> predicate)
+    private static IEnumerable<TableRow> WhereIterator(IEnumerable<TableRow> source, Func<TableRow, int, bool> predicate)
     {
         int index = 0;
-        foreach (T element in source)
+        foreach (TableRow element in source)
         {
             if (predicate(element, index))
             {
@@ -194,83 +224,83 @@ public class PartialResult<T>
         }
     }
 
-    public PartialResult<T> OrderBy<T1>(Func<T, T1> keySelector)
+    // public PartialResult OrderBy(Func<TableRow, TableRow> keySelector)
+    // {
+    //     return OrderBy(keySelector, Comparer<TableRow>.Default);
+    // }
+    //
+    // public PartialResult OrderBy(Func<TableRow, TableRow> keySelector, IComparer<TableRow> comparer)
+    // {
+    //     return new PartialResult(OrderByIterator(_source, keySelector, comparer), _table);
+    // }
+    //
+    //
+    // private static IEnumerable<TableRow> OrderByIterator(IEnumerable<TableRow> source, Func<TableRow, TableRow> keySelector,
+    //     IComparer<TableRow> comparer)
+    // {
+    //     List<TableRow> list = new();
+    //     foreach (TableRow element in source)
+    //     {
+    //         list.Add(element);
+    //     }
+    //
+    //     int[] keys = new int[list.Count];
+    //     for (int i = 0; i < list.Count; i++)
+    //     {
+    //         keys[i] = i;
+    //     }
+    //
+    //     Array.Sort(keys, (i, j) => comparer.Compare(keySelector(list[i]), keySelector(list[j])));
+    //     foreach (int key in keys)
+    //     {
+    //         yield return list[key];
+    //     }
+    // }
+
+    // public PartialResult OrderByDescending(Func<TableRow, TableRow> keySelector)
+    // {
+    //     return OrderByDescending(keySelector, Comparer<TableRow>.Default);
+    // }
+    //
+    // private class ReverseComparer: IComparer<TableRow>
+    // {
+    //     private readonly IComparer<TableRow> _comparer;
+    //
+    //     public ReverseComparer(IComparer<TableRow> comparer)
+    //     {
+    //         _comparer = comparer;
+    //     }
+    //
+    //     public int Compare(TableRow? x, TableRow? y)
+    //     {
+    //         return _comparer.Compare(y, x);
+    //     }
+    // }
+    //
+    // public PartialResult OrderByDescending(Func<TableRow, TableRow> keySelector, IComparer<TableRow> comparer)
+    // {
+    //     return new PartialResult(OrderByIterator(_source, keySelector, new ReverseComparer(comparer)), _table);
+    // }
+    //
+    // public PartialResult OrderByAscending(Func<TableRow, TableRow> keySelector)
+    // {
+    //     return OrderBy(keySelector);
+    // }
+    //
+    // public PartialResult OrderByAscending(Func<TableRow, TableRow> keySelector, IComparer<TableRow> comparer)
+    // {
+    //     return OrderBy(keySelector, comparer);
+    // }
+
+    public PartialResult Skip(int count)
     {
-        return OrderBy(keySelector, Comparer<T1>.Default);
+        return new PartialResult(SkipIterator(_source, count), _table);
     }
 
-    public PartialResult<T> OrderBy<T1>(Func<T, T1> keySelector, IComparer<T1> comparer)
-    {
-        return new PartialResult<T>(OrderByIterator(_source, keySelector, comparer));
-    }
-
-
-    private static IEnumerable<T> OrderByIterator<T1>(IEnumerable<T> source, Func<T, T1> keySelector,
-        IComparer<T1> comparer)
-    {
-        List<T> list = new();
-        foreach (T element in source)
-        {
-            list.Add(element);
-        }
-
-        int[] keys = new int[list.Count];
-        for (int i = 0; i < list.Count; i++)
-        {
-            keys[i] = i;
-        }
-
-        Array.Sort(keys, (i, j) => comparer.Compare(keySelector(list[i]), keySelector(list[j])));
-        foreach (int key in keys)
-        {
-            yield return list[key];
-        }
-    }
-
-    public PartialResult<T> OrderByDescending<T1>(Func<T, T1> keySelector)
-    {
-        return OrderByDescending(keySelector, Comparer<T1>.Default);
-    }
-
-    private class ReverseComparer<T1> : IComparer<T1>
-    {
-        private readonly IComparer<T1> _comparer;
-
-        public ReverseComparer(IComparer<T1> comparer)
-        {
-            _comparer = comparer;
-        }
-
-        public int Compare(T1? x, T1? y)
-        {
-            return _comparer.Compare(y, x);
-        }
-    }
-
-    public PartialResult<T> OrderByDescending<T1>(Func<T, T1> keySelector, IComparer<T1> comparer)
-    {
-        return new PartialResult<T>(OrderByIterator(_source, keySelector, new ReverseComparer<T1>(comparer)));
-    }
-
-    public PartialResult<T> OrderByAscending<T1>(Func<T, T1> keySelector)
-    {
-        return OrderBy(keySelector);
-    }
-
-    public PartialResult<T> OrderByAscending<T1>(Func<T, T1> keySelector, IComparer<T1> comparer)
-    {
-        return OrderBy(keySelector, comparer);
-    }
-
-    public PartialResult<T> Skip(int count)
-    {
-        return new PartialResult<T>(SkipIterator(_source, count));
-    }
-
-    private static IEnumerable<T> SkipIterator(IEnumerable<T> source, int count)
+    private static IEnumerable<TableRow> SkipIterator(IEnumerable<TableRow> source, int count)
     {
         int i = 0;
-        foreach (T element in source)
+        foreach (TableRow element in source)
         {
             if (i >= count)
             {
@@ -281,15 +311,15 @@ public class PartialResult<T>
         }
     }
 
-    public PartialResult<T> Take(int count)
+    public PartialResult Take(int count)
     {
-        return new PartialResult<T>(TakeIterator(_source, count));
+        return new PartialResult(TakeIterator(_source, count), _table);
     }
 
-    private static IEnumerable<T> TakeIterator(IEnumerable<T> source, int count)
+    private static IEnumerable<TableRow> TakeIterator(IEnumerable<TableRow> source, int count)
     {
         int i = 0;
-        foreach (T element in source)
+        foreach (TableRow element in source)
         {
             if (i >= count)
             {
@@ -301,15 +331,15 @@ public class PartialResult<T>
         }
     }
 
-    public PartialResult<T> Distinct()
+    public PartialResult Distinct()
     {
-        return new PartialResult<T>(DistinctIterator(_source));
+        return new PartialResult(DistinctIterator(_source), _table);
     }
 
-    private static IEnumerable<T> DistinctIterator(IEnumerable<T> source)
+    private static IEnumerable<TableRow> DistinctIterator(IEnumerable<TableRow> source)
     {
-        HashSet<T> set = new();
-        foreach (T element in source)
+        HashSet<TableRow> set = new();
+        foreach (TableRow element in source)
         {
             if (set.Add(element))
             {
@@ -320,32 +350,32 @@ public class PartialResult<T>
 
     // Join
 
-    public PartialResult<T3> Join<T1, T2, T3>(IEnumerable<T1> inner, Func<T, T2> outerKeySelector,
-        Func<T1, T2> innerKeySelector, Func<T, T1, T3> resultSelector)
+    public PartialResult Join(IEnumerable<TableRow> inner, Func<TableRow, TableRow> outerKeySelector,
+        Func<TableRow, TableRow> innerKeySelector, Func<TableRow, TableRow, TableRow> resultSelector)
     {
-        return Join(inner, outerKeySelector, innerKeySelector, resultSelector, EqualityComparer<T2>.Default);
+        return Join(inner, outerKeySelector, innerKeySelector, resultSelector, EqualityComparer<TableRow>.Default);
     }
 
-    public PartialResult<T3> Join<T1, T2, T3>(IEnumerable<T1> inner, Func<T, T2> outerKeySelector,
-        Func<T1, T2> innerKeySelector, Func<T, T1, T3> resultSelector, IEqualityComparer<T2> comparer)
+    public PartialResult Join(IEnumerable<TableRow> inner, Func<TableRow, TableRow> outerKeySelector,
+        Func<TableRow, TableRow> innerKeySelector, Func<TableRow, TableRow, TableRow> resultSelector, IEqualityComparer<TableRow> comparer)
     {
-        return new PartialResult<T3>(JoinIterator(_source, inner, outerKeySelector, innerKeySelector, resultSelector,
-            comparer));
+        return new PartialResult(JoinIterator(_source, inner, outerKeySelector, innerKeySelector, resultSelector,
+            comparer), _table);
     }
 
-    private static IEnumerable<T3> JoinIterator<T1, T2, T3>(IEnumerable<T> outer, IEnumerable<T1> inner,
-        Func<T, T2> outerKeySelector, Func<T1, T2> innerKeySelector, Func<T, T1, T3> resultSelector,
-        IEqualityComparer<T2> comparer)
+    private static IEnumerable<TableRow> JoinIterator(IEnumerable<TableRow> outer, IEnumerable<TableRow> inner,
+        Func<TableRow, TableRow> outerKeySelector, Func<TableRow, TableRow> innerKeySelector, Func<TableRow, TableRow, TableRow> resultSelector,
+        IEqualityComparer<TableRow> comparer)
     {
-        Dictionary<T2, T1> dictionary = new();
-        foreach (T1 element in inner)
+        Dictionary<TableRow, TableRow> dictionary = new();
+        foreach (TableRow element in inner)
         {
             dictionary.Add(innerKeySelector(element), element);
         }
 
-        foreach (T element in outer)
+        foreach (TableRow element in outer)
         {
-            if (dictionary.TryGetValue(outerKeySelector(element), out T1? value))
+            if (dictionary.TryGetValue(outerKeySelector(element), out TableRow? value))
             {
                 yield return resultSelector(element, value);
             }
@@ -354,102 +384,105 @@ public class PartialResult<T>
 
     // LeftJoin
 
-    public PartialResult<T3> LeftJoin<T1, T2, T3>(IEnumerable<T1> inner, Func<T, T2> outerKeySelector,
-        Func<T1, T2> innerKeySelector, Func<T, T1?, T3> resultSelector)
+    public PartialResult LeftJoin(IEnumerable<TableRow> inner, Func<TableRow, TableRow> outerKeySelector,
+        Func<TableRow, TableRow> innerKeySelector, Func<TableRow, TableRow, TableRow> resultSelector)
     {
-        return LeftJoin(inner, outerKeySelector, innerKeySelector, resultSelector, EqualityComparer<T2>.Default);
+        return LeftJoin(inner, outerKeySelector, innerKeySelector, resultSelector, EqualityComparer<TableRow>.Default);
     }
 
-    public PartialResult<T3> LeftJoin<T1, T2, T3>(IEnumerable<T1> inner, Func<T, T2> outerKeySelector,
-        Func<T1, T2> innerKeySelector, Func<T, T1?, T3> resultSelector, IEqualityComparer<T2> comparer)
+    public PartialResult LeftJoin(IEnumerable<TableRow> inner, Func<TableRow, TableRow> outerKeySelector,
+        Func<TableRow, TableRow> innerKeySelector, Func<TableRow, TableRow, TableRow> resultSelector, IEqualityComparer<TableRow> comparer)
     {
-        return new PartialResult<T3>(LeftJoinIterator(_source, inner, outerKeySelector, innerKeySelector,
+        return new PartialResult(LeftJoinIterator(_source, inner, outerKeySelector, innerKeySelector,
             resultSelector,
-            comparer));
+            comparer), _table);
     }
 
-    private static IEnumerable<T3> LeftJoinIterator<T1, T2, T3>(IEnumerable<T> outer, IEnumerable<T1> inner,
-        Func<T, T2> outerKeySelector, Func<T1, T2> innerKeySelector, Func<T, T1?, T3> resultSelector,
-        IEqualityComparer<T2> comparer)
+    private static IEnumerable<TableRow> LeftJoinIterator(IEnumerable<TableRow> outer, IEnumerable<TableRow> inner,
+        Func<TableRow, TableRow> outerKeySelector, Func<TableRow, TableRow> innerKeySelector, Func<TableRow, TableRow, TableRow> resultSelector,
+        IEqualityComparer<TableRow> comparer)
     {
-        Dictionary<T2, T1> dictionary = new();
-        foreach (T1 element in inner)
+        Dictionary<TableRow, TableRow> dictionary = new();
+        foreach (TableRow element in inner)
         {
             dictionary.Add(innerKeySelector(element), element);
         }
 
-        foreach (T element in outer)
+        foreach (TableRow element in outer)
         {
-            dictionary.TryGetValue(outerKeySelector(element), out T1? value);
+            dictionary.TryGetValue(outerKeySelector(element), out TableRow? value);
             yield return resultSelector(element, value);
         }
     }
 
     // RightJoin
 
-    public PartialResult<T3> RightJoin<T1, T2, T3>(IEnumerable<T1> inner, Func<T, T2> outerKeySelector,
-        Func<T1, T2> innerKeySelector, Func<T?, T1, T3> resultSelector)
+    public PartialResult RightJoin(IEnumerable<TableRow> inner, Func<TableRow, TableRow> outerKeySelector,
+        Func<TableRow, TableRow> innerKeySelector, Func<TableRow, TableRow, TableRow> resultSelector)
     {
-        return RightJoin(inner, outerKeySelector, innerKeySelector, resultSelector, EqualityComparer<T2>.Default);
+        return RightJoin(inner, outerKeySelector, innerKeySelector, resultSelector, EqualityComparer<TableRow>.Default);
     }
 
-    public PartialResult<T3> RightJoin<T1, T2, T3>(IEnumerable<T1> inner, Func<T, T2> outerKeySelector,
-        Func<T1, T2> innerKeySelector, Func<T?, T1, T3> resultSelector, IEqualityComparer<T2> comparer)
+    public PartialResult RightJoin(IEnumerable<TableRow> inner, Func<TableRow, TableRow> outerKeySelector,
+        Func<TableRow, TableRow> innerKeySelector, Func<TableRow, TableRow, TableRow> resultSelector, IEqualityComparer<TableRow> comparer)
     {
-        return new PartialResult<T3>(RightJoinIterator(_source, inner, outerKeySelector, innerKeySelector,
+        return new PartialResult(RightJoinIterator(_source, inner, outerKeySelector, innerKeySelector,
             resultSelector,
-            comparer));
+            comparer), _table);
     }
 
-    private static IEnumerable<T3> RightJoinIterator<T1, T2, T3>(IEnumerable<T> outer, IEnumerable<T1> inner,
-        Func<T, T2> outerKeySelector, Func<T1, T2> innerKeySelector, Func<T?, T1, T3> resultSelector,
-        IEqualityComparer<T2> comparer)
+    private static IEnumerable<TableRow> RightJoinIterator(IEnumerable<TableRow> outer, IEnumerable<TableRow> inner,
+        Func<TableRow, TableRow> outerKeySelector, Func<TableRow, TableRow> innerKeySelector, Func<TableRow, TableRow, TableRow> resultSelector,
+        IEqualityComparer<TableRow> comparer)
     {
-        Dictionary<T2, T> dictionary = new();
-        foreach (T element in outer)
+        Dictionary<TableRow, TableRow> dictionary = new();
+        foreach (TableRow element in outer)
         {
             dictionary.Add(outerKeySelector(element), element);
         }
 
-        foreach (T1 element in inner)
+        foreach (TableRow element in inner)
         {
-            dictionary.TryGetValue(innerKeySelector(element), out T? value);
+            dictionary.TryGetValue(innerKeySelector(element), out TableRow? value);
             yield return resultSelector(value, element);
         }
     }
-
+    // TODO: groupby having joins
+    // EDIT: groupby is not possible because it would require a key selector that returns a collection of keys
+    // EDIT: having is not needed because it requires groupby to be implemented
+    
     // OuterJoin
 
-    // public PartialResult<T3> OuterJoin<T1, T2, T3>(IEnumerable<T1> inner, Func<T, T2> outerKeySelector,
-    //     Func<T1, T2> innerKeySelector, Func<T?, T1?, T3> resultSelector)
+    // public PartialResult OuterJoin(IEnumerable<TableRow> inner, Func<TableRow, TableRow> outerKeySelector,
+    //     Func<TableRow, TableRow> innerKeySelector, Func<T?, T1?, T3> resultSelector)
     // {
-    //     return OuterJoin(inner, outerKeySelector, innerKeySelector, resultSelector, EqualityComparer<T2>.Default);
+    //     return OuterJoin(inner, outerKeySelector, innerKeySelector, resultSelector, EqualityComparer<TableRow>.Default);
     // }
     //
-    // public PartialResult<T3> OuterJoin<T1, T2, T3>(IEnumerable<T1> inner, Func<T, T2> outerKeySelector,
-    //     Func<T1, T2> innerKeySelector, Func<T?, T1?, T3> resultSelector, IEqualityComparer<T2> comparer)
+    // public PartialResult OuterJoin(IEnumerable<TableRow> inner, Func<TableRow, TableRow> outerKeySelector,
+    //     Func<TableRow, TableRow> innerKeySelector, Func<T?, T1?, T3> resultSelector, IEqualityComparer<TableRow> comparer)
     // {
-    //     return new PartialResult<T3>(OuterJoinIterator(_source, inner, outerKeySelector, innerKeySelector, resultSelector,
+    //     return new PartialResult(OuterJoinIterator(_source, inner, outerKeySelector, innerKeySelector, resultSelector,
     //         comparer));
     // }
     //
-    // private static IEnumerable<T3> OuterJoinIterator<T1, T2, T3>(IEnumerable<T> outer, IEnumerable<T1> inner,
-    //     Func<T, T2> outerKeySelector, Func<T1, T2> innerKeySelector, Func<T?, T1?, T3> resultSelector,
-    //     IEqualityComparer<T2> comparer)
+    // private static IEnumerable<TableRow> OuterJoinIterator(IEnumerable<TableRow> outer, IEnumerable<TableRow> inner,
+    //     Func<TableRow, TableRow> outerKeySelector, Func<TableRow, TableRow> innerKeySelector, Func<T?, T1?, T3> resultSelector,
+    //     IEqualityComparer<TableRow> comparer)
     // {
     //     Dictionary<T2, T> dictionary1 = new();
-    //     foreach (T element in outer)
+    //     foreach (TableRow element in outer)
     //     {
     //         dictionary1.Add(outerKeySelector(element), element);
     //     }
     //
     //     Dictionary<T2, T1> dictionary2 = new();
-    //     foreach (T1 element in inner)
+    //     foreach (TableRow1 element in inner)
     //     {
     //         dictionary2.Add(innerKeySelector(element), element);
     //     }
     //
-    //     foreach (T element in outer)
+    //     foreach (TableRow element in outer)
     //     {
     //         T2 key = outerKeySelector(element);
     //         dictionary2.TryGetValue(key, out T1? value);
@@ -457,12 +490,12 @@ public class PartialResult<T>
     //         dictionary2.Remove(key);
     //     }
     //
-    //     foreach (T1 element in dictionary2.Values)
+    //     foreach (TableRow1 element in dictionary2.Values)
     //     {
     //         yield return resultSelector(null, element);
     //     }
     //
-    //     foreach (T element in dictionary1.Values)
+    //     foreach (TableRow element in dictionary1.Values)
     //     {
     //         yield return resultSelector(element, null);
     //     }
@@ -470,74 +503,74 @@ public class PartialResult<T>
 
     // GroupBy
 
-    public PartialResult<IGrouping<T1, T>> GroupBy<T1>(Func<T, T1> keySelector)
-    {
-        return GroupBy(keySelector, EqualityComparer<T1>.Default);
-    }
-
-    public PartialResult<IGrouping<T1, T>> GroupBy<T1>(Func<T, T1> keySelector, IEqualityComparer<T1> comparer)
-    {
-        return new PartialResult<IGrouping<T1, T>>(GroupByIterator(_source, keySelector, comparer));
-    }
-
-    private static IEnumerable<IGrouping<T1, T>> GroupByIterator<T1>(IEnumerable<T> source, Func<T, T1> keySelector,
-        IEqualityComparer<T1> comparer)
-    {
-        Dictionary<T1, List<T>> dictionary = new(comparer);
-        foreach (T element in source)
-        {
-            T1 key = keySelector(element);
-            if (!dictionary.TryGetValue(key, out List<T>? list))
-            {
-                list = new();
-                dictionary.Add(key, list);
-            }
-
-            list.Add(element);
-        }
-
-        foreach (KeyValuePair<T1, List<T>> pair in dictionary)
-        {
-            yield return new Grouping<T1, T>(pair.Key, pair.Value);
-        }
-    }
-
-    private class Grouping<T1, T2> : IGrouping<T1, T2>
-    {
-        private readonly T1 _key;
-        private readonly List<T2> _list;
-
-        public Grouping(T1 key, List<T2> list)
-        {
-            _key = key;
-            _list = list;
-        }
-
-        public T1 Key => _key;
-
-        public IEnumerator<T2> GetEnumerator()
-        {
-            return _list.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-    }
+    // public PartialResult GroupBy(Func<TableRow, TableRow> keySelector)
+    // {
+    //     return GroupBy(keySelector, EqualityComparer<TableRow>.Default);
+    // }
+    //
+    // public PartialResult GroupBy(Func<TableRow, TableRow> keySelector, IEqualityComparer<TableRow> comparer)
+    // {
+    //     return new PartialResult(GroupByIterator(_source, keySelector, comparer));
+    // }
+    //
+    // private static IEnumerable<IGrouping<TableRow, TableRow>> GroupByIterator(IEnumerable<TableRow> source, Func<TableRow, TableRow> keySelector,
+    //     IEqualityComparer<TableRow> comparer)
+    // {
+    //     Dictionary<TableRow, List<TableRow>> dictionary = new(comparer);
+    //     foreach (TableRow element in source)
+    //     {
+    //         TableRow key = keySelector(element);
+    //         if (!dictionary.TryGetValue(key, out List<TableRow>? list))
+    //         {
+    //             list = new();
+    //             dictionary.Add(key, list);
+    //         }
+    //
+    //         list.Add(element);
+    //     }
+    //
+    //     foreach (KeyValuePair<TableRow, List<TableRow>> pair in dictionary)
+    //     {
+    //         yield return new Grouping<TableRow, TableRow>(pair.Key, pair.Value);
+    //     }
+    // }
+    //
+    // private class Grouping<T1, T2> : IGrouping<T1, T2>
+    // {
+    //     private readonly T1 _key;
+    //     private readonly List<T2> _list;
+    //
+    //     public Grouping(T1 key, List<T2> list)
+    //     {
+    //         _key = key;
+    //         _list = list;
+    //     }
+    //
+    //     public T1 Key => _key;
+    //
+    //     public IEnumerator<T2> GetEnumerator()
+    //     {
+    //         return _list.GetEnumerator();
+    //     }
+    //
+    //     IEnumerator IEnumerable.GetEnumerator()
+    //     {
+    //         return GetEnumerator();
+    //     }
+    // }
 
     // Having
 
-    // public PartialResult<T> Having(Func<T, bool> predicate)
+    // public PartialResult Having(Func<TableRow, bool> predicate)
     // {
-    //     return new PartialResult<T>(HavingIterator(_source, predicate));
+    //     return new PartialResult(HavingIterator(_source, predicate));
     // }
     //
     // private static IEnumerable<T2> HavingIterator<T1, T2>(IEnumerable<IGrouping<T1, T2>> source, Func<T2, bool> predicate)
     // {
     //     foreach (IGrouping<T1, T2> grouping in source)
     //     {
-    //         foreach (T2 element in grouping)
+    //         foreach (TableRow2 element in grouping)
     //         {
     //             if (predicate(element))
     //             {
@@ -547,21 +580,21 @@ public class PartialResult<T>
     //     }
     // }
 
-    public PartialResult<T> Union(IEnumerable<T> second)
+    public PartialResult Union(IEnumerable<TableRow> second)
     {
-        return Union(second, EqualityComparer<T>.Default);
+        return Union(second, EqualityComparer<TableRow>.Default);
     }
 
-    public PartialResult<T> Union(IEnumerable<T> second, IEqualityComparer<T> comparer)
+    public PartialResult Union(IEnumerable<TableRow> second, IEqualityComparer<TableRow> comparer)
     {
-        return new PartialResult<T>(UnionIterator(_source, second, comparer));
+        return new PartialResult(UnionIterator(_source, second, comparer), _table);
     }
 
-    private static IEnumerable<T> UnionIterator(IEnumerable<T> first, IEnumerable<T> second,
-        IEqualityComparer<T> comparer)
+    private static IEnumerable<TableRow> UnionIterator(IEnumerable<TableRow> first, IEnumerable<TableRow> second,
+        IEqualityComparer<TableRow> comparer)
     {
-        HashSet<T> set = new(comparer);
-        foreach (T element in first)
+        HashSet<TableRow> set = new(comparer);
+        foreach (TableRow element in first)
         {
             if (set.Add(element))
             {
@@ -569,7 +602,7 @@ public class PartialResult<T>
             }
         }
 
-        foreach (T element in second)
+        foreach (TableRow element in second)
         {
             if (set.Add(element))
             {
@@ -578,33 +611,33 @@ public class PartialResult<T>
         }
     }
 
-    public PartialResult<T> UnionAll(IEnumerable<T> second)
+    public PartialResult UnionAll(IEnumerable<TableRow> second)
     {
-        return new PartialResult<T>(UnionAllIterator(_source, second));
+        return new PartialResult(UnionAllIterator(_source, second), _table);
     }
 
-    private static IEnumerable<T> UnionAllIterator(IEnumerable<T> first, IEnumerable<T> second)
+    private static IEnumerable<TableRow> UnionAllIterator(IEnumerable<TableRow> first, IEnumerable<TableRow> second)
     {
-        foreach (T element in first)
+        foreach (TableRow element in first)
         {
             yield return element;
         }
 
-        foreach (T element in second)
+        foreach (TableRow element in second)
         {
             yield return element;
         }
     }
 
-    public PartialResult<T> Intersect(IEnumerable<T> second)
+    public PartialResult Intersect(IEnumerable<TableRow> second)
     {
-        return new PartialResult<T>(IntersectIterator(_source, second));
+        return new PartialResult(IntersectIterator(_source, second), _table);
     }
 
-    private static IEnumerable<T> IntersectIterator(IEnumerable<T> first, IEnumerable<T> second)
+    private static IEnumerable<TableRow> IntersectIterator(IEnumerable<TableRow> first, IEnumerable<TableRow> second)
     {
-        HashSet<T> set = new(second);
-        foreach (T element in first)
+        HashSet<TableRow> set = new(second);
+        foreach (TableRow element in first)
         {
             if (set.Remove(element))
             {
@@ -613,15 +646,15 @@ public class PartialResult<T>
         }
     }
 
-    public PartialResult<T> Except(IEnumerable<T> second)
+    public PartialResult Except(IEnumerable<TableRow> second)
     {
-        return new PartialResult<T>(ExceptIterator(_source, second));
+        return new PartialResult(ExceptIterator(_source, second), _table);
     }
 
-    private static IEnumerable<T> ExceptIterator(IEnumerable<T> first, IEnumerable<T> second)
+    private static IEnumerable<TableRow> ExceptIterator(IEnumerable<TableRow> first, IEnumerable<TableRow> second)
     {
-        HashSet<T> set = new(second);
-        foreach (T element in first)
+        HashSet<TableRow> set = new(second);
+        foreach (TableRow element in first)
         {
             if (!set.Contains(element))
             {
@@ -630,10 +663,10 @@ public class PartialResult<T>
         }
     }
 
-    public List<T> ToList()
+    public List<TableRow> ToList()
     {
-        List<T> list = new();
-        foreach (T element in _source)
+        List<TableRow> list = new();
+        foreach (TableRow element in _source)
         {
             list.Add(element);
         }
@@ -849,21 +882,45 @@ public static class PrettyPrint
         }
     }
 }
-public class Table : PartialResult<TableRow>
+public class Table: PartialResult
 {
-    private List<TableRow> _rows = new();
-    private Dictionary<string, int> _columnIndices = new();
-    private List<Type> _columnTypes = new();
-    private List<object?> _columnDefaults = new();
+    private readonly List<TableRow> _rows = new();
+    private readonly Dictionary<string, int> _columnIndices = new();
+    private readonly List<Type> _columnTypes = new();
+    private readonly List<dynamic> _columnDefaults = new();
     private string? _name;
 
     public Table(string? name = null) : base(Enumerable.Empty<TableRow>())
     {
         _name = name;
-        _source = _rows;
+        _table = this;
+    }
+    
+    // Table add copy constructor
+    public Table(Table table) : base(Enumerable.Empty<TableRow>())
+    {
+        _name = table._name;
+        _columnIndices = new Dictionary<string, int>(table._columnIndices);
+        _columnTypes = new List<Type>(table._columnTypes);
+        _columnDefaults = new List<dynamic>(table._columnDefaults);
+        _rows = new List<TableRow>();
+        _table = this;
     }
 
-    public string Name => _name;
+    public string? Name => _name;
+    // add rename method
+    public void Rename(string name)
+    {
+        // check if there is no columns and no rows
+        if(_columnIndices.Count == 0 && _rows.Count == 0) {
+            _name = name;
+        }
+        else {
+            throw new InvalidOperationException("Cannot rename table with columns or rows");
+        }
+        
+        _name = name;
+    }
 
     public bool IsComputed => _name == null;
 
@@ -877,19 +934,33 @@ public class Table : PartialResult<TableRow>
     }
 
     public int ColumnIndex(string pairKey)
-    {
+    { 
+        // check if column exists
+        if(!_columnIndices.ContainsKey(pairKey)) {
+            throw new ArgumentException($"Column {pairKey} does not exist in table {_name}");
+        }
         return _columnIndices[pairKey];
     }
+    
+    
 
     public Type ColumnType(int index)
     {
+        if (index < 0 || index >= _columnTypes.Count)
+        {
+            throw new IndexOutOfRangeException();
+        }
         return _columnTypes[index];
     }
-
-// public Table Select(params string[] columns)
-//     {
-//         return base.Select(row => new TableRow(this, columns.Select(column => row[column])));
-//     }
+    
+    public dynamic ColumnDefault(int index)
+    {
+        if (index < 0 || index >= _columnTypes.Count)
+        {
+            throw new IndexOutOfRangeException();
+        }
+        return _columnDefaults[index];
+    }
     public Table AddColumn(string name, Type type)
     {
         return AddColumn(name, type, Activator.CreateInstance(type));
@@ -987,23 +1058,6 @@ public class Table : PartialResult<TableRow>
     {
         var sb = new StringBuilder();
 
-        // if (ColumnCount > 0)
-        // {
-        //     sb.Append(" {");
-        //     for (int i = 0; i < ColumnCount; i++)
-        //     {
-        //         sb.Append($"{ColumnName(i)}: {ColumnType(i)}");
-        //         if (i < ColumnCount - 1)
-        //         {
-        //             sb.Append(", ");
-        //         }
-        //     }
-        //
-        //     sb.Append("}");
-        // }
-
-        // sb.AppendLine();
-        
         var table = new ConsoleTable(Enumerable.Range(0, ColumnCount).Select(ColumnName).ToArray());
         foreach (TableRow row in _rows)
         {

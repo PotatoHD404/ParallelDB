@@ -37,7 +37,7 @@ using Parser;
 // // }
 // graphvizVisitor.Visit(tree);
 // // Console.WriteLine(graphvizVisitor.GetGraph());
-//
+
 var result = new Table("doc");
 result.AddColumn("Врач", typeof(int), 2);
 result.AddColumn("Оценка", typeof(int));
@@ -61,9 +61,14 @@ row["Врач"] = 123;
 //
 row["Оценка"] = 2;
 
-row = result.NewRow();
-Console.WriteLine(result);
+result.NewRow();
+Func<TableRow, dynamic> t = (el) => el["Врач"] + el["Оценка"];
 
+
+// Console.WriteLine(PrettyPrint.ToString(result.Select(el =>
+// {
+//     return new TableRow(el["Врач"] + el["Оценка"], el["Оценка"]);
+// }).Where(el => el["Врач"] > 0).ToList()));
 // row = result.NewRow();
 // var list = result.ToList();
 //

@@ -504,11 +504,11 @@ public class OperationsTest
         table1.AddColumn("b", typeof(string));
         table1.AddColumn("c", typeof(bool));
 
-        table1.AddRow(2, "2", true)
+        table1.AddRow(1, "2", true)
             .AddRow(2, "3", false)
             .AddRow(3, "4", true)
             .AddRow(4, "5", false)
-            .AddRow(2, "6", true)
+            .AddRow(5, "6", true)
             .AddRow(6, "7", false);
 
         var table2 = new Table("table2");
@@ -524,9 +524,74 @@ public class OperationsTest
         Assert.AreEqual(3, table3.RowsCount);
         Assert.AreEqual(6, table3.ColumnsCount);
         Assert.AreEqual("table1.a", table3.ColumnName(0));
-        Assert.AreEqual("table2.a", table3.ColumnName(4));
+        Assert.AreEqual("table1.b", table3.ColumnName(1));
+        Assert.AreEqual("table1.c", table3.ColumnName(2));
+        Assert.AreEqual("table2.a", table3.ColumnName(3));
+        Assert.AreEqual("table2.b", table3.ColumnName(4));
+        Assert.AreEqual("table2.c", table3.ColumnName(5));
+        Assert.AreEqual(5, table3.ColumnIndex("table2.c"));
+        Assert.AreEqual(2, table3.ColumnIndex("table1.c"));
     }
 
+    
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    public void JoinTest2()
+    {
+        var table1 = new Table("table1");
+        table1.AddColumn("a", typeof(int));
+        table1.AddColumn("b", typeof(string));
+        table1.AddColumn("c", typeof(bool));
+
+        table1.AddRow(1, "2", true)
+            .AddRow(2, "3", false)
+            .AddRow(3, "4", true)
+            .AddRow(4, "5", false)
+            .AddRow(5, "6", true)
+            .AddRow(6, "7", false);
+
+        var table2 = new Table("table2");
+        table2.AddColumn("a", typeof(bool));
+        table2.AddColumn("b", typeof(int));
+        table2.AddColumn("c", typeof(string));
+
+        table2.AddRow(true, 1, "2")
+            .AddRow(false, 2, "3")
+            .AddRow(true, 3, "4");
+
+        var table3 = table1.Join(table2, (el1, el2) => el1["a"] == el2["b"]).ToTable();
+        Assert.AreEqual(-1, table3.ColumnIndex("c"));
+    }
+    
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    public void JoinTest3()
+    {
+        var table1 = new Table("table1");
+        table1.AddColumn("a", typeof(int));
+        table1.AddColumn("b", typeof(string));
+        table1.AddColumn("c", typeof(bool));
+
+        table1.AddRow(1, "2", true)
+            .AddRow(2, "3", false)
+            .AddRow(3, "4", true)
+            .AddRow(4, "5", false)
+            .AddRow(5, "6", true)
+            .AddRow(6, "7", false);
+
+        var table2 = new Table("table2");
+        table2.AddColumn("a", typeof(bool));
+        table2.AddColumn("b", typeof(int));
+        table2.AddColumn("c", typeof(string));
+
+        table2.AddRow(true, 1, "2")
+            .AddRow(false, 2, "3")
+            .AddRow(true, 3, "4");
+
+        var table3 = table1.Join(table2, (el1, el2) => el1["a"] == el2["b"]).ToTable();
+        Assert.AreEqual(-1, table3.ColumnIndex("d"));
+    }
+    
     [TestMethod]
     public void WhereTest1()
     {

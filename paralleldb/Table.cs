@@ -60,8 +60,12 @@ public class Table : PartialResult
         {
             if (!_columnIndices.ContainsKey(pair.Key))
             {
-                _columnIndices.Add(pair.Key, _columnIndices.Count);
-                _columns.Add(table2._columns[pair.Value]);
+                _columnIndices.Add(pair.Key, _columns.Count);
+
+                if (pair.Key.Contains("."))
+                {
+                    _columns.Add(table2._columns[pair.Value]);
+                }
             }
             else
             {
@@ -108,15 +112,13 @@ public class Table : PartialResult
     public int ColumnIndex(string column)
     {
         // check if column exists
-        if (!_columnIndices.ContainsKey(column) &&
-            (column.Contains(".") || !_columnIndices.ContainsKey($"{_name}.{column}")))
+        if (!_columnIndices.ContainsKey(column))
         {
             throw new ArgumentException($"Column {column} does not exist in table {_name}");
         }
 
-        int index = !column.Contains(".") && _columnIndices.ContainsKey($"{_name}.{column}")
-            ? _columnIndices[$"{_name}.{column}"]
-            : _columnIndices[column];
+        int index = _columnIndices[column];
+
         if (index == -1)
         {
             throw new ArgumentException($"Column {column} is ambiguous");
@@ -324,5 +326,11 @@ public class Table : PartialResult
     public bool ColumnNullable(int index)
     {
         return _columns[index].IsNullable;
+    }
+
+    public List<TableRow> ToRows()
+    {
+        // Create a deep copy of the rows
+        return _rows.Select(row => new TableRow(row)).ToList();
     }
 }

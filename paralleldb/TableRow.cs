@@ -26,6 +26,19 @@ public class TableRow : IRow
             }
         }
     }
+    
+    internal TableRow(TableRow row)
+    {
+        // create deep copy
+        _table = row._table;
+        _values = new object?[row._values.Length];
+        _isSet = new bool[row._isSet.Length];
+        for (int i = 0; i < _values.Length; i++)
+        {
+            _values[i] = row._values[i];
+            _isSet[i] = row._isSet[i];
+        }
+    }
 
     internal TableRow(Table table, Dictionary<string, object?> dictionary)
     {

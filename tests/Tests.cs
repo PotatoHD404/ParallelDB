@@ -415,6 +415,65 @@ public class TableTest
 public class OperationsTest
 {
     [TestMethod]
+    public void HashTest1()
+    {
+        var table = new Table();
+        table.AddColumn("a", typeof(int));
+        table.AddColumn("b", typeof(string));
+        table.AddColumn("c", typeof(bool));
+
+        var row1 = table.NewRow();
+        row1["a"] = 1;
+        row1["b"] = "2";
+        row1["c"] = true;
+        var row2 = table.NewRow();
+        row2["a"] = 1;
+        row2["b"] = "2";
+        row2["c"] = true;
+        Assert.AreNotSame(row1, row2);
+        Assert.AreEqual(row1.GetHashCode(), row2.GetHashCode());
+    }
+
+    [TestMethod]
+    public void HashSetTest1()
+    {
+        var table = new Table();
+        table.AddColumn("a", typeof(int));
+        table.AddColumn("b", typeof(string));
+        table.AddColumn("c", typeof(bool));
+
+        var row = table.NewRow();
+
+        var set = new HashSet<TableRow>();
+        set.Add(row);
+        row = table.NewRow();
+        set.Add(row);
+        Assert.AreEqual(1 , set.Count);
+    }
+    
+    [TestMethod]
+    public void HashSetTest2()
+    {
+        var table = new Table();
+        table.AddColumn("a", typeof(int));
+        table.AddColumn("b", typeof(string));
+        table.AddColumn("c", typeof(bool));
+
+        var row = table.NewRow();
+        row["a"] = 1;
+        row["b"] = "2";
+        row["c"] = true;
+        var set = new HashSet<TableRow>();
+        set.Add(row);
+        row = table.NewRow();
+        row["a"] = 1;
+        row["b"] = "2";
+        row["c"] = true;
+        set.Add(row);
+        Assert.AreEqual(1 , set.Count);
+    }
+
+    [TestMethod]
     public void ProjectTest1()
     {
         var table = new Table();

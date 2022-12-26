@@ -6,7 +6,7 @@ public class TableRow : IRow
 {
     private Table _table;
     private readonly object?[] _values;
-    private bool[] _isSet;
+    private readonly bool[] _isSet;
 
     internal TableRow(Table table, object?[] values, bool isSet = false)
     {
@@ -148,7 +148,17 @@ public class TableRow : IRow
 
     public override int GetHashCode()
     {
-        return _values.GetHashCode();
+        // get same hash code for rows with same values
+        int hash = 0;
+        for (int i = 0; i < _values.Length; i++)
+        {
+            if (_isSet[i])
+            {
+                hash ^= _values[i] is not null ? _values[i]!.GetHashCode() : 0;
+            }
+        }
+
+        return hash;
     }
 
     public override bool Equals(object? obj)

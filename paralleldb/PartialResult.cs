@@ -182,7 +182,30 @@ public class PartialResult
     }
     public PartialResult Union(PartialResult second)
     {
+        CheckColumnTypes(second);
         return new PartialResult(UnionIterator(second), _table);
+    }
+
+    private void CheckColumnTypes(PartialResult second)
+    {
+        // check if table types are the same
+        if (_table is null || second._table is null)
+        {
+            throw new Exception("Cannot union on a result without a table");
+        }
+
+        if (_table.ColumnsCount != second._table.ColumnsCount)
+        {
+            throw new Exception("Cannot union tables with different column count");
+        }
+
+        for (int i = 0; i < _table.ColumnsCount; i++)
+        {
+            if (_table.ColumnType(i) != second._table.ColumnType(i))
+            {
+                throw new Exception("Cannot union tables with different column types");
+            }
+        }
     }
 
     private IEnumerable<TableRow> UnionIterator(PartialResult second)
@@ -207,6 +230,7 @@ public class PartialResult
 
     public PartialResult UnionAll(PartialResult second)
     {
+        CheckColumnTypes(second);
         return new PartialResult(UnionAllIterator(second), _table);
     }
 
@@ -225,6 +249,7 @@ public class PartialResult
 
     public PartialResult Intersect(PartialResult second)
     {
+        CheckColumnTypes(second);
         return new PartialResult(IntersectIterator(second), _table);
     }
 
@@ -242,6 +267,7 @@ public class PartialResult
 
     public PartialResult Except(PartialResult second)
     {
+        CheckColumnTypes(second);
         return new PartialResult(ExceptIterator(second), _table);
     }
 

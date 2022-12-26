@@ -409,7 +409,11 @@ public class TableTest
         table = new Table(table);
         Assert.IsTrue(table.ColumnsCount == 3);
     }
+}
 
+[TestClass]
+public class OperationsTest
+{
     [TestMethod]
     public void ProjectTest1()
     {
@@ -463,7 +467,7 @@ public class TableTest
         Assert.AreEqual("table1.a", table3.ColumnName(0));
         Assert.AreEqual("table2.a", table3.ColumnName(4));
     }
-    
+
     [TestMethod]
     public void WhereTest1()
     {
@@ -486,7 +490,7 @@ public class TableTest
         Assert.IsTrue(newTable.ColumnName(1) == "b");
         Assert.IsTrue(newTable.ColumnName(2) == "c");
     }
-    
+
     [TestMethod]
     public void SkipTest1()
     {
@@ -509,7 +513,7 @@ public class TableTest
         Assert.IsTrue(newTable.ColumnName(1) == "b");
         Assert.IsTrue(newTable.ColumnName(2) == "c");
     }
-    
+
     [TestMethod]
     public void TakeTest1()
     {
@@ -532,7 +536,7 @@ public class TableTest
         Assert.IsTrue(newTable.ColumnName(1) == "b");
         Assert.IsTrue(newTable.ColumnName(2) == "c");
     }
-    
+
     [TestMethod]
     public void DistinctTest1()
     {
@@ -555,8 +559,9 @@ public class TableTest
         Assert.IsTrue(newTable.ColumnName(1) == "b");
         Assert.IsTrue(newTable.ColumnName(2) == "c");
     }
-    
+
     [TestMethod] // TODO: check how this should work
+    [ExpectedException(typeof(Exception))]
     public void UnionTest1()
     {
         var table1 = new Table("table1");
@@ -587,7 +592,7 @@ public class TableTest
         Assert.IsTrue(table3.ColumnName(1) == "b");
         Assert.IsTrue(table3.ColumnName(2) == "c");
     }
-    
+
     [TestMethod]
     public void UnionTest2()
     {
@@ -622,8 +627,9 @@ public class TableTest
         Assert.IsTrue(table3.ColumnName(1) == "b");
         Assert.IsTrue(table3.ColumnName(2) == "c");
     }
-    
+
     [TestMethod]
+    [ExpectedException(typeof(Exception))]
     public void UnionAllTest1()
     {
         var table1 = new Table("table1");
@@ -654,7 +660,7 @@ public class TableTest
         Assert.IsTrue(table3.ColumnName(1) == "b");
         Assert.IsTrue(table3.ColumnName(2) == "c");
     }
-    
+
     [TestMethod]
     public void UnionAllTest2()
     {
@@ -689,7 +695,7 @@ public class TableTest
         Assert.IsTrue(table3.ColumnName(1) == "b");
         Assert.IsTrue(table3.ColumnName(2) == "c");
     }
-    
+
     [TestMethod]
     public void IntersectTest1()
     {
@@ -724,7 +730,7 @@ public class TableTest
         Assert.IsTrue(table3.ColumnName(1) == "b");
         Assert.IsTrue(table3.ColumnName(2) == "c");
     }
-    
+
     [TestMethod]
     public void ExceptTest1()
     {

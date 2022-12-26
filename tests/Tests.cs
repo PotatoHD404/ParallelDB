@@ -504,11 +504,11 @@ public class OperationsTest
         table1.AddColumn("b", typeof(string));
         table1.AddColumn("c", typeof(bool));
 
-        table1.AddRow(1, "2", true)
+        table1.AddRow(2, "2", true)
             .AddRow(2, "3", false)
             .AddRow(3, "4", true)
             .AddRow(4, "5", false)
-            .AddRow(5, "6", true)
+            .AddRow(2, "6", true)
             .AddRow(6, "7", false);
 
         var table2 = new Table("table2");
@@ -521,7 +521,7 @@ public class OperationsTest
             .AddRow(true, 3, "4");
 
         var table3 = table1.Join(table2, (el1, el2) => el1["a"] == el2["b"]).ToTable();
-        Assert.IsTrue(table3.RowsCount == 3);
+        Assert.AreEqual(3, table3.RowsCount);
         Assert.AreEqual(6, table3.ColumnsCount);
         Assert.AreEqual("table1.a", table3.ColumnName(0));
         Assert.AreEqual("table2.a", table3.ColumnName(4));

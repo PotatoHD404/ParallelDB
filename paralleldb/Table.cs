@@ -61,7 +61,6 @@ public class Table : PartialResult
             if (!_columnIndices.ContainsKey(pair.Key))
             {
                 _columnIndices.Add(pair.Key, _columnIndices.Count);
-                // TODO: add column
                 _columns.Add(table2._columns[pair.Value]);
             }
             else

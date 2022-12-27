@@ -1,14 +1,13 @@
 <template>
   <div :style="image" class="image" v-bind:class="{theme : isDark}">
-    <my-warning v-if="error !== ''">{{error}} </my-warning>
+    <my-warning v-show="error !== ''"> {{error}} </my-warning>
     <my-checkbox @change="changeTheme" v-bind:class="{negative : isDark === false}"/>
     <img alt="PD logo" class="logo" src="~@/assets/db.svg">
 <!--    <input-list :queryList="queryList" v-bind:class="{negative : isDark === false}"/>-->
     <input-form style="position: absolute; left: 40px; top: 18vh" @create="createQuery"/>
-    <my-box style="position: absolute; right: 40px; top: 18vh" :graph="graph" :isDark="isDark"/>
-    <my-table style="position: absolute; left: 40px; top: 49vh" :headers="headers" :rows="rows"/>
+    <my-box style="position: absolute; right: 40px; top: 18vh"  @changeTree="changeTree" :graph="graph" :isDark="isDark" :treeType="treeType"/>
+    <my-table style="position: absolute; left: 40px; top: 49vh" :headers="response.columns" :rows="response.rows"/>
     <h4 class="sign">by Kornachyk M.V & Lukichev A.N</h4>
-    <!--    <p v-html="graph"/>-->
   </div>
 </template>
 
@@ -47,52 +46,74 @@ export default defineComponent({
         {text: 'SELECT * FROM users WHERE id = 1'}] as Query[],
       isDark: localStorage.getItem("theme") === "false",
       graph: '',
-      headers: [] as string[],
-      rows: [] as any[][],
+      response: {
+        columns: [],
+        rows: [],
+        syntaxTree: '',
+        queryTree: '',
+        plannerTree: ''
+      } as Response,
+      treeType: 0,
       error: '',
     }
   },
   methods: {
     async createQuery(query: Query) {
       if (query.text.trim()) {
-        // this.queryList.push(query) <--- this can be used to store queries
         let myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-
         let raw = JSON.stringify({
           "request": query.text
         });
-
         let requestOptions = {
           method: 'POST',
           headers: myHeaders,
           body: raw,
         };
-
         let result = await fetch("http://localhost:6386/", requestOptions);
-
         if (result.status != 200) {
           this.showError('Something went wrong!')
         }
-
         let data:Response = await result.json();
         let dot = data.syntaxTree;
-        this.headers = data.columns;
-        this.rows = data.rows;
+        this.response.columns = data.columns;
+        this.response.rows = data.rows;
+        this.response.syntaxTree = data.syntaxTree;
+        this.response.queryTree = data.queryTree;
+        this.response.plannerTree = data.plannerTree;
+        this.treeType = 1;
         this.renderGraph(dot);
       } else {
         this.showError('Empty query!')
       }
     },
+
     changeTheme() {
       localStorage.setItem("theme", this.isDark.toString());
       this.isDark = !this.isDark;
     },
+
+    changeTree(num: number) {
+      this.treeType = num;
+      switch (num) {
+        case 1:
+          this.renderGraph(this.response.syntaxTree);
+          break;
+        case 2:
+          this.renderGraph(this.response.queryTree);
+          break;
+        case 3:
+          this.renderGraph(this.response.plannerTree);
+          break;
+      }
+    },
+
     renderGraph(dot: string) {
       let viz = new Viz({Module, render});
       viz.renderString(dot)
           .then(element => {
-            element = element.replace('<svg ', '<svg id="graph" class="graphs" style="filter: invert(100%);" ');
+            element = element.replace('<svg ', '<svg id="graph" class="graphs" style="filter: invert(100%); ' +
+                'height: 90%; margin-top: 14%;" ');
             this.graph = element;
             this.$nextTick(() => {
               svgPanZoom('#graph', {
@@ -107,6 +128,7 @@ export default defineComponent({
             viz = new Viz({Module, render});
           });
     },
+
     showError(error: string) {
       this.error = error;
       setTimeout(() => {

@@ -5,9 +5,9 @@
       <div class="box blackBox ">
         <p class="graphs" v-html="graph"/>
         <div class="panel" v-if="treeType !== 0">
-          <my-button @click="changeTree(1)" class="buttons button1"> SyntaxTree </my-button>
-          <my-button @click="changeTree(2)" class="buttons button2"> QueryTree </my-button>
-          <my-button @click="changeTree(3)" class="buttons button3"> PlannerTree </my-button>
+          <my-button @click="changeTree(1)" v-bind:class="{choice : treeType === 1}" class="buttons button1"> SyntaxTree </my-button>
+          <my-button @click="changeTree(2)" v-bind:class="{choice : treeType === 2}" class="buttons button2"> QueryTree </my-button>
+          <my-button @click="changeTree(3)" v-bind:class="{choice : treeType === 3}" class="buttons button3"> PlannerTree </my-button>
         </div>
       </div>
     </div>
@@ -79,7 +79,7 @@ export default defineComponent({
   position: absolute;
   padding: 15px;
   border-radius: 0;
-  width: 32.5%;
+  width: 32%;
   height: 80%;
   margin-bottom: 1.5%;
   background: transparent;
@@ -87,8 +87,8 @@ export default defineComponent({
 }
 .buttons:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  /*transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;*/
+  border-radius: 0 0 8px 8px;
+  transition: none;
 }
 
 .button1 {
@@ -105,8 +105,8 @@ export default defineComponent({
   transform: translateY(10%);
 }
 
-.choices {
-  background: rgba(255, 255, 255, 0.1);
+.choice {
+  text-decoration-line: underline;
 }
 
 </style>

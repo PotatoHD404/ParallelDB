@@ -28,6 +28,11 @@ namespace Api.Controllers
             response.Columns = new []{"Column1", "Column2"};
             response.Rows = new[] { new dynamic[] { "123", 1 }, new dynamic[] { "123", "2" } };
             response.SyntaxTree = "digraph { a -> b;}";
+            response.QueryTree = "graph { a -- b;\n" +
+                                 "bgcolor = transparent;\n" +
+                                 "a -- c;\n" +
+                                 "b -- d;}";
+            response.PlannerTree = "digraph { b -> c;}";
             return response;
         }
     }

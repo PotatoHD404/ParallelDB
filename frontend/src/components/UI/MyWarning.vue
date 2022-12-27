@@ -18,6 +18,8 @@ export default {
   top: 40px;
   color: white;
   z-index: 1;
+  width: 15%;
+  text-align: center;
   transition: margin-right 2s ease-in-out;
   background-color: #ffd7d7;
 }

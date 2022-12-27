@@ -1,27 +1,34 @@
-﻿namespace Parser;
+﻿namespace ParallelDB.Tables;
 
-public class PartialResult
+public class PartialResult : Queryable<TableRow>
 {
-    protected Table? _table;
-    protected IEnumerable<TableRow> _source;
+    // protected Table? _table;
+    // protected IEnumerable<TableRow> _source;
 
-    protected PartialResult(IEnumerable<TableRow> source)
+    protected PartialResult(IEnumerable<TableRow> source) : base(source)
     {
-        _source = source;
+        // _table = table;
+        // _source = source;
     }
 
-    private PartialResult(IEnumerable<TableRow> source, Table? table)
+    private PartialResult(IEnumerable<TableRow> source, Table? table) : base(source, table)
     {
-        _source = source;
-        _table = table;
+        // _table = table;
+        // _source = source;
     }
 
-    public PartialResult Project(params string[] columns)
+    public override Queryable<TableRow> Project(params string[] columns)
     {
-        return new PartialResult(ProjectIterator(columns), _table);
+        if (_table is null)
+        {
+            throw new Exception("Cannot project on a result without a table");
+        }
+
+        var newTable = new Table(_table, columns);
+        return new PartialResult(ProjectIterator(newTable, columns), newTable);
     }
 
-    private IEnumerable<TableRow> ProjectIterator(params string[] columns)
+    private IEnumerable<TableRow> ProjectIterator(Table newTable, params string[] columns)
     {
         // create new table with only the columns specified
         if (_table is null)
@@ -29,48 +36,36 @@ public class PartialResult
             throw new Exception("Cannot project on a result without a table");
         }
 
-        var newTable = new Table(_table, columns);
-
         foreach (var row in _source)
         {
             var newRow = newTable.NewRow();
             foreach (var column in columns)
             {
-                newRow[column] = row[column];
+                var tmp = row[column];
+                newRow[column] = tmp;
             }
 
             yield return newRow;
         }
     }
 
-    public PartialResult Where(Func<TableRow, bool> predicate)
-    {
-        return Where((row, _) => predicate(row));
-    }
-
-    public PartialResult Where(Func<TableRow, int, bool> predicate)
+    public override Queryable<TableRow> Where(Func<TableRow, bool> predicate)
     {
         return new PartialResult(WhereIterator(predicate), _table);
     }
 
-    private IEnumerable<TableRow> WhereIterator(Func<TableRow, int, bool> predicate)
+    private IEnumerable<TableRow> WhereIterator(Func<TableRow, bool> predicate)
     {
-        int index = 0;
         foreach (TableRow element in _source)
         {
-            if (predicate(element, index))
+            if (predicate(element))
             {
                 yield return element;
-            }
-
-            checked
-            {
-                ++index;
             }
         }
     }
 
-    public PartialResult Skip(int count)
+    public override Queryable<TableRow> Skip(int count)
     {
         return new PartialResult(SkipIterator(count), _table);
     }
@@ -89,7 +84,7 @@ public class PartialResult
         }
     }
 
-    public PartialResult Take(int count)
+    public override Queryable<TableRow> Take(int count)
     {
         return new PartialResult(TakeIterator(count), _table);
     }
@@ -109,7 +104,7 @@ public class PartialResult
         }
     }
 
-    public PartialResult Distinct()
+    public override PartialResult Distinct()
     {
         return new PartialResult(DistinctIterator(), _table);
     }
@@ -128,45 +123,43 @@ public class PartialResult
 
     // Join
 
-    public PartialResult Join(PartialResult other, Func<TableRow, TableRow, bool> predicate)
+    public override Queryable<TableRow> Join(Queryable<TableRow> other, Func<TableRow, TableRow, bool> predicate)
     {
-        return Join(other, (row1, row2, _) => predicate(row1, row2));
+        if (_table is null || other._table is null)
+        {
+            throw new Exception("Cannot join on a result without a table");
+        }
+
+        var newTable = new Table(_table, other._table);
+        return new PartialResult(JoinIterator(newTable, other, predicate), newTable);
     }
 
-    public PartialResult Join(PartialResult other, Func<TableRow, TableRow, int, bool> predicate)
+    private IEnumerable<TableRow> JoinIterator(Table newTable, Queryable<TableRow> other,
+        Func<TableRow, TableRow, bool> predicate)
     {
-        return new PartialResult(JoinIterator(other, predicate), _table);
-    }
-
-    private IEnumerable<TableRow> JoinIterator(PartialResult other,
-        Func<TableRow, TableRow, int, bool> predicate)
-    {
-        if (this._table is null || other._table is null)
+        if (_table is null || other._table is null)
         {
             throw new Exception("Cannot join on a result without a table");
         }
 
         int index = 0;
-
-        var newTable = new Table(_table, other._table);
-        
         foreach (var row1 in _source)
         {
             foreach (var row2 in other._source)
             {
-                if (predicate(row1, row2, index))
+                if (predicate(row1, row2))
                 {
                     var newRow = newTable.NewRow();
-                    for(int i = 0; i < _table.ColumnsCount; i++)
+                    for (int i = 0; i < _table.ColumnsCount; i++)
                     {
                         newRow[i] = row1[i];
                     }
-                    
-                    for(int i = 0; i < other._table.ColumnsCount; i++)
+
+                    for (int i = 0; i < other._table.ColumnsCount; i++)
                     {
                         newRow[i + _table.ColumnsCount] = row2[i];
                     }
-                    
+
                     yield return newRow;
                 }
 
@@ -176,24 +169,39 @@ public class PartialResult
                 }
             }
         }
-        
-        
     }
 
-    public PartialResult Union(PartialResult second)
+    public override Queryable<TableRow> Union(Queryable<TableRow> second)
     {
-        return Union(second, EqualityComparer<TableRow>.Default);
+        CheckColumnTypes(second);
+        return new PartialResult(UnionIterator(second), _table);
     }
 
-    public PartialResult Union(PartialResult second, IEqualityComparer<TableRow> comparer)
+    private void CheckColumnTypes(Queryable<TableRow> second)
     {
-        return new PartialResult(UnionIterator(second, comparer), _table);
+        // check if table types are the same
+        if (_table is null || second._table is null)
+        {
+            throw new Exception("Cannot union on a result without a table");
+        }
+
+        if (_table.ColumnsCount != second._table.ColumnsCount)
+        {
+            throw new Exception("Cannot union tables with different column count");
+        }
+
+        for (int i = 0; i < _table.ColumnsCount; i++)
+        {
+            if (_table.ColumnType(i) != second._table.ColumnType(i))
+            {
+                throw new Exception("Cannot union tables with different column types");
+            }
+        }
     }
 
-    private IEnumerable<TableRow> UnionIterator(PartialResult second,
-        IEqualityComparer<TableRow> comparer)
+    private IEnumerable<TableRow> UnionIterator(Queryable<TableRow> second)
     {
-        HashSet<TableRow> set = new(comparer);
+        HashSet<TableRow> set = new();
         foreach (TableRow element in _source)
         {
             if (set.Add(element))
@@ -211,12 +219,13 @@ public class PartialResult
         }
     }
 
-    public PartialResult UnionAll(PartialResult second)
+    public override Queryable<TableRow> UnionAll(Queryable<TableRow> second)
     {
+        CheckColumnTypes(second);
         return new PartialResult(UnionAllIterator(second), _table);
     }
 
-    private IEnumerable<TableRow> UnionAllIterator(PartialResult second)
+    private IEnumerable<TableRow> UnionAllIterator(Queryable<TableRow> second)
     {
         foreach (TableRow element in _source)
         {
@@ -229,12 +238,13 @@ public class PartialResult
         }
     }
 
-    public PartialResult Intersect(PartialResult second)
+    public override Queryable<TableRow> Intersect(Queryable<TableRow> second)
     {
+        CheckColumnTypes(second);
         return new PartialResult(IntersectIterator(second), _table);
     }
 
-    private IEnumerable<TableRow> IntersectIterator(PartialResult second)
+    private IEnumerable<TableRow> IntersectIterator(Queryable<TableRow> second)
     {
         HashSet<TableRow> set = new(second._source);
         foreach (TableRow element in _source)
@@ -246,12 +256,13 @@ public class PartialResult
         }
     }
 
-    public PartialResult Except(PartialResult second)
+    public override Queryable<TableRow> Except(Queryable<TableRow> second)
     {
+        CheckColumnTypes(second);
         return new PartialResult(ExceptIterator(second), _table);
     }
 
-    private IEnumerable<TableRow> ExceptIterator(PartialResult second)
+    private IEnumerable<TableRow> ExceptIterator(Queryable<TableRow> second)
     {
         HashSet<TableRow> set = new(second._source);
         foreach (TableRow element in _source)
@@ -263,7 +274,7 @@ public class PartialResult
         }
     }
 
-    public Table ToTable()
+    public override Table ToTable()
     {
         if (_table is null)
         {
@@ -272,10 +283,7 @@ public class PartialResult
 
         var newTable = new Table(_table);
 
-        foreach (var row in _source)
-        {
-            newTable.AddRow(row);
-        }
+        newTable.AddRows(_source);
 
         return newTable;
     }

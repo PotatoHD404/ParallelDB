@@ -10,9 +10,9 @@ public class SqlNodeVisitor : SQLiteParserBaseVisitor<SqlNode?>
     public override SqlNode? VisitSelect_stmt([NotNull] SQLiteParser.Select_stmtContext context)
     {
         // SqlNode node = new SelectNode();
-        List<SelectNode> selects = context.select_core().Select(VisitSelect_core).Where(el => true).OfType<SelectNode>().ToList();
-        
-        
+        List<SelectNode> selects = context.select_core().Select(VisitSelect_core).Where(el => true).OfType<SelectNode>()
+            .ToList();
+
 
         Console.WriteLine("VisitSelect_core");
 

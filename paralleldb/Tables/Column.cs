@@ -1,4 +1,4 @@
-﻿namespace ParallelDB;
+﻿namespace ParallelDB.Tables;
 
 public class Column
 {

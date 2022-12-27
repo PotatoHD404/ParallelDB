@@ -1,5 +1,6 @@
 using Antlr4.Runtime;
 using ParallelDB;
+using ParallelDB.Tables;
 using Parser;
 using SqlParser;
 

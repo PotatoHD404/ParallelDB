@@ -1,6 +1,6 @@
 ﻿using Parser;
 
-namespace ParallelDB;
+namespace ParallelDB.Tables;
 
 public class TableRow : IRow
 {

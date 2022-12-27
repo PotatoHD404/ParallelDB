@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using ConsoleTables;
 
-namespace ParallelDB;
+namespace ParallelDB.Tables;
 
 public class Table : PartialResult
 {

@@ -52,6 +52,7 @@ public class Table : PartialResult
             {
                 _columnIndices.Add(table._name + "." + column, _columns.Count);
             }
+
             _columns.Add(table._columns[index]);
         }
     }
@@ -328,7 +329,7 @@ public class Table : PartialResult
 
         sb.AppendLine(table.ToString());
 
-        return sb.ToString();
+        Console.WriteLine(sb.ToString());
     }
 
     public bool ColumnNullable(int index)

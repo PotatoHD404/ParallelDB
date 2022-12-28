@@ -1,5 +1,6 @@
 using Antlr4.Runtime;
 using ParallelDB;
+using ParallelDB.Queries;
 using ParallelDB.Tables;
 using Parser;
 using SqlParser;
@@ -957,8 +958,6 @@ public class OperationsTest
 
         var table4 = table1.Except(table2).Intersect(table3).ToTable();
         var rows = table4.ToRows();
-        // Assert.AreEqual(1, table3.RowsCount);
-        // Assert.AreEqual(6, table3.ColumnsCount);
         Assert.AreEqual(1, table4.RowsCount);
         Assert.AreEqual(3, table4.ColumnsCount);
         Assert.AreEqual(2, rows[0][0]);
@@ -997,5 +996,17 @@ public class QueryPlannerTest
     public void Test1()
     {
         // TODO: implement
+    }
+}
+
+[TestClass]
+public class QueryTest
+{
+    [TestMethod]
+    public void SelectQueryTest1()
+    {
+        SelectQuery query = new SelectQuery();
+        query.From("table1").Intersect("table2").Take(3);
+        Assert.AreEqual("SELECT * FROM table1 INTERSECT table2 LIMIT 3", query.ToString());
     }
 }

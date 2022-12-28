@@ -1,6 +1,6 @@
 ﻿namespace ParallelDB.Queries;
 
-public class SelectQuery : IQuery
+public class SelectQuery
 {
     
 }

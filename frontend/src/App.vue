@@ -113,7 +113,7 @@ export default defineComponent({
       viz.renderString(dot)
           .then(element => {
             element = element.replace('<svg ', '<svg id="graph" class="graphs" style="filter: invert(100%); ' +
-                'height: 90%; margin-top: 14%;" ');
+                'height: 90%; margin-top: 13%;" ');
             this.graph = element;
             this.$nextTick(() => {
               svgPanZoom('#graph', {

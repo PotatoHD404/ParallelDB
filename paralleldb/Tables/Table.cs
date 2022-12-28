@@ -52,6 +52,7 @@ public class Table : PartialResult
             {
                 _columnIndices.Add(table._name + "." + column, _columns.Count);
             }
+
             _columns.Add(table._columns[index]);
         }
     }
@@ -303,7 +304,7 @@ public class Table : PartialResult
         return row;
     }
 
-    public override string ToString()
+    public void PrettyPrint()
     {
         var sb = new StringBuilder();
 
@@ -311,7 +312,8 @@ public class Table : PartialResult
         foreach (TableRow row in _rows)
         {
             // _values are private, so we need to access via [] operator
-            table.AddRow(Enumerable.Range(0, ColumnsCount).Select(i => PrettyPrint.ToString(row[i])).ToArray());
+            table.AddRow(Enumerable.Range(0, ColumnsCount).Select(i => global::ParallelDB.PrettyPrint.ToString(row[i]))
+                .ToArray());
         }
 
         var t = table.ToString();
@@ -328,7 +330,7 @@ public class Table : PartialResult
 
         sb.AppendLine(table.ToString());
 
-        return sb.ToString();
+        Console.WriteLine(sb.ToString());
     }
 
     public bool ColumnNullable(int index)

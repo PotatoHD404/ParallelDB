@@ -1,12 +1,12 @@
 <template>
-  <div class="toggle-btn" id="_1st-toggle-btn" >
+  <div class="toggle-btn" id="toggle-btn">
     <input type="checkbox" v-model="isDark">
     <span></span>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {defineComponent} from 'vue';
 
 export default defineComponent({
   name: "my-checkbox",
@@ -44,7 +44,7 @@ input[type="checkbox"] {
   z-index: 2;
 }
 
-#_1st-toggle-btn span {
+#toggle-btn span {
   position: absolute;
   top: 0;
   right: 0;
@@ -57,8 +57,8 @@ input[type="checkbox"] {
   transition: 0.2s ease background-color, 0.2s ease opacity;
 }
 
-#_1st-toggle-btn span:before,
-#_1st-toggle-btn span:after {
+#toggle-btn span:before,
+#toggle-btn span:after {
   content: "";
   position: absolute;
   top: 8px;
@@ -68,32 +68,32 @@ input[type="checkbox"] {
   transition: 0.3s ease transform, 0.2s ease background-color;
 }
 
-#_1st-toggle-btn span:before {
+#toggle-btn span:before {
   background-color: #fff;
   transform: translate(-58px, 0px);
   z-index: 1;
 }
 
-#_1st-toggle-btn span:after {
+#toggle-btn span:after {
   background-color: #000;
   transform: translate(8px, 0px);
   z-index: 0;
 }
 
-#_1st-toggle-btn input[type="checkbox"]:checked + span {
+#toggle-btn input[type="checkbox"]:checked + span {
   background-color: #000;
 }
 
-#_1st-toggle-btn input[type="checkbox"]:active + span {
+#toggle-btn input[type="checkbox"]:active + span {
   opacity: 0.5;
 }
 
-#_1st-toggle-btn input[type="checkbox"]:checked + span:before {
+#toggle-btn input[type="checkbox"]:checked + span:before {
   background-color: #000;
   transform: translate(50px, -19px);
 }
 
-#_1st-toggle-btn input[type="checkbox"]:checked + span:after {
+#toggle-btn input[type="checkbox"]:checked + span:after {
   background-color: #fff;
   transform: translate(79px, 0px);
 }

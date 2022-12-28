@@ -5,9 +5,15 @@
       <div class="box blackBox ">
         <p class="graphs" v-html="graph"/>
         <div class="panel" v-if="treeType !== 0">
-          <my-button @click="changeTree(1)" v-bind:class="{choice : treeType === 1}" class="buttons button1"> SyntaxTree </my-button>
-          <my-button @click="changeTree(2)" v-bind:class="{choice : treeType === 2}" class="buttons button2"> QueryTree </my-button>
-          <my-button @click="changeTree(3)" v-bind:class="{choice : treeType === 3}" class="buttons button3"> PlannerTree </my-button>
+          <my-button @click="changeTree(1)" v-bind:class="{choice : treeType === 1}" class="buttons button1">
+            SyntaxTree
+          </my-button>
+          <my-button @click="changeTree(2)" v-bind:class="{choice : treeType === 2}" class="buttons button2">
+            QueryTree
+          </my-button>
+          <my-button @click="changeTree(3)" v-bind:class="{choice : treeType === 3}" class="buttons button3">
+            PlannerTree
+          </my-button>
         </div>
       </div>
     </div>
@@ -85,6 +91,7 @@ export default defineComponent({
   background: transparent;
   border: none;
 }
+
 .buttons:hover {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 0 0 8px 8px;

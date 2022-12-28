@@ -64,6 +64,7 @@ export default defineComponent({
   position: relative;
   width: 100%;
   height: 100%;
+  padding-top: 6.5%;
   object-fit: contain;
   overflow: hidden;
   table-layout: fixed;

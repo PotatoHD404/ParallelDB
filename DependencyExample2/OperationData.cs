@@ -1,12 +1,21 @@
-﻿namespace DependencyExample2;
+﻿using System.Collections.Concurrent;
+
+namespace DependencyExample2;
 
 internal class OperationData
 {
-    internal ExecutionContext? Context;
     internal int[] Dependencies;
     internal DateTimeOffset End;
     internal int Id;
     internal int NumRemainingDependencies;
-    internal Func<object> Operation;
+    internal Func<ConcurrentDictionary<int, dynamic?>, dynamic?> Operation;
     internal DateTimeOffset Start;
+    
+    internal OperationData(int id, Func<ConcurrentDictionary<int, dynamic?>, dynamic?> operation, int[] dependencies)
+    {
+        Id = id;
+        Operation = operation;
+        Dependencies = dependencies;
+        NumRemainingDependencies = dependencies.Length;
+    }
 }

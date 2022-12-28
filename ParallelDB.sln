@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlParser", "parser\SqlPars
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyExample", "DependencyExample\DependencyExample.csproj", "{91DC2910-29F4-47E8-956E-FFAFCCC0083B}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "DependencyExample2", "DependencyExample2\DependencyExample2.fsproj", "{47CDBC1A-09FB-4089-B243-A015ED0BC1FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{91DC2910-29F4-47E8-956E-FFAFCCC0083B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91DC2910-29F4-47E8-956E-FFAFCCC0083B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91DC2910-29F4-47E8-956E-FFAFCCC0083B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47CDBC1A-09FB-4089-B243-A015ED0BC1FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47CDBC1A-09FB-4089-B243-A015ED0BC1FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47CDBC1A-09FB-4089-B243-A015ED0BC1FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47CDBC1A-09FB-4089-B243-A015ED0BC1FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

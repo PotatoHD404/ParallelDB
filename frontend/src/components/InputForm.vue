@@ -5,15 +5,15 @@
         type="text"
         placeholder="SELECT * FROM users"
     />
-      <my-button @click="createQuery" style="margin-top: 15px"> Создать </my-button>
+    <my-button @click="createQuery" style="margin-top: 15px"> Создать</my-button>
   </form>
 </template>
 
 <script lang="ts">
-import type { Query } from '@/types/query';
+import type {Query} from '@/types/query';
 import MyTextarea from "@/components/UI/MyTextarea.vue";
 import MyButton from "@/components/UI/MyButton.vue";
-import { defineComponent } from 'vue';
+import {defineComponent} from 'vue';
 
 export default defineComponent({
   name: "input-form",

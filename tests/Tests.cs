@@ -42,11 +42,11 @@ public class GraphVizTest
         var sql = Utils.ReadFile();
         var graph = Utils.GetGraph(sql);
         // check if graph is correct
-        Assert.IsTrue(graph.Contains("digraph"));
-        Assert.IsTrue(graph.Contains("doctors"));
-        Assert.IsTrue(graph.Contains("Врач"));
-        Assert.IsTrue(graph.Contains("HAVING"));
-        Assert.IsTrue(graph.Contains("UNION"));
+        Assert.AreEqual(true,graph.Contains("digraph"));
+        Assert.AreEqual(true, graph.Contains("doctors"));
+        Assert.AreEqual(true, graph.Contains("Врач"));
+        Assert.AreEqual(true, graph.Contains("HAVING"));
+        Assert.AreEqual(true, graph.Contains("UNION"));
     }
 }
 
@@ -102,24 +102,24 @@ public class TableTest
     public void BaseTest1()
     {
         var table = new Table();
-        Assert.IsTrue(table.ColumnsCount == 0);
-        Assert.IsTrue(table.RowsCount == 0);
+        Assert.AreEqual(0, table.ColumnsCount);
+        Assert.AreEqual(0, table.RowsCount);
 
         table.AddColumn("a", typeof(int));
-        Assert.IsTrue(table.ColumnsCount == 1);
-        Assert.IsTrue(table.RowsCount == 0);
+        Assert.AreEqual(1, table.ColumnsCount);
+        Assert.AreEqual(0, table.RowsCount);
 
         table.AddColumn("b", typeof(string));
-        Assert.IsTrue(table.ColumnsCount == 2);
-        Assert.IsTrue(table.RowsCount == 0);
+        Assert.AreEqual(2, table.ColumnsCount);
+        Assert.AreEqual(0, table.RowsCount);
 
         table.AddRow(1, "a");
-        Assert.IsTrue(table.ColumnsCount == 2);
-        Assert.IsTrue(table.RowsCount == 1);
+        Assert.AreEqual(2, table.ColumnsCount);
+        Assert.AreEqual(1, table.RowsCount);
 
         table.AddRow(2, "b");
-        Assert.IsTrue(table.ColumnsCount == 2);
-        Assert.IsTrue(table.RowsCount == 2);
+        Assert.AreEqual(2, table.ColumnsCount);
+        Assert.AreEqual(2, table.RowsCount);
     }
 
     [TestMethod]
@@ -172,7 +172,7 @@ public class TableTest
         table.AddRow(1, "b");
         table.AddRow(null, "b");
 
-        Assert.IsTrue(table.ColumnsCount == 2);
+        Assert.AreEqual(2, table.ColumnsCount);
     }
 
     [TestMethod]
@@ -194,7 +194,7 @@ public class TableTest
         table.AddRow(1, "b");
         table.AddRow(null, "b");
 
-        Assert.IsTrue(table.ColumnsCount == 2);
+        Assert.AreEqual(2,table.ColumnsCount);
     }
 
     [TestMethod]
@@ -240,10 +240,10 @@ public class TableTest
         var row = table.NewRow();
 
         var tmp = row["a"];
-        Assert.IsTrue(tmp == 0);
+        Assert.AreEqual(0, tmp);
 
         table.AddRow(row);
-        Assert.IsTrue(table.RowsCount == 1);
+        Assert.AreEqual(1, table.RowsCount);
     }
 
 
@@ -256,10 +256,10 @@ public class TableTest
         var row = table.NewRow();
 
         row["a"] = 1;
-        Assert.IsTrue(row["a"] == 1);
+        Assert.AreEqual(1, row["a"]);
 
         table.AddRow(row);
-        Assert.IsTrue(table.RowsCount == 1);
+        Assert.AreEqual(1, table.RowsCount);
     }
 
     [TestMethod]
@@ -282,10 +282,10 @@ public class TableTest
         table.AddColumn("b", typeof(string), false, true);
         var row = table.NewRow();
 
-        Assert.IsTrue(row["a"] == 2);
+        Assert.AreEqual(2, row["a"]);
 
         table.AddRow(row);
-        Assert.IsTrue(table.RowsCount == 1);
+        Assert.AreEqual(1, table.RowsCount);
     }
 
     [TestMethod]
@@ -336,10 +336,10 @@ public class TableTest
         table.AddColumn("b", typeof(string), true, true, "1");
 
         var row = table.NewRow();
-        Assert.IsTrue(row["a"] == 2);
-        Assert.IsTrue(row["b"] == "1");
-        Assert.IsTrue(row["table.a"] == 2);
-        Assert.IsTrue(row["table.b"] == "1");
+        Assert.AreEqual(2, row["a"]);
+        Assert.AreEqual("1", row["b"]);
+        Assert.AreEqual(2, row["table.a"]);
+        Assert.AreEqual("1", row["table.b"]);
     }
 
     [TestMethod]
@@ -351,12 +351,12 @@ public class TableTest
         var row = table.NewRow();
 
         row["b"] = "1";
-        Assert.IsTrue(row["a"] == 0);
-        Assert.IsTrue(row["b"] == "1");
+        Assert.AreEqual(0, row["a"]);
+        Assert.AreEqual("1", row["b"]);
 
         table.AddRow(row);
 
-        Assert.IsTrue(table.RowsCount == 1);
+        Assert.AreEqual(1, table.RowsCount);
     }
 
     [TestMethod]
@@ -394,9 +394,9 @@ public class TableTest
         table.AddColumn("c", typeof(bool));
 
         table = new Table(table, "a", "c");
-        Assert.IsTrue(table.ColumnsCount == 2);
-        Assert.IsTrue(table.ColumnName(0) == "a");
-        Assert.IsTrue(table.ColumnName(1) == "c");
+        Assert.AreEqual(2, table.ColumnsCount);
+        Assert.AreEqual("a",table.ColumnName(0));
+        Assert.AreEqual("c",table.ColumnName(1));
     }
 
     [TestMethod]
@@ -408,7 +408,7 @@ public class TableTest
         table.AddColumn("c", typeof(bool));
 
         table = new Table(table);
-        Assert.IsTrue(table.ColumnsCount == 3);
+        Assert.AreEqual(3, table.ColumnsCount);
     }
 }
 
@@ -489,12 +489,12 @@ public class OperationsTest
             .AddRow(5, "6", true)
             .AddRow(6, "7", false);
 
-        Assert.IsTrue(table.RowsCount == 6);
+        Assert.AreEqual(6, table.RowsCount);
         var newTable = table.Project("a", "c").ToTable();
-        Assert.IsTrue(newTable.RowsCount == 6);
-        Assert.IsTrue(newTable.ColumnsCount == 2);
-        Assert.IsTrue(newTable.ColumnName(0) == "a");
-        Assert.IsTrue(newTable.ColumnName(1) == "c");
+        Assert.AreEqual(6, newTable.RowsCount);
+        Assert.AreEqual(2, newTable.ColumnsCount);
+        Assert.AreEqual("a", newTable.ColumnName(0));
+        Assert.AreEqual("c",newTable.ColumnName(1));
     }
 
     [TestMethod]
@@ -532,6 +532,8 @@ public class OperationsTest
         Assert.AreEqual("table2.c", table3.ColumnName(5));
         Assert.AreEqual(5, table3.ColumnIndex("table2.c"));
         Assert.AreEqual(2, table3.ColumnIndex("table1.c"));
+        var rows = table3.ToRows();
+        Console.WriteLine(rows[0][1]);
     }
 
     
@@ -609,11 +611,11 @@ public class OperationsTest
             .AddRow(6, "7", false);
 
         var newTable = table.Where((el) => el["a"] == 1).ToTable();
-        Assert.IsTrue(newTable.RowsCount == 1);
-        Assert.IsTrue(newTable.ColumnsCount == 3);
-        Assert.IsTrue(newTable.ColumnName(0) == "a");
-        Assert.IsTrue(newTable.ColumnName(1) == "b");
-        Assert.IsTrue(newTable.ColumnName(2) == "c");
+        Assert.AreEqual(1, newTable.RowsCount);
+        Assert.AreEqual(3, newTable.ColumnsCount);
+        Assert.AreEqual("a", newTable.ColumnName(0));
+        Assert.AreEqual("b",newTable.ColumnName(1));
+        Assert.AreEqual("c", newTable.ColumnName(2));
     }
 
     [TestMethod]
@@ -632,11 +634,11 @@ public class OperationsTest
             .AddRow(6, "7", false);
 
         var newTable = table.Skip(2).ToTable();
-        Assert.IsTrue(newTable.RowsCount == 4);
-        Assert.IsTrue(newTable.ColumnsCount == 3);
-        Assert.IsTrue(newTable.ColumnName(0) == "a");
-        Assert.IsTrue(newTable.ColumnName(1) == "b");
-        Assert.IsTrue(newTable.ColumnName(2) == "c");
+        Assert.AreEqual(4, newTable.RowsCount);
+        Assert.AreEqual(3, newTable.ColumnsCount);
+        Assert.AreEqual("a",newTable.ColumnName(0));
+        Assert.AreEqual("b",newTable.ColumnName(1));
+        Assert.AreEqual("c",newTable.ColumnName(2));
     }
 
     [TestMethod]
@@ -655,11 +657,11 @@ public class OperationsTest
             .AddRow(6, "7", false);
 
         var newTable = table.Take(2).ToTable();
-        Assert.IsTrue(newTable.RowsCount == 2);
-        Assert.IsTrue(newTable.ColumnsCount == 3);
-        Assert.IsTrue(newTable.ColumnName(0) == "a");
-        Assert.IsTrue(newTable.ColumnName(1) == "b");
-        Assert.IsTrue(newTable.ColumnName(2) == "c");
+        Assert.AreEqual(2, newTable.RowsCount);
+        Assert.AreEqual(3, newTable.ColumnsCount);
+        Assert.AreEqual("a",newTable.ColumnName(0));
+        Assert.AreEqual("b", newTable.ColumnName(1));
+        Assert.AreEqual("c", newTable.ColumnName(2));
     }
 
     [TestMethod]
@@ -679,10 +681,10 @@ public class OperationsTest
 
         var newTable = table.Distinct().ToTable();
         Assert.AreEqual(5, newTable.RowsCount);
-        Assert.IsTrue(newTable.ColumnsCount == 3);
-        Assert.IsTrue(newTable.ColumnName(0) == "a");
-        Assert.IsTrue(newTable.ColumnName(1) == "b");
-        Assert.IsTrue(newTable.ColumnName(2) == "c");
+        Assert.AreEqual(3, newTable.ColumnsCount);
+        Assert.AreEqual("a",newTable.ColumnName(0));
+        Assert.AreEqual("b",newTable.ColumnName(1));
+        Assert.AreEqual("c",newTable.ColumnName(2));
     }
 
     [TestMethod] // TODO: check how this should work
@@ -711,11 +713,11 @@ public class OperationsTest
             .AddRow(true, 3, "4");
 
         var table3 = table1.Union(table2).ToTable();
-        Assert.IsTrue(table3.RowsCount == 9);
-        Assert.IsTrue(table3.ColumnsCount == 3);
-        Assert.IsTrue(table3.ColumnName(0) == "a");
-        Assert.IsTrue(table3.ColumnName(1) == "b");
-        Assert.IsTrue(table3.ColumnName(2) == "c");
+        Assert.AreEqual(9, table3.RowsCount);
+        Assert.AreEqual(3, table3.ColumnsCount);
+        Assert.AreEqual("a",table3.ColumnName(0));
+        Assert.AreEqual("b",table3.ColumnName(1));
+        Assert.AreEqual("c",table3.ColumnName(2));
     }
 
     [TestMethod]
@@ -747,10 +749,10 @@ public class OperationsTest
 
         var table3 = table1.Union(table2).ToTable();
         Assert.AreEqual(7, table3.RowsCount);
-        Assert.IsTrue(table3.ColumnsCount == 3);
-        Assert.IsTrue(table3.ColumnName(0) == "a");
-        Assert.IsTrue(table3.ColumnName(1) == "b");
-        Assert.IsTrue(table3.ColumnName(2) == "c");
+        Assert.AreEqual(3, table3.ColumnsCount);
+        Assert.AreEqual("a",table3.ColumnName(0));
+        Assert.AreEqual("b",table3.ColumnName(1));
+        Assert.AreEqual("c", table3.ColumnName(2));
     }
 
     [TestMethod]
@@ -779,11 +781,11 @@ public class OperationsTest
             .AddRow(true, 3, "4");
 
         var table3 = table1.UnionAll(table2).ToTable();
-        Assert.IsTrue(table3.RowsCount == 9);
-        Assert.IsTrue(table3.ColumnsCount == 3);
-        Assert.IsTrue(table3.ColumnName(0) == "a");
-        Assert.IsTrue(table3.ColumnName(1) == "b");
-        Assert.IsTrue(table3.ColumnName(2) == "c");
+        Assert.AreEqual(9, table3.RowsCount);
+        Assert.AreEqual(3, table3.ColumnsCount);
+        Assert.AreEqual("a",table3.ColumnName(0));
+        Assert.AreEqual("b", table3.ColumnName(1));
+        Assert.AreEqual("c", table3.ColumnName(2));
     }
 
     [TestMethod]
@@ -815,10 +817,10 @@ public class OperationsTest
 
         var table3 = table1.UnionAll(table2).ToTable();
         Assert.AreEqual(12, table3.RowsCount);
-        Assert.IsTrue(table3.ColumnsCount == 3);
-        Assert.IsTrue(table3.ColumnName(0) == "a");
-        Assert.IsTrue(table3.ColumnName(1) == "b");
-        Assert.IsTrue(table3.ColumnName(2) == "c");
+        Assert.AreEqual(3, table3.ColumnsCount);
+        Assert.AreEqual("a", table3.ColumnName(0));
+        Assert.AreEqual("b",table3.ColumnName(1));
+        Assert.AreEqual("c",table3.ColumnName(2));
     }
 
     [TestMethod]
@@ -850,10 +852,10 @@ public class OperationsTest
 
         var table3 = table1.Intersect(table2).ToTable();
         Assert.AreEqual(4, table3.RowsCount);
-        Assert.IsTrue(table3.ColumnsCount == 3);
-        Assert.IsTrue(table3.ColumnName(0) == "a");
-        Assert.IsTrue(table3.ColumnName(1) == "b");
-        Assert.IsTrue(table3.ColumnName(2) == "c");
+        Assert.AreEqual(3, table3.ColumnsCount);
+        Assert.AreEqual("a",table3.ColumnName(0));
+        Assert.AreEqual("b", table3.ColumnName(1));
+        Assert.AreEqual("c",table3.ColumnName(2));
     }
 
     [TestMethod]
@@ -885,10 +887,106 @@ public class OperationsTest
 
         var table3 = table1.Except(table2).ToTable();
         Assert.AreEqual(1, table3.RowsCount);
-        Assert.IsTrue(table3.ColumnsCount == 3);
-        Assert.IsTrue(table3.ColumnName(0) == "a");
-        Assert.IsTrue(table3.ColumnName(1) == "b");
-        Assert.IsTrue(table3.ColumnName(2) == "c");
+        Assert.AreEqual(3, table3.ColumnsCount);
+        Assert.AreEqual("a",table3.ColumnName(0));
+        Assert.AreEqual("b",table3.ColumnName(1));
+        Assert.AreEqual("c",table3.ColumnName(2));
+    }
+    
+    [TestMethod]
+    public void MultipleOperationsTest1()
+    {
+        var table1 = new Table("table1");
+        table1.AddColumn("a", typeof(int));
+        table1.AddColumn("b", typeof(string));
+        table1.AddColumn("c", typeof(bool));
+
+        table1.AddRow(1, "2", true)
+            .AddRow(2, "3", false)
+            .AddRow(3, "4", true)
+            .AddRow(4, "5", false)
+            .AddRow(5, "6", true)
+            .AddRow(6, "7", false);
+
+        var table2 = new Table("table2");
+        table2.AddColumn("a", typeof(bool));
+        table2.AddColumn("b", typeof(int));
+        table2.AddColumn("c", typeof(string));
+
+        table2.AddRow(true, 1, "2")
+            .AddRow(false, 2, "3")
+            .AddRow(true, 3, "4");
+
+        var table3 = table1.Join(table2, (el1, el2) => el1["a"] == el2["b"]).Where((el) => el["table1.a"] == 1).ToTable();
+        var Rows = table3.ToRows();
+        Assert.AreEqual(1, table3.RowsCount);
+        Assert.AreEqual(6, table3.ColumnsCount);
+        Assert.AreEqual(1, Rows[0][0]);
+    }
+    
+    [TestMethod]
+    public void MultipleOperationsTest2()
+    {
+        var table1 = new Table("table1");
+        table1.AddColumn("a", typeof(int));
+        table1.AddColumn("b", typeof(string));
+        table1.AddColumn("c", typeof(bool));
+
+        table1.AddRow(1, "2", true)
+            .AddRow(2, "3", false)
+            .AddRow(3, "4", true)
+            .AddRow(4, "5", false)
+            .AddRow(5, "6", true)
+            .AddRow(6, "7", false);
+
+        var table2 = new Table("table2");
+        table2.AddColumn("a", typeof(int));
+        table2.AddColumn("b", typeof(string));
+        table2.AddColumn("c", typeof(bool));
+
+        table2.AddRow(4, "5", false)
+            .AddRow(5, "6", true)
+            .AddRow(6, "7", false);
+        
+        var table3 = new Table("table3");
+        table3.AddColumn("a", typeof(int));
+        table3.AddColumn("b", typeof(string));
+        table3.AddColumn("c", typeof(bool));
+
+        table3.AddRow(2, "3", false);
+
+        var table4 = table1.Except(table2).Intersect(table3).ToTable();
+        var Rows = table4.ToRows();
+        // Assert.AreEqual(1, table3.RowsCount);
+        // Assert.AreEqual(6, table3.ColumnsCount);
+        Assert.AreEqual(1, table4.RowsCount);
+        Assert.AreEqual(3, table4.ColumnsCount);
+        Assert.AreEqual(2, Rows[0][0]);
+        Assert.AreEqual("3", Rows[0][1]);
+        Assert.AreEqual(false, Rows[0][2]);
+    }
+    
+    [TestMethod]
+    public void MultipleOperationsTest3()
+    {
+        var table1 = new Table("table1");
+        table1.AddColumn("a", typeof(int));
+        table1.AddColumn("b", typeof(string));
+        table1.AddColumn("c", typeof(bool));
+
+        table1.AddRow(1, "e", false)
+            .AddRow(2, "e", false)
+            .AddRow(3, "e", false)
+            .AddRow(4, "e", false)
+            .AddRow(5, "e", true)
+            .AddRow(6, "e", false);
+
+        var table2 = table1.Take(3).Project("b", "c").Distinct().ToTable();
+        var Rows = table2.ToRows();
+        Assert.AreEqual(1, table2.RowsCount);
+        Assert.AreEqual(2, table2.ColumnsCount);
+        Assert.AreEqual("e", Rows[0][0]);
+        Assert.AreEqual(false, Rows[0][1]);
     }
 }
 

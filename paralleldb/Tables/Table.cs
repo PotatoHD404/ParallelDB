@@ -304,7 +304,7 @@ public class Table : PartialResult
         return row;
     }
 
-    public string PrettyPrint()
+    public void PrettyPrint()
     {
         var sb = new StringBuilder();
 

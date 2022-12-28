@@ -13,8 +13,7 @@ public class DependencyManager
     {
         if (operation == null) throw new ArgumentNullException("operation");
         if (dependencies == null) throw new ArgumentNullException("dependencies");
-        var data = new OperationData
-            { Context = ExecutionContext.Capture(), Id = id, Operation = operation, Dependencies = dependencies };
+        var data = new OperationData(id, operation, dependencies, ExecutionContext.Capture());
         _operations.Add(id, data);
     }
 
@@ -33,8 +32,7 @@ public class DependencyManager
             op.NumRemainingDependencies = op.Dependencies.Length;
             foreach (var from in op.Dependencies)
             {
-                List<int> toList;
-                if (!_dependenciesFromTo.TryGetValue(from, out toList))
+                if (!_dependenciesFromTo.TryGetValue(from, out var toList))
                 {
                     toList = new List<int>();
                     _dependenciesFromTo.Add(from, toList);
@@ -61,14 +59,14 @@ public class DependencyManager
 
     private void QueueOperation(OperationData data)
     {
-        ThreadPool.UnsafeQueueUserWorkItem(state => ProcessOperation((OperationData)state), data);
+        ThreadPool.UnsafeQueueUserWorkItem(state => ProcessOperation((OperationData)state!), data);
     }
 
     private void ProcessOperation(OperationData data)
     {
         // Time and run the operation's delegate
         data.Start = DateTimeOffset.Now;
-        ExecutionContext.Run(data.Context.CreateCopy(), op => ((OperationData)op).Operation(), data);
+        ExecutionContext.Run(data.Context.CreateCopy(), op => ((OperationData)op!).Operation(), data);
 
         data.End = DateTimeOffset
             .Now; // Raise the operation completed event
@@ -76,8 +74,7 @@ public class DependencyManager
         // completion, and potentially launch newly available
         lock (_stateLock)
         {
-            List<int> toList;
-            if (_dependenciesFromTo.TryGetValue(data.Id, out toList))
+            if (_dependenciesFromTo.TryGetValue(data.Id, out var toList))
             {
                 foreach (var targetId in toList)
                 {
@@ -99,16 +96,15 @@ public class DependencyManager
 
     public class OperationCompletedEventArgs : EventArgs
     {
+        public int Id { get; }
+        public DateTimeOffset Start { get; }
+        public DateTimeOffset End { get; }
         internal OperationCompletedEventArgs(int id, DateTimeOffset start, DateTimeOffset end)
         {
             Id = id;
             Start = start;
             End = end;
         }
-
-        public int Id { get; private set; }
-        public DateTimeOffset Start { get; private set; }
-        public DateTimeOffset End { get; private set; }
     }
 
     private void VerifyThatAllOperationsHaveBeenRegistered()
@@ -166,8 +162,7 @@ public class DependencyManager
                 {
                     thisIterationIds
                         .Add(item.Key); // Remove all outbound edges
-                    List<int> depIds;
-                    if (dependenciesFromTo.TryGetValue(item.Key, out depIds))
+                    if (dependenciesFromTo.TryGetValue(item.Key, out var depIds))
                     {
                         foreach (var depId in depIds)
                         {

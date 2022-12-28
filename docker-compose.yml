@@ -4,7 +4,7 @@ services:
     frontend:
         build: ./frontend
         ports:
-            - 3000:8080
+            - 5000:8080
         depends_on:
             - backend
         networks:
@@ -12,7 +12,7 @@ services:
     backend:
         build: ./api
         ports:
-            - 5001:80
+            - 6386:80
         networks:
             - app-network
 

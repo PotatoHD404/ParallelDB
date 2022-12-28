@@ -4,9 +4,10 @@ public class DependencyManager
 {
     private Dictionary<int, OperationData> _operations = new();
     private Dictionary<int, List<int>> _dependenciesFromTo = new();
-    private object _stateLock = new();
+    private readonly object _stateLock = new();
     private ManualResetEvent _doneEvent = new(false);
     private int _remainingCount = 0;
+    public event EventHandler<OperationCompletedEventArgs> OperationCompleted;
 
     public void AddOperation(int id, Action operation, params int[] dependencies)
     {
@@ -17,13 +18,16 @@ public class DependencyManager
         _operations.Add(id, data);
     }
 
-    public event EventHandler<OperationCompletedEventArgs> OperationCompleted;
 
     public void Execute()
     {
         // TODO: verification will go here later
         // Fill dependency data structures
-        _dependenciesFromTo = new Dictionary<int, List<int>>();
+        lock (_stateLock)
+        {
+            _dependenciesFromTo = new Dictionary<int, List<int>>();
+        }
+
         foreach (var op in _operations.Values)
         {
             op.NumRemainingDependencies = op.Dependencies.Length;

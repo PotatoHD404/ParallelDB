@@ -5,10 +5,10 @@ namespace ParallelDB.Tables;
 public class TableRow : IRow
 {
     private Table _table;
-    private readonly object?[] _values;
+    private readonly dynamic?[] _values;
     private readonly bool[] _isSet;
 
-    internal TableRow(Table table, object?[] values, bool isSet = false)
+    internal TableRow(Table table, dynamic?[] values, bool isSet = false)
     {
         _table = table;
         for (int i = 0; i < values.Length; i++)
@@ -31,7 +31,7 @@ public class TableRow : IRow
     {
         // create deep copy
         _table = row._table;
-        _values = new object?[row._values.Length];
+        _values = new dynamic?[row._values.Length];
         _isSet = new bool[row._isSet.Length];
         for (int i = 0; i < _values.Length; i++)
         {
@@ -40,13 +40,13 @@ public class TableRow : IRow
         }
     }
 
-    internal TableRow(Table table, Dictionary<string, object?> dictionary)
+    internal TableRow(Table table, Dictionary<string, dynamic?> dictionary)
     {
         _table = table;
-        _values = new object?[dictionary.Values.Count];
+        _values = new dynamic?[dictionary.Values.Count];
         _isSet = new bool[dictionary.Values.Count];
         int index;
-        foreach (KeyValuePair<string, object?> pair in dictionary)
+        foreach (KeyValuePair<string, dynamic?> pair in dictionary)
         {
             index = _table.ColumnIndex(pair.Key);
             if (index == -1)
@@ -174,7 +174,7 @@ public class TableRow : IRow
         return hash;
     }
 
-    public override bool Equals(object? obj)
+    public override bool Equals(dynamic? obj)
     {
         // if parameter is null return false.
         if (obj is null)

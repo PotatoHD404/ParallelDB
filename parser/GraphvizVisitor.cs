@@ -14,7 +14,11 @@ public class GraphvizVisitor : SQLiteParserBaseVisitor<object?>
     public string GetGraph()
     {
         if (!_ended)
+        {
             _sb.Append("}");
+            _ended = true;
+        }
+
         return _sb.ToString();
     }
 

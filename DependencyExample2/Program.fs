@@ -199,7 +199,7 @@ type ParallelTasksDAG() =
                     (new Dictionary<int, TaskInfo>(HashIdentity.Structural))
                     (new Dictionary<int, int list>(HashIdentity.Structural)))
 
-        inbox.Error |> Observable.add (fun ex -> printfn "Error : %s" ex.Message)
+        inbox.Error |> Observable.add (fun ex -> printfn $"Error : %s{ex.Message}")
         inbox.Start()
         inbox
 

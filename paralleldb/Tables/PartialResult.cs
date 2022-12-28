@@ -192,7 +192,7 @@ public class PartialResult : Queryable<TableRow>
 
         for (int i = 0; i < _table.ColumnsCount; i++)
         {
-            if (_table.ColumnType(i) != second._table.ColumnType(i))
+            if (_table.ColumnType(i) != second._table.ColumnType(i) || _table.ColumnNullable(i) != second._table.ColumnNullable(i))
             {
                 throw new Exception("Cannot union tables with different column types");
             }

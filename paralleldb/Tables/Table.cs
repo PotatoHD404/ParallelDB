@@ -38,12 +38,21 @@ public class Table : PartialResult
         _rows = new List<TableRow>();
         _table = this;
         _source = _rows;
-
         foreach (string column in columns)
         {
+            int index = table.ColumnIndex(column);
             // int index = table.ColumnIndex(column);
-            _columnIndices.Add(column, _columnIndices.Count);
-            _columns.Add(table._columns[table._columnIndices[column]]);
+            if (column.Contains(".") && !_columnIndices.ContainsKey(column.Split(".")[1]))
+            {
+                _columnIndices.Add(column.Split(".")[1], _columns.Count);
+            }
+
+            _columnIndices.Add(column, _columns.Count);
+            if (!column.Contains("."))
+            {
+                _columnIndices.Add(table._name + "." + column, _columns.Count);
+            }
+            _columns.Add(table._columns[index]);
         }
     }
 
@@ -55,7 +64,7 @@ public class Table : PartialResult
             throw new ArgumentException($"Tables {table1._name} and {table2._name} have same names");
         }
 
-        // Inner join
+        // join
         foreach (var pair in table2._columnIndices)
         {
             if (!_columnIndices.ContainsKey(pair.Key))
@@ -92,7 +101,7 @@ public class Table : PartialResult
         _name = name;
     }
 
-    public bool IsComputed => _name == null;
+    public bool IsComputed => _name is null;
 
     public int ColumnsCount => _columns.Count;
 
@@ -162,8 +171,7 @@ public class Table : PartialResult
     {
         dynamic? @default;
         // if nullable type set default to null
-
-        if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+        if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>) || nullable)
         {
             @default = null;
         }

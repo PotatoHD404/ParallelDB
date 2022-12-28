@@ -4,9 +4,9 @@ using DependencyExample2;
 
 static void ComputeForOneSecond()
 {
-    Console.WriteLine("Starting operation Thread ID {0}", Thread.CurrentThread.ManagedThreadId);
+    Console.WriteLine($"Starting operation Thread ID {Thread.CurrentThread.ManagedThreadId}");
     Thread.Sleep(1000);
-    Console.WriteLine("Ending operation Thread ID {0}", Thread.CurrentThread.ManagedThreadId);
+    Console.WriteLine($"Ending operation Thread ID {Thread.CurrentThread.ManagedThreadId}");
 }
 
 Action oneSecond = () => { ComputeForOneSecond(); };

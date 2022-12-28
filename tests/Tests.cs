@@ -918,10 +918,10 @@ public class OperationsTest
             .AddRow(true, 3, "4");
 
         var table3 = table1.Join(table2, (el1, el2) => el1["a"] == el2["b"]).Where((el) => el["table1.a"] == 1).ToTable();
-        var Rows = table3.ToRows();
+        var rows = table3.ToRows();
         Assert.AreEqual(1, table3.RowsCount);
         Assert.AreEqual(6, table3.ColumnsCount);
-        Assert.AreEqual(1, Rows[0][0]);
+        Assert.AreEqual(1, rows[0][0]);
     }
     
     [TestMethod]
@@ -956,14 +956,14 @@ public class OperationsTest
         table3.AddRow(2, "3", false);
 
         var table4 = table1.Except(table2).Intersect(table3).ToTable();
-        var Rows = table4.ToRows();
+        var rows = table4.ToRows();
         // Assert.AreEqual(1, table3.RowsCount);
         // Assert.AreEqual(6, table3.ColumnsCount);
         Assert.AreEqual(1, table4.RowsCount);
         Assert.AreEqual(3, table4.ColumnsCount);
-        Assert.AreEqual(2, Rows[0][0]);
-        Assert.AreEqual("3", Rows[0][1]);
-        Assert.AreEqual(false, Rows[0][2]);
+        Assert.AreEqual(2, rows[0][0]);
+        Assert.AreEqual("3", rows[0][1]);
+        Assert.AreEqual(false, rows[0][2]);
     }
     
     [TestMethod]
@@ -982,11 +982,11 @@ public class OperationsTest
             .AddRow(6, "e", false);
 
         var table2 = table1.Take(3).Project("b", "c").Distinct().ToTable();
-        var Rows = table2.ToRows();
+        var rows = table2.ToRows();
         Assert.AreEqual(1, table2.RowsCount);
         Assert.AreEqual(2, table2.ColumnsCount);
-        Assert.AreEqual("e", Rows[0][0]);
-        Assert.AreEqual(false, Rows[0][1]);
+        Assert.AreEqual("e", rows[0][0]);
+        Assert.AreEqual(false, rows[0][1]);
     }
 }
 

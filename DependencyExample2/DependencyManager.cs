@@ -37,7 +37,7 @@ public class DependencyManager : IDependencyManager
         }
     }
 
-    public void ExecuteAndWait()
+    public ConcurrentDictionary<int, dynamic?> GetResults()
     {
         InternalExecute();
         // Launch and wait
@@ -52,6 +52,13 @@ public class DependencyManager : IDependencyManager
 
             _done.WaitOne();
         }
+
+        return _results;
+    }
+
+    public void ExecuteAndWait()
+    {
+        GetResults();
     }
 
     private void InternalExecute()

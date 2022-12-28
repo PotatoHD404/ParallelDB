@@ -37,4 +37,10 @@ DependencyManager dm = new DependencyManager();
 dm.AddOperation(1, ComputeFirst);
 dm.AddOperation(2, ComputeSecond);
 dm.AddOperation(3, ComputeThird, 1, 2);
-dm.ExecuteAndWait();
+// dm.ExecuteAndWait();
+var res = dm.GetResults();
+
+foreach (var item in res)
+{
+    Console.WriteLine(item);
+}

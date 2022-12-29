@@ -137,6 +137,31 @@ public class SelectQuery
         return this;
     }
 
+    private StringBuilder TableToString(object obj)
+    {
+        StringBuilder sb = new StringBuilder();
+        if (obj is SelectQuery obj1)
+        {
+            sb.Append("(");
+            sb.Append(obj1);
+            sb.Append(")");
+        }
+        else
+        {
+            sb.Append(obj);
+        }
+        return sb;
+    }
+    private StringBuilder JoinToString(Tuple<object, Func<IRow, IRow, bool>> obj)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append("JOIN ");
+        sb.Append(TableToString(obj.Item1));
+        sb.Append(" ON ");
+        sb.Append(obj.Item2);
+        return sb;
+    }
+    
     // to string method
     public override string ToString()
     {
@@ -149,48 +174,34 @@ public class SelectQuery
         else
             sb.Append(string.Join(", ", project));
         sb.Append(" FROM ");
-        sb.Append(string.Join(", ", from));
+        sb.Append(string.Join(", ", from.Select(TableToString)));
         if (join.Count > 0)
-        {
-            foreach (var j in join)
-            {
-                sb.Append(" JOIN ");
-                sb.Append(j.Item1);
-                sb.Append(" ON ");
-                sb.Append(j.Item2);
-            }
-        }
-
+            sb.Append(" " + string.Join(" ", join.Select(JoinToString)));
         if (where.Count > 0)
         {
             sb.Append(" WHERE ");
             sb.Append(string.Join(" AND ", where));
         }
-
         if (union.Count > 0)
         {
             sb.Append(" UNION ");
-            sb.Append(string.Join(" UNION ", union));
+            sb.Append(string.Join(" UNION ", union.Select(TableToString)));
         }
-
         if (unionAll.Count > 0)
         {
             sb.Append(" UNION ALL ");
-            sb.Append(string.Join(" UNION ALL ", unionAll));
+            sb.Append(string.Join(" UNION ALL ", unionAll.Select(TableToString)));
         }
-
         if (intersect.Count > 0)
         {
             sb.Append(" INTERSECT ");
-            sb.Append(string.Join(" INTERSECT ", intersect));
+            sb.Append(string.Join(" INTERSECT ", intersect.Select(TableToString)));
         }
-
         if (except.Count > 0)
         {
             sb.Append(" EXCEPT ");
-            sb.Append(string.Join(" EXCEPT ", except));
+            sb.Append(string.Join(" EXCEPT ", except.Select(TableToString)));
         }
-
         if (take.HasValue)
         {
             sb.Append(" LIMIT ");

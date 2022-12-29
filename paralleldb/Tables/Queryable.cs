@@ -14,6 +14,8 @@ public abstract class Queryable<T>
     public abstract Queryable<T> Skip(int count);
     public abstract Queryable<T> Take(int count);
     public abstract Queryable<T> Join(Queryable<T> other, Func<T, T, bool> predicate);
+    
+    public abstract Queryable<T> Cartesian(Queryable<T> other);
     // public abstract Queryable<T> InnerJoin(Queryable<T> other, Func<T, T, bool> predicate);
     // public abstract Queryable<T> LeftJoin(Queryable<T> other, Func<T, T, bool> predicate);
     // public abstract Queryable<T> RightJoin(Queryable<T> other, Func<T, T, bool> predicate);

@@ -171,6 +171,11 @@ public class PartialResult : Queryable<TableRow>
         }
     }
 
+    public override Queryable<TableRow> Cartesian(Queryable<TableRow> other)
+    {
+        return Join(other, (_, _) => true);
+    }
+
     public override Queryable<TableRow> Union(Queryable<TableRow> second)
     {
         CheckColumnTypes(second);

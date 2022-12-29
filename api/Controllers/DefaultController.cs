@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using ParallelDB;
+using ParallelDB.Tables;
 
 namespace Api.Controllers
 {
@@ -26,16 +28,33 @@ namespace Api.Controllers
             var response = new SqlResponse();
             try
             {
-                Console.WriteLine(body.Request);
+                var sql = body.Request;
 
-                response.Columns = new[] { "Column1", "Column2" };
-                response.Rows = new[] { new dynamic[] { "123", 1 }, new dynamic[] { "123", "2" } };
-                response.SyntaxTree = "digraph { a -> b;}";
-                response.QueryTree = "graph { a -- b;\n" +
-                                     "bgcolor = transparent;\n" +
-                                     "a -- c;\n" +
-                                     "b -- d;}";
-                response.PlannerTree = "digraph { b -> c;}";
+                var db = new ParallelDb();
+                var result = db.Execute(sql);
+                if (result is bool)
+                {
+                    response.Columns = new[] { "Result" };
+                    response.Rows = new[] { new[] { result.ToString() } };
+                }
+                else if (result is Table t)
+                {
+                    response.Columns = t.Columns.Select(c => c.Name).ToArray();
+                    response.Rows = t.Rows.Select(r =>
+                    {
+                        var row = new dynamic?[t.Columns.Count];
+                        for (var i = 0; i < t.Columns.Count; i++)
+                        {
+                            row[i] = r[i];
+                        }
+
+                        return row;
+                    }).ToArray();
+                }
+
+                response.SyntaxTree = db.GetSyntaxTree(sql);
+                response.QueryTree = db.GetQuery(sql).GetPlan();
+                response.PlannerTree = "";
                 return response;
             }
             catch (Exception e)
@@ -43,8 +62,6 @@ namespace Api.Controllers
                 response.Error = e.Message;
                 return response;
             }
-
-            
         }
     }
 }

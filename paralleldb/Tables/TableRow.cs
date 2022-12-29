@@ -210,4 +210,6 @@ public class TableRow : IRow
         return string.Join(", ",
             _values.Select((value, index) => $"{_table.ColumnName(index)}: {PrettyPrint.ToString(value)}"));
     }
+    
+    internal dynamic?[] Values => _values;
 }

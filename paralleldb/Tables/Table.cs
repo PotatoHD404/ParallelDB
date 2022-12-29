@@ -282,6 +282,8 @@ public class Table : PartialResult
 
         return updated;
     }
+    
+    public List<Column> Columns => _columns;
 
     public bool Truncate()
     {

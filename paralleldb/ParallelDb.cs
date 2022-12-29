@@ -27,7 +27,12 @@ public class ParallelDb
     public Table Execute(SelectQuery selectQuery)
     {
         var dependencyManager = new DependencyManager();
-        throw new NotImplementedException();
+        if (selectQuery.from.Count == 0)
+        {
+            throw new Exception("No tables specified");
+        }
+        // Get dependencies and create a dependency graph
+        
     }
 
     public bool Execute(InsertQuery insertQuery)
@@ -195,7 +200,7 @@ public class ParallelDb
         }
     }
 
-    private IQuery GetQuery(string sql)
+    public IQuery GetQuery(string sql)
     {
         var tree = GetTree(sql);
         QueryVisitor queryVisitor = new();

@@ -1031,6 +1031,13 @@ public class QueryTest
         Assert.AreEqual("DELETE FROM table1", query.ToString());
     }
     
+    [TestMethod]
+    public void DropQueryTest1()
+    {
+        var query = Query.Drop().Table("table1");
+        Assert.AreEqual("DROP TABLE table1", query.ToString());
+    }
+
     // [TestMethod]
     // public void UpdateQueryTest1()
     // {

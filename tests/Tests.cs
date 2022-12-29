@@ -6,6 +6,7 @@ using ParallelDB.Parse;
 using ParallelDB.Queries;
 using ParallelDB.Tables;
 using SqlParser;
+using static ParallelDB.Queries.Globals;
 
 namespace Tests;
 
@@ -1057,6 +1058,14 @@ public class OperationsTest
             var db = new ParallelDb();
             var query = db.Drop().Table("table1");
             Assert.AreEqual("DROP TABLE table1", query.ToString());
+        }
+        
+        [TestMethod]
+        public void InsertQueryTest2()
+        {
+            var db = new ParallelDb();
+            var query = db.Insert().Into("table1").Values(Default, "2", true).Values(2, "3", false);
+            Assert.AreEqual("INSERT INTO table1 VALUES (DEFAULT, '2', True), (2, '3', False)", query.ToString());
         }
 
         // [TestMethod]

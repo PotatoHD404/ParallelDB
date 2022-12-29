@@ -1,10 +1,11 @@
 ﻿using ParallelDB.Parse;
+using ParallelDB.Queries;
 
 namespace ParallelDB.Tables;
 
 public class TableRow : IRow
 {
-    private Table _table;
+    private readonly Table _table;
     private readonly dynamic?[] _values;
     private readonly bool[] _isSet;
 
@@ -17,16 +18,24 @@ public class TableRow : IRow
         }
 
         _values = values;
-        _isSet = new bool[values.Length];
-        if (isSet)
+
+        for (int i = 0; i < _values.Length; i++)
         {
-            for (int i = 0; i < _isSet.Length; i++)
+            if (_values[i] is DefaultType)
             {
-                _isSet[i] = true;
+                _values[i] = _table.ColumnDefault(i);
             }
         }
+
+        _isSet = new bool[values.Length];
+        if (!isSet) return;
+
+        for (int i = 0; i < _isSet.Length; i++)
+        {
+            _isSet[i] = true;
+        }
     }
-    
+
     internal TableRow(TableRow row)
     {
         // create deep copy
@@ -45,10 +54,9 @@ public class TableRow : IRow
         _table = table;
         _values = new dynamic?[dictionary.Values.Count];
         _isSet = new bool[dictionary.Values.Count];
-        int index;
         foreach (KeyValuePair<string, dynamic?> pair in dictionary)
         {
-            index = _table.ColumnIndex(pair.Key);
+            var index = _table.ColumnIndex(pair.Key);
             if (index == -1)
             {
                 throw new ArgumentException($"Column {pair.Key} does not exist in table {_table.Name}");
@@ -62,8 +70,8 @@ public class TableRow : IRow
 
             // check type
             CheckType(index, pair.Value);
+            _values[index] = pair.Value is DefaultType ? _table.ColumnDefault(index) : pair.Value;
 
-            _values[index] = pair.Value;
             _isSet[index] = true;
         }
     }
@@ -77,10 +85,15 @@ public class TableRow : IRow
             throw new ArgumentException($"Column {_table.ColumnName(i)} is not nullable");
         }
 
-        if (o is not null && o.GetType() != type)
+        if (o is DefaultType && !_table.ColumnHasDefault(i))
+        {
+            throw new ArgumentException($"Column {_table.ColumnName(i)} does not have a default value");
+        }
+
+        if (o is not null && o is not DefaultType && o.GetType() != type)
         {
             throw new ArgumentException(
-                $"Column {_table.ColumnName(i)} is of type {type} but value is of type {o.GetType()}");
+                $"Column {_table.ColumnName(i)} is of type {type} but value is of type {o!.GetType()}");
         }
     }
 
@@ -119,7 +132,7 @@ public class TableRow : IRow
             // check type
             CheckType(index, value);
 
-            _values[index] = value;
+            _values[index] = value is DefaultType ? _table.ColumnDefault(index) : value;
             _isSet[index] = true;
         }
     }
@@ -153,8 +166,8 @@ public class TableRow : IRow
             // check type
             CheckType(index, value);
 
+            _values[index] = value is DefaultType ? _table.ColumnDefault(index) : value;
 
-            _values[index] = value;
             _isSet[index] = true;
         }
     }

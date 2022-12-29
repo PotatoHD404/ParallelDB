@@ -11,12 +11,10 @@ namespace ParallelDB;
 public class ParallelDb
 {
     private TableStorage _tableStorage;
-    private DependencyManager _dependencyManager;
 
     public ParallelDb()
     {
         _tableStorage = new TableStorage();
-        _dependencyManager = new DependencyManager();
     }
 
     public SelectQuery Select() => new SelectQuery(this);
@@ -28,43 +26,97 @@ public class ParallelDb
 
     public Table Execute(SelectQuery selectQuery)
     {
+        var dependencyManager = new DependencyManager();
         throw new NotImplementedException();
     }
 
     public bool Execute(InsertQuery insertQuery)
     {
-        throw new NotImplementedException();
+        var dependencyManager = new DependencyManager();
+        if (insertQuery.into is null)
+        {
+            throw new Exception("No table specified");
+        }
+
+        if (insertQuery.values.Count == 0)
+        {
+            throw new Exception("No values specified");
+        }
+        dependencyManager.AddOperation(0, _ =>
+        {
+            var table = _tableStorage.GetTable(insertQuery.into);
+            if (table is null)
+            {
+                throw new Exception($"Table {insertQuery.into} does not exist");
+            }
+
+            return table.Insert(insertQuery.values);
+        });
+        
+        return dependencyManager.GetResults()[0];
     }
 
     public bool Execute(UpdateQuery updateQuery)
     {
-        throw new NotImplementedException();
+        var dependencyManager = new DependencyManager();
+        if (updateQuery.table is null)
+            throw new Exception("Table is not specified");
+        if (updateQuery.set.Count == 0)
+            throw new Exception("No values to update");
+
+        dependencyManager.AddOperation(0, _ =>
+        {
+            var table = _tableStorage.GetTable(updateQuery.table);
+            if (table is null)
+                throw new Exception("Table does not exist");
+
+
+            Func<IRow, bool> predicate = _ => true;
+            Action<IRow> action = row => updateQuery.set.ForEach(x => x(row));
+            if (updateQuery.where.Count > 0)
+            {
+                predicate = row => updateQuery.where.All(condition => condition(row));
+            }
+
+            return table.Update(action, predicate);
+        });
+
+        return dependencyManager.GetResults()[0];
     }
 
     public bool Execute(DeleteQuery deleteQuery)
     {
+        var dependencyManager = new DependencyManager();
         if (deleteQuery.from is null)
         {
             throw new Exception("Table name is null");
         }
-            
-        Queryable<TableRow> table = _tableStorage.GetTable(deleteQuery.from)!;
-        if (table is null)
-        {
-            throw new Exception("Table not found");
-        }
 
-        var predicate = (IRow row) => deleteQuery.where.All(condition => condition(row));
-        if (deleteQuery.where.Count > 0)
+        dependencyManager.AddOperation(0, _ =>
         {
-            table = table.Where(predicate);
-        }
+            Table? table = _tableStorage.GetTable(deleteQuery.from);
+            if (table is null)
+            {
+                throw new Exception("Table not found");
+            }
+
+            if (deleteQuery.where.Count > 0)
+            {
+                bool Predicate(IRow row) => deleteQuery.where.All(condition => condition(row));
+                return table.Delete(Predicate);
+            }
+
+            return table.Truncate();
+        });
+
+
         // combine the expressions with an "and"
-        return true;
+        return dependencyManager.GetResults()[0];
     }
 
     public bool Execute(CreateQuery createQuery)
     {
+        var dependencyManager = new DependencyManager();
         if (createQuery.tableName is null)
         {
             throw new Exception("Table name is null");
@@ -81,53 +133,78 @@ public class ParallelDb
             {
                 return false;
             }
+
             throw new Exception("Table already exists");
         }
-        var table = new Table(createQuery.tableName);
-        foreach (var column in createQuery.columns)
+
+        dependencyManager.AddOperation(0, _ =>
         {
-            table.AddColumn(column.Key, column.Value);
-        }
-        _tableStorage.AddTable(table);
-        return true;
+            var table = new Table(createQuery.tableName);
+            foreach (var column in createQuery.columns)
+            {
+                table.AddColumn(column.Key, column.Value);
+            }
+
+            return _tableStorage.AddTable(table);
+        });
+
+        return dependencyManager.GetResults()[0];
     }
 
     public bool Execute(DropQuery dropQuery)
     {
+        var dependencyManager = new DependencyManager();
         if (dropQuery.tableName is null)
         {
             throw new Exception("Table name is null");
         }
-            
+
         if (!_tableStorage.TableExists(dropQuery.tableName))
         {
             if (dropQuery.ifExists)
             {
                 return false;
             }
+
             throw new Exception("Table does not exist");
         }
-            
-        _tableStorage.RemoveTable(dropQuery.tableName);
-        return true;
-    }
 
-    private dynamic Execute(IQuery query)
-    {
-        throw new NotImplementedException();
+        dependencyManager.AddOperation(0, _ => _tableStorage.RemoveTable(dropQuery.tableName));
+        return dependencyManager.GetResults()[0];
     }
 
     public dynamic Execute(string sql)
     {
-        return Execute(GetQuery(sql));
+        var query = GetQuery(sql);
+        switch (query)
+        {
+            case SelectQuery selectQuery:
+                return Execute(selectQuery);
+            case InsertQuery insertQuery:
+                return Execute(insertQuery);
+            case UpdateQuery updateQuery:
+                return Execute(updateQuery);
+            case DeleteQuery deleteQuery:
+                return Execute(deleteQuery);
+            case CreateQuery createQuery:
+                return Execute(createQuery);
+            case DropQuery dropQuery:
+                return Execute(dropQuery);
+            default:
+                throw new Exception("Unknown query type");
+        }
     }
 
     private IQuery GetQuery(string sql)
     {
         var tree = GetTree(sql);
-        SqlNodeVisitor sqlNodeVisitor = new();
-        throw new NotImplementedException();
-        // return sqlNodeVisitor.Visit(tree);
+        QueryVisitor queryVisitor = new();
+        IQuery? res = queryVisitor.Visit(tree);
+        if (res is null)
+        {
+            throw new Exception("Query is null");
+        }
+        return res;
     }
 
     private static SQLiteParser.ParseContext GetTree(string sql)

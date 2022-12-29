@@ -210,13 +210,13 @@ public class Table : PartialResult
     }
 
 
-    public Table AddRow(Dictionary<string, object?> dictionary)
+    public Table AddRow(Dictionary<string, dynamic?> dictionary)
     {
         _rows.Add(new TableRow(this, dictionary));
         return this;
     }
 
-    public Table AddRow(params object?[] values)
+    public Table AddRow(params dynamic?[] values)
     {
         if (values.Length != ColumnsCount)
         {
@@ -248,6 +248,68 @@ public class Table : PartialResult
         return this;
     }
 
+    public bool Insert(List<List<dynamic?>> rows)
+    {
+        if (rows.Count == 0)
+        {
+            return false;
+        }
+
+        if (rows[0].Count != ColumnsCount)
+        {
+            throw new ArgumentException("Row has different length than table columns");
+        }
+
+        foreach (var row in rows)
+        {
+            _rows.Add(new TableRow(this, row.ToArray(), true));
+        }
+
+        return true;
+    }
+
+    public bool Update(Action<IRow> rowChanger, Func<IRow, bool> predicate)
+    {
+        bool updated = false;
+        foreach (TableRow row in _rows)
+        {
+            if (predicate(row))
+            {
+                rowChanger(row);
+                updated = true;
+            }
+        }
+
+        return updated;
+    }
+
+    public bool Truncate()
+    {
+        if (_rows.Count == 0)
+        {
+            return false;
+        }
+
+        _rows.Clear();
+        return true;
+    }
+
+    public bool Delete(Func<IRow, bool> predicate)
+    {
+        bool deleted = false;
+        for (int i = 0; i < _rows.Count; i++)
+        {
+            if (predicate(_rows[i]))
+            {
+                _rows.RemoveAt(i);
+                i--;
+                deleted = true;
+            }
+        }
+
+        return deleted;
+    }
+
     public TableRow NewRow()
     {
         var values = new object?[ColumnsCount];
@@ -269,7 +331,7 @@ public class Table : PartialResult
         foreach (TableRow row in _rows)
         {
             // _values are private, so we need to access via [] operator
-            table.AddRow(Enumerable.Range(0, ColumnsCount).Select(i => global::ParallelDB.PrettyPrint.ToString(row[i]))
+            table.AddRow(Enumerable.Range(0, ColumnsCount).Select(i => ParallelDB.PrettyPrint.ToString(row[i]))
                 .ToArray());
         }
 
@@ -294,6 +356,8 @@ public class Table : PartialResult
     {
         return _columns[index].IsNullable;
     }
+    
+    public List<TableRow> Rows => _rows;
 
     public List<TableRow> ToRows()
     {

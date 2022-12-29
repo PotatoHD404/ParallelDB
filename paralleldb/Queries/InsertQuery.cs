@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using static ParallelDB.Queries.Globals;
 
 namespace ParallelDB.Queries;
 
@@ -6,15 +7,13 @@ public class InsertQuery : IQuery
 {
     private ParallelDb _db;
 
-    internal List<List<dynamic?>> values;
-    internal List<List<bool>> @default;
+    internal readonly List<List<dynamic?>> values;
     internal string? into;
 
     public InsertQuery(ParallelDb db)
     {
         _db = db;
         values = new List<List<dynamic?>>();
-        @default = new List<List<bool>>();
     }
 
     public InsertQuery Into(string table)
@@ -23,42 +22,12 @@ public class InsertQuery : IQuery
         return this;
     }
 
-    public InsertQuery Values(List<dynamic?> values, List<bool> @default)
-    {
-        this.values.Add(values);
-        this.@default.Add(@default);
-        return this;
-    }
-
-    public InsertQuery Values(List<dynamic?> values)
-    {
-        this.values.Add(values);
-        @default.Add(new List<bool>(values.Count));
-        return this;
-    }
-
     public InsertQuery Values(params dynamic?[] values)
     {
         this.values.Add(values.ToList());
-        @default.Add(new bool[values.Length].ToList());
         return this;
     }
-
-    public InsertQuery ValuesDefault(List<bool> @default)
-    {
-        this.values.Add(new List<dynamic?>(@default.Count));
-        this.@default.Add(@default);
-        return this;
-    }
-
-    public InsertQuery ValuesDefault(params bool[] @default)
-    {
-        this.values.Add(new List<dynamic?>(@default.Length));
-        this.@default.Add(@default.ToList());
-        return this;
-    }
-
-    // toString 
+    
     public override string ToString()
     {
         StringBuilder sb = new StringBuilder();
@@ -74,7 +43,7 @@ public class InsertQuery : IQuery
             {
                 if (j > 0)
                     sb.Append(", ");
-                if (@default[i][j])
+                if (values[i][j] is DefaultType)
                     sb.Append("DEFAULT");
                 else
                 {
@@ -82,9 +51,9 @@ public class InsertQuery : IQuery
                     {
                         sb.Append($"'{values[i][j]}'");
                     }
-                    else if (values[i][j] is DateTime)
+                    else if (values[i][j] is DateTime d)
                     {
-                        sb.Append($"'{((DateTime)values[i][j]).ToString("yyyy-MM-dd HH:mm:ss")}'");
+                        sb.Append($"'{d.ToString("yyyy-MM-dd HH:mm:ss")}'");
                     }
                     else
                     {

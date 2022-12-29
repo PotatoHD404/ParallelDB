@@ -1,9 +1,10 @@
 ﻿using Antlr4.Runtime.Misc;
+using ParallelDB.Queries;
 using SqlParser;
 
 namespace ParallelDB.Parse;
 
-public class SqlNodeVisitor : SQLiteParserBaseVisitor<SqlNode?>
+public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 {
     public override SqlNode? VisitSelect_stmt([NotNull] SQLiteParser.Select_stmtContext context)
     {

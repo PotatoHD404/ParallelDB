@@ -1,12 +1,13 @@
-﻿using ParallelDB.Tables;
+﻿using System.Collections.Concurrent;
+using ParallelDB.Tables;
 
 namespace ParallelDB;
 
 public class TableStorage
 {
-    private readonly Dictionary<string, Table> _tables = new();
+    private readonly ConcurrentDictionary<string, Table> _tables = new();
 
-    public void AddTable(Table table)
+    public bool AddTable(Table table)
     {
         if (table.Name is null)
         {
@@ -16,7 +17,8 @@ public class TableStorage
         {
             throw new ArgumentException($"Table {table.Name} already exists");
         }
-        _tables.Add(table.Name, table);
+        _tables.TryAdd(table.Name, table);
+        return true;
     }
     
     public bool TableExists(string tableName)
@@ -29,8 +31,9 @@ public class TableStorage
         return _tables.TryGetValue(tableName, out var table) ? table : null;
     }
 
-    public void RemoveTable(string tableName)
+    public bool RemoveTable(string tableName)
     {
-        _tables.Remove(tableName);
+        _tables.TryRemove(tableName, out _);
+        return true;
     }
 }

@@ -1094,4 +1094,6 @@ public class DependencyManagerTest
         Assert.AreEqual(21, res[3]);
         Assert.IsTrue(end - start < TimeSpan.FromSeconds(1.5));
     }
+    
+    // TODO: add tests for cycles
 }

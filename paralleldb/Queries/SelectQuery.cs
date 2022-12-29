@@ -4,7 +4,7 @@ using ParallelDB.Tables;
 
 namespace ParallelDB.Queries;
 
-public class SelectQuery
+public class SelectQuery : IQuery
 {
     private ParallelDb _db;
     internal List<string> project;
@@ -209,5 +209,10 @@ public class SelectQuery
     public Table Execute()
     {
         return _db.Execute(this);
+    }
+    
+    public string GetPlan()
+    {
+        throw new NotImplementedException();
     }
 }

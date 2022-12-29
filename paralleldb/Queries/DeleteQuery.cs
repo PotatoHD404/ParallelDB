@@ -45,7 +45,13 @@ public class DeleteQuery : IQuery
 
     public string GetPlan()
     {
-        throw new NotImplementedException();
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine("digraph G {");
+        sb.AppendLine("bgcolor= transparent;");
+        sb.AppendLine("rankdir=BT;");
+        sb.AppendLine($"\"Scan {this.from}\" -> \"Modify Table {this.from}\"");
+        sb.AppendLine("}");
+        return sb.ToString();
     }
 
     public bool Execute()

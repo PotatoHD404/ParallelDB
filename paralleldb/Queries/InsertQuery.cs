@@ -70,7 +70,13 @@ public class InsertQuery : IQuery
 
     public string GetPlan()
     {
-        throw new NotImplementedException();
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine("digraph G {");
+        sb.AppendLine("bgcolor= transparent;");
+        sb.AppendLine("rankdir=BT;");
+        sb.AppendLine($"\"Result\" -> \"Modify Table {this.into}\"");
+        sb.AppendLine("}");
+        return sb.ToString();
     }
 
     // execute

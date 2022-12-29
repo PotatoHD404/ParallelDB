@@ -57,21 +57,12 @@ public class UpdateQuery : IQuery
 
     public string GetPlan()
     {
-        // get graphviz graph
         StringBuilder sb = new StringBuilder();
-        sb.Append("digraph G {");
-        sb.Append("node [shape=box];");
-        sb.Append("rankdir=BT;");
-        sb.Append("subgraph cluster_0 {");
-        sb.Append("label=\"Update\";");
-        sb.Append("style=filled;");
-        sb.Append("color=lightgrey;");
-        sb.Append("node [style=filled,color=white];");
-        sb.Append("a0 [label=\"");
-        sb.Append(ToString());
-        sb.Append("\"];");
-        sb.Append("}");
-        sb.Append("}");
+        sb.AppendLine("digraph G {");
+        sb.AppendLine("bgcolor= transparent;");
+        sb.AppendLine("rankdir=BT;");
+        sb.AppendLine($"\"Scan {this.table}\" -> \"Modify Table {this.table}\"");
+        sb.AppendLine("}");
         return sb.ToString();
     }
 

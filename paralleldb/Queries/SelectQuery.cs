@@ -224,13 +224,34 @@ public class SelectQuery : IQuery
         return sb.ToString();
     }
 
-    public Table Execute()
-    {
-        return _db.Execute(this);
-    }
-
+    
     public string GetPlan()
     {
-        throw new NotImplementedException();
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine("digraph G {");
+        sb.AppendLine("bgcolor= transparent;");
+        sb.AppendLine("rankdir=BT;");
+        // cycle that finds all from tables
+        for (int i = 0; i < this.from.Count; i++)
+        {
+            if (from[i] is SelectQuery obj1)
+            {
+                
+            }
+            else
+            {
+                if (take.HasValue || skip.HasValue)
+                {
+                    sb.AppendLine($"{this.from[i]} -> Limit");
+                }
+                else
+                {
+                    sb.AppendLine($"{this.from[i]}");
+                }
+            }
+        }
+        // check if there is take or skip
+        sb.AppendLine("}");
+        return sb.ToString();
     }
 }

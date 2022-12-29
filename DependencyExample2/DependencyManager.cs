@@ -21,9 +21,8 @@ public class DependencyManager : IDependencyManager
         if (dependencies is null)
             throw new ArgumentNullException(nameof(dependencies));
 
-        var data = new OperationData(id, (res) => operation(res), dependencies);
+        var data = new OperationData(id, res => operation(res), dependencies);
         _operations.TryAdd(id, data);
-        _results.TryAdd(id, null);
     }
 
     public void Execute()
@@ -77,8 +76,8 @@ public class DependencyManager : IDependencyManager
                     toList = new List<int>();
                     _dependenciesFromTo.TryAdd(from, toList);
                 }
-
                 toList.Add(op.Id);
+                _results.TryAdd(op.Id, null);
             }
         }
     }
@@ -174,7 +173,17 @@ public class DependencyManager : IDependencyManager
                 ids.Add(op.Id);
             }
         }
-
+        // print dependencies
+        // foreach (var item in dependenciesToFrom)
+        // {
+        //     Console.WriteLine($"Key: {item.Key}, Value: {string.Join(",", item.Value)}");
+        // }
+        // Console.WriteLine();
+        // foreach (var item in dependenciesFromTo)
+        // {
+        //     Console.WriteLine($"Key: {item.Key}, Value: {string.Join(",", item.Value)}");
+        // }
+        // Console.WriteLine();
         // Create the sorted list
         var overallPartialOrderingIds = new List<int>(dependenciesToFrom.Count);
         var thisIterationIds = new List<int>(dependenciesToFrom.Count);

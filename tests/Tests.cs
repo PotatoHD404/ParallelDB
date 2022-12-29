@@ -1005,32 +1005,29 @@ public class QueryTest
     [TestMethod]
     public void SelectQueryTest1()
     {
-        SelectQuery query = new SelectQuery();
-        query.From("table1").Intersect("table2").Take(3);
+        
+        var query = Query.Select().From("table1").Intersect("table2").Take(3);
         Assert.AreEqual("SELECT * FROM table1 INTERSECT table2 LIMIT 3", query.ToString());
     }
     
     [TestMethod]
     public void InsertQueryTest1()
     {
-        InsertQuery query = new InsertQuery();
-        query.Into("table1").Values(1, "2", true);
+        var query = Query.Insert().Into("table1").Values(1, "2", true);
         Assert.AreEqual("INSERT INTO table1 VALUES (1, '2', True)", query.ToString());
     }
     
     [TestMethod]
     public void CreateQueryTest1()
     {
-        CreateTableQuery query = new CreateTableQuery();
-        query.Table("table1").AddColumn("a", typeof(int)).AddColumn("b", typeof(string)).AddColumn("c", typeof(bool));
+        var query = Query.Create().Table("table1").AddColumn("a", typeof(int)).AddColumn("b", typeof(string)).AddColumn("c", typeof(bool));
         Assert.AreEqual("CREATE TABLE table1 (a Int32 NOT NULL, b String NOT NULL, c Boolean NOT NULL)", query.ToString());
     }
     
     [TestMethod]
     public void DeleteQueryTest1()
     {
-        DeleteQuery query = new DeleteQuery();
-        query.From("table1");
+        var query = Query.Delete().Table("table1");
         Assert.AreEqual("DELETE FROM table1", query.ToString());
     }
     

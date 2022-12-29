@@ -18,34 +18,39 @@ public class InsertQuery : IQuery
         into = table;
         return this;
     }
-    public void Values(List<dynamic?> values, List<bool> @default)
+    public InsertQuery Values(List<dynamic?> values, List<bool> @default)
     {
         this.values.Add(values);
         this.@default.Add(@default);
+        return this;
     }
     
-    public void Values(List<dynamic?> values)
+    public InsertQuery Values(List<dynamic?> values)
     {
         this.values.Add(values);
-        this.@default.Add(new List<bool>(values.Count));
+        @default.Add(new List<bool>(values.Count));
+        return this;
     }
     
-    public void Values(params dynamic?[] values)
+    public InsertQuery Values(params dynamic?[] values)
     {
         this.values.Add(values.ToList());
-        this.@default.Add(new bool[values.Length].ToList());
+        @default.Add(new bool[values.Length].ToList());
+        return this;
     }
     
-    public void ValuesDefault(List<bool> @default)
+    public InsertQuery ValuesDefault(List<bool> @default)
     {
         this.values.Add(new List<dynamic?>(@default.Count));
         this.@default.Add(@default);
+        return this;
     }
     
-    public void ValuesDefault(params bool[] @default)
+    public InsertQuery ValuesDefault(params bool[] @default)
     {
         this.values.Add(new List<dynamic?>(@default.Length));
         this.@default.Add(@default.ToList());
+        return this;
     }
     
     // toString 

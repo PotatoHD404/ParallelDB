@@ -8,6 +8,7 @@ internal class OperationData
     internal DateTimeOffset End;
     internal int Id;
     internal int NumRemainingDependencies;
+    internal int NumRemainingDependents;
     internal Func<ConcurrentDictionary<int, dynamic?>, dynamic?> Operation;
     internal DateTimeOffset Start;
     
@@ -17,5 +18,6 @@ internal class OperationData
         Operation = operation;
         Dependencies = dependencies;
         NumRemainingDependencies = dependencies.Length;
+        NumRemainingDependents = 0;
     }
 }

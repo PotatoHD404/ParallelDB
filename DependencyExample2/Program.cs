@@ -23,14 +23,14 @@ int ComputeSecond(ConcurrentDictionary<int, dynamic?> _)
 
 int ComputeThird(ConcurrentDictionary<int, dynamic?> dict)
 {
-    if (dict[0] is null || dict[1] is null)
+    if (dict[1] is null || dict[2] is null)
     {
         throw new Exception("Dependency not met");
     }
 
-    int a = dict[0]?.Value;
-    int b = dict[1]?.Value;
-    return a + b;
+    int a = dict[1];
+    int b = dict[2];
+    return a + b * 10;
 }
 
 DependencyManager dm = new DependencyManager();

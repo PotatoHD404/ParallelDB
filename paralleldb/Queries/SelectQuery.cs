@@ -33,7 +33,7 @@ public class SelectQuery
         take = null;
         skip = null;
     }
-    public SelectQuery Select(params string[] columns)
+    public SelectQuery Project(params string[] columns)
     {
         project.AddRange(columns);
         return this;

@@ -5,18 +5,20 @@ namespace ParallelDB.Queries;
 
 public class DeleteQuery : IQuery
 {
-    internal string from;
+    internal string? from;
     internal List<Func<IRow, bool>> where;
     
     public DeleteQuery()
     {
         this.where = new List<Func<IRow, bool>>();
     }
-    public DeleteQuery From(string from)
+    
+    public DeleteQuery Table(string table)
     {
-        this.from = from;
+        this.from = table;
         return this;
     }
+    
     public DeleteQuery Where(Func<IRow, bool> predicate)
     {
         this.where.Add(predicate);

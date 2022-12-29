@@ -7,6 +7,7 @@ public class DependencyManager : IDependencyManager
     private readonly ConcurrentDictionary<int, OperationData> _operations = new();
 
     private readonly ConcurrentDictionary<int, List<int>> _dependenciesFromTo = new();
+    private readonly ConcurrentDictionary<int, List<int>> _dependenciesToFrom = new();
     private volatile int _remainingCount;
     private ManualResetEvent _done = new(false);
     private readonly ConcurrentDictionary<int, dynamic?> _results = new();
@@ -21,8 +22,16 @@ public class DependencyManager : IDependencyManager
         if (dependencies is null)
             throw new ArgumentNullException(nameof(dependencies));
 
+        foreach (var dep in dependencies)
+        {
+            if (!_operations.ContainsKey(dep))
+                throw new ArgumentException($"Dependency {dep} does not exist", nameof(dependencies));
+            Interlocked.Increment(ref _operations[dep].NumRemainingSuccessors);
+        }
+
         var data = new OperationData(id, res => operation(res), dependencies);
         _operations.TryAdd(id, data);
+        Interlocked.Increment(ref _remainingCount);
     }
 
     public void Execute()
@@ -40,7 +49,6 @@ public class DependencyManager : IDependencyManager
     {
         InternalExecute();
         // Launch and wait
-        _remainingCount = _operations.Count;
         using (_done = new ManualResetEvent(false))
         {
             foreach (OperationData op in _operations.Values)
@@ -77,6 +85,12 @@ public class DependencyManager : IDependencyManager
                     _dependenciesFromTo.TryAdd(from, toList);
                 }
                 toList.Add(op.Id);
+                if (!_dependenciesToFrom.TryGetValue(op.Id, out var fromList))
+                {
+                    fromList = new List<int>();
+                    _dependenciesToFrom.TryAdd(op.Id, fromList);
+                }
+                fromList.Add(from);
                 _results.TryAdd(op.Id, null);
             }
         }
@@ -113,9 +127,20 @@ public class DependencyManager : IDependencyManager
                     QueueOperation(targetData);
             }
         }
-
+        
         _dependenciesFromTo.TryRemove(data.Id, out _);
-
+        
+        if(_dependenciesToFrom.TryGetValue(data.Id, out var fromList))
+        {
+            foreach (int fromId in fromList)
+            {
+                OperationData fromData = _operations[fromId];
+                if (Interlocked.Decrement(ref fromData.NumRemainingSuccessors) == 0)
+                    _results.TryRemove(fromId, out _);
+            }
+        }
+        
+        _operations.TryRemove(data.Id, out _);
 
         if (Interlocked.Decrement(ref _remainingCount) == 0) _done.Set();
     }
@@ -173,6 +198,7 @@ public class DependencyManager : IDependencyManager
                 ids.Add(op.Id);
             }
         }
+
         // print dependencies
         // foreach (var item in dependenciesToFrom)
         // {

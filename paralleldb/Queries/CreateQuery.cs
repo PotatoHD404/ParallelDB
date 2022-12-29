@@ -63,7 +63,7 @@ public class CreateQuery : IQuery
 
     public string GetPlan()
     {
-        throw new NotImplementedException();
+        return "";
     }
 
     public bool Execute()

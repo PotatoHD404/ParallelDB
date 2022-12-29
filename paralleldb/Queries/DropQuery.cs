@@ -33,7 +33,7 @@ public class DropQuery : IQuery
 
     public string GetPlan()
     {
-        throw new NotImplementedException();
+        return "";
     }
 
     // execute

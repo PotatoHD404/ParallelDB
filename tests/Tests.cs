@@ -979,70 +979,94 @@ public class OperationsTest
         Assert.AreEqual("e", rows[0][0]);
         Assert.AreEqual(false, rows[0][1]);
     }
-}
 
-[TestClass]
-public class QueryPlannerTest
-{
-    [TestMethod]
-    public void Test1()
+    [TestClass]
+    public class QueryPlannerTest
     {
-        // TODO: implement
-    }
-}
-
-[TestClass]
-public class QueryTest
-{
-    [TestMethod]
-    public void SelectQueryTest1()
-    {
-        var db = new ParallelDb();
-        var query = db.Select().From("table1").Intersect("table2").Take(3);
-        Assert.AreEqual("SELECT * FROM table1 INTERSECT table2 LIMIT 3", query.ToString());
+        [TestMethod]
+        public void Test1()
+        {
+            // TODO: implement
+        }
     }
 
-    [TestMethod]
-    public void InsertQueryTest1()
+    [TestClass]
+    public class QueryTest
     {
-        var db = new ParallelDb();
-        var query = db.Insert().Into("table1").Values(1, "2", true);
-        Assert.AreEqual("INSERT INTO table1 VALUES (1, '2', True)", query.ToString());
-    }
+        [TestMethod]
+        public void SelectQueryTest1()
+        {
+            var db = new ParallelDb();
+            var query = db.Select().From("table1").Intersect("table2").Take(3);
+            Assert.AreEqual("SELECT * FROM table1 INTERSECT table2 LIMIT 3", query.ToString());
+        }
 
-    [TestMethod]
-    public void CreateQueryTest1()
-    {
-        var db = new ParallelDb();
-        var query = db.Create().Table("table1").AddColumn("a", typeof(int)).AddColumn("b", typeof(string))
-            .AddColumn("c", typeof(bool));
-        Assert.AreEqual("CREATE TABLE table1 (a Int32 NOT NULL, b String NOT NULL, c Boolean NOT NULL)",
-            query.ToString());
-    }
+        [TestMethod]
+        public void SelectQueryTest2()
+        {
+            var db = new ParallelDb();
+            var query = db.Select().From(db.Select().From("table2")).Skip(3);
+            Assert.AreEqual("SELECT * FROM (SELECT * FROM table2) OFFSET 3", query.ToString());
+        }
+        
+        [TestMethod]
+        public void SelectQueryTest3()
+        {
+            var db = new ParallelDb();
+            var query = db.Select().From("table1").From(db.Select().From("table2"));
+            Assert.AreEqual("SELECT * FROM table1, (SELECT * FROM table2)", query.ToString());
+        }
+        
+        [TestMethod]
+        public void SelectQueryTest4()
+        {
+            var db = new ParallelDb();
+            var query = db.Select().From(db.Select().From("table2").Intersect(db.Select().From("table3").Skip(3))).Take(3);
+            Assert.AreEqual("SELECT * FROM (SELECT * FROM table2 INTERSECT (SELECT * FROM table3 OFFSET 3)) LIMIT 3", query.ToString());
+        }
 
-    [TestMethod]
-    public void DeleteQueryTest1()
-    {
-        var db = new ParallelDb();
-        var query = db.Delete().Table("table1");
-        Assert.AreEqual("DELETE FROM table1", query.ToString());
-    }
+        [TestMethod]
+        public void InsertQueryTest1()
+        {
+            var db = new ParallelDb();
+            var query = db.Insert().Into("table1").Values(1, "2", true);
+            Assert.AreEqual("INSERT INTO table1 VALUES (1, '2', True)", query.ToString());
+        }
 
-    [TestMethod]
-    public void DropQueryTest1()
-    {
-        var db = new ParallelDb();
-        var query = db.Drop().Table("table1");
-        Assert.AreEqual("DROP TABLE table1", query.ToString());
-    }
+        [TestMethod]
+        public void CreateQueryTest1()
+        {
+            var db = new ParallelDb();
+            var query = db.Create().Table("table1").AddColumn("a", typeof(int)).AddColumn("b", typeof(string))
+                .AddColumn("c", typeof(bool));
+            Assert.AreEqual("CREATE TABLE table1 (a Int32 NOT NULL, b String NOT NULL, c Boolean NOT NULL)",
+                query.ToString());
+        }
 
-    // [TestMethod]
-    // public void UpdateQueryTest1()
-    // {
-    //     UpdateQuery query = new UpdateQuery();
-    //     query.Table("table1").Set(row => row["a"] = 1).Set(row => row["b"] = 2).Where(row => row["a"] == 1);
-    //     Assert.AreEqual("UPDATE table1 SET a = 1, b = '2' WHERE a = 1", query.ToString());
-    // }
+        [TestMethod]
+        public void DeleteQueryTest1()
+        {
+            var db = new ParallelDb();
+            var query = db.Delete().Table("table1");
+            Assert.AreEqual("DELETE FROM table1", query.ToString());
+        }
+
+        [TestMethod]
+        public void DropQueryTest1()
+        {
+            var db = new ParallelDb();
+            var query = db.Drop().Table("table1");
+            Assert.AreEqual("DROP TABLE table1", query.ToString());
+        }
+
+        // [TestMethod]
+        // public void UpdateQueryTest1()
+        // {
+        //     UpdateQuery query = new UpdateQuery();
+        //     query.Table("table1").Set(row => row["a"] = 1).Set(row => row["b"] = 2).Where(row => row["a"] == 1);
+        //     Assert.AreEqual("UPDATE table1 SET a = 1, b = '2' WHERE a = 1", query.ToString());
+        // }
+    }
 }
 
 

@@ -150,8 +150,10 @@ public class SelectQuery : IQuery
         {
             sb.Append(obj);
         }
+
         return sb;
     }
+
     private StringBuilder JoinToString(Tuple<object, Func<IRow, IRow, bool>> obj)
     {
         StringBuilder sb = new StringBuilder();
@@ -161,7 +163,7 @@ public class SelectQuery : IQuery
         sb.Append(obj.Item2);
         return sb;
     }
-    
+
     // to string method
     public override string ToString()
     {
@@ -182,26 +184,31 @@ public class SelectQuery : IQuery
             sb.Append(" WHERE ");
             sb.Append(string.Join(" AND ", where));
         }
+
         if (union.Count > 0)
         {
             sb.Append(" UNION ");
             sb.Append(string.Join(" UNION ", union.Select(TableToString)));
         }
+
         if (unionAll.Count > 0)
         {
             sb.Append(" UNION ALL ");
             sb.Append(string.Join(" UNION ALL ", unionAll.Select(TableToString)));
         }
+
         if (intersect.Count > 0)
         {
             sb.Append(" INTERSECT ");
             sb.Append(string.Join(" INTERSECT ", intersect.Select(TableToString)));
         }
+
         if (except.Count > 0)
         {
             sb.Append(" EXCEPT ");
             sb.Append(string.Join(" EXCEPT ", except.Select(TableToString)));
         }
+
         if (take.HasValue)
         {
             sb.Append(" LIMIT ");
@@ -221,7 +228,7 @@ public class SelectQuery : IQuery
     {
         return _db.Execute(this);
     }
-    
+
     public string GetPlan()
     {
         throw new NotImplementedException();

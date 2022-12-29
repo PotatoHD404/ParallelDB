@@ -3,7 +3,7 @@
 public class DropQuery : IQuery
 {
     private ParallelDb _db;
-    internal string? table;
+    internal string? tableName;
     internal bool ifExists;
 
     public DropQuery(ParallelDb db)
@@ -14,7 +14,7 @@ public class DropQuery : IQuery
 
     public DropQuery Table(string tableName)
     {
-        table = tableName;
+        this.tableName = tableName;
         return this;
     }
 
@@ -28,7 +28,7 @@ public class DropQuery : IQuery
     // toString
     public override string ToString()
     {
-        return "DROP TABLE " + (ifExists ? "IF EXISTS " : "") + table;
+        return "DROP TABLE " + (ifExists ? "IF EXISTS " : "") + tableName;
     }
 
     public string GetPlan()

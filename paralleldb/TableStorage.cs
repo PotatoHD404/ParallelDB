@@ -19,6 +19,11 @@ public class TableStorage
         _tables.Add(table.Name, table);
     }
     
+    public bool TableExists(string tableName)
+    {
+        return _tables.ContainsKey(tableName);
+    }
+    
     public Table? GetTable(string tableName)
     {
         return _tables.TryGetValue(tableName, out var table) ? table : null;

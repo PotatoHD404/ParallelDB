@@ -72,7 +72,6 @@ public class GraphvizVisitor : SQLiteParserBaseVisitor<object?>
                 Visit(child);
             }
         }
-
         return null;
     }
 }

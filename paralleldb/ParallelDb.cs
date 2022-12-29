@@ -1,97 +1,153 @@
-﻿using Antlr4.Runtime;
+﻿using System.Linq.Expressions;
+using Antlr4.Runtime;
 using ParallelDB.Dependencies;
 using ParallelDB.Parse;
 using ParallelDB.Queries;
 using ParallelDB.Tables;
 using SqlParser;
 
-namespace ParallelDB
+namespace ParallelDB;
+
+public class ParallelDb
 {
-    public class ParallelDb
+    private TableStorage _tableStorage;
+    private DependencyManager _dependencyManager;
+
+    public ParallelDb()
     {
-        private TableStorage _tableStorage;
-        private DependencyManager _dependencyManager;
+        _tableStorage = new TableStorage();
+        _dependencyManager = new DependencyManager();
+    }
 
-        public ParallelDb()
+    public SelectQuery Select() => new SelectQuery(this);
+    public InsertQuery Insert() => new InsertQuery(this);
+    public UpdateQuery Update() => new UpdateQuery(this);
+    public DeleteQuery Delete() => new DeleteQuery(this);
+    public CreateQuery Create() => new CreateQuery(this);
+    public DropQuery Drop() => new DropQuery(this);
+
+    public Table Execute(SelectQuery selectQuery)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Execute(InsertQuery insertQuery)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Execute(UpdateQuery updateQuery)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Execute(DeleteQuery deleteQuery)
+    {
+        if (deleteQuery.from is null)
         {
-            _tableStorage = new TableStorage();
-            _dependencyManager = new DependencyManager();
+            throw new Exception("Table name is null");
+        }
+            
+        Queryable<TableRow> table = _tableStorage.GetTable(deleteQuery.from)!;
+        if (table is null)
+        {
+            throw new Exception("Table not found");
         }
 
-        public SelectQuery Select() => new SelectQuery(this);
-        public InsertQuery Insert() => new InsertQuery(this);
-        public UpdateQuery Update() => new UpdateQuery(this);
-        public DeleteQuery Delete() => new DeleteQuery(this);
-        public CreateQuery Create() => new CreateQuery(this);
-        public DropQuery Drop() => new DropQuery(this);
-
-        public Table Execute(SelectQuery selectQuery)
+        var predicate = (IRow row) => deleteQuery.where.All(condition => condition(row));
+        if (deleteQuery.where.Count > 0)
         {
-            throw new NotImplementedException();
+            table = table.Where(predicate);
+        }
+        // combine the expressions with an "and"
+        return true;
+    }
+
+    public bool Execute(CreateQuery createQuery)
+    {
+        if (createQuery.tableName is null)
+        {
+            throw new Exception("Table name is null");
         }
 
-        public bool Execute(InsertQuery insertQuery)
+        if (createQuery.columns.Count == 0)
         {
-            throw new NotImplementedException();
+            throw new Exception("No columns specified");
         }
 
-        public bool Execute(UpdateQuery updateQuery)
+        if (_tableStorage.TableExists(createQuery.tableName))
         {
-            throw new NotImplementedException();
+            if (createQuery.ifNotExists)
+            {
+                return false;
+            }
+            throw new Exception("Table already exists");
         }
+        var table = new Table(createQuery.tableName);
+        foreach (var column in createQuery.columns)
+        {
+            table.AddColumn(column.Key, column.Value);
+        }
+        _tableStorage.AddTable(table);
+        return true;
+    }
 
-        public bool Execute(DeleteQuery deleteQuery)
+    public bool Execute(DropQuery dropQuery)
+    {
+        if (dropQuery.tableName is null)
         {
-            throw new NotImplementedException();
+            throw new Exception("Table name is null");
         }
+            
+        if (!_tableStorage.TableExists(dropQuery.tableName))
+        {
+            if (dropQuery.ifExists)
+            {
+                return false;
+            }
+            throw new Exception("Table does not exist");
+        }
+            
+        _tableStorage.RemoveTable(dropQuery.tableName);
+        return true;
+    }
 
-        public bool Execute(CreateQuery createQuery)
-        {
-            throw new NotImplementedException();
-        }
+    private dynamic Execute(IQuery query)
+    {
+        throw new NotImplementedException();
+    }
 
-        public bool Execute(DropQuery dropQuery)
-        {
-            throw new NotImplementedException();
-        }
+    public dynamic Execute(string sql)
+    {
+        return Execute(GetQuery(sql));
+    }
 
-        private dynamic Execute(IQuery query)
-        {
-            throw new NotImplementedException();
-        }
+    private IQuery GetQuery(string sql)
+    {
+        var tree = GetTree(sql);
+        SqlNodeVisitor sqlNodeVisitor = new();
+        throw new NotImplementedException();
+        // return sqlNodeVisitor.Visit(tree);
+    }
 
-        public dynamic Execute(string sql)
-        {
-            return Execute(GetQuery(sql));
-        }
+    private static SQLiteParser.ParseContext GetTree(string sql)
+    {
+        ICharStream stream = CharStreams.fromString(sql);
+        var lexer = new SQLiteLexer(stream);
+        lexer.RemoveErrorListeners();
+        lexer.AddErrorListener(new LexerErrorListener());
+        var tokens = new CommonTokenStream(lexer);
+        var parser = new SQLiteParser(tokens);
+        parser.RemoveErrorListeners();
+        parser.AddErrorListener(new ParserErrorListener());
+        return parser.parse();
+    }
 
-        private IQuery GetQuery(string sql)
-        {
-            var tree = GetTree(sql);
-            SqlNodeVisitor sqlNodeVisitor = new();
-            throw new NotImplementedException();
-            // return sqlNodeVisitor.Visit(tree);
-        }
-
-        private static SQLiteParser.ParseContext GetTree(string sql)
-        {
-            ICharStream stream = CharStreams.fromString(sql);
-            var lexer = new SQLiteLexer(stream);
-            lexer.RemoveErrorListeners();
-            lexer.AddErrorListener(new LexerErrorListener());
-            var tokens = new CommonTokenStream(lexer);
-            var parser = new SQLiteParser(tokens);
-            parser.RemoveErrorListeners();
-            parser.AddErrorListener(new ParserErrorListener());
-            return parser.parse();
-        }
-
-        public string GetSyntaxTree(string sql)
-        {
-            var tree = GetTree(sql);
-            GraphvizVisitor graphvizVisitor = new();
-            graphvizVisitor.Visit(tree);
-            return graphvizVisitor.GetGraph();
-        }
+    public string GetSyntaxTree(string sql)
+    {
+        var tree = GetTree(sql);
+        GraphvizVisitor graphvizVisitor = new();
+        graphvizVisitor.Visit(tree);
+        return graphvizVisitor.GetGraph();
     }
 }

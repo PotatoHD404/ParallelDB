@@ -7,13 +7,13 @@ public class CreateQuery : IQuery
 {
     private ParallelDb _db;
     internal string? tableName;
-    internal bool ifExists;
+    internal bool ifNotExists;
     internal Dictionary<string, Column> columns;
 
     public CreateQuery(ParallelDb db)
     {
         _db = db;
-        ifExists = false;
+        ifNotExists = false;
         columns = new Dictionary<string, Column>();
     }
 
@@ -41,9 +41,9 @@ public class CreateQuery : IQuery
         return this;
     }
 
-    public CreateQuery IfExists()
+    public CreateQuery IfNotExists()
     {
-        ifExists = true;
+        ifNotExists = true;
         return this;
     }
 
@@ -52,7 +52,7 @@ public class CreateQuery : IQuery
     {
         var sb = new StringBuilder();
         sb.Append("CREATE TABLE ");
-        if (ifExists)
+        if (ifNotExists)
             sb.Append("IF NOT EXISTS ");
         sb.Append(tableName);
         sb.Append(" (");

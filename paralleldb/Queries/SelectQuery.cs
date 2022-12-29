@@ -231,6 +231,12 @@ public class SelectQuery : IQuery
 
     public string GetPlan()
     {
-        throw new NotImplementedException();
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine("digraph G {");
+        sb.AppendLine("bgcolor= transparent;");
+        sb.AppendLine("rankdir=BT;");
+        
+        sb.AppendLine("}");
+        return sb.ToString();
     }
 }

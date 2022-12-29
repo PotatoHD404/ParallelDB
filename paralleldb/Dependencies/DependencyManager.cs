@@ -127,24 +127,25 @@ public class DependencyManager : IDependencyManager
                     QueueOperation(targetData);
             }
         }
-        
+
         _dependenciesFromTo.TryRemove(data.Id, out _);
-        
-        if(_dependenciesToFrom.TryGetValue(data.Id, out var fromList))
+
+        if (_dependenciesToFrom.TryGetValue(data.Id, out var fromList))
         {
             foreach (int fromId in fromList)
             {
                 OperationData fromData = _operations[fromId];
                 if (Interlocked.Decrement(ref fromData.NumRemainingSuccessors) == 0)
+                {
                     _results.TryRemove(fromId, out _);
+                    _operations.TryRemove(data.Id, out _);
+                }
             }
         }
-        
-        _operations.TryRemove(data.Id, out _);
+
 
         if (Interlocked.Decrement(ref _remainingCount) == 0) _done.Set();
     }
-
     private void OnOperationCompleted(OperationData data)
     {
         EventHandler<OperationCompletedEventArgs>? handler = OperationCompleted;

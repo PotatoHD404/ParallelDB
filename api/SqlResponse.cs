@@ -9,4 +9,5 @@ public class SqlResponse
     public string QueryTree { get; set; }
     
     public string PlannerTree { get; set; }
+    public string Error { get; set; }
 }

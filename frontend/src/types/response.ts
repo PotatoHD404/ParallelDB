@@ -4,4 +4,6 @@ export type Response = {
     syntaxTree: string
     queryTree: string
     plannerTree: string
+    
+    error: string | null
 }

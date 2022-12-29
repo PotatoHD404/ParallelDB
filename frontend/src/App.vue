@@ -1,11 +1,12 @@
 <template>
   <div :style="image" class="image" v-bind:class="{theme : isDark}">
-    <my-warning v-show="error !== ''"> {{error}} </my-warning>
+    <my-warning v-show="error !== ''"> {{ error }}</my-warning>
     <my-checkbox @change="changeTheme" v-bind:class="{negative : isDark === false}"/>
     <img alt="PD logo" class="logo" src="~@/assets/db.svg">
-<!--    <input-list :queryList="queryList" v-bind:class="{negative : isDark === false}"/>-->
+    <!--    <input-list :queryList="queryList" v-bind:class="{negative : isDark === false}"/>-->
     <input-form style="position: absolute; left: 40px; top: 18vh" @create="createQuery"/>
-    <my-box style="position: absolute; right: 40px; top: 18vh"  @changeTree="changeTree" :graph="graph" :isDark="isDark" :treeType="treeType"/>
+    <my-box style="position: absolute; right: 40px; top: 18vh" @changeTree="changeTree" :graph="graph" :isDark="isDark"
+            :treeType="treeType"/>
     <my-table style="position: absolute; left: 40px; top: 49vh" :headers="response.columns" :rows="response.rows"/>
     <h4 class="sign">by Kornachyk M.V & Lukichev A.N</h4>
   </div>
@@ -51,7 +52,8 @@ export default defineComponent({
         rows: [],
         syntaxTree: '',
         queryTree: '',
-        plannerTree: ''
+        plannerTree: '',
+        error: null
       } as Response,
       treeType: 0,
       error: '',
@@ -74,7 +76,10 @@ export default defineComponent({
         if (result.status != 200) {
           this.showError('Something went wrong!')
         }
-        let data:Response = await result.json();
+        let data: Response = await result.json();
+        if (data.error !== null) {
+          this.showError(data.error)
+        }
         let dot = data.syntaxTree;
         this.response.columns = data.columns;
         this.response.rows = data.rows;

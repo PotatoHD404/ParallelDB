@@ -1,5 +1,7 @@
+using System.Collections.Concurrent;
 using Antlr4.Runtime;
 using ParallelDB;
+using ParallelDB.Dependencies;
 using ParallelDB.Parse;
 using ParallelDB.Queries;
 using ParallelDB.Tables;
@@ -1041,4 +1043,55 @@ public class QueryTest
     //     query.Table("table1").Set(row => row["a"] = 1).Set(row => row["b"] = 2).Where(row => row["a"] == 1);
     //     Assert.AreEqual("UPDATE table1 SET a = 1, b = '2' WHERE a = 1", query.ToString());
     // }
+}
+
+
+[TestClass]
+public class DependencyManagerTest
+{
+    [TestMethod]
+    public void SimpleTest1()
+    {
+        int ComputeFirst(ConcurrentDictionary<int, dynamic?> _)
+        {
+            Console.WriteLine($"Starting operation Thread ID {Thread.CurrentThread.ManagedThreadId}");
+            Thread.Sleep(1000);
+            Console.WriteLine($"Ending operation Thread ID {Thread.CurrentThread.ManagedThreadId}");
+            return 1;
+        }
+
+        int ComputeSecond(ConcurrentDictionary<int, dynamic?> _)
+        {
+            Console.WriteLine($"Starting operation Thread ID {Thread.CurrentThread.ManagedThreadId}");
+            Thread.Sleep(1000);
+            Console.WriteLine($"Ending operation Thread ID {Thread.CurrentThread.ManagedThreadId}");
+            return 2;
+        }
+
+        int ComputeThird(ConcurrentDictionary<int, dynamic?> dict)
+        {
+            if (dict[1] is null || dict[2] is null)
+            {
+                throw new Exception("Dependency not met");
+            }
+
+            int a = dict[1];
+            int b = dict[2];
+            return a + b * 10;
+        }
+
+        DependencyManager dm = new DependencyManager();
+        dm.AddOperation(1, ComputeFirst);
+        dm.AddOperation(2, ComputeSecond);
+        dm.AddOperation(3, ComputeThird, 1, 2);
+        
+
+        
+        var start = DateTimeOffset.Now;
+        var res = dm.GetResults();
+        var end = DateTimeOffset.Now;
+        Assert.AreEqual(1, res.Count);
+        Assert.AreEqual(21, res[3]);
+        Assert.IsTrue(end - start < TimeSpan.FromSeconds(1.5));
+    }
 }

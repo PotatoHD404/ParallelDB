@@ -43,6 +43,26 @@
           <option name="language" value="CSharp" />
           <option name="generateVisitor" value="true" />
         </PerGrammarGenerationSettings>
+        <PerGrammarGenerationSettings>
+          <option name="fileName" value="$PROJECT_DIR$/paralleldb/Parse/SQLiteLexer.g4" />
+          <option name="autoGen" value="true" />
+          <option name="outputDir" value="./Parse/SqlParser" />
+          <option name="libDir" value="./paralleldb" />
+          <option name="encoding" value="utf-8" />
+          <option name="pkg" value="" />
+          <option name="language" value="CSharp" />
+          <option name="generateVisitor" value="true" />
+        </PerGrammarGenerationSettings>
+        <PerGrammarGenerationSettings>
+          <option name="fileName" value="$PROJECT_DIR$/paralleldb/Parse/SQLiteParser.g4" />
+          <option name="autoGen" value="true" />
+          <option name="outputDir" value="./paralleldb/Parse" />
+          <option name="libDir" value="./paralleldb" />
+          <option name="encoding" value="utf-8" />
+          <option name="pkg" value="SqlParser" />
+          <option name="language" value="CSharp" />
+          <option name="generateVisitor" value="true" />
+        </PerGrammarGenerationSettings>
       </list>
     </option>
   </component>

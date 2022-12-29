@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:/Users/PotatoHD/Documents/GitHub/parallelDB/parser\SQLiteLexer.g4 by ANTLR 4.11.1
+// Generated from C:/Users/PotatoHD/Documents/GitHub/parallelDB/paralleldb/Parse\SQLiteLexer.g4 by ANTLR 4.11.1
 
 // Unreachable code detected
 #pragma warning disable 0162

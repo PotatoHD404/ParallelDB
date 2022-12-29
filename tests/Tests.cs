@@ -1018,6 +1018,22 @@ public class QueryTest
         Assert.AreEqual("INSERT INTO table1 VALUES (1, '2', True)", query.ToString());
     }
     
+    [TestMethod]
+    public void CreateQueryTest1()
+    {
+        CreateTableQuery query = new CreateTableQuery();
+        query.Table("table1").AddColumn("a", typeof(int)).AddColumn("b", typeof(string)).AddColumn("c", typeof(bool));
+        Assert.AreEqual("CREATE TABLE table1 (a Int32 NOT NULL, b String NOT NULL, c Boolean NOT NULL)", query.ToString());
+    }
+    
+    [TestMethod]
+    public void DeleteQueryTest1()
+    {
+        DeleteQuery query = new DeleteQuery();
+        query.From("table1");
+        Assert.AreEqual("DELETE FROM table1", query.ToString());
+    }
+    
     // [TestMethod]
     // public void UpdateQueryTest1()
     // {

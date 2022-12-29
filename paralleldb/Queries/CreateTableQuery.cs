@@ -8,11 +8,15 @@ public class CreateTableQuery : IQuery
     internal string tableName;
     internal bool ifExists;
     internal Dictionary<string, Column> columns;
-    public CreateTableQuery(string tableName)
+    public CreateTableQuery()
     {
-        this.tableName = tableName;
         ifExists = false;
         columns = new Dictionary<string, Column>();
+    }
+    public CreateTableQuery Table(string tableName)
+    {
+        this.tableName = tableName;
+        return this;   
     }
     public CreateTableQuery AddColumn(string name, Column column)
     {

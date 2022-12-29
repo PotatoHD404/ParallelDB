@@ -1,6 +1,6 @@
 ﻿using Antlr4.Runtime;
 
-namespace Parser;
+namespace ParallelDB.Parse;
 
 public class ParserErrorListener : IAntlrErrorListener<IToken>
 {

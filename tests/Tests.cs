@@ -1,8 +1,8 @@
 using Antlr4.Runtime;
 using ParallelDB;
+using ParallelDB.Parse;
 using ParallelDB.Queries;
 using ParallelDB.Tables;
-using Parser;
 using SqlParser;
 
 namespace Tests;
@@ -16,22 +16,6 @@ public static class Utils
         return File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "..", "..", "..", "query_examples",
             "example.sql"));
     }
-
-    public static string GetGraph(string sql)
-    {
-        ICharStream stream = CharStreams.fromString(sql);
-        var lexer = new SQLiteLexer(stream);
-        lexer.RemoveErrorListeners();
-        lexer.AddErrorListener(new LexerErrorListener());
-        var tokens = new CommonTokenStream(lexer);
-        var parser = new SQLiteParser(tokens);
-        parser.RemoveErrorListeners();
-        parser.AddErrorListener(new ParserErrorListener());
-        var tree = parser.parse();
-        GraphvizVisitor graphvizVisitor = new();
-        graphvizVisitor.Visit(tree);
-        return graphvizVisitor.GetGraph();
-    }
 }
 
 [TestClass]
@@ -41,9 +25,10 @@ public class GraphVizTest
     public void WorkTest1()
     {
         var sql = Utils.ReadFile();
-        var graph = Utils.GetGraph(sql);
+        var db = new ParallelDb();
+        var graph = db.GetSyntaxTree(sql);
         // check if graph is correct
-        Assert.AreEqual(true,graph.Contains("digraph"));
+        Assert.AreEqual(true, graph.Contains("digraph"));
         Assert.AreEqual(true, graph.Contains("doctors"));
         Assert.AreEqual(true, graph.Contains("Врач"));
         Assert.AreEqual(true, graph.Contains("HAVING"));
@@ -59,7 +44,8 @@ public class ParserTest
     {
         var sql =
             @"SELECT a.doc as 'Врач', b.c 'b' FROM doctors as a WHERE a = b AND c = d OR c = f GROUP by c, d HAVING f = g UNION SELECT 2 INTERSECT SELECT 3 ORDER BY a.name LIMIT 10 OFFSET 10;";
-        Utils.GetGraph(sql);
+        var db = new ParallelDb();
+        db.GetSyntaxTree(sql);
     }
 
     [TestMethod]
@@ -67,7 +53,8 @@ public class ParserTest
     public void SyntaxErrorTest1()
     {
         var sql = @"SELECT a.doc as 'Врач', b.c 'b' FROM doctors as a`;";
-        Utils.GetGraph(sql);
+        var db = new ParallelDb();
+        db.GetSyntaxTree(sql);
     }
 
     [TestMethod]
@@ -75,14 +62,16 @@ public class ParserTest
     public void SyntaxErrorTest2()
     {
         var sql = @"SELECT1 a.doc as 'Врач', b.c 'b' FROM doctors as a;";
-        Utils.GetGraph(sql);
+        var db = new ParallelDb();
+        db.GetSyntaxTree(sql);
     }
 
     [TestMethod]
     public void EmptyTest1()
     {
         var sql = @"";
-        Utils.GetGraph(sql);
+        var db = new ParallelDb();
+        db.GetSyntaxTree(sql);
     }
 }
 
@@ -195,7 +184,7 @@ public class TableTest
         table.AddRow(1, "b");
         table.AddRow(null, "b");
 
-        Assert.AreEqual(2,table.ColumnsCount);
+        Assert.AreEqual(2, table.ColumnsCount);
     }
 
     [TestMethod]
@@ -396,8 +385,8 @@ public class TableTest
 
         table = new Table(table, "a", "c");
         Assert.AreEqual(2, table.ColumnsCount);
-        Assert.AreEqual("a",table.ColumnName(0));
-        Assert.AreEqual("c",table.ColumnName(1));
+        Assert.AreEqual("a", table.ColumnName(0));
+        Assert.AreEqual("c", table.ColumnName(1));
     }
 
     [TestMethod]
@@ -450,9 +439,9 @@ public class OperationsTest
         set.Add(row);
         row = table.NewRow();
         set.Add(row);
-        Assert.AreEqual(1 , set.Count);
+        Assert.AreEqual(1, set.Count);
     }
-    
+
     [TestMethod]
     public void HashSetTest2()
     {
@@ -472,7 +461,7 @@ public class OperationsTest
         row["b"] = "2";
         row["c"] = true;
         set.Add(row);
-        Assert.AreEqual(1 , set.Count);
+        Assert.AreEqual(1, set.Count);
     }
 
     [TestMethod]
@@ -495,7 +484,7 @@ public class OperationsTest
         Assert.AreEqual(6, newTable.RowsCount);
         Assert.AreEqual(2, newTable.ColumnsCount);
         Assert.AreEqual("a", newTable.ColumnName(0));
-        Assert.AreEqual("c",newTable.ColumnName(1));
+        Assert.AreEqual("c", newTable.ColumnName(1));
     }
 
     [TestMethod]
@@ -537,7 +526,7 @@ public class OperationsTest
         Console.WriteLine(rows[0][1]);
     }
 
-    
+
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
     public void JoinTest2()
@@ -566,7 +555,7 @@ public class OperationsTest
         var table3 = table1.Join(table2, (el1, el2) => el1["a"] == el2["b"]).ToTable();
         Assert.AreEqual(-1, table3.ColumnIndex("c"));
     }
-    
+
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
     public void JoinTest3()
@@ -595,7 +584,7 @@ public class OperationsTest
         var table3 = table1.Join(table2, (el1, el2) => el1["a"] == el2["b"]).ToTable();
         Assert.AreEqual(-1, table3.ColumnIndex("d"));
     }
-    
+
     [TestMethod]
     public void WhereTest1()
     {
@@ -615,7 +604,7 @@ public class OperationsTest
         Assert.AreEqual(1, newTable.RowsCount);
         Assert.AreEqual(3, newTable.ColumnsCount);
         Assert.AreEqual("a", newTable.ColumnName(0));
-        Assert.AreEqual("b",newTable.ColumnName(1));
+        Assert.AreEqual("b", newTable.ColumnName(1));
         Assert.AreEqual("c", newTable.ColumnName(2));
     }
 
@@ -637,9 +626,9 @@ public class OperationsTest
         var newTable = table.Skip(2).ToTable();
         Assert.AreEqual(4, newTable.RowsCount);
         Assert.AreEqual(3, newTable.ColumnsCount);
-        Assert.AreEqual("a",newTable.ColumnName(0));
-        Assert.AreEqual("b",newTable.ColumnName(1));
-        Assert.AreEqual("c",newTable.ColumnName(2));
+        Assert.AreEqual("a", newTable.ColumnName(0));
+        Assert.AreEqual("b", newTable.ColumnName(1));
+        Assert.AreEqual("c", newTable.ColumnName(2));
     }
 
     [TestMethod]
@@ -660,7 +649,7 @@ public class OperationsTest
         var newTable = table.Take(2).ToTable();
         Assert.AreEqual(2, newTable.RowsCount);
         Assert.AreEqual(3, newTable.ColumnsCount);
-        Assert.AreEqual("a",newTable.ColumnName(0));
+        Assert.AreEqual("a", newTable.ColumnName(0));
         Assert.AreEqual("b", newTable.ColumnName(1));
         Assert.AreEqual("c", newTable.ColumnName(2));
     }
@@ -683,9 +672,9 @@ public class OperationsTest
         var newTable = table.Distinct().ToTable();
         Assert.AreEqual(5, newTable.RowsCount);
         Assert.AreEqual(3, newTable.ColumnsCount);
-        Assert.AreEqual("a",newTable.ColumnName(0));
-        Assert.AreEqual("b",newTable.ColumnName(1));
-        Assert.AreEqual("c",newTable.ColumnName(2));
+        Assert.AreEqual("a", newTable.ColumnName(0));
+        Assert.AreEqual("b", newTable.ColumnName(1));
+        Assert.AreEqual("c", newTable.ColumnName(2));
     }
 
     [TestMethod] // TODO: check how this should work
@@ -716,9 +705,9 @@ public class OperationsTest
         var table3 = table1.Union(table2).ToTable();
         Assert.AreEqual(9, table3.RowsCount);
         Assert.AreEqual(3, table3.ColumnsCount);
-        Assert.AreEqual("a",table3.ColumnName(0));
-        Assert.AreEqual("b",table3.ColumnName(1));
-        Assert.AreEqual("c",table3.ColumnName(2));
+        Assert.AreEqual("a", table3.ColumnName(0));
+        Assert.AreEqual("b", table3.ColumnName(1));
+        Assert.AreEqual("c", table3.ColumnName(2));
     }
 
     [TestMethod]
@@ -751,8 +740,8 @@ public class OperationsTest
         var table3 = table1.Union(table2).ToTable();
         Assert.AreEqual(7, table3.RowsCount);
         Assert.AreEqual(3, table3.ColumnsCount);
-        Assert.AreEqual("a",table3.ColumnName(0));
-        Assert.AreEqual("b",table3.ColumnName(1));
+        Assert.AreEqual("a", table3.ColumnName(0));
+        Assert.AreEqual("b", table3.ColumnName(1));
         Assert.AreEqual("c", table3.ColumnName(2));
     }
 
@@ -784,7 +773,7 @@ public class OperationsTest
         var table3 = table1.UnionAll(table2).ToTable();
         Assert.AreEqual(9, table3.RowsCount);
         Assert.AreEqual(3, table3.ColumnsCount);
-        Assert.AreEqual("a",table3.ColumnName(0));
+        Assert.AreEqual("a", table3.ColumnName(0));
         Assert.AreEqual("b", table3.ColumnName(1));
         Assert.AreEqual("c", table3.ColumnName(2));
     }
@@ -820,8 +809,8 @@ public class OperationsTest
         Assert.AreEqual(12, table3.RowsCount);
         Assert.AreEqual(3, table3.ColumnsCount);
         Assert.AreEqual("a", table3.ColumnName(0));
-        Assert.AreEqual("b",table3.ColumnName(1));
-        Assert.AreEqual("c",table3.ColumnName(2));
+        Assert.AreEqual("b", table3.ColumnName(1));
+        Assert.AreEqual("c", table3.ColumnName(2));
     }
 
     [TestMethod]
@@ -854,9 +843,9 @@ public class OperationsTest
         var table3 = table1.Intersect(table2).ToTable();
         Assert.AreEqual(4, table3.RowsCount);
         Assert.AreEqual(3, table3.ColumnsCount);
-        Assert.AreEqual("a",table3.ColumnName(0));
+        Assert.AreEqual("a", table3.ColumnName(0));
         Assert.AreEqual("b", table3.ColumnName(1));
-        Assert.AreEqual("c",table3.ColumnName(2));
+        Assert.AreEqual("c", table3.ColumnName(2));
     }
 
     [TestMethod]
@@ -889,11 +878,11 @@ public class OperationsTest
         var table3 = table1.Except(table2).ToTable();
         Assert.AreEqual(1, table3.RowsCount);
         Assert.AreEqual(3, table3.ColumnsCount);
-        Assert.AreEqual("a",table3.ColumnName(0));
-        Assert.AreEqual("b",table3.ColumnName(1));
-        Assert.AreEqual("c",table3.ColumnName(2));
+        Assert.AreEqual("a", table3.ColumnName(0));
+        Assert.AreEqual("b", table3.ColumnName(1));
+        Assert.AreEqual("c", table3.ColumnName(2));
     }
-    
+
     [TestMethod]
     public void MultipleOperationsTest1()
     {
@@ -918,13 +907,14 @@ public class OperationsTest
             .AddRow(false, 2, "3")
             .AddRow(true, 3, "4");
 
-        var table3 = table1.Join(table2, (el1, el2) => el1["a"] == el2["b"]).Where((el) => el["table1.a"] == 1).ToTable();
+        var table3 = table1.Join(table2, (el1, el2) => el1["a"] == el2["b"]).Where((el) => el["table1.a"] == 1)
+            .ToTable();
         var rows = table3.ToRows();
         Assert.AreEqual(1, table3.RowsCount);
         Assert.AreEqual(6, table3.ColumnsCount);
         Assert.AreEqual(1, rows[0][0]);
     }
-    
+
     [TestMethod]
     public void MultipleOperationsTest2()
     {
@@ -948,7 +938,7 @@ public class OperationsTest
         table2.AddRow(4, "5", false)
             .AddRow(5, "6", true)
             .AddRow(6, "7", false);
-        
+
         var table3 = new Table("table3");
         table3.AddColumn("a", typeof(int));
         table3.AddColumn("b", typeof(string));
@@ -964,7 +954,7 @@ public class OperationsTest
         Assert.AreEqual("3", rows[0][1]);
         Assert.AreEqual(false, rows[0][2]);
     }
-    
+
     [TestMethod]
     public void MultipleOperationsTest3()
     {
@@ -1005,36 +995,42 @@ public class QueryTest
     [TestMethod]
     public void SelectQueryTest1()
     {
-        
-        var query = Query.Select().From("table1").Intersect("table2").Take(3);
+        var db = new ParallelDb();
+        var query = db.Select().From("table1").Intersect("table2").Take(3);
         Assert.AreEqual("SELECT * FROM table1 INTERSECT table2 LIMIT 3", query.ToString());
     }
-    
+
     [TestMethod]
     public void InsertQueryTest1()
     {
-        var query = Query.Insert().Into("table1").Values(1, "2", true);
+        var db = new ParallelDb();
+        var query = db.Insert().Into("table1").Values(1, "2", true);
         Assert.AreEqual("INSERT INTO table1 VALUES (1, '2', True)", query.ToString());
     }
-    
+
     [TestMethod]
     public void CreateQueryTest1()
     {
-        var query = Query.Create().Table("table1").AddColumn("a", typeof(int)).AddColumn("b", typeof(string)).AddColumn("c", typeof(bool));
-        Assert.AreEqual("CREATE TABLE table1 (a Int32 NOT NULL, b String NOT NULL, c Boolean NOT NULL)", query.ToString());
+        var db = new ParallelDb();
+        var query = db.Create().Table("table1").AddColumn("a", typeof(int)).AddColumn("b", typeof(string))
+            .AddColumn("c", typeof(bool));
+        Assert.AreEqual("CREATE TABLE table1 (a Int32 NOT NULL, b String NOT NULL, c Boolean NOT NULL)",
+            query.ToString());
     }
-    
+
     [TestMethod]
     public void DeleteQueryTest1()
     {
-        var query = Query.Delete().Table("table1");
+        var db = new ParallelDb();
+        var query = db.Delete().Table("table1");
         Assert.AreEqual("DELETE FROM table1", query.ToString());
     }
-    
+
     [TestMethod]
     public void DropQueryTest1()
     {
-        var query = Query.Drop().Table("table1");
+        var db = new ParallelDb();
+        var query = db.Drop().Table("table1");
         Assert.AreEqual("DROP TABLE table1", query.ToString());
     }
 

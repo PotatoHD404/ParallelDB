@@ -1,9 +1,7 @@
-﻿using System.Linq.Expressions;
-using Antlr4.Runtime.Misc;
-
-namespace Parser;
-
+﻿using Antlr4.Runtime.Misc;
 using SqlParser;
+
+namespace ParallelDB.Parse;
 
 public class SqlNodeVisitor : SQLiteParserBaseVisitor<SqlNode?>
 {

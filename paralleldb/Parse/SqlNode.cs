@@ -1,14 +1,8 @@
 ﻿using System.Collections;
-using System.Linq.Expressions;
-using System.Text;
-using System.Text.RegularExpressions;
 using Antlr4.Runtime;
-using Antlr4.Runtime.Tree;
-using ConsoleTables;
-using Parser;
 using SqlParser;
 
-namespace Parser;
+namespace ParallelDB.Parse;
 
 public class SqlNode
 {

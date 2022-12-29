@@ -4,7 +4,7 @@ using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
 using SqlParser;
 
-namespace Parser;
+namespace ParallelDB.Parse;
 
 public class GraphvizVisitor : SQLiteParserBaseVisitor<object?>
 {

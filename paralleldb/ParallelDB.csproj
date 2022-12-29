@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\parser\SqlParser.csproj" />
+    <PackageReference Include="Antlr4.Runtime.Standard" Version="4.11.1" />
+    <PackageReference Include="ConsoleTables" Version="2.4.2" />
   </ItemGroup>
 
 </Project>

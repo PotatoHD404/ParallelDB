@@ -2,5 +2,5 @@
 
 public interface IQuery
 {
-    
+    public string GetPlan();
 }

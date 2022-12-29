@@ -1,42 +1,55 @@
 ﻿using System.Text;
-using Parser;
+using ParallelDB.Parse;
+using ParallelDB.Tables;
 
 namespace ParallelDB.Queries;
 
 public class DeleteQuery : IQuery
 {
+    private ParallelDb _db;
     internal string? from;
     internal List<Func<IRow, bool>> where;
-    
-    public DeleteQuery()
+
+    public DeleteQuery(ParallelDb db)
     {
-        this.where = new List<Func<IRow, bool>>();
+        _db = db;
+        where = new List<Func<IRow, bool>>();
     }
-    
+
     public DeleteQuery Table(string table)
     {
-        this.from = table;
+        from = table;
         return this;
     }
-    
+
     public DeleteQuery Where(Func<IRow, bool> predicate)
     {
-        this.where.Add(predicate);
+        where.Add(predicate);
         return this;
     }
-    
+
     // toString 
-       public override string ToString()
+    public override string ToString()
     {
         var sb = new StringBuilder();
         sb.Append("DELETE FROM ");
-        sb.Append(this.from);
-        if (this.where.Count > 0)
+        sb.Append(from);
+        if (where.Count > 0)
         {
             sb.Append(" WHERE ");
             sb.Append(string.Join(" AND ", this.where.Select(w => w.ToString())));
         }
+
         return sb.ToString();
     }
 
+    public string GetPlan()
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Execute()
+    {
+        return _db.Execute(this);
+    }
 }

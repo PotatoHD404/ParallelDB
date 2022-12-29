@@ -1,30 +1,36 @@
 ﻿using System.Text;
+using ParallelDB.Parse;
 using ParallelDB.Queries;
-using Parser;
+using ParallelDB.Tables;
 
 namespace ParallelDB;
 
 public class UpdateQuery : IQuery
 {
+    private ParallelDb _db;
     internal string? table;
     internal List<Action<IRow>> set;
-    internal List<Func< IRow , bool>> where;
-    
-    public UpdateQuery()
+    internal List<Func<IRow, bool>> where;
+
+    public UpdateQuery(ParallelDb db)
     {
+        _db = db;
         set = new List<Action<IRow>>();
         where = new List<Func<IRow, bool>>();
     }
+
     public UpdateQuery Table(string table)
     {
         this.table = table;
         return this;
     }
+
     public UpdateQuery Set(Action<IRow> set)
     {
         this.set.Add(set);
         return this;
     }
+
     // public UpdateQuery Set(string column, dynamic value)
     // {
     //     set.Add(row => row[column] = value);
@@ -35,7 +41,7 @@ public class UpdateQuery : IQuery
         this.where.Add(where);
         return this;
     }
-    
+
     // toString
     public override string ToString()
     {
@@ -49,4 +55,14 @@ public class UpdateQuery : IQuery
         return sb.ToString();
     }
 
+    public string GetPlan()
+    {
+        throw new NotImplementedException();
+    }
+
+    // execute
+    public bool Execute()
+    {
+        return _db.Execute(this);
+    }
 }

@@ -6,23 +6,30 @@ namespace ParallelDB;
 
 public class UpdateQuery : IQuery
 {
-    internal string table;
+    internal string? table;
     internal List<Action<IRow>> set;
     internal List<Func< IRow , bool>> where;
     
-    public UpdateQuery(string table)
+    public UpdateQuery()
     {
-        this.table = table;
         set = new List<Action<IRow>>();
         where = new List<Func<IRow, bool>>();
     }
-    
+    public UpdateQuery Table(string table)
+    {
+        this.table = table;
+        return this;
+    }
     public UpdateQuery Set(Action<IRow> set)
     {
         this.set.Add(set);
         return this;
     }
-    
+    // public UpdateQuery Set(string column, dynamic value)
+    // {
+    //     set.Add(row => row[column] = value);
+    //     return this;
+    // }
     public UpdateQuery Where(Func<IRow, bool> where)
     {
         this.where.Add(where);

@@ -170,49 +170,27 @@ public class Table : PartialResult
 
     public Table AddColumn(string name, Type type, bool nullable = false, bool hasDefault = false)
     {
-        dynamic? @default;
-        // if nullable type set default to null
-        if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>) || nullable)
-        {
-            @default = null;
-        }
-        else if (type == typeof(string))
-        {
-            @default = "";
-        }
-        else if (type == typeof(int))
-        {
-            @default = 0;
-        }
-        else if (type == typeof(double))
-        {
-            @default = 0.0;
-        }
-        else if (type == typeof(bool))
-        {
-            @default = false;
-        }
-        else
-        {
-            try
-            {
-                @default = Activator.CreateInstance(type);
-                if (@default is null)
-                {
-                    throw new Exception();
-                }
-            }
-            catch (Exception)
-            {
-                throw new ArgumentException($"Type {type} is not supported");
-            }
-        }
-
-
-        return AddColumn(name, type, nullable, hasDefault, @default);
+        CheckColumn(name);
+        return AddColumn(name, new Column(name, type, nullable, hasDefault));
+    }
+    
+    public Table AddColumn(string name, Column column)
+    {
+        CheckColumn(name);
+        _columnIndices.Add(name, ColumnsCount);
+        if (_name is not null)
+            _columnIndices.Add($"{_name}.{name}", ColumnsCount);
+        _columns.Add(column);
+        return this;
     }
 
     public Table AddColumn(string name, Type type, bool nullable, bool hasDefault, dynamic? @default)
+    {
+        CheckColumn(name);
+        return AddColumn(name, new Column(name, type, nullable, hasDefault, @default));
+    }
+
+    private void CheckColumn(string name)
     {
         if (_rows.Count > 0)
         {
@@ -229,27 +207,6 @@ public class Table : PartialResult
         {
             throw new ArgumentException($"Column {name} already exists in table {_name}");
         }
-
-        nullable = Nullable.GetUnderlyingType(type) is not null || nullable;
-
-        type = Nullable.GetUnderlyingType(type) ?? type;
-
-        if (@default is null && !nullable && hasDefault)
-        {
-            throw new ArgumentException($"Column {name} has type {type} but default value is null");
-        }
-
-        if (@default is not null && @default.GetType() != type && hasDefault)
-        {
-            throw new ArgumentException(
-                $"Column {name} has type {Nullable.GetUnderlyingType(type)} but default value {@default} has type {@default?.GetType()}");
-        }
-
-        _columnIndices.Add(name, ColumnsCount);
-        if (_name is not null)
-            _columnIndices.Add($"{_name}.{name}", ColumnsCount);
-        _columns.Add(new Column(type, nullable, hasDefault, @default));
-        return this;
     }
 
 

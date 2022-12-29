@@ -1009,4 +1009,20 @@ public class QueryTest
         query.From("table1").Intersect("table2").Take(3);
         Assert.AreEqual("SELECT * FROM table1 INTERSECT table2 LIMIT 3", query.ToString());
     }
+    
+    [TestMethod]
+    public void InsertQueryTest1()
+    {
+        InsertQuery query = new InsertQuery();
+        query.Into("table1").Values(1, "2", true);
+        Assert.AreEqual("INSERT INTO table1 VALUES (1, '2', True)", query.ToString());
+    }
+    
+    // [TestMethod]
+    // public void UpdateQueryTest1()
+    // {
+    //     UpdateQuery query = new UpdateQuery();
+    //     query.Table("table1").Set(row => row["a"] = 1).Set(row => row["b"] = 2).Where(row => row["a"] == 1);
+    //     Assert.AreEqual("UPDATE table1 SET a = 1, b = '2' WHERE a = 1", query.ToString());
+    // }
 }

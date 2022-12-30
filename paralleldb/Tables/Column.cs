@@ -89,7 +89,7 @@ public class Column
         if (@default is not null && @default.GetType() != type && hasDefault)
         {
             throw new ArgumentException(
-                $"Column {name} has type {Nullable.GetUnderlyingType(type)} but default value {@default} has type {@default?.GetType()}");
+                $"Column {name} has type {type} but default value {@default} has type {@default?.GetType()}");
         }
         
         Name = name;

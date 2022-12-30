@@ -1,4 +1,6 @@
-﻿namespace ParallelDB.Queries;
+﻿using ParallelDB.Parse;
+
+namespace ParallelDB.Queries;
 
 public interface IQuery
 {

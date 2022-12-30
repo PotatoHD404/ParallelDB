@@ -36,6 +36,7 @@ public class GraphvizVisitor : SQLiteParserBaseVisitor<object?>
             Clear();
             _sb.AppendLine("digraph G {");
             _sb.AppendLine("   node [fontsize=14 shape=plain ordering=\"in\"];");
+            _sb.AppendLine("   graph [bgcolor=transparent];");
             // _sb.AppendLine("   edge [fontsize=14];");
         }
 

@@ -11,10 +11,13 @@ namespace ParallelDB;
 public class ParallelDb
 {
     private TableStorage _tableStorage;
-
+    private QueryVisitor _queryVisitor;
+    private GraphvizVisitor _graphvizVisitor;
     public ParallelDb()
     {
         _tableStorage = new TableStorage();
+        _queryVisitor = new QueryVisitor(this);
+        _graphvizVisitor = new GraphvizVisitor();
     }
 
     public SelectQuery Select() => new SelectQuery(this);
@@ -33,6 +36,8 @@ public class ParallelDb
         }
         // Get dependencies and create a dependency graph
         
+        // var table = _tableStorage.GetTable(selectQuery.from[0]);
+        throw new NotImplementedException();
     }
 
     public bool Execute(InsertQuery insertQuery)
@@ -181,30 +186,22 @@ public class ParallelDb
     public dynamic Execute(string sql)
     {
         var query = GetQuery(sql);
-        switch (query)
+        return query switch
         {
-            case SelectQuery selectQuery:
-                return Execute(selectQuery);
-            case InsertQuery insertQuery:
-                return Execute(insertQuery);
-            case UpdateQuery updateQuery:
-                return Execute(updateQuery);
-            case DeleteQuery deleteQuery:
-                return Execute(deleteQuery);
-            case CreateQuery createQuery:
-                return Execute(createQuery);
-            case DropQuery dropQuery:
-                return Execute(dropQuery);
-            default:
-                throw new Exception("Unknown query type");
-        }
+            SelectQuery selectQuery => Execute(selectQuery),
+            InsertQuery insertQuery => Execute(insertQuery),
+            UpdateQuery updateQuery => Execute(updateQuery),
+            DeleteQuery deleteQuery => Execute(deleteQuery),
+            CreateQuery createQuery => Execute(createQuery),
+            DropQuery dropQuery => Execute(dropQuery),
+            _ => throw new Exception("Unknown query type")
+        };
     }
 
     public IQuery GetQuery(string sql)
     {
         var tree = GetTree(sql);
-        QueryVisitor queryVisitor = new();
-        IQuery? res = queryVisitor.Visit(tree);
+        IQuery? res = _queryVisitor.Visit(tree);
         if (res is null)
         {
             throw new Exception("Query is null");
@@ -228,8 +225,7 @@ public class ParallelDb
     public string GetSyntaxTree(string sql)
     {
         var tree = GetTree(sql);
-        GraphvizVisitor graphvizVisitor = new();
-        graphvizVisitor.Visit(tree);
-        return graphvizVisitor.GetGraph();
+        _graphvizVisitor.Visit(tree);
+        return _graphvizVisitor.GetGraph();
     }
 }

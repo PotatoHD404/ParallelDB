@@ -211,5 +211,5 @@ public class TableRow : IRow
             _values.Select((value, index) => $"{_table.ColumnName(index)}: {PrettyPrint.ToString(value)}"));
     }
     
-    internal dynamic?[] Values => _values;
+    // internal dynamic?[] Values => _values;
 }

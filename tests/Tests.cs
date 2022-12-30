@@ -79,12 +79,22 @@ public class ParserTest
 }
 
 [TestClass]
-public class SqlVisitorTest
+public class QueryVisitorTest
 {
     [TestMethod]
-    public void Test1()
+    public void CreateTableTest1()
     {
-        // TODO: implement
+        var sql = @"
+CREATE TABLE IF NOT EXISTS Persons (
+    PersonID int DEFAULT 1,
+    LastName TEXT NOT NULL,
+    FirstName TeXt DEFAULT 'John',
+    Address TEXT NOT NULL DEFAULT '1',
+    City TEXT
+);";
+        var db = new ParallelDb();
+        var query = db.GetQuery(sql);
+        Assert.IsInstanceOfType(query, typeof(CreateQuery));
     }
 }
 
@@ -1009,7 +1019,7 @@ public class OperationsTest
             var query = db.Select().From(db.Select().From("table2")).Skip(3);
             Assert.AreEqual("SELECT * FROM (SELECT * FROM table2) OFFSET 3", query.ToString());
         }
-        
+
         [TestMethod]
         public void SelectQueryTest3()
         {
@@ -1017,13 +1027,15 @@ public class OperationsTest
             var query = db.Select().From("table1").From(db.Select().From("table2"));
             Assert.AreEqual("SELECT * FROM table1, (SELECT * FROM table2)", query.ToString());
         }
-        
+
         [TestMethod]
         public void SelectQueryTest4()
         {
             var db = new ParallelDb();
-            var query = db.Select().From(db.Select().From("table2").Intersect(db.Select().From("table3").Skip(3))).Take(3);
-            Assert.AreEqual("SELECT * FROM (SELECT * FROM table2 INTERSECT (SELECT * FROM table3 OFFSET 3)) LIMIT 3", query.ToString());
+            var query = db.Select().From(db.Select().From("table2").Intersect(db.Select().From("table3").Skip(3)))
+                .Take(3);
+            Assert.AreEqual("SELECT * FROM (SELECT * FROM table2 INTERSECT (SELECT * FROM table3 OFFSET 3)) LIMIT 3",
+                query.ToString());
         }
 
         [TestMethod]
@@ -1059,7 +1071,7 @@ public class OperationsTest
             var query = db.Drop().Table("table1");
             Assert.AreEqual("DROP TABLE table1", query.ToString());
         }
-        
+
         [TestMethod]
         public void InsertQueryTest2()
         {
@@ -1077,7 +1089,6 @@ public class OperationsTest
         // }
     }
 }
-
 
 [TestClass]
 public class DependencyManagerTest
@@ -1117,9 +1128,8 @@ public class DependencyManagerTest
         dm.AddOperation(1, ComputeFirst);
         dm.AddOperation(2, ComputeSecond);
         dm.AddOperation(3, ComputeThird, 1, 2);
-        
 
-        
+
         var start = DateTimeOffset.Now;
         var res = dm.GetResults();
         var end = DateTimeOffset.Now;
@@ -1127,6 +1137,6 @@ public class DependencyManagerTest
         Assert.AreEqual(21, res[3]);
         Assert.IsTrue(end - start < TimeSpan.FromSeconds(1.5));
     }
-    
+
     // TODO: add tests for cycles
 }

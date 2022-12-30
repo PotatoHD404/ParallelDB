@@ -14,15 +14,6 @@ public class DependencyManager : IDependencyManager
 
     public event EventHandler<OperationCompletedEventArgs>? OperationCompleted;
     private Exception? _savedException;
-    private event EventHandler ExceptionOccurred;
-
-    public DependencyManager()
-    {
-        ExceptionOccurred = delegate
-        {
-            if (_savedException is not null) throw _savedException;
-        };
-    }
 
     public void AddOperation<T>(
         int id, Func<ConcurrentDictionary<int, dynamic?>, T> operation, params int[] dependencies)
@@ -48,7 +39,7 @@ public class DependencyManager : IDependencyManager
             catch (Exception ex)
             {
                 _savedException = ex;
-                ExceptionOccurred.Invoke(this, EventArgs.Empty);
+                _done.Set();
             }
 
             return false;
@@ -81,6 +72,8 @@ public class DependencyManager : IDependencyManager
             }
 
             _done.WaitOne();
+            if(_savedException is not null)
+                throw _savedException;
         }
 
         return _results;

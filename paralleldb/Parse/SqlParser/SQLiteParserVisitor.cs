@@ -393,6 +393,18 @@ public interface ISQLiteParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitCompound_operator([NotNull] SQLiteParser.Compound_operatorContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="SQLiteParser.set_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSet_clause([NotNull] SQLiteParser.Set_clauseContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SQLiteParser.set_stmt"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSet_stmt([NotNull] SQLiteParser.Set_stmtContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="SQLiteParser.update_stmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

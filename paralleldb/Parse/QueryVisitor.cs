@@ -4,6 +4,7 @@ using Antlr4.Runtime.Tree;
 using ParallelDB.Queries;
 using ParallelDB.Tables;
 using SqlParser;
+using static ParallelDB.Queries.Globals;
 
 namespace ParallelDB.Parse;
 
@@ -13,7 +14,7 @@ internal class NotNullType
 
 internal class DefaultNode
 {
-    public dynamic Value { get; set; }
+    public dynamic? Value { get; set; }
 }
 
 public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
@@ -76,7 +77,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
         if (context.update_stmt() != null)
         {
-            return Visit(context.update_stmt());
+            return VisitUpdate_stmt(context.update_stmt());
         }
 
         if (context.delete_stmt() != null)
@@ -91,7 +92,108 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
         throw new NotSupportedException($"Statement {context.GetText()} is not supported");
     }
-    
+
+    public override dynamic VisitUpdate_stmt(SQLiteParser.Update_stmtContext context)
+    {
+        var tableName = context.qualified_table_name().table_name().GetText();
+        var table = _db.GetTable(tableName);
+        if (table == null)
+        {
+            throw new InvalidOperationException($"Table {tableName} does not exist");
+        }
+
+        var res = _db.Update();
+        var setClauses = context.set_clause().set_stmt().Select(el => VisitSet_stmt(el, table)).Cast<Action<IRow>>()
+            .ToList();
+        foreach (var clause in setClauses)
+        {
+            res = res.Set(clause);
+        }
+
+        Func<IRow, bool>? predicate = null;
+        if (context.where_clause() is not null)
+        {
+            predicate = VisitExpr(context.where_clause().expr(), table);
+        }
+
+        if (predicate is not null)
+        {
+            res.Where(predicate);
+        }
+
+        return res;
+    }
+
+    public dynamic? VisitExpr(SQLiteParser.ExprContext context, Table table)
+    {
+        if (context.expr().Length == 1)
+        {
+            return VisitExpr(context.expr()[0], table);
+        }
+        
+        if (context.expr() is not null && context.expr().Length == 2)
+        {
+            var left = VisitExpr(context.expr()[0], table);
+            var right = VisitExpr(context.expr()[1], table);
+            Func<IRow, bool> res;
+            if (context.ASSIGN() is not null) res = row => left(row) == right(row);
+            else if (context.EQ() is not null) res = row => left(row) == right(row);
+            else if (context.LT() is not null) res = row => left(row) < right(row);
+            else if (context.GT_EQ() is not null) res = row => left(row) >= right(row);
+            else if (context.GT() is not null) res = row => left(row) > right(row);
+            else if (context.LT_EQ() is not null) res = row => left(row) <= right(row);
+            else if (context.PLUS() is not null) res = row => left(row) + right(row);
+            else if (context.MINUS() is not null) res = row => left(row) - right(row);
+            else if (context.STAR() is not null) res = row => left(row) * right(row);
+            else if (context.DIV() is not null) res = row => left(row) / right(row);
+            else if (context.AND() is not null) res = row => left(row) && right(row);
+            else if (context.OR() is not null) res = row => left(row) || right(row);
+            else throw new NotSupportedException($"Operation {context.GetText()} is not supported");
+            return res;
+        }
+
+        if (context.expr() is not null && context.expr().Length == 1)
+        {
+            var expr = VisitExpr(context.expr()[1], table);
+            Func<IRow, bool> res;
+            if (context.NOT() is not null) res = row => !expr(row);
+            else if (context.MINUS() is not null) res = row => -expr(row);
+            else if (context.PLUS() is not null) res = row => +expr(row);
+            else if (context.IS() is not null && context.NOT() is not null) res = row => expr(row) is not null;
+            else if (context.IS() is not null) res = row => expr(row) is null;
+            else return VisitExpr(context.expr()[0], table);
+            return res;
+        }
+
+        if (context.expr().Length == 0)
+        {
+            if(context.literal_value() is not null)
+                return new Func<IRow, dynamic?>(_ => GetValue(context.literal_value()));
+            if (context.column_name() is not null)
+            {
+                var columnName = context.column_name().GetText();
+                var column = table.GetColumn(columnName);
+                if (column == null)
+                {
+                    throw new InvalidOperationException($"Column {columnName} does not exist");
+                }
+                return new Func<IRow, dynamic?>(row => row[columnName]);
+            }
+        }
+
+        throw new NotSupportedException($"Expression {context.GetText()} is not supported");
+    }
+
+    public dynamic VisitSet_stmt(SQLiteParser.Set_stmtContext context, Table table)
+    {
+        var columnName = context.column_name().GetText();
+        Column column = table.GetColumn(columnName);
+        var value = GetValue(context.expr());
+        column.CheckType(value);
+
+        return new Action<IRow>(row => row[columnName] = value);
+    }
+
     public override dynamic VisitInsert_stmt([NotNull] SQLiteParser.Insert_stmtContext context)
     {
         string tableName = context.table_name().GetText();
@@ -101,15 +203,17 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         {
             throw new Exception($"Table {tableName} does not exist");
         }
+
         res.Into(tableName);
-        var columns = context.column_name().Select(x => x.GetText()).ToArray();
-        foreach (string col in columns)
+        var columns = context.columns_clause().column_name().Select(x => x.GetText()).ToArray();
+        res.Columns(columns);
+        var values = context.values_clause().values_stmt().Select(x => x.expr().Select(GetValue).ToArray()).ToArray();
+        foreach (var value in values)
         {
-            table.ColumnIndex(col);
+            res.Values(value);
         }
-        var values = context.expr().Select(x => Visit(x)).ToArray();
-        res.Values(
-        return null;
+
+        return res;
     }
 
     public override dynamic VisitCreate_table_stmt([NotNull] SQLiteParser.Create_table_stmtContext context)
@@ -183,6 +287,11 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         }
 
         var @default = context.DEFAULT() is not null;
+        if (!@default)
+        {
+            throw new NotSupportedException($"Constraint {context.GetText()} is not supported");
+        }
+
         dynamic? value;
         if (context.literal_value() is not null)
         {
@@ -201,7 +310,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         return new DefaultNode { Value = value };
     }
 
-    public dynamic GetValue([NotNull] ParserRuleContext context)
+    public dynamic? GetValue([NotNull] ParserRuleContext context)
     {
         switch (context)
         {
@@ -209,9 +318,31 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
                 return VisitLiteral_value(literalValueContext);
             case SQLiteParser.Signed_numberContext signedNumberContext:
                 return VisitSigned_number(signedNumberContext);
+            case SQLiteParser.ExprContext anyNameContext:
+                if (anyNameContext.column_name() is not null)
+                {
+                    return VisitAny_name(anyNameContext.column_name().any_name());
+                }
+
+                return VisitLiteral_value(anyNameContext.literal_value());
             default:
                 throw new NotSupportedException("Value is not supported");
         }
+    }
+
+    public override dynamic VisitAny_name([NotNull] SQLiteParser.Any_nameContext context)
+    {
+        if (context.keyword() is not null)
+        {
+            if (context.keyword().GetText().ToUpper() == "DEFAULT")
+            {
+                return Default;
+            }
+
+            throw new NotSupportedException($"Keyword {context.GetText()} is not supported");
+        }
+
+        return context.GetText();
     }
 
     public override dynamic? VisitLiteral_value([NotNull] SQLiteParser.Literal_valueContext context)
@@ -253,5 +384,15 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
 
         throw new NotSupportedException("Literal value is not supported");
+    }
+}
+
+public class SetClause
+{
+    public Action<IRow> Action { get; }
+
+    public SetClause(Action<IRow> func)
+    {
+        Action = func;
     }
 }

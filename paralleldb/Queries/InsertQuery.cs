@@ -8,17 +8,25 @@ public class InsertQuery : IQuery
     private ParallelDb _db;
 
     internal readonly List<List<dynamic?>> values;
+    internal readonly List<string> columns;
     internal string? into;
 
     public InsertQuery(ParallelDb db)
     {
         _db = db;
         values = new List<List<dynamic?>>();
+        columns = new List<string>();
     }
 
     public InsertQuery Into(string table)
     {
         into = table;
+        return this;
+    }
+    
+    public InsertQuery Columns(params string[] columns)
+    {
+        this.columns.AddRange(columns);
         return this;
     }
 
@@ -33,6 +41,14 @@ public class InsertQuery : IQuery
         StringBuilder sb = new StringBuilder();
         sb.Append("INSERT INTO ");
         sb.Append(into);
+        // TODO: Implement columns in real query
+        if (columns.Count > 0)
+        {
+            sb.Append(" (");
+            sb.Append(string.Join(", ", columns));
+            sb.Append(")");
+        }
+
         sb.Append(" VALUES ");
         for (int i = 0; i < values.Count; i++)
         {

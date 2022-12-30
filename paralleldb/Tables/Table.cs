@@ -249,7 +249,7 @@ public class Table : PartialResult
         return this;
     }
 
-    public bool Insert(List<List<dynamic?>> rows)
+    public bool Insert(List<List<dynamic?>> rows, List<string> columns)
     {
         if (rows.Count == 0)
         {
@@ -260,10 +260,21 @@ public class Table : PartialResult
         {
             throw new ArgumentException("Row has different length than table columns");
         }
+        
+        if(columns.Count == 0)
+        {
+            throw new ArgumentException("Columns list is empty");
+        }
 
         foreach (var row in rows)
         {
-            _rows.Add(new TableRow(this, row.ToArray(), true));
+            var newRow = _table.NewRow();
+            for (int i = 0; i < ColumnsCount; i++)
+            {
+                newRow[columns[i]] = row[i];
+            }
+
+            _table.AddRow(newRow);
         }
 
         return true;
@@ -283,7 +294,7 @@ public class Table : PartialResult
 
         return updated;
     }
-    
+
     public List<Column> Columns => _columns;
 
     public bool Truncate()
@@ -359,12 +370,22 @@ public class Table : PartialResult
     {
         return _columns[index].IsNullable;
     }
-    
+
     public List<TableRow> Rows => _rows;
 
     public List<TableRow> ToRows()
     {
         // Create a deep copy of the rows
         return _rows.Select(row => new TableRow(row)).ToList();
+    }
+
+    public Column GetColumn(string name)
+    {
+        if (!_columnIndices.ContainsKey(name))
+        {
+            throw new ArgumentException($"Column {name} does not exist in table {_name}");
+        }
+
+        return _columns[_columnIndices[name]];
     }
 }

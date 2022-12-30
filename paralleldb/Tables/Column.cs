@@ -64,7 +64,7 @@ public class Column
         if (@default is not null && @default.GetType() != type && hasDefault)
         {
             throw new ArgumentException(
-                $"Column {name} has type {Nullable.GetUnderlyingType(type)} but default value {@default} has type {@default?.GetType()}");
+                $"Column {name} has type {type} but default value {@default} has type {@default?.GetType()}");
         }
         
         Name = name;
@@ -72,6 +72,21 @@ public class Column
         IsNullable = nullable;
         HasDefault = hasDefault;
         Default = @default;
+    }
+    
+    public void CheckType(object? value)
+    {
+        if (value is null && !IsNullable && HasDefault)
+        {
+            throw new ArgumentException($"Column {Name} has type {Type} but value is null");
+        }
+
+        if (value is not null && value.GetType() != Type && HasDefault)
+        {
+            throw new ArgumentException(
+                $"Column {Name} has type {Type} but value {value} has type {value.GetType()}");
+        }
+        
     }
     
     public Column(string name,Type type, bool nullable, bool hasDefault, dynamic? @default)

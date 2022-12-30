@@ -757,6 +757,30 @@ public partial class SQLiteParserBaseListener : ISQLiteParserListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitCompound_operator([NotNull] SQLiteParser.Compound_operatorContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SQLiteParser.set_clause"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterSet_clause([NotNull] SQLiteParser.Set_clauseContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SQLiteParser.set_clause"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitSet_clause([NotNull] SQLiteParser.Set_clauseContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SQLiteParser.set_stmt"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterSet_stmt([NotNull] SQLiteParser.Set_stmtContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SQLiteParser.set_stmt"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitSet_stmt([NotNull] SQLiteParser.Set_stmtContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SQLiteParser.update_stmt"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

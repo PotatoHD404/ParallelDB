@@ -483,14 +483,19 @@ compound_operator:
     | EXCEPT
 ;
 
+set_clause:
+    SET set_stmt (COMMA set_stmt)*
+;
+set_stmt:
+    (column_name | column_name_list) ASSIGN expr
+;
+
 update_stmt:
     with_clause? UPDATE (
         OR (ROLLBACK | ABORT | REPLACE | FAIL | IGNORE)
-    )? qualified_table_name SET (column_name | column_name_list) ASSIGN expr (
-        COMMA (column_name | column_name_list) ASSIGN expr
-    )* (
+    )? qualified_table_name set_clause (
         FROM (table_or_subquery (COMMA table_or_subquery)* | join_clause)
-    )? (WHERE expr)? returning_clause?
+    )? where_clause? returning_clause?
 ;
 
 column_name_list:

@@ -64,7 +64,7 @@ public class ParallelDb
             }
             table._rwl.AcquireWriterLock(Timeout.Infinite);
 
-            var res = table.Insert(insertQuery.values);
+            var res = table.Insert(insertQuery.values.ToList());
             table._rwl.ReleaseWriterLock();
             return res;
         });

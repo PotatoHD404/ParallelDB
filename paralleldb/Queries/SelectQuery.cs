@@ -240,6 +240,11 @@ public class SelectQuery : IQuery
     public string GetPlan()
     {
         StringBuilder sb = new StringBuilder();
+        if (!limit.HasValue && offset.HasValue)
+        {
+            throw new Exception("Offset without limit is not supported");
+        }
+
         sb.AppendLine("digraph G {");
         sb.AppendLine("bgcolor= transparent;");
         sb.AppendLine("rankdir=BT;");
@@ -252,13 +257,13 @@ public class SelectQuery : IQuery
             }
             else
             {
-                if (limit.HasValue || offset.HasValue)
+                if (limit.HasValue)
                 {
-                    sb.AppendLine($"{this.from[i]} -> Limit");
+                    sb.AppendLine($"{from[i]} -> Limit");
                 }
                 else
                 {
-                    sb.AppendLine($"{this.from[i]}");
+                    sb.AppendLine($"{from[i]}");
                 }
             }
         }

@@ -1190,6 +1190,22 @@ public class ExecutorTest
     }
 
     [TestMethod]
+    public void SelectTest1()
+    {
+        var db = new ParallelDb();
+        db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
+            .Execute();
+        
+        db.Insert().Into("Persons").Columns("PersonID", "LastName", "FirstName", "Address", "City").Values(1, "Doe", "Pan", "123 Main St.", "AnyTown").Values(2, "Loe", "Pablo", "Beb St.", "Moscow").Execute();
+        var result = db.Select().From("Persons").Execute();
+        Assert.AreEqual(2, result.RowsCount);
+        Assert.AreEqual(1, result.Rows[0]["PersonID"]);
+        
+    }
+
+    [TestMethod]
     public void UpdateTest1()
     {
         var db = new ParallelDb();
@@ -1252,6 +1268,8 @@ public class ExecutorTest
         db.Insert().Into("Persons").Columns("PersonID", "LastName", "FirstName", "Address", "City").Values(1, "Doe", "Pan", "123 Main St.", "AnyTown").Values(2, "Loe", "Pablo", "Beb St.", "Moscow").Execute();
         var result = db.Delete().From("Persons").Where(row => row["LastName"] == "Doe").Execute();
         Assert.AreEqual(true, result);
+        var result1 = db.Select().From("Persons").Execute();
+        Assert.AreEqual(1, result1.RowsCount);
     }
     
     [TestMethod]

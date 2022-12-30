@@ -457,6 +457,18 @@ public partial class SQLiteParserBaseListener : ISQLiteParserListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitLiteral_value([NotNull] SQLiteParser.Literal_valueContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SQLiteParser.columns_clause"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterColumns_clause([NotNull] SQLiteParser.Columns_clauseContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SQLiteParser.columns_clause"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitColumns_clause([NotNull] SQLiteParser.Columns_clauseContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SQLiteParser.insert_stmt"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -600,6 +612,18 @@ public partial class SQLiteParserBaseListener : ISQLiteParserListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitValues_clause([NotNull] SQLiteParser.Values_clauseContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SQLiteParser.values_stmt"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterValues_stmt([NotNull] SQLiteParser.Values_stmtContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SQLiteParser.values_stmt"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitValues_stmt([NotNull] SQLiteParser.Values_stmtContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SQLiteParser.from_clause"/>.
 	/// <para>The default implementation does nothing.</para>

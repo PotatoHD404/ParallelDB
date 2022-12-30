@@ -326,6 +326,12 @@ literal_value:
     | CURRENT_TIMESTAMP
 ;
 
+columns_clause:
+    OPEN_PAR column_name (COMMA column_name)* CLOSE_PAR
+;
+
+
+
 insert_stmt:
     with_clause? (
         INSERT
@@ -337,16 +343,10 @@ insert_stmt:
             | FAIL
             | IGNORE
         )
-    ) INTO (schema_name DOT)? table_name (AS table_alias)? (
-        OPEN_PAR column_name ( COMMA column_name)* CLOSE_PAR
-    )? (
+    ) INTO (schema_name DOT)? table_name (AS table_alias)? 
+        columns_clause? (
         (
-            (
-                VALUES OPEN_PAR expr (COMMA expr)* CLOSE_PAR (
-                    COMMA OPEN_PAR expr ( COMMA expr)* CLOSE_PAR
-                )*
-                | select_stmt
-            ) upsert_clause?
+            (values_clause | select_stmt) upsert_clause?
         )
         | DEFAULT VALUES
     ) returning_clause?
@@ -407,9 +407,11 @@ having_clause:
 ;
 
 values_clause:
-    VALUES OPEN_PAR expr ( COMMA expr)* CLOSE_PAR (
-        COMMA OPEN_PAR expr ( COMMA expr)* CLOSE_PAR
-    )*
+    VALUES values_stmt (COMMA values_stmt)*
+;
+
+values_stmt:
+    OPEN_PAR expr ( COMMA expr)* CLOSE_PAR
 ;
 
 from_clause:

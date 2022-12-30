@@ -243,6 +243,12 @@ public interface ISQLiteParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitLiteral_value([NotNull] SQLiteParser.Literal_valueContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="SQLiteParser.columns_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitColumns_clause([NotNull] SQLiteParser.Columns_clauseContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="SQLiteParser.insert_stmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -314,6 +320,12 @@ public interface ISQLiteParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitValues_clause([NotNull] SQLiteParser.Values_clauseContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SQLiteParser.values_stmt"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitValues_stmt([NotNull] SQLiteParser.Values_stmtContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SQLiteParser.from_clause"/>.
 	/// </summary>

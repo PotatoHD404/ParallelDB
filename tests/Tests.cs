@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS Persons (
         var db = new ParallelDb();
         var query = db.GetQuery(sql);
         Assert.IsInstanceOfType(query, typeof(CreateTableQuery));
-        Assert.AreEqual("CREATE TABLE IF NOT EXISTS Persons (PersonID Int32 NOT NULL, LastName String, FirstName String NOT NULL DEFAULT 'John', Address String DEFAULT '1', City String NOT NULL)", query.ToString());
+        Assert.AreEqual("CREATE TABLE IF NOT EXISTS Persons (PersonID Int32, LastName String NOT NULL, FirstName String DEFAULT 'John', Address String NOT NULL DEFAULT '1', City String)", query.ToString());
     }
 }
 

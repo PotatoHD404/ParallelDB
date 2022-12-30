@@ -244,4 +244,9 @@ public class ParallelDb
         _graphvizVisitor.Visit(tree);
         return _graphvizVisitor.GetGraph();
     }
+    
+    internal Table? GetTable(string tableName)
+    {
+        return _tableStorage.GetTable(tableName);
+    }
 }

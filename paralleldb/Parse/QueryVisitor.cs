@@ -66,7 +66,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
         if (context.insert_stmt() != null)
         {
-            return Visit(context.insert_stmt());
+            return VisitInsert_stmt(context.insert_stmt());
         }
 
         if (context.select_stmt() != null)
@@ -91,8 +91,28 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
         throw new NotSupportedException($"Statement {context.GetText()} is not supported");
     }
+    
+    public override dynamic VisitInsert_stmt([NotNull] SQLiteParser.Insert_stmtContext context)
+    {
+        string tableName = context.table_name().GetText();
+        var res = _db.Insert();
+        Table? table = _db.GetTable(tableName);
+        if (table is null)
+        {
+            throw new Exception($"Table {tableName} does not exist");
+        }
+        res.Into(tableName);
+        var columns = context.column_name().Select(x => x.GetText()).ToArray();
+        foreach (string col in columns)
+        {
+            table.ColumnIndex(col);
+        }
+        var values = context.expr().Select(x => Visit(x)).ToArray();
+        res.Values(
+        return null;
+    }
 
-    public override dynamic VisitCreate_table_stmt(SQLiteParser.Create_table_stmtContext context)
+    public override dynamic VisitCreate_table_stmt([NotNull] SQLiteParser.Create_table_stmtContext context)
     {
         var tableName = context.table_name().GetText();
         var res = _db.Create();
@@ -102,7 +122,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         return res;
     }
 
-    public override dynamic VisitColumn_def(SQLiteParser.Column_defContext context)
+    public override dynamic VisitColumn_def([NotNull] SQLiteParser.Column_defContext context)
     {
         var name = context.column_name().GetText();
         var typeName = context.type_name().GetText();
@@ -115,7 +135,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
         // visit column constraints
         var constraints = context.column_constraint().Select(Visit).ToList();
-        var isNullable = constraints.OfType<NotNullType>().Any();
+        var isNullable = !constraints.OfType<NotNullType>().Any();
         var defaultValue = constraints.OfType<DefaultNode>().FirstOrDefault()?.Value;
         if (defaultValue is null)
         {
@@ -153,7 +173,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         return type;
     }
 
-    public override dynamic VisitColumn_constraint(SQLiteParser.Column_constraintContext context)
+    public override dynamic VisitColumn_constraint([NotNull] SQLiteParser.Column_constraintContext context)
     {
         var not = context.NOT() is not null;
         var @null = context.NULL() is not null;
@@ -181,7 +201,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         return new DefaultNode { Value = value };
     }
 
-    public dynamic GetValue(ParserRuleContext context)
+    public dynamic GetValue([NotNull] ParserRuleContext context)
     {
         switch (context)
         {
@@ -194,7 +214,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         }
     }
 
-    public override dynamic? VisitLiteral_value(SQLiteParser.Literal_valueContext context)
+    public override dynamic? VisitLiteral_value([NotNull] SQLiteParser.Literal_valueContext context)
     {
         if (context.NUMERIC_LITERAL() is not null)
         {
@@ -234,29 +254,4 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
         throw new NotSupportedException("Literal value is not supported");
     }
-
-    // public override SqlNode? VisitSelect_stmt([NotNull] SQLiteParser.Select_stmtContext context)
-    // {
-    //     // SqlNode node = new SelectNode();
-    //     List<SelectNode> selects = context.select_core().Select(VisitSelect_core).Where(el => true).OfType<SelectNode>()
-    //         .ToList();
-    //
-    //
-    //     Console.WriteLine("VisitSelect_core");
-    //
-    //     context.select_core()[0].where_clause();
-    //
-    //     context.select_core()[0].group_by_clause();
-    //     // context.children[0].Accept(this);
-    //     // context.select_core()[0].expr()[0];
-    //     // context.limit_stmt().expr()[0].literal_value().NUMERIC_LITERAL();
-    //     // context.limit_stmt().OFFSET_();
-    //     return null;
-    // }
-    //
-    // public override SqlNode? VisitSelect_core([NotNull] SQLiteParser.Select_coreContext context)
-    // {
-    //     Console.WriteLine("VisitSelect_core");
-    //     return null;
-    // }
 }

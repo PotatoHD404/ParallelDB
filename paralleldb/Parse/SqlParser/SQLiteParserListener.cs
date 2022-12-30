@@ -382,6 +382,16 @@ public interface ISQLiteParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitLiteral_value([NotNull] SQLiteParser.Literal_valueContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SQLiteParser.columns_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterColumns_clause([NotNull] SQLiteParser.Columns_clauseContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SQLiteParser.columns_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitColumns_clause([NotNull] SQLiteParser.Columns_clauseContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SQLiteParser.insert_stmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -501,6 +511,16 @@ public interface ISQLiteParserListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitValues_clause([NotNull] SQLiteParser.Values_clauseContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SQLiteParser.values_stmt"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterValues_stmt([NotNull] SQLiteParser.Values_stmtContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SQLiteParser.values_stmt"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitValues_stmt([NotNull] SQLiteParser.Values_stmtContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SQLiteParser.from_clause"/>.
 	/// </summary>

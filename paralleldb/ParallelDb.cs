@@ -69,10 +69,11 @@ public class ParallelDb
         {
             VisitSelectQuery(dep, dependencyManager);
         }
-
+        var depIds = deps.Select(dep => dep.GetHashCode()).ToArray();
         Func<ConcurrentDictionary<int, dynamic?>, Table> task = dict =>
         {
-            Queryable<TableRow>? table = query.from[0] switch
+            
+            Table? table = query.from[0] switch
             {
                 SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
                 string tableName => _tableStorage.GetTable(tableName),
@@ -82,6 +83,17 @@ public class ParallelDb
             {
                 throw new Exception("Table not found");
             }
+            table._rwl.AcquireReaderLock(Timeout.Infinite);
+            foreach (var id in depIds)
+            {
+                Table t1 = dict[id] switch
+                {
+                    Table t => t,
+                    _ => throw new Exception("Invalid table")
+                };
+                t1._rwl.AcquireReaderLock(Timeout.Infinite);
+            }
+            Queryable<TableRow> queryable = table;
 
             for (int i = 1; i < query.from.Count; i++)
             {
@@ -96,7 +108,7 @@ public class ParallelDb
                     throw new Exception("Table not found");
                 }
 
-                table = table.Cartesian(joinTable);
+                queryable = queryable.Cartesian(joinTable);
             }
 
             foreach (var el in query.join)
@@ -112,12 +124,12 @@ public class ParallelDb
                     throw new Exception("Table not found");
                 }
 
-                table = table.Join(joinTable, (dynamic)el.Item2);
+                queryable = queryable.Join(joinTable, (dynamic)el.Item2);
             }
 
             foreach (var el in query.where)
             {
-                table = table.Where((dynamic)el);
+                queryable = queryable.Where((dynamic)el);
             }
 
             foreach (var el in query.union)
@@ -133,7 +145,7 @@ public class ParallelDb
                     throw new Exception("Table not found");
                 }
 
-                table = table.Union(unionTable);
+                queryable = queryable.Union(unionTable);
             }
 
             foreach (var el in query.unionAll)
@@ -149,7 +161,7 @@ public class ParallelDb
                     throw new Exception("Table not found");
                 }
 
-                table = table.UnionAll(unionTable);
+                queryable = queryable.UnionAll(unionTable);
             }
 
             foreach (var el in query.intersect)
@@ -165,7 +177,7 @@ public class ParallelDb
                     throw new Exception("Table not found");
                 }
 
-                table = table.Intersect(intersectTable);
+                queryable = queryable.Intersect(intersectTable);
             }
 
             foreach (var el in query.except)
@@ -181,28 +193,37 @@ public class ParallelDb
                     throw new Exception("Table not found");
                 }
 
-                table = table.Except(exceptTable);
+                queryable = queryable.Except(exceptTable);
             }
 
             if (query.limit is { } limit)
             {
-                table = table.Limit(limit);
+                queryable = queryable.Limit(limit);
             }
 
             if (query.offset is { } offset)
             {
-                table = table.Offset(offset);
+                queryable = queryable.Offset(offset);
             }
 
             // Project
             if (query.project.Count != 0 && query.project.All(el => el != "*"))
             {
-                table = table.Project(query.project.ToArray());
+                queryable = queryable.Project(query.project.ToArray());
             }
-
-            return table.ToTable();
+            var result = queryable.ToTable();
+            foreach (var id in depIds)
+            {
+                Table t1 = dict[id] switch
+                {
+                    Table t => t,
+                    _ => throw new Exception("Invalid table")
+                };
+                t1._rwl.ReleaseReaderLock();
+            }
+            table._rwl.ReleaseReaderLock();
+            return result;
         };
-        var depIds = deps.Select(dep => dep.GetHashCode()).ToArray();
         dependencyManager.AddOperation(query.GetHashCode(), task, depIds);
     }
 

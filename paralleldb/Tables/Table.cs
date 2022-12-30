@@ -169,7 +169,7 @@ public class Table : PartialResult
         return _columns[index].HasDefault;
     }
 
-    public Table AddColumn(string name, Type type, bool nullable = false, bool hasDefault = false)
+    public Table AddColumn(string name, Type type, bool nullable = true, bool hasDefault = false)
     {
         CheckColumn(name);
         return AddColumn(name, new Column(name, type, nullable, hasDefault));

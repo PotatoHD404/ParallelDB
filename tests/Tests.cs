@@ -95,6 +95,7 @@ CREATE TABLE IF NOT EXISTS Persons (
         var db = new ParallelDb();
         var query = db.GetQuery(sql);
         Assert.IsInstanceOfType(query, typeof(CreateTableQuery));
+        Assert.AreEqual("CREATE TABLE IF NOT EXISTS Persons (PersonID Int32 NOT NULL, LastName String, FirstName String NOT NULL DEFAULT 'John', Address String DEFAULT '1', City String NOT NULL)", query.ToString());
     }
 }
 
@@ -179,7 +180,6 @@ public class TableTest
     }
 
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void NullTest2()
     {
         var table = new Table();
@@ -212,7 +212,6 @@ public class TableTest
 
 
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void NullTest5()
     {
         var table = new Table();

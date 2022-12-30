@@ -32,10 +32,12 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         {
             return null;
         }
+
         if (context.sql_stmt_list().Length > 1)
         {
             throw new NotSupportedException("Multiple statements are not supported");
         }
+
         return VisitSql_stmt_list(context.sql_stmt_list()[0]);
     }
 
@@ -46,6 +48,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         {
             throw new NotSupportedException("Multiple statements are not supported");
         }
+
         if (res.Length == 0)
         {
             throw new NotSupportedException("Empty query");
@@ -95,8 +98,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         var res = _db.Create();
         res.tableName = tableName;
         res.columns = context.column_def().Select(Visit).Cast<Column>().ToDictionary(x => x.Name, x => x);
-        res.ifNotExists = context.IF() == context.NOT() && context.NOT() == context.EXISTS() &&
-                          context.EXISTS() is not null;
+        res.ifNotExists = context.IF() is not null && context.NOT() is not null && context.EXISTS() is not null;
         return res;
     }
 
@@ -110,6 +112,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         {
             throw new NotSupportedException($"Type {typeName} is not supported");
         }
+
         // visit column constraints
         var constraints = context.column_constraint().Select(Visit).ToList();
         var isNullable = constraints.OfType<NotNullType>().Any();
@@ -173,7 +176,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         {
             throw new NotSupportedException("Default value is not supported");
         }
-           
+
 
         return new DefaultNode { Value = value };
     }
@@ -204,10 +207,11 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
         if (context.STRING_LITERAL() is not null)
         {
-            return context.STRING_LITERAL().GetText();
+            var res = context.STRING_LITERAL().GetText();
+            return res[1..^1];
         }
-        
-        if(context.NULL() is not null)
+
+        if (context.NULL() is not null)
         {
             return null;
         }
@@ -216,7 +220,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         {
             return true;
         }
-        
+
         if (context.FALSE() is not null)
         {
             return false;

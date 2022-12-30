@@ -4,28 +4,25 @@ namespace ParallelDB;
 
 public static class PrettyPrint
 {
-    public static string? ToString(object? value)
+    public static string? ToString(object? value, bool sql = false)
     {
-        switch (value)
+        if (value is string && sql)
+            return $"'{value}'";
+        return value switch
         {
-            case null:
-                return "null";
-            case string:
-                return $"\"{value}\"";
-            case char:
-                return $"'{value}'";
-            case IDictionary dictionary:
-                return
-                    $"{{{string.Join(", ", dictionary.Keys.Cast<object>().Select(key => $"{ToString(key)}: {ToString(dictionary[key])}"))}}}";
-            case IEnumerable enumerable:
-                return $"[{string.Join(", ", enumerable.Cast<object>().Select(ToString))}]";
-            default:
-                return value.ToString();
-        }
+            null => "null",
+            char => $"'{value}'",
+            string => $"\"{value}\"",
+            IDictionary dictionary =>
+                $"{{{string.Join(", ", dictionary.Keys.Cast<object>().Select(key => $"{ToString(key, sql)}: {ToString(dictionary[key], sql)}"))}}}",
+            IEnumerable enumerable =>
+                $"[{string.Join(", ", enumerable.Cast<object>().Select((el) => ToString(el, sql)))}]",
+            _ => value.ToString()
+        };
     }
 
-    public static void Print(object? value)
+    public static void Print(object? value, bool sql = false)
     {
-        Console.WriteLine(ToString(value));
+        Console.WriteLine(ToString(value, sql));
     }
 }

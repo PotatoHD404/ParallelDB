@@ -13,7 +13,7 @@ public class Column
 
     public bool HasDefault { get; }
 
-    public Column(string name, Type type, bool nullable = false, bool hasDefault = false)
+    public Column(string name, Type type, bool nullable = true, bool hasDefault = false)
     {
         dynamic? @default;
         if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>) || nullable)
@@ -102,7 +102,7 @@ public class Column
     // toString
     public override string ToString()
     {
-        return $"{Name} {Type.Name} {(IsNullable ? "NULL" : "NOT NULL")}";
+        return $"{Name} {Type.Name}{(IsNullable ? "" : " NOT NULL")}{(HasDefault ? $" DEFAULT {PrettyPrint.ToString(Default, true)}" : "")}";
     }
     
 }

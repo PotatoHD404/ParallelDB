@@ -16,8 +16,8 @@ public class SelectQuery : IQuery
     internal List<object> intersect;
     internal List<object> except;
     internal bool distinct;
-    internal int? take;
-    internal int? skip;
+    internal int? limit;
+    internal int? offset;
 
     public SelectQuery(ParallelDb db)
     {
@@ -31,8 +31,8 @@ public class SelectQuery : IQuery
         intersect = new List<object>();
         except = new List<object>();
         distinct = false;
-        take = null;
-        skip = null;
+        limit = null;
+        offset = null;
     }
 
     public SelectQuery Project(params string[] columns)
@@ -125,15 +125,15 @@ public class SelectQuery : IQuery
         return this;
     }
 
-    public SelectQuery Take(int count)
+    public SelectQuery Limit(int count)
     {
-        take = count;
+        limit = count;
         return this;
     }
 
-    public SelectQuery Skip(int count)
+    public SelectQuery Offset(int count)
     {
-        skip = count;
+        offset = count;
         return this;
     }
 
@@ -209,16 +209,16 @@ public class SelectQuery : IQuery
             sb.Append(string.Join(" EXCEPT ", except.Select(TableToString)));
         }
 
-        if (take.HasValue)
+        if (limit.HasValue)
         {
             sb.Append(" LIMIT ");
-            sb.Append(take.Value);
+            sb.Append(limit.Value);
         }
 
-        if (skip.HasValue)
+        if (offset.HasValue)
         {
             sb.Append(" OFFSET ");
-            sb.Append(skip.Value);
+            sb.Append(offset.Value);
         }
 
         return sb.ToString();
@@ -240,7 +240,7 @@ public class SelectQuery : IQuery
             }
             else
             {
-                if (take.HasValue || skip.HasValue)
+                if (limit.HasValue || offset.HasValue)
                 {
                     sb.AppendLine($"{this.from[i]} -> Limit");
                 }
@@ -253,5 +253,10 @@ public class SelectQuery : IQuery
         // check if there is take or skip
         sb.AppendLine("}");
         return sb.ToString();
+    }
+    
+    public Table Execute()
+    {
+        return _db.Execute(this);
     }
 }

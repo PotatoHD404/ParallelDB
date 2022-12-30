@@ -65,12 +65,12 @@ public class PartialResult : Queryable<TableRow>
         }
     }
 
-    public override Queryable<TableRow> Skip(int count)
+    public override Queryable<TableRow> Offset(int count)
     {
-        return new PartialResult(SkipIterator(count), _table);
+        return new PartialResult(OffsetIterator(count), _table);
     }
 
-    private IEnumerable<TableRow> SkipIterator(int count)
+    private IEnumerable<TableRow> OffsetIterator(int count)
     {
         int i = 0;
         foreach (TableRow element in _source)
@@ -84,12 +84,12 @@ public class PartialResult : Queryable<TableRow>
         }
     }
 
-    public override Queryable<TableRow> Take(int count)
+    public override Queryable<TableRow> Limit(int count)
     {
-        return new PartialResult(TakeIterator(count), _table);
+        return new PartialResult(LimitIterator(count), _table);
     }
 
-    private IEnumerable<TableRow> TakeIterator(int count)
+    private IEnumerable<TableRow> LimitIterator(int count)
     {
         int i = 0;
         foreach (TableRow element in _source)

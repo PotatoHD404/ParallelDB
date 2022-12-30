@@ -72,7 +72,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
         if (context.select_stmt() != null)
         {
-            return Visit(context.select_stmt());
+            return VisitSelect_stmt(context.select_stmt());
         }
 
         if (context.update_stmt() != null)
@@ -92,7 +92,62 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
         throw new NotSupportedException($"Statement {context.GetText()} is not supported");
     }
+
+
+    public override dynamic VisitSelect_stmt([NotNull] SQLiteParser.Select_stmtContext context)
+    {
+        var root = context.select_core();
+        if (root.Length > 1)
+        {
+            throw new NotSupportedException("Multiple select statements are not supported");
+        }
+
+        SelectQuery? select = VisitSelect_core(root[0]);
+        if (select is null) throw new NotSupportedException("Select query is null");
+        if (context.limit_clause() is not null)
+        {
+            select.Limit(GetValue(context.limit_clause().expr()));
+            if(context.limit_clause().offset_clause() is not null)
+            {
+                select.Offset(GetValue(context.limit_clause().offset_clause().expr()));
+            }
+        }
+        return select;
+    }
     
+    public override dynamic VisitSelect_core([NotNull] SQLiteParser.Select_coreContext context)
+    {
+        var select = _db.Select();
+        if (context.select_or_values().select_stmt() is not null)
+        {
+            select = VisitSelect_stmt(context.select_or_values().select_stmt());
+        }
+        else if (context.select_or_values().values_stmt() is not null)
+        {
+            select = VisitValues_stmt(context.select_or_values().values_stmt());
+        }
+        else
+        {
+            throw new NotSupportedException("Select query is null");
+        }
+
+        if (context.join_clause() is not null)
+        {
+            var join = VisitJoin_clause(context.join_clause());
+            if (join is not null)
+            {
+                select.Join(join);
+            }
+        }
+
+        if (context.where_expr() is not null)
+        {
+            select.Where(VisitWhere_expr(context.where_expr()));
+        }
+
+        return select;
+    }
+
     public override dynamic VisitDrop_stmt([NotNull] SQLiteParser.Drop_stmtContext context)
     {
         var tableName = context.any_name().GetText();
@@ -112,7 +167,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
         return res;
     }
-    
+
     public override dynamic VisitDelete_stmt([NotNull] SQLiteParser.Delete_stmtContext context)
     {
         var tableName = context.qualified_table_name().GetText();
@@ -129,12 +184,12 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         {
             predicate = VisitExpr(context.expr(), table);
         }
-        
+
         if (predicate is not null)
         {
             res.Where(predicate);
         }
-        
+
         return res;
     }
 
@@ -175,7 +230,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         {
             return VisitExpr(context.expr()[0], table);
         }
-        
+
         if (context.expr() is not null && context.expr().Length == 2)
         {
             var left = VisitExpr(context.expr()[0], table);
@@ -212,7 +267,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
         if (context.expr().Length == 0)
         {
-            if(context.literal_value() is not null)
+            if (context.literal_value() is not null)
                 return new Func<IRow, dynamic?>(_ => GetValue(context.literal_value()));
             if (context.column_name() is not null)
             {
@@ -222,6 +277,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
                 {
                     throw new InvalidOperationException($"Column {columnName} does not exist");
                 }
+
                 return new Func<IRow, dynamic?>(row => row[columnName]);
             }
         }

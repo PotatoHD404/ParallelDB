@@ -7793,24 +7793,24 @@ public partial class SQLiteParser : Parser {
 				table_name();
 				State = 1430;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,197,Context) ) {
-				case 1:
+				_la = TokenStream.LA(1);
+				if (_la==AS || _la==IDENTIFIER) {
 					{
 					State = 1427;
 					ErrorHandler.Sync(this);
-					switch ( Interpreter.AdaptivePredict(TokenStream,196,Context) ) {
-					case 1:
+					_la = TokenStream.LA(1);
+					if (_la==AS) {
 						{
 						State = 1426;
 						Match(AS);
 						}
-						break;
 					}
+
 					State = 1429;
 					table_alias();
 					}
-					break;
 				}
+
 				State = 1437;
 				ErrorHandler.Sync(this);
 				switch (TokenStream.LA(1)) {
@@ -7924,24 +7924,24 @@ public partial class SQLiteParser : Parser {
 				Match(CLOSE_PAR);
 				State = 1459;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,202,Context) ) {
-				case 1:
+				_la = TokenStream.LA(1);
+				if (_la==AS || _la==IDENTIFIER) {
 					{
 					State = 1456;
 					ErrorHandler.Sync(this);
-					switch ( Interpreter.AdaptivePredict(TokenStream,201,Context) ) {
-					case 1:
+					_la = TokenStream.LA(1);
+					if (_la==AS) {
 						{
 						State = 1455;
 						Match(AS);
 						}
-						break;
 					}
+
 					State = 1458;
 					table_alias();
 					}
-					break;
 				}
+
 				}
 				break;
 			case 3:
@@ -7996,24 +7996,24 @@ public partial class SQLiteParser : Parser {
 				Match(CLOSE_PAR);
 				State = 1482;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,206,Context) ) {
-				case 1:
+				_la = TokenStream.LA(1);
+				if (_la==AS || _la==IDENTIFIER) {
 					{
 					State = 1479;
 					ErrorHandler.Sync(this);
-					switch ( Interpreter.AdaptivePredict(TokenStream,205,Context) ) {
-					case 1:
+					_la = TokenStream.LA(1);
+					if (_la==AS) {
 						{
 						State = 1478;
 						Match(AS);
 						}
-						break;
 					}
+
 					State = 1481;
 					table_alias();
 					}
-					break;
 				}
+
 				}
 				break;
 			}
@@ -13411,9 +13411,7 @@ public partial class SQLiteParser : Parser {
 	}
 
 	public partial class Table_aliasContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public Any_nameContext any_name() {
-			return GetRuleContext<Any_nameContext>(0);
-		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IDENTIFIER() { return GetToken(SQLiteParser.IDENTIFIER, 0); }
 		public Table_aliasContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -13445,7 +13443,7 @@ public partial class SQLiteParser : Parser {
 			EnterOuterAlt(_localctx, 1);
 			{
 			State = 2058;
-			any_name();
+			Match(IDENTIFIER);
 			}
 		}
 		catch (RecognitionException re) {
@@ -14887,8 +14885,8 @@ public partial class SQLiteParser : Parser {
 		211,1,0,0,0,2046,2047,3,242,121,0,2047,213,1,0,0,0,2048,2049,3,242,121,
 		0,2049,215,1,0,0,0,2050,2051,3,242,121,0,2051,217,1,0,0,0,2052,2053,3,
 		242,121,0,2053,219,1,0,0,0,2054,2055,3,242,121,0,2055,221,1,0,0,0,2056,
-		2057,3,242,121,0,2057,223,1,0,0,0,2058,2059,3,242,121,0,2059,225,1,0,0,
-		0,2060,2061,3,242,121,0,2061,227,1,0,0,0,2062,2063,3,242,121,0,2063,229,
+		2057,3,242,121,0,2057,223,1,0,0,0,2058,2059,5,185,0,0,2059,225,1,0,0,0,
+		2060,2061,3,242,121,0,2061,227,1,0,0,0,2062,2063,3,242,121,0,2063,229,
 		1,0,0,0,2064,2065,3,242,121,0,2065,231,1,0,0,0,2066,2067,3,242,121,0,2067,
 		233,1,0,0,0,2068,2069,3,242,121,0,2069,235,1,0,0,0,2070,2071,3,242,121,
 		0,2071,237,1,0,0,0,2072,2073,3,242,121,0,2073,239,1,0,0,0,2074,2075,3,

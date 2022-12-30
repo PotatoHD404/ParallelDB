@@ -69,10 +69,10 @@ public class ParallelDb
         {
             VisitSelectQuery(dep, dependencyManager);
         }
+
         var depIds = deps.Select(dep => dep.GetHashCode()).ToArray();
         Func<ConcurrentDictionary<int, dynamic?>, Table> task = dict =>
         {
-            
             Table? table = query.from[0] switch
             {
                 SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
@@ -83,6 +83,7 @@ public class ParallelDb
             {
                 throw new Exception("Table not found");
             }
+
             table._rwl.AcquireReaderLock(Timeout.Infinite);
             foreach (var id in depIds)
             {
@@ -93,135 +94,146 @@ public class ParallelDb
                 };
                 t1._rwl.AcquireReaderLock(Timeout.Infinite);
             }
-            Queryable<TableRow> queryable = table;
 
-            for (int i = 1; i < query.from.Count; i++)
+            Table result;
+            try
             {
-                Table? joinTable = query.from[i] switch
+                Queryable<TableRow> queryable = table;
+
+                for (int i = 1; i < query.from.Count; i++)
                 {
-                    SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
-                    string tableName => _tableStorage.GetTable(tableName),
-                    _ => throw new Exception("Invalid table name")
-                };
-                if (joinTable is null)
-                {
-                    throw new Exception("Table not found");
+                    Table? joinTable = query.from[i] switch
+                    {
+                        SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
+                        string tableName => _tableStorage.GetTable(tableName),
+                        _ => throw new Exception("Invalid table name")
+                    };
+                    if (joinTable is null)
+                    {
+                        throw new Exception("Table not found");
+                    }
+
+                    queryable = queryable.Cartesian(joinTable);
                 }
 
-                queryable = queryable.Cartesian(joinTable);
-            }
+                foreach (var el in query.join)
+                {
+                    Table? joinTable = el.Item1 switch
+                    {
+                        SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
+                        string tableName => _tableStorage.GetTable(tableName),
+                        _ => throw new Exception("Invalid table name")
+                    };
+                    if (joinTable is null)
+                    {
+                        throw new Exception("Table not found");
+                    }
 
-            foreach (var el in query.join)
-            {
-                Table? joinTable = el.Item1 switch
-                {
-                    SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
-                    string tableName => _tableStorage.GetTable(tableName),
-                    _ => throw new Exception("Invalid table name")
-                };
-                if (joinTable is null)
-                {
-                    throw new Exception("Table not found");
+                    queryable = queryable.Join(joinTable, (dynamic)el.Item2);
                 }
 
-                queryable = queryable.Join(joinTable, (dynamic)el.Item2);
-            }
-
-            foreach (var el in query.where)
-            {
-                queryable = queryable.Where((dynamic)el);
-            }
-
-            foreach (var el in query.union)
-            {
-                Table? unionTable = el switch
+                foreach (var el in query.where)
                 {
-                    SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
-                    string tableName => _tableStorage.GetTable(tableName),
-                    _ => throw new Exception("Invalid table name")
-                };
-                if (unionTable is null)
-                {
-                    throw new Exception("Table not found");
+                    queryable = queryable.Where((dynamic)el);
                 }
 
-                queryable = queryable.Union(unionTable);
-            }
+                foreach (var el in query.union)
+                {
+                    Table? unionTable = el switch
+                    {
+                        SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
+                        string tableName => _tableStorage.GetTable(tableName),
+                        _ => throw new Exception("Invalid table name")
+                    };
+                    if (unionTable is null)
+                    {
+                        throw new Exception("Table not found");
+                    }
 
-            foreach (var el in query.unionAll)
-            {
-                Table? unionTable = el switch
-                {
-                    SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
-                    string tableName => _tableStorage.GetTable(tableName),
-                    _ => throw new Exception("Invalid table name")
-                };
-                if (unionTable is null)
-                {
-                    throw new Exception("Table not found");
+                    queryable = queryable.Union(unionTable);
                 }
 
-                queryable = queryable.UnionAll(unionTable);
-            }
+                foreach (var el in query.unionAll)
+                {
+                    Table? unionTable = el switch
+                    {
+                        SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
+                        string tableName => _tableStorage.GetTable(tableName),
+                        _ => throw new Exception("Invalid table name")
+                    };
+                    if (unionTable is null)
+                    {
+                        throw new Exception("Table not found");
+                    }
 
-            foreach (var el in query.intersect)
-            {
-                Table? intersectTable = el switch
-                {
-                    SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
-                    string tableName => _tableStorage.GetTable(tableName),
-                    _ => throw new Exception("Invalid table name")
-                };
-                if (intersectTable is null)
-                {
-                    throw new Exception("Table not found");
+                    queryable = queryable.UnionAll(unionTable);
                 }
 
-                queryable = queryable.Intersect(intersectTable);
-            }
+                foreach (var el in query.intersect)
+                {
+                    Table? intersectTable = el switch
+                    {
+                        SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
+                        string tableName => _tableStorage.GetTable(tableName),
+                        _ => throw new Exception("Invalid table name")
+                    };
+                    if (intersectTable is null)
+                    {
+                        throw new Exception("Table not found");
+                    }
 
-            foreach (var el in query.except)
-            {
-                Table? exceptTable = el switch
-                {
-                    SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
-                    string tableName => _tableStorage.GetTable(tableName),
-                    _ => throw new Exception("Invalid table name")
-                };
-                if (exceptTable is null)
-                {
-                    throw new Exception("Table not found");
+                    queryable = queryable.Intersect(intersectTable);
                 }
 
-                queryable = queryable.Except(exceptTable);
-            }
-
-            if (query.limit is { } limit)
-            {
-                queryable = queryable.Limit(limit);
-            }
-
-            if (query.offset is { } offset)
-            {
-                queryable = queryable.Offset(offset);
-            }
-
-            // Project
-            if (query.project.Count != 0 && query.project.All(el => el != "*"))
-            {
-                queryable = queryable.Project(query.project.ToArray());
-            }
-            var result = queryable.ToTable();
-            foreach (var id in depIds)
-            {
-                Table t1 = dict[id] switch
+                foreach (var el in query.except)
                 {
-                    Table t => t,
-                    _ => throw new Exception("Invalid table")
-                };
-                t1._rwl.ReleaseReaderLock();
+                    Table? exceptTable = el switch
+                    {
+                        SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
+                        string tableName => _tableStorage.GetTable(tableName),
+                        _ => throw new Exception("Invalid table name")
+                    };
+                    if (exceptTable is null)
+                    {
+                        throw new Exception("Table not found");
+                    }
+
+                    queryable = queryable.Except(exceptTable);
+                }
+
+                if (query.limit is { } limit)
+                {
+                    queryable = queryable.Limit(limit);
+                }
+
+                if (query.offset is { } offset)
+                {
+                    queryable = queryable.Offset(offset);
+                }
+
+                // Project
+                if (query.project.Count != 0 && query.project.All(el => el != "*"))
+                {
+                    queryable = queryable.Project(query.project.ToArray());
+                }
+
+                result = queryable.ToTable();
             }
-            table._rwl.ReleaseReaderLock();
+            finally
+            {
+                foreach (var id in depIds)
+                {
+                    Table t1 = dict[id] switch
+                    {
+                        Table t => t,
+                        _ => throw new Exception("Invalid table")
+                    };
+                    t1._rwl.ReleaseReaderLock();
+                }
+
+                table._rwl.ReleaseReaderLock();
+            }
+
             return result;
         };
         dependencyManager.AddOperation(query.GetHashCode(), task, depIds);
@@ -254,9 +266,16 @@ public class ParallelDb
             }
 
             table._rwl.AcquireWriterLock(Timeout.Infinite);
+            bool res;
+            try
+            {
+                res = table.Insert(insertQuery.values, insertQuery.columns);
+            }
+            finally
+            {
+                table._rwl.ReleaseWriterLock();
+            }
 
-            var res = table.Insert(insertQuery.values, insertQuery.columns);
-            table._rwl.ReleaseWriterLock();
             return res;
         });
 
@@ -280,17 +299,23 @@ public class ParallelDb
             }
 
             table._rwl.AcquireWriterLock(Timeout.Infinite);
-
-
-            Func<IRow, bool> predicate = _ => true;
-            Action<IRow> action = row => updateQuery.set.ForEach(x => x(row));
-            if (updateQuery.where.Count > 0)
+            bool res;
+            try
             {
-                predicate = row => updateQuery.where.All(condition => condition(row));
+                Func<IRow, bool> predicate = _ => true;
+                Action<IRow> action = row => updateQuery.set.ForEach(x => x(row));
+                if (updateQuery.where.Count > 0)
+                {
+                    predicate = row => updateQuery.where.All(condition => condition(row));
+                }
+
+                res = table.Update(action, predicate);
+            }
+            finally
+            {
+                table._rwl.ReleaseWriterLock();
             }
 
-            var res = table.Update(action, predicate);
-            table._rwl.ReleaseWriterLock();
             return res;
         });
 
@@ -314,14 +339,22 @@ public class ParallelDb
             }
 
             table._rwl.AcquireWriterLock(Timeout.Infinite);
-            if (deleteQuery.where.Count > 0)
+            bool res;
+            try
             {
-                bool Predicate(IRow row) => deleteQuery.where.All(condition => condition(row));
-                return table.Delete(Predicate);
+                if (deleteQuery.where.Count > 0)
+                {
+                    bool Predicate(IRow row) => deleteQuery.where.All(condition => condition(row));
+                    return table.Delete(Predicate);
+                }
+
+                res = table.Truncate();
+            }
+            finally
+            {
+                table._rwl.ReleaseWriterLock();
             }
 
-            var res = table.Truncate();
-            table._rwl.ReleaseWriterLock();
             return res;
         });
 

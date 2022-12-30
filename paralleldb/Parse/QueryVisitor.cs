@@ -125,7 +125,9 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
         if (context.limit_clause() is not null)
         {
-            res.Limit(GetValue(context.limit_clause().expr()));
+            int limit = GetValue(context.limit_clause().expr());
+            PrettyPrint.Print(limit);
+            res.Limit(limit);
             if (context.limit_clause().offset_clause() is not null)
             {
                 res.Offset(GetValue(context.limit_clause().offset_clause().expr()));
@@ -563,11 +565,10 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
     {
         if (context.NUMERIC_LITERAL() is not null)
         {
-            return context.NUMERIC_LITERAL() switch
-            {
-                { } n when n.GetText().Contains('.') => double.Parse(n.GetText()),
-                { } n => int.Parse(n.GetText())
-            };
+            string text = context.NUMERIC_LITERAL().GetText();
+            if (text.Contains('.'))
+                return double.Parse(text);
+            return int.Parse(text);
         }
 
         if (context.STRING_LITERAL() is not null)

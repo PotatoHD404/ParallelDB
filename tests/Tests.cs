@@ -1413,7 +1413,7 @@ CREATE TABLE IF NOT EXISTS Persons (
             .Execute();
         var query = db.GetQuery(sql);
         Assert.IsInstanceOfType(query, typeof(SelectQuery));
-        Assert.AreEqual("SELECT DISTINCT id FROM (SELECT * FROM table1 UNION SELECT * FROM table2) LIMIT 3", query.ToString());
+        Assert.AreEqual("SELECT DISTINCT id FROM (SELECT * FROM table1 UNION (SELECT * FROM table2)) LIMIT 3", query.ToString());
     }
     
     [TestMethod]

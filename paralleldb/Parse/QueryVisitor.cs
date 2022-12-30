@@ -115,38 +115,38 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         return select;
     }
     
-    public override dynamic VisitSelect_core([NotNull] SQLiteParser.Select_coreContext context)
-    {
-        var select = _db.Select();
-        if (context.select_or_values().select_stmt() is not null)
-        {
-            select = VisitSelect_stmt(context.select_or_values().select_stmt());
-        }
-        else if (context.select_or_values().values_stmt() is not null)
-        {
-            select = VisitValues_stmt(context.select_or_values().values_stmt());
-        }
-        else
-        {
-            throw new NotSupportedException("Select query is null");
-        }
-
-        if (context.join_clause() is not null)
-        {
-            var join = VisitJoin_clause(context.join_clause());
-            if (join is not null)
-            {
-                select.Join(join);
-            }
-        }
-
-        if (context.where_expr() is not null)
-        {
-            select.Where(VisitWhere_expr(context.where_expr()));
-        }
-
-        return select;
-    }
+    // public override dynamic VisitSelect_core([NotNull] SQLiteParser.Select_coreContext context)
+    // {
+    //     var select = _db.Select();
+    //     if (context.select_or_values().select_stmt() is not null)
+    //     {
+    //         select = VisitSelect_stmt(context.select_or_values().select_stmt());
+    //     }
+    //     else if (context.select_or_values().values_stmt() is not null)
+    //     {
+    //         select = VisitValues_stmt(context.select_or_values().values_stmt());
+    //     }
+    //     else
+    //     {
+    //         throw new NotSupportedException("Select query is null");
+    //     }
+    //
+    //     if (context.join_clause() is not null)
+    //     {
+    //         var join = VisitJoin_clause(context.join_clause());
+    //         if (join is not null)
+    //         {
+    //             select.Join(join);
+    //         }
+    //     }
+    //
+    //     if (context.where_expr() is not null)
+    //     {
+    //         select.Where(VisitWhere_expr(context.where_expr()));
+    //     }
+    //
+    //     return select;
+    // }
 
     public override dynamic VisitDrop_stmt([NotNull] SQLiteParser.Drop_stmtContext context)
     {

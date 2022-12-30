@@ -1015,14 +1015,14 @@ public class OperationsTest
             Assert.AreEqual("SELECT * FROM (SELECT * FROM table2 INTERSECT (SELECT * FROM table3 OFFSET 3)) LIMIT 3",
                 query.ToString());
         }
-        [TestMethod]
-        public void SelectQueryTest5()
-        {
-            var db = new ParallelDb();
-            var query = db.Update().Table("table1").GetPlan();
-            Console.WriteLine(query);
-            Assert.AreEqual("UPDATE", query.ToString());
-        }
+        // [TestMethod]
+        // public void SelectQueryTest5()
+        // {
+        //     var db = new ParallelDb();
+        //     var query = db.Update().Table("table1").GetPlan();
+        //     Console.WriteLine(query);
+        //     Assert.AreEqual("UPDATE", query.ToString());
+        // }
 
         [TestMethod]
         public void InsertQueryTest1()
@@ -1134,11 +1134,86 @@ public class DependencyManagerTest
 public class ExecutorTest
 {
     [TestMethod]
-    public void SimpleTest1()
+    public void CreateTest1()
     {
         var db = new ParallelDb();
-        var result = db.Select().From("table1").Execute();
-        
+        var result = db.Create().Table("table1").AddColumn("a", typeof(int)).AddColumn("b", typeof(string))
+            .AddColumn("c", typeof(bool)).Execute();
+        Assert.AreEqual(true, result);
+    }
+    
+    [TestMethod]
+    public void CreateTest2()
+    {
+        var db = new ParallelDb();
+        db.Create().Table("table1").AddColumn("a", typeof(int)).AddColumn("b", typeof(string))
+            .AddColumn("c", typeof(bool)).Execute();
+        var result = db.Create().IfNotExists().Table("table1").AddColumn("a", typeof(int)).AddColumn("b", typeof(string))
+            .AddColumn("c", typeof(bool)).Execute();
+        Assert.AreEqual(false, result);
+    }
+    
+    [TestMethod]
+    public void InsertTest1()
+    {
+        var db = new ParallelDb();
+        db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
+            .Execute();
+        var result = db.Insert().Into("Persons").Columns("PersonID", "LastName", "FirstName", "Address", "City").Values(1, "Doe", "Pan", "123 Main St.", "AnyTown").Values(2, "Loe", "Pablo", "Beb St.", "Moscow").Execute();
+        Assert.AreEqual(true, result);
+    }
+    
+    [TestMethod]
+    [ExpectedException(typeof(Exception))]
+    public void InsertTest2()
+    {
+        var db = new ParallelDb();
+        db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
+            .Execute();
+        db.Insert().Into("Persons1").Columns("PersonID", "LastName", "FirstName", "Address", "City").Values(1, "Doe", "Pan", "123 Main St.", "AnyTown").Values(2, "Loe", "Pablo", "Beb St.", "Moscow", "Extra").Execute();
+    }
+
+    [TestMethod]
+    public void UpdateTest1()
+    {
+        var db = new ParallelDb();
+        db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
+            .Execute();
+        db.Insert().Into("Persons").Columns("PersonID", "LastName", "FirstName", "Address", "City").Values(1, "Doe", "Pan", "123 Main St.", "AnyTown").Values(2, "Loe", "Pablo", "Beb St.", "Moscow").Execute();
+        var result = db.Update().Table("Persons").Set(row => row["FirstName"] = "John").Where(row => row["LastName"] == "Doe").Execute();
+        Assert.AreEqual(true, result);
+    }
+    
+    [TestMethod]
+    public void DeleteTest1()
+    {
+        var db = new ParallelDb();
+        db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
+            .Execute();
+        db.Insert().Into("Persons").Columns("PersonID", "LastName", "FirstName", "Address", "City").Values(1, "Doe", "Pan", "123 Main St.", "AnyTown").Values(2, "Loe", "Pablo", "Beb St.", "Moscow").Execute();
+        var result = db.Delete().From("Persons").Where(row => row["LastName"] == "Doe").Execute();
+        Assert.AreEqual(true, result);
+    }
+    
+    [TestMethod]
+    public void DropTest1()
+    {
+        var db = new ParallelDb();
+        db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
+            .Execute();
+        db.Insert().Into("Persons").Columns("PersonID", "LastName", "FirstName", "Address", "City").Values(1, "Doe", "Pan", "123 Main St.", "AnyTown").Values(2, "Loe", "Pablo", "Beb St.", "Moscow").Execute();
+        var result = db.Drop().Table("Persons").Execute();
+        Assert.AreEqual(true, result);
     }
 }
 
@@ -1195,6 +1270,19 @@ CREATE TABLE IF NOT EXISTS Persons (
         Assert.IsInstanceOfType(query, typeof(UpdateQuery));
         // Assert.AreEqual("UPDATE Persons SET FirstName = 'John', LastName = 'Doe' WHERE PersonID = 1", query.ToString());
     }
+    
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    public void UpdateTest2()
+    {
+        var sql = @"UPDATE Persons SET FirstName = 'John', LastName = 'Doe' WHERE PersonID = 1;";
+        var db = new ParallelDb();
+        db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName1", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
+            .Execute();
+        db.GetQuery(sql);
+    }
 
     [TestMethod]
     public void DeleteTest1()
@@ -1208,6 +1296,19 @@ CREATE TABLE IF NOT EXISTS Persons (
         var query = db.GetQuery(sql);
         Assert.IsInstanceOfType(query, typeof(DeleteQuery));
         // Assert.AreEqual("DELETE FROM Persons WHERE PersonID = 1", query.ToString());
+    }
+    
+    [TestMethod]
+    [ExpectedException(typeof(InvalidOperationException))]
+    public void DeleteTest2()
+    {
+        var sql = @"DELETE FROM Person WHERE PersonID = 1;";
+        var db = new ParallelDb();
+        db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
+            .Execute();
+        db.GetQuery(sql);
     }
 
     // [TestMethod]
@@ -1302,7 +1403,20 @@ CREATE TABLE IF NOT EXISTS Persons (
             .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
             .AddColumn("City", typeof(string))
             .Execute();
-        var query = db.GetQuery(sql);
+        db.GetQuery(sql);
+    }
+    
+    [TestMethod]
+    [ExpectedException(typeof(Exception))]
+    public void DropTableTest3()
+    {
+        var sql = @"DROP TABLE Persons1;";
+        var db = new ParallelDb();
+        db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
+            .Execute();
+        db.GetQuery(sql);
     }
 
 }

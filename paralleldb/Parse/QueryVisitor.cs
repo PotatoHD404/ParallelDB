@@ -314,6 +314,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         }
 
         var res = _db.Update();
+        res.Table(tableName);
         var setClauses = context.set_clause().set_stmt().Select(el => VisitSet_stmt(el, table)).Cast<Action<IRow>>()
             .ToList();
         foreach (var clause in setClauses)

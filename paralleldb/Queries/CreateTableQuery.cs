@@ -3,45 +3,45 @@ using ParallelDB.Tables;
 
 namespace ParallelDB.Queries;
 
-public class CreateQuery : IQuery
+public class CreateTableQuery : IQuery
 {
     private ParallelDb _db;
     internal string? tableName;
     internal bool ifNotExists;
     internal Dictionary<string, Column> columns;
 
-    public CreateQuery(ParallelDb db)
+    public CreateTableQuery(ParallelDb db)
     {
         _db = db;
         ifNotExists = false;
         columns = new Dictionary<string, Column>();
     }
 
-    public CreateQuery Table(string tableName)
+    public CreateTableQuery Table(string tableName)
     {
         this.tableName = tableName;
         return this;
     }
 
-    public CreateQuery AddColumn(string name, Column column)
+    public CreateTableQuery AddColumn(string name, Column column)
     {
         columns.Add(name, column);
         return this;
     }
 
-    public CreateQuery AddColumn(string name, Type type, bool isNullable, bool hasDefault, dynamic? defaultValue)
+    public CreateTableQuery AddColumn(string name, Type type, bool isNullable, bool hasDefault, dynamic? defaultValue)
     {
         columns.Add(name, new Column(name, type, isNullable, hasDefault, defaultValue));
         return this;
     }
 
-    public CreateQuery AddColumn(string name, Type type, bool isNullable = false, bool hasDefault = false)
+    public CreateTableQuery AddColumn(string name, Type type, bool isNullable = false, bool hasDefault = false)
     {
         columns.Add(name, new Column(name, type, isNullable, hasDefault));
         return this;
     }
 
-    public CreateQuery IfNotExists()
+    public CreateTableQuery IfNotExists()
     {
         ifNotExists = true;
         return this;

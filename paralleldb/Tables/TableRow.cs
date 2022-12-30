@@ -8,6 +8,7 @@ public class TableRow : IRow
     private readonly Table _table;
     private readonly dynamic?[] _values;
     private readonly bool[] _isSet;
+    private ReaderWriterLock _rwl = new();
 
     internal TableRow(Table table, dynamic?[] values, bool isSet = false)
     {
@@ -109,6 +110,7 @@ public class TableRow : IRow
     {
         get
         {
+            _rwl.AcquireReaderLock(Timeout.Infinite);
             if (index < 0 || index >= _values.Length)
             {
                 throw new IndexOutOfRangeException();
@@ -118,12 +120,13 @@ public class TableRow : IRow
             {
                 throw new ArgumentException($"Column {_table.ColumnName(index)} has not been set");
             }
-
+            _rwl.ReleaseReaderLock();
             return _values[index];
         }
 
         set
         {
+            _rwl.AcquireWriterLock(Timeout.Infinite);
             if (index < 0 || index >= _values.Length)
             {
                 throw new IndexOutOfRangeException();
@@ -134,6 +137,7 @@ public class TableRow : IRow
 
             _values[index] = value is DefaultType ? _table.ColumnDefault(index) : value;
             _isSet[index] = true;
+            _rwl.ReleaseWriterLock();
         }
     }
 
@@ -141,6 +145,7 @@ public class TableRow : IRow
     {
         get
         {
+            _rwl.AcquireReaderLock(Timeout.Infinite);
             int index = _table.ColumnIndex(columnName);
             if (index == -1)
             {
@@ -151,12 +156,14 @@ public class TableRow : IRow
             {
                 throw new ArgumentException($"Column {columnName} has not been set");
             }
-
-            return _values[index];
+            var value = _values[index];
+            _rwl.ReleaseReaderLock();
+            return value;
         }
 
         set
         {
+            _rwl.AcquireWriterLock(Timeout.Infinite);
             int index = _table.ColumnIndex(columnName);
             if (index == -1)
             {
@@ -169,6 +176,7 @@ public class TableRow : IRow
             _values[index] = value is DefaultType ? _table.ColumnDefault(index) : value;
 
             _isSet[index] = true;
+            _rwl.ReleaseWriterLock();
         }
     }
 

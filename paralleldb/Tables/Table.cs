@@ -10,6 +10,7 @@ public class Table : PartialResult
     private readonly Dictionary<string, int> _columnIndices = new();
     private readonly List<Column> _columns = new();
     private string? _name;
+    internal ReaderWriterLock _rwl = new();
 
     public Table(string? name = null) : base(Enumerable.Empty<TableRow>())
     {

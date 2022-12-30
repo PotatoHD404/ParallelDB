@@ -114,7 +114,6 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         var constraints = context.column_constraint().Select(Visit).ToList();
         var isNullable = constraints.OfType<NotNullType>().Any();
         var defaultValue = constraints.OfType<DefaultNode>().FirstOrDefault()?.Value;
-        PrettyPrint.Print(type);
         if (defaultValue is null)
         {
             return new Column(name, type, isNullable);

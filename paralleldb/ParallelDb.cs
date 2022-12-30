@@ -13,6 +13,7 @@ public class ParallelDb
     private TableStorage _tableStorage;
     private QueryVisitor _queryVisitor;
     private GraphvizVisitor _graphvizVisitor;
+
     public ParallelDb()
     {
         _tableStorage = new TableStorage();
@@ -24,7 +25,7 @@ public class ParallelDb
     public InsertQuery Insert() => new InsertQuery(this);
     public UpdateQuery Update() => new UpdateQuery(this);
     public DeleteQuery Delete() => new DeleteQuery(this);
-    public CreateQuery Create() => new CreateQuery(this);
+    public CreateTableQuery Create() => new CreateTableQuery(this);
     public DropQuery Drop() => new DropQuery(this);
 
     public Table Execute(SelectQuery selectQuery)
@@ -35,9 +36,10 @@ public class ParallelDb
             throw new Exception("No tables specified");
         }
         // Get dependencies and create a dependency graph
-        
+
         // var table = _tableStorage.GetTable(selectQuery.from[0]);
         throw new NotImplementedException();
+        // TODO: add reader locks
     }
 
     public bool Execute(InsertQuery insertQuery)
@@ -52,6 +54,7 @@ public class ParallelDb
         {
             throw new Exception("No values specified");
         }
+
         dependencyManager.AddOperation(0, _ =>
         {
             var table = _tableStorage.GetTable(insertQuery.into);
@@ -59,10 +62,13 @@ public class ParallelDb
             {
                 throw new Exception($"Table {insertQuery.into} does not exist");
             }
+            table._rwl.AcquireWriterLock(Timeout.Infinite);
 
-            return table.Insert(insertQuery.values);
+            var res = table.Insert(insertQuery.values);
+            table._rwl.ReleaseWriterLock();
+            return res;
         });
-        
+
         return dependencyManager.GetResults()[0];
     }
 
@@ -78,7 +84,11 @@ public class ParallelDb
         {
             var table = _tableStorage.GetTable(updateQuery.table);
             if (table is null)
+            {
                 throw new Exception("Table does not exist");
+            }
+
+            table._rwl.AcquireWriterLock(Timeout.Infinite);
 
 
             Func<IRow, bool> predicate = _ => true;
@@ -88,7 +98,9 @@ public class ParallelDb
                 predicate = row => updateQuery.where.All(condition => condition(row));
             }
 
-            return table.Update(action, predicate);
+            var res = table.Update(action, predicate);
+            table._rwl.ReleaseWriterLock();
+            return res;
         });
 
         return dependencyManager.GetResults()[0];
@@ -110,13 +122,16 @@ public class ParallelDb
                 throw new Exception("Table not found");
             }
 
+            table._rwl.AcquireWriterLock(Timeout.Infinite);
             if (deleteQuery.where.Count > 0)
             {
                 bool Predicate(IRow row) => deleteQuery.where.All(condition => condition(row));
                 return table.Delete(Predicate);
             }
 
-            return table.Truncate();
+            var res = table.Truncate();
+            table._rwl.ReleaseWriterLock();
+            return res;
         });
 
 
@@ -124,22 +139,22 @@ public class ParallelDb
         return dependencyManager.GetResults()[0];
     }
 
-    public bool Execute(CreateQuery createQuery)
+    public bool Execute(CreateTableQuery createTableQuery)
     {
         var dependencyManager = new DependencyManager();
-        if (createQuery.tableName is null)
+        if (createTableQuery.tableName is null)
         {
             throw new Exception("Table name is null");
         }
 
-        if (createQuery.columns.Count == 0)
+        if (createTableQuery.columns.Count == 0)
         {
             throw new Exception("No columns specified");
         }
 
-        if (_tableStorage.TableExists(createQuery.tableName))
+        if (_tableStorage.TableExists(createTableQuery.tableName))
         {
-            if (createQuery.ifNotExists)
+            if (createTableQuery.ifNotExists)
             {
                 return false;
             }
@@ -149,8 +164,8 @@ public class ParallelDb
 
         dependencyManager.AddOperation(0, _ =>
         {
-            var table = new Table(createQuery.tableName);
-            foreach (var column in createQuery.columns)
+            var table = new Table(createTableQuery.tableName);
+            foreach (var column in createTableQuery.columns)
             {
                 table.AddColumn(column.Key, column.Value);
             }
@@ -192,7 +207,7 @@ public class ParallelDb
             InsertQuery insertQuery => Execute(insertQuery),
             UpdateQuery updateQuery => Execute(updateQuery),
             DeleteQuery deleteQuery => Execute(deleteQuery),
-            CreateQuery createQuery => Execute(createQuery),
+            CreateTableQuery createQuery => Execute(createQuery),
             DropQuery dropQuery => Execute(dropQuery),
             _ => throw new Exception("Unknown query type")
         };
@@ -206,6 +221,7 @@ public class ParallelDb
         {
             throw new Exception("Query is null");
         }
+
         return res;
     }
 

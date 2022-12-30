@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS Persons (
 );";
         var db = new ParallelDb();
         var query = db.GetQuery(sql);
-        Assert.IsInstanceOfType(query, typeof(CreateQuery));
+        Assert.IsInstanceOfType(query, typeof(CreateTableQuery));
     }
 }
 

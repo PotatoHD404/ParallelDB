@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System.Collections.Concurrent;
+using System.Linq.Expressions;
 using Antlr4.Runtime;
 using ParallelDB.Dependencies;
 using ParallelDB.Parse;
@@ -44,6 +45,7 @@ public class ParallelDb
         {
             throw new Exception("Result is not a table");
         }
+
         return result;
     }
 
@@ -53,21 +55,155 @@ public class ParallelDb
         {
             throw new Exception("No tables specified");
         }
-        
+
         var deps = query.from
             .Union(query.join.Select(el => el.Item2))
             .Union(query.union)
             .Union(query.unionAll)
             .Union(query.intersect)
             .Union(query.except)
-            .OfType<SelectQuery>()
-            .Where(dep => !dependencyManager.ContainsOperation(dep.GetHashCode()));
-        foreach (var dep in deps)
+            .OfType<SelectQuery>().ToArray();
+        var unvisitedDeps = deps.Where(dep => !dependencyManager.ContainsOperation(dep.GetHashCode()));
+
+        foreach (var dep in unvisitedDeps)
         {
             VisitSelectQuery(dep, dependencyManager);
         }
-        
-        
+
+        Func<ConcurrentDictionary<int, dynamic?>, Table> task = dict =>
+        {
+            Queryable<TableRow>? table = query.from[0] switch
+            {
+                SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
+                string tableName => _tableStorage.GetTable(tableName),
+                _ => throw new Exception("Invalid table name")
+            };
+            if (table is null)
+            {
+                throw new Exception("Table not found");
+            }
+
+            for (int i = 1; i < query.from.Count; i++)
+            {
+                Table? joinTable = query.from[i] switch
+                {
+                    SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
+                    string tableName => _tableStorage.GetTable(tableName),
+                    _ => throw new Exception("Invalid table name")
+                };
+                if (joinTable is null)
+                {
+                    throw new Exception("Table not found");
+                }
+
+                table = table.Cartesian(joinTable);
+            }
+
+            foreach (var el in query.join)
+            {
+                Table? joinTable = el.Item1 switch
+                {
+                    SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
+                    string tableName => _tableStorage.GetTable(tableName),
+                    _ => throw new Exception("Invalid table name")
+                };
+                if (joinTable is null)
+                {
+                    throw new Exception("Table not found");
+                }
+
+                table = table.Join(joinTable, (dynamic)el.Item2);
+            }
+
+            foreach (var el in query.where)
+            {
+                table = table.Where((dynamic)el);
+            }
+
+            foreach (var el in query.union)
+            {
+                Table? unionTable = el switch
+                {
+                    SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
+                    string tableName => _tableStorage.GetTable(tableName),
+                    _ => throw new Exception("Invalid table name")
+                };
+                if (unionTable is null)
+                {
+                    throw new Exception("Table not found");
+                }
+
+                table = table.Union(unionTable);
+            }
+
+            foreach (var el in query.unionAll)
+            {
+                Table? unionTable = el switch
+                {
+                    SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
+                    string tableName => _tableStorage.GetTable(tableName),
+                    _ => throw new Exception("Invalid table name")
+                };
+                if (unionTable is null)
+                {
+                    throw new Exception("Table not found");
+                }
+
+                table = table.UnionAll(unionTable);
+            }
+
+            foreach (var el in query.intersect)
+            {
+                Table? intersectTable = el switch
+                {
+                    SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
+                    string tableName => _tableStorage.GetTable(tableName),
+                    _ => throw new Exception("Invalid table name")
+                };
+                if (intersectTable is null)
+                {
+                    throw new Exception("Table not found");
+                }
+
+                table = table.Intersect(intersectTable);
+            }
+
+            foreach (var el in query.except)
+            {
+                Table? exceptTable = el switch
+                {
+                    SelectQuery selectQuery => dict[selectQuery.GetHashCode()],
+                    string tableName => _tableStorage.GetTable(tableName),
+                    _ => throw new Exception("Invalid table name")
+                };
+                if (exceptTable is null)
+                {
+                    throw new Exception("Table not found");
+                }
+
+                table = table.Except(exceptTable);
+            }
+
+            if (query.limit is { } limit)
+            {
+                table = table.Limit(limit);
+            }
+
+            if (query.offset is { } offset)
+            {
+                table = table.Offset(offset);
+            }
+
+            // Project
+            if (query.project.Count != 0 && query.project.All(el => el != "*"))
+            {
+                table = table.Project(query.project.ToArray());
+            }
+
+            return table.ToTable();
+        };
+        var depIds = deps.Select(dep => dep.GetHashCode()).ToArray();
+        dependencyManager.AddOperation(query.GetHashCode(), task, depIds);
     }
 
     public bool Execute(InsertQuery insertQuery)

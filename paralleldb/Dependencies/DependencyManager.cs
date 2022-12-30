@@ -15,6 +15,16 @@ public class DependencyManager : IDependencyManager
     public event EventHandler<OperationCompletedEventArgs>? OperationCompleted;
     private Exception? _savedException;
 
+    public void AddOperation(
+        int id, Action<ConcurrentDictionary<int, dynamic?>> operation, params int[] dependencies)
+    {
+        AddOperation(id, dict =>
+        {
+            operation(dict);
+            return true;
+        }, dependencies);
+    }
+
     public void AddOperation<T>(
         int id, Func<ConcurrentDictionary<int, dynamic?>, T> operation, params int[] dependencies)
     {
@@ -72,13 +82,13 @@ public class DependencyManager : IDependencyManager
             }
 
             _done.WaitOne();
-            if(_savedException is not null)
+            if (_savedException is not null)
                 throw _savedException;
         }
 
         return _results;
     }
-    
+
     public bool ContainsOperation(int id)
     {
         return _operations.ContainsKey(id);

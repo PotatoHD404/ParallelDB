@@ -26,7 +26,7 @@ public class ParallelDb
     public UpdateQuery Update() => new UpdateQuery(this);
     public DeleteQuery Delete() => new DeleteQuery(this);
     public CreateTableQuery Create() => new CreateTableQuery(this);
-    public DropQuery Drop() => new DropQuery(this);
+    public DropTableQuery Drop() => new DropTableQuery(this);
 
     public Table Execute(SelectQuery selectQuery)
     {
@@ -55,6 +55,11 @@ public class ParallelDb
             throw new Exception("No values specified");
         }
 
+        if (insertQuery.columns.Count == 0)
+        {
+            throw new Exception("No columns specified");
+        }
+
         dependencyManager.AddOperation(0, _ =>
         {
             var table = _tableStorage.GetTable(insertQuery.into);
@@ -62,9 +67,10 @@ public class ParallelDb
             {
                 throw new Exception($"Table {insertQuery.into} does not exist");
             }
+
             table._rwl.AcquireWriterLock(Timeout.Infinite);
 
-            var res = table.Insert(insertQuery.values.ToList());
+            var res = table.Insert(insertQuery.values, insertQuery.columns);
             table._rwl.ReleaseWriterLock();
             return res;
         });
@@ -176,17 +182,17 @@ public class ParallelDb
         return dependencyManager.GetResults()[0];
     }
 
-    public bool Execute(DropQuery dropQuery)
+    public bool Execute(DropTableQuery dropTableQuery)
     {
         var dependencyManager = new DependencyManager();
-        if (dropQuery.tableName is null)
+        if (dropTableQuery.tableName is null)
         {
             throw new Exception("Table name is null");
         }
 
-        if (!_tableStorage.TableExists(dropQuery.tableName))
+        if (!_tableStorage.TableExists(dropTableQuery.tableName))
         {
-            if (dropQuery.ifExists)
+            if (dropTableQuery.ifExists)
             {
                 return false;
             }
@@ -194,7 +200,7 @@ public class ParallelDb
             throw new Exception("Table does not exist");
         }
 
-        dependencyManager.AddOperation(0, _ => _tableStorage.RemoveTable(dropQuery.tableName));
+        dependencyManager.AddOperation(0, _ => _tableStorage.RemoveTable(dropTableQuery.tableName));
         return dependencyManager.GetResults()[0];
     }
 
@@ -208,7 +214,7 @@ public class ParallelDb
             UpdateQuery updateQuery => Execute(updateQuery),
             DeleteQuery deleteQuery => Execute(deleteQuery),
             CreateTableQuery createQuery => Execute(createQuery),
-            DropQuery dropQuery => Execute(dropQuery),
+            DropTableQuery dropQuery => Execute(dropQuery),
             _ => throw new Exception("Unknown query type")
         };
     }
@@ -244,7 +250,7 @@ public class ParallelDb
         _graphvizVisitor.Visit(tree);
         return _graphvizVisitor.GetGraph();
     }
-    
+
     internal Table? GetTable(string tableName)
     {
         return _tableStorage.GetTable(tableName);

@@ -82,15 +82,60 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
         if (context.delete_stmt() != null)
         {
-            return Visit(context.delete_stmt());
+            return VisitDelete_stmt(context.delete_stmt());
         }
 
         if (context.drop_stmt() != null)
         {
-            return Visit(context.delete_stmt());
+            return VisitDrop_stmt(context.drop_stmt());
         }
 
         throw new NotSupportedException($"Statement {context.GetText()} is not supported");
+    }
+    
+    public override dynamic VisitDrop_stmt([NotNull] SQLiteParser.Drop_stmtContext context)
+    {
+        var tableName = context.any_name().GetText();
+        var ifExists = context.IF() is not null && context.EXISTS() is not null;
+        var res = _db.Drop();
+        var table = _db.GetTable(tableName);
+        if (table is null && !ifExists)
+        {
+            throw new Exception($"Table {tableName} does not exist");
+        }
+
+        res.Table(tableName);
+        if (ifExists)
+        {
+            res.IfExists();
+        }
+
+        return res;
+    }
+    
+    public override dynamic VisitDelete_stmt([NotNull] SQLiteParser.Delete_stmtContext context)
+    {
+        var tableName = context.qualified_table_name().GetText();
+        var table = _db.GetTable(tableName);
+        if (table is null)
+        {
+            throw new InvalidOperationException($"Table {tableName} does not exist");
+        }
+
+        var res = _db.Delete();
+        res.From(tableName);
+        Func<IRow, bool>? predicate = null;
+        if (context.expr() != null)
+        {
+            predicate = VisitExpr(context.expr(), table);
+        }
+        
+        if (predicate is not null)
+        {
+            res.Where(predicate);
+        }
+        
+        return res;
     }
 
     public override dynamic VisitUpdate_stmt(SQLiteParser.Update_stmtContext context)
@@ -384,15 +429,5 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
 
         throw new NotSupportedException("Literal value is not supported");
-    }
-}
-
-public class SetClause
-{
-    public Action<IRow> Action { get; }
-
-    public SetClause(Action<IRow> func)
-    {
-        Action = func;
     }
 }

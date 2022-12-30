@@ -1,24 +1,24 @@
 ﻿namespace ParallelDB.Queries;
 
-public class DropQuery : IQuery
+public class DropTableQuery : IQuery
 {
     private ParallelDb _db;
     internal string? tableName;
     internal bool ifExists;
 
-    public DropQuery(ParallelDb db)
+    public DropTableQuery(ParallelDb db)
     {
         _db = db;
         ifExists = false;
     }
 
-    public DropQuery Table(string tableName)
+    public DropTableQuery Table(string tableName)
     {
         this.tableName = tableName;
         return this;
     }
 
-    public DropQuery IfExists()
+    public DropTableQuery IfExists()
     {
         ifExists = true;
         return this;

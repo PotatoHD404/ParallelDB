@@ -1038,7 +1038,7 @@ public class OperationsTest
         public void DeleteQueryTest1()
         {
             var db = new ParallelDb();
-            var query = db.Delete().Table("table1");
+            var query = db.Delete().From("table1");
             Assert.AreEqual("DELETE FROM table1", query.ToString());
         }
 
@@ -1057,11 +1057,14 @@ public class OperationsTest
             var query = db.Insert().Into("table1").Values(Default, "2", true).Values(2, "3", false);
             Assert.AreEqual("INSERT INTO table1 VALUES (DEFAULT, '2', True), (2, '3', False)", query.ToString());
         }
+
         // TODO: add tests that test COLUMNS()
         [TestMethod]
         public void UpdateQueryTest1()
         {
-            UpdateQuery query = new UpdateQuery();
+            var db = new ParallelDb();
+            var query = db.Update().Table("table1").Set(row => row["a"] = 1).Set(row => row["b"] = "1")
+                .Set(row => row["a"] = true).Where(row => row["b"] == "2");
             query.Table("table1").Set(row => row["a"] = 1).Set(row => row["b"] = 2).Where(row => row["a"] == 1);
             // Assert.AreEqual("UPDATE table1 SET a = 1, b = '2' WHERE a = 1", query.ToString());
         }
@@ -1119,7 +1122,6 @@ public class DependencyManagerTest
     // TODO: add tests for cycles
 }
 
-
 [TestClass]
 public class QueryVisitorTest
 {
@@ -1137,7 +1139,9 @@ CREATE TABLE IF NOT EXISTS Persons (
         var db = new ParallelDb();
         var query = db.GetQuery(sql);
         Assert.IsInstanceOfType(query, typeof(CreateTableQuery));
-        Assert.AreEqual("CREATE TABLE IF NOT EXISTS Persons (PersonID Int32, LastName String NOT NULL, FirstName String DEFAULT 'John', Address String NOT NULL DEFAULT '1', City String)", query.ToString());
+        Assert.AreEqual(
+            "CREATE TABLE IF NOT EXISTS Persons (PersonID Int32, LastName String NOT NULL, FirstName String DEFAULT 'John', Address String NOT NULL DEFAULT '1', City String)",
+            query.ToString());
     }
 
     [TestMethod]
@@ -1148,7 +1152,8 @@ CREATE TABLE IF NOT EXISTS Persons (
 
         var db = new ParallelDb();
         db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
-            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string)).AddColumn("City", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
             .Execute();
         var query = db.GetQuery(sql);
         Assert.IsInstanceOfType(query, typeof(InsertQuery));
@@ -1156,53 +1161,57 @@ CREATE TABLE IF NOT EXISTS Persons (
             "INSERT INTO Persons (PersonID, LastName, FirstName, Address, City) VALUES (1, 'John', 'Doe', '1', '1'), (1, 'John', 'Doe', '1', '1')",
             query.ToString());
     }
-    
+
     [TestMethod]
     public void UpdateTest1()
     {
         var sql = @"UPDATE Persons SET FirstName = 'John', LastName = 'Doe' WHERE PersonID = 1;";
         var db = new ParallelDb();
         db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
-            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string)).AddColumn("City", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
             .Execute();
         var query = db.GetQuery(sql);
         Assert.IsInstanceOfType(query, typeof(UpdateQuery));
         // Assert.AreEqual("UPDATE Persons SET FirstName = 'John', LastName = 'Doe' WHERE PersonID = 1", query.ToString());
     }
-    
+
     [TestMethod]
     public void DeleteTest1()
     {
         var sql = @"DELETE FROM Persons WHERE PersonID = 1;";
         var db = new ParallelDb();
         db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
-            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string)).AddColumn("City", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
             .Execute();
         var query = db.GetQuery(sql);
         Assert.IsInstanceOfType(query, typeof(DeleteQuery));
         // Assert.AreEqual("DELETE FROM Persons WHERE PersonID = 1", query.ToString());
     }
-    
+
     [TestMethod]
     public void SelectTest1()
     {
         var sql = @"SELECT * FROM Persons;";
         var db = new ParallelDb();
         db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
-            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string)).AddColumn("City", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
             .Execute();
         var query = db.GetQuery(sql);
         Assert.IsInstanceOfType(query, typeof(SelectQuery));
         // Assert.AreEqual("SELECT * FROM Persons", query.ToString());
     }
-    
+
     [TestMethod]
     public void DropTableTest1()
     {
         var sql = @"DROP TABLE Persons;";
         var db = new ParallelDb();
         db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
-            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string)).AddColumn("City", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
             .Execute();
         var query = db.GetQuery(sql);
         Assert.IsInstanceOfType(query, typeof(DropTableQuery));

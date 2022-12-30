@@ -16,7 +16,7 @@ public class DeleteQuery : IQuery
         where = new List<Func<IRow, bool>>();
     }
 
-    public DeleteQuery Table(string table)
+    public DeleteQuery From(string table)
     {
         from = table;
         return this;

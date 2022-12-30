@@ -105,7 +105,11 @@ export default defineComponent({
           this.renderGraph(this.response.syntaxTree);
           break;
         case 2:
-          this.renderGraph(this.response.queryTree);
+          if (this.response.queryTree !== '') {
+            this.renderGraph(this.response.queryTree);
+          } else {
+            this.showError('Query tree is not available!')
+          }
           break;
       }
     },

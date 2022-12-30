@@ -160,7 +160,7 @@ public class DependencyManager : IDependencyManager
             foreach (int targetId in toList)
             {
                 OperationData targetData = _operations[targetId];
-                if (Interlocked.Decrement(ref targetData.NumRemainingDependencies) == 0)
+                if (Interlocked.Decrement(ref targetData.NumRemainingDependencies) == 0 && _savedException is null)
                     QueueOperation(targetData);
             }
         }
@@ -179,9 +179,8 @@ public class DependencyManager : IDependencyManager
                 }
             }
         }
-
-
-        if (Interlocked.Decrement(ref _remainingCount) == 0) _done.Set();
+        
+        if (Interlocked.Decrement(ref _remainingCount) == 0 && _savedException is null) _done.Set();
     }
 
     private void OnOperationCompleted(OperationData data)

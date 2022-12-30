@@ -614,7 +614,7 @@ public class OperationsTest
             .AddRow(5, "6", true)
             .AddRow(6, "7", false);
 
-        var newTable = table.Skip(2).ToTable();
+        var newTable = table.Offset(2).ToTable();
         Assert.AreEqual(4, newTable.RowsCount);
         Assert.AreEqual(3, newTable.ColumnsCount);
         Assert.AreEqual("a", newTable.ColumnName(0));
@@ -637,7 +637,7 @@ public class OperationsTest
             .AddRow(5, "6", true)
             .AddRow(6, "7", false);
 
-        var newTable = table.Take(2).ToTable();
+        var newTable = table.Limit(2).ToTable();
         Assert.AreEqual(2, newTable.RowsCount);
         Assert.AreEqual(3, newTable.ColumnsCount);
         Assert.AreEqual("a", newTable.ColumnName(0));
@@ -961,7 +961,7 @@ public class OperationsTest
             .AddRow(5, "e", true)
             .AddRow(6, "e", false);
 
-        var table2 = table1.Take(3).Project("b", "c").Distinct().ToTable();
+        var table2 = table1.Limit(3).Project("b", "c").Distinct().ToTable();
         var rows = table2.ToRows();
         Assert.AreEqual(1, table2.RowsCount);
         Assert.AreEqual(2, table2.ColumnsCount);
@@ -986,7 +986,7 @@ public class OperationsTest
         public void SelectQueryTest1()
         {
             var db = new ParallelDb();
-            var query = db.Select().From("table1").Intersect("table2").Take(3);
+            var query = db.Select().From("table1").Intersect("table2").Limit(3);
             Assert.AreEqual("SELECT * FROM table1 INTERSECT table2 LIMIT 3", query.ToString());
         }
 
@@ -994,7 +994,7 @@ public class OperationsTest
         public void SelectQueryTest2()
         {
             var db = new ParallelDb();
-            var query = db.Select().From(db.Select().From("table2")).Skip(3);
+            var query = db.Select().From(db.Select().From("table2")).Offset(3);
             Assert.AreEqual("SELECT * FROM (SELECT * FROM table2) OFFSET 3", query.ToString());
         }
 
@@ -1010,8 +1010,8 @@ public class OperationsTest
         public void SelectQueryTest4()
         {
             var db = new ParallelDb();
-            var query = db.Select().From(db.Select().From("table2").Intersect(db.Select().From("table3").Skip(3)))
-                .Take(3);
+            var query = db.Select().From(db.Select().From("table2").Intersect(db.Select().From("table3").Offset(3)))
+                .Limit(3);
             Assert.AreEqual("SELECT * FROM (SELECT * FROM table2 INTERSECT (SELECT * FROM table3 OFFSET 3)) LIMIT 3",
                 query.ToString());
         }

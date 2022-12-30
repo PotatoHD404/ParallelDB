@@ -901,7 +901,7 @@ savepoint_name:
 ;
 
 table_alias:
-    any_name
+    IDENTIFIER
 ;
 
 transaction_name:

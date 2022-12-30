@@ -1015,14 +1015,6 @@ public class OperationsTest
             Assert.AreEqual("SELECT * FROM (SELECT * FROM table2 INTERSECT (SELECT * FROM table3 OFFSET 3)) LIMIT 3",
                 query.ToString());
         }
-        // [TestMethod]
-        // public void SelectQueryTest5()
-        // {
-        //     var db = new ParallelDb();
-        //     var query = db.Update().Table("table1").GetPlan();
-        //     Console.WriteLine(query);
-        //     Assert.AreEqual("UPDATE", query.ToString());
-        // }
 
         [TestMethod]
         public void InsertQueryTest1()
@@ -1513,5 +1505,16 @@ CREATE TABLE IF NOT EXISTS Persons (
             .Execute();
         db.GetQuery(sql);
     }
+}
 
+[TestClass]
+public class PlanTests
+{
+    [TestMethod]
+    public void SelectTest1()
+    {
+        var sql = @"SELECT table1.id FROM table1 INNER JOIN table2 ON table1.age = table2.age;";
+        var db = new ParallelDb();
+        Console.WriteLine(db.GetQuery(sql).GetPlan());
+    }
 }

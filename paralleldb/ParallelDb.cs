@@ -57,7 +57,7 @@ public class ParallelDb
         }
 
         var deps = query.from
-            .Union(query.join.Select(el => el.Item2))
+            .Union(query.join.Select(el => el.Item1))
             .Union(query.union)
             .Union(query.unionAll)
             .Union(query.intersect)

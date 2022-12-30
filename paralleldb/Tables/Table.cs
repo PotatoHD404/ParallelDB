@@ -268,7 +268,7 @@ public class Table : PartialResult
 
         foreach (var row in rows)
         {
-            var newRow = _table.NewRow();
+            var newRow = _table!.NewRow();
             for (int i = 0; i < ColumnsCount; i++)
             {
                 newRow[columns[i]] = row[i];

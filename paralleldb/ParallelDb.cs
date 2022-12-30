@@ -473,4 +473,9 @@ public class ParallelDb
     {
         return _tableStorage.GetTable(tableName);
     }
+    
+    public bool TableExists(string tableName)
+    {
+        return _tableStorage.TableExists(tableName);
+    }
 }

@@ -57,8 +57,8 @@ namespace Api.Controllers
                     }).ToArray();
                 }
 
-                response.SyntaxTree = db.GetSyntaxTree(sql);
-                response.QueryTree = db.GetQuery(sql).GetPlan();
+                response.SyntaxTree = _db.GetSyntaxTree(sql);
+                response.QueryTree = _db.GetQuery(sql).GetPlan();
                 return response;
             }
             catch (Exception e)

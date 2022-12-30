@@ -235,41 +235,41 @@ public class SelectQuery : IQuery
 
         return sb.ToString();
     }
-
+    
     
     public string GetPlan()
     {
         StringBuilder sb = new StringBuilder();
-        if (!limit.HasValue && offset.HasValue)
-        {
-            throw new Exception("Offset without limit is not supported");
-        }
-
         sb.AppendLine("digraph G {");
         sb.AppendLine("bgcolor= transparent;");
         sb.AppendLine("rankdir=BT;");
-        // cycle that finds all from tables
-        for (int i = 0; i < this.from.Count; i++)
-        {
-            if (from[i] is SelectQuery obj1)
-            {
-                
-            }
-            else
-            {
-                if (limit.HasValue)
-                {
-                    sb.AppendLine($"{from[i]} -> Limit");
-                }
-                else
-                {
-                    sb.AppendLine($"{from[i]}");
-                }
-            }
-        }
-        // check if there is take or skip
+        GetPlan(this, sb);
         sb.AppendLine("}");
         return sb.ToString();
+    }
+
+    private static void GetPlan(SelectQuery query, StringBuilder sb, int? parentId = null)
+    {
+        if (!query.limit.HasValue && query.offset.HasValue)
+        {
+            throw new Exception("Offset without limit is not supported");
+        }
+        
+        int id = query.GetHashCode();
+        
+        sb.AppendLine($"{id} [label=\"{query}\"];");
+        if (parentId.HasValue)
+        {
+            sb.AppendLine($"{parentId.Value} -> {id};");
+        }
+        
+        foreach (var item in query.from)
+        {
+            if (item is SelectQuery item1)
+            {
+                GetPlan(item1, sb, id);
+            }
+        }
     }
     
     public Table Execute()

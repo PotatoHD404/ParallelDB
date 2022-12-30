@@ -2,5 +2,5 @@
 
 public class SqlRequest
 {
-    public string Request { get; set; }
+    public string? Request { get; set; }
 }

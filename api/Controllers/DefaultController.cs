@@ -28,8 +28,12 @@ namespace Api.Controllers
             var response = new SqlResponse();
             try
             {
-                var sql = body.Request;
-
+                string? sql = body.Request;
+                if (sql is null)
+                {
+                    response.Error = "No SQL provided";
+                    return response;
+                }
                 var db = new ParallelDb();
                 var result = db.Execute(sql);
                 if (result is bool)

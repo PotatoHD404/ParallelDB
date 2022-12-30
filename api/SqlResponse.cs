@@ -7,7 +7,5 @@ public class SqlResponse
     public string SyntaxTree { get; set; }
     
     public string QueryTree { get; set; }
-    
-    public string PlannerTree { get; set; }
     public string Error { get; set; }
 }

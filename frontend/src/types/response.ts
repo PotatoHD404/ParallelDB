@@ -2,8 +2,6 @@ export type Response = {
     columns: string[],
     rows: any[][],
     syntaxTree: string
-    queryTree: string
-    plannerTree: string
-    
+    queryTree: string    
     error: string | null
 }

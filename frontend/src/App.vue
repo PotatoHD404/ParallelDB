@@ -52,7 +52,6 @@ export default defineComponent({
         rows: [],
         syntaxTree: '',
         queryTree: '',
-        plannerTree: '',
         error: null
       } as Response,
       treeType: 0,
@@ -85,7 +84,6 @@ export default defineComponent({
         this.response.rows = data.rows;
         this.response.syntaxTree = data.syntaxTree;
         this.response.queryTree = data.queryTree;
-        this.response.plannerTree = data.plannerTree;
         this.treeType = 1;
         this.renderGraph(dot);
       } else {
@@ -106,9 +104,6 @@ export default defineComponent({
           break;
         case 2:
           this.renderGraph(this.response.queryTree);
-          break;
-        case 3:
-          this.renderGraph(this.response.plannerTree);
           break;
       }
     },

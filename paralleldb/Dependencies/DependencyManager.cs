@@ -78,6 +78,11 @@ public class DependencyManager : IDependencyManager
 
         return _results;
     }
+    
+    public bool ContainsOperation(int id)
+    {
+        return _operations.ContainsKey(id);
+    }
 
     public void ExecuteAndWait()
     {

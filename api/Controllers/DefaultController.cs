@@ -54,7 +54,6 @@ namespace Api.Controllers
 
                 response.SyntaxTree = db.GetSyntaxTree(sql);
                 response.QueryTree = db.GetQuery(sql).GetPlan();
-                response.PlannerTree = "";
                 return response;
             }
             catch (Exception e)

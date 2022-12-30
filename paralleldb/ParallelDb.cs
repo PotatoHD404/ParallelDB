@@ -31,15 +31,43 @@ public class ParallelDb
     public Table Execute(SelectQuery selectQuery)
     {
         var dependencyManager = new DependencyManager();
-        if (selectQuery.from.Count == 0)
-        {
-            throw new Exception("No tables specified");
-        }
         // Get dependencies and create a dependency graph
 
         // var table = _tableStorage.GetTable(selectQuery.from[0]);
-        throw new NotImplementedException();
-        // TODO: add reader locks
+        int rootId = selectQuery.GetHashCode();
+        VisitSelectQuery(selectQuery, dependencyManager);
+        var results = dependencyManager.GetResults();
+        if (!results.ContainsKey(rootId))
+            throw new Exception("No results found for root query");
+        var result = results[rootId];
+        if (result is null || result is not Table)
+        {
+            throw new Exception("Result is not a table");
+        }
+        return result;
+    }
+
+    private void VisitSelectQuery(SelectQuery query, DependencyManager dependencyManager)
+    {
+        if (query.from.Count == 0)
+        {
+            throw new Exception("No tables specified");
+        }
+        
+        var deps = query.from
+            .Union(query.join.Select(el => el.Item2))
+            .Union(query.union)
+            .Union(query.unionAll)
+            .Union(query.intersect)
+            .Union(query.except)
+            .OfType<SelectQuery>()
+            .Where(dep => !dependencyManager.ContainsOperation(dep.GetHashCode()));
+        foreach (var dep in deps)
+        {
+            VisitSelectQuery(dep, dependencyManager);
+        }
+        
+        
     }
 
     public bool Execute(InsertQuery insertQuery)

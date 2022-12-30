@@ -11,9 +11,9 @@
           <my-button @click="changeTree(2)" v-bind:class="{choice : treeType === 2}" class="buttons button2">
             QueryTree
           </my-button>
-          <my-button @click="changeTree(3)" v-bind:class="{choice : treeType === 3}" class="buttons button3">
-            PlannerTree
-          </my-button>
+<!--          <my-button @click="changeTree(3)" v-bind:class="{choice : treeType === 3}" class="buttons button3">-->
+<!--            PlannerTree-->
+<!--          </my-button>-->
         </div>
       </div>
     </div>
@@ -86,7 +86,7 @@ export default defineComponent({
   position: absolute;
   padding: 15px;
   border-radius: 0;
-  width: 32%;
+  width: 47.5%;
   height: 80%;
   margin-bottom: 1.5%;
   background: transparent;
@@ -100,11 +100,12 @@ export default defineComponent({
 }
 
 .button1 {
-  left: 5px;
+  left: 10px;
   transform: translateY(10%);
 }
 
 .button2 {
+  right: 10px;
   transform: translateY(10%);
 }
 

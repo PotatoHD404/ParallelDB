@@ -13,6 +13,16 @@ public class DependencyManager : IDependencyManager
     private readonly ConcurrentDictionary<int, dynamic?> _results = new();
 
     public event EventHandler<OperationCompletedEventArgs>? OperationCompleted;
+    private Exception? _savedException;
+    private event EventHandler ExceptionOccurred;
+
+    public DependencyManager()
+    {
+        ExceptionOccurred = delegate
+        {
+            if (_savedException is not null) throw _savedException;
+        };
+    }
 
     public void AddOperation<T>(
         int id, Func<ConcurrentDictionary<int, dynamic?>, T> operation, params int[] dependencies)
@@ -29,7 +39,20 @@ public class DependencyManager : IDependencyManager
             Interlocked.Increment(ref _operations[dep].NumRemainingSuccessors);
         }
 
-        var data = new OperationData(id, res => operation(res), dependencies, ExecutionContext.Capture());
+        var data = new OperationData(id, res =>
+        {
+            try
+            {
+                return operation(res);
+            }
+            catch (Exception ex)
+            {
+                _savedException = ex;
+                ExceptionOccurred.Invoke(this, EventArgs.Empty);
+            }
+
+            return false;
+        }, dependencies, ExecutionContext.Capture());
         _operations.TryAdd(id, data);
         Interlocked.Increment(ref _remainingCount);
     }

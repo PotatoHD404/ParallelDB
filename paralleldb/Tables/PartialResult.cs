@@ -134,6 +134,16 @@ public class PartialResult : Queryable<TableRow>
         return new PartialResult(JoinIterator(newTable, other, predicate), newTable);
     }
 
+    public override Queryable<TableRow> Join(Queryable<TableRow> other, Func<TableRow, bool> predicate)
+    {
+        if (_table is null || other._table is null)
+        {
+            throw new Exception("Cannot join on a result without a table");
+        }
+
+        return Cartesian(other).Where(predicate);
+    }
+
     private IEnumerable<TableRow> JoinIterator(Table newTable, Queryable<TableRow> other,
         Func<TableRow, TableRow, bool> predicate)
     {
@@ -197,7 +207,8 @@ public class PartialResult : Queryable<TableRow>
 
         for (int i = 0; i < _table.ColumnsCount; i++)
         {
-            if (_table.ColumnType(i) != second._table.ColumnType(i) || _table.ColumnNullable(i) != second._table.ColumnNullable(i))
+            if (_table.ColumnType(i) != second._table.ColumnType(i) ||
+                _table.ColumnNullable(i) != second._table.ColumnNullable(i))
             {
                 throw new Exception("Cannot union tables with different column types");
             }

@@ -4,15 +4,19 @@ public abstract class Queryable<T>
 {
     protected internal Table? _table;
     protected internal IEnumerable<TableRow> _source;
+
     public Queryable(IEnumerable<TableRow> source, Table? table = null)
     {
         _source = source;
         _table = table;
     }
+
     public abstract Queryable<T> Project(params string[] columns);
     public abstract Queryable<T> Where(Func<T, bool> predicate);
     public abstract Queryable<T> Join(Queryable<T> other, Func<T, T, bool> predicate);
+
     public abstract Queryable<T> Cartesian(Queryable<T> other);
+
     // public abstract Queryable<T> InnerJoin(Queryable<T> other, Func<T, T, bool> predicate);
     // public abstract Queryable<T> LeftJoin(Queryable<T> other, Func<T, T, bool> predicate);
     // public abstract Queryable<T> RightJoin(Queryable<T> other, Func<T, T, bool> predicate);
@@ -25,5 +29,6 @@ public abstract class Queryable<T>
     public abstract Queryable<T> Distinct();
     public abstract Queryable<T> Limit(int count);
     public abstract Queryable<T> Offset(int count);
+    public abstract Queryable<T> Join(Queryable<T> other, Func<T, bool> predicate);
     public abstract Table ToTable();
 }

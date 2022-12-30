@@ -8,7 +8,7 @@ public class SelectQuery : IQuery
 {
     private ParallelDb _db;
     internal List<string> project;
-    internal List<Tuple<object, Func<IRow, IRow, bool>>> join;
+    internal List<Tuple<object, object>> join;
     internal List<Func<IRow, bool>> where;
     internal List<object> from;
     internal List<object> union;
@@ -23,7 +23,7 @@ public class SelectQuery : IQuery
     {
         _db = db;
         project = new List<string>();
-        join = new List<Tuple<object, Func<IRow, IRow, bool>>>();
+        join = new List<Tuple<object, object>>();
         where = new List<Func<IRow, bool>>();
         from = new List<object>();
         union = new List<object>();
@@ -55,13 +55,25 @@ public class SelectQuery : IQuery
 
     public SelectQuery Join(string table, Func<IRow, IRow, bool> condition)
     {
-        join.Add(new Tuple<object, Func<IRow, IRow, bool>>(table, condition));
+        join.Add(new Tuple<object, object>(table, condition));
         return this;
     }
 
     public SelectQuery Join(SelectQuery table, Func<IRow, IRow, bool> condition)
     {
-        join.Add(new Tuple<object, Func<IRow, IRow, bool>>(table, condition));
+        join.Add(new Tuple<object, object>(table, condition));
+        return this;
+    }
+    
+    public SelectQuery Join(string table, Func<IRow, bool> condition)
+    {
+        join.Add(new Tuple<object, object>(table, condition));
+        return this;
+    }
+
+    public SelectQuery Join(SelectQuery table, Func<IRow, bool> condition)
+    {
+        join.Add(new Tuple<object, object>(table, condition));
         return this;
     }
 
@@ -154,7 +166,7 @@ public class SelectQuery : IQuery
         return sb;
     }
 
-    private StringBuilder JoinToString(Tuple<object, Func<IRow, IRow, bool>> obj)
+    private StringBuilder JoinToString(Tuple<object, object> obj)
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("JOIN ");

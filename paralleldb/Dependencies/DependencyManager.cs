@@ -29,7 +29,7 @@ public class DependencyManager : IDependencyManager
             Interlocked.Increment(ref _operations[dep].NumRemainingSuccessors);
         }
 
-        var data = new OperationData(id, res => operation(res), dependencies);
+        var data = new OperationData(id, res => operation(res), dependencies, ExecutionContext.Capture());
         _operations.TryAdd(id, data);
         Interlocked.Increment(ref _remainingCount);
     }
@@ -84,12 +84,14 @@ public class DependencyManager : IDependencyManager
                     toList = new List<int>();
                     _dependenciesFromTo.TryAdd(from, toList);
                 }
+
                 toList.Add(op.Id);
                 if (!_dependenciesToFrom.TryGetValue(op.Id, out var fromList))
                 {
                     fromList = new List<int>();
                     _dependenciesToFrom.TryAdd(op.Id, fromList);
                 }
+
                 fromList.Add(from);
                 _results.TryAdd(op.Id, null);
             }
@@ -107,7 +109,11 @@ public class DependencyManager : IDependencyManager
     {
         // Time and run the operation's delegate
         data.Start = DateTimeOffset.Now;
-        var result = data.Operation(_results);
+        dynamic? result = null;
+        if (data.Context is not null)
+            ExecutionContext.Run(data.Context, _ => result = data.Operation(_results), null);
+        else
+            result = data.Operation(_results);
 
         data.End = DateTimeOffset.Now;
 
@@ -146,6 +152,7 @@ public class DependencyManager : IDependencyManager
 
         if (Interlocked.Decrement(ref _remainingCount) == 0) _done.Set();
     }
+
     private void OnOperationCompleted(OperationData data)
     {
         EventHandler<OperationCompletedEventArgs>? handler = OperationCompleted;

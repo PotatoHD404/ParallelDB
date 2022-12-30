@@ -84,7 +84,7 @@ public class DependencyManager : IDependencyManager
             }
 
             _done.WaitOne();
-            if (_savedException is not null)
+            if (_errorCount > 0)
                 throw _savedException;
         }
 

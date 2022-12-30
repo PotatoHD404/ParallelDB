@@ -1176,6 +1176,18 @@ public class ExecutorTest
             .Execute();
         db.Insert().Into("Persons1").Columns("PersonID", "LastName", "FirstName", "Address", "City").Values(1, "Doe", "Pan", "123 Main St.", "AnyTown").Values(2, "Loe", "Pablo", "Beb St.", "Moscow", "Extra").Execute();
     }
+    
+    [TestMethod]
+    [ExpectedException(typeof(Exception))]
+    public void InsertTest3()
+    {
+        var db = new ParallelDb();
+        db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
+            .Execute();
+        db.Insert().Into("Persons1").Columns("PersonID", "LastName", "FirstName", "Address", "City").Values(1, "Doe", "Pan", "123 Main St.", "AnyTown").Values("Fail", "Loe", "Pablo", "Beb St.", "Moscow", "Extra").Execute();
+    }
 
     [TestMethod]
     public void UpdateTest1()
@@ -1188,6 +1200,45 @@ public class ExecutorTest
         db.Insert().Into("Persons").Columns("PersonID", "LastName", "FirstName", "Address", "City").Values(1, "Doe", "Pan", "123 Main St.", "AnyTown").Values(2, "Loe", "Pablo", "Beb St.", "Moscow").Execute();
         var result = db.Update().Table("Persons").Set(row => row["FirstName"] = "John").Where(row => row["LastName"] == "Doe").Execute();
         Assert.AreEqual(true, result);
+    }
+    
+    [TestMethod]
+    [ExpectedException(typeof(Exception))]
+    public void UpdateTest2()
+    {
+        var db = new ParallelDb();
+        db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
+            .Execute();
+        db.Insert().Into("Persons").Columns("PersonID", "LastName", "FirstName", "Address", "City").Values(1, "Doe", "Pan", "123 Main St.", "AnyTown").Values(2, "Loe", "Pablo", "Beb St.", "Moscow").Execute();
+        db.Update().Table("Persons1").Set(row => row["FirstName"] = "John").Where(row => row["LastName"] == "Doe").Execute();
+    }
+    
+    // [TestMethod]
+    // [ExpectedException(typeof(Exception))]
+    // public void UpdateTest3()
+    // {
+    //     var db = new ParallelDb();
+    //     db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
+    //         .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+    //         .AddColumn("City", typeof(string))
+    //         .Execute();
+    //     db.Insert().Into("Persons").Columns("PersonID", "LastName", "FirstName", "Address", "City").Values(1, "Doe", "Pan", "123 Main St.", "AnyTown").Values(2, "Loe", "Pablo", "Beb St.", "Moscow").Execute();
+    //     db.Update().Table("Persons").Set(row => row["FirstName"] = "John").Where(row => row["LastName"] == 999).Execute();
+    // }
+    
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    public void UpdateTest3()
+    {
+        var db = new ParallelDb();
+        db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
+            .Execute();
+        db.Insert().Into("Persons").Columns("PersonID", "LastName", "FirstName", "Address", "City").Values(1, 2, 3, 4, 5).Values(2, "Loe", "Pablo", "Beb St.", "Moscow").Execute();
+        db.Update().Table("Persons").Set(row => row["FirstName"] = "John").Where(row => row["LastName"] == "Doe").Execute();
     }
     
     [TestMethod]
@@ -1204,6 +1255,19 @@ public class ExecutorTest
     }
     
     [TestMethod]
+    [ExpectedException(typeof(Exception))]
+    public void DeleteTest2()
+    {
+        var db = new ParallelDb();
+        db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
+            .Execute();
+        db.Insert().Into("Persons").Columns("PersonID", "LastName", "FirstName", "Address", "City").Values(1, "Doe", "Pan", "123 Main St.", "AnyTown").Values(2, "Loe", "Pablo", "Beb St.", "Moscow").Execute();
+        db.Delete().From("Persons1").Where(row => row["LastName"] == "Doe").Execute();
+    }
+    
+    [TestMethod]
     public void DropTest1()
     {
         var db = new ParallelDb();
@@ -1214,6 +1278,19 @@ public class ExecutorTest
         db.Insert().Into("Persons").Columns("PersonID", "LastName", "FirstName", "Address", "City").Values(1, "Doe", "Pan", "123 Main St.", "AnyTown").Values(2, "Loe", "Pablo", "Beb St.", "Moscow").Execute();
         var result = db.Drop().Table("Persons").Execute();
         Assert.AreEqual(true, result);
+    }
+    
+    [TestMethod]
+    [ExpectedException(typeof(Exception))]
+    public void DropTest2()
+    {
+        var db = new ParallelDb();
+        db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
+            .Execute();
+        db.Insert().Into("Persons").Columns("PersonID", "LastName", "FirstName", "Address", "City").Values(1, "Doe", "Pan", "123 Main St.", "AnyTown").Values(2, "Loe", "Pablo", "Beb St.", "Moscow").Execute();
+        db.Drop().Table("Persons1").Execute();
     }
 }
 

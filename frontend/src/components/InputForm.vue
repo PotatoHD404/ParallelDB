@@ -27,10 +27,7 @@ export default defineComponent({
   },
   methods: {
     createQuery: function () {
-      this.$emit('create', this.query)
-      this.query = {
-        text: '',
-      }
+      this.$emit('create', this.query);
     }
   }
 })

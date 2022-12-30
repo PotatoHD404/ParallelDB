@@ -88,6 +88,7 @@ export default defineComponent({
   border-radius: 0;
   width: 47.5%;
   height: 80%;
+  font-size: 1em;
   margin-bottom: 1.5%;
   background: transparent;
   border: none;

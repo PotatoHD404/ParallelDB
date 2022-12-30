@@ -462,6 +462,16 @@ public interface ISQLiteParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitSelect_stmt([NotNull] SQLiteParser.Select_stmtContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SQLiteParser.join_stmt"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterJoin_stmt([NotNull] SQLiteParser.Join_stmtContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SQLiteParser.join_stmt"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitJoin_stmt([NotNull] SQLiteParser.Join_stmtContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SQLiteParser.join_clause"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

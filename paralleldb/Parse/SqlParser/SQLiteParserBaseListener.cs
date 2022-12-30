@@ -553,6 +553,18 @@ public partial class SQLiteParserBaseListener : ISQLiteParserListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitSelect_stmt([NotNull] SQLiteParser.Select_stmtContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SQLiteParser.join_stmt"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterJoin_stmt([NotNull] SQLiteParser.Join_stmtContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SQLiteParser.join_stmt"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitJoin_stmt([NotNull] SQLiteParser.Join_stmtContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SQLiteParser.join_clause"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

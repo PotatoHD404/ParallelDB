@@ -115,101 +115,39 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
         return select;
     }
-
-    public override dynamic VisitSelect_core([NotNull] SQLiteParser.Select_coreContext context)
-    {
-        SelectQuery select = _db.Select();
-        if (context.result_column() is not null)
-        {
-            foreach (var el in context.result_column())
-            {
-                select.Project(el.GetText());
-            }
-        }
-
-        if (context.from_clause()?.table_or_subquery() is not null)
-        {
-            foreach (SQLiteParser.Table_or_subqueryContext el in context.from_clause().table_or_subquery())
-            {
-                if (el.table_name() is not null)
-                {
-                    select.From(el.GetText());
-                }
-                else if (el.select_stmt() is not null)
-                {
-                    select.From(VisitSelect_stmt(el.select_stmt()));
-                }
-                else
-                {
-                    throw new NotSupportedException("Subquery is not supported");
-                }
-            }
-        }
-        else
-        {
-            throw new NotSupportedException("Select query is null");
-        }
-
-        if (context.join_clause() is not null)
-        {
-            var joins = context.join_clause().join_stmt();
-            foreach (var el in joins)
-            {
-                if (el.join_operator().LEFT() is not null)
-                {
-                    throw new NotSupportedException("Left join is not supported");
-                }
-
-                if (el.join_operator().CROSS() is not null)
-                {
-                    throw new NotSupportedException("Cross join is not supported");
-                }
-
-                if (el.join_operator().NATURAL() is not null)
-                {
-                    throw new NotSupportedException("Natural join is not supported");
-                }
-                // Func<IRow, IRow, bool> predicate = (_, _) => true;
-                // if (el.join_constraint()?.expr() is not null)
-                // {
-                //     predicate = (row1, row2) => VisitJoin(el.expr(), row1, row2);
-                // }
-                // if (el.table_or_subquery().table_name() is not null)
-                // {
-                //     select.Join(el.table_or_subquery().GetText(), predicate);
-                // }
-                // else if (el.table_or_subquery().select_stmt() is not null)
-                // {
-                //     select.Join(VisitSelect_stmt(el.table_or_subquery().select_stmt()), predicate);
-                // }
-                // else
-                // {
-                //     throw new NotSupportedException("Subquery is not supported");
-                // }
-                //
-                //
-                // if (el.table_name() is not null)
-                // {
-                //     select.Join(el.GetText());
-                // }
-                // else if (el.select_stmt() is not null)
-                // {
-                //     select.Join(VisitSelect_stmt(el.select_stmt()));
-                // }
-                // else
-                // {
-                //     throw new NotSupportedException("Subquery is not supported");
-                // }
-            }
-        }
-
-        // if (context.where_expr() is not null)
-        // {
-        //     select.Where(VisitWhere_expr(context.where_expr()));
-        // }
-
-        return select;
-    }
+    
+    // public override dynamic VisitSelect_core([NotNull] SQLiteParser.Select_coreContext context)
+    // {
+    //     var select = _db.Select();
+    //     if (context.select_or_values().select_stmt() is not null)
+    //     {
+    //         select = VisitSelect_stmt(context.select_or_values().select_stmt());
+    //     }
+    //     else if (context.select_or_values().values_stmt() is not null)
+    //     {
+    //         select = VisitValues_stmt(context.select_or_values().values_stmt());
+    //     }
+    //     else
+    //     {
+    //         throw new NotSupportedException("Select query is null");
+    //     }
+    //
+    //     if (context.join_clause() is not null)
+    //     {
+    //         var join = VisitJoin_clause(context.join_clause());
+    //         if (join is not null)
+    //         {
+    //             select.Join(join);
+    //         }
+    //     }
+    //
+    //     if (context.where_expr() is not null)
+    //     {
+    //         select.Where(VisitWhere_expr(context.where_expr()));
+    //     }
+    //
+    //     return select;
+    // }
 
     public override dynamic VisitDrop_stmt([NotNull] SQLiteParser.Drop_stmtContext context)
     {

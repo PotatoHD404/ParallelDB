@@ -36,6 +36,8 @@ namespace Api.Controllers
                     response.Error = "No SQL provided";
                     return response;
                 }
+                response.SyntaxTree = _db.GetSyntaxTree(sql);
+                response.QueryTree = _db.GetQuery(sql).GetPlan();
                 var result = _db.Execute(sql);
                 if (result is bool)
                 {
@@ -56,9 +58,7 @@ namespace Api.Controllers
                         return row;
                     }).ToArray();
                 }
-
-                response.SyntaxTree = _db.GetSyntaxTree(sql);
-                response.QueryTree = _db.GetQuery(sql).GetPlan();
+                
                 return response;
             }
             catch (Exception e)

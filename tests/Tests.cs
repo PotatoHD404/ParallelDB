@@ -1302,6 +1302,30 @@ public class ExecutorTest
         db.Insert().Into("Persons").Columns("PersonID", "LastName", "FirstName", "Address", "City").Values(1, "Doe", "Pan", "123 Main St.", "AnyTown").Values(2, "Loe", "Pablo", "Beb St.", "Moscow").Execute();
         db.Drop().Table("Persons1").Execute();
     }
+    
+    [TestMethod]
+    public void DropTest3()
+    {
+        var db = new ParallelDb();
+        db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
+            .Execute();
+        db.Drop();
+        Assert.AreEqual(true, db.TableExists("Persons"));
+    }
+    
+    [TestMethod]
+    public void DropTest4()
+    {
+        var db = new ParallelDb();
+        db.Create().Table("Persons").AddColumn("PersonID", typeof(int)).AddColumn("LastName", typeof(string))
+            .AddColumn("FirstName", typeof(string)).AddColumn("Address", typeof(string))
+            .AddColumn("City", typeof(string))
+            .Execute();
+        db.Execute("DROP TABLE Persons");
+        Assert.AreEqual(false, db.TableExists("Persons"));
+    }
 }
 
 [TestClass]

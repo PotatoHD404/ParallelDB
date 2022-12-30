@@ -126,7 +126,6 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         if (context.limit_clause() is not null)
         {
             int limit = GetValue(context.limit_clause().expr());
-            PrettyPrint.Print(limit);
             res.Limit(limit);
             if (context.limit_clause().offset_clause() is not null)
             {

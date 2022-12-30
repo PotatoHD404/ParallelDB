@@ -1513,7 +1513,7 @@ public class PlanTests
     [TestMethod]
     public void SelectTest1()
     {
-        var sql = @"SELECT table1.id FROM table1 INNER JOIN table2 ON table1.age = table2.age;";
+        var sql = @"SELECT * FROM (SELECT * FROM table1 UNION SELECT * FROM table2) AS t1 INNER JOIN (SELECT * FROM table1 WHERE state = true) AS t2 ON t1.id = t2.id WHERE t1.id = 1 LIMIT 1;";
         var db = new ParallelDb();
         Console.WriteLine(db.GetQuery(sql).GetPlan());
     }

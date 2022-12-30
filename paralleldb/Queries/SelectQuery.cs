@@ -273,13 +273,13 @@ public class SelectQuery : IQuery
         {
             GetPlan(dep, sb, visited, query.GetHashCode());
         }
-        
+
         string prev;
         switch (query.from[0])
         {
             case SelectQuery selectQuery:
                 prev =
-                    $"{selectQuery.GetHashCode()}SELECT_FROM{query.GetHashCode()}";
+                    $"{selectQuery.GetHashCode()}";
                 break;
             case string tableName:
                 prev =
@@ -293,16 +293,25 @@ public class SelectQuery : IQuery
 
         for (int i = 1; i < query.from.Count; i++)
         {
-            sb.AppendLine($"{prev} -> {query.from[i].GetHashCode()}SELECT_FROM{query.GetHashCode()};");
-            prev = $"{query.from[i].GetHashCode()}SELECT_FROM{query.GetHashCode()}";
-            sb.AppendLine($"\"{prev}\" [label=\"SELECT FROM {query.from[i]}\"];");
+            var el = query.from[i];
+            sb.AppendLine($"\"{prev}\" -> \"{el.GetHashCode()}CARTESIAN{query.GetHashCode()}\"");
+            prev = $"{el.GetHashCode()}CARTESIAN{query.GetHashCode()}";
+            sb.AppendLine($"\"{prev}\" [label=\"CARTESIAN\"];");
+            if (el is string tableName)
+            {
+                sb.AppendLine($"\"{el.GetHashCode()}\" -> \"{prev}\";");
+                sb.AppendLine($"\"{el.GetHashCode()}\" [label=\"{tableName}\"];");
+            }
+            else
+            {
+                sb.AppendLine($"\"{el.GetHashCode()}\" -> \"{prev}\";");
+            }
         }
 
         foreach (var el in query.join)
         {
-            Console.WriteLine(el.Item1);
-            sb.AppendLine($"\"{prev}\" -> \"{el.Item1.GetHashCode()}JOIN{query.GetHashCode()}\";");
-            prev = $"{el.Item1.GetHashCode()}JOIN{query.GetHashCode()}";
+            sb.AppendLine($"\"{prev}\" -> \"{el.GetHashCode()}JOIN{query.GetHashCode()}\";");
+            prev = $"{el.GetHashCode()}JOIN{query.GetHashCode()}";
             sb.AppendLine($"\"{prev}\" [label=\"JOIN\"];");
             if (el.Item1 is string tableName)
             {
@@ -313,11 +322,10 @@ public class SelectQuery : IQuery
             {
                 sb.AppendLine($"\"{el.Item1.GetHashCode()}\" -> \"{prev}\";");
             }
-            
-            sb.AppendLine($"\"{prev}\" -> \"{el.Item1.GetHashCode()}ON{query.GetHashCode()}\";");
-            sb.AppendLine($"\"{el.Item1.GetHashCode()}ON{query.GetHashCode()}\" [label=\"ON\"];");
-            prev = $"{el.Item1.GetHashCode()}ON{query.GetHashCode()}";
-            break;
+
+            sb.AppendLine($"\"{prev}\" -> \"{el.GetHashCode()}ON{query.GetHashCode()}\";");
+            sb.AppendLine($"\"{el.GetHashCode()}ON{query.GetHashCode()}\" [label=\"ON\"];");
+            prev = $"{el.GetHashCode()}ON{query.GetHashCode()}";
         }
 
         foreach (var el in query.where)
@@ -331,6 +339,15 @@ public class SelectQuery : IQuery
         {
             sb.AppendLine($"\"{prev}\" -> \"{el.GetHashCode()}UNION{query.GetHashCode()}\";");
             prev = $"{el.GetHashCode()}UNION{query.GetHashCode()}";
+            if (el is string tableName)
+            {
+                sb.AppendLine($"\"{el.GetHashCode()}\" -> \"{prev}\";");
+                sb.AppendLine($"\"{el.GetHashCode()}\" [label=\"{tableName}\"];");
+            }
+            else
+            {
+                sb.AppendLine($"\"{el.GetHashCode()}\" -> \"{prev}\";");
+            }
             sb.AppendLine($"\"{prev}\" [label=\"UNION\"];");
         }
 
@@ -338,6 +355,15 @@ public class SelectQuery : IQuery
         {
             sb.AppendLine($"\"{prev}\" -> \"{el.GetHashCode()}UNIONALL{query.GetHashCode()}\";");
             prev = $"{el.GetHashCode()}UNIONALL{query.GetHashCode()}";
+            if (el is string tableName)
+            {
+                sb.AppendLine($"\"{el.GetHashCode()}\" -> \"{prev}\";");
+                sb.AppendLine($"\"{el.GetHashCode()}\" [label=\"{tableName}\"];");
+            }
+            else
+            {
+                sb.AppendLine($"\"{el.GetHashCode()}\" -> \"{prev}\";");
+            }
             sb.AppendLine($"\"{prev}\" [label=\"UNION ALL\"];");
         }
 
@@ -345,6 +371,15 @@ public class SelectQuery : IQuery
         {
             sb.AppendLine($"\"{prev}\" -> \"{el.GetHashCode()}INTERSECT{query.GetHashCode()}\";");
             prev = $"{el.GetHashCode()}INTERSECT{query.GetHashCode()}";
+            if (el is string tableName)
+            {
+                sb.AppendLine($"\"{el.GetHashCode()}\" -> \"{prev}\";");
+                sb.AppendLine($"\"{el.GetHashCode()}\" [label=\"{tableName}\"];");
+            }
+            else
+            {
+                sb.AppendLine($"\"{el.GetHashCode()}\" -> \"{prev}\";");
+            }
             sb.AppendLine($"\"{prev}\" [label=\"INTERSECT\"];");
         }
 
@@ -352,6 +387,15 @@ public class SelectQuery : IQuery
         {
             sb.AppendLine($"\"{prev}\" -> \"{el.GetHashCode()}EXCEPT{query.GetHashCode()}\";");
             prev = $"{el.GetHashCode()}EXCEPT{query.GetHashCode()}";
+            if (el is string tableName)
+            {
+                sb.AppendLine($"\"{el.GetHashCode()}\" -> \"{prev}\";");
+                sb.AppendLine($"\"{el.GetHashCode()}\" [label=\"{tableName}\"];");
+            }
+            else
+            {
+                sb.AppendLine($"\"{el.GetHashCode()}\" -> \"{prev}\";");
+            }
             sb.AppendLine($"\"{prev}\" [label=\"EXCEPT\"];");
         }
 
@@ -376,7 +420,7 @@ public class SelectQuery : IQuery
             prev = $"{query.project.GetHashCode()}PROJECT{query.GetHashCode()}";
             sb.AppendLine($"\"{prev}\" [label=\"PROJECT\"];");
         }
-        
+
         sb.AppendLine($"\"{prev}\" -> \"{query.GetHashCode()}\";");
         sb.AppendLine($"\"{query.GetHashCode()}\" [label=\"RESULT\"];");
     }

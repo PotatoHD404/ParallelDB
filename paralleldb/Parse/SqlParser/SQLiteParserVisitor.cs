@@ -291,6 +291,12 @@ public interface ISQLiteParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitSelect_stmt([NotNull] SQLiteParser.Select_stmtContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="SQLiteParser.join_stmt"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitJoin_stmt([NotNull] SQLiteParser.Join_stmtContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="SQLiteParser.join_clause"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

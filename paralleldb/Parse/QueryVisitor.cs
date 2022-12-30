@@ -107,11 +107,12 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         if (context.limit_clause() is not null)
         {
             select.Limit(GetValue(context.limit_clause().expr()));
-            if(context.limit_clause().offset_clause() is not null)
+            if (context.limit_clause().offset_clause() is not null)
             {
                 select.Offset(GetValue(context.limit_clause().offset_clause().expr()));
             }
         }
+
         return select;
     }
     
@@ -182,7 +183,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         Func<IRow, bool>? predicate = null;
         if (context.expr() != null)
         {
-            predicate = VisitExpr(context.expr(), table);
+            predicate = VisitWhereExpr(context.expr(), table);
         }
 
         if (predicate is not null)
@@ -213,7 +214,7 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         Func<IRow, bool>? predicate = null;
         if (context.where_clause() is not null)
         {
-            predicate = VisitExpr(context.where_clause().expr(), table);
+            predicate = VisitWhereExpr(context.where_clause().expr(), table);
         }
 
         if (predicate is not null)
@@ -223,18 +224,79 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
         return res;
     }
-
-    public dynamic? VisitExpr(SQLiteParser.ExprContext context, Table table)
+    
+    public dynamic? VisitJoinOnExpr(SQLiteParser.ExprContext context, Table table, bool leftChild = false)
     {
         if (context.expr().Length == 1)
         {
-            return VisitExpr(context.expr()[0], table);
+            return VisitWhereExpr(context.expr()[0], table);
         }
 
         if (context.expr() is not null && context.expr().Length == 2)
         {
-            var left = VisitExpr(context.expr()[0], table);
-            var right = VisitExpr(context.expr()[1], table);
+            var left = VisitWhereExpr(context.expr()[0], table);
+            var right = VisitWhereExpr(context.expr()[1], table);
+            Func<IRow, IRow, bool> res;
+            if (context.ASSIGN() is not null) res = (row1, row2) => left(row1, row2, true) == right(row1, row2);
+            else if (context.EQ() is not null) res = (row1, row2) => left(row1, row2, true) == right(row1, row2);
+            else if (context.LT() is not null) res = (row1, row2) => left(row1, row2, true) < right(row1, row2);
+            else if (context.GT_EQ() is not null) res = (row1, row2) => left(row1, row2, true) >= right(row1, row2);
+            else if (context.GT() is not null) res = (row1, row2) => left(row1, row2, true) > right(row1, row2);
+            else if (context.LT_EQ() is not null) res = (row1, row2) => left(row1, row2, true) <= right(row1, row2);
+            else if (context.PLUS() is not null) res = (row1, row2) => left(row1, row2, true) + right(row1, row2);
+            else if (context.MINUS() is not null) res = (row1, row2) => left(row1, row2, true) - right(row1, row2);
+            else if (context.STAR() is not null) res = (row1, row2) => left(row1, row2, true) * right(row1, row2);
+            else if (context.DIV() is not null) res = (row1, row2) => left(row1, row2, true) / right(row1, row2);
+            else if (context.AND() is not null) res = (row1, row2) => left(row1, row2, true) && right(row1, row2);
+            else if (context.OR() is not null) res = (row1, row2) => left(row1, row2, true) || right(row1, row2);
+            else throw new NotSupportedException($"Operation {context.GetText()} is not supported");
+            return res;
+        }
+        Func<IRow, IRow, IRow> pickRow = (row1, row2) => leftChild ? row1 : row2;
+
+        if (context.expr() is not null && context.expr().Length == 1)
+        {
+            var expr = VisitWhereExpr(context.expr()[1], table);
+            Func<IRow, IRow, bool> res;
+            if (context.NOT() is not null) res = (row1, row2) => !expr(pickRow(row1, row2));
+            else if (context.MINUS() is not null) res = (row1, row2) => -expr(pickRow(row1, row2));
+            else if (context.PLUS() is not null) res = (row1, row2) => +expr(pickRow(row1, row2));
+            else if (context.IS() is not null && context.NOT() is not null) res = (row1, row2) => expr(pickRow(row1, row2)) is not null;
+            else if (context.IS() is not null) res = (row1, row2) => expr(pickRow(row1, row2)) is null;
+            else return VisitJoinOnExpr(context.expr()[0], table);
+            return res;
+        }
+
+        if (context.expr().Length == 0)
+        {
+            if (context.literal_value() is not null)
+                return new Func<IRow, IRow, dynamic?>((_, _) => GetValue(context.literal_value()));
+            if (context.column_name() is not null)
+            {
+                var columnName = context.column_name().GetText();
+                var column = table.GetColumn(columnName);
+                if (column == null)
+                {
+                    throw new InvalidOperationException($"Column {columnName} does not exist");
+                }
+
+                return new Func<IRow, IRow, dynamic?>((row1, row2) => pickRow(row1, row2)[columnName]);
+            }
+        }
+
+        throw new NotSupportedException($"Expression {context.GetText()} is not supported");
+    }
+    public dynamic? VisitWhereExpr(SQLiteParser.ExprContext context, Table table)
+    {
+        if (context.expr().Length == 1)
+        {
+            return VisitWhereExpr(context.expr()[0], table);
+        }
+
+        if (context.expr() is not null && context.expr().Length == 2)
+        {
+            var left = VisitWhereExpr(context.expr()[0], table);
+            var right = VisitWhereExpr(context.expr()[1], table);
             Func<IRow, bool> res;
             if (context.ASSIGN() is not null) res = row => left(row) == right(row);
             else if (context.EQ() is not null) res = row => left(row) == right(row);
@@ -254,14 +316,14 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
 
         if (context.expr() is not null && context.expr().Length == 1)
         {
-            var expr = VisitExpr(context.expr()[1], table);
+            var expr = VisitWhereExpr(context.expr()[1], table);
             Func<IRow, bool> res;
             if (context.NOT() is not null) res = row => !expr(row);
             else if (context.MINUS() is not null) res = row => -expr(row);
             else if (context.PLUS() is not null) res = row => +expr(row);
             else if (context.IS() is not null && context.NOT() is not null) res = row => expr(row) is not null;
             else if (context.IS() is not null) res = row => expr(row) is null;
-            else return VisitExpr(context.expr()[0], table);
+            else return VisitWhereExpr(context.expr()[0], table);
             return res;
         }
 

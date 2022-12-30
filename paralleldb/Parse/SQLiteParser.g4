@@ -390,8 +390,12 @@ select_stmt:
     common_table_stmt? select_core (compound_operator select_core)* order_by_clause? limit_clause?
 ;
 
+join_stmt:
+    join_operator table_or_subquery join_constraint?
+;
+
 join_clause:
-    (join_operator table_or_subquery join_constraint?)+
+    join_stmt+
 ;
 
 where_clause:
@@ -415,7 +419,7 @@ values_stmt:
 ;
 
 from_clause:
-    FROM table_or_subquery (COMMA table_or_subquery)* join_clause?
+    FROM table_or_subquery (COMMA table_or_subquery)*
 ;
 
 window_clause:
@@ -429,7 +433,7 @@ window_clause:
 select_core:
     (
         SELECT (DISTINCT | ALL)? result_column (COMMA result_column)* 
-         from_clause? where_clause? group_by_clause? window_clause?
+         from_clause? join_clause? where_clause? group_by_clause? window_clause?
     )
     | values_clause
 ;

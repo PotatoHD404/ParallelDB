@@ -16,6 +16,8 @@ namespace Api.Controllers
         }
 
         private readonly ILogger<DefaultController> _logger;
+        
+        private readonly ParallelDb _db = new();
 
         public DefaultController(ILogger<DefaultController> logger)
         {
@@ -34,8 +36,7 @@ namespace Api.Controllers
                     response.Error = "No SQL provided";
                     return response;
                 }
-                var db = new ParallelDb();
-                var result = db.Execute(sql);
+                var result = _db.Execute(sql);
                 if (result is bool)
                 {
                     response.Columns = new[] { "Result" };

@@ -9,6 +9,7 @@ public class DependencyManager : IDependencyManager
     private readonly ConcurrentDictionary<int, List<int>> _dependenciesFromTo = new();
     private readonly ConcurrentDictionary<int, List<int>> _dependenciesToFrom = new();
     private volatile int _remainingCount;
+    private volatile int _errorCount;
     private ManualResetEvent _done = new(false);
     private readonly ConcurrentDictionary<int, dynamic?> _results = new();
 
@@ -48,6 +49,7 @@ public class DependencyManager : IDependencyManager
             }
             catch (Exception ex)
             {
+                Interlocked.Increment(ref _errorCount);
                 _savedException = ex;
                 _done.Set();
             }
@@ -82,7 +84,7 @@ public class DependencyManager : IDependencyManager
             }
 
             _done.WaitOne();
-            if (_savedException is not null)
+            if (_errorCount > 0)
                 throw _savedException;
         }
 
@@ -160,7 +162,7 @@ public class DependencyManager : IDependencyManager
             foreach (int targetId in toList)
             {
                 OperationData targetData = _operations[targetId];
-                if (Interlocked.Decrement(ref targetData.NumRemainingDependencies) == 0 && _savedException is null)
+                if (Interlocked.Decrement(ref targetData.NumRemainingDependencies) == 0 && _errorCount == 0)
                     QueueOperation(targetData);
             }
         }
@@ -180,7 +182,7 @@ public class DependencyManager : IDependencyManager
             }
         }
         
-        if (Interlocked.Decrement(ref _remainingCount) == 0 && _savedException is null) _done.Set();
+        if (Interlocked.Decrement(ref _remainingCount) == 0 && _errorCount == 0) _done.Set();
     }
 
     private void OnOperationCompleted(OperationData data)

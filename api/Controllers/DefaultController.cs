@@ -17,7 +17,7 @@ namespace Api.Controllers
 
         private readonly ILogger<DefaultController> _logger;
         
-        private readonly ParallelDb _db = new();
+        private static readonly ParallelDb _db = new();
 
         public DefaultController(ILogger<DefaultController> logger)
         {
@@ -27,6 +27,7 @@ namespace Api.Controllers
         [HttpPost]
         public SqlResponse Post(SqlRequest body)
         {
+            Console.WriteLine(_db.GetHashCode());
             var response = new SqlResponse();
             try
             {

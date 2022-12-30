@@ -76,16 +76,18 @@ export default defineComponent({
           this.showError('Something went wrong!')
         }
         let data: Response = await result.json();
+        console.log(data);
         if (data.error !== null) {
           this.showError(data.error)
+        } else {
+          let dot = data.syntaxTree;
+          this.response.columns = data.columns;
+          this.response.rows = data.rows;
+          this.response.syntaxTree = data.syntaxTree;
+          this.response.queryTree = data.queryTree;
+          this.treeType = 1;
+          this.renderGraph(dot);
         }
-        let dot = data.syntaxTree;
-        this.response.columns = data.columns;
-        this.response.rows = data.rows;
-        this.response.syntaxTree = data.syntaxTree;
-        this.response.queryTree = data.queryTree;
-        this.treeType = 1;
-        this.renderGraph(dot);
       } else {
         this.showError('Empty query!')
       }

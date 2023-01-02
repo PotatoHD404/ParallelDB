@@ -342,7 +342,6 @@ public class QueryVisitor : SQLiteParserBaseVisitor<dynamic?>
         {
             return VisitWhereExpr(context.expr()[0], table);
         }
-
         if (context.expr() is not null && context.expr().Length == 2)
         {
             var left = VisitWhereExpr(context.expr()[0], table);

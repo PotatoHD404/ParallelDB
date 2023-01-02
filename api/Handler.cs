@@ -1,3 +1,7 @@
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,8 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen();   
 builder.Services.AddCors();
+
+
+builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
+
 
 var app = builder.Build();
 
@@ -18,6 +26,8 @@ app.UseCors(x => x
     //.WithOrigins("https://localhost:44351")); // Allow only this origin can also have multiple origins seperated with comma
     .SetIsOriginAllowed(origin => true)); // Allow any origin  
 
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -25,7 +35,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseAuthorization();
+// app.UseAuthorization();
 
 app.MapControllers();
 

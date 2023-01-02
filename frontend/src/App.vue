@@ -71,7 +71,7 @@ export default defineComponent({
           headers: myHeaders,
           body: raw,
         };
-        let result = await fetch("http://localhost:6386/", requestOptions);
+        let result = await fetch("https://xd3yqahwskuxffslvniwhoxbvy0xuyrv.lambda-url.eu-central-1.on.aws/", requestOptions);
         if (result.status != 200) {
           this.showError('Something went wrong!')
         }

@@ -54,6 +54,10 @@ VALUES (1, 'A', true), (2, 'B', true),
 ``` sql
 SELECT * FROM table1 WHERE state = true LIMIT 1;
 ```
+### Result:
+| id           | name      | state      |
+|--------------|-----------|------------|
+| 1            | A         | true       |
 ### Syntax tree:
 ![alt text](images/selectSyntax.svg "SelectSyntax")
 ### Query tree:
@@ -61,15 +65,53 @@ SELECT * FROM table1 WHERE state = true LIMIT 1;
 ``` sql
 SELECT name FROM table1 EXCEPT SELECT * FROM table2;
 ```
+### Result:
+| name         |
+|--------------|
+| B            |
+| D            |
 ### Syntax tree:
 ![alt text](images/select2Syntax.svg "Select2Syntax")
 ### Query tree:
 ![alt text](images/select2Query.svg "Select2Query")
 
+``` sql
+SELECT * FROM (SELECT * FROM table1), (SELECT * FROM table2);
+```
+### Result:
+| id           | name      | state      | id         | name       | state      |
+|--------------|-----------|------------|------------|------------|------------|
+| 1 | A | true  | 1       | A        | true        |
+| 1 | A | true | 2        | B        | true       |
+| 1 | A | true | 3        | C        | true       |
+| 1 | A | true | 4        | D        | true        |
+| 2 | B | false | 1        | A        | true       |
+| 2 | B | false | 2        | B       | true       |
+| 2 | B | false | 3        | C        | true       |
+| 2 | B | false | 4        | D        | true       |
+| 3 | C | true | 1        | A        | true       |
+| 3 | C | true | 2        | B        | true       |
+| 3 | C | true | 3        | C        | true       |
+| 3 | C | true | 4        | D        | true       |
+| 4 | D | false | 1        | A        | true       |
+| 4 | D | false | 2        | B        | true       |
+| 4 | D | false | 3        | C        | true       |
+| 4 | D | false | 4        | D        | true       |
+### Syntax tree:
+![alt text](images/select3Syntax.svg "Select2Syntax")
+### Query tree:
+![alt text](images/select3Query.svg "Select2Query")
 ### <ins>UPDATE TABLE Statement</ins>
 ``` sql
 UPDATE table1 SET name = 'X', state = false WHERE id = 1;
 ```
+### Result:
+| id           | name      | state      |
+|--------------|-----------|------------|
+| 1            | X         | false      |
+| 2            | B         | false      |
+| 3            | C         | true       |
+| 4            | D         | false      |
 ### Syntax tree for table1:
 ![alt text](images/updateSyntax.svg "updateSyntax")
 ### Query tree for table1:
@@ -78,6 +120,10 @@ UPDATE table1 SET name = 'X', state = false WHERE id = 1;
 ``` sql
 DELETE FROM table1 WHERE state = false;
 ```
+### Result:
+| id           | name      | state      |
+|--------------|-----------|------------|
+| 3            | C         | true       |
 ### Syntax tree for table1:
 ![alt text](images/deleteSyntax.svg "deleteSyntax")
 ### Query tree for table1:

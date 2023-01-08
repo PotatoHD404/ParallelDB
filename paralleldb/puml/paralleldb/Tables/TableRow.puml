@@ -1,0 +1,10 @@
+@startuml
+class TableRow {
+    CheckType(i:int, o:dynamic?) : void
+    + CheckSet(i:int) : void
+    + <<override>> GetHashCode() : int
+    + <<override>> Equals(obj:dynamic?) : bool
+    + <<override>> ToString() : string
+}
+IRow <|-- TableRow
+@enduml

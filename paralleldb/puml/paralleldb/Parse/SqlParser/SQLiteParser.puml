@@ -1,0 +1,2647 @@
+@startuml
+class SQLiteParser <<partial>> {
+    + <<const>> SCOL : int = 1
+    + <<const>> DOT : int = 2
+    + <<const>> OPEN_PAR : int = 3
+    + <<const>> CLOSE_PAR : int = 4
+    + <<const>> COMMA : int = 5
+    + <<const>> ASSIGN : int = 6
+    + <<const>> STAR : int = 7
+    + <<const>> PLUS : int = 8
+    + <<const>> MINUS : int = 9
+    + <<const>> TILDE : int = 10
+    + <<const>> PIPE2 : int = 11
+    + <<const>> DIV : int = 12
+    + <<const>> MOD : int = 13
+    + <<const>> LT2 : int = 14
+    + <<const>> GT2 : int = 15
+    + <<const>> AMP : int = 16
+    + <<const>> PIPE : int = 17
+    + <<const>> LT : int = 18
+    + <<const>> LT_EQ : int = 19
+    + <<const>> GT : int = 20
+    + <<const>> GT_EQ : int = 21
+    + <<const>> EQ : int = 22
+    + <<const>> NOT_EQ1 : int = 23
+    + <<const>> NOT_EQ2 : int = 24
+    + <<const>> ABORT : int = 25
+    + <<const>> ACTION : int = 26
+    + <<const>> ADD : int = 27
+    + <<const>> AFTER : int = 28
+    + <<const>> ALL : int = 29
+    + <<const>> ALTER : int = 30
+    + <<const>> ANALYZE : int = 31
+    + <<const>> AND : int = 32
+    + <<const>> AS : int = 33
+    + <<const>> ASC : int = 34
+    + <<const>> ATTACH : int = 35
+    + <<const>> AUTOINCREMENT : int = 36
+    + <<const>> BEFORE : int = 37
+    + <<const>> BEGIN : int = 38
+    + <<const>> BETWEEN : int = 39
+    + <<const>> BY : int = 40
+    + <<const>> CASCADE : int = 41
+    + <<const>> CASE : int = 42
+    + <<const>> CAST : int = 43
+    + <<const>> CHECK : int = 44
+    + <<const>> COLLATE : int = 45
+    + <<const>> COLUMN : int = 46
+    + <<const>> COMMIT : int = 47
+    + <<const>> CONFLICT : int = 48
+    + <<const>> CONSTRAINT : int = 49
+    + <<const>> CREATE : int = 50
+    + <<const>> CROSS : int = 51
+    + <<const>> CURRENT_DATE : int = 52
+    + <<const>> CURRENT_TIME : int = 53
+    + <<const>> CURRENT_TIMESTAMP : int = 54
+    + <<const>> DATABASE : int = 55
+    + <<const>> DEFAULT : int = 56
+    + <<const>> DEFERRABLE : int = 57
+    + <<const>> DEFERRED : int = 58
+    + <<const>> DELETE : int = 59
+    + <<const>> DESC : int = 60
+    + <<const>> DETACH : int = 61
+    + <<const>> DISTINCT : int = 62
+    + <<const>> DROP : int = 63
+    + <<const>> EACH : int = 64
+    + <<const>> ELSE : int = 65
+    + <<const>> END : int = 66
+    + <<const>> ESCAPE : int = 67
+    + <<const>> EXCEPT : int = 68
+    + <<const>> EXCLUSIVE : int = 69
+    + <<const>> EXISTS : int = 70
+    + <<const>> EXPLAIN : int = 71
+    + <<const>> FAIL : int = 72
+    + <<const>> FOR : int = 73
+    + <<const>> FOREIGN : int = 74
+    + <<const>> FROM : int = 75
+    + <<const>> FULL : int = 76
+    + <<const>> GLOB : int = 77
+    + <<const>> GROUP : int = 78
+    + <<const>> HAVING : int = 79
+    + <<const>> IF : int = 80
+    + <<const>> IGNORE : int = 81
+    + <<const>> IMMEDIATE : int = 82
+    + <<const>> IN : int = 83
+    + <<const>> INDEX : int = 84
+    + <<const>> INDEXED : int = 85
+    + <<const>> INITIALLY : int = 86
+    + <<const>> INNER : int = 87
+    + <<const>> INSERT : int = 88
+    + <<const>> INSTEAD : int = 89
+    + <<const>> INTERSECT : int = 90
+    + <<const>> INTO : int = 91
+    + <<const>> IS : int = 92
+    + <<const>> ISNULL : int = 93
+    + <<const>> JOIN : int = 94
+    + <<const>> KEY : int = 95
+    + <<const>> LEFT : int = 96
+    + <<const>> LIKE : int = 97
+    + <<const>> LIMIT : int = 98
+    + <<const>> MATCH : int = 99
+    + <<const>> NATURAL : int = 100
+    + <<const>> NO : int = 101
+    + <<const>> NOT : int = 102
+    + <<const>> NOTNULL : int = 103
+    + <<const>> NULL : int = 104
+    + <<const>> OF : int = 105
+    + <<const>> OFFSET : int = 106
+    + <<const>> ON : int = 107
+    + <<const>> OR : int = 108
+    + <<const>> ORDER : int = 109
+    + <<const>> OUTER : int = 110
+    + <<const>> PLAN : int = 111
+    + <<const>> PRAGMA : int = 112
+    + <<const>> PRIMARY : int = 113
+    + <<const>> QUERY : int = 114
+    + <<const>> RAISE : int = 115
+    + <<const>> RECURSIVE : int = 116
+    + <<const>> REFERENCES : int = 117
+    + <<const>> REGEXP : int = 118
+    + <<const>> REINDEX : int = 119
+    + <<const>> RELEASE : int = 120
+    + <<const>> RENAME : int = 121
+    + <<const>> REPLACE : int = 122
+    + <<const>> RESTRICT : int = 123
+    + <<const>> RETURNING : int = 124
+    + <<const>> RIGHT : int = 125
+    + <<const>> ROLLBACK : int = 126
+    + <<const>> ROW : int = 127
+    + <<const>> ROWS : int = 128
+    + <<const>> SAVEPOINT : int = 129
+    + <<const>> SELECT : int = 130
+    + <<const>> SET : int = 131
+    + <<const>> TABLE : int = 132
+    + <<const>> TEMP : int = 133
+    + <<const>> TEMPORARY : int = 134
+    + <<const>> THEN : int = 135
+    + <<const>> TO : int = 136
+    + <<const>> TRANSACTION : int = 137
+    + <<const>> TRIGGER : int = 138
+    + <<const>> UNION : int = 139
+    + <<const>> UNIQUE : int = 140
+    + <<const>> UPDATE : int = 141
+    + <<const>> USING : int = 142
+    + <<const>> VACUUM : int = 143
+    + <<const>> VALUES : int = 144
+    + <<const>> VIEW : int = 145
+    + <<const>> VIRTUAL : int = 146
+    + <<const>> WHEN : int = 147
+    + <<const>> WHERE : int = 148
+    + <<const>> WITH : int = 149
+    + <<const>> WITHOUT : int = 150
+    + <<const>> FIRST_VALUE : int = 151
+    + <<const>> OVER : int = 152
+    + <<const>> PARTITION : int = 153
+    + <<const>> RANGE : int = 154
+    + <<const>> PRECEDING : int = 155
+    + <<const>> UNBOUNDED : int = 156
+    + <<const>> CURRENT : int = 157
+    + <<const>> FOLLOWING : int = 158
+    + <<const>> CUME_DIST : int = 159
+    + <<const>> DENSE_RANK : int = 160
+    + <<const>> LAG : int = 161
+    + <<const>> LAST_VALUE : int = 162
+    + <<const>> LEAD : int = 163
+    + <<const>> NTH_VALUE : int = 164
+    + <<const>> NTILE : int = 165
+    + <<const>> PERCENT_RANK : int = 166
+    + <<const>> RANK : int = 167
+    + <<const>> ROW_NUMBER : int = 168
+    + <<const>> GENERATED : int = 169
+    + <<const>> ALWAYS : int = 170
+    + <<const>> STORED : int = 171
+    + <<const>> TRUE : int = 172
+    + <<const>> FALSE : int = 173
+    + <<const>> WINDOW : int = 174
+    + <<const>> NULLS : int = 175
+    + <<const>> FIRST : int = 176
+    + <<const>> LAST : int = 177
+    + <<const>> FILTER : int = 178
+    + <<const>> GROUPS : int = 179
+    + <<const>> EXCLUDE : int = 180
+    + <<const>> TIES : int = 181
+    + <<const>> OTHERS : int = 182
+    + <<const>> DO : int = 183
+    + <<const>> NOTHING : int = 184
+    + <<const>> IDENTIFIER : int = 185
+    + <<const>> NUMERIC_LITERAL : int = 186
+    + <<const>> BIND_PARAMETER : int = 187
+    + <<const>> STRING_LITERAL : int = 188
+    + <<const>> BLOB_LITERAL : int = 189
+    + <<const>> SINGLE_LINE_COMMENT : int = 190
+    + <<const>> MULTILINE_COMMENT : int = 191
+    + <<const>> SPACES : int = 192
+    + <<const>> UNEXPECTED_CHAR : int = 193
+    + <<const>> RULE_parse : int = 0
+    + <<const>> RULE_sql_stmt_list : int = 1
+    + <<const>> RULE_sql_stmt : int = 2
+    + <<const>> RULE_alter_table_stmt : int = 3
+    + <<const>> RULE_analyze_stmt : int = 4
+    + <<const>> RULE_attach_stmt : int = 5
+    + <<const>> RULE_begin_stmt : int = 6
+    + <<const>> RULE_commit_stmt : int = 7
+    + <<const>> RULE_rollback_stmt : int = 8
+    + <<const>> RULE_savepoint_stmt : int = 9
+    + <<const>> RULE_release_stmt : int = 10
+    + <<const>> RULE_create_index_stmt : int = 11
+    + <<const>> RULE_indexed_column : int = 12
+    + <<const>> RULE_create_table_stmt : int = 13
+    + <<const>> RULE_column_def : int = 14
+    + <<const>> RULE_type_name : int = 15
+    + <<const>> RULE_column_constraint : int = 16
+    + <<const>> RULE_signed_number : int = 17
+    + <<const>> RULE_table_constraint : int = 18
+    + <<const>> RULE_foreign_key_clause : int = 19
+    + <<const>> RULE_conflict_clause : int = 20
+    + <<const>> RULE_create_trigger_stmt : int = 21
+    + <<const>> RULE_create_view_stmt : int = 22
+    + <<const>> RULE_create_virtual_table_stmt : int = 23
+    + <<const>> RULE_with_clause : int = 24
+    + <<const>> RULE_cte_table_name : int = 25
+    + <<const>> RULE_recursive_cte : int = 26
+    + <<const>> RULE_common_table_expression : int = 27
+    + <<const>> RULE_delete_stmt : int = 28
+    + <<const>> RULE_delete_stmt_limited : int = 29
+    + <<const>> RULE_detach_stmt : int = 30
+    + <<const>> RULE_drop_stmt : int = 31
+    + <<const>> RULE_expr : int = 32
+    + <<const>> RULE_raise_function : int = 33
+    + <<const>> RULE_literal_value : int = 34
+    + <<const>> RULE_columns_clause : int = 35
+    + <<const>> RULE_insert_stmt : int = 36
+    + <<const>> RULE_returning_clause : int = 37
+    + <<const>> RULE_upsert_clause : int = 38
+    + <<const>> RULE_pragma_stmt : int = 39
+    + <<const>> RULE_pragma_value : int = 40
+    + <<const>> RULE_reindex_stmt : int = 41
+    + <<const>> RULE_select_stmt : int = 42
+    + <<const>> RULE_join_stmt : int = 43
+    + <<const>> RULE_join_clause : int = 44
+    + <<const>> RULE_where_clause : int = 45
+    + <<const>> RULE_group_by_clause : int = 46
+    + <<const>> RULE_having_clause : int = 47
+    + <<const>> RULE_values_clause : int = 48
+    + <<const>> RULE_values_stmt : int = 49
+    + <<const>> RULE_from_clause : int = 50
+    + <<const>> RULE_window_clause : int = 51
+    + <<const>> RULE_select_core : int = 52
+    + <<const>> RULE_factored_select_stmt : int = 53
+    + <<const>> RULE_simple_select_stmt : int = 54
+    + <<const>> RULE_compound_select_stmt : int = 55
+    + <<const>> RULE_table_or_subquery : int = 56
+    + <<const>> RULE_result_column : int = 57
+    + <<const>> RULE_join_operator : int = 58
+    + <<const>> RULE_join_constraint : int = 59
+    + <<const>> RULE_compound_operator : int = 60
+    + <<const>> RULE_set_clause : int = 61
+    + <<const>> RULE_set_stmt : int = 62
+    + <<const>> RULE_update_stmt : int = 63
+    + <<const>> RULE_column_name_list : int = 64
+    + <<const>> RULE_update_stmt_limited : int = 65
+    + <<const>> RULE_qualified_table_name : int = 66
+    + <<const>> RULE_vacuum_stmt : int = 67
+    + <<const>> RULE_filter_clause : int = 68
+    + <<const>> RULE_window_defn : int = 69
+    + <<const>> RULE_over_clause : int = 70
+    + <<const>> RULE_frame_spec : int = 71
+    + <<const>> RULE_frame_clause : int = 72
+    + <<const>> RULE_simple_function_invocation : int = 73
+    + <<const>> RULE_aggregate_function_invocation : int = 74
+    + <<const>> RULE_window_function_invocation : int = 75
+    + <<const>> RULE_common_table_stmt : int = 76
+    + <<const>> RULE_order_by_clause : int = 77
+    + <<const>> RULE_limit_clause : int = 78
+    + <<const>> RULE_offset_clause : int = 79
+    + <<const>> RULE_ordering_term : int = 80
+    + <<const>> RULE_asc_desc : int = 81
+    + <<const>> RULE_frame_left : int = 82
+    + <<const>> RULE_frame_right : int = 83
+    + <<const>> RULE_frame_single : int = 84
+    + <<const>> RULE_window_function : int = 85
+    + <<const>> RULE_offset : int = 86
+    + <<const>> RULE_default_value : int = 87
+    + <<const>> RULE_partition_by : int = 88
+    + <<const>> RULE_order_by_expr : int = 89
+    + <<const>> RULE_order_by_expr_asc_desc : int = 90
+    + <<const>> RULE_expr_asc_desc : int = 91
+    + <<const>> RULE_initial_select : int = 92
+    + <<const>> RULE_recursive_select : int = 93
+    + <<const>> RULE_unary_operator : int = 94
+    + <<const>> RULE_error_message : int = 95
+    + <<const>> RULE_module_argument : int = 96
+    + <<const>> RULE_column_alias : int = 97
+    + <<const>> RULE_keyword : int = 98
+    + <<const>> RULE_name : int = 99
+    + <<const>> RULE_function_name : int = 100
+    + <<const>> RULE_schema_name : int = 101
+    + <<const>> RULE_table_name : int = 102
+    + <<const>> RULE_table_or_index_name : int = 103
+    + <<const>> RULE_column_name : int = 104
+    + <<const>> RULE_collation_name : int = 105
+    + <<const>> RULE_foreign_table : int = 106
+    + <<const>> RULE_index_name : int = 107
+    + <<const>> RULE_trigger_name : int = 108
+    + <<const>> RULE_view_name : int = 109
+    + <<const>> RULE_module_name : int = 110
+    + <<const>> RULE_pragma_name : int = 111
+    + <<const>> RULE_savepoint_name : int = 112
+    + <<const>> RULE_table_alias : int = 113
+    + <<const>> RULE_transaction_name : int = 114
+    + <<const>> RULE_window_name : int = 115
+    + <<const>> RULE_alias : int = 116
+    + <<const>> RULE_filename : int = 117
+    + <<const>> RULE_base_window_name : int = 118
+    + <<const>> RULE_simple_func : int = 119
+    + <<const>> RULE_aggregate_func : int = 120
+    + <<const>> RULE_table_function_name : int = 121
+    + <<const>> RULE_any_name : int = 122
+    + <<override>> GrammarFileName : string <<get>>
+    {static} SQLiteParser()
+    + SQLiteParser(input:ITokenStream)
+    + SQLiteParser(input:ITokenStream, output:TextWriter, errorOutput:TextWriter)
+    + parse() : ParseContext
+    + sql_stmt_list() : Sql_stmt_listContext
+    + sql_stmt() : Sql_stmtContext
+    + alter_table_stmt() : Alter_table_stmtContext
+    + analyze_stmt() : Analyze_stmtContext
+    + attach_stmt() : Attach_stmtContext
+    + begin_stmt() : Begin_stmtContext
+    + commit_stmt() : Commit_stmtContext
+    + rollback_stmt() : Rollback_stmtContext
+    + savepoint_stmt() : Savepoint_stmtContext
+    + release_stmt() : Release_stmtContext
+    + create_index_stmt() : Create_index_stmtContext
+    + indexed_column() : Indexed_columnContext
+    + create_table_stmt() : Create_table_stmtContext
+    + column_def() : Column_defContext
+    + type_name() : Type_nameContext
+    + column_constraint() : Column_constraintContext
+    + signed_number() : Signed_numberContext
+    + table_constraint() : Table_constraintContext
+    + foreign_key_clause() : Foreign_key_clauseContext
+    + conflict_clause() : Conflict_clauseContext
+    + create_trigger_stmt() : Create_trigger_stmtContext
+    + create_view_stmt() : Create_view_stmtContext
+    + create_virtual_table_stmt() : Create_virtual_table_stmtContext
+    + with_clause() : With_clauseContext
+    + cte_table_name() : Cte_table_nameContext
+    + recursive_cte() : Recursive_cteContext
+    + common_table_expression() : Common_table_expressionContext
+    + delete_stmt() : Delete_stmtContext
+    + delete_stmt_limited() : Delete_stmt_limitedContext
+    + detach_stmt() : Detach_stmtContext
+    + drop_stmt() : Drop_stmtContext
+    + expr() : ExprContext
+    + raise_function() : Raise_functionContext
+    + literal_value() : Literal_valueContext
+    + columns_clause() : Columns_clauseContext
+    + insert_stmt() : Insert_stmtContext
+    + returning_clause() : Returning_clauseContext
+    + upsert_clause() : Upsert_clauseContext
+    + pragma_stmt() : Pragma_stmtContext
+    + pragma_value() : Pragma_valueContext
+    + reindex_stmt() : Reindex_stmtContext
+    + select_stmt() : Select_stmtContext
+    + join_stmt() : Join_stmtContext
+    + join_clause() : Join_clauseContext
+    + where_clause() : Where_clauseContext
+    + group_by_clause() : Group_by_clauseContext
+    + having_clause() : Having_clauseContext
+    + values_clause() : Values_clauseContext
+    + values_stmt() : Values_stmtContext
+    + from_clause() : From_clauseContext
+    + window_clause() : Window_clauseContext
+    + select_core() : Select_coreContext
+    + factored_select_stmt() : Factored_select_stmtContext
+    + simple_select_stmt() : Simple_select_stmtContext
+    + compound_select_stmt() : Compound_select_stmtContext
+    + table_or_subquery() : Table_or_subqueryContext
+    + result_column() : Result_columnContext
+    + join_operator() : Join_operatorContext
+    + join_constraint() : Join_constraintContext
+    + compound_operator() : Compound_operatorContext
+    + set_clause() : Set_clauseContext
+    + set_stmt() : Set_stmtContext
+    + update_stmt() : Update_stmtContext
+    + column_name_list() : Column_name_listContext
+    + update_stmt_limited() : Update_stmt_limitedContext
+    + qualified_table_name() : Qualified_table_nameContext
+    + vacuum_stmt() : Vacuum_stmtContext
+    + filter_clause() : Filter_clauseContext
+    + window_defn() : Window_defnContext
+    + over_clause() : Over_clauseContext
+    + frame_spec() : Frame_specContext
+    + frame_clause() : Frame_clauseContext
+    + simple_function_invocation() : Simple_function_invocationContext
+    + aggregate_function_invocation() : Aggregate_function_invocationContext
+    + window_function_invocation() : Window_function_invocationContext
+    + common_table_stmt() : Common_table_stmtContext
+    + order_by_clause() : Order_by_clauseContext
+    + limit_clause() : Limit_clauseContext
+    + offset_clause() : Offset_clauseContext
+    + ordering_term() : Ordering_termContext
+    + asc_desc() : Asc_descContext
+    + frame_left() : Frame_leftContext
+    + frame_right() : Frame_rightContext
+    + frame_single() : Frame_singleContext
+    + window_function() : Window_functionContext
+    + offset() : OffsetContext
+    + default_value() : Default_valueContext
+    + partition_by() : Partition_byContext
+    + order_by_expr() : Order_by_exprContext
+    + order_by_expr_asc_desc() : Order_by_expr_asc_descContext
+    + expr_asc_desc() : Expr_asc_descContext
+    + initial_select() : Initial_selectContext
+    + recursive_select() : Recursive_selectContext
+    + unary_operator() : Unary_operatorContext
+    + error_message() : Error_messageContext
+    + module_argument() : Module_argumentContext
+    + column_alias() : Column_aliasContext
+    + keyword() : KeywordContext
+    + name() : NameContext
+    + function_name() : Function_nameContext
+    + schema_name() : Schema_nameContext
+    + table_name() : Table_nameContext
+    + table_or_index_name() : Table_or_index_nameContext
+    + column_name() : Column_nameContext
+    + collation_name() : Collation_nameContext
+    + foreign_table() : Foreign_tableContext
+    + index_name() : Index_nameContext
+    + trigger_name() : Trigger_nameContext
+    + view_name() : View_nameContext
+    + module_name() : Module_nameContext
+    + pragma_name() : Pragma_nameContext
+    + savepoint_name() : Savepoint_nameContext
+    + table_alias() : Table_aliasContext
+    + transaction_name() : Transaction_nameContext
+    + window_name() : Window_nameContext
+    + alias() : AliasContext
+    + filename() : FilenameContext
+    + base_window_name() : Base_window_nameContext
+    + simple_func() : Simple_funcContext
+    + aggregate_func() : Aggregate_funcContext
+    + table_function_name() : Table_function_nameContext
+    + any_name() : Any_nameContext
+    + <<override>> Sempred(_localctx:RuleContext, ruleIndex:int, predIndex:int) : bool
+}
+class ParseContext <<partial>> {
+    + Eof() : ITerminalNode
+    + sql_stmt_list() : Sql_stmt_listContext[]
+    + sql_stmt_list(i:int) : Sql_stmt_listContext
+    + ParseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Sql_stmt_listContext <<partial>> {
+    + sql_stmt() : Sql_stmtContext[]
+    + sql_stmt(i:int) : Sql_stmtContext
+    + SCOL() : ITerminalNode[]
+    + SCOL(i:int) : ITerminalNode
+    + Sql_stmt_listContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Sql_stmtContext <<partial>> {
+    + alter_table_stmt() : Alter_table_stmtContext
+    + analyze_stmt() : Analyze_stmtContext
+    + attach_stmt() : Attach_stmtContext
+    + begin_stmt() : Begin_stmtContext
+    + commit_stmt() : Commit_stmtContext
+    + create_index_stmt() : Create_index_stmtContext
+    + create_table_stmt() : Create_table_stmtContext
+    + create_trigger_stmt() : Create_trigger_stmtContext
+    + create_view_stmt() : Create_view_stmtContext
+    + create_virtual_table_stmt() : Create_virtual_table_stmtContext
+    + delete_stmt() : Delete_stmtContext
+    + delete_stmt_limited() : Delete_stmt_limitedContext
+    + detach_stmt() : Detach_stmtContext
+    + drop_stmt() : Drop_stmtContext
+    + insert_stmt() : Insert_stmtContext
+    + pragma_stmt() : Pragma_stmtContext
+    + reindex_stmt() : Reindex_stmtContext
+    + release_stmt() : Release_stmtContext
+    + rollback_stmt() : Rollback_stmtContext
+    + savepoint_stmt() : Savepoint_stmtContext
+    + select_stmt() : Select_stmtContext
+    + update_stmt() : Update_stmtContext
+    + update_stmt_limited() : Update_stmt_limitedContext
+    + vacuum_stmt() : Vacuum_stmtContext
+    + EXPLAIN() : ITerminalNode
+    + QUERY() : ITerminalNode
+    + PLAN() : ITerminalNode
+    + Sql_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Alter_table_stmtContext <<partial>> {
+    + ALTER() : ITerminalNode
+    + TABLE() : ITerminalNode
+    + table_name() : Table_nameContext[]
+    + table_name(i:int) : Table_nameContext
+    + RENAME() : ITerminalNode
+    + ADD() : ITerminalNode
+    + column_def() : Column_defContext
+    + DROP() : ITerminalNode
+    + column_name() : Column_nameContext[]
+    + column_name(i:int) : Column_nameContext
+    + schema_name() : Schema_nameContext
+    + DOT() : ITerminalNode
+    + TO() : ITerminalNode
+    + COLUMN() : ITerminalNode
+    + Alter_table_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Analyze_stmtContext <<partial>> {
+    + ANALYZE() : ITerminalNode
+    + schema_name() : Schema_nameContext
+    + table_or_index_name() : Table_or_index_nameContext
+    + DOT() : ITerminalNode
+    + Analyze_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Attach_stmtContext <<partial>> {
+    + ATTACH() : ITerminalNode
+    + expr() : ExprContext
+    + AS() : ITerminalNode
+    + schema_name() : Schema_nameContext
+    + DATABASE() : ITerminalNode
+    + Attach_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Begin_stmtContext <<partial>> {
+    + BEGIN() : ITerminalNode
+    + TRANSACTION() : ITerminalNode
+    + DEFERRED() : ITerminalNode
+    + IMMEDIATE() : ITerminalNode
+    + EXCLUSIVE() : ITerminalNode
+    + transaction_name() : Transaction_nameContext
+    + Begin_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Commit_stmtContext <<partial>> {
+    + COMMIT() : ITerminalNode
+    + END() : ITerminalNode
+    + TRANSACTION() : ITerminalNode
+    + Commit_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Rollback_stmtContext <<partial>> {
+    + ROLLBACK() : ITerminalNode
+    + TRANSACTION() : ITerminalNode
+    + TO() : ITerminalNode
+    + savepoint_name() : Savepoint_nameContext
+    + SAVEPOINT() : ITerminalNode
+    + Rollback_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Savepoint_stmtContext <<partial>> {
+    + SAVEPOINT() : ITerminalNode
+    + savepoint_name() : Savepoint_nameContext
+    + Savepoint_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Release_stmtContext <<partial>> {
+    + RELEASE() : ITerminalNode
+    + savepoint_name() : Savepoint_nameContext
+    + SAVEPOINT() : ITerminalNode
+    + Release_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Create_index_stmtContext <<partial>> {
+    + CREATE() : ITerminalNode
+    + INDEX() : ITerminalNode
+    + index_name() : Index_nameContext
+    + ON() : ITerminalNode
+    + table_name() : Table_nameContext
+    + OPEN_PAR() : ITerminalNode
+    + indexed_column() : Indexed_columnContext[]
+    + indexed_column(i:int) : Indexed_columnContext
+    + CLOSE_PAR() : ITerminalNode
+    + UNIQUE() : ITerminalNode
+    + IF() : ITerminalNode
+    + NOT() : ITerminalNode
+    + EXISTS() : ITerminalNode
+    + schema_name() : Schema_nameContext
+    + DOT() : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + WHERE() : ITerminalNode
+    + expr() : ExprContext
+    + Create_index_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Indexed_columnContext <<partial>> {
+    + column_name() : Column_nameContext
+    + expr() : ExprContext
+    + COLLATE() : ITerminalNode
+    + collation_name() : Collation_nameContext
+    + asc_desc() : Asc_descContext
+    + Indexed_columnContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Create_table_stmtContext <<partial>> {
+    + CREATE() : ITerminalNode
+    + TABLE() : ITerminalNode
+    + table_name() : Table_nameContext
+    + OPEN_PAR() : ITerminalNode
+    + column_def() : Column_defContext[]
+    + column_def(i:int) : Column_defContext
+    + CLOSE_PAR() : ITerminalNode
+    + AS() : ITerminalNode
+    + select_stmt() : Select_stmtContext
+    + IF() : ITerminalNode
+    + NOT() : ITerminalNode
+    + EXISTS() : ITerminalNode
+    + schema_name() : Schema_nameContext
+    + DOT() : ITerminalNode
+    + TEMP() : ITerminalNode
+    + TEMPORARY() : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + table_constraint() : Table_constraintContext[]
+    + table_constraint(i:int) : Table_constraintContext
+    + WITHOUT() : ITerminalNode
+    + IDENTIFIER() : ITerminalNode
+    + Create_table_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Column_defContext <<partial>> {
+    + column_name() : Column_nameContext
+    + type_name() : Type_nameContext
+    + column_constraint() : Column_constraintContext[]
+    + column_constraint(i:int) : Column_constraintContext
+    + Column_defContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Type_nameContext <<partial>> {
+    + name() : NameContext[]
+    + name(i:int) : NameContext
+    + OPEN_PAR() : ITerminalNode
+    + signed_number() : Signed_numberContext[]
+    + signed_number(i:int) : Signed_numberContext
+    + CLOSE_PAR() : ITerminalNode
+    + COMMA() : ITerminalNode
+    + Type_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Column_constraintContext <<partial>> {
+    + CHECK() : ITerminalNode
+    + OPEN_PAR() : ITerminalNode
+    + expr() : ExprContext
+    + CLOSE_PAR() : ITerminalNode
+    + DEFAULT() : ITerminalNode
+    + COLLATE() : ITerminalNode
+    + collation_name() : Collation_nameContext
+    + foreign_key_clause() : Foreign_key_clauseContext
+    + AS() : ITerminalNode
+    + CONSTRAINT() : ITerminalNode
+    + name() : NameContext
+    + PRIMARY() : ITerminalNode
+    + KEY() : ITerminalNode
+    + NULL() : ITerminalNode
+    + UNIQUE() : ITerminalNode
+    + signed_number() : Signed_numberContext
+    + literal_value() : Literal_valueContext
+    + conflict_clause() : Conflict_clauseContext
+    + GENERATED() : ITerminalNode
+    + ALWAYS() : ITerminalNode
+    + STORED() : ITerminalNode
+    + VIRTUAL() : ITerminalNode
+    + asc_desc() : Asc_descContext
+    + AUTOINCREMENT() : ITerminalNode
+    + NOT() : ITerminalNode
+    + Column_constraintContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Signed_numberContext <<partial>> {
+    + NUMERIC_LITERAL() : ITerminalNode
+    + PLUS() : ITerminalNode
+    + MINUS() : ITerminalNode
+    + Signed_numberContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Table_constraintContext <<partial>> {
+    + OPEN_PAR() : ITerminalNode
+    + indexed_column() : Indexed_columnContext[]
+    + indexed_column(i:int) : Indexed_columnContext
+    + CLOSE_PAR() : ITerminalNode
+    + CHECK() : ITerminalNode
+    + expr() : ExprContext
+    + FOREIGN() : ITerminalNode
+    + KEY() : ITerminalNode
+    + column_name() : Column_nameContext[]
+    + column_name(i:int) : Column_nameContext
+    + foreign_key_clause() : Foreign_key_clauseContext
+    + CONSTRAINT() : ITerminalNode
+    + name() : NameContext
+    + PRIMARY() : ITerminalNode
+    + UNIQUE() : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + conflict_clause() : Conflict_clauseContext
+    + Table_constraintContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Foreign_key_clauseContext <<partial>> {
+    + REFERENCES() : ITerminalNode
+    + foreign_table() : Foreign_tableContext
+    + OPEN_PAR() : ITerminalNode
+    + column_name() : Column_nameContext[]
+    + column_name(i:int) : Column_nameContext
+    + CLOSE_PAR() : ITerminalNode
+    + ON() : ITerminalNode[]
+    + ON(i:int) : ITerminalNode
+    + MATCH() : ITerminalNode[]
+    + MATCH(i:int) : ITerminalNode
+    + name() : NameContext[]
+    + name(i:int) : NameContext
+    + DEFERRABLE() : ITerminalNode
+    + DELETE() : ITerminalNode[]
+    + DELETE(i:int) : ITerminalNode
+    + UPDATE() : ITerminalNode[]
+    + UPDATE(i:int) : ITerminalNode
+    + SET() : ITerminalNode[]
+    + SET(i:int) : ITerminalNode
+    + CASCADE() : ITerminalNode[]
+    + CASCADE(i:int) : ITerminalNode
+    + RESTRICT() : ITerminalNode[]
+    + RESTRICT(i:int) : ITerminalNode
+    + NO() : ITerminalNode[]
+    + NO(i:int) : ITerminalNode
+    + ACTION() : ITerminalNode[]
+    + ACTION(i:int) : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + NULL() : ITerminalNode[]
+    + NULL(i:int) : ITerminalNode
+    + DEFAULT() : ITerminalNode[]
+    + DEFAULT(i:int) : ITerminalNode
+    + NOT() : ITerminalNode
+    + INITIALLY() : ITerminalNode
+    + DEFERRED() : ITerminalNode
+    + IMMEDIATE() : ITerminalNode
+    + Foreign_key_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Conflict_clauseContext <<partial>> {
+    + ON() : ITerminalNode
+    + CONFLICT() : ITerminalNode
+    + ROLLBACK() : ITerminalNode
+    + ABORT() : ITerminalNode
+    + FAIL() : ITerminalNode
+    + IGNORE() : ITerminalNode
+    + REPLACE() : ITerminalNode
+    + Conflict_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Create_trigger_stmtContext <<partial>> {
+    + CREATE() : ITerminalNode
+    + TRIGGER() : ITerminalNode
+    + trigger_name() : Trigger_nameContext
+    + ON() : ITerminalNode
+    + table_name() : Table_nameContext
+    + BEGIN() : ITerminalNode
+    + END() : ITerminalNode
+    + DELETE() : ITerminalNode
+    + INSERT() : ITerminalNode
+    + UPDATE() : ITerminalNode
+    + IF() : ITerminalNode
+    + NOT() : ITerminalNode
+    + EXISTS() : ITerminalNode
+    + schema_name() : Schema_nameContext
+    + DOT() : ITerminalNode
+    + BEFORE() : ITerminalNode
+    + AFTER() : ITerminalNode
+    + INSTEAD() : ITerminalNode
+    + OF() : ITerminalNode[]
+    + OF(i:int) : ITerminalNode
+    + FOR() : ITerminalNode
+    + EACH() : ITerminalNode
+    + ROW() : ITerminalNode
+    + WHEN() : ITerminalNode
+    + expr() : ExprContext
+    + SCOL() : ITerminalNode[]
+    + SCOL(i:int) : ITerminalNode
+    + TEMP() : ITerminalNode
+    + TEMPORARY() : ITerminalNode
+    + column_name() : Column_nameContext[]
+    + column_name(i:int) : Column_nameContext
+    + update_stmt() : Update_stmtContext[]
+    + update_stmt(i:int) : Update_stmtContext
+    + insert_stmt() : Insert_stmtContext[]
+    + insert_stmt(i:int) : Insert_stmtContext
+    + delete_stmt() : Delete_stmtContext[]
+    + delete_stmt(i:int) : Delete_stmtContext
+    + select_stmt() : Select_stmtContext[]
+    + select_stmt(i:int) : Select_stmtContext
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Create_trigger_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Create_view_stmtContext <<partial>> {
+    + CREATE() : ITerminalNode
+    + VIEW() : ITerminalNode
+    + view_name() : View_nameContext
+    + AS() : ITerminalNode
+    + select_stmt() : Select_stmtContext
+    + IF() : ITerminalNode
+    + NOT() : ITerminalNode
+    + EXISTS() : ITerminalNode
+    + schema_name() : Schema_nameContext
+    + DOT() : ITerminalNode
+    + OPEN_PAR() : ITerminalNode
+    + column_name() : Column_nameContext[]
+    + column_name(i:int) : Column_nameContext
+    + CLOSE_PAR() : ITerminalNode
+    + TEMP() : ITerminalNode
+    + TEMPORARY() : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Create_view_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Create_virtual_table_stmtContext <<partial>> {
+    + CREATE() : ITerminalNode
+    + VIRTUAL() : ITerminalNode
+    + TABLE() : ITerminalNode
+    + table_name() : Table_nameContext
+    + USING() : ITerminalNode
+    + module_name() : Module_nameContext
+    + IF() : ITerminalNode
+    + NOT() : ITerminalNode
+    + EXISTS() : ITerminalNode
+    + schema_name() : Schema_nameContext
+    + DOT() : ITerminalNode
+    + OPEN_PAR() : ITerminalNode
+    + module_argument() : Module_argumentContext[]
+    + module_argument(i:int) : Module_argumentContext
+    + CLOSE_PAR() : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Create_virtual_table_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class With_clauseContext <<partial>> {
+    + WITH() : ITerminalNode
+    + cte_table_name() : Cte_table_nameContext[]
+    + cte_table_name(i:int) : Cte_table_nameContext
+    + AS() : ITerminalNode[]
+    + AS(i:int) : ITerminalNode
+    + OPEN_PAR() : ITerminalNode[]
+    + OPEN_PAR(i:int) : ITerminalNode
+    + select_stmt() : Select_stmtContext[]
+    + select_stmt(i:int) : Select_stmtContext
+    + CLOSE_PAR() : ITerminalNode[]
+    + CLOSE_PAR(i:int) : ITerminalNode
+    + RECURSIVE() : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + With_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Cte_table_nameContext <<partial>> {
+    + table_name() : Table_nameContext
+    + OPEN_PAR() : ITerminalNode
+    + column_name() : Column_nameContext[]
+    + column_name(i:int) : Column_nameContext
+    + CLOSE_PAR() : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Cte_table_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Recursive_cteContext <<partial>> {
+    + cte_table_name() : Cte_table_nameContext
+    + AS() : ITerminalNode
+    + OPEN_PAR() : ITerminalNode
+    + initial_select() : Initial_selectContext
+    + UNION() : ITerminalNode
+    + recursive_select() : Recursive_selectContext
+    + CLOSE_PAR() : ITerminalNode
+    + ALL() : ITerminalNode
+    + Recursive_cteContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Common_table_expressionContext <<partial>> {
+    + table_name() : Table_nameContext
+    + AS() : ITerminalNode
+    + OPEN_PAR() : ITerminalNode[]
+    + OPEN_PAR(i:int) : ITerminalNode
+    + select_stmt() : Select_stmtContext
+    + CLOSE_PAR() : ITerminalNode[]
+    + CLOSE_PAR(i:int) : ITerminalNode
+    + column_name() : Column_nameContext[]
+    + column_name(i:int) : Column_nameContext
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Common_table_expressionContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Delete_stmtContext <<partial>> {
+    + DELETE() : ITerminalNode
+    + FROM() : ITerminalNode
+    + qualified_table_name() : Qualified_table_nameContext
+    + with_clause() : With_clauseContext
+    + WHERE() : ITerminalNode
+    + expr() : ExprContext
+    + returning_clause() : Returning_clauseContext
+    + Delete_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Delete_stmt_limitedContext <<partial>> {
+    + DELETE() : ITerminalNode
+    + FROM() : ITerminalNode
+    + qualified_table_name() : Qualified_table_nameContext
+    + with_clause() : With_clauseContext
+    + WHERE() : ITerminalNode
+    + expr() : ExprContext
+    + returning_clause() : Returning_clauseContext
+    + limit_clause() : Limit_clauseContext
+    + order_by_clause() : Order_by_clauseContext
+    + Delete_stmt_limitedContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Detach_stmtContext <<partial>> {
+    + DETACH() : ITerminalNode
+    + schema_name() : Schema_nameContext
+    + DATABASE() : ITerminalNode
+    + Detach_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Drop_stmtContext <<partial>> {
+    + DROP() : ITerminalNode
+    + any_name() : Any_nameContext
+    + INDEX() : ITerminalNode
+    + TABLE() : ITerminalNode
+    + TRIGGER() : ITerminalNode
+    + VIEW() : ITerminalNode
+    + IF() : ITerminalNode
+    + EXISTS() : ITerminalNode
+    + schema_name() : Schema_nameContext
+    + DOT() : ITerminalNode
+    + Drop_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class ExprContext <<partial>> {
+    + literal_value() : Literal_valueContext
+    + BIND_PARAMETER() : ITerminalNode
+    + column_name() : Column_nameContext
+    + table_name() : Table_nameContext
+    + DOT() : ITerminalNode[]
+    + DOT(i:int) : ITerminalNode
+    + schema_name() : Schema_nameContext
+    + unary_operator() : Unary_operatorContext
+    + expr() : ExprContext[]
+    + expr(i:int) : ExprContext
+    + function_name() : Function_nameContext
+    + OPEN_PAR() : ITerminalNode
+    + CLOSE_PAR() : ITerminalNode
+    + STAR() : ITerminalNode
+    + filter_clause() : Filter_clauseContext
+    + over_clause() : Over_clauseContext
+    + DISTINCT() : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + CAST() : ITerminalNode
+    + AS() : ITerminalNode
+    + type_name() : Type_nameContext
+    + select_stmt() : Select_stmtContext
+    + EXISTS() : ITerminalNode
+    + NOT() : ITerminalNode
+    + CASE() : ITerminalNode
+    + END() : ITerminalNode
+    + WHEN() : ITerminalNode[]
+    + WHEN(i:int) : ITerminalNode
+    + THEN() : ITerminalNode[]
+    + THEN(i:int) : ITerminalNode
+    + ELSE() : ITerminalNode
+    + raise_function() : Raise_functionContext
+    + PIPE2() : ITerminalNode
+    + DIV() : ITerminalNode
+    + MOD() : ITerminalNode
+    + PLUS() : ITerminalNode
+    + MINUS() : ITerminalNode
+    + LT2() : ITerminalNode
+    + GT2() : ITerminalNode
+    + AMP() : ITerminalNode
+    + PIPE() : ITerminalNode
+    + LT() : ITerminalNode
+    + LT_EQ() : ITerminalNode
+    + GT() : ITerminalNode
+    + GT_EQ() : ITerminalNode
+    + ASSIGN() : ITerminalNode
+    + EQ() : ITerminalNode
+    + NOT_EQ1() : ITerminalNode
+    + NOT_EQ2() : ITerminalNode
+    + IS() : ITerminalNode
+    + IN() : ITerminalNode
+    + LIKE() : ITerminalNode
+    + GLOB() : ITerminalNode
+    + MATCH() : ITerminalNode
+    + REGEXP() : ITerminalNode
+    + AND() : ITerminalNode
+    + OR() : ITerminalNode
+    + BETWEEN() : ITerminalNode
+    + COLLATE() : ITerminalNode
+    + collation_name() : Collation_nameContext
+    + ESCAPE() : ITerminalNode
+    + ISNULL() : ITerminalNode
+    + NOTNULL() : ITerminalNode
+    + NULL() : ITerminalNode
+    + table_function_name() : Table_function_nameContext
+    + ExprContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Raise_functionContext <<partial>> {
+    + RAISE() : ITerminalNode
+    + OPEN_PAR() : ITerminalNode
+    + CLOSE_PAR() : ITerminalNode
+    + IGNORE() : ITerminalNode
+    + COMMA() : ITerminalNode
+    + error_message() : Error_messageContext
+    + ROLLBACK() : ITerminalNode
+    + ABORT() : ITerminalNode
+    + FAIL() : ITerminalNode
+    + Raise_functionContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Literal_valueContext <<partial>> {
+    + NUMERIC_LITERAL() : ITerminalNode
+    + STRING_LITERAL() : ITerminalNode
+    + BLOB_LITERAL() : ITerminalNode
+    + NULL() : ITerminalNode
+    + TRUE() : ITerminalNode
+    + FALSE() : ITerminalNode
+    + CURRENT_TIME() : ITerminalNode
+    + CURRENT_DATE() : ITerminalNode
+    + CURRENT_TIMESTAMP() : ITerminalNode
+    + Literal_valueContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Columns_clauseContext <<partial>> {
+    + OPEN_PAR() : ITerminalNode
+    + column_name() : Column_nameContext[]
+    + column_name(i:int) : Column_nameContext
+    + CLOSE_PAR() : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Columns_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Insert_stmtContext <<partial>> {
+    + INTO() : ITerminalNode
+    + table_name() : Table_nameContext
+    + INSERT() : ITerminalNode
+    + REPLACE() : ITerminalNode
+    + OR() : ITerminalNode
+    + DEFAULT() : ITerminalNode
+    + VALUES() : ITerminalNode
+    + with_clause() : With_clauseContext
+    + ROLLBACK() : ITerminalNode
+    + ABORT() : ITerminalNode
+    + FAIL() : ITerminalNode
+    + IGNORE() : ITerminalNode
+    + schema_name() : Schema_nameContext
+    + DOT() : ITerminalNode
+    + AS() : ITerminalNode
+    + table_alias() : Table_aliasContext
+    + columns_clause() : Columns_clauseContext
+    + returning_clause() : Returning_clauseContext
+    + values_clause() : Values_clauseContext
+    + select_stmt() : Select_stmtContext
+    + upsert_clause() : Upsert_clauseContext
+    + Insert_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Returning_clauseContext <<partial>> {
+    + RETURNING() : ITerminalNode
+    + result_column() : Result_columnContext[]
+    + result_column(i:int) : Result_columnContext
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Returning_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Upsert_clauseContext <<partial>> {
+    + ON() : ITerminalNode
+    + CONFLICT() : ITerminalNode
+    + DO() : ITerminalNode
+    + NOTHING() : ITerminalNode
+    + UPDATE() : ITerminalNode
+    + SET() : ITerminalNode
+    + OPEN_PAR() : ITerminalNode
+    + indexed_column() : Indexed_columnContext[]
+    + indexed_column(i:int) : Indexed_columnContext
+    + CLOSE_PAR() : ITerminalNode
+    + ASSIGN() : ITerminalNode[]
+    + ASSIGN(i:int) : ITerminalNode
+    + expr() : ExprContext[]
+    + expr(i:int) : ExprContext
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + WHERE() : ITerminalNode[]
+    + WHERE(i:int) : ITerminalNode
+    + column_name() : Column_nameContext[]
+    + column_name(i:int) : Column_nameContext
+    + column_name_list() : Column_name_listContext[]
+    + column_name_list(i:int) : Column_name_listContext
+    + Upsert_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Pragma_stmtContext <<partial>> {
+    + PRAGMA() : ITerminalNode
+    + pragma_name() : Pragma_nameContext
+    + schema_name() : Schema_nameContext
+    + DOT() : ITerminalNode
+    + ASSIGN() : ITerminalNode
+    + pragma_value() : Pragma_valueContext
+    + OPEN_PAR() : ITerminalNode
+    + CLOSE_PAR() : ITerminalNode
+    + Pragma_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Pragma_valueContext <<partial>> {
+    + signed_number() : Signed_numberContext
+    + name() : NameContext
+    + STRING_LITERAL() : ITerminalNode
+    + Pragma_valueContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Reindex_stmtContext <<partial>> {
+    + REINDEX() : ITerminalNode
+    + collation_name() : Collation_nameContext
+    + table_name() : Table_nameContext
+    + index_name() : Index_nameContext
+    + schema_name() : Schema_nameContext
+    + DOT() : ITerminalNode
+    + Reindex_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Select_stmtContext <<partial>> {
+    + select_core() : Select_coreContext[]
+    + select_core(i:int) : Select_coreContext
+    + common_table_stmt() : Common_table_stmtContext
+    + compound_operator() : Compound_operatorContext[]
+    + compound_operator(i:int) : Compound_operatorContext
+    + order_by_clause() : Order_by_clauseContext
+    + limit_clause() : Limit_clauseContext
+    + Select_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Join_stmtContext <<partial>> {
+    + join_operator() : Join_operatorContext
+    + table_or_subquery() : Table_or_subqueryContext
+    + join_constraint() : Join_constraintContext
+    + Join_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Join_clauseContext <<partial>> {
+    + join_stmt() : Join_stmtContext[]
+    + join_stmt(i:int) : Join_stmtContext
+    + Join_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Where_clauseContext <<partial>> {
+    + WHERE() : ITerminalNode
+    + expr() : ExprContext
+    + Where_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Group_by_clauseContext <<partial>> {
+    + GROUP() : ITerminalNode
+    + BY() : ITerminalNode
+    + expr() : ExprContext[]
+    + expr(i:int) : ExprContext
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + having_clause() : Having_clauseContext
+    + Group_by_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Having_clauseContext <<partial>> {
+    + HAVING() : ITerminalNode
+    + expr() : ExprContext
+    + Having_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Values_clauseContext <<partial>> {
+    + VALUES() : ITerminalNode
+    + values_stmt() : Values_stmtContext[]
+    + values_stmt(i:int) : Values_stmtContext
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Values_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Values_stmtContext <<partial>> {
+    + OPEN_PAR() : ITerminalNode
+    + expr() : ExprContext[]
+    + expr(i:int) : ExprContext
+    + CLOSE_PAR() : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Values_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class From_clauseContext <<partial>> {
+    + FROM() : ITerminalNode
+    + table_or_subquery() : Table_or_subqueryContext[]
+    + table_or_subquery(i:int) : Table_or_subqueryContext
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + From_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Window_clauseContext <<partial>> {
+    + WINDOW() : ITerminalNode
+    + window_name() : Window_nameContext[]
+    + window_name(i:int) : Window_nameContext
+    + AS() : ITerminalNode[]
+    + AS(i:int) : ITerminalNode
+    + window_defn() : Window_defnContext[]
+    + window_defn(i:int) : Window_defnContext
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Window_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Select_coreContext <<partial>> {
+    + SELECT() : ITerminalNode
+    + result_column() : Result_columnContext[]
+    + result_column(i:int) : Result_columnContext
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + from_clause() : From_clauseContext
+    + join_clause() : Join_clauseContext
+    + where_clause() : Where_clauseContext
+    + group_by_clause() : Group_by_clauseContext
+    + window_clause() : Window_clauseContext
+    + DISTINCT() : ITerminalNode
+    + ALL() : ITerminalNode
+    + values_clause() : Values_clauseContext
+    + Select_coreContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Factored_select_stmtContext <<partial>> {
+    + select_stmt() : Select_stmtContext
+    + Factored_select_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Simple_select_stmtContext <<partial>> {
+    + select_core() : Select_coreContext
+    + common_table_stmt() : Common_table_stmtContext
+    + order_by_clause() : Order_by_clauseContext
+    + limit_clause() : Limit_clauseContext
+    + Simple_select_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Compound_select_stmtContext <<partial>> {
+    + select_core() : Select_coreContext[]
+    + select_core(i:int) : Select_coreContext
+    + common_table_stmt() : Common_table_stmtContext
+    + order_by_clause() : Order_by_clauseContext
+    + limit_clause() : Limit_clauseContext
+    + UNION() : ITerminalNode[]
+    + UNION(i:int) : ITerminalNode
+    + INTERSECT() : ITerminalNode[]
+    + INTERSECT(i:int) : ITerminalNode
+    + EXCEPT() : ITerminalNode[]
+    + EXCEPT(i:int) : ITerminalNode
+    + ALL() : ITerminalNode[]
+    + ALL(i:int) : ITerminalNode
+    + Compound_select_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Table_or_subqueryContext <<partial>> {
+    + table_name() : Table_nameContext
+    + schema_name() : Schema_nameContext
+    + DOT() : ITerminalNode
+    + table_alias() : Table_aliasContext
+    + INDEXED() : ITerminalNode
+    + BY() : ITerminalNode
+    + index_name() : Index_nameContext
+    + NOT() : ITerminalNode
+    + AS() : ITerminalNode
+    + table_function_name() : Table_function_nameContext
+    + OPEN_PAR() : ITerminalNode
+    + expr() : ExprContext[]
+    + expr(i:int) : ExprContext
+    + CLOSE_PAR() : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + table_or_subquery() : Table_or_subqueryContext[]
+    + table_or_subquery(i:int) : Table_or_subqueryContext
+    + join_clause() : Join_clauseContext
+    + select_stmt() : Select_stmtContext
+    + Table_or_subqueryContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Result_columnContext <<partial>> {
+    + STAR() : ITerminalNode
+    + table_name() : Table_nameContext
+    + DOT() : ITerminalNode
+    + expr() : ExprContext
+    + column_alias() : Column_aliasContext
+    + AS() : ITerminalNode
+    + Result_columnContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Join_operatorContext <<partial>> {
+    + COMMA() : ITerminalNode
+    + JOIN() : ITerminalNode
+    + NATURAL() : ITerminalNode
+    + LEFT() : ITerminalNode
+    + INNER() : ITerminalNode
+    + CROSS() : ITerminalNode
+    + OUTER() : ITerminalNode
+    + Join_operatorContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Join_constraintContext <<partial>> {
+    + ON() : ITerminalNode
+    + expr() : ExprContext
+    + USING() : ITerminalNode
+    + OPEN_PAR() : ITerminalNode
+    + column_name() : Column_nameContext[]
+    + column_name(i:int) : Column_nameContext
+    + CLOSE_PAR() : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Join_constraintContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Compound_operatorContext <<partial>> {
+    + UNION() : ITerminalNode
+    + ALL() : ITerminalNode
+    + INTERSECT() : ITerminalNode
+    + EXCEPT() : ITerminalNode
+    + Compound_operatorContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Set_clauseContext <<partial>> {
+    + SET() : ITerminalNode
+    + set_stmt() : Set_stmtContext[]
+    + set_stmt(i:int) : Set_stmtContext
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Set_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Set_stmtContext <<partial>> {
+    + ASSIGN() : ITerminalNode
+    + expr() : ExprContext
+    + column_name() : Column_nameContext
+    + column_name_list() : Column_name_listContext
+    + Set_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Update_stmtContext <<partial>> {
+    + UPDATE() : ITerminalNode
+    + qualified_table_name() : Qualified_table_nameContext
+    + set_clause() : Set_clauseContext
+    + with_clause() : With_clauseContext
+    + OR() : ITerminalNode
+    + FROM() : ITerminalNode
+    + where_clause() : Where_clauseContext
+    + returning_clause() : Returning_clauseContext
+    + ROLLBACK() : ITerminalNode
+    + ABORT() : ITerminalNode
+    + REPLACE() : ITerminalNode
+    + FAIL() : ITerminalNode
+    + IGNORE() : ITerminalNode
+    + table_or_subquery() : Table_or_subqueryContext[]
+    + table_or_subquery(i:int) : Table_or_subqueryContext
+    + join_clause() : Join_clauseContext
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Update_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Column_name_listContext <<partial>> {
+    + OPEN_PAR() : ITerminalNode
+    + column_name() : Column_nameContext[]
+    + column_name(i:int) : Column_nameContext
+    + CLOSE_PAR() : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Column_name_listContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Update_stmt_limitedContext <<partial>> {
+    + UPDATE() : ITerminalNode
+    + qualified_table_name() : Qualified_table_nameContext
+    + SET() : ITerminalNode
+    + ASSIGN() : ITerminalNode[]
+    + ASSIGN(i:int) : ITerminalNode
+    + expr() : ExprContext[]
+    + expr(i:int) : ExprContext
+    + column_name() : Column_nameContext[]
+    + column_name(i:int) : Column_nameContext
+    + column_name_list() : Column_name_listContext[]
+    + column_name_list(i:int) : Column_name_listContext
+    + with_clause() : With_clauseContext
+    + OR() : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + WHERE() : ITerminalNode
+    + returning_clause() : Returning_clauseContext
+    + limit_clause() : Limit_clauseContext
+    + ROLLBACK() : ITerminalNode
+    + ABORT() : ITerminalNode
+    + REPLACE() : ITerminalNode
+    + FAIL() : ITerminalNode
+    + IGNORE() : ITerminalNode
+    + order_by_clause() : Order_by_clauseContext
+    + Update_stmt_limitedContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Qualified_table_nameContext <<partial>> {
+    + table_name() : Table_nameContext
+    + schema_name() : Schema_nameContext
+    + DOT() : ITerminalNode
+    + AS() : ITerminalNode
+    + alias() : AliasContext
+    + INDEXED() : ITerminalNode
+    + BY() : ITerminalNode
+    + index_name() : Index_nameContext
+    + NOT() : ITerminalNode
+    + Qualified_table_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Vacuum_stmtContext <<partial>> {
+    + VACUUM() : ITerminalNode
+    + schema_name() : Schema_nameContext
+    + INTO() : ITerminalNode
+    + filename() : FilenameContext
+    + Vacuum_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Filter_clauseContext <<partial>> {
+    + FILTER() : ITerminalNode
+    + OPEN_PAR() : ITerminalNode
+    + WHERE() : ITerminalNode
+    + expr() : ExprContext
+    + CLOSE_PAR() : ITerminalNode
+    + Filter_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Window_defnContext <<partial>> {
+    + OPEN_PAR() : ITerminalNode
+    + CLOSE_PAR() : ITerminalNode
+    + ORDER() : ITerminalNode
+    + BY() : ITerminalNode[]
+    + BY(i:int) : ITerminalNode
+    + ordering_term() : Ordering_termContext[]
+    + ordering_term(i:int) : Ordering_termContext
+    + base_window_name() : Base_window_nameContext
+    + PARTITION() : ITerminalNode
+    + expr() : ExprContext[]
+    + expr(i:int) : ExprContext
+    + frame_spec() : Frame_specContext
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Window_defnContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Over_clauseContext <<partial>> {
+    + OVER() : ITerminalNode
+    + window_name() : Window_nameContext
+    + OPEN_PAR() : ITerminalNode
+    + CLOSE_PAR() : ITerminalNode
+    + base_window_name() : Base_window_nameContext
+    + PARTITION() : ITerminalNode
+    + BY() : ITerminalNode[]
+    + BY(i:int) : ITerminalNode
+    + expr() : ExprContext[]
+    + expr(i:int) : ExprContext
+    + ORDER() : ITerminalNode
+    + ordering_term() : Ordering_termContext[]
+    + ordering_term(i:int) : Ordering_termContext
+    + frame_spec() : Frame_specContext
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Over_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Frame_specContext <<partial>> {
+    + frame_clause() : Frame_clauseContext
+    + EXCLUDE() : ITerminalNode
+    + CURRENT() : ITerminalNode
+    + ROW() : ITerminalNode
+    + GROUP() : ITerminalNode
+    + TIES() : ITerminalNode
+    + NO() : ITerminalNode
+    + OTHERS() : ITerminalNode
+    + Frame_specContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Frame_clauseContext <<partial>> {
+    + RANGE() : ITerminalNode
+    + ROWS() : ITerminalNode
+    + GROUPS() : ITerminalNode
+    + frame_single() : Frame_singleContext
+    + BETWEEN() : ITerminalNode
+    + frame_left() : Frame_leftContext
+    + AND() : ITerminalNode
+    + frame_right() : Frame_rightContext
+    + Frame_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Simple_function_invocationContext <<partial>> {
+    + simple_func() : Simple_funcContext
+    + OPEN_PAR() : ITerminalNode
+    + CLOSE_PAR() : ITerminalNode
+    + expr() : ExprContext[]
+    + expr(i:int) : ExprContext
+    + STAR() : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Simple_function_invocationContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Aggregate_function_invocationContext <<partial>> {
+    + aggregate_func() : Aggregate_funcContext
+    + OPEN_PAR() : ITerminalNode
+    + CLOSE_PAR() : ITerminalNode
+    + expr() : ExprContext[]
+    + expr(i:int) : ExprContext
+    + STAR() : ITerminalNode
+    + filter_clause() : Filter_clauseContext
+    + DISTINCT() : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Aggregate_function_invocationContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Window_function_invocationContext <<partial>> {
+    + window_function() : Window_functionContext
+    + OPEN_PAR() : ITerminalNode
+    + CLOSE_PAR() : ITerminalNode
+    + OVER() : ITerminalNode
+    + window_defn() : Window_defnContext
+    + window_name() : Window_nameContext
+    + expr() : ExprContext[]
+    + expr(i:int) : ExprContext
+    + STAR() : ITerminalNode
+    + filter_clause() : Filter_clauseContext
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Window_function_invocationContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Common_table_stmtContext <<partial>> {
+    + WITH() : ITerminalNode
+    + common_table_expression() : Common_table_expressionContext[]
+    + common_table_expression(i:int) : Common_table_expressionContext
+    + RECURSIVE() : ITerminalNode
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Common_table_stmtContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Order_by_clauseContext <<partial>> {
+    + ORDER() : ITerminalNode
+    + BY() : ITerminalNode
+    + ordering_term() : Ordering_termContext[]
+    + ordering_term(i:int) : Ordering_termContext
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Order_by_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Limit_clauseContext <<partial>> {
+    + LIMIT() : ITerminalNode
+    + expr() : ExprContext
+    + offset_clause() : Offset_clauseContext
+    + Limit_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Offset_clauseContext <<partial>> {
+    + OFFSET() : ITerminalNode
+    + expr() : ExprContext
+    + Offset_clauseContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Ordering_termContext <<partial>> {
+    + expr() : ExprContext
+    + COLLATE() : ITerminalNode
+    + collation_name() : Collation_nameContext
+    + asc_desc() : Asc_descContext
+    + NULLS() : ITerminalNode
+    + FIRST() : ITerminalNode
+    + LAST() : ITerminalNode
+    + Ordering_termContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Asc_descContext <<partial>> {
+    + ASC() : ITerminalNode
+    + DESC() : ITerminalNode
+    + Asc_descContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Frame_leftContext <<partial>> {
+    + expr() : ExprContext
+    + PRECEDING() : ITerminalNode
+    + FOLLOWING() : ITerminalNode
+    + CURRENT() : ITerminalNode
+    + ROW() : ITerminalNode
+    + UNBOUNDED() : ITerminalNode
+    + Frame_leftContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Frame_rightContext <<partial>> {
+    + expr() : ExprContext
+    + PRECEDING() : ITerminalNode
+    + FOLLOWING() : ITerminalNode
+    + CURRENT() : ITerminalNode
+    + ROW() : ITerminalNode
+    + UNBOUNDED() : ITerminalNode
+    + Frame_rightContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Frame_singleContext <<partial>> {
+    + expr() : ExprContext
+    + PRECEDING() : ITerminalNode
+    + UNBOUNDED() : ITerminalNode
+    + CURRENT() : ITerminalNode
+    + ROW() : ITerminalNode
+    + Frame_singleContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Window_functionContext <<partial>> {
+    + OPEN_PAR() : ITerminalNode[]
+    + OPEN_PAR(i:int) : ITerminalNode
+    + expr() : ExprContext
+    + CLOSE_PAR() : ITerminalNode[]
+    + CLOSE_PAR(i:int) : ITerminalNode
+    + OVER() : ITerminalNode
+    + order_by_expr_asc_desc() : Order_by_expr_asc_descContext
+    + FIRST_VALUE() : ITerminalNode
+    + LAST_VALUE() : ITerminalNode
+    + partition_by() : Partition_byContext
+    + frame_clause() : Frame_clauseContext
+    + CUME_DIST() : ITerminalNode
+    + PERCENT_RANK() : ITerminalNode
+    + order_by_expr() : Order_by_exprContext
+    + DENSE_RANK() : ITerminalNode
+    + RANK() : ITerminalNode
+    + ROW_NUMBER() : ITerminalNode
+    + LAG() : ITerminalNode
+    + LEAD() : ITerminalNode
+    + offset() : OffsetContext
+    + default_value() : Default_valueContext
+    + NTH_VALUE() : ITerminalNode
+    + COMMA() : ITerminalNode
+    + signed_number() : Signed_numberContext
+    + NTILE() : ITerminalNode
+    + Window_functionContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class OffsetContext <<partial>> {
+    + COMMA() : ITerminalNode
+    + signed_number() : Signed_numberContext
+    + OffsetContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Default_valueContext <<partial>> {
+    + COMMA() : ITerminalNode
+    + signed_number() : Signed_numberContext
+    + Default_valueContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Partition_byContext <<partial>> {
+    + PARTITION() : ITerminalNode
+    + BY() : ITerminalNode
+    + expr() : ExprContext[]
+    + expr(i:int) : ExprContext
+    + Partition_byContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Order_by_exprContext <<partial>> {
+    + ORDER() : ITerminalNode
+    + BY() : ITerminalNode
+    + expr() : ExprContext[]
+    + expr(i:int) : ExprContext
+    + Order_by_exprContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Order_by_expr_asc_descContext <<partial>> {
+    + ORDER() : ITerminalNode
+    + BY() : ITerminalNode
+    + expr_asc_desc() : Expr_asc_descContext
+    + Order_by_expr_asc_descContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Expr_asc_descContext <<partial>> {
+    + expr() : ExprContext[]
+    + expr(i:int) : ExprContext
+    + asc_desc() : Asc_descContext[]
+    + asc_desc(i:int) : Asc_descContext
+    + COMMA() : ITerminalNode[]
+    + COMMA(i:int) : ITerminalNode
+    + Expr_asc_descContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Initial_selectContext <<partial>> {
+    + select_stmt() : Select_stmtContext
+    + Initial_selectContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Recursive_selectContext <<partial>> {
+    + select_stmt() : Select_stmtContext
+    + Recursive_selectContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Unary_operatorContext <<partial>> {
+    + MINUS() : ITerminalNode
+    + PLUS() : ITerminalNode
+    + TILDE() : ITerminalNode
+    + NOT() : ITerminalNode
+    + Unary_operatorContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Error_messageContext <<partial>> {
+    + STRING_LITERAL() : ITerminalNode
+    + Error_messageContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Module_argumentContext <<partial>> {
+    + expr() : ExprContext
+    + column_def() : Column_defContext
+    + Module_argumentContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Column_aliasContext <<partial>> {
+    + IDENTIFIER() : ITerminalNode
+    + STRING_LITERAL() : ITerminalNode
+    + Column_aliasContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class KeywordContext <<partial>> {
+    + ABORT() : ITerminalNode
+    + ACTION() : ITerminalNode
+    + ADD() : ITerminalNode
+    + AFTER() : ITerminalNode
+    + ALL() : ITerminalNode
+    + ALTER() : ITerminalNode
+    + ANALYZE() : ITerminalNode
+    + AND() : ITerminalNode
+    + AS() : ITerminalNode
+    + ASC() : ITerminalNode
+    + ATTACH() : ITerminalNode
+    + AUTOINCREMENT() : ITerminalNode
+    + BEFORE() : ITerminalNode
+    + BEGIN() : ITerminalNode
+    + BETWEEN() : ITerminalNode
+    + BY() : ITerminalNode
+    + CASCADE() : ITerminalNode
+    + CASE() : ITerminalNode
+    + CAST() : ITerminalNode
+    + CHECK() : ITerminalNode
+    + COLLATE() : ITerminalNode
+    + COLUMN() : ITerminalNode
+    + COMMIT() : ITerminalNode
+    + CONFLICT() : ITerminalNode
+    + CONSTRAINT() : ITerminalNode
+    + CREATE() : ITerminalNode
+    + CROSS() : ITerminalNode
+    + CURRENT_DATE() : ITerminalNode
+    + CURRENT_TIME() : ITerminalNode
+    + CURRENT_TIMESTAMP() : ITerminalNode
+    + DATABASE() : ITerminalNode
+    + DEFAULT() : ITerminalNode
+    + DEFERRABLE() : ITerminalNode
+    + DEFERRED() : ITerminalNode
+    + DELETE() : ITerminalNode
+    + DESC() : ITerminalNode
+    + DETACH() : ITerminalNode
+    + DISTINCT() : ITerminalNode
+    + DROP() : ITerminalNode
+    + EACH() : ITerminalNode
+    + ELSE() : ITerminalNode
+    + END() : ITerminalNode
+    + ESCAPE() : ITerminalNode
+    + EXCEPT() : ITerminalNode
+    + EXCLUSIVE() : ITerminalNode
+    + EXISTS() : ITerminalNode
+    + EXPLAIN() : ITerminalNode
+    + FAIL() : ITerminalNode
+    + FOR() : ITerminalNode
+    + FOREIGN() : ITerminalNode
+    + FROM() : ITerminalNode
+    + FULL() : ITerminalNode
+    + GLOB() : ITerminalNode
+    + GROUP() : ITerminalNode
+    + HAVING() : ITerminalNode
+    + IF() : ITerminalNode
+    + IGNORE() : ITerminalNode
+    + IMMEDIATE() : ITerminalNode
+    + IN() : ITerminalNode
+    + INDEX() : ITerminalNode
+    + INDEXED() : ITerminalNode
+    + INITIALLY() : ITerminalNode
+    + INNER() : ITerminalNode
+    + INSERT() : ITerminalNode
+    + INSTEAD() : ITerminalNode
+    + INTERSECT() : ITerminalNode
+    + INTO() : ITerminalNode
+    + IS() : ITerminalNode
+    + ISNULL() : ITerminalNode
+    + JOIN() : ITerminalNode
+    + KEY() : ITerminalNode
+    + LEFT() : ITerminalNode
+    + LIKE() : ITerminalNode
+    + LIMIT() : ITerminalNode
+    + MATCH() : ITerminalNode
+    + NATURAL() : ITerminalNode
+    + NO() : ITerminalNode
+    + NOT() : ITerminalNode
+    + NOTNULL() : ITerminalNode
+    + NULL() : ITerminalNode
+    + OF() : ITerminalNode
+    + OFFSET() : ITerminalNode
+    + ON() : ITerminalNode
+    + OR() : ITerminalNode
+    + ORDER() : ITerminalNode
+    + OUTER() : ITerminalNode
+    + PLAN() : ITerminalNode
+    + PRAGMA() : ITerminalNode
+    + PRIMARY() : ITerminalNode
+    + QUERY() : ITerminalNode
+    + RAISE() : ITerminalNode
+    + RECURSIVE() : ITerminalNode
+    + REFERENCES() : ITerminalNode
+    + REGEXP() : ITerminalNode
+    + REINDEX() : ITerminalNode
+    + RELEASE() : ITerminalNode
+    + RENAME() : ITerminalNode
+    + REPLACE() : ITerminalNode
+    + RESTRICT() : ITerminalNode
+    + RIGHT() : ITerminalNode
+    + ROLLBACK() : ITerminalNode
+    + ROW() : ITerminalNode
+    + ROWS() : ITerminalNode
+    + SAVEPOINT() : ITerminalNode
+    + SELECT() : ITerminalNode
+    + SET() : ITerminalNode
+    + TABLE() : ITerminalNode
+    + TEMP() : ITerminalNode
+    + TEMPORARY() : ITerminalNode
+    + THEN() : ITerminalNode
+    + TO() : ITerminalNode
+    + TRANSACTION() : ITerminalNode
+    + TRIGGER() : ITerminalNode
+    + UNION() : ITerminalNode
+    + UNIQUE() : ITerminalNode
+    + UPDATE() : ITerminalNode
+    + USING() : ITerminalNode
+    + VACUUM() : ITerminalNode
+    + VALUES() : ITerminalNode
+    + VIEW() : ITerminalNode
+    + VIRTUAL() : ITerminalNode
+    + WHEN() : ITerminalNode
+    + WHERE() : ITerminalNode
+    + WITH() : ITerminalNode
+    + WITHOUT() : ITerminalNode
+    + FIRST_VALUE() : ITerminalNode
+    + OVER() : ITerminalNode
+    + PARTITION() : ITerminalNode
+    + RANGE() : ITerminalNode
+    + PRECEDING() : ITerminalNode
+    + UNBOUNDED() : ITerminalNode
+    + CURRENT() : ITerminalNode
+    + FOLLOWING() : ITerminalNode
+    + CUME_DIST() : ITerminalNode
+    + DENSE_RANK() : ITerminalNode
+    + LAG() : ITerminalNode
+    + LAST_VALUE() : ITerminalNode
+    + LEAD() : ITerminalNode
+    + NTH_VALUE() : ITerminalNode
+    + NTILE() : ITerminalNode
+    + PERCENT_RANK() : ITerminalNode
+    + RANK() : ITerminalNode
+    + ROW_NUMBER() : ITerminalNode
+    + GENERATED() : ITerminalNode
+    + ALWAYS() : ITerminalNode
+    + STORED() : ITerminalNode
+    + TRUE() : ITerminalNode
+    + FALSE() : ITerminalNode
+    + WINDOW() : ITerminalNode
+    + NULLS() : ITerminalNode
+    + FIRST() : ITerminalNode
+    + LAST() : ITerminalNode
+    + FILTER() : ITerminalNode
+    + GROUPS() : ITerminalNode
+    + EXCLUDE() : ITerminalNode
+    + KeywordContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class NameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + NameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Function_nameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Function_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Schema_nameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Schema_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Table_nameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Table_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Table_or_index_nameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Table_or_index_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Column_nameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Column_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Collation_nameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Collation_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Foreign_tableContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Foreign_tableContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Index_nameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Index_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Trigger_nameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Trigger_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class View_nameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + View_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Module_nameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Module_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Pragma_nameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Pragma_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Savepoint_nameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Savepoint_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Table_aliasContext <<partial>> {
+    + IDENTIFIER() : ITerminalNode
+    + Table_aliasContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Transaction_nameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Transaction_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Window_nameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Window_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class AliasContext <<partial>> {
+    + any_name() : Any_nameContext
+    + AliasContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class FilenameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + FilenameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Base_window_nameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Base_window_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Simple_funcContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Simple_funcContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Aggregate_funcContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Aggregate_funcContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Table_function_nameContext <<partial>> {
+    + any_name() : Any_nameContext
+    + Table_function_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+class Any_nameContext <<partial>> {
+    + IDENTIFIER() : ITerminalNode
+    + keyword() : KeywordContext
+    + STRING_LITERAL() : ITerminalNode
+    + OPEN_PAR() : ITerminalNode
+    + any_name() : Any_nameContext
+    + CLOSE_PAR() : ITerminalNode
+    + Any_nameContext(parent:ParserRuleContext, invokingState:int)
+    + <<override>> RuleIndex : int <<get>>
+    + <<override>> EnterRule(listener:IParseTreeListener) : void
+    + <<override>> ExitRule(listener:IParseTreeListener) : void
+    + <<override>> Accept(visitor:IParseTreeVisitor<TResult>) : TResult
+}
+Parser <|-- SQLiteParser
+SQLiteParser o-> "DefaultVocabulary" IVocabulary
+SQLiteParser --> "Vocabulary" IVocabulary
+SQLiteParser o-> "_ATN" ATN
+SQLiteParser +-- ParseContext
+ParserRuleContext <|-- ParseContext
+SQLiteParser +-- Sql_stmt_listContext
+ParserRuleContext <|-- Sql_stmt_listContext
+SQLiteParser +-- Sql_stmtContext
+ParserRuleContext <|-- Sql_stmtContext
+SQLiteParser +-- Alter_table_stmtContext
+ParserRuleContext <|-- Alter_table_stmtContext
+Alter_table_stmtContext --> "new_table_name" Table_nameContext
+Alter_table_stmtContext --> "old_column_name" Column_nameContext
+Alter_table_stmtContext --> "new_column_name" Column_nameContext
+SQLiteParser +-- Analyze_stmtContext
+ParserRuleContext <|-- Analyze_stmtContext
+SQLiteParser +-- Attach_stmtContext
+ParserRuleContext <|-- Attach_stmtContext
+SQLiteParser +-- Begin_stmtContext
+ParserRuleContext <|-- Begin_stmtContext
+SQLiteParser +-- Commit_stmtContext
+ParserRuleContext <|-- Commit_stmtContext
+SQLiteParser +-- Rollback_stmtContext
+ParserRuleContext <|-- Rollback_stmtContext
+SQLiteParser +-- Savepoint_stmtContext
+ParserRuleContext <|-- Savepoint_stmtContext
+SQLiteParser +-- Release_stmtContext
+ParserRuleContext <|-- Release_stmtContext
+SQLiteParser +-- Create_index_stmtContext
+ParserRuleContext <|-- Create_index_stmtContext
+SQLiteParser +-- Indexed_columnContext
+ParserRuleContext <|-- Indexed_columnContext
+SQLiteParser +-- Create_table_stmtContext
+ParserRuleContext <|-- Create_table_stmtContext
+Create_table_stmtContext --> "row_ROW_ID" IToken
+SQLiteParser +-- Column_defContext
+ParserRuleContext <|-- Column_defContext
+SQLiteParser +-- Type_nameContext
+ParserRuleContext <|-- Type_nameContext
+SQLiteParser +-- Column_constraintContext
+ParserRuleContext <|-- Column_constraintContext
+SQLiteParser +-- Signed_numberContext
+ParserRuleContext <|-- Signed_numberContext
+SQLiteParser +-- Table_constraintContext
+ParserRuleContext <|-- Table_constraintContext
+SQLiteParser +-- Foreign_key_clauseContext
+ParserRuleContext <|-- Foreign_key_clauseContext
+SQLiteParser +-- Conflict_clauseContext
+ParserRuleContext <|-- Conflict_clauseContext
+SQLiteParser +-- Create_trigger_stmtContext
+ParserRuleContext <|-- Create_trigger_stmtContext
+SQLiteParser +-- Create_view_stmtContext
+ParserRuleContext <|-- Create_view_stmtContext
+SQLiteParser +-- Create_virtual_table_stmtContext
+ParserRuleContext <|-- Create_virtual_table_stmtContext
+SQLiteParser +-- With_clauseContext
+ParserRuleContext <|-- With_clauseContext
+SQLiteParser +-- Cte_table_nameContext
+ParserRuleContext <|-- Cte_table_nameContext
+SQLiteParser +-- Recursive_cteContext
+ParserRuleContext <|-- Recursive_cteContext
+SQLiteParser +-- Common_table_expressionContext
+ParserRuleContext <|-- Common_table_expressionContext
+SQLiteParser +-- Delete_stmtContext
+ParserRuleContext <|-- Delete_stmtContext
+SQLiteParser +-- Delete_stmt_limitedContext
+ParserRuleContext <|-- Delete_stmt_limitedContext
+SQLiteParser +-- Detach_stmtContext
+ParserRuleContext <|-- Detach_stmtContext
+SQLiteParser +-- Drop_stmtContext
+ParserRuleContext <|-- Drop_stmtContext
+Drop_stmtContext --> "@object" IToken
+SQLiteParser +-- ExprContext
+ParserRuleContext <|-- ExprContext
+SQLiteParser +-- Raise_functionContext
+ParserRuleContext <|-- Raise_functionContext
+SQLiteParser +-- Literal_valueContext
+ParserRuleContext <|-- Literal_valueContext
+SQLiteParser +-- Columns_clauseContext
+ParserRuleContext <|-- Columns_clauseContext
+SQLiteParser +-- Insert_stmtContext
+ParserRuleContext <|-- Insert_stmtContext
+SQLiteParser +-- Returning_clauseContext
+ParserRuleContext <|-- Returning_clauseContext
+SQLiteParser +-- Upsert_clauseContext
+ParserRuleContext <|-- Upsert_clauseContext
+SQLiteParser +-- Pragma_stmtContext
+ParserRuleContext <|-- Pragma_stmtContext
+SQLiteParser +-- Pragma_valueContext
+ParserRuleContext <|-- Pragma_valueContext
+SQLiteParser +-- Reindex_stmtContext
+ParserRuleContext <|-- Reindex_stmtContext
+SQLiteParser +-- Select_stmtContext
+ParserRuleContext <|-- Select_stmtContext
+SQLiteParser +-- Join_stmtContext
+ParserRuleContext <|-- Join_stmtContext
+SQLiteParser +-- Join_clauseContext
+ParserRuleContext <|-- Join_clauseContext
+SQLiteParser +-- Where_clauseContext
+ParserRuleContext <|-- Where_clauseContext
+SQLiteParser +-- Group_by_clauseContext
+ParserRuleContext <|-- Group_by_clauseContext
+SQLiteParser +-- Having_clauseContext
+ParserRuleContext <|-- Having_clauseContext
+SQLiteParser +-- Values_clauseContext
+ParserRuleContext <|-- Values_clauseContext
+SQLiteParser +-- Values_stmtContext
+ParserRuleContext <|-- Values_stmtContext
+SQLiteParser +-- From_clauseContext
+ParserRuleContext <|-- From_clauseContext
+SQLiteParser +-- Window_clauseContext
+ParserRuleContext <|-- Window_clauseContext
+SQLiteParser +-- Select_coreContext
+ParserRuleContext <|-- Select_coreContext
+SQLiteParser +-- Factored_select_stmtContext
+ParserRuleContext <|-- Factored_select_stmtContext
+SQLiteParser +-- Simple_select_stmtContext
+ParserRuleContext <|-- Simple_select_stmtContext
+SQLiteParser +-- Compound_select_stmtContext
+ParserRuleContext <|-- Compound_select_stmtContext
+SQLiteParser +-- Table_or_subqueryContext
+ParserRuleContext <|-- Table_or_subqueryContext
+SQLiteParser +-- Result_columnContext
+ParserRuleContext <|-- Result_columnContext
+SQLiteParser +-- Join_operatorContext
+ParserRuleContext <|-- Join_operatorContext
+SQLiteParser +-- Join_constraintContext
+ParserRuleContext <|-- Join_constraintContext
+SQLiteParser +-- Compound_operatorContext
+ParserRuleContext <|-- Compound_operatorContext
+SQLiteParser +-- Set_clauseContext
+ParserRuleContext <|-- Set_clauseContext
+SQLiteParser +-- Set_stmtContext
+ParserRuleContext <|-- Set_stmtContext
+SQLiteParser +-- Update_stmtContext
+ParserRuleContext <|-- Update_stmtContext
+SQLiteParser +-- Column_name_listContext
+ParserRuleContext <|-- Column_name_listContext
+SQLiteParser +-- Update_stmt_limitedContext
+ParserRuleContext <|-- Update_stmt_limitedContext
+SQLiteParser +-- Qualified_table_nameContext
+ParserRuleContext <|-- Qualified_table_nameContext
+SQLiteParser +-- Vacuum_stmtContext
+ParserRuleContext <|-- Vacuum_stmtContext
+SQLiteParser +-- Filter_clauseContext
+ParserRuleContext <|-- Filter_clauseContext
+SQLiteParser +-- Window_defnContext
+ParserRuleContext <|-- Window_defnContext
+SQLiteParser +-- Over_clauseContext
+ParserRuleContext <|-- Over_clauseContext
+SQLiteParser +-- Frame_specContext
+ParserRuleContext <|-- Frame_specContext
+SQLiteParser +-- Frame_clauseContext
+ParserRuleContext <|-- Frame_clauseContext
+SQLiteParser +-- Simple_function_invocationContext
+ParserRuleContext <|-- Simple_function_invocationContext
+SQLiteParser +-- Aggregate_function_invocationContext
+ParserRuleContext <|-- Aggregate_function_invocationContext
+SQLiteParser +-- Window_function_invocationContext
+ParserRuleContext <|-- Window_function_invocationContext
+SQLiteParser +-- Common_table_stmtContext
+ParserRuleContext <|-- Common_table_stmtContext
+SQLiteParser +-- Order_by_clauseContext
+ParserRuleContext <|-- Order_by_clauseContext
+SQLiteParser +-- Limit_clauseContext
+ParserRuleContext <|-- Limit_clauseContext
+SQLiteParser +-- Offset_clauseContext
+ParserRuleContext <|-- Offset_clauseContext
+SQLiteParser +-- Ordering_termContext
+ParserRuleContext <|-- Ordering_termContext
+SQLiteParser +-- Asc_descContext
+ParserRuleContext <|-- Asc_descContext
+SQLiteParser +-- Frame_leftContext
+ParserRuleContext <|-- Frame_leftContext
+SQLiteParser +-- Frame_rightContext
+ParserRuleContext <|-- Frame_rightContext
+SQLiteParser +-- Frame_singleContext
+ParserRuleContext <|-- Frame_singleContext
+SQLiteParser +-- Window_functionContext
+ParserRuleContext <|-- Window_functionContext
+SQLiteParser +-- OffsetContext
+ParserRuleContext <|-- OffsetContext
+SQLiteParser +-- Default_valueContext
+ParserRuleContext <|-- Default_valueContext
+SQLiteParser +-- Partition_byContext
+ParserRuleContext <|-- Partition_byContext
+SQLiteParser +-- Order_by_exprContext
+ParserRuleContext <|-- Order_by_exprContext
+SQLiteParser +-- Order_by_expr_asc_descContext
+ParserRuleContext <|-- Order_by_expr_asc_descContext
+SQLiteParser +-- Expr_asc_descContext
+ParserRuleContext <|-- Expr_asc_descContext
+SQLiteParser +-- Initial_selectContext
+ParserRuleContext <|-- Initial_selectContext
+SQLiteParser +-- Recursive_selectContext
+ParserRuleContext <|-- Recursive_selectContext
+SQLiteParser +-- Unary_operatorContext
+ParserRuleContext <|-- Unary_operatorContext
+SQLiteParser +-- Error_messageContext
+ParserRuleContext <|-- Error_messageContext
+SQLiteParser +-- Module_argumentContext
+ParserRuleContext <|-- Module_argumentContext
+SQLiteParser +-- Column_aliasContext
+ParserRuleContext <|-- Column_aliasContext
+SQLiteParser +-- KeywordContext
+ParserRuleContext <|-- KeywordContext
+SQLiteParser +-- NameContext
+ParserRuleContext <|-- NameContext
+SQLiteParser +-- Function_nameContext
+ParserRuleContext <|-- Function_nameContext
+SQLiteParser +-- Schema_nameContext
+ParserRuleContext <|-- Schema_nameContext
+SQLiteParser +-- Table_nameContext
+ParserRuleContext <|-- Table_nameContext
+SQLiteParser +-- Table_or_index_nameContext
+ParserRuleContext <|-- Table_or_index_nameContext
+SQLiteParser +-- Column_nameContext
+ParserRuleContext <|-- Column_nameContext
+SQLiteParser +-- Collation_nameContext
+ParserRuleContext <|-- Collation_nameContext
+SQLiteParser +-- Foreign_tableContext
+ParserRuleContext <|-- Foreign_tableContext
+SQLiteParser +-- Index_nameContext
+ParserRuleContext <|-- Index_nameContext
+SQLiteParser +-- Trigger_nameContext
+ParserRuleContext <|-- Trigger_nameContext
+SQLiteParser +-- View_nameContext
+ParserRuleContext <|-- View_nameContext
+SQLiteParser +-- Module_nameContext
+ParserRuleContext <|-- Module_nameContext
+SQLiteParser +-- Pragma_nameContext
+ParserRuleContext <|-- Pragma_nameContext
+SQLiteParser +-- Savepoint_nameContext
+ParserRuleContext <|-- Savepoint_nameContext
+SQLiteParser +-- Table_aliasContext
+ParserRuleContext <|-- Table_aliasContext
+SQLiteParser +-- Transaction_nameContext
+ParserRuleContext <|-- Transaction_nameContext
+SQLiteParser +-- Window_nameContext
+ParserRuleContext <|-- Window_nameContext
+SQLiteParser +-- AliasContext
+ParserRuleContext <|-- AliasContext
+SQLiteParser +-- FilenameContext
+ParserRuleContext <|-- FilenameContext
+SQLiteParser +-- Base_window_nameContext
+ParserRuleContext <|-- Base_window_nameContext
+SQLiteParser +-- Simple_funcContext
+ParserRuleContext <|-- Simple_funcContext
+SQLiteParser +-- Aggregate_funcContext
+ParserRuleContext <|-- Aggregate_funcContext
+SQLiteParser +-- Table_function_nameContext
+ParserRuleContext <|-- Table_function_nameContext
+SQLiteParser +-- Any_nameContext
+ParserRuleContext <|-- Any_nameContext
+@enduml

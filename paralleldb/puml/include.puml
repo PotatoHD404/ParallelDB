@@ -1,0 +1,26 @@
+@startuml
+'!include .\\.\paralleldb\ParallelDb.puml
+'!include .\\.\paralleldb\PrettyPrint.puml
+'!include .\\.\paralleldb\TableStorage.puml
+'!include .\\.\paralleldb\Dependencies\DependencyManager.puml
+'!include .\\.\paralleldb\Dependencies\IDependencyManager.puml
+'!include .\\.\paralleldb\Dependencies\OperationCompletedEventArgs.puml
+'!include .\\.\paralleldb\Dependencies\OperationData.puml
+'!include .\\.\paralleldb\Parse\ErrorListener.puml
+'!include .\\.\paralleldb\Parse\GraphvizVisitor.puml
+'!include .\\.\paralleldb\Parse\QueryVisitor.puml
+'!include .\\.\paralleldb\Queries\CreateTableQuery.puml
+'!include .\\.\paralleldb\Queries\Default.puml
+'!include .\\.\paralleldb\Queries\DeleteQuery.puml
+'!include .\\.\paralleldb\Queries\DropTableQuery.puml
+'!include .\\.\paralleldb\Queries\InsertQuery.puml
+'!include .\\.\paralleldb\Queries\IQuery.puml
+'!include .\\.\paralleldb\Queries\SelectQuery.puml
+'!include .\\.\paralleldb\Queries\UpdateQuery.puml
+!include .\\.\paralleldb\Tables\Column.puml
+!include .\\.\paralleldb\Tables\IRow.puml
+!include .\\.\paralleldb\Tables\PartialResult.puml
+!include .\\.\paralleldb\Tables\Queryable.puml
+!include .\\.\paralleldb\Tables\Table.puml
+!include .\\.\paralleldb\Tables\TableRow.puml
+@enduml

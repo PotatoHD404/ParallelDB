@@ -1,0 +1,13 @@
+@startuml
+class Column {
+    + Name : string <<get>>
+    + IsNullable : bool <<get>>
+    + Default : dynamic? <<get>>
+    + HasDefault : bool <<get>>
+    + Column(name:string, type:Type, nullable:bool, hasDefault:bool)
+    + CheckType(value:object?) : void
+    + Column(name:string, type:Type, nullable:bool, hasDefault:bool, @default:dynamic?)
+    + <<override>> ToString() : string
+}
+Column --> "Type" Type
+@enduml

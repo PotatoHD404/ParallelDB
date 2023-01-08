@@ -1,5 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System;
+
 Console.WriteLine("Hello, World!");
 
 // ThreadPool.QueueUserWorkItem(_ => Console.WriteLine("Hello from thread pool"));

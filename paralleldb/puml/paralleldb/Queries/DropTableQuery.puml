@@ -1,0 +1,11 @@
+@startuml
+class DropTableQuery {
+    + DropTableQuery(db:ParallelDb)
+    + Table(tableName:string) : DropTableQuery
+    + IfExists() : DropTableQuery
+    + <<override>> ToString() : string
+    + GetPlan() : string
+    + Execute() : bool
+}
+IQuery <|-- DropTableQuery
+@enduml

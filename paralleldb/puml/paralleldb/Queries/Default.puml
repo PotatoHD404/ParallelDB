@@ -1,0 +1,7 @@
+@startuml
+class DefaultType {
+}
+class Globals <<static>> {
+}
+Globals o-> "Default" DefaultType
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+class Table {
+    + Table(name:string?)
+    + Table(table:Table)
+    + Table(table:Table, columns:string[])
+    + Table(table1:Table, table2:Table)
+    + Name : string? <<get>>
+    + Rename(name:string) : void
+    + IsComputed : bool <<get>>
+    + ColumnsCount : int <<get>>
+    + RowsCount : int <<get>>
+    + ColumnName(index:int) : string
+    + ColumnIndex(column:string) : int
+    + ColumnType(index:int) : Type
+    + ColumnDefault(index:int) : dynamic?
+    + ColumnHasDefault(index:int) : bool
+    + AddColumn(name:string, type:Type, nullable:bool, hasDefault:bool) : Table
+    + AddColumn(name:string, column:Column) : Table
+    + AddColumn(name:string, type:Type, nullable:bool, hasDefault:bool, @default:dynamic?) : Table
+    + AddRow(dictionary:Dictionary<string, dynamic?>) : Table
+    + AddRow(values:dynamic?[]) : Table
+    + AddRow(row:TableRow) : Table
+    + AddRows(rows:IEnumerable<TableRow>) : Table
+    + Insert(rows:List<List<dynamic?>>, columns:List<string>) : bool
+    + Update(rowChanger:Action<IRow>, predicate:Func<IRow, bool>) : bool
+    + Truncate() : bool
+    + Delete(predicate:Func<IRow, bool>) : bool
+    + NewRow() : TableRow
+    + PrettyPrint() : void
+    + ColumnNullable(index:int) : bool
+    + ToRows() : List<TableRow>
+    + GetColumn(name:string) : Column
+}
+class "List`1"<T> {
+}
+PartialResult <|-- Table
+Table --> "Columns<Column>" "List`1"
+Table --> "Rows<TableRow>" "List`1"
+@enduml

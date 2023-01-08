@@ -1,0 +1,6 @@
+@startuml
+class PrettyPrint <<static>> {
+    + {static} ToString(value:object?, sql:bool) : string?
+    + {static} Print(value:object?, sql:bool) : void
+}
+@enduml

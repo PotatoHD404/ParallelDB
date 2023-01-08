@@ -1,0 +1,12 @@
+@startuml
+class ParserErrorListener {
+    + SyntaxError(output:TextWriter, recognizer:IRecognizer, offendingSymbol:IToken, line:int, charPositionInLine:int, msg:string, e:RecognitionException) : void
+}
+class LexerErrorListener {
+    + SyntaxError(output:TextWriter, recognizer:IRecognizer, offendingSymbol:int, line:int, charPositionInLine:int, msg:string, e:RecognitionException) : void
+}
+class "IAntlrErrorListener`1"<T> {
+}
+"IAntlrErrorListener`1" "<IToken>" <|-- ParserErrorListener
+"IAntlrErrorListener`1" "<int>" <|-- LexerErrorListener
+@enduml

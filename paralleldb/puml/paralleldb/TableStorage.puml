@@ -1,0 +1,8 @@
+@startuml
+class TableStorage {
+    + AddTable(table:Table) : bool
+    + TableExists(tableName:string) : bool
+    + GetTable(tableName:string) : Table?
+    + RemoveTable(tableName:string) : bool
+}
+@enduml

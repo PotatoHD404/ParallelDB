@@ -1,0 +1,12 @@
+@startuml
+class InsertQuery {
+    + InsertQuery(db:ParallelDb)
+    + Into(table:string) : InsertQuery
+    + Columns(columns:string[]) : InsertQuery
+    + Values(values:dynamic?[]) : InsertQuery
+    + <<override>> ToString() : string
+    + GetPlan() : string
+    + Execute() : bool
+}
+IQuery <|-- InsertQuery
+@enduml

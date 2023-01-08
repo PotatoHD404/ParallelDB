@@ -1,0 +1,14 @@
+@startuml
+class CreateTableQuery {
+    + CreateTableQuery(db:ParallelDb)
+    + Table(tableName:string) : CreateTableQuery
+    + AddColumn(name:string, column:Column) : CreateTableQuery
+    + AddColumn(name:string, type:Type, isNullable:bool, hasDefault:bool, defaultValue:dynamic?) : CreateTableQuery
+    + AddColumn(name:string, type:Type, isNullable:bool, hasDefault:bool) : CreateTableQuery
+    + IfNotExists() : CreateTableQuery
+    + <<override>> ToString() : string
+    + GetPlan() : string
+    + Execute() : bool
+}
+IQuery <|-- CreateTableQuery
+@enduml

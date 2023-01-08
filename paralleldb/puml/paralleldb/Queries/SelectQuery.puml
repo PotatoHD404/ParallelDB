@@ -1,0 +1,28 @@
+@startuml
+class SelectQuery {
+    + SelectQuery(db:ParallelDb)
+    + Project(columns:string[]) : SelectQuery
+    + From(table:string) : SelectQuery
+    + From(table:SelectQuery) : SelectQuery
+    + Join(table:string, condition:Func<IRow, IRow, bool>) : SelectQuery
+    + Join(table:SelectQuery, condition:Func<IRow, IRow, bool>) : SelectQuery
+    + Join(table:string, condition:Func<IRow, bool>) : SelectQuery
+    + Join(table:SelectQuery, condition:Func<IRow, bool>) : SelectQuery
+    + Where(condition:Func<IRow, bool>) : SelectQuery
+    + Union(table:string) : SelectQuery
+    + Union(table:SelectQuery) : SelectQuery
+    + UnionAll(table:string) : SelectQuery
+    + UnionAll(table:SelectQuery) : SelectQuery
+    + Intersect(table:string) : SelectQuery
+    + Intersect(table:SelectQuery) : SelectQuery
+    + Except(table:string) : SelectQuery
+    + Except(table:SelectQuery) : SelectQuery
+    + Distinct() : SelectQuery
+    + Limit(count:int) : SelectQuery
+    + Offset(count:int) : SelectQuery
+    + <<override>> ToString() : string
+    + GetPlan() : string
+    + Execute() : Table
+}
+IQuery <|-- SelectQuery
+@enduml

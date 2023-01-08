@@ -1,0 +1,11 @@
+@startuml
+class DeleteQuery {
+    + DeleteQuery(db:ParallelDb)
+    + From(table:string) : DeleteQuery
+    + Where(predicate:Func<IRow, bool>) : DeleteQuery
+    + <<override>> ToString() : string
+    + GetPlan() : string
+    + Execute() : bool
+}
+IQuery <|-- DeleteQuery
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+class PartialResult {
+    + <<override>> Project(columns:string[]) : Queryable<TableRow>
+    + <<override>> Where(predicate:Func<TableRow, bool>) : Queryable<TableRow>
+    + <<override>> Offset(count:int) : Queryable<TableRow>
+    + <<override>> Limit(count:int) : Queryable<TableRow>
+    + <<override>> Distinct() : PartialResult
+    + <<override>> Join(other:Queryable<TableRow>, predicate:Func<TableRow, TableRow, bool>) : Queryable<TableRow>
+    + <<override>> Join(other:Queryable<TableRow>, predicate:Func<TableRow, bool>) : Queryable<TableRow>
+    + <<override>> Cartesian(other:Queryable<TableRow>) : Queryable<TableRow>
+    + <<override>> Union(second:Queryable<TableRow>) : Queryable<TableRow>
+    + <<override>> UnionAll(second:Queryable<TableRow>) : Queryable<TableRow>
+    + <<override>> Intersect(second:Queryable<TableRow>) : Queryable<TableRow>
+    + <<override>> Except(second:Queryable<TableRow>) : Queryable<TableRow>
+    + <<override>> ToTable() : Table
+}
+class "Queryable`1"<T> {
+}
+"Queryable`1" "<TableRow>" <|-- PartialResult
+@enduml

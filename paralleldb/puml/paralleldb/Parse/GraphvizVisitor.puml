@@ -1,0 +1,10 @@
+@startuml
+class GraphvizVisitor {
+    + GetGraph() : string
+    + <<override>> Visit(tree:IParseTree) : object?
+    + <<override>> VisitChildren(node:IRuleNode) : object?
+}
+class "SQLiteParserBaseVisitor`1"<T> {
+}
+"SQLiteParserBaseVisitor`1" "<object?>" <|-- GraphvizVisitor
+@enduml

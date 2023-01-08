@@ -1,0 +1,18 @@
+@startuml
+abstract class "Queryable`1"<T> {
+    + Queryable(source:IEnumerable<TableRow>, table:Table?)
+    + {abstract} Project(columns:string[]) : Queryable<T>
+    + {abstract} Where(predicate:Func<T, bool>) : Queryable<T>
+    + {abstract} Join(other:Queryable<T>, predicate:Func<T, T, bool>) : Queryable<T>
+    + {abstract} Cartesian(other:Queryable<T>) : Queryable<T>
+    + {abstract} Union(other:Queryable<T>) : Queryable<T>
+    + {abstract} UnionAll(other:Queryable<T>) : Queryable<T>
+    + {abstract} Intersect(other:Queryable<T>) : Queryable<T>
+    + {abstract} Except(other:Queryable<T>) : Queryable<T>
+    + {abstract} Distinct() : Queryable<T>
+    + {abstract} Limit(count:int) : Queryable<T>
+    + {abstract} Offset(count:int) : Queryable<T>
+    + {abstract} Join(other:Queryable<T>, predicate:Func<T, bool>) : Queryable<T>
+    + {abstract} ToTable() : Table
+}
+@enduml

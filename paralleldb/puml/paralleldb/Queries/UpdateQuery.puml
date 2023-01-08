@@ -1,0 +1,12 @@
+@startuml
+class UpdateQuery {
+    + UpdateQuery(db:ParallelDb)
+    + Table(table:string) : UpdateQuery
+    + Set(set:Action<IRow>) : UpdateQuery
+    + Where(where:Func<IRow, bool>) : UpdateQuery
+    + <<override>> ToString() : string
+    + GetPlan() : string
+    + Execute() : bool
+}
+IQuery <|-- UpdateQuery
+@enduml

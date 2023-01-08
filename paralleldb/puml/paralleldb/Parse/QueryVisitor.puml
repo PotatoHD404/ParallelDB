@@ -1,0 +1,39 @@
+@startuml
+class NotNullType {
+}
+class DefaultNode {
+    + Value : dynamic? <<get>> <<set>>
+}
+class QueryVisitor {
+    + QueryVisitor(db:ParallelDb)
+    + <<override>> VisitParse(context:SQLiteParser.ParseContext) : dynamic?
+    + <<override>> VisitSql_stmt_list(context:SQLiteParser.Sql_stmt_listContext) : dynamic?
+    + <<override>> VisitSql_stmt(context:SQLiteParser.Sql_stmtContext) : dynamic?
+    + <<override>> VisitSelect_stmt(context:SQLiteParser.Select_stmtContext) : dynamic
+    + <<override>> VisitCompound_operator(context:SQLiteParser.Compound_operatorContext) : dynamic
+    + <<override>> VisitSelect_core(context:SQLiteParser.Select_coreContext) : dynamic
+    + <<override>> VisitDrop_stmt(context:SQLiteParser.Drop_stmtContext) : dynamic
+    + <<override>> VisitDelete_stmt(context:SQLiteParser.Delete_stmtContext) : dynamic
+    + <<override>> VisitUpdate_stmt(context:SQLiteParser.Update_stmtContext) : dynamic
+    + VisitWhereExpr(context:SQLiteParser.ExprContext, table:Table?) : dynamic?
+    + VisitSet_stmt(context:SQLiteParser.Set_stmtContext, table:Table) : dynamic
+    + <<override>> VisitInsert_stmt(context:SQLiteParser.Insert_stmtContext) : dynamic
+    + <<override>> VisitCreate_table_stmt(context:SQLiteParser.Create_table_stmtContext) : dynamic
+    + <<override>> VisitColumn_def(context:SQLiteParser.Column_defContext) : dynamic
+    + <<override>> VisitColumn_constraint(context:SQLiteParser.Column_constraintContext) : dynamic
+    + GetValue(context:ParserRuleContext) : dynamic?
+    + <<override>> VisitAny_name(context:SQLiteParser.Any_nameContext) : dynamic
+    + <<override>> VisitLiteral_value(context:SQLiteParser.Literal_valueContext) : dynamic?
+}
+class UnionAll {
+}
+class Intersect {
+}
+class Except {
+}
+class Union {
+}
+class "SQLiteParserBaseVisitor`1"<T> {
+}
+"SQLiteParserBaseVisitor`1" "<dynamic?>" <|-- QueryVisitor
+@enduml

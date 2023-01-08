@@ -1,0 +1,21 @@
+@startuml
+class ParallelDb {
+    + ParallelDb()
+    + Select() : SelectQuery
+    + Insert() : InsertQuery
+    + Update() : UpdateQuery
+    + Delete() : DeleteQuery
+    + Create() : CreateTableQuery
+    + Drop() : DropTableQuery
+    + Execute(selectQuery:SelectQuery) : Table
+    + Execute(insertQuery:InsertQuery) : bool
+    + Execute(updateQuery:UpdateQuery) : bool
+    + Execute(deleteQuery:DeleteQuery) : bool
+    + Execute(createTableQuery:CreateTableQuery) : bool
+    + Execute(dropTableQuery:DropTableQuery) : bool
+    + Execute(sql:string) : dynamic
+    + GetQuery(sql:string) : IQuery
+    + GetSyntaxTree(sql:string) : string
+    + TableExists(tableName:string) : bool
+}
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+interface IDependencyManager {
+    AddOperation(id:int, operation:Func<ConcurrentDictionary<int, dynamic?>, T>, dependencies:int[]) : void
+     <<event>> OperationCompleted : EventHandler<OperationCompletedEventArgs> 
+    Execute() : void
+    ExecuteAndWait() : void
+    GetResults() : ConcurrentDictionary<int, dynamic?>
+}
+@enduml

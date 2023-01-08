@@ -1,0 +1,8 @@
+@startuml
+class OperationCompletedEventArgs {
+    + Id : int <<get>>
+}
+EventArgs <|-- OperationCompletedEventArgs
+OperationCompletedEventArgs --> "Start" DateTimeOffset
+OperationCompletedEventArgs --> "End" DateTimeOffset
+@enduml
